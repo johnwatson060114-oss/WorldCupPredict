@@ -15,6 +15,11 @@ if (Test-Path $envFile) {
     }
 }
 
+node .\scripts\fetch-sporttery.mjs
+if ($LASTEXITCODE -ne 0) {
+    Write-Warning 'Sporttery browser refresh failed; the pipeline will apply its explicit fallback.'
+}
+
 python -m pipeline.settle
 if ($LASTEXITCODE -ne 0) { throw 'Settlement refresh failed.' }
 
@@ -28,15 +33,18 @@ npm.cmd run build
 if ($LASTEXITCODE -ne 0) { throw 'Frontend build failed.' }
 
 if (-not $NoPublish) {
-    if (Get-Command gh -ErrorAction SilentlyContinue) {
-        gh workflow run daily-pages.yml --repo johnwatson060114-oss/WorldCupPredict --ref main
+    git add -- public/data
+    git diff --cached --quiet
+    if ($LASTEXITCODE -ne 0) {
+        git commit -m 'data: refresh daily forecast'
         if ($LASTEXITCODE -eq 0) {
-            Write-Host 'GitHub Pages refresh requested.' -ForegroundColor Green
-        } else {
-            Write-Warning 'GitHub Pages refresh could not be requested; the 18:10 cloud fallback remains active.'
+            git push origin main
+            if ($LASTEXITCODE -eq 0) {
+                Write-Host 'Daily forecast pushed for GitHub Pages deployment.' -ForegroundColor Green
+            } else {
+                Write-Warning 'Daily forecast push failed; the 18:10 cloud fallback remains active.'
+            }
         }
-    } else {
-        Write-Warning 'GitHub CLI is unavailable; the 18:10 cloud fallback remains active.'
     }
 }
 

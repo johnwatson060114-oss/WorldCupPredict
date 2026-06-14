@@ -8,6 +8,7 @@ CACHE_DIR = ROOT / ".cache" / "pipeline"
 OUTPUT_DIR = ROOT / "public" / "data"
 FIXTURE_DIR = ROOT / "tests" / "fixtures"
 MANUAL_DIR = ROOT / "manual-data"
+SPORTTERY_SNAPSHOT = CACHE_DIR / "sporttery-live.json"
 
 
 @dataclass(frozen=True)

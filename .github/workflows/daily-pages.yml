@@ -36,8 +36,30 @@ jobs:
           node-version: '22'
       - run: pip install -r requirements.txt
       - run: npm install
+      - name: Check for a recent local forecast
+        id: forecast_freshness
+        if: github.event_name == 'schedule'
+        shell: python
+        run: |
+          import json
+          import os
+          from datetime import datetime, timedelta
+          from pathlib import Path
+          from zoneinfo import ZoneInfo
+
+          path = Path('public/data/daily-forecast.json')
+          recent = False
+          if path.exists():
+              payload = json.loads(path.read_text(encoding='utf-8'))
+              timezone = ZoneInfo('Asia/Shanghai')
+              now = datetime.now(timezone)
+              generated = datetime.fromisoformat(payload['generatedAt']).astimezone(timezone)
+              recent = now - generated <= timedelta(minutes=30)
+              recent = recent and payload.get('targetDate') == (now.date() + timedelta(days=1)).isoformat()
+          with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as output:
+              output.write(f'recent={str(recent).lower()}\n')
       - name: Generate next Beijing-day forecast
-        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        if: github.event_name == 'workflow_dispatch' || (github.event_name == 'schedule' && steps.forecast_freshness.outputs.recent != 'true')
         env:
           API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
           FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
@@ -48,7 +70,7 @@ jobs:
       - run: python -m pytest -q
       - run: npm run build
       - name: Commit forecast history
-        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        if: github.event_name == 'workflow_dispatch' || (github.event_name == 'schedule' && steps.forecast_freshness.outputs.recent != 'true')
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
