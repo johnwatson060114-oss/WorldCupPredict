@@ -13,6 +13,7 @@ import { AnalysisPage } from './pages/AnalysisPage'
 import { LedgerPage } from './pages/LedgerPage'
 import { BacktestPage } from './pages/BacktestPage'
 import { MethodPage } from './pages/MethodPage'
+import { PersonalBetPage } from './pages/PersonalBetPage'
 import { useForecast } from './hooks/useForecast'
 import { appendLedgerEntry, currentBalance, emptyLedger, loadLedger, saveLedger, settleLedger } from './lib/ledger'
 import { scalePortfolio } from './lib/portfolio'
@@ -26,15 +27,20 @@ export default function App() {
   const [drawerOpen, setDrawerOpen] = useState(false)
   const [noBetChoice, setNoBetChoice] = useState<'hold' | 'fun'>('hold')
   const [ledger, setLedger] = useState<BankrollLedger>(() => loadLedger())
+  const [settlements, setSettlements] = useState<SettlementFile | null>(null)
 
   useEffect(() => {
     fetch('./data/settlements.json', { cache: 'no-store' })
       .then((response) => response.ok ? response.json() as Promise<SettlementFile> : null)
-      .then((settlements) => settlements && setLedger((current) => {
-        const next = settleLedger(current, settlements)
-        if (next !== current) saveLedger(next)
-        return next
-      }))
+      .then((settlements) => {
+        if (!settlements) return
+        setSettlements(settlements)
+        setLedger((current) => {
+          const next = settleLedger(current, settlements)
+          if (next !== current) saveLedger(next)
+          return next
+        })
+      })
       .catch(() => undefined)
   }, [])
 
@@ -104,6 +110,7 @@ export default function App() {
         </>
       )}
       {activeNav === 'analysis' && <AnalysisPage match={selectedMatch} />}
+      {activeNav === 'personal' && <PersonalBetPage forecast={data} settlements={settlements} />}
       {activeNav === 'ledger' && <LedgerPage ledger={ledger} onImport={(next) => { saveLedger(next); setLedger(next) }} onReset={() => { const next = emptyLedger(); saveLedger(next); setLedger(next) }} />}
       {activeNav === 'backtest' && <BacktestPage metrics={data.backtest} />}
       {activeNav === 'method' && <MethodPage />}

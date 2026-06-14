@@ -17,6 +17,9 @@ if ($LASTEXITCODE -ne 0) { throw 'Settlement refresh failed.' }
 python -m pipeline.generate --archive
 if ($LASTEXITCODE -ne 0) { throw 'Prediction pipeline failed.' }
 
+python -m pipeline.strategy_history
+if ($LASTEXITCODE -ne 0) { throw 'Strategy history refresh failed.' }
+
 npm.cmd run build
 if ($LASTEXITCODE -ne 0) { throw 'Frontend build failed.' }
 

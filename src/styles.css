@@ -183,12 +183,108 @@ button { color: inherit; }
 .drawer-backdrop{position:fixed;inset:0;z-index:100;background:rgba(0,7,13,.72);backdrop-filter:blur(3px);display:flex;justify-content:flex-end}.portfolio-drawer{width:600px;height:100%;background:#071522;border-left:1px solid #2b4c63;box-shadow:-30px 0 70px rgba(0,0,0,.35);padding:18px;overflow:auto}.drawer-head{display:flex;justify-content:space-between;align-items:center;padding-bottom:15px;border-bottom:1px solid var(--line)}.drawer-head span{color:var(--blue);font-size:10px}.drawer-head h2{margin:4px 0 0}.drawer-head button{border:0;background:transparent;cursor:pointer;color:var(--muted)}.drawer-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:12px 0}.drawer-summary>div{background:#0a1d2d;padding:10px;border:1px solid var(--line);border-radius:5px}.drawer-summary span{color:var(--muted);font-size:9px;display:block}.drawer-summary strong{font:22px 'Barlow Condensed'}.drawer-tickets{display:grid;gap:7px}.drawer-tickets article{border:1px solid var(--line);border-radius:6px;background:#0a1a28;padding:12px}.drawer-tickets article>div{display:flex;justify-content:space-between;color:var(--amber)}.drawer-tickets p{font-size:10px;color:#a8bac7;margin:7px 0}.drawer-tickets footer{display:flex;gap:18px;padding-top:8px;border-top:1px solid var(--line);color:var(--muted);font-size:9px}.drawer-warning{margin:12px 0;padding:10px;border-left:2px solid var(--amber);background:rgba(139,87,11,.09);color:#9ea9b1;font-size:10px}.confirm-button{width:100%;border:1px solid #1e9a7c;background:#0d4a3c;color:#b9f3e3;border-radius:6px;padding:11px;display:flex;justify-content:center;align-items:center;gap:8px;cursor:pointer}
 .app-state{min-height:100vh;display:grid;place-content:center;text-align:center;color:var(--muted)}.app-state h1{color:var(--text)}.app-state code{color:var(--amber)}.loading-ring{width:32px;height:32px;border:2px solid #1d3f55;border-top-color:var(--blue);border-radius:50%;animation:spin 1s linear infinite;margin:auto}@keyframes spin{to{transform:rotate(360deg)}}
 
+/* Independent personal betting ledger */
+.personal-bet-page { max-width: 1900px; margin: 0 auto; padding: 16px 18px 42px; }
+.personal-page-title { min-height: 58px; display: flex; align-items: center; justify-content: space-between; }
+.personal-page-title span { color: var(--blue); font-size: 10px; }
+.personal-page-title h1 { margin: 3px 0 0; font-size: 24px; }
+.personal-page-actions { display: flex; gap: 7px; }
+.personal-page-actions button, .personal-page-actions label { border: 1px solid var(--line-strong); border-radius: 5px; padding: 7px 11px; background: #0a1c2b; color: #9fb3c3; display: flex; align-items: center; gap: 6px; cursor: pointer; font-size: 10px; }
+.personal-page-actions input { display: none; }
+.personal-top-grid { display: grid; grid-template-columns: 420px minmax(560px, 1fr) 320px; gap: 8px; align-items: stretch; }
+.personal-panel-title { min-height: 52px; padding: 10px 12px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
+.personal-panel-title h2 { margin: 0; font-size: 15px; }
+.personal-panel-title p { margin: 3px 0 0; color: var(--muted); font-size: 9px; }
+.personal-panel-title > svg { color: var(--blue); }
+.personal-entry-panel { overflow: hidden; }
+.personal-summary-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--line); }
+.personal-summary-grid div { min-width: 0; padding: 9px 10px; border-right: 1px solid var(--line); }
+.personal-summary-grid div:last-child { border: 0; }
+.personal-summary-grid span { display: block; color: var(--muted); font-size: 8px; white-space: nowrap; }
+.personal-summary-grid strong { display: block; margin-top: 2px; color: #e0eaf1; font: 600 17px 'Barlow Condensed'; }
+.personal-form { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; padding: 10px 12px 6px; }
+.personal-form label { color: #7890a4; font-size: 8px; }
+.personal-form input, .personal-form select { width: 100%; height: 29px; margin-top: 3px; padding: 0 8px; border: 1px solid #244157; border-radius: 4px; outline: none; background: #061421; color: #cbdbe6; font-size: 10px; }
+.personal-form input:focus, .personal-form select:focus { border-color: #248cc6; box-shadow: 0 0 0 2px rgba(40,168,238,.08); }
+.personal-form .form-wide { grid-column: 1 / 3; }
+.personal-form-message { min-height: 16px; margin: 0; padding: 0 12px; color: #d7a95a; font-size: 8px; }
+.personal-form-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; padding: 5px 12px 11px; }
+.personal-form-actions button { height: 31px; border: 1px solid #29465d; border-radius: 4px; background: #0b1b29; color: #8fa4b5; cursor: pointer; font-size: 10px; }
+.personal-form-actions button.primary { border-color: #247db3; background: #0b4b73; color: #d8effd; }
+.personal-comparison-panel { min-width: 0; overflow: hidden; }
+.comparison-tabs { display: flex; border: 1px solid #29455d; border-radius: 4px; overflow: hidden; }
+.comparison-tabs button { border: 0; border-right: 1px solid #29455d; padding: 5px 9px; background: #081827; color: #748da0; cursor: pointer; font-size: 9px; }
+.comparison-tabs button:last-child { border: 0; }
+.comparison-tabs button.active { color: #8dd8ff; background: #103a58; }
+.comparison-metrics { display: grid; grid-template-columns: repeat(4, 1fr); margin: 8px 10px 0; border: 1px solid var(--line); }
+.comparison-metrics div { padding: 8px 9px; border-right: 1px solid var(--line); }
+.comparison-metrics div:last-child { border: 0; }
+.comparison-metrics span, .comparison-metrics small { display: block; color: var(--muted); font-size: 8px; }
+.comparison-metrics strong { display: block; margin: 2px 0; font: 600 18px 'Barlow Condensed'; color: #66aff4; }
+.personal-comparison-chart { width: 100%; height: 205px; }
+.personal-chart-empty { height: 205px; display: grid; place-items: center; padding: 30px; text-align: center; color: #70879a; font-size: 10px; }
+.comparison-footnote { margin: 0; padding: 7px 12px 10px; border-top: 1px solid var(--line); color: #758b9d; font-size: 8px; line-height: 1.6; }
+.personal-side-stack { display: grid; grid-template-rows: 1fr 1fr; gap: 8px; }
+.fairness-rules, .data-check-panel { overflow: hidden; }
+.fairness-rules ul { margin: 0; padding: 7px 13px 10px; list-style: none; }
+.fairness-rules li { display: grid; grid-template-columns: 82px 1fr; gap: 7px; padding: 6px 0; border-bottom: 1px solid rgba(27,52,73,.72); }
+.fairness-rules li:last-child { border: 0; }
+.fairness-rules strong { color: #93cbee; font-size: 9px; }
+.fairness-rules span { color: #7e92a2; font-size: 8px; line-height: 1.5; }
+.data-check-list { padding: 7px 11px; display: grid; gap: 4px; }
+.data-check-list > div { display: grid; grid-template-columns: 18px 1fr; align-items: center; padding: 5px 7px; border: 1px solid #173246; border-radius: 4px; background: rgba(5,18,30,.52); }
+.data-check-list .ok > svg { color: var(--teal); }
+.data-check-list .warning > svg { color: var(--amber); }
+.data-check-list b, .data-check-list small { display: block; }
+.data-check-list b { color: #aebfca; font-size: 8px; }
+.data-check-list small { margin-top: 1px; color: #6f8597; font-size: 7px; }
+.strategy-journey-panel { margin-top: 8px; overflow: hidden; }
+.simulation-note { color: #76a5c2; font-size: 9px; }
+.strategy-journey-body { display: grid; grid-template-columns: 310px minmax(0, 1fr); min-height: 275px; }
+.strategy-projection-cards { padding: 10px; display: grid; gap: 6px; border-right: 1px solid var(--line); }
+.strategy-projection-cards > div { position: relative; padding: 8px 9px 8px 13px; border: 1px solid #1c374b; border-radius: 5px; background: #071827; }
+.strategy-projection-cards > div::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--strategy-color); }
+.strategy-projection-cards span, .strategy-projection-cards small, .strategy-projection-cards em { display: block; }
+.strategy-projection-cards span { color: #a9bcc9; font-size: 9px; }
+.strategy-projection-cards strong { color: var(--strategy-color); font: 600 21px 'Barlow Condensed'; }
+.strategy-projection-cards small { color: #8599a9; font-size: 8px; }
+.strategy-projection-cards em { margin-top: 3px; color: #70879a; font-size: 7px; font-style: normal; }
+.strategy-projection-chart { width: 100%; height: 275px; }
+.projection-disclaimer { margin: 0; padding: 7px 12px; border-top: 1px solid var(--line); color: #72899b; font-size: 8px; }
+.personal-bottom-grid { display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 8px; margin-top: 8px; }
+.personal-ledger-panel { min-width: 0; overflow: hidden; }
+.personal-panel-title > span { color: #7390a4; font-size: 9px; }
+.personal-table-wrap { overflow: auto; max-height: 320px; scrollbar-width: thin; scrollbar-color: #28455c transparent; }
+.personal-ledger-table { width: 100%; min-width: 1050px; border-collapse: collapse; font-size: 9px; }
+.personal-ledger-table th { position: sticky; top: 0; z-index: 2; padding: 8px; background: #0b1d2d; color: #7890a3; text-align: left; font-weight: 500; }
+.personal-ledger-table td { padding: 8px; border-top: 1px solid var(--line); color: #9fb1bd; vertical-align: top; }
+.personal-ledger-table td strong, .personal-ledger-table td small { display: block; }
+.personal-ledger-table td small { margin-top: 2px; color: #708496; font-size: 7px; }
+.personal-ledger-table td button { border: 0; background: transparent; color: #58afe0; padding: 2px 5px; cursor: pointer; }
+.personal-ledger-table td button:last-child { color: #c66b70; }
+.bet-status { display: inline-flex; padding: 2px 5px; border: 1px solid; border-radius: 3px; font-size: 7px; }
+.bet-status.pending { color: var(--amber); border-color: #765621; }
+.bet-status.settled { color: var(--teal); border-color: #1b6f60; }
+.bet-status.void { color: #718697; border-color: #344b5c; }
+.betting-review-panel { overflow: hidden; }
+.review-state { margin: 12px 13px 7px; display: flex; align-items: center; gap: 8px; color: var(--amber); }
+.review-state strong { font-size: 16px; }
+.betting-review-panel > p { margin: 0 13px 12px; color: #91a4b2; font-size: 9px; line-height: 1.7; }
+.betting-review-panel dl { margin: 0; padding: 0 13px 12px; }
+.betting-review-panel dl > div { padding: 7px 0; border-top: 1px solid var(--line); }
+.betting-review-panel dt { color: #6ebce7; font-size: 8px; }
+.betting-review-panel dd { margin: 3px 0 0; color: #798e9e; font-size: 8px; line-height: 1.5; }
+
 @media (max-width: 1390px) {
   .dashboard-grid { grid-template-columns: 238px minmax(600px, 1fr) 294px; }
+  .topbar { gap: 12px; }
+  .nav-item { padding: 0 10px; }
   .top-status { gap: 10px; }
   .top-status span:first-child { display: none; }
   .portfolio-metrics strong { font-size: 15px; }
   .status-bar { grid-template-columns: 150px 160px 160px 200px 150px 1fr; }
+  .personal-top-grid { grid-template-columns: 370px minmax(500px, 1fr) 280px; }
+  .fairness-rules li { grid-template-columns: 72px 1fr; }
 }
 
 @media (max-height: 820px) {

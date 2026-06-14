@@ -42,6 +42,7 @@ jobs:
         run: |
           python -m pipeline.settle
           python -m pipeline.generate --archive
+          python -m pipeline.strategy_history
       - run: python -m pytest -q
       - run: npm run build
       - name: Commit forecast history

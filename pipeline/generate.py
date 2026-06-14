@@ -268,6 +268,8 @@ def main() -> None:
     target_date = args.target_date or (now.astimezone(timezone).date() + timedelta(days=1)).isoformat()
     generated_at = now.astimezone(timezone).isoformat(timespec="seconds")
     degraded_reasons: list[str] = []
+    sporttery_live = False
+    team_data_live = False
 
     if args.offline:
         markets_by_id = load_fixture(FIXTURE_DIR / "sporttery-spf.html", FIXTURE_DIR / "sporttery-score.html")
@@ -275,6 +277,7 @@ def main() -> None:
     else:
         try:
             markets_by_id = fetch_sporttery()
+            sporttery_live = True
         except Exception as exc:  # noqa: BLE001 - degradation is deliberate and reported
             print(f"[sporttery] live fetch failed: {type(exc).__name__}: {exc}")
             markets_by_id = load_fixture(FIXTURE_DIR / "sporttery-spf.html", FIXTURE_DIR / "sporttery-score.html")
@@ -286,6 +289,7 @@ def main() -> None:
     if client.enabled and not args.offline:
         try:
             seeds = live_seeds(client, target_date)
+            team_data_live = bool(seeds)
         except Exception as exc:  # noqa: BLE001
             print(f"[api-football] live fetch failed: {type(exc).__name__}: {exc}")
             seeds = []
@@ -310,6 +314,10 @@ def main() -> None:
     all_quotes = [quote for match in built_matches for quote in match["quotes"]]
     portfolios = build_portfolios(all_quotes, SETTINGS.initial_bankroll)
     coverage = sum(match["coverage"] for match in built_matches) / len(built_matches) if built_matches else 0
+    weather_live = team_data_live and bool(built_matches) and all(
+        any(factor["label"] == "温湿度与风" and factor["active"] for factor in match["factors"])
+        for match in built_matches
+    )
     payload = {
         "schemaVersion": 1,
         "generatedAt": generated_at,
@@ -325,9 +333,9 @@ def main() -> None:
         "matches": built_matches,
         "portfolios": portfolios,
         "evidence": [
-            {"source": "中国体育彩票", "field": "固定奖金/单关资格", "observedAt": generated_at, "confidence": 1.0, "status": "manual" if args.offline else "fresh"},
-            {"source": "API-Football 免费档", "field": "赛程/球队/阵容", "observedAt": generated_at, "confidence": 0.72, "status": "missing" if not client.enabled else "fresh"},
-            {"source": "Open-Meteo", "field": "开球时刻天气", "observedAt": generated_at, "confidence": 0.8, "status": "manual" if args.offline else "fresh"},
+            {"source": "中国体育彩票", "field": "固定奖金/单关资格", "observedAt": generated_at, "confidence": 1.0, "status": "fresh" if sporttery_live else "manual"},
+            {"source": "API-Football 免费档", "field": "赛程/球队/阵容", "observedAt": generated_at, "confidence": 0.72, "status": "fresh" if team_data_live else "missing"},
+            {"source": "Open-Meteo", "field": "开球时刻天气", "observedAt": generated_at, "confidence": 0.8, "status": "fresh" if weather_live else "manual"},
         ],
         "backtest": [
             {"label": "概率校准", "value": "待积累", "note": "首届运行后按比赛日滚动更新可靠性图", "status": "neutral"},

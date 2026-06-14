@@ -17,6 +17,7 @@ def test_offline_generation(tmp_path):
     assert len(payload["matches"]) == 4
     assert all(abs(sum(match["outcomeProbabilities"].values()) - 1) < 0.0001 for match in payload["matches"])
     assert all(portfolio["stake"] <= 200 for portfolio in payload["portfolios"])
+    assert all(item["status"] != "fresh" for item in payload["evidence"])
 
 
 def test_live_fetch_error_is_not_exposed(monkeypatch, tmp_path):
@@ -35,9 +36,11 @@ def test_live_fetch_error_is_not_exposed(monkeypatch, tmp_path):
     ])
 
     generate.main()
-    message = json.loads(output.read_text(encoding="utf-8"))["statusMessage"]
+    payload = json.loads(output.read_text(encoding="utf-8"))
+    message = payload["statusMessage"]
 
     assert "体彩实时赔率暂时不可用" in message
     assert "http" not in message
     assert "567" not in message
     assert "Server Error" not in message
+    assert next(item for item in payload["evidence"] if item["source"] == "Open-Meteo")["status"] == "manual"
