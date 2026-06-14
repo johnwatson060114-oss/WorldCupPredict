@@ -1,0 +1,1908 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-06-14T18:00:00+08:00",
+  "targetDate": "2026-06-15",
+  "timezone": "Asia/Shanghai",
+  "modelVersion": "0.1.0",
+  "simulations": 100000,
+  "bankroll": 200,
+  "oddsFreshMinutes": 0,
+  "overallCoverage": 0.84,
+  "status": "degraded",
+  "statusMessage": "使用仓库内固定体彩快照；未配置 API_FOOTBALL_KEY，球员与阵容采用固定开发样例",
+  "matches": [
+    {
+      "id": "2040170",
+      "apiFixtureId": null,
+      "lotteryCode": "周日009",
+      "kickoff": "2026-06-15T01:00:00+08:00",
+      "kickoffBeijing": "2026-06-15T01:00:00+08:00",
+      "venue": "Demo Stadium",
+      "homeTeam": "德国",
+      "awayTeam": "库拉索",
+      "homeFlag": "🇩🇪",
+      "awayFlag": "🇨🇼",
+      "expectedGoals": {
+        "home": 4.52,
+        "away": 0.28
+      },
+      "outcomeProbabilities": {
+        "home": 0.97173,
+        "draw": 0.0244,
+        "away": 0.00387
+      },
+      "likelyScore": "4-0",
+      "scoreStars": 1,
+      "scoreProbabilities": [
+        {
+          "score": "4:0",
+          "probability": 0.14376110281626214,
+          "odds": 5.25
+        },
+        {
+          "score": "5:0",
+          "probability": 0.12996003694590097,
+          "odds": null
+        },
+        {
+          "score": "3:0",
+          "probability": 0.12722221488164792,
+          "odds": 5.2
+        },
+        {
+          "score": "6:0",
+          "probability": 0.09790322783257872
+        },
+        {
+          "score": "2:0",
+          "probability": 0.08443952315153623
+        },
+        {
+          "score": "7:0",
+          "probability": 0.06321751282903652
+        },
+        {
+          "score": "4:1",
+          "probability": 0.040612511545594046
+        },
+        {
+          "score": "5:1",
+          "probability": 0.03671371043721701
+        }
+      ],
+      "coverage": 0.82,
+      "weather": "22°C / 湿度 58% / 微风",
+      "altitude": 210,
+      "missingData": [
+        "库拉索 4 名替补球员缺少联赛高级数据"
+      ],
+      "factors": [
+        {
+          "label": "球队实力",
+          "direction": "home",
+          "value": 0.18,
+          "note": "历史攻防强度明显占优",
+          "active": true
+        },
+        {
+          "label": "预计首发",
+          "direction": "home",
+          "value": 0.06,
+          "note": "主力框架完整",
+          "active": true
+        },
+        {
+          "label": "教练风格",
+          "direction": "home",
+          "value": 0.03,
+          "note": "高位压迫匹配有利",
+          "active": true
+        },
+        {
+          "label": "轮换体能",
+          "direction": "neutral",
+          "value": 0.0,
+          "note": "两队休息时间接近",
+          "active": true
+        },
+        {
+          "label": "海拔适应",
+          "direction": "neutral",
+          "value": 0.0,
+          "note": "低海拔场馆",
+          "active": false
+        },
+        {
+          "label": "温湿度与风",
+          "direction": "neutral",
+          "value": 0.0,
+          "note": "影响较小",
+          "active": true
+        }
+      ],
+      "quotes": [
+        {
+          "id": "2040170-胜平负-胜",
+          "matchId": "2040170",
+          "label": "德国 vs 库拉索",
+          "market": "胜平负",
+          "selection": "胜",
+          "handicap": null,
+          "odds": null,
+          "modelProbability": 0.97173,
+          "marketProbability": null,
+          "rawExpectedReturn": null,
+          "robustExpectedReturn": null,
+          "singleEligible": false,
+          "available": false,
+          "recommendation": "未开售",
+          "reason": "官方固定奖金未开售",
+          "observedAt": "2026-06-14T18:00:00+08:00"
+        },
+        {
+          "id": "2040170-胜平负-平",
+          "matchId": "2040170",
+          "label": "德国 vs 库拉索",
+          "market": "胜平负",
+          "selection": "平",
+          "handicap": null,
+          "odds": null,
+          "modelProbability": 0.0244,
+          "marketProbability": null,
+          "rawExpectedReturn": null,
+          "robustExpectedReturn": null,
+          "singleEligible": false,
+          "available": false,
+          "recommendation": "未开售",
+          "reason": "官方固定奖金未开售",
+          "observedAt": "2026-06-14T18:00:00+08:00"
+        },
+        {
+          "id": "2040170-胜平负-负",
+          "matchId": "2040170",
+          "label": "德国 vs 库拉索",
+          "market": "胜平负",
+          "selection": "负",
+          "handicap": null,
+          "odds": null,
+          "modelProbability": 0.00387,
+          "marketProbability": null,
+          "rawExpectedReturn": null,
+          "robustExpectedReturn": null,
+          "singleEligible": false,
+          "available": false,
+          "recommendation": "未开售",
+          "reason": "官方固定奖金未开售",
+          "observedAt": "2026-06-14T18:00:00+08:00"
+        },
+        {
+          "id": "2040170-让球胜平负--3-胜",
+          "matchId": "2040170",
+          "label": "德国 vs 库拉索",
+          "market": "让球胜平负",
+          "selection": "-3 胜",
+          "handicap": -3,
+          "odds": 1.77,
+          "modelProbability": 0.60567,
+          "marketProbability": 0.50048,
+          "rawExpectedReturn": 0.07203,
+          "robustExpectedReturn": -0.03079,
+          "singleEligible": false,
+          "available": true,
+          "recommendation": "不建议",
+          "reason": "稳健期望为负",
+          "observedAt": "2026-06-14T18:00:00+08:00"
+        },
+        {
+          "id": "2040170-让球胜平负--3-平",
+          "matchId": "2040170",
+          "label": "德国 vs 库拉索",
+          "market": "让球胜平负",
+          "selection": "-3 平",
+          "handicap": -3,
+          "odds": 4.75,
+          "modelProbability": 0.17341,
+          "marketProbability": 0.1865,
+          "rawExpectedReturn": -0.17632,
+          "robustExpectedReturn": -0.40549,
+          "singleEligible": false,
+          "available": true,
+          "recommendation": "不建议",
+          "reason": "稳健期望为负",
+          "observedAt": "2026-06-14T18:00:00+08:00"
+        },
+        {
+          "id": "2040170-让球胜平负--3-负",
+          "matchId": "2040170",
+          "label": "德国 vs 库拉索",
+          "market": "让球胜平负",
+          "selection": "-3 负",
+          "handicap": -3,
+          "odds": 2.83,
+          "modelProbability": 0.22093,
+          "marketProbability": 0.31302,
+          "rawExpectedReturn": -0.37477,
+          "robustExpectedReturn": -0.52049,
+          "singleEligible": false,
+          "available": true,
+          "recommendation": "不建议",
+          "reason": "稳健期望为负",
+          "observedAt": "2026-06-14T18:00:00+08:00"
+        },
+        {
+          "id": "2040170-比分-4:0",
+          "matchId": "2040170",
+          "label": "德国 vs 库拉索",
+          "market": "比分",
+          "selection": "4:0",
+          "handicap": null,
+          "odds": 5.25,
+          "modelProbability": 0.14376,
+          "marketProbability": 0.28017,
+          "rawExpectedReturn": -0.24525,
+          "robustExpectedReturn": -0.48552,
+          "singleEligible": false,
+          "available": true,
+          "recommendation": "不建议",
+          "reason": "比分分布不够集中",
+          "observedAt": "2026-06-14T18:00:00+08:00"
+        },
+        {
+          "id": "2040170-比分-5:0",
+          "matchId": "2040170",
+          "label": "德国 vs 库拉索",
+          "market": "比分",
+          "selection": "5:0",
+          "handicap": null,
+          "odds": null,
+          "modelProbability": 0.12996,
+          "marketProbability": null,
+          "rawExpectedReturn": null,
+          "robustExpectedReturn": null,
+          "singleEligible": false,
+          "available": false,
+          "recommendation": "未开售",
+          "reason": "官方固定奖金未开售",
+          "observedAt": "2026-06-14T18:00:00+08:00"
+        },
+        {
+          "id": "2040170-比分-3:0",
+          "matchId": "2040170",
+          "label": "德国 vs 库拉索",
+          "market": "比分",
+          "selection": "3:0",
+          "handicap": null,
+          "odds": 5.2,
+          "modelProbability": 0.12722,
+          "marketProbability": 0.28287,
+          "rawExpectedReturn": -0.33844,
+          "robustExpectedReturn": -0.56823,
+          "singleEligible": false,
+          "available": true,
+          "recommendation": "不建议",
+          "reason": "比分分布不够集中",
+          "observedAt": "2026-06-14T18:00:00+08:00"
+        }
+      ]
+    },
+    {
+      "id": "2040171",
+      "apiFixtureId": null,
+      "lotteryCode": "周日010",
+      "kickoff": "2026-06-15T04:00:00+08:00",
+      "kickoffBeijing": "2026-06-15T04:00:00+08:00",
+      "venue": "Demo Stadium",
+      "homeTeam": "荷兰",
+      "awayTeam": "日本",
+      "homeFlag": "🇳🇱",
+      "awayFlag": "🇯🇵",
+      "expectedGoals": {
+        "home": 1.97,
+        "away": 0.93
+      },
+      "outcomeProbabilities": {
+        "home": 0.60928,
+        "draw": 0.22835,
+        "away": 0.16238
+      },
+      "likelyScore": "1-1",
+      "scoreStars": 0,
+      "scoreProbabilities": [
+        {
+          "score": "1:1",
+          "probability": 0.10871860385294696,
+          "odds": 6.2
+        },
+        {
+          "score": "2:0",
+          "probability": 0.10704175207144748,
+          "odds": 8.5
+        },
+        {
+          "score": "1:0",
+          "probability": 0.10048086597490094,
+          "odds": 7.5
+        },
+        {
+          "score": "2:1",
+          "probability": 0.09928122504626753
+        },
+        {
+          "score": "3:0",
+          "probability": 0.07037995198697672
+        },
+        {
+          "score": "3:1",
+          "probability": 0.06527740546792091
+        },
+        {
+          "score": "0:0",
+          "probability": 0.06307685267292108
+        },
+        {
+          "score": "1:2",
+          "probability": 0.046683567163707536
+        }
+      ],
+      "coverage": 0.86,
+      "weather": "24°C / 湿度 66% / 微风",
+      "altitude": 210,
+      "missingData": [
+        "日本 2 名替补球员缺少俱乐部近 365 天高级数据"
+      ],
+      "factors": [
+        {
+          "label": "球队实力",
+          "direction": "home",
+          "value": 0.11,
+          "note": "整体攻防与阵容深度占优",
+          "active": true
+        },
+        {
+          "label": "预计首发",
+          "direction": "home",
+          "value": 0.04,
+          "note": "核心球员预计首发",
+          "active": true
+        },
+        {
+          "label": "教练风格",
+          "direction": "away",
+          "value": 0.03,
+          "note": "日本快速转换具有威胁",
+          "active": true
+        },
+        {
+          "label": "轮换体能",
+          "direction": "home",
+          "value": 0.02,
+          "note": "荷兰休息日略多",
+          "active": true
+        },
+        {
+          "label": "海拔适应",
+          "direction": "neutral",
+          "value": 0.0,
+          "note": "比赛海拔影响很小",
+          "active": false
+        },
+        {
+          "label": "温湿度与风",
+          "direction": "neutral",
+          "value": 0.0,
+          "note": "温度可接受，湿度略高",
+          "active": true
+        }
+      ],
+      "quotes": [
+        {
+          "id": "2040171-胜平负-胜",
+          "matchId": "2040171",
+          "label": "荷兰 vs 日本",
+          "market": "胜平负",
+          "selection": "胜",
+          "handicap": null,
+          "odds": 1.8,
+          "modelProbability": 0.60928,
+          "marketProbability": 0.49214,
+          "rawExpectedReturn": 0.0967,
+          "robustExpectedReturn": -0.00013,
+          "singleEligible": true,
+          "available": true,
+          "recommendation": "观察",
+          "reason": "接近公平价格，等待赔率变化",
+          "observedAt": "2026-06-14T18:00:00+08:00"
+        },
+        {
+          "id": "2040171-胜平负-平",
+          "matchId": "2040171",
+          "label": "荷兰 vs 日本",
+          "market": "胜平负",
+          "selection": "平",
+          "handicap": null,
+          "odds": 3.3,
+          "modelProbability": 0.22835,
+          "marketProbability": 0.26844,
+          "rawExpectedReturn": -0.24645,
+          "robustExpectedReturn": -0.40433,
+          "singleEligible": true,
+          "available": true,
+          "recommendation": "不建议",
+          "reason": "稳健期望为负",
+          "observedAt": "2026-06-14T18:00:00+08:00"
+        },
+        {
+          "id": "2040171-胜平负-负",
+          "matchId": "2040171",
+          "label": "荷兰 vs 日本",
+          "market": "胜平负",
+          "selection": "负",
+          "handicap": null,
+          "odds": 3.7,
+          "modelProbability": 0.16238,
+          "marketProbability": 0.23942,
+          "rawExpectedReturn": -0.39921,
+          "robustExpectedReturn": -0.55977,
+          "singleEligible": true,
+          "available": true,
+          "recommendation": "不建议",
+          "reason": "稳健期望为负",
+          "observedAt": "2026-06-14T18:00:00+08:00"
+        },
+        {
+          "id": "2040171-让球胜平负--1-胜",
+          "matchId": "2040171",
+          "label": "荷兰 vs 日本",
+          "market": "让球胜平负",
+          "selection": "-1 胜",
+          "handicap": -1,
+          "odds": 3.65,
+          "modelProbability": 0.37418,
+          "marketProbability": 0.24291,
+          "rawExpectedReturn": 0.36574,
+          "robustExpectedReturn": 0.17068,
+          "singleEligible": false,
+          "available": true,
+          "recommendation": "重点推荐",
+          "reason": "通过原始与稳健期望双重门槛",
+          "observedAt": "2026-06-14T18:00:00+08:00"
+        },
+        {
+          "id": "2040171-让球胜平负--1-平",
+          "matchId": "2040171",
+          "label": "荷兰 vs 日本",
+          "market": "让球胜平负",
+          "selection": "-1 平",
+          "handicap": -1,
+          "odds": 3.5,
+          "modelProbability": 0.2351,
+          "marketProbability": 0.25332,
+          "rawExpectedReturn": -0.17715,
+          "robustExpectedReturn": -0.34592,
+          "singleEligible": false,
+          "available": true,
+          "recommendation": "不建议",
+          "reason": "稳健期望为负",
+          "observedAt": "2026-06-14T18:00:00+08:00"
+        },
+        {
+          "id": "2040171-让球胜平负--1-负",
+          "matchId": "2040171",
+          "label": "荷兰 vs 日本",
+          "market": "让球胜平负",
+          "selection": "-1 负",
+          "handicap": -1,
+          "odds": 1.76,
+          "modelProbability": 0.39072,
+          "marketProbability": 0.50377,
+          "rawExpectedReturn": -0.31232,
+          "robustExpectedReturn": -0.407,
+          "singleEligible": false,
+          "available": true,
+          "recommendation": "不建议",
+          "reason": "稳健期望为负",
+          "observedAt": "2026-06-14T18:00:00+08:00"
+        },
+        {
+          "id": "2040171-比分-1:1",
+          "matchId": "2040171",
+          "label": "荷兰 vs 日本",
+          "market": "比分",
+          "selection": "1:1",
+          "handicap": null,
+          "odds": 6.2,
+          "modelProbability": 0.10872,
+          "marketProbability": 0.20848,
+          "rawExpectedReturn": -0.32594,
+          "robustExpectedReturn": -0.56386,
+          "singleEligible": false,
+          "available": true,
+          "recommendation": "不建议",
+          "reason": "比分分布不够集中",
+          "observedAt": "2026-06-14T18:00:00+08:00"
+        },
+        {
+          "id": "2040171-比分-2:0",
+          "matchId": "2040171",
+          "label": "荷兰 vs 日本",
+          "market": "比分",
+          "selection": "2:0",
+          "handicap": null,
+          "odds": 8.5,
+          "modelProbability": 0.10704,
+          "marketProbability": 0.15207,
+          "rawExpectedReturn": -0.09015,
+          "robustExpectedReturn": -0.41475,
+          "singleEligible": false,
+          "available": true,
+          "recommendation": "不建议",
+          "reason": "比分分布不够集中",
+          "observedAt": "2026-06-14T18:00:00+08:00"
+        },
+        {
+          "id": "2040171-比分-1:0",
+          "matchId": "2040171",
+          "label": "荷兰 vs 日本",
+          "market": "比分",
+          "selection": "1:0",
+          "handicap": null,
+          "odds": 7.5,
+          "modelProbability": 0.10048,
+          "marketProbability": 0.17235,
+          "rawExpectedReturn": -0.24639,
+          "robustExpectedReturn": -0.52723,
+          "singleEligible": false,
+          "available": true,
+          "recommendation": "不建议",
+          "reason": "比分分布不够集中",
+          "observedAt": "2026-06-14T18:00:00+08:00"
+        }
+      ]
+    },
+    {
+      "id": "2040172",
+      "apiFixtureId": null,
+      "lotteryCode": "周日011",
+      "kickoff": "2026-06-15T07:00:00+08:00",
+      "kickoffBeijing": "2026-06-15T07:00:00+08:00",
+      "venue": "Demo Stadium",
+      "homeTeam": "科特迪瓦",
+      "awayTeam": "厄瓜多尔",
+      "homeFlag": "🇨🇮",
+      "awayFlag": "🇪🇨",
+      "expectedGoals": {
+        "home": 1.18,
+        "away": 1.06
+      },
+      "outcomeProbabilities": {
+        "home": 0.37571,
+        "draw": 0.30843,
+        "away": 0.31586
+      },
+      "likelyScore": "1-1",
+      "scoreStars": 1,
+      "scoreProbabilities": [
+        {
+          "score": "1:1",
+          "probability": 0.14373507606493516,
+          "odds": 5.8
+        },
+        {
+          "score": "0:0",
+          "probability": 0.11657459070258398,
+          "odds": null
+        },
+        {
+          "score": "1:0",
+          "probability": 0.11461228287530772,
+          "odds": 7.2
+        },
+        {
+          "score": "0:1",
+          "probability": 0.10190097711157486
+        },
+        {
+          "score": "2:1",
+          "probability": 0.07868829974388232
+        },
+        {
+          "score": "2:0",
+          "probability": 0.0740595762295363
+        },
+        {
+          "score": "1:2",
+          "probability": 0.07070301774027482
+        },
+        {
+          "score": "0:2",
+          "probability": 0.05979113550974615
+        }
+      ],
+      "coverage": 0.83,
+      "weather": "27°C / 湿度 70% / 阵风 18km/h",
+      "altitude": 210,
+      "missingData": [
+        "科特迪瓦替补后卫联赛数据覆盖不足"
+      ],
+      "factors": [
+        {
+          "label": "球队实力",
+          "direction": "neutral",
+          "value": 0.0,
+          "note": "两队基础强度接近",
+          "active": true
+        },
+        {
+          "label": "预计首发",
+          "direction": "home",
+          "value": 0.05,
+          "note": "科特迪瓦前场完整度较高",
+          "active": true
+        },
+        {
+          "label": "教练风格",
+          "direction": "away",
+          "value": 0.03,
+          "note": "厄瓜多尔中场压迫稳定",
+          "active": true
+        },
+        {
+          "label": "轮换体能",
+          "direction": "home",
+          "value": 0.02,
+          "note": "科特迪瓦平均负荷略低",
+          "active": true
+        },
+        {
+          "label": "海拔适应",
+          "direction": "away",
+          "value": 0.01,
+          "note": "适应差异很小",
+          "active": false
+        },
+        {
+          "label": "温湿度与风",
+          "direction": "neutral",
+          "value": 0.0,
+          "note": "湿热提高比赛波动",
+          "active": true
+        }
+      ],
+      "quotes": [
+        {
+          "id": "2040172-胜平负-胜",
+          "matchId": "2040172",
+          "label": "科特迪瓦 vs 厄瓜多尔",
+          "market": "胜平负",
+          "selection": "胜",
+          "handicap": null,
+          "odds": 3.36,
+          "modelProbability": 0.37571,
+          "marketProbability": 0.26349,
+          "rawExpectedReturn": 0.26239,
+          "robustExpectedReturn": 0.0721,
+          "singleEligible": false,
+          "available": true,
+          "recommendation": "重点推荐",
+          "reason": "通过原始与稳健期望双重门槛",
+          "observedAt": "2026-06-14T18:00:00+08:00"
+        },
+        {
+          "id": "2040172-胜平负-平",
+          "matchId": "2040172",
+          "label": "科特迪瓦 vs 厄瓜多尔",
+          "market": "胜平负",
+          "selection": "平",
+          "handicap": null,
+          "odds": 2.65,
+          "modelProbability": 0.30843,
+          "marketProbability": 0.33409,
+          "rawExpectedReturn": -0.18266,
+          "robustExpectedReturn": -0.32745,
+          "singleEligible": false,
+          "available": true,
+          "recommendation": "不建议",
+          "reason": "稳健期望为负",
+          "observedAt": "2026-06-14T18:00:00+08:00"
+        },
+        {
+          "id": "2040172-胜平负-负",
+          "matchId": "2040172",
+          "label": "科特迪瓦 vs 厄瓜多尔",
+          "market": "胜平负",
+          "selection": "负",
+          "handicap": null,
+          "odds": 2.2,
+          "modelProbability": 0.31586,
+          "marketProbability": 0.40242,
+          "rawExpectedReturn": -0.30511,
+          "robustExpectedReturn": -0.42591,
+          "singleEligible": false,
+          "available": true,
+          "recommendation": "不建议",
+          "reason": "稳健期望为负",
+          "observedAt": "2026-06-14T18:00:00+08:00"
+        },
+        {
+          "id": "2040172-让球胜平负-+1-胜",
+          "matchId": "2040172",
+          "label": "科特迪瓦 vs 厄瓜多尔",
+          "market": "让球胜平负",
+          "selection": "+1 胜",
+          "handicap": 1,
+          "odds": 1.51,
+          "modelProbability": 0.68414,
+          "marketProbability": 0.58673,
+          "rawExpectedReturn": 0.03306,
+          "robustExpectedReturn": -0.04985,
+          "singleEligible": false,
+          "available": true,
+          "recommendation": "不建议",
+          "reason": "稳健期望为负",
+          "observedAt": "2026-06-14T18:00:00+08:00"
+        },
+        {
+          "id": "2040172-让球胜平负-+1-平",
+          "matchId": "2040172",
+          "label": "科特迪瓦 vs 厄瓜多尔",
+          "market": "让球胜平负",
+          "selection": "+1 平",
+          "handicap": 1,
+          "odds": 3.6,
+          "modelProbability": 0.18906,
+          "marketProbability": 0.2461,
+          "rawExpectedReturn": -0.31938,
+          "robustExpectedReturn": -0.4936,
+          "singleEligible": false,
+          "available": true,
+          "recommendation": "不建议",
+          "reason": "稳健期望为负",
+          "observedAt": "2026-06-14T18:00:00+08:00"
+        },
+        {
+          "id": "2040172-让球胜平负-+1-负",
+          "matchId": "2040172",
+          "label": "科特迪瓦 vs 厄瓜多尔",
+          "market": "让球胜平负",
+          "selection": "+1 负",
+          "handicap": 1,
+          "odds": 5.3,
+          "modelProbability": 0.1268,
+          "marketProbability": 0.16716,
+          "rawExpectedReturn": -0.32798,
+          "robustExpectedReturn": -0.55677,
+          "singleEligible": false,
+          "available": true,
+          "recommendation": "不建议",
+          "reason": "稳健期望为负",
+          "observedAt": "2026-06-14T18:00:00+08:00"
+        },
+        {
+          "id": "2040172-比分-1:1",
+          "matchId": "2040172",
+          "label": "科特迪瓦 vs 厄瓜多尔",
+          "market": "比分",
+          "selection": "1:1",
+          "handicap": null,
+          "odds": 5.8,
+          "modelProbability": 0.14374,
+          "marketProbability": 0.2122,
+          "rawExpectedReturn": -0.16634,
+          "robustExpectedReturn": -0.42602,
+          "singleEligible": false,
+          "available": true,
+          "recommendation": "不建议",
+          "reason": "比分分布不够集中",
+          "observedAt": "2026-06-14T18:00:00+08:00"
+        },
+        {
+          "id": "2040172-比分-0:0",
+          "matchId": "2040172",
+          "label": "科特迪瓦 vs 厄瓜多尔",
+          "market": "比分",
+          "selection": "0:0",
+          "handicap": null,
+          "odds": null,
+          "modelProbability": 0.11657,
+          "marketProbability": null,
+          "rawExpectedReturn": null,
+          "robustExpectedReturn": null,
+          "singleEligible": false,
+          "available": false,
+          "recommendation": "未开售",
+          "reason": "官方固定奖金未开售",
+          "observedAt": "2026-06-14T18:00:00+08:00"
+        },
+        {
+          "id": "2040172-比分-1:0",
+          "matchId": "2040172",
+          "label": "科特迪瓦 vs 厄瓜多尔",
+          "market": "比分",
+          "selection": "1:0",
+          "handicap": null,
+          "odds": 7.2,
+          "modelProbability": 0.11461,
+          "marketProbability": 0.17094,
+          "rawExpectedReturn": -0.17479,
+          "robustExpectedReturn": -0.47652,
+          "singleEligible": false,
+          "available": true,
+          "recommendation": "不建议",
+          "reason": "比分分布不够集中",
+          "observedAt": "2026-06-14T18:00:00+08:00"
+        }
+      ]
+    },
+    {
+      "id": "2040173",
+      "apiFixtureId": null,
+      "lotteryCode": "周日012",
+      "kickoff": "2026-06-15T10:00:00+08:00",
+      "kickoffBeijing": "2026-06-15T10:00:00+08:00",
+      "venue": "Demo Stadium",
+      "homeTeam": "瑞典",
+      "awayTeam": "突尼斯",
+      "homeFlag": "🇸🇪",
+      "awayFlag": "🇹🇳",
+      "expectedGoals": {
+        "home": 2.22,
+        "away": 0.57
+      },
+      "outcomeProbabilities": {
+        "home": 0.74483,
+        "draw": 0.18034,
+        "away": 0.07483
+      },
+      "likelyScore": "2-0",
+      "scoreStars": 2,
+      "scoreProbabilities": [
+        {
+          "score": "2:0",
+          "probability": 0.1506025067445634,
+          "odds": 7.2
+        },
+        {
+          "score": "1:0",
+          "probability": 0.12943674903992206,
+          "odds": 6.2
+        },
+        {
+          "score": "3:0",
+          "probability": 0.11144585499097692,
+          "odds": 10.0
+        },
+        {
+          "score": "2:1",
+          "probability": 0.08659644137812395
+        },
+        {
+          "score": "1:1",
+          "probability": 0.08425599701655302
+        },
+        {
+          "score": "0:0",
+          "probability": 0.06735737145252747
+        },
+        {
+          "score": "3:1",
+          "probability": 0.06408136661981173
+        },
+        {
+          "score": "4:0",
+          "probability": 0.0618524495199922
+        }
+      ],
+      "coverage": 0.85,
+      "weather": "21°C / 湿度 55% / 微风",
+      "altitude": 210,
+      "missingData": [
+        "突尼斯 1 名替补前锋缺少高级数据"
+      ],
+      "factors": [
+        {
+          "label": "球队实力",
+          "direction": "home",
+          "value": 0.12,
+          "note": "瑞典前场终结质量更高",
+          "active": true
+        },
+        {
+          "label": "预计首发",
+          "direction": "home",
+          "value": 0.04,
+          "note": "首发连续性较好",
+          "active": true
+        },
+        {
+          "label": "教练风格",
+          "direction": "home",
+          "value": 0.02,
+          "note": "定位球对位有利",
+          "active": true
+        },
+        {
+          "label": "轮换体能",
+          "direction": "neutral",
+          "value": 0.0,
+          "note": "体能负荷接近",
+          "active": true
+        },
+        {
+          "label": "海拔适应",
+          "direction": "neutral",
+          "value": 0.0,
+          "note": "低海拔场馆",
+          "active": false
+        },
+        {
+          "label": "温湿度与风",
+          "direction": "neutral",
+          "value": 0.0,
+          "note": "天气适合高强度比赛",
+          "active": true
+        }
+      ],
+      "quotes": [
+        {
+          "id": "2040173-胜平负-胜",
+          "matchId": "2040173",
+          "label": "瑞典 vs 突尼斯",
+          "market": "胜平负",
+          "selection": "胜",
+          "handicap": null,
+          "odds": 1.72,
+          "modelProbability": 0.74483,
+          "marketProbability": 0.51473,
+          "rawExpectedReturn": 0.28111,
+          "robustExpectedReturn": 0.19462,
+          "singleEligible": true,
+          "available": true,
+          "recommendation": "重点推荐",
+          "reason": "通过原始与稳健期望双重门槛",
+          "observedAt": "2026-06-14T18:00:00+08:00"
+        },
+        {
+          "id": "2040173-胜平负-平",
+          "matchId": "2040173",
+          "label": "瑞典 vs 突尼斯",
+          "market": "胜平负",
+          "selection": "平",
+          "handicap": null,
+          "odds": 3.18,
+          "modelProbability": 0.18034,
+          "marketProbability": 0.27841,
+          "rawExpectedReturn": -0.42653,
+          "robustExpectedReturn": -0.57204,
+          "singleEligible": true,
+          "available": true,
+          "recommendation": "不建议",
+          "reason": "稳健期望为负",
+          "observedAt": "2026-06-14T18:00:00+08:00"
+        },
+        {
+          "id": "2040173-胜平负-负",
+          "matchId": "2040173",
+          "label": "瑞典 vs 突尼斯",
+          "market": "胜平负",
+          "selection": "负",
+          "handicap": null,
+          "odds": 4.28,
+          "modelProbability": 0.07483,
+          "marketProbability": 0.20686,
+          "rawExpectedReturn": -0.67971,
+          "robustExpectedReturn": -0.82996,
+          "singleEligible": true,
+          "available": true,
+          "recommendation": "不建议",
+          "reason": "稳健期望为负",
+          "observedAt": "2026-06-14T18:00:00+08:00"
+        },
+        {
+          "id": "2040173-让球胜平负--1-胜",
+          "matchId": "2040173",
+          "label": "瑞典 vs 突尼斯",
+          "market": "让球胜平负",
+          "selection": "-1 胜",
+          "handicap": -1,
+          "odds": 3.45,
+          "modelProbability": 0.50828,
+          "marketProbability": 0.25663,
+          "rawExpectedReturn": 0.75357,
+          "robustExpectedReturn": 0.56073,
+          "singleEligible": false,
+          "available": true,
+          "recommendation": "重点推荐",
+          "reason": "通过原始与稳健期望双重门槛",
+          "observedAt": "2026-06-14T18:00:00+08:00"
+        },
+        {
+          "id": "2040173-让球胜平负--1-平",
+          "matchId": "2040173",
+          "label": "瑞典 vs 突尼斯",
+          "market": "让球胜平负",
+          "selection": "-1 平",
+          "handicap": -1,
+          "odds": 3.25,
+          "modelProbability": 0.23655,
+          "marketProbability": 0.27242,
+          "rawExpectedReturn": -0.23122,
+          "robustExpectedReturn": -0.3915,
+          "singleEligible": false,
+          "available": true,
+          "recommendation": "不建议",
+          "reason": "稳健期望为负",
+          "observedAt": "2026-06-14T18:00:00+08:00"
+        },
+        {
+          "id": "2040173-让球胜平负--1-负",
+          "matchId": "2040173",
+          "label": "瑞典 vs 突尼斯",
+          "market": "让球胜平负",
+          "selection": "-1 负",
+          "handicap": -1,
+          "odds": 1.88,
+          "modelProbability": 0.25517,
+          "marketProbability": 0.47095,
+          "rawExpectedReturn": -0.52028,
+          "robustExpectedReturn": -0.61481,
+          "singleEligible": false,
+          "available": true,
+          "recommendation": "不建议",
+          "reason": "稳健期望为负",
+          "observedAt": "2026-06-14T18:00:00+08:00"
+        },
+        {
+          "id": "2040173-比分-2:0",
+          "matchId": "2040173",
+          "label": "瑞典 vs 突尼斯",
+          "market": "比分",
+          "selection": "2:0",
+          "handicap": null,
+          "odds": 7.2,
+          "modelProbability": 0.1506,
+          "marketProbability": 0.17536,
+          "rawExpectedReturn": 0.08434,
+          "robustExpectedReturn": -0.22818,
+          "singleEligible": false,
+          "available": true,
+          "recommendation": "不建议",
+          "reason": "稳健期望为负",
+          "observedAt": "2026-06-14T18:00:00+08:00"
+        },
+        {
+          "id": "2040173-比分-1:0",
+          "matchId": "2040173",
+          "label": "瑞典 vs 突尼斯",
+          "market": "比分",
+          "selection": "1:0",
+          "handicap": null,
+          "odds": 6.2,
+          "modelProbability": 0.12944,
+          "marketProbability": 0.20364,
+          "rawExpectedReturn": -0.19749,
+          "robustExpectedReturn": -0.45464,
+          "singleEligible": false,
+          "available": true,
+          "recommendation": "不建议",
+          "reason": "稳健期望为负",
+          "observedAt": "2026-06-14T18:00:00+08:00"
+        },
+        {
+          "id": "2040173-比分-3:0",
+          "matchId": "2040173",
+          "label": "瑞典 vs 突尼斯",
+          "market": "比分",
+          "selection": "3:0",
+          "handicap": null,
+          "odds": 10.0,
+          "modelProbability": 0.11145,
+          "marketProbability": 0.12626,
+          "rawExpectedReturn": 0.11446,
+          "robustExpectedReturn": -0.28186,
+          "singleEligible": false,
+          "available": true,
+          "recommendation": "不建议",
+          "reason": "稳健期望为负",
+          "observedAt": "2026-06-14T18:00:00+08:00"
+        }
+      ]
+    }
+  ],
+  "portfolios": [
+    {
+      "key": "conservative",
+      "name": "稳健",
+      "subtitle": "单关为主，低回撤",
+      "stake": 22,
+      "retainedCash": 178,
+      "tickets": [
+        {
+          "id": "2040173-胜平负-胜",
+          "type": "单关",
+          "legs": [
+            {
+              "matchId": "2040173",
+              "label": "瑞典 vs 突尼斯",
+              "market": "胜平负",
+              "selection": "胜",
+              "odds": 1.72
+            }
+          ],
+          "stake": 12,
+          "combinedOdds": 1.72,
+          "modelProbability": 0.74483,
+          "robustExpectedReturn": 0.19462,
+          "potentialPayout": 20.64
+        },
+        {
+          "id": "2040171-让球胜平负--1-胜-2040173-让球胜平负--1-胜",
+          "type": "2串1",
+          "legs": [
+            {
+              "matchId": "2040171",
+              "label": "荷兰 vs 日本",
+              "market": "让球胜平负",
+              "selection": "-1 胜",
+              "odds": 3.65
+            },
+            {
+              "matchId": "2040173",
+              "label": "瑞典 vs 突尼斯",
+              "market": "让球胜平负",
+              "selection": "-1 胜",
+              "odds": 3.45
+            }
+          ],
+          "stake": 10,
+          "combinedOdds": 12.593,
+          "modelProbability": 0.19019,
+          "robustExpectedReturn": 0.82712,
+          "potentialPayout": 125.93
+        }
+      ],
+      "expectedProfit": 17.0,
+      "profitProbability": 0.1881,
+      "lossProbability": 0.8119,
+      "worstCase95": -22,
+      "p05": 178,
+      "median": 199,
+      "p95": 325,
+      "maxPayout": 325,
+      "distribution": [
+        {
+          "bankroll": 180,
+          "probability": 0.2574
+        },
+        {
+          "bankroll": 183,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 186,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 190,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 193,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 196,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 200,
+          "probability": 0.554533
+        },
+        {
+          "bankroll": 203,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 206,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 210,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 213,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 216,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 220,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 223,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 226,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 230,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 233,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 236,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 240,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 243,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 246,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 250,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 253,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 256,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 260,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 263,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 266,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 270,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 273,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 276,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 280,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 283,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 286,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 290,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 293,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 296,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 300,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 303,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 306,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 310,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 313,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 316,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 320,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 323,
+          "probability": 0.188067
+        }
+      ]
+    },
+    {
+      "key": "balanced",
+      "name": "均衡",
+      "subtitle": "单关 + 1注2串1",
+      "stake": 34,
+      "retainedCash": 166,
+      "tickets": [
+        {
+          "id": "2040173-胜平负-胜",
+          "type": "单关",
+          "legs": [
+            {
+              "matchId": "2040173",
+              "label": "瑞典 vs 突尼斯",
+              "market": "胜平负",
+              "selection": "胜",
+              "odds": 1.72
+            }
+          ],
+          "stake": 24,
+          "combinedOdds": 1.72,
+          "modelProbability": 0.74483,
+          "robustExpectedReturn": 0.19462,
+          "potentialPayout": 41.28
+        },
+        {
+          "id": "2040171-让球胜平负--1-胜-2040173-让球胜平负--1-胜",
+          "type": "2串1",
+          "legs": [
+            {
+              "matchId": "2040171",
+              "label": "荷兰 vs 日本",
+              "market": "让球胜平负",
+              "selection": "-1 胜",
+              "odds": 3.65
+            },
+            {
+              "matchId": "2040173",
+              "label": "瑞典 vs 突尼斯",
+              "market": "让球胜平负",
+              "selection": "-1 胜",
+              "odds": 3.45
+            }
+          ],
+          "stake": 10,
+          "combinedOdds": 12.593,
+          "modelProbability": 0.19019,
+          "robustExpectedReturn": 0.82712,
+          "potentialPayout": 125.93
+        }
+      ],
+      "expectedProfit": 20.4,
+      "profitProbability": 0.7435,
+      "lossProbability": 0.2565,
+      "worstCase95": -34,
+      "p05": 166,
+      "median": 207,
+      "p95": 333,
+      "maxPayout": 333,
+      "distribution": [
+        {
+          "bankroll": 168,
+          "probability": 0.256533
+        },
+        {
+          "bankroll": 172,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 176,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 179,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 183,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 187,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 191,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 195,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 198,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 202,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 206,
+          "probability": 0.5553
+        },
+        {
+          "bankroll": 210,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 214,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 217,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 221,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 225,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 229,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 233,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 236,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 240,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 244,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 248,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 252,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 255,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 259,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 263,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 267,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 271,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 274,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 278,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 282,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 286,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 290,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 293,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 297,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 301,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 305,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 309,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 312,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 316,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 320,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 324,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 328,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 331,
+          "probability": 0.188167
+        }
+      ]
+    },
+    {
+      "key": "aggressive",
+      "name": "激进",
+      "subtitle": "受控串关 + 比分小注",
+      "stake": 64,
+      "retainedCash": 136,
+      "tickets": [
+        {
+          "id": "2040173-胜平负-胜",
+          "type": "单关",
+          "legs": [
+            {
+              "matchId": "2040173",
+              "label": "瑞典 vs 突尼斯",
+              "market": "胜平负",
+              "selection": "胜",
+              "odds": 1.72
+            }
+          ],
+          "stake": 24,
+          "combinedOdds": 1.72,
+          "modelProbability": 0.74483,
+          "robustExpectedReturn": 0.19462,
+          "potentialPayout": 41.28
+        },
+        {
+          "id": "2040171-让球胜平负--1-胜-2040173-让球胜平负--1-胜",
+          "type": "2串1",
+          "legs": [
+            {
+              "matchId": "2040171",
+              "label": "荷兰 vs 日本",
+              "market": "让球胜平负",
+              "selection": "-1 胜",
+              "odds": 3.65
+            },
+            {
+              "matchId": "2040173",
+              "label": "瑞典 vs 突尼斯",
+              "market": "让球胜平负",
+              "selection": "-1 胜",
+              "odds": 3.45
+            }
+          ],
+          "stake": 24,
+          "combinedOdds": 12.593,
+          "modelProbability": 0.19019,
+          "robustExpectedReturn": 0.82712,
+          "potentialPayout": 302.22
+        },
+        {
+          "id": "2040171-让球胜平负--1-胜-2040172-胜平负-胜-2040173-让球胜平负--1-胜",
+          "type": "3串1",
+          "legs": [
+            {
+              "matchId": "2040171",
+              "label": "荷兰 vs 日本",
+              "market": "让球胜平负",
+              "selection": "-1 胜",
+              "odds": 3.65
+            },
+            {
+              "matchId": "2040172",
+              "label": "科特迪瓦 vs 厄瓜多尔",
+              "market": "胜平负",
+              "selection": "胜",
+              "odds": 3.36
+            },
+            {
+              "matchId": "2040173",
+              "label": "瑞典 vs 突尼斯",
+              "market": "让球胜平负",
+              "selection": "-1 胜",
+              "odds": 3.45
+            }
+          ],
+          "stake": 16,
+          "combinedOdds": 42.311,
+          "modelProbability": 0.07146,
+          "robustExpectedReturn": 0.95885,
+          "potentialPayout": 676.97
+        }
+      ],
+      "expectedProfit": 73.1,
+      "profitProbability": 0.1894,
+      "lossProbability": 0.8106,
+      "worstCase95": -64,
+      "p05": 136,
+      "median": 177,
+      "p95": 1156,
+      "maxPayout": 1156,
+      "distribution": [
+        {
+          "bankroll": 148,
+          "probability": 0.258633
+        },
+        {
+          "bankroll": 171,
+          "probability": 0.551967
+        },
+        {
+          "bankroll": 194,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 217,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 240,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 264,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 287,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 310,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 333,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 356,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 380,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 403,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 426,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 449,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 472,
+          "probability": 0.1167
+        },
+        {
+          "bankroll": 495,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 519,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 542,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 565,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 588,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 611,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 635,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 658,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 681,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 704,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 727,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 751,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 774,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 797,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 820,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 843,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 867,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 890,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 913,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 936,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 959,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 983,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 1006,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 1029,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 1052,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 1075,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 1098,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 1122,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 1145,
+          "probability": 0.0727
+        }
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "source": "中国体育彩票",
+      "field": "固定奖金/单关资格",
+      "observedAt": "2026-06-14T18:00:00+08:00",
+      "confidence": 1.0,
+      "status": "manual"
+    },
+    {
+      "source": "API-Football 免费档",
+      "field": "赛程/球队/阵容",
+      "observedAt": "2026-06-14T18:00:00+08:00",
+      "confidence": 0.72,
+      "status": "missing"
+    },
+    {
+      "source": "Open-Meteo",
+      "field": "开球时刻天气",
+      "observedAt": "2026-06-14T18:00:00+08:00",
+      "confidence": 0.8,
+      "status": "manual"
+    }
+  ],
+  "backtest": [
+    {
+      "label": "概率校准",
+      "value": "待积累",
+      "note": "首届运行后按比赛日滚动更新可靠性图",
+      "status": "neutral"
+    },
+    {
+      "label": "RPS",
+      "value": "基线模式",
+      "note": "当前实现支持时间顺序回测，尚无 2026 实盘样本",
+      "status": "neutral"
+    },
+    {
+      "label": "比分命中",
+      "value": "非主指标",
+      "note": "重点评估完整概率分布，而非只看单一比分",
+      "status": "good"
+    },
+    {
+      "label": "信息泄漏",
+      "value": "已阻断",
+      "note": "特征时间戳必须早于预测生成时间",
+      "status": "good"
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "source_note": "Committed deterministic fixture for development and parser/model tests. It is not a live recommendation.",
+  "target_date": "2026-06-15",
+  "matches": [
+    {
+      "sporttery_id": "2040170",
+      "lottery_code": "周日009",
+      "kickoff": "2026-06-15T01:00:00+08:00",
+      "home_team": "德国",
+      "away_team": "库拉索",
+      "home_flag": "🇩🇪",
+      "away_flag": "🇨🇼",
+      "venue": "Demo Stadium",
+      "base_xg": [4.25, 0.35],
+      "coverage": 0.82,
+      "weather": "22°C / 湿度 58% / 微风",
+      "factors": [
+        {"label": "球队实力", "direction": "home", "value": 0.18, "note": "历史攻防强度明显占优", "active": true},
+        {"label": "预计首发", "direction": "home", "value": 0.06, "note": "主力框架完整", "active": true},
+        {"label": "教练风格", "direction": "home", "value": 0.03, "note": "高位压迫匹配有利", "active": true},
+        {"label": "轮换体能", "direction": "neutral", "value": 0.0, "note": "两队休息时间接近", "active": true},
+        {"label": "海拔适应", "direction": "neutral", "value": 0.0, "note": "低海拔场馆", "active": false},
+        {"label": "温湿度与风", "direction": "neutral", "value": 0.0, "note": "影响较小", "active": true}
+      ],
+      "missing_data": ["库拉索 4 名替补球员缺少联赛高级数据"]
+    },
+    {
+      "sporttery_id": "2040171",
+      "lottery_code": "周日010",
+      "kickoff": "2026-06-15T04:00:00+08:00",
+      "home_team": "荷兰",
+      "away_team": "日本",
+      "home_flag": "🇳🇱",
+      "away_flag": "🇯🇵",
+      "venue": "Demo Stadium",
+      "base_xg": [1.81, 0.94],
+      "coverage": 0.86,
+      "weather": "24°C / 湿度 66% / 微风",
+      "factors": [
+        {"label": "球队实力", "direction": "home", "value": 0.11, "note": "整体攻防与阵容深度占优", "active": true},
+        {"label": "预计首发", "direction": "home", "value": 0.04, "note": "核心球员预计首发", "active": true},
+        {"label": "教练风格", "direction": "away", "value": 0.03, "note": "日本快速转换具有威胁", "active": true},
+        {"label": "轮换体能", "direction": "home", "value": 0.02, "note": "荷兰休息日略多", "active": true},
+        {"label": "海拔适应", "direction": "neutral", "value": 0.0, "note": "比赛海拔影响很小", "active": false},
+        {"label": "温湿度与风", "direction": "neutral", "value": 0.0, "note": "温度可接受，湿度略高", "active": true}
+      ],
+      "missing_data": ["日本 2 名替补球员缺少俱乐部近 365 天高级数据"]
+    },
+    {
+      "sporttery_id": "2040172",
+      "lottery_code": "周日011",
+      "kickoff": "2026-06-15T07:00:00+08:00",
+      "home_team": "科特迪瓦",
+      "away_team": "厄瓜多尔",
+      "home_flag": "🇨🇮",
+      "away_flag": "🇪🇨",
+      "venue": "Demo Stadium",
+      "base_xg": [1.12, 1.05],
+      "coverage": 0.83,
+      "weather": "27°C / 湿度 70% / 阵风 18km/h",
+      "factors": [
+        {"label": "球队实力", "direction": "neutral", "value": 0.0, "note": "两队基础强度接近", "active": true},
+        {"label": "预计首发", "direction": "home", "value": 0.05, "note": "科特迪瓦前场完整度较高", "active": true},
+        {"label": "教练风格", "direction": "away", "value": 0.03, "note": "厄瓜多尔中场压迫稳定", "active": true},
+        {"label": "轮换体能", "direction": "home", "value": 0.02, "note": "科特迪瓦平均负荷略低", "active": true},
+        {"label": "海拔适应", "direction": "away", "value": 0.01, "note": "适应差异很小", "active": false},
+        {"label": "温湿度与风", "direction": "neutral", "value": 0.0, "note": "湿热提高比赛波动", "active": true}
+      ],
+      "missing_data": ["科特迪瓦替补后卫联赛数据覆盖不足"]
+    },
+    {
+      "sporttery_id": "2040173",
+      "lottery_code": "周日012",
+      "kickoff": "2026-06-15T10:00:00+08:00",
+      "home_team": "瑞典",
+      "away_team": "突尼斯",
+      "home_flag": "🇸🇪",
+      "away_flag": "🇹🇳",
+      "venue": "Demo Stadium",
+      "base_xg": [2.04, 0.62],
+      "coverage": 0.85,
+      "weather": "21°C / 湿度 55% / 微风",
+      "factors": [
+        {"label": "球队实力", "direction": "home", "value": 0.12, "note": "瑞典前场终结质量更高", "active": true},
+        {"label": "预计首发", "direction": "home", "value": 0.04, "note": "首发连续性较好", "active": true},
+        {"label": "教练风格", "direction": "home", "value": 0.02, "note": "定位球对位有利", "active": true},
+        {"label": "轮换体能", "direction": "neutral", "value": 0.0, "note": "体能负荷接近", "active": true},
+        {"label": "海拔适应", "direction": "neutral", "value": 0.0, "note": "低海拔场馆", "active": false},
+        {"label": "温湿度与风", "direction": "neutral", "value": 0.0, "note": "天气适合高强度比赛", "active": true}
+      ],
+      "missing_data": ["突尼斯 1 名替补前锋缺少高级数据"]
+    }
+  ]
+}
