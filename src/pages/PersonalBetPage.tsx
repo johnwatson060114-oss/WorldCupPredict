@@ -209,12 +209,14 @@ export function PersonalBetPage({ forecast, settlements }: PersonalBetPageProps)
     setMessage('个人投注账本已导入。')
   }
 
-  const usingDemoTeams = forecast.statusMessage.includes('开发样例')
+  const lineupEvidence = forecast.evidence.find((item) => item.source.includes('API-Football'))
+  const weatherEvidence = forecast.evidence.find((item) => item.source.includes('Open-Meteo'))
   const dataChecks = [
     { label: '体彩赔率与让球', source: '中国体育彩票', blocked: false, evidence: forecast.evidence.find((item) => item.source.includes('体育彩票')) },
-    { label: '阵容、伤停、预计首发', source: 'API-Football', blocked: usingDemoTeams, evidence: forecast.evidence.find((item) => item.source.includes('API-Football')) },
-    { label: '场地、天气、海拔', source: 'Open-Meteo + 场馆表', blocked: usingDemoTeams, evidence: forecast.evidence.find((item) => item.source.includes('Open-Meteo')) },
-    { label: '停赛、红牌、纪律变化', source: 'API-Football', blocked: usingDemoTeams, evidence: forecast.evidence.find((item) => item.source.includes('API-Football')) },
+    { label: '世界杯赛程与赛果', source: 'football-data.org', blocked: false, evidence: forecast.evidence.find((item) => item.source.includes('football-data.org')) },
+    { label: '阵容、伤停、预计首发', source: 'API-Football', blocked: lineupEvidence?.status !== 'fresh', evidence: lineupEvidence },
+    { label: '场地、天气、海拔', source: 'Open-Meteo + 场馆表', blocked: weatherEvidence?.status !== 'fresh', evidence: weatherEvidence },
+    { label: '停赛、红牌、纪律变化', source: 'API-Football', blocked: lineupEvidence?.status !== 'fresh', evidence: lineupEvidence },
     { label: '次日方案生成', source: '北京时间', blocked: false, evidence: { status: forecast.status === 'ready' ? 'fresh' : 'manual', observedAt: forecast.generatedAt } },
   ] as const
 

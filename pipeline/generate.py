@@ -8,6 +8,14 @@ from zoneinfo import ZoneInfo
 
 from .api_football import ApiFootballClient
 from .config import FIXTURE_DIR, OUTPUT_DIR, ROOT, SETTINGS, VENUES
+from .elo_ratings import EloRatingsClient, expected_goals_from_elo
+from .football_data import (
+    FootballDataClient,
+    api_football_shape,
+    localized_team_name,
+    parse_utc,
+    team_flag,
+)
 from .model import (
     adjust_xg,
     estimate_from_recent_results,
@@ -112,6 +120,107 @@ def live_seeds(client: ApiFootballClient, target_date: str) -> list[dict]:
             "weather": weather_text,
             "factors": factors,
             "missing_data": ["免费额度下部分球员近 365 天俱乐部高级数据未覆盖"],
+        })
+    return seeds
+
+
+def football_data_seeds(client: FootballDataClient, target_date: str) -> list[dict]:
+    timezone = ZoneInfo(SETTINGS.timezone)
+    all_matches = client.world_cup_matches()
+    fixtures = client.matches_on_beijing_date(target_date, all_matches)
+    seeds = []
+    try:
+        elo_ratings = EloRatingsClient().ratings()
+    except Exception:  # noqa: BLE001 - tournament results remain a valid lower-coverage fallback
+        elo_ratings = {}
+    for fixture in fixtures:
+        kickoff_utc = parse_utc(fixture["utcDate"])
+        kickoff = kickoff_utc.astimezone(timezone)
+        home = fixture["homeTeam"]
+        away = fixture["awayTeam"]
+        finished = [
+            match for match in all_matches
+            if match.get("status") == "FINISHED" and parse_utc(match["utcDate"]) < kickoff_utc
+        ]
+        home_recent = [
+            match for match in finished
+            if home["id"] in {match.get("homeTeam", {}).get("id"), match.get("awayTeam", {}).get("id")}
+        ]
+        away_recent = [
+            match for match in finished
+            if away["id"] in {match.get("homeTeam", {}).get("id"), match.get("awayTeam", {}).get("id")}
+        ]
+        home_name = localized_team_name(home)
+        away_name = localized_team_name(away)
+        home_rating = elo_ratings.get(home_name)
+        away_rating = elo_ratings.get(away_name)
+        if home_rating is not None and away_rating is not None:
+            home_xg, away_xg = expected_goals_from_elo(home_rating, away_rating)
+        else:
+            home_xg, away_xg = estimate_from_recent_results(
+                api_football_shape(home_recent),
+                api_football_shape(away_recent),
+                home["id"],
+                away["id"],
+            )
+        sample_count = len(home_recent) + len(away_recent)
+        factors = default_factors()
+        elo_note = (
+            f"Elo {home_rating} vs {away_rating}，并读取本届赛前已结束比赛 {sample_count} 场"
+            if home_rating is not None and away_rating is not None
+            else f"Elo 数据缺失；已读取本届赛前已结束比赛 {sample_count} 场并收缩到中性基线"
+        )
+        factors[0] = {
+            "label": "球队实力", "direction": "neutral", "value": 0.0,
+            "note": elo_note,
+            "active": True,
+        }
+        factors[1] = {
+            "label": "预计首发", "direction": "neutral", "value": 0.0,
+            "note": "免费数据源不提供可靠的赛前首发与伤停，未纳入系数",
+            "active": False,
+        }
+        factors[2] = {
+            "label": "教练风格", "direction": "neutral", "value": 0.0,
+            "note": "免费数据源不提供教练战术变化，等待带来源的人工校正",
+            "active": False,
+        }
+        venue_name = fixture.get("venue") or "场馆待确认"
+        venue = VENUES.get(venue_name)
+        weather_text = "场馆坐标待确认，天气未启用"
+        if venue:
+            try:
+                forecast = OpenMeteoClient().forecast_at(venue["lat"], venue["lon"], kickoff)
+                if forecast.get("status") == "fresh":
+                    weather_text = (
+                        f"{forecast['temperature']:.0f}°C / 湿度 {forecast['humidity']:.0f}% / "
+                        f"风 {forecast['wind_speed']:.0f}km/h"
+                    )
+                    factors[-1] = {
+                        "label": "温湿度与风", "direction": "neutral", "value": 0.0,
+                        "note": weather_text, "active": True,
+                    }
+            except Exception:  # noqa: BLE001 - missing weather is reported in the output
+                pass
+        seeds.append({
+            "sporttery_id": "",
+            "api_fixture_id": fixture["id"],
+            "lottery_code": "",
+            "kickoff": kickoff.isoformat(timespec="seconds"),
+            "home_team": home_name,
+            "away_team": away_name,
+            "home_flag": team_flag(home),
+            "away_flag": team_flag(away),
+            "venue": venue_name,
+            "base_xg": [home_xg, away_xg],
+            "coverage": round(min(0.74, (0.72 if home_rating is not None and away_rating is not None else 0.58) + sample_count * 0.01), 3),
+            "weather": weather_text,
+            "factors": factors,
+            "elo_live": bool(elo_ratings),
+            "missing_data": [
+                "免费档不含可靠的预计首发、实时伤停和球员近 365 天俱乐部高级数据",
+                "当前基础强度仅使用本届世界杯赛前已结束比赛；样本不足时已降低覆盖率",
+            ],
         })
     return seeds
 
@@ -233,7 +342,7 @@ def build_match(seed: dict, market: SportteryMatch | None, generated_at: str) ->
         ))
         score["odds"] = odds
 
-    venue = VENUES.get(seed.get("venue"), VENUES["Demo Stadium"])
+    venue = VENUES.get(seed.get("venue"))
     return {
         "id": match_id,
         "apiFixtureId": seed.get("api_fixture_id"),
@@ -252,7 +361,7 @@ def build_match(seed: dict, market: SportteryMatch | None, generated_at: str) ->
         "scoreProbabilities": scores,
         "coverage": coverage,
         "weather": seed.get("weather", "天气待更新"),
-        "altitude": venue["altitude"],
+        "altitude": venue["altitude"] if venue else 0,
         "missingData": seed.get("missing_data", []),
         "factors": factors,
         "quotes": quotes,
@@ -269,6 +378,8 @@ def main() -> None:
     generated_at = now.astimezone(timezone).isoformat(timespec="seconds")
     degraded_reasons: list[str] = []
     sporttery_live = False
+    football_data_live = False
+    elo_live = False
     team_data_live = False
 
     if args.offline:
@@ -284,9 +395,27 @@ def main() -> None:
             degraded_reasons.append("体彩实时赔率暂时不可用，已切换到固定快照")
     markets = filter_by_beijing_date(markets_by_id.values(), target_date)
 
+    football_client = FootballDataClient()
     client = ApiFootballClient()
     seeds: list[dict]
-    if client.enabled and not args.offline:
+    if football_client.enabled and not args.offline:
+        try:
+            seeds = football_data_seeds(football_client, target_date)
+            football_data_live = bool(seeds)
+            elo_live = bool(seeds) and all(seed.get("elo_live", False) for seed in seeds)
+            team_data_live = bool(seeds)
+            if seeds:
+                degraded_reasons.append("免费数据源不含可靠的预计首发、实时伤停和球员俱乐部高级数据")
+            if seeds and not elo_live:
+                degraded_reasons.append("国家队 Elo 基础实力暂时不可用，已回归中性基线")
+        except Exception as exc:  # noqa: BLE001
+            print(f"[football-data] live fetch failed: {type(exc).__name__}: {exc}")
+            seeds = []
+            degraded_reasons.append("football-data.org 世界杯赛程暂时不可用")
+    else:
+        seeds = []
+
+    if not seeds and client.enabled and not args.offline:
         try:
             seeds = live_seeds(client, target_date)
             team_data_live = bool(seeds)
@@ -294,8 +423,7 @@ def main() -> None:
             print(f"[api-football] live fetch failed: {type(exc).__name__}: {exc}")
             seeds = []
             degraded_reasons.append("球队实时数据暂时不可用，已切换到固定开发样例")
-    else:
-        seeds = []
+    elif not seeds:
         degraded_reasons.append("球队与阵容实时数据尚未启用，当前使用固定开发样例")
 
     demo = load_demo()
@@ -334,7 +462,9 @@ def main() -> None:
         "portfolios": portfolios,
         "evidence": [
             {"source": "中国体育彩票", "field": "固定奖金/单关资格", "observedAt": generated_at, "confidence": 1.0, "status": "fresh" if sporttery_live else "manual"},
-            {"source": "API-Football 免费档", "field": "赛程/球队/阵容", "observedAt": generated_at, "confidence": 0.72, "status": "fresh" if team_data_live else "missing"},
+            {"source": "football-data.org 免费档", "field": "2026 世界杯赛程/赛果", "observedAt": generated_at, "confidence": 0.9, "status": "fresh" if football_data_live else "missing"},
+            {"source": "World Football Elo Ratings", "field": "国家队基础实力", "observedAt": generated_at, "confidence": 0.72, "status": "fresh" if elo_live else "missing"},
+            {"source": "API-Football 免费档", "field": "预计首发/伤停/球员数据", "observedAt": generated_at, "confidence": 0.0, "status": "missing"},
             {"source": "Open-Meteo", "field": "开球时刻天气", "observedAt": generated_at, "confidence": 0.8, "status": "fresh" if weather_live else "manual"},
         ],
         "backtest": [
