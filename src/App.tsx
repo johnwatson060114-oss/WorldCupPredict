@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import { AlertTriangle } from 'lucide-react'
 import { Header, type NavKey } from './components/Header'
 import { MatchRail } from './components/MatchRail'
 import { ValueTable } from './components/ValueTable'
@@ -81,7 +82,14 @@ export default function App() {
       <Header forecast={data} active={activeNav} onNavigate={navigate} />
       {activeNav === 'today' && (
         <>
-          {data.status !== 'ready' && <div className="degraded-banner">降级数据模式：{data.statusMessage}。页面中的开发样例不可作为实际投注依据。</div>}
+          {data.status !== 'ready' && (
+            <div className="degraded-banner" role="status">
+              <AlertTriangle size={15} />
+              <strong>数据来源受限</strong>
+              <span>{data.statusMessage}</span>
+              <small>仅用于功能预览，不作为实际投注依据</small>
+            </div>
+          )}
           <main className="dashboard-grid">
             <MatchRail targetDate={data.targetDate} matches={data.matches} selectedId={selectedMatch.id} onSelect={setSelectedMatchId} />
             <ValueTable matches={data.matches} selectedId={selectedMatch.id} onSelect={setSelectedMatchId} />

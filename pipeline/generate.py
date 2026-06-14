@@ -276,8 +276,9 @@ def main() -> None:
         try:
             markets_by_id = fetch_sporttery()
         except Exception as exc:  # noqa: BLE001 - degradation is deliberate and reported
+            print(f"[sporttery] live fetch failed: {type(exc).__name__}: {exc}")
             markets_by_id = load_fixture(FIXTURE_DIR / "sporttery-spf.html", FIXTURE_DIR / "sporttery-score.html")
-            degraded_reasons.append(f"体彩实时页面读取失败，已使用固定快照：{exc}")
+            degraded_reasons.append("体彩实时赔率暂时不可用，已切换到固定快照")
     markets = filter_by_beijing_date(markets_by_id.values(), target_date)
 
     client = ApiFootballClient()
@@ -286,11 +287,12 @@ def main() -> None:
         try:
             seeds = live_seeds(client, target_date)
         except Exception as exc:  # noqa: BLE001
+            print(f"[api-football] live fetch failed: {type(exc).__name__}: {exc}")
             seeds = []
-            degraded_reasons.append(f"API-Football 读取失败：{exc}")
+            degraded_reasons.append("球队实时数据暂时不可用，已切换到固定开发样例")
     else:
         seeds = []
-        degraded_reasons.append("未配置 API_FOOTBALL_KEY，球员与阵容采用固定开发样例")
+        degraded_reasons.append("球队与阵容实时数据尚未启用，当前使用固定开发样例")
 
     demo = load_demo()
     if not seeds and target_date == demo["target_date"]:
