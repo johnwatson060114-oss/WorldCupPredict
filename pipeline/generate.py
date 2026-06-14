@@ -7,6 +7,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from .api_football import ApiFootballClient
+from .availability import apply_availability, load_availability
 from .config import FIXTURE_DIR, OUTPUT_DIR, ROOT, SETTINGS, VENUES
 from .elo_ratings import EloRatingsClient, expected_goals_from_elo
 from .football_data import (
@@ -431,6 +432,8 @@ def main() -> None:
         seeds = demo["matches"]
     elif not seeds:
         degraded_reasons.append("目标日期没有可用比赛种子数据")
+
+    apply_availability(seeds, target_date, load_availability())
 
     built_matches = []
     for seed in seeds:
