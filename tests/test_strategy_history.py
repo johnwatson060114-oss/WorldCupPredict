@@ -53,3 +53,28 @@ def test_strategy_history_settles_total_goals_and_half_full(tmp_path):
 
     assert result["status"] == "settled"
     assert result["payout"] == 14
+
+
+def test_strategy_history_builds_time_consistent_match_review(tmp_path):
+    history_dir = tmp_path / "history"
+    history_dir.mkdir()
+    (history_dir / "2026-06-15.json").write_text(json.dumps({
+        "targetDate": "2026-06-15", "generatedAt": "before-match", "overallCoverage": 0.72,
+        "matches": [{
+            "id": "m1", "homeTeam": "德国", "awayTeam": "库拉索", "likelyScore": "2-0",
+            "outcomeProbabilities": {"home": 0.87, "draw": 0.11, "away": 0.02},
+        }],
+        "portfolios": [],
+    }), encoding="utf-8")
+    settlements = tmp_path / "settlements.json"
+    settlements.write_text(json.dumps({
+        "matches": [{"matchId": "m1", "homeScore": 7, "awayScore": 1}],
+    }), encoding="utf-8")
+
+    review = build_strategy_history(history_dir, settlements)["days"][0]["review"]
+
+    assert review["snapshotLabel"] == "升级前基线快照"
+    assert review["summary"]["outcomeAccuracy"] == 1.0
+    assert review["summary"]["exactScoreAccuracy"] == 0.0
+    assert review["matches"][0]["goalAbsoluteError"] == 6
+    assert "大比分尾部" in review["matches"][0]["diagnosis"]

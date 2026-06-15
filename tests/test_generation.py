@@ -14,6 +14,13 @@ def test_offline_generation(tmp_path):
     ], check=True)
     payload = json.loads(output.read_text(encoding="utf-8"))
     assert payload["targetDate"] == "2026-06-15"
+    assert payload["modelVersion"] == "legacy-dixon-coles-v1"
+    assert payload["reproducibility"] == {"baselineFrozen": True, "randomSeed": 20260615}
+    assert payload["simulationQuality"]["actualPaths"] == 100000
+    assert payload["simulationQuality"]["seed"] == 20260615
+    assert all(match["simulation"]["actualPaths"] == 100000 for match in payload["matches"])
+    assert len(payload["dataSnapshot"]["id"]) == 64
+    assert payload["dataSnapshot"]["files"]
     assert len(payload["matches"]) == 4
     assert all(abs(sum(match["outcomeProbabilities"].values()) - 1) < 0.0001 for match in payload["matches"])
     assert all(portfolio["stake"] <= 200 for portfolio in payload["portfolios"])
@@ -44,3 +51,30 @@ def test_live_fetch_error_is_not_exposed(monkeypatch, tmp_path):
     assert "567" not in message
     assert "Server Error" not in message
     assert next(item for item in payload["evidence"] if item["source"] == "Open-Meteo")["status"] == "manual"
+
+
+def test_spain_cape_verde_uses_elo_gap_instead_of_neutral_fallback(monkeypatch):
+    class Client:
+        def world_cup_matches(self):
+            return [{
+                "id": 1,
+                "utcDate": "2026-06-15T16:00:00Z",
+                "status": "TIMED",
+                "homeTeam": {"id": 10, "name": "Spain", "tla": "ESP"},
+                "awayTeam": {"id": 20, "name": "Cape Verde Islands", "tla": "CPV"},
+                "venue": "Demo Stadium",
+            }]
+
+        def matches_on_beijing_date(self, target_date, matches):
+            return matches
+
+    monkeypatch.setattr(generate.EloRatingsClient, "ratings", lambda _self: {"西班牙": 2157, "佛得角": 1578})
+    monkeypatch.setattr(generate.OpenMeteoClient, "forecast_at", lambda *_args: {"status": "missing"})
+
+    seed = generate.football_data_seeds(Client(), "2026-06-16")[0]
+
+    assert seed["base_xg"][0] >= 2.3
+    assert seed["base_xg"][1] <= 0.25
+    assert seed["coverage"] == 0.8
+    assert len(seed["missing_data"]) == 1
+    assert seed["factors"][0]["admissionStatus"] == "core"

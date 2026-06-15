@@ -1,0 +1,15 @@
+{
+  "model_version": "legacy-dixon-coles-v1",
+  "home_xg": 1.9,
+  "away_xg": 0.8,
+  "outcomes": {
+    "home": 0.625255452515006,
+    "draw": 0.23173961690356704,
+    "away": 0.1430049305814272
+  },
+  "top_scores": [
+    {"score": "2:0", "probability": 0.12130657810279741},
+    {"score": "1:0", "probability": 0.11951890221496671},
+    {"score": "1:1", "probability": 0.11032514050612313}
+  ]
+}

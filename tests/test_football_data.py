@@ -16,6 +16,9 @@ def test_beijing_date_filter_handles_utc_boundary():
 
 def test_team_names_are_localized_for_sporttery_matching():
     assert localized_team_name({"name": "Cape Verde Islands"}) == "佛得角"
+    assert localized_team_name({"name": "Cape Verde"}) == "佛得角"
+    assert localized_team_name({"name": "DR Congo"}) == "民主刚果"
+    assert localized_team_name({"name": "Bosnia and Herzegovina"}) == "波黑"
     assert localized_team_name({"name": "Sweden"}) == "瑞典"
 
 

@@ -10,6 +10,9 @@ FIXTURE_DIR = ROOT / "tests" / "fixtures"
 MANUAL_DIR = ROOT / "manual-data"
 SPORTTERY_SNAPSHOT = CACHE_DIR / "sporttery-live.json"
 
+PIPELINE_VERSION = "2.0.0-dev"
+LEGACY_MODEL_VERSION = "legacy-dixon-coles-v1"
+
 
 @dataclass(frozen=True)
 class PipelineSettings:
@@ -17,6 +20,7 @@ class PipelineSettings:
     api_daily_budget: int = 95
     odds_max_age_minutes: int = 45
     simulations: int = 100_000
+    random_seed: int = 20_260_615
     initial_bankroll: int = 200
     world_cup_league_id: int = 1
     world_cup_season: int = 2026

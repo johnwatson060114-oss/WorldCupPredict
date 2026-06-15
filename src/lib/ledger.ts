@@ -1,4 +1,6 @@
 import type { BankrollLedger, LedgerEntry, MatchSettlement, SettlementFile, TicketLeg } from '../types'
+import { personalBalance } from '../features/personal-bets/storage'
+import type { PersonalBetLedger } from '../features/personal-bets/types'
 
 const STORAGE_KEY = 'world-cup-predict-bankroll-ledger-v1'
 const standardScores = new Set(['1:0', '2:0', '2:1', '3:0', '3:1', '3:2', '4:0', '4:1', '4:2', '5:0', '5:1', '5:2', '0:0', '1:1', '2:2', '3:3', '0:1', '0:2', '1:2', '0:3', '1:3', '2:3', '0:4', '1:4', '2:4', '0:5', '1:5', '2:5'])
@@ -36,6 +38,11 @@ export const currentBalance = (ledger: BankrollLedger) =>
     if (entry.status === 'pending') return balance - entry.stake
     return balance
   }, ledger.initialBankroll)
+
+export const combinedAvailableBalance = (ledger: BankrollLedger, personalLedger: PersonalBetLedger) => Math.max(
+  0,
+  currentBalance(ledger) + personalBalance(personalLedger) - personalLedger.initialBankroll,
+)
 
 export const downloadLedger = (ledger: BankrollLedger) => {
   const blob = new Blob([JSON.stringify(ledger, null, 2)], { type: 'application/json' })

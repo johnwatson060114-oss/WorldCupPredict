@@ -46,6 +46,11 @@ export function PortfolioSection({ bankroll, portfolios, emptyReason, selected, 
                 <div><span>95%最差情景</span><strong className="negative-text">{money(portfolio.worstCase95)}</strong></div>
               </div>
               <div className="ticket-list">
+                {!!portfolio.strategyRules?.length && (
+                  <div className="strategy-rules">
+                    {portfolio.strategyRules.map((rule) => <span key={rule}>{rule}</span>)}
+                  </div>
+                )}
                 {portfolio.tickets.slice(0, 4).map((ticket) => (
                   <div key={ticket.id}>
                     <span>{ticket.type}</span>

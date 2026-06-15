@@ -62,3 +62,7 @@ def apply_availability(seeds: list[dict[str, Any]], target_date: str, records: l
         missing = seed.setdefault("missing_data", [])
         missing.append("人员状态已记录，但球员级 xG 影响尚未完成回测，不进行人工加减分")
         seed["availability"] = matched
+        seed["confirmed_absences"] = [
+            record for record in matched
+            if record["status"] in {"out", "suspended"} and record["availability_probability"] <= 0.05
+        ]

@@ -132,7 +132,7 @@ def adjust_xg(
 ) -> tuple[float, float]:
     home, away = base_home, base_away
     for factor in factors:
-        if not factor.get("active", True):
+        if not factor.get("active", False) or factor.get("admissionStatus") not in {"core", "enabled"}:
             continue
         value = float(factor.get("value", 0.0))
         direction = factor.get("direction")

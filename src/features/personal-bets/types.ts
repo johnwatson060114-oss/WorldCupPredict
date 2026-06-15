@@ -24,6 +24,7 @@ export interface PersonalBet {
   selection: string
   odds: number
   stake: number
+  standardStake?: number
   passType?: PassType
   multiple?: number
   ticketCount?: number
@@ -65,6 +66,31 @@ export interface StrategyHistoryDay {
     roi: number | null
     status: 'pending' | 'settled' | 'no-bet'
   }>
+  review?: {
+    snapshotLabel: string
+    summary: {
+      matchCount: number
+      outcomeAccuracy: number
+      exactScoreAccuracy: number
+      meanGoalAbsoluteError: number
+      logLoss: number
+      brier: number
+      strategyDiagnosis: string
+    }
+    matches: Array<{
+      matchId: string
+      label: string
+      predictedScore: string
+      actualScore: string
+      outcomeCorrect: boolean
+      exactScore: boolean
+      goalAbsoluteError: number
+      actualOutcomeProbability: number
+      logLoss: number
+      brier: number
+      diagnosis: string
+    }>
+  } | null
 }
 
 export interface StrategyHistory {

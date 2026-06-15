@@ -100,7 +100,7 @@ export function BankrollChart({ portfolio, portfolios, onSelect }: BankrollChart
   return (
     <section className="chart-panel panel">
       <div className="section-heading chart-heading">
-        <div><h2>本金分布</h2><p>基于 100,000 次联合模拟</p></div>
+        <div><h2>本金分布</h2><p>基于 {portfolio.simulationPaths?.toLocaleString() ?? '100,000'} 条共享比分路径</p></div>
         <div className="chart-summary">
           <span>盈利概率 <b>{percent(portfolio.profitProbability)}</b></span>
           <span>中位数 <b>{portfolio.median}元</b></span>

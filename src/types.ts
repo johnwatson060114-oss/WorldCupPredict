@@ -15,6 +15,50 @@ export interface FactorContribution {
   value: number
   note: string
   active: boolean
+  admissionStatus?: 'core' | 'enabled' | 'observation_only'
+  uncertaintyOnly?: boolean
+  admissionReason?: string
+}
+
+export interface SimulationQuality {
+  actualPaths: number
+  monteCarloStandardError: { home: number; draw: number; away: number }
+  confidence95: { home: [number, number]; draw: [number, number]; away: [number, number] }
+  convergence: Array<{
+    paths: number
+    outcomes: { home: number; draw: number; away: number }
+    maxDeltaFromPrevious: number | null
+  }>
+}
+
+export interface LineupImpact {
+  side: 'home' | 'away'
+  starterId: string
+  starter: string
+  replacementId?: string
+  replacement?: string
+  position: string
+  attackDelta?: number
+  defenseDelta?: number
+  status: 'applied' | 'missing_replacement_value'
+  modelVersion: string
+  sourceUrl: string
+  observedAt?: string
+}
+
+export interface IntelligenceEvent {
+  event_id: string
+  event_type: string
+  subject: { type: string; id: string; name: string }
+  teams: string[]
+  target_date: string
+  source_url: string
+  published_at: string
+  confirmation: 'official' | 'reliable_report' | 'unverified'
+  confidence: number
+  claim: string
+  conflicts: Array<{ source_url: string; claim: string }>
+  conclusion: Record<string, unknown>
 }
 
 export interface SourceEvidence {
@@ -34,6 +78,7 @@ export interface MarketQuote {
   odds: number | null
   modelProbability: number
   marketProbability: number | null
+  coverage?: number
   rawExpectedReturn: number | null
   robustExpectedReturn: number | null
   singleEligible: boolean
@@ -64,6 +109,9 @@ export interface MatchForecast {
   altitude: number
   missingData: string[]
   factors: FactorContribution[]
+  lineupImpact?: LineupImpact[]
+  intelligence?: IntelligenceEvent[]
+  simulation?: SimulationQuality | null
   quotes: MarketQuote[]
 }
 
@@ -105,6 +153,11 @@ export interface Portfolio {
   median: number
   p95: number
   maxPayout: number
+  stopProbability?: number
+  medianMaxDrawdown?: number
+  simulationPaths?: number
+  simulationMode?: 'shared_score_paths' | 'no_tickets'
+  strategyRules?: string[]
   tickets: Ticket[]
   distribution: DistributionPoint[]
 }
@@ -122,6 +175,19 @@ export interface DailyForecast {
   targetDate: string
   timezone: 'Asia/Shanghai'
   modelVersion: string
+  pipelineVersion?: string
+  dataSnapshot?: {
+    id: string
+    cutoff: string
+    files: Array<{ path: string; sha256: string; bytes: number }>
+  }
+  reproducibility?: { baselineFrozen: boolean; randomSeed: number }
+  simulationQuality?: {
+    actualPaths: number
+    seed: number
+    parameterUncertainty: string
+    groupRankProbabilities?: Record<string, Record<string, number[]>>
+  }
   simulations: number
   bankroll: number
   oddsFreshMinutes: number

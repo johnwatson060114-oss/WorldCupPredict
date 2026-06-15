@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-15T13:00:14+08:00",
+  "generatedAt": "2026-06-15T17:30:09+08:00",
   "finalDate": "2026-07-19",
   "days": [
     {
@@ -10,36 +10,110 @@
         {
           "key": "conservative",
           "name": "稳健",
-          "stake": 10,
-          "payout": null,
-          "profit": null,
-          "roi": null,
-          "status": "pending"
+          "stake": 10.0,
+          "payout": 0.0,
+          "profit": -10.0,
+          "roi": -1.0,
+          "status": "settled"
         },
         {
           "key": "balanced",
           "name": "均衡",
-          "stake": 10,
-          "payout": null,
-          "profit": null,
-          "roi": null,
-          "status": "pending"
+          "stake": 10.0,
+          "payout": 0.0,
+          "profit": -10.0,
+          "roi": -1.0,
+          "status": "settled"
         },
         {
           "key": "aggressive",
           "name": "激进",
-          "stake": 24,
-          "payout": null,
-          "profit": null,
-          "roi": null,
-          "status": "pending"
+          "stake": 24.0,
+          "payout": 0.0,
+          "profit": -24.0,
+          "roi": -1.0,
+          "status": "settled"
         }
-      ]
+      ],
+      "review": {
+        "snapshotLabel": "升级前基线快照",
+        "matches": [
+          {
+            "matchId": "2040170",
+            "label": "德国 vs 库拉索",
+            "predictedScore": "2-0",
+            "actualScore": "7-1",
+            "predictedOutcome": "home",
+            "actualOutcome": "home",
+            "outcomeCorrect": true,
+            "exactScore": false,
+            "goalAbsoluteError": 6,
+            "actualOutcomeProbability": 0.87393,
+            "logLoss": 0.13475,
+            "brier": 0.0289,
+            "diagnosis": "方向正确，但明显低估比赛开放度和大比分尾部。"
+          },
+          {
+            "matchId": "2040171",
+            "label": "荷兰 vs 日本",
+            "predictedScore": "1-1",
+            "actualScore": "2-2",
+            "predictedOutcome": "draw",
+            "actualOutcome": "draw",
+            "outcomeCorrect": true,
+            "exactScore": false,
+            "goalAbsoluteError": 2,
+            "actualOutcomeProbability": 0.28441,
+            "logLoss": 1.25734,
+            "brier": 0.77533,
+            "diagnosis": "赛果方向正确，但比分尺度仍有偏差。"
+          },
+          {
+            "matchId": "2040172",
+            "label": "科特迪瓦 vs 厄瓜多尔",
+            "predictedScore": "0-2",
+            "actualScore": "1-0",
+            "predictedOutcome": "away",
+            "actualOutcome": "home",
+            "outcomeCorrect": false,
+            "exactScore": false,
+            "goalAbsoluteError": 3,
+            "actualOutcomeProbability": 0.09259,
+            "logLoss": 2.37957,
+            "brier": 1.35308,
+            "diagnosis": "方向反转：客胜倾向未兑现，主队强度被明显低估。"
+          },
+          {
+            "matchId": "2040173",
+            "label": "瑞典 vs 突尼斯",
+            "predictedScore": "1-1",
+            "actualScore": "5-1",
+            "predictedOutcome": "draw",
+            "actualOutcome": "home",
+            "outcomeCorrect": false,
+            "exactScore": false,
+            "goalAbsoluteError": 4,
+            "actualOutcomeProbability": 0.48049,
+            "logLoss": 0.73295,
+            "brier": 0.40537,
+            "diagnosis": "平局倾向失效，主队进攻上限被明显低估。"
+          }
+        ],
+        "summary": {
+          "matchCount": 4,
+          "outcomeAccuracy": 0.5,
+          "exactScoreAccuracy": 0.0,
+          "meanGoalAbsoluteError": 3.75,
+          "logLoss": 1.12615,
+          "brier": 0.64067,
+          "strategyDiagnosis": "三档策略实际使用同一组串关标的，风险没有分散；这是升级前策略差异不足的直接证据。"
+        }
+      }
     },
     {
       "targetDate": "2026-06-16",
-      "generatedAt": "2026-06-15T13:00:08+08:00",
-      "coverage": 0.685,
+      "generatedAt": "2026-06-15T16:58:44+08:00",
+      "coverage": 0.8,
       "strategies": [
         {
           "key": "conservative",
@@ -68,7 +142,8 @@
           "roi": null,
           "status": "no-bet"
         }
-      ]
+      ],
+      "review": null
     }
   ]
 }

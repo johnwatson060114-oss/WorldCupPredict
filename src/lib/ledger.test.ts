@@ -1,8 +1,24 @@
 import { describe, expect, it } from 'vitest'
-import { settleLedger } from './ledger'
+import { combinedAvailableBalance, settleLedger } from './ledger'
 import type { BankrollLedger } from '../types'
+import type { PersonalBetLedger } from '../features/personal-bets/types'
 
 describe('ledger settlement', () => {
+  it('uses personal pending bets in the global available balance', () => {
+    const ledger: BankrollLedger = { schemaVersion: 1, initialBankroll: 200, entries: [] }
+    const personal: PersonalBetLedger = {
+      schemaVersion: 1,
+      initialBankroll: 200,
+      modelSnapshots: [],
+      bets: [{
+        id: 'personal', createdAt: 'now', targetDate: '2026-06-16', matchLabel: 'A vs B',
+        market: '胜平负', selection: '胜', odds: 2, stake: 3,
+        decisionSource: 'subjective', status: 'pending',
+      }],
+    }
+    expect(combinedAvailableBalance(ledger, personal)).toBe(197)
+  })
+
   it('settles a -1 handicap only when the home side wins by two', () => {
     const ledger: BankrollLedger = {
       schemaVersion: 1,

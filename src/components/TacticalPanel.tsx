@@ -59,13 +59,13 @@ export function TacticalPanel({ match, onOpenDetail }: TacticalPanelProps) {
             <div className={factor.active ? 'factor active' : 'factor inactive'} key={factor.label}>
               <span className="factor-icon"><Icon size={15} /></span>
               <div><strong>{factor.label}</strong><small>{factor.note}</small></div>
-              <b className={factor.direction}>{factor.direction === 'home' ? '主队↑' : factor.direction === 'away' ? '客队↑' : '中性→'}</b>
+              <b className={factor.direction}>{factor.active ? (factor.direction === 'home' ? '主队↑' : factor.direction === 'away' ? '客队↑' : '已启用') : '仅观察'}</b>
             </div>
           )
         })}
       </div>
       <div className="uncertainty-note">
-        随机波动通过 100,000 次模拟进入比分分布，不直接抬高或压低任何一方 xG。
+        实际路径数 {match.simulation?.actualPaths.toLocaleString() ?? '100,000'}；未通过消融回测的因素只展示，不修改 xG。
       </div>
       <button className="outline-button wide" onClick={onOpenDetail}>查看完整战术推演 <ArrowRight size={15} /></button>
     </aside>

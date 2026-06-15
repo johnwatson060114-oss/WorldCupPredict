@@ -17,3 +17,14 @@ def test_elo_expected_goals_favor_stronger_team_and_keep_total():
 
     assert home > away
     assert abs(home + away - 2.55) < 0.0001
+
+
+def test_world_cup_team_aliases_resolve_elo_names(monkeypatch):
+    client = EloRatingsClient()
+    payloads = {
+        "en.teams.tsv": "CV\tCape Verde\nCD\tDR Congo\nBA\tBosnia and Herzegovina\nES\tSpain\n",
+        "World.tsv": "1\t0\tCV\t1578\n2\t0\tCD\t1652\n3\t0\tBA\t1616\n4\t0\tES\t2157\n",
+    }
+    monkeypatch.setattr(client, "_text", lambda filename: payloads[filename])
+
+    assert client.ratings() == {"佛得角": 1578, "民主刚果": 1652, "波黑": 1616, "西班牙": 2157}

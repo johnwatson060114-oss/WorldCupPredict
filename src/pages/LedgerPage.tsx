@@ -1,15 +1,17 @@
 import { Download, Landmark, Trash2, Upload } from 'lucide-react'
-import { downloadLedger, currentBalance } from '../lib/ledger'
+import { downloadLedger } from '../lib/ledger'
 import { money, shortDateTime } from '../lib/format'
 import type { BankrollLedger } from '../types'
 
 interface LedgerPageProps {
   ledger: BankrollLedger
+  availableBankroll: number
+  personalBetCount: number
   onReset: () => void
   onImport: (ledger: BankrollLedger) => void
 }
 
-export function LedgerPage({ ledger, onReset, onImport }: LedgerPageProps) {
+export function LedgerPage({ ledger, availableBankroll, personalBetCount, onReset, onImport }: LedgerPageProps) {
   const importFile = async (file: File | undefined) => {
     if (!file) return
     const parsed = JSON.parse(await file.text()) as BankrollLedger
@@ -23,8 +25,8 @@ export function LedgerPage({ ledger, onReset, onImport }: LedgerPageProps) {
       <div className="page-title"><div><span>只保存在本机浏览器</span><h1>资金记录</h1></div></div>
       <section className="ledger-summary panel">
         <div><Landmark size={22} /><span>初始本金</span><strong>{ledger.initialBankroll}元</strong></div>
-        <div><span>当前可用</span><strong>{money(currentBalance(ledger))}</strong></div>
-        <div><span>已记录方案</span><strong>{ledger.entries.length}</strong></div>
+        <div><span>当前可用（含个人投注）</span><strong>{money(availableBankroll)}</strong></div>
+        <div><span>已记录方案/投注</span><strong>{ledger.entries.length + personalBetCount}</strong></div>
         <div className="ledger-actions">
           <button onClick={() => downloadLedger(ledger)}><Download size={15} />导出 JSON</button>
           <label className="file-button"><Upload size={15} />导入 JSON<input type="file" accept="application/json" onChange={(event) => void importFile(event.target.files?.[0])} /></label>

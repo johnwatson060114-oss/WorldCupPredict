@@ -4,6 +4,9 @@ import type { MatchForecast } from '../types'
 import { Flag } from '../components/Flag'
 
 export function AnalysisPage({ match }: { match: MatchForecast }) {
+  const standardErrors = match.simulation ? Object.values(match.simulation.monteCarloStandardError) : []
+  const maxStandardError = standardErrors.length ? Math.max(...standardErrors) : null
+  const finalConvergence = match.simulation?.convergence.at(-1)
   return (
     <main className="content-page analysis-page">
       <div className="page-title">
@@ -38,7 +41,8 @@ export function AnalysisPage({ match }: { match: MatchForecast }) {
             {match.factors.map((factor) => (
               <div key={factor.label}>
                 <span>{factor.label}</span><div className="factor-axis"><i className={factor.direction} style={{ width: `${Math.min(48, Math.abs(factor.value) * 180)}%` }} /></div>
-                <strong>{factor.active ? `${factor.value >= 0 ? '+' : ''}${factor.value.toFixed(2)} xG` : '仅展示'}</strong><small>{factor.note}</small>
+                <strong>{factor.active ? `${factor.value >= 0 ? '+' : ''}${factor.value.toFixed(2)} xG` : '仅观察'}</strong><small>{factor.note}</small>
+                <em>{factor.admissionStatus === 'core' ? '核心模型输入' : factor.admissionStatus === 'enabled' ? '已通过样本外准入' : factor.admissionReason ?? '等待消融回测'}</em>
               </div>
             ))}
           </div>
@@ -52,6 +56,41 @@ export function AnalysisPage({ match }: { match: MatchForecast }) {
             <div><UsersRound /><span>阵容状态</span><strong>预计首发</strong></div>
           </div>
           <div className="missing-box"><strong>缺失数据</strong>{match.missingData.length ? match.missingData.map((item) => <span key={item}>{item}</span>) : <span>无关键缺失</span>}</div>
+        </section>
+        <section className="panel detail-section audit-section">
+          <div className="section-heading"><div><h2>模拟质量</h2><p>实际路径、抽样误差和收敛记录</p></div></div>
+          <div className="audit-grid">
+            <div><span>实际路径</span><strong>{match.simulation?.actualPaths.toLocaleString() ?? '旧格式'}</strong></div>
+            <div><span>最大标准误差</span><strong>{maxStandardError === null ? '--' : percent(maxStandardError, 2)}</strong></div>
+            <div><span>最终收敛变化</span><strong>{finalConvergence?.maxDeltaFromPrevious == null ? '--' : percent(finalConvergence.maxDeltaFromPrevious, 2)}</strong></div>
+          </div>
+          <div className="audit-list">
+            {match.simulation?.convergence.map((item) => <div key={item.paths}><b>{item.paths.toLocaleString()} 路径</b><span>胜 {percent(item.outcomes.home, 1)} · 平 {percent(item.outcomes.draw, 1)} · 负 {percent(item.outcomes.away, 1)}</span></div>) ?? <p>该快照尚未包含新版收敛记录。</p>}
+          </div>
+        </section>
+        <section className="panel detail-section audit-section">
+          <div className="section-heading"><div><h2>停赛与替补价值</h2><p>只应用可追踪的首发-替补差值</p></div></div>
+          <div className="audit-list">
+            {match.lineupImpact?.length ? match.lineupImpact.map((impact) => (
+              <div key={`${impact.starterId}-${impact.replacementId ?? 'missing'}`}>
+                <b>{impact.starter} → {impact.replacement ?? '缺少可靠替补值'}</b>
+                <span>{impact.position} · 进攻差 {impact.attackDelta?.toFixed(3) ?? '--'} · 防守差 {impact.defenseDelta?.toFixed(3) ?? '--'}</span>
+                <small>{impact.modelVersion}</small>
+              </div>
+            )) : <p>本场没有可追踪的确定停赛替换调整。</p>}
+          </div>
+        </section>
+        <section className="panel detail-section audit-section">
+          <div className="section-heading"><div><h2>结构化赛前情报</h2><p>保留来源、时间、确认等级和冲突</p></div></div>
+          <div className="audit-list">
+            {match.intelligence?.length ? match.intelligence.map((item) => (
+              <div key={item.event_id}>
+                <b>{item.subject.name} · {item.confirmation}</b>
+                <span>{item.claim}</span>
+                <a href={item.source_url} target="_blank" rel="noreferrer">来源 · {shortDateTime(item.published_at)}</a>
+              </div>
+            )) : <p>本场没有截止时间前的结构化情报快照。</p>}
+          </div>
         </section>
       </div>
     </main>

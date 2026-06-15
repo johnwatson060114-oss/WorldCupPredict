@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, type CSSProperties } from 'react'
+import { useEffect, useMemo, useState, type CSSProperties, type Dispatch, type SetStateAction } from 'react'
 import { CalendarDays, CheckCircle2, CircleAlert, Database, Download, Pencil, Plus, RefreshCw, Trash2, X } from 'lucide-react'
 import { percent, shortDateTime, signedPercent } from '../lib/format'
 import type { DailyForecast, MarketQuote, MarketType, SettlementFile } from '../types'
@@ -8,7 +8,6 @@ import {
   captureModelSnapshot,
   deletePersonalBet,
   exportPersonalLedger,
-  loadPersonalLedger,
   personalBalance,
   savePersonalLedger,
   settlePersonalLedger,
@@ -29,6 +28,8 @@ import {
 interface PersonalBetPageProps {
   forecast: DailyForecast
   settlements: SettlementFile | null
+  ledger: PersonalBetLedger
+  onLedgerChange: Dispatch<SetStateAction<PersonalBetLedger>>
 }
 
 interface FormState {
@@ -39,6 +40,7 @@ interface FormState {
   matchChoice: string
   market: MarketType
   multiple: string
+  actualStake: string
   decisionSource: DecisionSource
   note: string
   legs: PersonalBetLeg[]
@@ -73,6 +75,7 @@ const initialForm = (forecast: DailyForecast): FormState => ({
   matchChoice: forecast.matches[0]?.id ?? '',
   market: '胜平负',
   multiple: '1',
+  actualStake: '',
   decisionSource: 'subjective',
   note: '',
   legs: [],
@@ -87,21 +90,13 @@ const quoteToLeg = (quote: MarketQuote, matchLabel: string): PersonalBetLeg => (
   modelProbability: quote.modelProbability,
 })
 
-export function PersonalBetPage({ forecast, settlements }: PersonalBetPageProps) {
-  const [ledger, setLedger] = useState<PersonalBetLedger>(() => loadPersonalLedger())
+export function PersonalBetPage({ forecast, settlements, ledger, onLedgerChange }: PersonalBetPageProps) {
   const [history, setHistory] = useState<StrategyHistory | null>(null)
   const [comparisonMode, setComparisonMode] = useState<ComparisonMode>('matched')
   const [form, setForm] = useState<FormState>(() => initialForm(forecast))
   const [bettingForecast, setBettingForecast] = useState<DailyForecast | null>(forecast)
   const [archiveState, setArchiveState] = useState<'ready' | 'loading' | 'missing'>('ready')
   const [message, setMessage] = useState('')
-
-  useEffect(() => {
-    setLedger((current) => {
-      const captured = captureModelSnapshot(current, forecast)
-      return settlements ? settlePersonalLedger(captured, settlements) : captured
-    })
-  }, [forecast, settlements])
 
   useEffect(() => {
     fetch('./data/strategy-history.json', { cache: 'no-store' })
@@ -159,6 +154,10 @@ export function PersonalBetPage({ forecast, settlements }: PersonalBetPageProps)
   const ticketCount = ticketComplete ? ticketCountForPass(form.legs, form.passType) : 0
   const calculatedStake = ticketComplete ? stakeForPass(form.legs, form.passType, multiple) : 0
   const maximumPayout = ticketComplete ? theoreticalMaxPayout(form.legs, form.passType, multiple) : 0
+  const actualStake = form.actualStake.trim() ? Number(form.actualStake) : calculatedStake
+  const actualMaximumPayout = calculatedStake > 0 && Number.isFinite(actualStake)
+    ? Math.round(maximumPayout * actualStake / calculatedStake * 100) / 100
+    : 0
 
   const resetForm = () => setForm(initialForm(forecast))
 
@@ -212,12 +211,22 @@ export function PersonalBetPage({ forecast, settlements }: PersonalBetPageProps)
       setMessage('出票日期不能晚于所选比赛日期。')
       return
     }
-    if (calculatedStake < 2 || calculatedStake > personalBalance(ledger)) {
-      setMessage(`这张票共 ${ticketCount} 注，投入 ${preciseMoney(calculatedStake)}，已超过当前可用余额。`)
+    if (!Number.isFinite(actualStake) || actualStake <= 0) {
+      setMessage('实际投入必须是大于 0 的金额，支持填写 3 元等非标准票面金额。')
       return
     }
     const existing = form.id ? ledger.bets.find((item) => item.id === form.id) : undefined
-    const odds = calculatedStake > 0 ? maximumPayout / calculatedStake : 0
+    const reusableStake = existing?.status === 'pending'
+      ? existing.stake
+      : existing?.status === 'settled'
+        ? existing.stake - (existing.payout ?? 0)
+        : 0
+    const availableForSave = personalBalance(ledger) + reusableStake
+    if (actualStake > availableForSave) {
+      setMessage(`实际投入 ${preciseMoney(actualStake)}，已超过当前可用余额 ${preciseMoney(availableForSave)}。`)
+      return
+    }
+    const odds = actualStake > 0 ? actualMaximumPayout / actualStake : 0
     const bet: PersonalBet = {
       id: form.id || crypto.randomUUID(),
       createdAt: existing?.createdAt ?? new Date().toISOString(),
@@ -228,11 +237,12 @@ export function PersonalBetPage({ forecast, settlements }: PersonalBetPageProps)
       market: form.legs.length === 1 ? form.legs[0].market : '混合过关',
       selection: form.legs.map((leg) => `${leg.market} ${leg.selection}`).join(' × '),
       odds,
-      stake: calculatedStake,
+      stake: Math.round(actualStake * 100) / 100,
+      standardStake: calculatedStake,
       passType: form.passType,
       multiple,
       ticketCount,
-      theoreticalPayout: maximumPayout,
+      theoreticalPayout: actualMaximumPayout,
       decisionSource: form.decisionSource,
       status: 'pending',
       note: form.note.trim() || undefined,
@@ -240,7 +250,7 @@ export function PersonalBetPage({ forecast, settlements }: PersonalBetPageProps)
       legs: form.legs,
     }
     const next = upsertPersonalBet(captureModelSnapshot(ledger, forecast), bet)
-    setLedger(settlements ? settlePersonalLedger(next, settlements) : next)
+    onLedgerChange(settlements ? settlePersonalLedger(next, settlements) : next)
     setMessage(form.id ? '记录已更新，并按已有赛果重新结算。' : '已写入本机投注账本。')
     resetForm()
   }
@@ -261,6 +271,7 @@ export function PersonalBetPage({ forecast, settlements }: PersonalBetPageProps)
       matchChoice: legs[0].matchId,
       market: legs[0].market,
       multiple: (bet.multiple ?? Math.max(1, Math.round(bet.stake / Math.max(2, (bet.ticketCount ?? 1) * 2)))).toString(),
+      actualStake: bet.stake.toString(),
       decisionSource: bet.decisionSource,
       note: bet.note ?? '',
       legs,
@@ -269,7 +280,7 @@ export function PersonalBetPage({ forecast, settlements }: PersonalBetPageProps)
   }
 
   const removeBet = (id: string) => {
-    setLedger((current) => deletePersonalBet(current, id))
+    onLedgerChange((current) => deletePersonalBet(current, id))
     if (form.id === id) resetForm()
   }
 
@@ -281,7 +292,7 @@ export function PersonalBetPage({ forecast, settlements }: PersonalBetPageProps)
       return
     }
     savePersonalLedger(parsed)
-    setLedger(parsed)
+    onLedgerChange(parsed)
     setMessage('个人投注账本已导入。')
   }
 
@@ -305,7 +316,7 @@ export function PersonalBetPage({ forecast, settlements }: PersonalBetPageProps)
   return (
     <main className="personal-bet-page">
       <div className="personal-page-title">
-        <div><span>独立本机账本，不影响原资金记录</span><h1>我的投注账本</h1></div>
+        <div><span>全站统一使用这份本机账本计算可用金额</span><h1>我的投注账本</h1></div>
         <div className="personal-page-actions">
           <button onClick={() => exportPersonalLedger(ledger)}><Download size={14} />导出</button>
           <label><Database size={14} />导入<input type="file" accept="application/json" onChange={(event) => void importLedger(event.target.files?.[0])} /></label>
@@ -352,8 +363,9 @@ export function PersonalBetPage({ forecast, settlements }: PersonalBetPageProps)
             <div className="bet-slip-head"><span>我的票单 · {form.passType}</span><b>{selectedGroups.length}/{requiredMatches} 场 · {form.legs.length} 项</b></div>
             {form.legs.map((leg) => <div className="bet-slip-leg" key={`${leg.matchId}-${leg.market}-${leg.selection}`}><span><b>{leg.matchLabel}</b><small>{leg.market} · {leg.selection}</small></span><strong>{leg.odds.toFixed(2)}</strong><button onClick={() => setForm((current) => ({ ...current, legs: current.legs.filter((item) => item !== leg) }))} aria-label="移除选择"><X size={13} /></button></div>)}
             {!form.legs.length && <p>在上方点击一个赔率选项加入票单。</p>}
-            <footer><span>注数 <b>{ticketCount || '--'}</b></span><span>投入 <b>{ticketCount ? preciseMoney(calculatedStake) : '--'}</b></span><span>理论最高奖金 <b>{ticketCount ? preciseMoney(maximumPayout) : '--'}</b></span></footer>
+            <footer><span>注数 <b>{ticketCount || '--'}</b></span><span>标准票面 <b>{ticketCount ? preciseMoney(calculatedStake) : '--'}</b></span><span>实际投入 <b>{ticketCount && Number.isFinite(actualStake) ? preciseMoney(actualStake) : '--'}</b></span><span>理论最高奖金 <b>{ticketCount ? preciseMoney(actualMaximumPayout) : '--'}</b></span></footer>
           </div>
+          <label className="ticket-note">实际投入（元）<input type="number" min="0.01" step="0.01" value={form.actualStake} placeholder={calculatedStake ? `默认 ${calculatedStake.toFixed(2)}` : '选好票后填写'} onChange={(event) => setForm((current) => ({ ...current, actualStake: event.target.value }))} /></label>
           <label className="ticket-note">备注（可选）<input value={form.note} placeholder="例如：临场改主意、跟随自己的判断" onChange={(event) => setForm((current) => ({ ...current, note: event.target.value }))} /></label>
           {message && <p className="personal-form-message">{message}</p>}
           <div className="personal-form-actions"><button onClick={resetForm}>重置</button><button className="primary" onClick={saveBet}>{form.id ? '更新记录' : '保存票单'}</button></div>

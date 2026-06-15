@@ -104,7 +104,9 @@ const calculateBetPayout = (bet: PersonalBet, results: Map<string, MatchSettleme
   }
   const passType = bet.passType ?? inferPassType(groups.length)
   const multiple = bet.multiple ?? Math.max(1, Math.round(bet.stake / 2))
-  return payoutForWinningOdds(winningOddsByMatch, passType, multiple)
+  const standardStake = bet.standardStake ?? Math.max(2, (bet.ticketCount ?? 1) * 2 * multiple)
+  const payout = payoutForWinningOdds(winningOddsByMatch, passType, multiple)
+  return Math.round(payout * bet.stake / standardStake * 100) / 100
 }
 
 export const settlePersonalLedger = (ledger: PersonalBetLedger, settlementFile: SettlementFile) => {

@@ -8,7 +8,16 @@ from zoneinfo import ZoneInfo
 
 from .api_football import ApiFootballClient
 from .availability import apply_availability, load_availability
-from .config import FIXTURE_DIR, OUTPUT_DIR, ROOT, SETTINGS, VENUES
+from .config import (
+    FIXTURE_DIR,
+    LEGACY_MODEL_VERSION,
+    MANUAL_DIR,
+    OUTPUT_DIR,
+    PIPELINE_VERSION,
+    ROOT,
+    SETTINGS,
+    VENUES,
+)
 from .elo_ratings import EloRatingsClient, expected_goals_from_elo
 from .football_data import (
     FootballDataClient,
@@ -17,6 +26,7 @@ from .football_data import (
     parse_utc,
     team_flag,
 )
+from .factor_gate import apply_factor_admissions, load_factor_admissions
 from .model import (
     adjust_xg,
     estimate_from_recent_results,
@@ -30,7 +40,11 @@ from .model import (
     total_goals_probabilities,
     top_scores,
 )
+from .lineup import apply_lineup_impacts
+from .intelligence import apply_intelligence, load_daily_intelligence
 from .portfolio import build_portfolios
+from .provenance import build_snapshot_manifest
+from .simulation import MatchSimulationInput, TournamentSimulation, simulate_tournament
 from .sporttery import SportteryMatch, fetch_sporttery, filter_by_beijing_date, load_fixture
 from .weather import OpenMeteoClient
 
@@ -49,6 +63,18 @@ def parse_args() -> argparse.Namespace:
 
 def load_demo() -> dict:
     return json.loads((ROOT / "pipeline" / "data" / "demo_matches.json").read_text(encoding="utf-8"))
+
+
+def local_snapshot_paths() -> list[Path]:
+    return [
+        ROOT / "pipeline" / "data" / "demo_matches.json",
+        ROOT / "pipeline" / "data" / "fifa-2026-discipline.json",
+        ROOT / "pipeline" / "data" / "factor-admissions.json",
+        FIXTURE_DIR / "sporttery-spf.html",
+        FIXTURE_DIR / "sporttery-score.html",
+        *sorted(MANUAL_DIR.glob("*.csv")),
+        *sorted((MANUAL_DIR / "intelligence").rglob("*.json")),
+    ]
 
 
 def default_factors() -> list[dict]:
@@ -136,6 +162,7 @@ def football_data_seeds(client: FootballDataClient, target_date: str) -> list[di
         elo_ratings = EloRatingsClient().ratings()
     except Exception:  # noqa: BLE001 - tournament results remain a valid lower-coverage fallback
         elo_ratings = {}
+    elo_median = sorted(elo_ratings.values())[len(elo_ratings) // 2] if elo_ratings else None
     for fixture in fixtures:
         kickoff_utc = parse_utc(fixture["utcDate"])
         kickoff = kickoff_utc.astimezone(timezone)
@@ -157,8 +184,12 @@ def football_data_seeds(client: FootballDataClient, target_date: str) -> list[di
         away_name = localized_team_name(away)
         home_rating = elo_ratings.get(home_name)
         away_rating = elo_ratings.get(away_name)
-        if home_rating is not None and away_rating is not None:
+        ratings_complete = home_rating is not None and away_rating is not None
+        ratings_partial = (home_rating is None) != (away_rating is None)
+        if ratings_complete:
             home_xg, away_xg = expected_goals_from_elo(home_rating, away_rating)
+        elif ratings_partial and elo_median is not None:
+            home_xg, away_xg = expected_goals_from_elo(home_rating or elo_median, away_rating or elo_median)
         else:
             home_xg, away_xg = estimate_from_recent_results(
                 api_football_shape(home_recent),
@@ -168,15 +199,17 @@ def football_data_seeds(client: FootballDataClient, target_date: str) -> list[di
             )
         sample_count = len(home_recent) + len(away_recent)
         factors = default_factors()
-        elo_note = (
-            f"Elo {home_rating} vs {away_rating}，并读取本届赛前已结束比赛 {sample_count} 场"
-            if home_rating is not None and away_rating is not None
-            else f"Elo 数据缺失；已读取本届赛前已结束比赛 {sample_count} 场并收缩到中性基线"
-        )
+        if ratings_complete:
+            elo_note = f"Elo {home_rating} vs {away_rating}；本届赛前补充样本 {sample_count} 场"
+        elif ratings_partial:
+            elo_note = f"Elo {home_rating or '缺失'} vs {away_rating or '缺失'}；缺失一方以全球中位数 {elo_median} 收缩"
+        else:
+            elo_note = f"双方 Elo 缺失；读取本届赛前已结束比赛 {sample_count} 场并收缩到中性基线"
         factors[0] = {
             "label": "球队实力", "direction": "neutral", "value": 0.0,
             "note": elo_note,
             "active": True,
+            "admissionStatus": "core",
         }
         factors[1] = {
             "label": "预计首发", "direction": "neutral", "value": 0.0,
@@ -205,6 +238,12 @@ def football_data_seeds(client: FootballDataClient, target_date: str) -> list[di
                     }
             except Exception:  # noqa: BLE001 - missing weather is reported in the output
                 pass
+        missing_data = ["缺少可靠的预计首发、实时伤停和球员近 365 天俱乐部高级数据"]
+        if ratings_partial:
+            missing_team = home_name if home_rating is None else away_name
+            missing_data.append(f"{missing_team} 的 Elo 评分缺失，暂以全球中位数收缩")
+        elif not ratings_complete:
+            missing_data.append("双方 Elo 评分缺失，基础实力仅使用赛前可见比赛结果")
         seeds.append({
             "sporttery_id": "",
             "api_fixture_id": fixture["id"],
@@ -216,14 +255,11 @@ def football_data_seeds(client: FootballDataClient, target_date: str) -> list[di
             "away_flag": team_flag(away),
             "venue": venue_name,
             "base_xg": [home_xg, away_xg],
-            "coverage": round(min(0.74, (0.72 if home_rating is not None and away_rating is not None else 0.58) + sample_count * 0.01), 3),
+            "coverage": round(min(0.86, (0.80 if ratings_complete else 0.66 if ratings_partial else 0.58) + sample_count * 0.01), 3),
             "weather": weather_text,
             "factors": factors,
-            "elo_live": bool(elo_ratings),
-            "missing_data": [
-                "免费档不含可靠的预计首发、实时伤停和球员近 365 天俱乐部高级数据",
-                "当前基础强度仅使用本届世界杯赛前已结束比赛；样本不足时已降低覆盖率",
-            ],
+            "elo_live": ratings_complete,
+            "missing_data": missing_data,
         })
     return seeds
 
@@ -278,6 +314,7 @@ def make_quote(
     observed_at: str,
     stars: int = 0,
     handicap: int | None = None,
+    excluded_scores: list[str] | None = None,
 ) -> dict:
     available = odds is not None
     raw = expected_return(model_probability, odds) if odds else None
@@ -291,9 +328,11 @@ def make_quote(
         "market": market,
         "selection": selection,
         "handicap": handicap,
+        "excludedScores": excluded_scores or [],
         "odds": odds,
         "modelProbability": round(model_probability, 5),
         "marketProbability": round(market_probability, 5) if market_probability is not None else None,
+        "coverage": round(coverage, 4),
         "rawExpectedReturn": round(raw, 5) if raw is not None else None,
         "robustExpectedReturn": round(robust, 5) if robust is not None else None,
         "singleEligible": single_eligible,
@@ -320,17 +359,23 @@ def score_selection_probability(selection: str, matrix: list[list[float]], offer
     return probability
 
 
-def build_match(seed: dict, market: SportteryMatch | None, generated_at: str) -> dict:
+def build_match(
+    seed: dict,
+    market: SportteryMatch | None,
+    generated_at: str,
+    simulation: TournamentSimulation | None = None,
+) -> dict:
     factors = seed.get("factors", default_factors())
     home_xg, away_xg = adjust_xg(float(seed["base_xg"][0]), float(seed["base_xg"][1]), factors)
-    matrix = score_matrix(home_xg, away_xg)
-    outcomes = outcome_probabilities(matrix)
+    match_id = market.match_id if market else seed.get("sporttery_id") or f"{seed['home_team']} vs {seed['away_team']}"
+    simulated = simulation.summaries.get(match_id) if simulation else None
+    matrix = simulated["matrix"] if simulated else score_matrix(home_xg, away_xg)
+    outcomes = simulated["outcomes"] if simulated else outcome_probabilities(matrix)
     scores = top_scores(matrix)
     coverage = float(seed.get("coverage", 0.70))
     stars = score_stars(float(scores[0]["probability"]), coverage)
     quotes = []
     label = f"{seed['home_team']} vs {seed['away_team']}"
-    match_id = market.match_id if market else seed.get("sporttery_id") or label
 
     normal_odds = market.win_draw_loss if market else {"胜": None, "平": None, "负": None}
     normal_market = normalized_market_probabilities(normal_odds)
@@ -362,7 +407,7 @@ def build_match(seed: dict, market: SportteryMatch | None, generated_at: str) ->
         probability = score_selection_probability(selection, matrix, offered_scores)
         quotes.append(make_quote(
             match_id, label, "比分", selection, odds, probability, score_market.get(selection),
-            coverage, False, generated_at, stars=stars,
+            coverage, False, generated_at, stars=stars, excluded_scores=sorted(offered_scores),
         ))
 
     total_goal_model = total_goals_probabilities(matrix)
@@ -374,7 +419,7 @@ def build_match(seed: dict, market: SportteryMatch | None, generated_at: str) ->
             total_goal_market.get(selection), coverage, bool(market and "总进球数" in market.single_markets), generated_at,
         ))
 
-    half_full_model = half_full_probabilities(home_xg, away_xg)
+    half_full_model = simulated["halfFull"] if simulated else half_full_probabilities(home_xg, away_xg)
     half_full_odds = market.half_full if market else {}
     half_full_market = normalized_market_probabilities(half_full_odds) if half_full_odds else {}
     for selection, probability in half_full_model.items():
@@ -406,6 +451,9 @@ def build_match(seed: dict, market: SportteryMatch | None, generated_at: str) ->
         "altitude": venue["altitude"] if venue else 0,
         "missingData": seed.get("missing_data", []),
         "factors": factors,
+        "lineupImpact": seed.get("lineup_impact", []),
+        "intelligence": seed.get("intelligence", []),
+        "simulation": simulated["quality"] if simulated else None,
         "quotes": quotes,
     }
 
@@ -475,16 +523,42 @@ def main() -> None:
         degraded_reasons.append("目标日期没有可用比赛种子数据")
 
     apply_availability(seeds, target_date, load_availability())
+    apply_intelligence(seeds, load_daily_intelligence(target_date, generated_at))
+    apply_lineup_impacts(seeds)
+    apply_factor_admissions(seeds, load_factor_admissions())
+
+    simulation_inputs = []
+    for seed in seeds:
+        market = match_seed_to_market(seed, markets)
+        match_id = market.match_id if market else seed.get("sporttery_id") or f"{seed['home_team']} vs {seed['away_team']}"
+        factors = seed.get("factors", default_factors())
+        home_xg, away_xg = adjust_xg(float(seed["base_xg"][0]), float(seed["base_xg"][1]), factors)
+        simulation_inputs.append(MatchSimulationInput(
+            match_id=match_id,
+            home_team=seed["home_team"],
+            away_team=seed["away_team"],
+            home_xg=home_xg,
+            away_xg=away_xg,
+            stage=seed.get("stage", "single"),
+            group=seed.get("group"),
+            stage_complete=bool(seed.get("stage_complete", False)),
+            parameter_samples=tuple(tuple(sample) for sample in seed.get("parameter_samples", [])),
+        ))
+    simulation = simulate_tournament(
+        simulation_inputs,
+        paths=SETTINGS.simulations,
+        seed=SETTINGS.random_seed,
+    ) if simulation_inputs else None
 
     built_matches = []
     for seed in seeds:
         market = match_seed_to_market(seed, markets)
         if market is None:
             degraded_reasons.append(f"{seed['home_team']} vs {seed['away_team']} 未匹配到体彩赔率")
-        built_matches.append(build_match(seed, market, generated_at))
+        built_matches.append(build_match(seed, market, generated_at, simulation))
 
     all_quotes = [quote for match in built_matches for quote in match["quotes"]]
-    portfolios = build_portfolios(all_quotes, SETTINGS.initial_bankroll)
+    portfolios = build_portfolios(all_quotes, SETTINGS.initial_bankroll, simulation=simulation)
     coverage = sum(match["coverage"] for match in built_matches) / len(built_matches) if built_matches else 0
     weather_live = team_data_live and bool(built_matches) and all(
         any(factor["label"] == "温湿度与风" and factor["active"] for factor in match["factors"])
@@ -495,8 +569,20 @@ def main() -> None:
         "generatedAt": generated_at,
         "targetDate": target_date,
         "timezone": SETTINGS.timezone,
-        "modelVersion": "0.1.0",
-        "simulations": SETTINGS.simulations,
+        "modelVersion": LEGACY_MODEL_VERSION,
+        "pipelineVersion": PIPELINE_VERSION,
+        "dataSnapshot": build_snapshot_manifest(local_snapshot_paths(), generated_at),
+        "reproducibility": {
+            "baselineFrozen": True,
+            "randomSeed": SETTINGS.random_seed,
+        },
+        "simulations": simulation.paths if simulation else 0,
+        "simulationQuality": {
+            "actualPaths": simulation.paths if simulation else 0,
+            "seed": simulation.seed if simulation else SETTINGS.random_seed,
+            "parameterUncertainty": simulation.parameter_uncertainty if simulation else "unavailable",
+            "groupRankProbabilities": simulation.group_rank_probabilities if simulation else {},
+        },
         "bankroll": SETTINGS.initial_bankroll,
         "oddsFreshMinutes": 0,
         "overallCoverage": round(coverage, 4),

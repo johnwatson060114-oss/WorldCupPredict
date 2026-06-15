@@ -15,7 +15,9 @@ import { BacktestPage } from './pages/BacktestPage'
 import { MethodPage } from './pages/MethodPage'
 import { PersonalBetPage } from './pages/PersonalBetPage'
 import { useForecast } from './hooks/useForecast'
-import { appendLedgerEntry, currentBalance, emptyLedger, loadLedger, saveLedger, settleLedger } from './lib/ledger'
+import { captureModelSnapshot, loadPersonalLedger, settlePersonalLedger } from './features/personal-bets/storage'
+import type { PersonalBetLedger } from './features/personal-bets/types'
+import { appendLedgerEntry, combinedAvailableBalance, currentBalance, emptyLedger, loadLedger, saveLedger, settleLedger } from './lib/ledger'
 import { scalePortfolio } from './lib/portfolio'
 import type { BankrollLedger, LedgerEntry, SettlementFile, StrategyKey } from './types'
 
@@ -27,6 +29,7 @@ export default function App() {
   const [drawerOpen, setDrawerOpen] = useState(false)
   const [noBetChoice, setNoBetChoice] = useState<'hold' | 'fun'>('hold')
   const [ledger, setLedger] = useState<BankrollLedger>(() => loadLedger())
+  const [personalLedger, setPersonalLedger] = useState<PersonalBetLedger>(() => loadPersonalLedger())
   const [settlements, setSettlements] = useState<SettlementFile | null>(null)
 
   useEffect(() => {
@@ -44,6 +47,16 @@ export default function App() {
       .catch(() => undefined)
   }, [])
 
+  useEffect(() => {
+    if (!data) return
+    setPersonalLedger((current) => {
+      const captured = captureModelSnapshot(current, data)
+      return settlements ? settlePersonalLedger(captured, settlements) : captured
+    })
+  }, [data, settlements])
+
+  const availableBankroll = combinedAvailableBalance(ledger, personalLedger)
+
   const selectedMatch = useMemo(() => {
     if (!data) return null
     return data.matches.find((match) => match.id === selectedMatchId) ?? data.matches[0]
@@ -52,8 +65,8 @@ export default function App() {
   const selectedPortfolio = useMemo(() => {
     if (!data) return null
     const source = data.portfolios.find((portfolio) => portfolio.key === selectedStrategy) ?? data.portfolios[0]
-    return scalePortfolio(source, currentBalance(ledger), data.bankroll)
-  }, [data, selectedStrategy, ledger])
+    return scalePortfolio(source, availableBankroll, data.bankroll)
+  }, [data, selectedStrategy, availableBankroll])
 
   if (error) return <div className="app-state error-state"><h1>预测数据读取失败</h1><p>{error}</p><p>请先运行 <code>python -m pipeline.generate</code>。</p></div>
   if (!data) return <div className="app-state"><div className="loading-ring" /><p>正在读取明日预测...</p></div>
@@ -112,19 +125,19 @@ export default function App() {
             <MatchRail targetDate={data.targetDate} matches={data.matches} selectedId={selectedMatch.id} onSelect={setSelectedMatchId} />
             <ValueTable matches={data.matches} selectedId={selectedMatch.id} onSelect={setSelectedMatchId} />
             <TacticalPanel match={selectedMatch} onOpenDetail={() => setActiveNav('analysis')} />
-            <PortfolioSection bankroll={currentBalance(ledger)} portfolios={data.portfolios.map((portfolio) => scalePortfolio(portfolio, currentBalance(ledger), data.bankroll))} emptyReason={emptyPortfolioReason} selected={selectedPortfolio.key} onSelect={setSelectedStrategy} onOpenDetails={() => setDrawerOpen(true)} />
+            <PortfolioSection bankroll={availableBankroll} portfolios={data.portfolios.map((portfolio) => scalePortfolio(portfolio, availableBankroll, data.bankroll))} emptyReason={emptyPortfolioReason} selected={selectedPortfolio.key} onSelect={setSelectedStrategy} onOpenDetails={() => setDrawerOpen(true)} />
             <div className="right-bottom-stack">
-              <BankrollChart portfolio={selectedPortfolio} portfolios={data.portfolios.map((portfolio) => scalePortfolio(portfolio, currentBalance(ledger), data.bankroll))} onSelect={setSelectedStrategy} />
+              <BankrollChart portfolio={selectedPortfolio} portfolios={data.portfolios.map((portfolio) => scalePortfolio(portfolio, availableBankroll, data.bankroll))} onSelect={setSelectedStrategy} />
               <NoBetPanel hasPositiveOptions={formalCandidates.length > 0} choice={noBetChoice} onChoice={setNoBetChoice} />
             </div>
           </main>
-          <StatusBar forecast={data} bankroll={currentBalance(ledger)} onOpenDetails={() => setDrawerOpen(true)} />
+          <StatusBar forecast={data} bankroll={availableBankroll} onOpenDetails={() => setDrawerOpen(true)} />
         </>
       )}
       {activeNav === 'analysis' && <AnalysisPage match={selectedMatch} />}
-      {activeNav === 'personal' && <PersonalBetPage forecast={data} settlements={settlements} />}
-      {activeNav === 'ledger' && <LedgerPage ledger={ledger} onImport={(next) => { saveLedger(next); setLedger(next) }} onReset={() => { const next = emptyLedger(); saveLedger(next); setLedger(next) }} />}
-      {activeNav === 'backtest' && <BacktestPage metrics={data.backtest} />}
+      {activeNav === 'personal' && <PersonalBetPage forecast={data} settlements={settlements} ledger={personalLedger} onLedgerChange={setPersonalLedger} />}
+      {activeNav === 'ledger' && <LedgerPage ledger={ledger} availableBankroll={availableBankroll} personalBetCount={personalLedger.bets.length} onImport={(next) => { saveLedger(next); setLedger(next) }} onReset={() => { const next = emptyLedger(); saveLedger(next); setLedger(next) }} />}
+      {activeNav === 'backtest' && <BacktestPage forecast={data} />}
       {activeNav === 'method' && <MethodPage />}
       <PortfolioDrawer open={drawerOpen} portfolio={selectedPortfolio} onClose={() => setDrawerOpen(false)} onConfirm={confirmPurchase} />
     </div>
