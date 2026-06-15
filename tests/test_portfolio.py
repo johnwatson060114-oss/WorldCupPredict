@@ -6,6 +6,7 @@ def quote(match_id: str, edge: float, odds: float = 2.0, single: bool = True):
         "id": f"q-{match_id}", "matchId": match_id, "label": f"A{match_id} vs B{match_id}",
         "market": "胜平负", "selection": "胜", "odds": odds, "modelProbability": 0.60,
         "robustExpectedReturn": edge, "available": True, "singleEligible": single,
+        "recommendation": "重点推荐",
     }
 
 
@@ -29,4 +30,13 @@ def test_portfolios_respect_bankroll_caps_and_distinct_parlay_matches():
 
 def test_negative_edge_produces_no_ticket():
     portfolios = build_portfolios([quote("1", -0.01)], bankroll=200)
+    assert all(not portfolio["tickets"] for portfolio in portfolios)
+
+
+def test_observation_only_quote_never_enters_a_formal_portfolio():
+    observed = quote("1", 4.0, odds=50.0)
+    observed.update({"market": "半全场", "selection": "负负", "recommendation": "观察"})
+
+    portfolios = build_portfolios([observed], bankroll=200)
+
     assert all(not portfolio["tickets"] for portfolio in portfolios)

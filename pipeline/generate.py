@@ -21,11 +21,13 @@ from .model import (
     adjust_xg,
     estimate_from_recent_results,
     expected_return,
+    half_full_probabilities,
     normalized_market_probabilities,
     outcome_probabilities,
     probability_lower_bound,
     score_matrix,
     score_stars,
+    total_goals_probabilities,
     top_scores,
 )
 from .portfolio import build_portfolios
@@ -302,6 +304,22 @@ def make_quote(
     }
 
 
+def score_selection_probability(selection: str, matrix: list[list[float]], offered: set[str]) -> float:
+    if ":" in selection and selection.replace(":", "").isdigit():
+        home, away = (int(value) for value in selection.split(":"))
+        return matrix[home][away] if home < len(matrix) and away < len(matrix[home]) else 0.0
+    other_outcome = {"胜其它": "home", "平其它": "draw", "负其它": "away"}.get(selection)
+    if other_outcome is None:
+        return 0.0
+    probability = 0.0
+    for home, row in enumerate(matrix):
+        for away, value in enumerate(row):
+            outcome = "home" if home > away else "draw" if home == away else "away"
+            if outcome == other_outcome and f"{home}:{away}" not in offered:
+                probability += value
+    return probability
+
+
 def build_match(seed: dict, market: SportteryMatch | None, generated_at: str) -> dict:
     factors = seed.get("factors", default_factors())
     home_xg, away_xg = adjust_xg(float(seed["base_xg"][0]), float(seed["base_xg"][1]), factors)
@@ -335,13 +353,36 @@ def build_match(seed: dict, market: SportteryMatch | None, generated_at: str) ->
 
     score_odds = market.scores if market else {}
     score_market = normalized_market_probabilities(score_odds) if score_odds else {}
-    for score in scores[:3]:
-        odds = score_odds.get(str(score["score"]))
+    for score in scores:
+        score["odds"] = score_odds.get(str(score["score"]))
+    offered_scores = {selection for selection in score_odds if ":" in selection}
+    score_selections = list(score_odds) if score_odds else [str(score["score"]) for score in scores[:3]]
+    for selection in score_selections:
+        odds = score_odds.get(selection)
+        probability = score_selection_probability(selection, matrix, offered_scores)
         quotes.append(make_quote(
-            match_id, label, "比分", str(score["score"]), odds, float(score["probability"]), score_market.get(str(score["score"])),
+            match_id, label, "比分", selection, odds, probability, score_market.get(selection),
             coverage, False, generated_at, stars=stars,
         ))
-        score["odds"] = odds
+
+    total_goal_model = total_goals_probabilities(matrix)
+    total_goal_odds = market.total_goals if market else {}
+    total_goal_market = normalized_market_probabilities(total_goal_odds) if total_goal_odds else {}
+    for selection, probability in total_goal_model.items():
+        quotes.append(make_quote(
+            match_id, label, "总进球数", selection, total_goal_odds.get(selection), probability,
+            total_goal_market.get(selection), coverage, bool(market and "总进球数" in market.single_markets), generated_at,
+        ))
+
+    half_full_model = half_full_probabilities(home_xg, away_xg)
+    half_full_odds = market.half_full if market else {}
+    half_full_market = normalized_market_probabilities(half_full_odds) if half_full_odds else {}
+    for selection, probability in half_full_model.items():
+        half_full_coverage = max(0.0, coverage - 0.08)
+        quotes.append(make_quote(
+            match_id, label, "半全场", selection, half_full_odds.get(selection), probability,
+            half_full_market.get(selection), half_full_coverage, bool(market and "半全场" in market.single_markets), generated_at,
+        ))
 
     venue = VENUES.get(seed.get("venue"))
     return {

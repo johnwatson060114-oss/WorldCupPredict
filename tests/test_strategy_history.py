@@ -31,3 +31,25 @@ def test_strategy_history_settles_single_ticket(tmp_path):
     assert result["status"] == "settled"
     assert result["profit"] == 8
     assert result["roi"] == 0.8
+
+
+def test_strategy_history_settles_total_goals_and_half_full(tmp_path):
+    history_dir = tmp_path / "history"
+    history_dir.mkdir()
+    (history_dir / "2026-06-15.json").write_text(json.dumps({
+        "targetDate": "2026-06-15", "generatedAt": "before-match", "overallCoverage": 0.9,
+        "portfolios": [{"key": "balanced", "name": "均衡", "stake": 4, "tickets": [
+            {"potentialPayout": 6, "legs": [{"matchId": "m1", "market": "总进球数", "selection": "3"}]},
+            {"potentialPayout": 8, "legs": [{"matchId": "m1", "market": "半全场", "selection": "平胜"}]},
+        ]}],
+    }), encoding="utf-8")
+    settlements = tmp_path / "settlements.json"
+    settlements.write_text(json.dumps({"matches": [{
+        "matchId": "m1", "homeScore": 2, "awayScore": 1,
+        "halfTimeHomeScore": 0, "halfTimeAwayScore": 0,
+    }]}), encoding="utf-8")
+
+    result = build_strategy_history(history_dir, settlements)["days"][0]["strategies"][0]
+
+    assert result["status"] == "settled"
+    assert result["payout"] == 14

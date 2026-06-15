@@ -3,13 +3,22 @@ import type { MarketType, Portfolio, StrategyKey } from '../../types'
 export type DecisionSource = StrategyKey | 'subjective'
 export type PersonalBetStatus = 'pending' | 'settled' | 'void'
 
+export interface PersonalBetLeg {
+  matchId: string
+  matchLabel: string
+  market: MarketType
+  selection: string
+  odds: number
+  modelProbability?: number
+}
+
 export interface PersonalBet {
   id: string
   createdAt: string
   targetDate: string
   matchId?: string
   matchLabel: string
-  market: MarketType | '自定义'
+  market: MarketType | '混合过关' | '自定义'
   selection: string
   odds: number
   stake: number
@@ -20,6 +29,7 @@ export interface PersonalBet {
   note?: string
   forecastGeneratedAt?: string
   modelProbability?: number
+  legs?: PersonalBetLeg[]
 }
 
 export interface ModelDaySnapshot {
@@ -67,4 +77,16 @@ export interface ProjectionSummary {
   p95: number
   stopProbability: number
   medianMaxDrawdown: number
+}
+
+export interface ActualStrategySummary {
+  key: StrategyKey
+  name: string
+  color: string
+  balance: number
+  profit: number
+  totalStake: number
+  roi: number | null
+  settledDays: number
+  path: number[]
 }

@@ -1,5 +1,5 @@
 import type { Portfolio, StrategyKey } from '../../types'
-import type { PersonalBetLedger, ProjectionSummary, StrategyHistory } from './types'
+import type { ActualStrategySummary, PersonalBetLedger, ProjectionSummary, StrategyHistory } from './types'
 
 export type ComparisonMode = 'matched' | 'all'
 
@@ -32,6 +32,43 @@ const strategyNames: Record<StrategyKey | 'mixed', string> = {
   balanced: '均衡',
   aggressive: '激进',
   mixed: '我的混合策略',
+}
+
+export const actualStrategyPerformance = (history: StrategyHistory | null): { dates: string[]; summaries: ActualStrategySummary[]; pendingDays: number } => {
+  const settledDates = (history?.days ?? [])
+    .filter((day) => day.strategies.some((strategy) => strategy.status === 'settled'))
+    .map((day) => day.targetDate)
+  const pendingDays = (history?.days ?? []).filter((day) => day.strategies.some((strategy) => strategy.status === 'pending')).length
+  const summaries = (['conservative', 'balanced', 'aggressive'] as StrategyKey[]).map((key) => {
+    let balance = 200
+    let totalStake = 0
+    let settledDays = 0
+    const path = [balance]
+    for (const date of settledDates) {
+      const day = history?.days.find((item) => item.targetDate === date)
+      const strategy = day?.strategies.find((item) => item.key === key)
+      if (balance >= 2 && strategy?.status === 'settled' && strategy.profit !== null) {
+        const scale = balance / 200
+        totalStake += strategy.stake * scale
+        balance = Math.max(0, balance + strategy.profit * scale)
+        settledDays += 1
+      }
+      path.push(round(balance))
+    }
+    const profit = balance - 200
+    return {
+      key,
+      name: strategyNames[key],
+      color: strategyColors[key],
+      balance: round(balance),
+      profit: round(profit),
+      totalStake: round(totalStake),
+      roi: totalStake > 0 ? profit / totalStake : null,
+      settledDays,
+      path,
+    }
+  })
+  return { dates: ['起始', ...settledDates], summaries, pendingDays }
 }
 
 const round = (value: number) => Math.round(value * 100) / 100
@@ -192,6 +229,13 @@ const pickMixedPortfolio = (portfolios: Portfolio[], weights: ReturnType<typeof 
   return portfolios.find((portfolio) => portfolio.key === key) ?? portfolios[0]
 }
 
+const pickMixedKey = (weights: ReturnType<typeof mixedWeights>, random: () => number): StrategyKey => {
+  const needle = random()
+  return needle < weights.conservative
+    ? 'conservative'
+    : needle < weights.conservative + weights.balanced ? 'balanced' : 'aggressive'
+}
+
 export const projectToFinal = (
   portfolios: Portfolio[],
   history: StrategyHistory | null,
@@ -203,6 +247,11 @@ export const projectToFinal = (
   const dates = ['已结算', ...futureDates]
   const keys: Array<StrategyKey | 'mixed'> = ['conservative', 'balanced', 'aggressive', 'mixed']
   const weights = mixedWeights(ledger)
+  const empiricalFactors: Record<StrategyKey, number[]> = {
+    conservative: settledFactors(history, 'conservative'),
+    balanced: settledFactors(history, 'balanced'),
+    aggressive: settledFactors(history, 'aggressive'),
+  }
   const summaries = keys.map((key, keyIndex) => {
     const paths: number[][] = []
     const finals: number[] = []
@@ -226,11 +275,17 @@ export const projectToFinal = (
           path.push(round(balance))
           continue
         }
-        const portfolio = key === 'mixed'
-          ? pickMixedPortfolio(portfolios, weights, random)
-          : portfolios.find((item) => item.key === key) ?? portfolios[0]
-        const sampledBankroll = weightedSample(portfolio, random)
-        balance = Math.max(0, balance * sampledBankroll / 200)
+        const empiricalKey = key === 'mixed' ? pickMixedKey(weights, random) : key
+        const factors = empiricalFactors[empiricalKey]
+        if (factors.length >= 5) {
+          balance = Math.max(0, balance * factors[Math.floor(random() * factors.length)])
+        } else {
+          const portfolio = key === 'mixed'
+            ? pickMixedPortfolio(portfolios, weights, random)
+            : portfolios.find((item) => item.key === key) ?? portfolios[0]
+          const sampledBankroll = weightedSample(portfolio, random)
+          balance = Math.max(0, balance * sampledBankroll / 200)
+        }
         peak = Math.max(peak, balance)
         maxDrawdown = Math.max(maxDrawdown, peak > 0 ? (peak - balance) / peak : 0)
         path.push(round(balance))

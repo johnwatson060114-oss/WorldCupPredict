@@ -48,10 +48,20 @@ def test_api_snapshot_reads_live_markets_scores_and_single_flags():
         "crs": {"s01s00": "7.25", "s01s01": "3.90", "s1sh": "300.0"},
         "poolList": [{"poolCode": "CRS", "poolStatus": "Selling", "single": 0}],
     }
+    mixed = {
+        "matchId": 537358,
+        "ttg": {"s0": "8.00", "s1": "4.20", "s2": "3.10", "s3": "3.60", "s4": "6.00", "s5": "12.00", "s6": "25.00", "s7": "40.00"},
+        "hafu": {"hh": "2.80", "hd": "12.00", "ha": "35.00", "dh": "4.80", "dd": "5.50", "da": "10.00", "ah": "18.00", "ad": "14.00", "aa": "7.00"},
+        "poolList": [
+            {"poolCode": "TTG", "poolStatus": "Selling", "single": 1},
+            {"poolCode": "HAFU", "poolStatus": "Selling", "single": 0},
+        ],
+    }
 
     matches = parse_api_snapshots(
         {"value": {"matchInfoList": [{"subMatchList": [base]}]}},
         {"value": {"matchInfoList": [{"subMatchList": [score]}]}},
+        {"value": {"matchInfoList": [{"subMatchList": [mixed]}]}},
     )
 
     match = matches["537358"]
@@ -59,4 +69,6 @@ def test_api_snapshot_reads_live_markets_scores_and_single_flags():
     assert match.handicap == -1
     assert match.win_draw_loss == {"胜": 1.67, "平": 3.35, "负": 4.3}
     assert match.scores == {"1:0": 7.25, "1:1": 3.9, "胜其它": 300.0}
-    assert match.single_markets == {"胜平负"}
+    assert match.total_goals["7+"] == 40.0
+    assert match.half_full["平胜"] == 4.8
+    assert match.single_markets == {"胜平负", "总进球数"}

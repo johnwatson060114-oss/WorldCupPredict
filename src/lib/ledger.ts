@@ -1,6 +1,7 @@
 import type { BankrollLedger, LedgerEntry, MatchSettlement, SettlementFile, TicketLeg } from '../types'
 
 const STORAGE_KEY = 'world-cup-predict-bankroll-ledger-v1'
+const standardScores = new Set(['1:0', '2:0', '2:1', '3:0', '3:1', '3:2', '4:0', '4:1', '4:2', '5:0', '5:1', '5:2', '0:0', '1:1', '2:2', '3:3', '0:1', '0:2', '1:2', '0:3', '1:3', '2:3', '0:4', '1:4', '2:4', '0:5', '1:5', '2:5'])
 
 export const emptyLedger = (): BankrollLedger => ({
   schemaVersion: 1,
@@ -47,7 +48,23 @@ export const downloadLedger = (ledger: BankrollLedger) => {
 }
 
 const legWon = (leg: TicketLeg, result: MatchSettlement) => {
-  if (leg.market === '比分') return leg.selection === `${result.homeScore}:${result.awayScore}`
+  if (leg.market === '比分') {
+    const score = `${result.homeScore}:${result.awayScore}`
+    if (leg.selection === score || leg.selection === score.replace(':', '-')) return true
+    if (standardScores.has(score)) return false
+    const outcome = result.homeScore > result.awayScore ? '胜其它' : result.homeScore === result.awayScore ? '平其它' : '负其它'
+    return leg.selection === outcome
+  }
+  if (leg.market === '总进球数') {
+    const total = result.homeScore + result.awayScore
+    return leg.selection === (total >= 7 ? '7+' : String(total))
+  }
+  if (leg.market === '半全场') {
+    if (result.halfTimeHomeScore === null || result.halfTimeHomeScore === undefined || result.halfTimeAwayScore === null || result.halfTimeAwayScore === undefined) return null
+    const half = result.halfTimeHomeScore > result.halfTimeAwayScore ? '胜' : result.halfTimeHomeScore === result.halfTimeAwayScore ? '平' : '负'
+    const full = result.homeScore > result.awayScore ? '胜' : result.homeScore === result.awayScore ? '平' : '负'
+    return leg.selection === `${half}${full}`
+  }
   const handicapMatch = leg.selection.match(/^([+-]\d+)\s+(胜|平|负)$/)
   const handicap = handicapMatch ? Number(handicapMatch[1]) : 0
   const selection = handicapMatch?.[2] ?? leg.selection
@@ -63,8 +80,10 @@ export const settleLedger = (ledger: BankrollLedger, settlementFile: SettlementF
     if (entry.status !== 'pending') return entry
     const allMatchIds = new Set(entry.tickets.flatMap((ticket) => ticket.legs.map((leg) => leg.matchId)))
     if ([...allMatchIds].some((matchId) => !results.has(matchId))) return entry
+    const outcomes = entry.tickets.flatMap((ticket) => ticket.legs.map((leg) => legWon(leg, results.get(leg.matchId)!)))
+    if (outcomes.some((outcome) => outcome === null)) return entry
     const payout = entry.tickets.reduce((sum, ticket) => {
-      const won = ticket.legs.every((leg) => legWon(leg, results.get(leg.matchId)!))
+      const won = ticket.legs.every((leg) => legWon(leg, results.get(leg.matchId)!) === true)
       return sum + (won ? ticket.potentialPayout : 0)
     }, 0)
     changed = true

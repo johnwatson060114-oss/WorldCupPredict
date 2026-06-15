@@ -41,6 +41,7 @@ def _single_candidates(quotes: list[dict[str, Any]]) -> list[dict[str, Any]]:
         quote for quote in quotes
         if quote.get("available")
         and quote.get("singleEligible")
+        and quote.get("recommendation") in {"重点推荐", "小注可选"}
         and (quote.get("robustExpectedReturn") or -1) > 0
         and quote.get("odds")
     ]
@@ -51,6 +52,7 @@ def _parlay_candidates(quotes: list[dict[str, Any]], size: int) -> list[tuple[di
         quote for quote in quotes
         if quote.get("available")
         and quote.get("market") != "比分"
+        and quote.get("recommendation") in {"重点推荐", "小注可选"}
         and (quote.get("robustExpectedReturn") or -1) > 0
         and quote.get("odds")
     ]

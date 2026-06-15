@@ -9,13 +9,35 @@ from zoneinfo import ZoneInfo
 from .config import OUTPUT_DIR, SETTINGS
 
 FINAL_DATE = "2026-07-19"
+STANDARD_SCORES = {
+    "1:0", "2:0", "2:1", "3:0", "3:1", "3:2", "4:0", "4:1", "4:2", "5:0", "5:1", "5:2",
+    "0:0", "1:1", "2:2", "3:3",
+    "0:1", "0:2", "1:2", "0:3", "1:3", "2:3", "0:4", "1:4", "2:4", "0:5", "1:5", "2:5",
+}
 
 
-def leg_won(leg: dict, result: dict) -> bool:
+def leg_won(leg: dict, result: dict) -> bool | None:
     home_score = int(result["homeScore"])
     away_score = int(result["awayScore"])
     if leg["market"] == "比分":
-        return leg["selection"] in {f"{home_score}:{away_score}", f"{home_score}-{away_score}"}
+        score = f"{home_score}:{away_score}"
+        if leg["selection"] in {score, score.replace(":", "-")}:
+            return True
+        if score in STANDARD_SCORES:
+            return False
+        outcome = "胜其它" if home_score > away_score else "平其它" if home_score == away_score else "负其它"
+        return leg["selection"] == outcome
+    if leg["market"] == "总进球数":
+        total = home_score + away_score
+        return leg["selection"] == ("7+" if total >= 7 else str(total))
+    if leg["market"] == "半全场":
+        half_home = result.get("halfTimeHomeScore")
+        half_away = result.get("halfTimeAwayScore")
+        if half_home is None or half_away is None:
+            return None
+        half = "胜" if half_home > half_away else "平" if half_home == half_away else "负"
+        full = "胜" if home_score > away_score else "平" if home_score == away_score else "负"
+        return leg["selection"] == f"{half}{full}"
     handicap_match = re.match(r"^([+-]\d+)\s+(胜|平|负)$", leg["selection"])
     handicap = int(handicap_match.group(1)) if handicap_match else 0
     selection = handicap_match.group(2) if handicap_match else leg["selection"]
@@ -49,7 +71,13 @@ def settle_portfolio(portfolio: dict, settlements: dict[str, dict]) -> dict:
         }
     payout = 0.0
     for ticket in tickets:
-        won = all(leg_won(leg, settlements[leg["matchId"]]) for leg in ticket.get("legs", []))
+        outcomes = [leg_won(leg, settlements[leg["matchId"]]) for leg in ticket.get("legs", [])]
+        if any(outcome is None for outcome in outcomes):
+            return {
+                "key": portfolio["key"], "name": portfolio["name"], "stake": portfolio["stake"],
+                "payout": None, "profit": None, "roi": None, "status": "pending",
+            }
+        won = all(outcomes)
         if won:
             payout += float(ticket["potentialPayout"])
     stake = float(portfolio["stake"])

@@ -24,6 +24,8 @@ class SportteryMatch:
     win_draw_loss: dict[str, float | None] = field(default_factory=dict)
     handicap_win_draw_loss: dict[str, float | None] = field(default_factory=dict)
     scores: dict[str, float] = field(default_factory=dict)
+    total_goals: dict[str, float] = field(default_factory=dict)
+    half_full: dict[str, float] = field(default_factory=dict)
     single_markets: set[str] = field(default_factory=set)
 
 
@@ -111,7 +113,8 @@ def fetch_page(url: str) -> str:
 def fetch_sporttery() -> dict[str, SportteryMatch]:
     snapshot = load_live_snapshot()
     if snapshot is not None:
-        return parse_api_snapshots(snapshot["spf"]["payload"], snapshot["score"]["payload"])
+        mixed = snapshot.get("mixed", {}).get("payload")
+        return parse_api_snapshots(snapshot["spf"]["payload"], snapshot["score"]["payload"], mixed)
     matches = parse_spf_html(fetch_page(SPORTTERY_URLS["spf"]))
     parse_score_html(fetch_page(SPORTTERY_URLS["score"]), matches)
     return matches
@@ -157,8 +160,38 @@ def _score_odds(match: dict[str, Any]) -> dict[str, float]:
     return result
 
 
+def _total_goals_odds(match: dict[str, Any]) -> dict[str, float]:
+    if not _pool_selling(match, "ttg"):
+        return {}
+    result: dict[str, float] = {}
+    for goals in range(8):
+        value = _number(str(match.get("ttg", {}).get(f"s{goals}", "")))
+        if value is not None:
+            result["7+" if goals == 7 else str(goals)] = value
+    return result
+
+
+def _half_full_odds(match: dict[str, Any]) -> dict[str, float]:
+    if not _pool_selling(match, "hafu"):
+        return {}
+    labels = {
+        "hh": "胜胜", "hd": "胜平", "ha": "胜负",
+        "dh": "平胜", "dd": "平平", "da": "平负",
+        "ah": "负胜", "ad": "负平", "aa": "负负",
+    }
+    result: dict[str, float] = {}
+    for key, label in labels.items():
+        value = _number(str(match.get("hafu", {}).get(key, "")))
+        if value is not None:
+            result[label] = value
+    return result
+
+
 def _single_markets(match: dict[str, Any]) -> set[str]:
-    names = {"had": "胜平负", "hhad": "让球胜平负", "crs": "比分"}
+    names = {
+        "had": "胜平负", "hhad": "让球胜平负", "crs": "比分",
+        "ttg": "总进球数", "hafu": "半全场",
+    }
     return {
         names[code]
         for pool in match.get("poolList", [])
@@ -167,7 +200,11 @@ def _single_markets(match: dict[str, Any]) -> set[str]:
     }
 
 
-def parse_api_snapshots(spf_payload: dict[str, Any], score_payload: dict[str, Any]) -> dict[str, SportteryMatch]:
+def parse_api_snapshots(
+    spf_payload: dict[str, Any],
+    score_payload: dict[str, Any],
+    mixed_payload: dict[str, Any] | None = None,
+) -> dict[str, SportteryMatch]:
     matches: dict[str, SportteryMatch] = {}
     for item in _flatten(spf_payload):
         match_id = str(item.get("matchId", ""))
@@ -192,6 +229,12 @@ def parse_api_snapshots(spf_payload: dict[str, Any], score_payload: dict[str, An
         match_id = str(item.get("matchId", ""))
         if match_id in matches:
             matches[match_id].scores = _score_odds(item)
+            matches[match_id].single_markets.update(_single_markets(item))
+    for item in _flatten(mixed_payload or {}):
+        match_id = str(item.get("matchId", ""))
+        if match_id in matches:
+            matches[match_id].total_goals = _total_goals_odds(item)
+            matches[match_id].half_full = _half_full_odds(item)
             matches[match_id].single_markets.update(_single_markets(item))
     if not matches:
         raise ValueError("Sporttery API snapshot structure changed: no matches found")

@@ -59,6 +59,7 @@ def main() -> None:
                     status = fixture.get("status")
                     fixture_id = fixture.get("id")
                     score = fixture.get("score", {}).get("fullTime", {})
+                    half_time = fixture.get("score", {}).get("halfTime", {}) or {}
                     settled_at = fixture.get("utcDate")
                     final_statuses = {"FINISHED"}
                 else:
@@ -67,6 +68,7 @@ def main() -> None:
                     status = fixture["fixture"]["status"]["short"]
                     fixture_id = fixture["fixture"].get("id")
                     score = fixture["goals"]
+                    half_time = fixture.get("score", {}).get("halftime", {}) or {}
                     settled_at = fixture["fixture"]["date"]
                     final_statuses = {"FT", "AET", "PEN"}
                 id_matches = match.get("apiFixtureId") and fixture_id == match.get("apiFixtureId")
@@ -79,6 +81,8 @@ def main() -> None:
                     "matchId": match["id"],
                     "homeScore": score["home"],
                     "awayScore": score["away"],
+                    "halfTimeHomeScore": half_time.get("home"),
+                    "halfTimeAwayScore": half_time.get("away"),
                     "settledAt": settled_at,
                 }
                 break

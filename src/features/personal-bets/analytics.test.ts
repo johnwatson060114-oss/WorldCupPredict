@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import type { Portfolio } from '../../types'
-import { buildFairComparison, projectToFinal } from './analytics'
+import { actualStrategyPerformance, buildFairComparison, projectToFinal } from './analytics'
 import type { PersonalBetLedger, StrategyHistory } from './types'
 
 const ledger: PersonalBetLedger = {
@@ -42,5 +42,14 @@ describe('personal betting analytics', () => {
     const result = projectToFinal([portfolio('conservative'), portfolio('balanced'), portfolio('aggressive')], null, { ...ledger, bets: [] }, '2026-07-18', 20)
     expect(result.summaries.every((item) => item.stopProbability === 1)).toBe(true)
     expect(result.summaries.every((item) => item.median === 0)).toBe(true)
+  })
+
+  it('shows actual strategy profit only from settled days and rolls the balance', () => {
+    const actual = actualStrategyPerformance(history)
+    const balanced = actual.summaries.find((item) => item.key === 'balanced')!
+    expect(balanced.settledDays).toBe(1)
+    expect(balanced.balance).toBe(204)
+    expect(balanced.profit).toBe(4)
+    expect(actual.pendingDays).toBe(0)
   })
 })

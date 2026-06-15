@@ -1,7 +1,8 @@
 import type { DailyForecast, MatchSettlement, SettlementFile } from '../../types'
-import type { ModelDaySnapshot, PersonalBet, PersonalBetLedger } from './types'
+import type { ModelDaySnapshot, PersonalBet, PersonalBetLedger, PersonalBetLeg } from './types'
 
 const STORAGE_KEY = 'world-cup-predict-personal-bets-v1'
+const standardScores = new Set(['1:0', '2:0', '2:1', '3:0', '3:1', '3:2', '4:0', '4:1', '4:2', '5:0', '5:1', '5:2', '0:0', '1:1', '2:2', '3:3', '0:1', '0:2', '1:2', '0:3', '1:3', '2:3', '0:4', '1:4', '2:4', '0:5', '1:5', '2:5'])
 
 export const emptyPersonalLedger = (): PersonalBetLedger => ({
   schemaVersion: 1,
@@ -56,32 +57,60 @@ export const captureModelSnapshot = (ledger: PersonalBetLedger, forecast: DailyF
   return next
 }
 
-const betWon = (bet: PersonalBet, result: MatchSettlement) => {
-  if (bet.market === '比分') return bet.selection === `${result.homeScore}:${result.awayScore}` || bet.selection === `${result.homeScore}-${result.awayScore}`
-  if (bet.market === '自定义') return null
-  const handicapMatch = bet.selection.match(/^([+-]\d+)\s+(胜|平|负)$/)
+const legWon = (leg: PersonalBetLeg, result: MatchSettlement) => {
+  if (leg.market === '比分') {
+    const score = `${result.homeScore}:${result.awayScore}`
+    if (leg.selection === score || leg.selection === score.replace(':', '-')) return true
+    if (standardScores.has(score)) return false
+    const outcome = result.homeScore > result.awayScore ? '胜其它' : result.homeScore === result.awayScore ? '平其它' : '负其它'
+    return leg.selection === outcome
+  }
+  if (leg.market === '总进球数') {
+    const total = result.homeScore + result.awayScore
+    return leg.selection === (total >= 7 ? '7+' : String(total))
+  }
+  if (leg.market === '半全场') {
+    if (result.halfTimeHomeScore === null || result.halfTimeHomeScore === undefined || result.halfTimeAwayScore === null || result.halfTimeAwayScore === undefined) return null
+    const half = result.halfTimeHomeScore > result.halfTimeAwayScore ? '胜' : result.halfTimeHomeScore === result.halfTimeAwayScore ? '平' : '负'
+    const full = result.homeScore > result.awayScore ? '胜' : result.homeScore === result.awayScore ? '平' : '负'
+    return leg.selection === `${half}${full}`
+  }
+  const handicapMatch = leg.selection.match(/^([+-]\d+)\s+(胜|平|负)$/)
   const handicap = handicapMatch ? Number(handicapMatch[1]) : 0
-  const selection = handicapMatch?.[2] ?? bet.selection
+  const selection = handicapMatch?.[2] ?? leg.selection
   const adjustedHome = result.homeScore + handicap
   const outcome = adjustedHome > result.awayScore ? '胜' : adjustedHome === result.awayScore ? '平' : '负'
   return selection === outcome
+}
+
+const betWon = (bet: PersonalBet, results: Map<string, MatchSettlement>) => {
+  const legs = bet.legs?.length ? bet.legs : bet.matchId && bet.market !== '自定义' && bet.market !== '混合过关'
+    ? [{ matchId: bet.matchId, matchLabel: bet.matchLabel, market: bet.market, selection: bet.selection, odds: bet.odds }]
+    : []
+  if (!legs.length) return null
+  const outcomes = legs.map((leg) => {
+    const result = results.get(leg.matchId)
+    return result ? legWon(leg, result) : null
+  })
+  if (outcomes.some((outcome) => outcome === null)) return null
+  return outcomes.every(Boolean)
 }
 
 export const settlePersonalLedger = (ledger: PersonalBetLedger, settlementFile: SettlementFile) => {
   const results = new Map(settlementFile.matches.map((match) => [match.matchId, match]))
   let changed = false
   const bets = ledger.bets.map((bet) => {
-    if (bet.status !== 'pending' || !bet.matchId) return bet
-    const result = results.get(bet.matchId)
-    if (!result) return bet
-    const won = betWon(bet, result)
+    if (bet.status !== 'pending') return bet
+    const won = betWon(bet, results)
     if (won === null) return bet
+    const matchIds = bet.legs?.map((leg) => leg.matchId) ?? (bet.matchId ? [bet.matchId] : [])
+    const settledAt = matchIds.map((matchId) => results.get(matchId)?.settledAt).filter(Boolean).sort().at(-1)
     changed = true
     return {
       ...bet,
       status: 'settled' as const,
       payout: won ? Math.round(bet.stake * bet.odds * 100) / 100 : 0,
-      settledAt: result.settledAt,
+      settledAt,
     }
   })
   if (!changed) return ledger

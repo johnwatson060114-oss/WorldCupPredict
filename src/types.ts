@@ -1,5 +1,5 @@
 export type Outcome = 'home' | 'draw' | 'away'
-export type MarketType = '胜平负' | '让球胜平负' | '比分'
+export type MarketType = '胜平负' | '让球胜平负' | '比分' | '总进球数' | '半全场'
 export type Recommendation = '重点推荐' | '小注可选' | '观察' | '不建议' | '未开售'
 export type StrategyKey = 'conservative' | 'balanced' | 'aggressive'
 
@@ -157,6 +157,8 @@ export interface MatchSettlement {
   matchId: string
   homeScore: number
   awayScore: number
+  halfTimeHomeScore?: number | null
+  halfTimeAwayScore?: number | null
   settledAt: string
 }
 

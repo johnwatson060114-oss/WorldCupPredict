@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef } from 'react'
 import type { FairComparison } from './analytics'
-import type { ProjectionSummary } from './types'
+import type { ActualStrategySummary, ProjectionSummary } from './types'
 
 let echartsRuntime: Promise<typeof import('echarts/core')> | null = null
 
@@ -102,4 +102,32 @@ export function StrategyProjectionChart({ dates, summaries }: { dates: string[];
   }), [dates, summaries])
   const ref = useChart(option)
   return <div ref={ref} className="strategy-projection-chart" aria-label="三种模型策略及我的混合策略直到世界杯决赛的本金中位数轨迹" />
+}
+
+export function StrategyActualChart({ dates, summaries }: { dates: string[]; summaries: ActualStrategySummary[] }) {
+  const option = useMemo(() => ({
+    animationDuration: 450,
+    grid: { left: 50, right: 22, top: 42, bottom: 38 },
+    tooltip: {
+      trigger: 'axis',
+      backgroundColor: '#071827',
+      borderColor: '#2b4c65',
+      textStyle: { color: '#dce8f1' },
+      valueFormatter: (value: number) => `${value.toFixed(2)}元`,
+    },
+    legend: { top: 6, right: 8, textStyle: { color: '#8ca2b5' } },
+    xAxis: { type: 'category', data: dates.map((date) => date === '起始' ? date : date.slice(5)), ...baseAxis },
+    yAxis: { type: 'value', min: 0, ...baseAxis },
+    series: summaries.map((summary) => ({
+      name: summary.name,
+      type: 'line',
+      smooth: 0.18,
+      symbolSize: 5,
+      data: summary.path,
+      lineStyle: { width: 2.5, color: summary.color },
+      itemStyle: { color: summary.color },
+    })),
+  }), [dates, summaries])
+  const ref = useChart(option)
+  return <div ref={ref} className="strategy-actual-chart" aria-label="三种策略根据真实结算赛果形成的本金曲线" />
 }
