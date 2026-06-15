@@ -283,6 +283,24 @@
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
           "observedAt": "2026-06-14T22:49:08+08:00"
+        },
+        {
+          "id": "2040170-比分-4:0",
+          "matchId": "2040170",
+          "label": "德国 vs 库拉索",
+          "market": "比分",
+          "selection": "4:0",
+          "handicap": null,
+          "odds": 4.8,
+          "modelProbability": 0.10794,
+          "marketProbability": null,
+          "rawExpectedReturn": null,
+          "robustExpectedReturn": null,
+          "singleEligible": true,
+          "available": true,
+          "recommendation": "历史票面",
+          "reason": "体彩官方历史赔率补录，仅用于实际票据记账",
+          "observedAt": "2026-06-14T20:08:05+08:00"
         }
       ]
     },
@@ -833,6 +851,24 @@
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
           "observedAt": "2026-06-14T22:49:08+08:00"
+        },
+        {
+          "id": "2040172-比分-1:1",
+          "matchId": "2040172",
+          "label": "科特迪瓦 vs 厄瓜多尔",
+          "market": "比分",
+          "selection": "1:1",
+          "handicap": null,
+          "odds": 3.9,
+          "modelProbability": 0.09652,
+          "marketProbability": null,
+          "rawExpectedReturn": null,
+          "robustExpectedReturn": null,
+          "singleEligible": true,
+          "available": true,
+          "recommendation": "历史票面",
+          "reason": "体彩官方历史赔率补录，仅用于实际票据记账",
+          "observedAt": "2026-06-14T21:49:05+08:00"
         }
       ]
     },
