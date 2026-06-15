@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-15T16:58:44+08:00",
+  "generatedAt": "2026-06-15T22:13:32+08:00",
   "targetDate": "2026-06-16",
   "timezone": "Asia/Shanghai",
   "modelVersion": "legacy-dixon-coles-v1",
   "pipelineVersion": "2.0.0-dev",
   "dataSnapshot": {
     "id": "f00c5fbd09c1cf9471cc124fe5cb4e19eba0e158c077c11912f4b1292944e82b",
-    "cutoff": "2026-06-15T16:58:44+08:00",
+    "cutoff": "2026-06-15T22:13:32+08:00",
     "files": [
       {
         "path": "manual-data/availability.csv",
@@ -272,7 +272,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "西班牙-vs-佛得角-胜平负-平",
@@ -292,7 +292,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "西班牙-vs-佛得角-胜平负-负",
@@ -312,7 +312,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "西班牙-vs-佛得角-比分-2:0",
@@ -332,7 +332,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "西班牙-vs-佛得角-比分-1:0",
@@ -352,7 +352,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "西班牙-vs-佛得角-比分-3:0",
@@ -372,7 +372,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "西班牙-vs-佛得角-总进球数-0",
@@ -392,7 +392,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "西班牙-vs-佛得角-总进球数-1",
@@ -412,7 +412,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "西班牙-vs-佛得角-总进球数-2",
@@ -432,7 +432,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "西班牙-vs-佛得角-总进球数-3",
@@ -452,7 +452,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "西班牙-vs-佛得角-总进球数-4",
@@ -472,7 +472,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "西班牙-vs-佛得角-总进球数-5",
@@ -492,7 +492,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "西班牙-vs-佛得角-总进球数-6",
@@ -512,7 +512,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "西班牙-vs-佛得角-总进球数-7+",
@@ -532,7 +532,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "西班牙-vs-佛得角-半全场-胜胜",
@@ -552,7 +552,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "西班牙-vs-佛得角-半全场-胜平",
@@ -572,7 +572,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "西班牙-vs-佛得角-半全场-胜负",
@@ -592,7 +592,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "西班牙-vs-佛得角-半全场-平胜",
@@ -612,7 +612,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "西班牙-vs-佛得角-半全场-平平",
@@ -632,7 +632,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "西班牙-vs-佛得角-半全场-平负",
@@ -652,7 +652,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "西班牙-vs-佛得角-半全场-负胜",
@@ -672,7 +672,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "西班牙-vs-佛得角-半全场-负平",
@@ -692,7 +692,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "西班牙-vs-佛得角-半全场-负负",
@@ -712,7 +712,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         }
       ]
     },
@@ -920,7 +920,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "比利时-vs-埃及-胜平负-平",
@@ -940,7 +940,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "比利时-vs-埃及-胜平负-负",
@@ -960,7 +960,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "比利时-vs-埃及-比分-1:0",
@@ -980,7 +980,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "比利时-vs-埃及-比分-2:0",
@@ -1000,7 +1000,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "比利时-vs-埃及-比分-1:1",
@@ -1020,7 +1020,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "比利时-vs-埃及-总进球数-0",
@@ -1040,7 +1040,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "比利时-vs-埃及-总进球数-1",
@@ -1060,7 +1060,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "比利时-vs-埃及-总进球数-2",
@@ -1080,7 +1080,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "比利时-vs-埃及-总进球数-3",
@@ -1100,7 +1100,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "比利时-vs-埃及-总进球数-4",
@@ -1120,7 +1120,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "比利时-vs-埃及-总进球数-5",
@@ -1140,7 +1140,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "比利时-vs-埃及-总进球数-6",
@@ -1160,7 +1160,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "比利时-vs-埃及-总进球数-7+",
@@ -1180,7 +1180,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "比利时-vs-埃及-半全场-胜胜",
@@ -1200,7 +1200,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "比利时-vs-埃及-半全场-胜平",
@@ -1220,7 +1220,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "比利时-vs-埃及-半全场-胜负",
@@ -1240,7 +1240,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "比利时-vs-埃及-半全场-平胜",
@@ -1260,7 +1260,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "比利时-vs-埃及-半全场-平平",
@@ -1280,7 +1280,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "比利时-vs-埃及-半全场-平负",
@@ -1300,7 +1300,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "比利时-vs-埃及-半全场-负胜",
@@ -1320,7 +1320,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "比利时-vs-埃及-半全场-负平",
@@ -1340,7 +1340,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "比利时-vs-埃及-半全场-负负",
@@ -1360,7 +1360,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         }
       ]
     },
@@ -1568,7 +1568,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "沙特-vs-乌拉圭-胜平负-平",
@@ -1588,7 +1588,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "沙特-vs-乌拉圭-胜平负-负",
@@ -1608,7 +1608,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "沙特-vs-乌拉圭-比分-0:2",
@@ -1628,7 +1628,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "沙特-vs-乌拉圭-比分-0:1",
@@ -1648,7 +1648,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "沙特-vs-乌拉圭-比分-0:3",
@@ -1668,7 +1668,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "沙特-vs-乌拉圭-总进球数-0",
@@ -1688,7 +1688,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "沙特-vs-乌拉圭-总进球数-1",
@@ -1708,7 +1708,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "沙特-vs-乌拉圭-总进球数-2",
@@ -1728,7 +1728,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "沙特-vs-乌拉圭-总进球数-3",
@@ -1748,7 +1748,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "沙特-vs-乌拉圭-总进球数-4",
@@ -1768,7 +1768,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "沙特-vs-乌拉圭-总进球数-5",
@@ -1788,7 +1788,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "沙特-vs-乌拉圭-总进球数-6",
@@ -1808,7 +1808,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "沙特-vs-乌拉圭-总进球数-7+",
@@ -1828,7 +1828,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "沙特-vs-乌拉圭-半全场-胜胜",
@@ -1848,7 +1848,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "沙特-vs-乌拉圭-半全场-胜平",
@@ -1868,7 +1868,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "沙特-vs-乌拉圭-半全场-胜负",
@@ -1888,7 +1888,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "沙特-vs-乌拉圭-半全场-平胜",
@@ -1908,7 +1908,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "沙特-vs-乌拉圭-半全场-平平",
@@ -1928,7 +1928,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "沙特-vs-乌拉圭-半全场-平负",
@@ -1948,7 +1948,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "沙特-vs-乌拉圭-半全场-负胜",
@@ -1968,7 +1968,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "沙特-vs-乌拉圭-半全场-负平",
@@ -1988,7 +1988,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "沙特-vs-乌拉圭-半全场-负负",
@@ -2008,7 +2008,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         }
       ]
     },
@@ -2216,7 +2216,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "伊朗-vs-新西兰-胜平负-平",
@@ -2236,7 +2236,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "伊朗-vs-新西兰-胜平负-负",
@@ -2256,7 +2256,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "伊朗-vs-新西兰-比分-1:0",
@@ -2276,7 +2276,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "伊朗-vs-新西兰-比分-2:0",
@@ -2296,7 +2296,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "伊朗-vs-新西兰-比分-1:1",
@@ -2316,7 +2316,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "伊朗-vs-新西兰-总进球数-0",
@@ -2336,7 +2336,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "伊朗-vs-新西兰-总进球数-1",
@@ -2356,7 +2356,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "伊朗-vs-新西兰-总进球数-2",
@@ -2376,7 +2376,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "伊朗-vs-新西兰-总进球数-3",
@@ -2396,7 +2396,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "伊朗-vs-新西兰-总进球数-4",
@@ -2416,7 +2416,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "伊朗-vs-新西兰-总进球数-5",
@@ -2436,7 +2436,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "伊朗-vs-新西兰-总进球数-6",
@@ -2456,7 +2456,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "伊朗-vs-新西兰-总进球数-7+",
@@ -2476,7 +2476,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "伊朗-vs-新西兰-半全场-胜胜",
@@ -2496,7 +2496,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "伊朗-vs-新西兰-半全场-胜平",
@@ -2516,7 +2516,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "伊朗-vs-新西兰-半全场-胜负",
@@ -2536,7 +2536,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "伊朗-vs-新西兰-半全场-平胜",
@@ -2556,7 +2556,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "伊朗-vs-新西兰-半全场-平平",
@@ -2576,7 +2576,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "伊朗-vs-新西兰-半全场-平负",
@@ -2596,7 +2596,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "伊朗-vs-新西兰-半全场-负胜",
@@ -2616,7 +2616,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "伊朗-vs-新西兰-半全场-负平",
@@ -2636,7 +2636,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         },
         {
           "id": "伊朗-vs-新西兰-半全场-负负",
@@ -2656,7 +2656,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-15T16:58:44+08:00"
+          "observedAt": "2026-06-15T22:13:32+08:00"
         }
       ]
     }
@@ -2760,35 +2760,35 @@
     {
       "source": "中国体育彩票",
       "field": "固定奖金/单关资格",
-      "observedAt": "2026-06-15T16:58:44+08:00",
+      "observedAt": "2026-06-15T22:13:32+08:00",
       "confidence": 1.0,
       "status": "manual"
     },
     {
       "source": "football-data.org 免费档",
       "field": "2026 世界杯赛程/赛果",
-      "observedAt": "2026-06-15T16:58:44+08:00",
+      "observedAt": "2026-06-15T22:13:32+08:00",
       "confidence": 0.9,
       "status": "fresh"
     },
     {
       "source": "World Football Elo Ratings",
       "field": "国家队基础实力",
-      "observedAt": "2026-06-15T16:58:44+08:00",
+      "observedAt": "2026-06-15T22:13:32+08:00",
       "confidence": 0.72,
       "status": "fresh"
     },
     {
       "source": "API-Football 免费档",
       "field": "预计首发/伤停/球员数据",
-      "observedAt": "2026-06-15T16:58:44+08:00",
+      "observedAt": "2026-06-15T22:13:32+08:00",
       "confidence": 0.0,
       "status": "missing"
     },
     {
       "source": "Open-Meteo",
       "field": "开球时刻天气",
-      "observedAt": "2026-06-15T16:58:44+08:00",
+      "observedAt": "2026-06-15T22:13:32+08:00",
       "confidence": 0.8,
       "status": "manual"
     }
