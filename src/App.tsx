@@ -57,7 +57,7 @@ export default function App() {
 
   if (error) return <div className="app-state error-state"><h1>预测数据读取失败</h1><p>{error}</p><p>请先运行 <code>python -m pipeline.generate</code>。</p></div>
   if (!data) return <div className="app-state"><div className="loading-ring" /><p>正在读取明日预测...</p></div>
-  if (!data.matches.length) return <div className="app-state error-state"><h1>次日暂无可用比赛</h1><p>{data.statusMessage}</p><p>实时任务会在北京时间 18:00 再次尝试。</p></div>
+  if (!data.matches.length) return <div className="app-state error-state"><h1>次日暂无可用比赛</h1><p>{data.statusMessage}</p><p>实时任务会在北京时间 13:00 再次尝试。</p></div>
   if (!selectedMatch || !selectedPortfolio) return <div className="app-state"><div className="loading-ring" /><p>正在计算资金方案...</p></div>
 
   const hasPositiveOptions = data.matches.some((match) => match.quotes.some((quote) => (quote.robustExpectedReturn ?? -1) > 0))

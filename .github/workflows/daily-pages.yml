@@ -3,8 +3,8 @@ name: Daily forecast and GitHub Pages
 on:
   workflow_dispatch:
   schedule:
-    # 10:10 UTC = 18:10 Asia/Shanghai, a fallback if the 18:00 local dispatch is unavailable.
-    - cron: '10 10 * * *'
+    # 05:10 UTC = 13:10 Asia/Shanghai, a fallback if the 13:00 local dispatch is unavailable.
+    - cron: '10 5 * * *'
   push:
     branches: [main, master]
     paths-ignore:

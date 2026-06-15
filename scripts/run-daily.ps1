@@ -42,7 +42,7 @@ if (-not $NoPublish) {
             if ($LASTEXITCODE -eq 0) {
                 Write-Host 'Daily forecast pushed for GitHub Pages deployment.' -ForegroundColor Green
             } else {
-                Write-Warning 'Daily forecast push failed; the 18:10 cloud fallback remains active.'
+                Write-Warning 'Daily forecast push failed; the 13:10 cloud fallback remains active.'
             }
         }
     }
