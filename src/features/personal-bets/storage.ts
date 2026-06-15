@@ -1,5 +1,6 @@
 import type { DailyForecast, MatchSettlement, SettlementFile } from '../../types'
 import type { ModelDaySnapshot, PersonalBet, PersonalBetLedger, PersonalBetLeg } from './types'
+import { groupLegsByMatch, inferPassType, payoutForWinningOdds } from './pass-types'
 
 const STORAGE_KEY = 'world-cup-predict-personal-bets-v1'
 const standardScores = new Set(['1:0', '2:0', '2:1', '3:0', '3:1', '3:2', '4:0', '4:1', '4:2', '5:0', '5:1', '5:2', '0:0', '1:1', '2:2', '3:3', '0:1', '0:2', '1:2', '0:3', '1:3', '2:3', '0:4', '1:4', '2:4', '0:5', '1:5', '2:5'])
@@ -83,17 +84,27 @@ const legWon = (leg: PersonalBetLeg, result: MatchSettlement) => {
   return selection === outcome
 }
 
-const betWon = (bet: PersonalBet, results: Map<string, MatchSettlement>) => {
+const calculateBetPayout = (bet: PersonalBet, results: Map<string, MatchSettlement>) => {
   const legs = bet.legs?.length ? bet.legs : bet.matchId && bet.market !== '自定义' && bet.market !== '混合过关'
     ? [{ matchId: bet.matchId, matchLabel: bet.matchLabel, market: bet.market, selection: bet.selection, odds: bet.odds }]
     : []
   if (!legs.length) return null
-  const outcomes = legs.map((leg) => {
-    const result = results.get(leg.matchId)
-    return result ? legWon(leg, result) : null
-  })
-  if (outcomes.some((outcome) => outcome === null)) return null
-  return outcomes.every(Boolean)
+  const groups = groupLegsByMatch(legs)
+  const winningOddsByMatch: number[] = []
+  for (const group of groups) {
+    const result = results.get(group.matchId)
+    if (!result) return null
+    let winningOdds = 0
+    for (const leg of group.legs) {
+      const won = legWon(leg, result)
+      if (won === null) return null
+      if (won) winningOdds += leg.odds
+    }
+    winningOddsByMatch.push(winningOdds)
+  }
+  const passType = bet.passType ?? inferPassType(groups.length)
+  const multiple = bet.multiple ?? Math.max(1, Math.round(bet.stake / 2))
+  return payoutForWinningOdds(winningOddsByMatch, passType, multiple)
 }
 
 export const settlePersonalLedger = (ledger: PersonalBetLedger, settlementFile: SettlementFile) => {
@@ -101,15 +112,15 @@ export const settlePersonalLedger = (ledger: PersonalBetLedger, settlementFile: 
   let changed = false
   const bets = ledger.bets.map((bet) => {
     if (bet.status !== 'pending') return bet
-    const won = betWon(bet, results)
-    if (won === null) return bet
+    const payout = calculateBetPayout(bet, results)
+    if (payout === null) return bet
     const matchIds = bet.legs?.map((leg) => leg.matchId) ?? (bet.matchId ? [bet.matchId] : [])
     const settledAt = matchIds.map((matchId) => results.get(matchId)?.settledAt).filter(Boolean).sort().at(-1)
     changed = true
     return {
       ...bet,
       status: 'settled' as const,
-      payout: won ? Math.round(bet.stake * bet.odds * 100) / 100 : 0,
+      payout,
       settledAt,
     }
   })

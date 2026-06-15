@@ -5,6 +5,7 @@ import type { Portfolio, StrategyKey } from '../types'
 interface PortfolioSectionProps {
   bankroll: number
   portfolios: Portfolio[]
+  emptyReason: string
   selected: StrategyKey
   onSelect: (key: StrategyKey) => void
   onOpenDetails: () => void
@@ -12,7 +13,7 @@ interface PortfolioSectionProps {
 
 const icons = { conservative: Shield, balanced: CircleGauge, aggressive: Zap }
 
-export function PortfolioSection({ bankroll, portfolios, selected, onSelect, onOpenDetails }: PortfolioSectionProps) {
+export function PortfolioSection({ bankroll, portfolios, emptyReason, selected, onSelect, onOpenDetails }: PortfolioSectionProps) {
   return (
     <section className="portfolio-section panel">
       <div className="section-heading portfolio-heading">
@@ -53,7 +54,7 @@ export function PortfolioSection({ bankroll, portfolios, selected, onSelect, onO
                   </div>
                 ))}
                 {portfolio.tickets.length === 0 && (
-                  <div className="empty-ticket"><Sparkles size={14} />当前没有满足门槛的票单</div>
+                  <div className="empty-ticket"><Sparkles size={14} /><span><b>当前没有正式下注</b><small>{emptyReason}</small></span></div>
                 )}
               </div>
             </button>

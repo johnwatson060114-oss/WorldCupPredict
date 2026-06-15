@@ -1,4 +1,5 @@
 import type { MarketType, Portfolio, StrategyKey } from '../../types'
+import type { PassType } from './pass-types'
 
 export type DecisionSource = StrategyKey | 'subjective'
 export type PersonalBetStatus = 'pending' | 'settled' | 'void'
@@ -15,6 +16,7 @@ export interface PersonalBetLeg {
 export interface PersonalBet {
   id: string
   createdAt: string
+  purchaseDate?: string
   targetDate: string
   matchId?: string
   matchLabel: string
@@ -22,6 +24,10 @@ export interface PersonalBet {
   selection: string
   odds: number
   stake: number
+  passType?: PassType
+  multiple?: number
+  ticketCount?: number
+  theoreticalPayout?: number
   decisionSource: DecisionSource
   status: PersonalBetStatus
   payout?: number

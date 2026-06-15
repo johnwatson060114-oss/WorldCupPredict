@@ -60,7 +60,19 @@ export default function App() {
   if (!data.matches.length) return <div className="app-state error-state"><h1>次日暂无可用比赛</h1><p>{data.statusMessage}</p><p>实时任务会在北京时间 13:00 再次尝试。</p></div>
   if (!selectedMatch || !selectedPortfolio) return <div className="app-state"><div className="loading-ring" /><p>正在计算资金方案...</p></div>
 
-  const hasPositiveOptions = data.matches.some((match) => match.quotes.some((quote) => (quote.robustExpectedReturn ?? -1) > 0))
+  const formalCandidates = data.matches.flatMap((match) => match.quotes).filter((quote) =>
+    quote.available
+    && quote.robustExpectedReturn !== null
+    && quote.robustExpectedReturn > 0
+    && (quote.recommendation === '重点推荐' || quote.recommendation === '小注可选'),
+  )
+  const lowCoverageMatches = data.matches.filter((match) => match.coverage < 0.75).length
+  const singleEligibleOptions = data.matches.flatMap((match) => match.quotes).filter((quote) => quote.available && quote.singleEligible).length
+  const emptyPortfolioReason = formalCandidates.length > 0
+    ? '有候选项，但资金上限或组合约束未形成合法票单。'
+    : lowCoverageMatches === data.matches.length
+      ? `${lowCoverageMatches}/${data.matches.length} 场数据覆盖低于 75%，且本期单关选项 ${singleEligibleOptions} 个；高表面价值项仅作观察。`
+      : '没有同时通过数据覆盖、赔率时效、原始期望和稳健期望四道门槛的选项。'
 
   const navigate = (key: NavKey) => {
     setActiveNav(key)
@@ -100,10 +112,10 @@ export default function App() {
             <MatchRail targetDate={data.targetDate} matches={data.matches} selectedId={selectedMatch.id} onSelect={setSelectedMatchId} />
             <ValueTable matches={data.matches} selectedId={selectedMatch.id} onSelect={setSelectedMatchId} />
             <TacticalPanel match={selectedMatch} onOpenDetail={() => setActiveNav('analysis')} />
-            <PortfolioSection bankroll={currentBalance(ledger)} portfolios={data.portfolios.map((portfolio) => scalePortfolio(portfolio, currentBalance(ledger), data.bankroll))} selected={selectedPortfolio.key} onSelect={setSelectedStrategy} onOpenDetails={() => setDrawerOpen(true)} />
+            <PortfolioSection bankroll={currentBalance(ledger)} portfolios={data.portfolios.map((portfolio) => scalePortfolio(portfolio, currentBalance(ledger), data.bankroll))} emptyReason={emptyPortfolioReason} selected={selectedPortfolio.key} onSelect={setSelectedStrategy} onOpenDetails={() => setDrawerOpen(true)} />
             <div className="right-bottom-stack">
               <BankrollChart portfolio={selectedPortfolio} portfolios={data.portfolios.map((portfolio) => scalePortfolio(portfolio, currentBalance(ledger), data.bankroll))} onSelect={setSelectedStrategy} />
-              <NoBetPanel hasPositiveOptions={hasPositiveOptions} choice={noBetChoice} onChoice={setNoBetChoice} />
+              <NoBetPanel hasPositiveOptions={formalCandidates.length > 0} choice={noBetChoice} onChoice={setNoBetChoice} />
             </div>
           </main>
           <StatusBar forecast={data} bankroll={currentBalance(ledger)} onOpenDetails={() => setDrawerOpen(true)} />

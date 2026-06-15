@@ -15,29 +15,37 @@ import {
   upsertPersonalBet,
 } from '../features/personal-bets/storage'
 import type { DecisionSource, PersonalBet, PersonalBetLedger, PersonalBetLeg, PersonalBetStatus, StrategyHistory } from '../features/personal-bets/types'
+import {
+  groupLegsByMatch,
+  inferPassType,
+  PASS_DEFINITIONS,
+  PASS_GROUPS,
+  stakeForPass,
+  theoreticalMaxPayout,
+  ticketCountForPass,
+  type PassType,
+} from '../features/personal-bets/pass-types'
 
 interface PersonalBetPageProps {
   forecast: DailyForecast
   settlements: SettlementFile | null
 }
 
-type PassType = '单关' | '2串1' | '3串1'
-
 interface FormState {
   id: string
+  purchaseDate: string
   targetDate: string
   passType: PassType
   matchChoice: string
   market: MarketType
-  stake: string
+  multiple: string
   decisionSource: DecisionSource
   note: string
   legs: PersonalBetLeg[]
 }
 
 const marketOrder: MarketType[] = ['胜平负', '让球胜平负', '比分', '总进球数', '半全场']
-const stakeOptions = [2, 4, 6, 8, 10, 12, 16, 20, 24, 30, 40, 50, 60, 80, 100, 120, 150, 200]
-const passSizes: Record<PassType, number> = { 单关: 1, '2串1': 2, '3串1': 3 }
+const multipleOptions = Array.from({ length: 50 }, (_, index) => index + 1)
 
 const decisionLabels: Record<DecisionSource, string> = {
   subjective: '我的主观判断',
@@ -48,15 +56,23 @@ const decisionLabels: Record<DecisionSource, string> = {
 
 const statusLabels: Record<PersonalBetStatus, string> = { pending: '待结算', settled: '已结算', void: '作废' }
 const preciseMoney = (value: number) => `${value.toFixed(2)}元`
-const combinedOdds = (legs: PersonalBetLeg[]) => legs.reduce((value, leg) => value * leg.odds, 1)
+
+const beijingToday = () => {
+  const parts = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'Asia/Shanghai', year: 'numeric', month: '2-digit', day: '2-digit',
+  }).formatToParts(new Date())
+  const value = Object.fromEntries(parts.map((part) => [part.type, part.value]))
+  return `${value.year}-${value.month}-${value.day}`
+}
 
 const initialForm = (forecast: DailyForecast): FormState => ({
   id: '',
+  purchaseDate: beijingToday(),
   targetDate: forecast.targetDate,
   passType: '单关',
   matchChoice: forecast.matches[0]?.id ?? '',
   market: '胜平负',
-  stake: '2',
+  multiple: '1',
   decisionSource: 'subjective',
   note: '',
   legs: [],
@@ -136,6 +152,13 @@ export function PersonalBetPage({ forecast, settlements }: PersonalBetPageProps)
   const actual = useMemo(() => actualStrategyPerformance(history), [history])
   const projection = useMemo(() => projectToFinal(forecast.portfolios, history, ledger, forecast.targetDate), [forecast.portfolios, forecast.targetDate, history, ledger])
   const projectionReady = actual.summaries.every((item) => item.settledDays >= 5)
+  const selectedGroups = useMemo(() => groupLegsByMatch(form.legs), [form.legs])
+  const requiredMatches = PASS_DEFINITIONS[form.passType].matches
+  const multiple = Number(form.multiple)
+  const ticketComplete = selectedGroups.length === requiredMatches
+  const ticketCount = ticketComplete ? ticketCountForPass(form.legs, form.passType) : 0
+  const calculatedStake = ticketComplete ? stakeForPass(form.legs, form.passType, multiple) : 0
+  const maximumPayout = ticketComplete ? theoreticalMaxPayout(form.legs, form.passType, multiple) : 0
 
   const resetForm = () => setForm(initialForm(forecast))
 
@@ -145,53 +168,75 @@ export function PersonalBetPage({ forecast, settlements }: PersonalBetPageProps)
   }
 
   const choosePassType = (passType: PassType) => {
-    setForm((current) => ({ ...current, passType, legs: passType === '单关' ? current.legs.slice(0, 1) : current.legs.slice(0, passSizes[passType]) }))
+    setMessage('')
+    setForm((current) => {
+      const allowedMatches = new Set(groupLegsByMatch(current.legs).slice(0, PASS_DEFINITIONS[passType].matches).map((group) => group.matchId))
+      return { ...current, passType, legs: current.legs.filter((leg) => allowedMatches.has(leg.matchId)) }
+    })
   }
 
   const chooseQuote = (quote: MarketQuote) => {
     if (!quote.available || !quote.odds || !selectedMatch) return
+    if (form.passType === '单关' && !quote.singleEligible) {
+      setMessage('该赔率不支持单关，请选择串关票型或改选带“单关”资格的选项。')
+      return
+    }
     const leg = quoteToLeg(quote, `${selectedMatch.homeTeam} vs ${selectedMatch.awayTeam}`)
     setForm((current) => {
       if (current.passType === '单关') return { ...current, legs: [leg] }
       const identical = current.legs.some((item) => item.matchId === leg.matchId && item.market === leg.market && item.selection === leg.selection)
       if (identical) return { ...current, legs: current.legs.filter((item) => !(item.matchId === leg.matchId && item.market === leg.market && item.selection === leg.selection)) }
-      const withoutSameMatch = current.legs.filter((item) => item.matchId !== leg.matchId)
-      if (withoutSameMatch.length >= passSizes[current.passType]) {
-        setMessage(`${current.passType}最多选择 ${passSizes[current.passType]} 场，请先移除一场。`)
+      const matchIds = new Set(current.legs.map((item) => item.matchId))
+      if (!matchIds.has(leg.matchId) && matchIds.size >= PASS_DEFINITIONS[current.passType].matches) {
+        setMessage(`${current.passType}需要 ${PASS_DEFINITIONS[current.passType].matches} 场，已选满；同一场仍可继续多选玩法。`)
         return current
       }
-      return { ...current, legs: [...withoutSameMatch, leg] }
+      return { ...current, legs: [...current.legs, leg] }
     })
   }
 
   const saveBet = () => {
-    const requiredLegs = passSizes[form.passType]
-    if (form.legs.length !== requiredLegs) {
-      setMessage(`${form.passType}需要选择 ${requiredLegs} 场，目前已选 ${form.legs.length} 场。`)
+    if (selectedGroups.length !== requiredMatches) {
+      setMessage(`${form.passType}需要选择 ${requiredMatches} 场，目前已选 ${selectedGroups.length} 场。`)
       return
     }
-    const stake = Number(form.stake)
-    if (!Number.isFinite(stake) || stake < 2 || stake % 2 !== 0 || stake > personalBalance(ledger)) {
-      setMessage('投注额必须为可用余额内的 2 元整数倍。')
+    if (!Number.isInteger(multiple) || multiple < 1 || multiple > 50) {
+      setMessage('投注倍数必须为 1 至 50 的整数。')
+      return
+    }
+    if (!form.purchaseDate) {
+      setMessage('请选择实际出票日期；可以补记前一天的票。')
+      return
+    }
+    if (form.purchaseDate > form.targetDate) {
+      setMessage('出票日期不能晚于所选比赛日期。')
+      return
+    }
+    if (calculatedStake < 2 || calculatedStake > personalBalance(ledger)) {
+      setMessage(`这张票共 ${ticketCount} 注，投入 ${preciseMoney(calculatedStake)}，已超过当前可用余额。`)
       return
     }
     const existing = form.id ? ledger.bets.find((item) => item.id === form.id) : undefined
-    const odds = combinedOdds(form.legs)
+    const odds = calculatedStake > 0 ? maximumPayout / calculatedStake : 0
     const bet: PersonalBet = {
       id: form.id || crypto.randomUUID(),
       createdAt: existing?.createdAt ?? new Date().toISOString(),
+      purchaseDate: form.purchaseDate,
       targetDate: form.targetDate,
       matchId: form.legs.length === 1 ? form.legs[0].matchId : undefined,
       matchLabel: form.legs.map((leg) => leg.matchLabel).join(' × '),
       market: form.legs.length === 1 ? form.legs[0].market : '混合过关',
       selection: form.legs.map((leg) => `${leg.market} ${leg.selection}`).join(' × '),
       odds,
-      stake,
+      stake: calculatedStake,
+      passType: form.passType,
+      multiple,
+      ticketCount,
+      theoreticalPayout: maximumPayout,
       decisionSource: form.decisionSource,
       status: 'pending',
       note: form.note.trim() || undefined,
       forecastGeneratedAt: bettingForecast?.generatedAt,
-      modelProbability: form.legs.reduce((value, leg) => value * (leg.modelProbability ?? 1), 1),
       legs: form.legs,
     }
     const next = upsertPersonalBet(captureModelSnapshot(ledger, forecast), bet)
@@ -210,11 +255,12 @@ export function PersonalBetPage({ forecast, settlements }: PersonalBetPageProps)
     }
     setForm({
       id: bet.id,
+      purchaseDate: bet.purchaseDate ?? bet.targetDate,
       targetDate: bet.targetDate,
-      passType: legs.length >= 3 ? '3串1' : legs.length === 2 ? '2串1' : '单关',
+      passType: bet.passType ?? inferPassType(groupLegsByMatch(legs).length),
       matchChoice: legs[0].matchId,
       market: legs[0].market,
-      stake: bet.stake.toString(),
+      multiple: (bet.multiple ?? Math.max(1, Math.round(bet.stake / Math.max(2, (bet.ticketCount ?? 1) * 2)))).toString(),
       decisionSource: bet.decisionSource,
       note: bet.note ?? '',
       legs,
@@ -277,9 +323,10 @@ export function PersonalBetPage({ forecast, settlements }: PersonalBetPageProps)
           </div>
 
           <div className="ticket-control-row">
-            <label><CalendarDays size={13} />投注日期<input type="date" min="2026-06-11" max={forecast.targetDate} value={form.targetDate} onChange={(event) => chooseDate(event.target.value)} /></label>
-            <label>过关方式<select value={form.passType} onChange={(event) => choosePassType(event.target.value as PassType)}><option>单关</option><option>2串1</option><option>3串1</option></select></label>
-            <label>投入<select value={form.stake} onChange={(event) => setForm((current) => ({ ...current, stake: event.target.value }))}>{stakeOptions.map((stake) => <option key={stake} value={stake}>{stake}元</option>)}</select></label>
+            <label><CalendarDays size={13} />出票日期<input type="date" min="2026-06-11" max={beijingToday()} value={form.purchaseDate} onInput={(event) => { const purchaseDate = event.currentTarget.value; setForm((current) => ({ ...current, purchaseDate })) }} /></label>
+            <label><CalendarDays size={13} />比赛日期<input type="date" min="2026-06-11" max={forecast.targetDate} value={form.targetDate} onInput={(event) => chooseDate(event.currentTarget.value)} /></label>
+            <label>过关方式<select value={form.passType} onChange={(event) => choosePassType(event.target.value as PassType)}>{PASS_GROUPS.map((group) => <optgroup key={group.label} label={group.label}>{group.options.map((passType) => <option key={passType}>{passType}</option>)}</optgroup>)}</select></label>
+            <label>倍数<select value={form.multiple} onChange={(event) => setForm((current) => ({ ...current, multiple: event.target.value }))}>{multipleOptions.map((value) => <option key={value} value={value}>{value}倍</option>)}</select></label>
             <label>判断来源<select value={form.decisionSource} onChange={(event) => setForm((current) => ({ ...current, decisionSource: event.target.value as DecisionSource }))}>{Object.entries(decisionLabels).map(([key, label]) => <option key={key} value={key}>{label}</option>)}</select></label>
           </div>
 
@@ -294,17 +341,18 @@ export function PersonalBetPage({ forecast, settlements }: PersonalBetPageProps)
             <div className="sporttery-options">
               {marketQuotes.map((quote) => {
                 const selected = form.legs.some((leg) => leg.matchId === quote.matchId && leg.market === quote.market && leg.selection === quote.selection)
-                return <button key={quote.id} disabled={!quote.available} className={selected ? 'selected' : ''} onClick={() => chooseQuote(quote)}><span>{quote.selection}</span><strong>{quote.odds?.toFixed(2) ?? '--'}</strong><small>{quote.available ? quote.recommendation : '未开售'}</small></button>
+                const singleBlocked = form.passType === '单关' && !quote.singleEligible
+                return <button key={quote.id} disabled={!quote.available || singleBlocked} className={selected ? 'selected' : ''} onClick={() => chooseQuote(quote)}><span>{quote.selection}</span><strong>{quote.odds?.toFixed(2) ?? '--'}</strong><small>{!quote.available ? '未开售' : singleBlocked ? '不可单关' : quote.singleEligible ? `${quote.recommendation} · 单关` : quote.recommendation}</small></button>
               })}
               {!marketQuotes.length && <div className="market-empty">这份历史快照尚未归档“{form.market}”；不是负期望，而是当时未接入或未开售。</div>}
             </div>
           </>}
 
           <div className="bet-slip">
-            <div className="bet-slip-head"><span>我的票单</span><b>{form.legs.length}/{passSizes[form.passType]} 场</b></div>
+            <div className="bet-slip-head"><span>我的票单 · {form.passType}</span><b>{selectedGroups.length}/{requiredMatches} 场 · {form.legs.length} 项</b></div>
             {form.legs.map((leg) => <div className="bet-slip-leg" key={`${leg.matchId}-${leg.market}-${leg.selection}`}><span><b>{leg.matchLabel}</b><small>{leg.market} · {leg.selection}</small></span><strong>{leg.odds.toFixed(2)}</strong><button onClick={() => setForm((current) => ({ ...current, legs: current.legs.filter((item) => item !== leg) }))} aria-label="移除选择"><X size={13} /></button></div>)}
             {!form.legs.length && <p>在上方点击一个赔率选项加入票单。</p>}
-            <footer><span>合计赔率 <b>{form.legs.length ? combinedOdds(form.legs).toFixed(2) : '--'}</b></span><span>潜在派彩 <b>{form.legs.length ? preciseMoney(Number(form.stake) * combinedOdds(form.legs)) : '--'}</b></span></footer>
+            <footer><span>注数 <b>{ticketCount || '--'}</b></span><span>投入 <b>{ticketCount ? preciseMoney(calculatedStake) : '--'}</b></span><span>理论最高奖金 <b>{ticketCount ? preciseMoney(maximumPayout) : '--'}</b></span></footer>
           </div>
           <label className="ticket-note">备注（可选）<input value={form.note} placeholder="例如：临场改主意、跟随自己的判断" onChange={(event) => setForm((current) => ({ ...current, note: event.target.value }))} /></label>
           {message && <p className="personal-form-message">{message}</p>}
@@ -357,8 +405,8 @@ export function PersonalBetPage({ forecast, settlements }: PersonalBetPageProps)
 
       <div className="personal-bottom-grid">
         <section className="panel personal-ledger-panel">
-          <div className="personal-panel-title"><div><h2>近期投注记录</h2><p>结构化单关与串关按真实赛果自动结算</p></div><span>{ledger.bets.length} 条</span></div>
-          <div className="personal-table-wrap"><table className="personal-ledger-table"><thead><tr><th>日期</th><th>比赛/票面</th><th>玩法</th><th>选择</th><th>赔率</th><th>投入</th><th>来源</th><th>状态</th><th>派彩/盈亏</th><th>操作</th></tr></thead><tbody>{ledger.bets.map((bet) => <tr key={bet.id}><td>{bet.targetDate.slice(5)}</td><td><strong>{bet.matchLabel}</strong>{bet.note && <small>{bet.note}</small>}</td><td>{bet.market}</td><td>{bet.selection}</td><td>{bet.odds.toFixed(2)}</td><td>{preciseMoney(bet.stake)}</td><td>{decisionLabels[bet.decisionSource]}</td><td><span className={`bet-status ${bet.status}`}>{statusLabels[bet.status]}</span></td><td>{bet.status === 'settled' ? <><b>{preciseMoney(bet.payout ?? 0)}</b><small className={(bet.payout ?? 0) - bet.stake >= 0 ? 'positive-text' : 'negative-text'}>{preciseMoney((bet.payout ?? 0) - bet.stake)}</small></> : '--'}</td><td><button onClick={() => editBet(bet)} aria-label="编辑"><Pencil size={13} /></button><button onClick={() => removeBet(bet.id)} aria-label="删除"><Trash2 size={13} /></button></td></tr>)}{!ledger.bets.length && <tr><td colSpan={10} className="empty-row">还没有记录。上方点选后只保存在这台浏览器中。</td></tr>}</tbody></table></div>
+          <div className="personal-panel-title"><div><h2>近期投注记录</h2><p>完整票型按基础子注和真实赛果自动结算</p></div><span>{ledger.bets.length} 条</span></div>
+          <div className="personal-table-wrap"><table className="personal-ledger-table"><thead><tr><th>出票/比赛</th><th>比赛/票面</th><th>票型</th><th>选择</th><th>注数/倍数</th><th>投入</th><th>来源</th><th>状态</th><th>派彩/盈亏</th><th>操作</th></tr></thead><tbody>{ledger.bets.map((bet) => <tr key={bet.id}><td><strong>{(bet.purchaseDate ?? bet.targetDate).slice(5)}</strong><small>比赛 {bet.targetDate.slice(5)}</small></td><td><strong>{bet.matchLabel}</strong>{bet.note && <small>{bet.note}</small>}</td><td><strong>{bet.passType ?? inferPassType(groupLegsByMatch(bet.legs ?? []).length)}</strong><small>{bet.market}</small></td><td>{bet.selection}</td><td><strong>{bet.ticketCount ?? 1}注</strong><small>{bet.multiple ?? 1}倍</small></td><td>{preciseMoney(bet.stake)}</td><td>{decisionLabels[bet.decisionSource]}</td><td><span className={`bet-status ${bet.status}`}>{statusLabels[bet.status]}</span></td><td>{bet.status === 'settled' ? <><b>{preciseMoney(bet.payout ?? 0)}</b><small className={(bet.payout ?? 0) - bet.stake >= 0 ? 'positive-text' : 'negative-text'}>{preciseMoney((bet.payout ?? 0) - bet.stake)}</small></> : '--'}</td><td><button onClick={() => editBet(bet)} aria-label="编辑"><Pencil size={13} /></button><button onClick={() => removeBet(bet.id)} aria-label="删除"><Trash2 size={13} /></button></td></tr>)}{!ledger.bets.length && <tr><td colSpan={10} className="empty-row">还没有记录。上方点选后只保存在这台浏览器中。</td></tr>}</tbody></table></div>
         </section>
         <section className="panel betting-review-panel">
           <div className="personal-panel-title"><div><h2>下注模式复盘</h2><p>预测准确与资金分配分开检验</p></div></div>
