@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-15T06:01:38+08:00",
+  "generatedAt": "2026-06-15T10:59:10+08:00",
   "finalDate": "2026-07-19",
   "days": [
     {
@@ -10,35 +10,35 @@
         {
           "key": "conservative",
           "name": "稳健",
-          "stake": 10,
-          "payout": null,
-          "profit": null,
-          "roi": null,
-          "status": "pending"
+          "stake": 10.0,
+          "payout": 0.0,
+          "profit": -10.0,
+          "roi": -1.0,
+          "status": "settled"
         },
         {
           "key": "balanced",
           "name": "均衡",
-          "stake": 10,
-          "payout": null,
-          "profit": null,
-          "roi": null,
-          "status": "pending"
+          "stake": 10.0,
+          "payout": 0.0,
+          "profit": -10.0,
+          "roi": -1.0,
+          "status": "settled"
         },
         {
           "key": "aggressive",
           "name": "激进",
-          "stake": 24,
-          "payout": null,
-          "profit": null,
-          "roi": null,
-          "status": "pending"
+          "stake": 24.0,
+          "payout": 0.0,
+          "profit": -24.0,
+          "roi": -1.0,
+          "status": "settled"
         }
       ]
     },
     {
       "targetDate": "2026-06-16",
-      "generatedAt": "2026-06-15T06:01:37+08:00",
+      "generatedAt": "2026-06-15T10:57:07+08:00",
       "coverage": 0.685,
       "strategies": [
         {
