@@ -359,6 +359,21 @@ def score_selection_probability(selection: str, matrix: list[list[float]], offer
     return probability
 
 
+def _sample_odds(probability: float, margin: float = 0.08) -> float | None:
+    """Generate a sample decimal odds from a model probability with a margin.
+
+    Returns None when the probability is too small to price safely.
+    """
+    if probability <= 0.001:
+        return None
+    return round(max(1.01, 1.0 / probability * (1.0 - margin)), 2)
+
+
+def _sample_odds_dict(probabilities: dict[str, float], margin: float = 0.08) -> dict[str, float | None]:
+    """Convert probability dict to sample odds dict."""
+    return {key: _sample_odds(value, margin) for key, value in probabilities.items()}
+
+
 def build_match(
     seed: dict,
     market: SportteryMatch | None,
@@ -372,12 +387,20 @@ def build_match(
     matrix = simulated["matrix"] if simulated else score_matrix(home_xg, away_xg)
     outcomes = simulated["outcomes"] if simulated else outcome_probabilities(matrix)
     scores = top_scores(matrix)
+    no_live_market = market is None
     coverage = float(seed.get("coverage", 0.70))
+    if no_live_market:
+        coverage = max(0.0, coverage - 0.05)
     stars = score_stars(float(scores[0]["probability"]), coverage)
     quotes = []
     label = f"{seed['home_team']} vs {seed['away_team']}"
 
-    normal_odds = market.win_draw_loss if market else {"胜": None, "平": None, "负": None}
+    if market:
+        normal_odds = market.win_draw_loss
+    else:
+        normal_odds = _sample_odds_dict(
+            {"胜": outcomes["home"], "平": outcomes["draw"], "负": outcomes["away"]}
+        )
     normal_market = normalized_market_probabilities(normal_odds)
     for chinese, outcome in OUTCOME_KEYS.items():
         quotes.append(make_quote(
@@ -385,22 +408,31 @@ def build_match(
             coverage, bool(market and "胜平负" in market.single_markets), generated_at,
         ))
 
-    handicap = market.handicap if market else None
-    if handicap is not None:
-        handicap_outcomes = outcome_probabilities(matrix, handicap)
+    handicap = market.handicap if market else round(home_xg - away_xg)
+    handicap_outcomes = outcome_probabilities(matrix, handicap)
+    if market:
         handicap_odds = market.handicap_win_draw_loss
-        handicap_market = normalized_market_probabilities(handicap_odds)
-        for chinese, outcome in OUTCOME_KEYS.items():
-            quotes.append(make_quote(
-                match_id, label, "让球胜平负", f"{handicap:+d} {chinese}", handicap_odds.get(chinese), handicap_outcomes[outcome],
-                handicap_market.get(chinese), coverage, bool("让球胜平负" in market.single_markets), generated_at, handicap=handicap,
-            ))
+    else:
+        handicap_odds = _sample_odds_dict(
+            {"胜": handicap_outcomes["home"], "平": handicap_outcomes["draw"], "负": handicap_outcomes["away"]}
+        )
+    handicap_market = normalized_market_probabilities(handicap_odds)
+    for chinese, outcome in OUTCOME_KEYS.items():
+        quotes.append(make_quote(
+            match_id, label, "让球胜平负", f"{handicap:+d} {chinese}", handicap_odds.get(chinese), handicap_outcomes[outcome],
+            handicap_market.get(chinese), coverage, bool(market and "让球胜平负" in market.single_markets), generated_at, handicap=handicap,
+        ))
 
     score_odds = market.scores if market else {}
-    score_market = normalized_market_probabilities(score_odds) if score_odds else {}
     for score in scores:
-        score["odds"] = score_odds.get(str(score["score"]))
+        score["odds"] = score_odds.get(str(score["score"])) if score_odds else _sample_odds(score["probability"])
     offered_scores = {selection for selection in score_odds if ":" in selection}
+    if not score_odds:
+        for score in scores[:8]:
+            score_key = str(score["score"])
+            if _sample_odds(score["probability"]):
+                score_odds[score_key] = _sample_odds(score["probability"])
+    score_market = normalized_market_probabilities(score_odds) if score_odds else {}
     score_selections = list(score_odds) if score_odds else [str(score["score"]) for score in scores[:3]]
     for selection in score_selections:
         odds = score_odds.get(selection)
@@ -411,7 +443,10 @@ def build_match(
         ))
 
     total_goal_model = total_goals_probabilities(matrix)
-    total_goal_odds = market.total_goals if market else {}
+    if market:
+        total_goal_odds = market.total_goals
+    else:
+        total_goal_odds = _sample_odds_dict(total_goal_model)
     total_goal_market = normalized_market_probabilities(total_goal_odds) if total_goal_odds else {}
     for selection, probability in total_goal_model.items():
         quotes.append(make_quote(
@@ -420,7 +455,10 @@ def build_match(
         ))
 
     half_full_model = simulated["halfFull"] if simulated else half_full_probabilities(home_xg, away_xg)
-    half_full_odds = market.half_full if market else {}
+    if market:
+        half_full_odds = market.half_full
+    else:
+        half_full_odds = _sample_odds_dict(half_full_model)
     half_full_market = normalized_market_probabilities(half_full_odds) if half_full_odds else {}
     for selection, probability in half_full_model.items():
         half_full_coverage = max(0.0, coverage - 0.08)
@@ -428,6 +466,7 @@ def build_match(
             match_id, label, "半全场", selection, half_full_odds.get(selection), probability,
             half_full_market.get(selection), half_full_coverage, bool(market and "半全场" in market.single_markets), generated_at,
         ))
+
 
     venue = VENUES.get(seed.get("venue"))
     return {
@@ -519,6 +558,20 @@ def main() -> None:
     demo = load_demo()
     if not seeds and target_date == demo["target_date"]:
         seeds = demo["matches"]
+    elif not seeds and demo.get("matches"):
+        demo_date = datetime.strptime(demo["target_date"], "%Y-%m-%d").date()
+        target = datetime.strptime(target_date, "%Y-%m-%d").date()
+        delta = (target - demo_date).days
+        seeds = []
+        for match in demo["matches"]:
+            adapted = dict(match)
+            kickoff = datetime.fromisoformat(match["kickoff"]) + timedelta(days=delta)
+            adapted["kickoff"] = kickoff.isoformat()
+            adapted.pop("sporttery_id", None)
+            adapted.pop("lottery_code", None)
+            adapted.pop("api_fixture_id", None)
+            seeds.append(adapted)
+        degraded_reasons.append("使用固定开发样例（日期已调整至目标日），赔率为模拟值")
     elif not seeds:
         degraded_reasons.append("目标日期没有可用比赛种子数据")
 

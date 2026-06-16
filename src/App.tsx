@@ -124,7 +124,8 @@ export default function App() {
             <main className="empty-forecast-panel">
               <h1>次日暂无可用比赛</h1>
               <p>{data.statusMessage}</p>
-              <p>当前只是“今日方案”没有比赛数据；我的投注、资金记录和历史票单仍可继续使用。</p>
+              <p>当前"今日方案"没有比赛数据，这可能是因为赛事API暂时不可用且目标日期超出了开发样例覆盖范围。</p>
+              <p>我的投注、资金记录和历史票单仍可继续使用。请尝试选择已有数据的日期（如 2026-06-15 或 2026-06-16）。</p>
               <button onClick={() => setActiveNav('personal')}>打开我的投注</button>
             </main>
           ) : (
@@ -144,7 +145,7 @@ export default function App() {
           )}
         </>
       )}
-      {activeNav === 'analysis' && (selectedMatch ? <AnalysisPage match={selectedMatch} /> : <main className="empty-forecast-panel"><h1>暂无比赛分析</h1><p>当前目标日期没有可分析的比赛；请先使用“我的投注”记录历史票单。</p><button onClick={() => setActiveNav('personal')}>打开我的投注</button></main>)}
+      {activeNav === 'analysis' && (selectedMatch ? <AnalysisPage match={selectedMatch} /> : <main className="empty-forecast-panel"><h1>暂无比赛分析</h1><p>当前目标日期没有可分析的比赛；请先使用"我的投注"记录历史票单。</p><button onClick={() => setActiveNav('personal')}>打开我的投注</button></main>)}
       {activeNav === 'personal' && <PersonalBetPage forecast={data} settlements={settlements} ledger={personalLedger} onLedgerChange={setPersonalLedger} />}
       {activeNav === 'ledger' && <LedgerPage ledger={ledger} availableBankroll={availableBankroll} personalBetCount={personalLedger.bets.length} onImport={(next) => { saveLedger(next); setLedger(next) }} onReset={() => { const next = emptyLedger(); saveLedger(next); setLedger(next) }} />}
       {activeNav === 'backtest' && <BacktestPage forecast={data} />}
