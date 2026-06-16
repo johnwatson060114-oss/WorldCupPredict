@@ -1,17 +1,20 @@
 import { Download, Landmark, Trash2, Upload } from 'lucide-react'
-import { downloadLedger } from '../lib/ledger'
+import { downloadLedger, currentBalance } from '../lib/ledger'
+import { personalBalance } from '../features/personal-bets/storage'
 import { money, shortDateTime } from '../lib/format'
 import type { BankrollLedger } from '../types'
+import type { PersonalBetLedger } from '../features/personal-bets/types'
 
 interface LedgerPageProps {
   ledger: BankrollLedger
-  availableBankroll: number
-  personalBetCount: number
+  personalLedger: PersonalBetLedger
   onReset: () => void
   onImport: (ledger: BankrollLedger) => void
 }
 
-export function LedgerPage({ ledger, availableBankroll, personalBetCount, onReset, onImport }: LedgerPageProps) {
+export function LedgerPage({ ledger, personalLedger, onReset, onImport }: LedgerPageProps) {
+  const strategyBalance = currentBalance(ledger)
+  const personalBalanceValue = personalBalance(personalLedger)
   const importFile = async (file: File | undefined) => {
     if (!file) return
     const parsed = JSON.parse(await file.text()) as BankrollLedger
@@ -24,9 +27,10 @@ export function LedgerPage({ ledger, availableBankroll, personalBetCount, onRese
     <main className="content-page">
       <div className="page-title"><div><span>只保存在本机浏览器</span><h1>资金记录</h1></div></div>
       <section className="ledger-summary panel">
-        <div><Landmark size={22} /><span>初始本金</span><strong>{ledger.initialBankroll}元</strong></div>
-        <div><span>当前可用（含个人投注）</span><strong>{money(availableBankroll)}</strong></div>
-        <div><span>已记录方案/投注</span><strong>{ledger.entries.length + personalBetCount}</strong></div>
+        <div><Landmark size={22} /><span>策略本金</span><strong>{money(strategyBalance)}</strong></div>
+        <div><span>个人本金</span><strong>{money(personalBalanceValue)}</strong></div>
+        <div><span>策略购买</span><strong>{ledger.entries.length} 次</strong></div>
+        <div><span>个人投注</span><strong>{personalLedger.bets.length} 张</strong></div>
         <div className="ledger-actions">
           <button onClick={() => downloadLedger(ledger)}><Download size={15} />导出 JSON</button>
           <label className="file-button"><Upload size={15} />导入 JSON<input type="file" accept="application/json" onChange={(event) => void importFile(event.target.files?.[0])} /></label>

@@ -26,26 +26,36 @@ class Strategy:
     max_singles: int
     max_volatile_parlay_legs: int
     rules: tuple[str, ...]
+    max_combo_per_market: int = 1
+    min_combo_coverage: float = 0.0
+    combo_edge_tolerance: float = 0.0
+    negative_edge_fallback: bool = False
+    negative_edge_min: float = 0.0
 
 
 STRATEGIES = (
     Strategy(
         "conservative", "稳健", "高胜率单关，拒绝串关", 0.25, 0.25, 0.0, 1,
         ("胜平负", "总进球数"), (), 0.80, 0.55, 0.02, 2.25, 2, 0,
-        ("只选覆盖率≥80%的高概率单关", "仅胜平负/总进球数", "不做串关和比分"),
+        ("只选覆盖率≥80%的高概率单关", "仅胜平负/总进球数", "每玩法只选最佳单个选项"),
+        max_combo_per_market=1, negative_edge_fallback=False,
     ),
     Strategy(
         "balanced", "均衡", "价值单关 + 1注2串1", 0.50, 0.40, 0.0, 2,
         ("胜平负", "让球胜平负", "总进球数"), ("胜平负", "让球胜平负", "总进球数"),
         0.78, 0.35, 0.01, 4.50, 3, 0,
-        ("优先稳健正期望标的", "覆盖胜平负/让球/总进球", "最多1注2串1"),
+        ("正期望优先，允许同场2选复式", "覆盖胜平负/让球/总进球", "最多1注2串1，接受-1%以内组合"),
+        max_combo_per_market=2, min_combo_coverage=0.55, combo_edge_tolerance=-0.01,
+        negative_edge_fallback=True, negative_edge_min=-0.02,
     ),
     Strategy(
         "aggressive", "激进", "高赔率市场 + 受控串关", 0.75, 0.60, 0.10, 3,
         ("胜平负", "让球胜平负", "比分", "总进球数", "半全场"),
         ("胜平负", "让球胜平负", "比分", "总进球数", "半全场"),
         0.75, 0.08, 0.0, 80.0, 4, 1,
-        ("允许比分/半全场小注", "按赔率与稳健期望共同排序", "可做2串1和3串1"),
+        ("允许比分/半全场小注，支持同场2选", "按赔率与稳健期望共同排序", "可做2串1和3串1，-5%以内娱乐"),
+        max_combo_per_market=2, min_combo_coverage=0.40, combo_edge_tolerance=-0.05,
+        negative_edge_fallback=True, negative_edge_min=-0.05,
     ),
 )
 
@@ -115,6 +125,99 @@ def _candidate_score(quote: dict[str, Any], strategy: Strategy) -> tuple[float, 
     return robust_edge * math.log(max(odds, 1.01)), odds
 
 
+def _filter_quotes(quotes: list[dict[str, Any]], strategy: Strategy, edge_min: float | None = None) -> list[dict[str, Any]]:
+    """Filter quotes by strategy thresholds. Pass edge_min to override strategy.min_edge."""
+    min_edge = edge_min if edge_min is not None else strategy.min_edge
+    return [
+        quote for quote in quotes
+        if quote.get("available")
+        and quote.get("singleEligible")
+        and quote.get("market") in strategy.single_markets
+        and quote.get("recommendation") in {"重点推荐", "小注可选"}
+        and float(quote.get("coverage") or 0) >= strategy.min_coverage
+        and float(quote.get("modelProbability") or 0) >= strategy.min_probability
+        and float(quote.get("robustExpectedReturn") or -1) >= min_edge
+        and quote.get("odds")
+        and float(quote["odds"]) <= strategy.max_odds
+    ]
+
+
+def _build_combo_groups(
+    quotes: list[dict[str, Any]],
+    strategy: Strategy,
+) -> list[tuple[dict[str, Any], ...]]:
+    """Group quotes by (matchId, market) and pick the best combos per group.
+
+    For each match+market group, picks up to max_combo_per_market selections.
+    Returns a flat list of combo-tuples (each combo is 1-2 quotes from the same match+market).
+    """
+    groups: dict[tuple[str, str], list[dict[str, Any]]] = {}
+    for quote in quotes:
+        key = (quote["matchId"], quote["market"])
+        groups.setdefault(key, []).append(quote)
+
+    combos: list[tuple[dict[str, Any], ...]] = []
+    for (match_id, market), group in groups.items():
+        sorted_group = sorted(group, key=lambda q: _candidate_score(q, strategy), reverse=True)
+        max_pick = min(strategy.max_combo_per_market, len(sorted_group))
+        if max_pick <= 0:
+            continue
+        # Try picking the best 1, then the best 2 (if allowed), as long as thresholds pass
+        for pick_size in range(1, max_pick + 1):
+            combo = tuple(sorted_group[:pick_size])
+            coverage = sum(float(q["modelProbability"]) for q in combo)
+            # Combined edge: weighted average of individual robustExpectedReturn
+            combined_edge = sum(float(q["robustExpectedReturn"]) for q in combo) / pick_size
+            if coverage >= strategy.min_combo_coverage and combined_edge >= strategy.combo_edge_tolerance:
+                combos.append(combo)
+            # If size-1 doesn't meet thresholds, don't try larger combos
+            if pick_size == 1 and (coverage < strategy.min_coverage or combined_edge < strategy.min_edge):
+                break
+    return combos
+
+
+def _combo_fallback_groups(
+    quotes: list[dict[str, Any]],
+    strategy: Strategy,
+) -> list[tuple[dict[str, Any], ...]]:
+    """Relaxed combo selection when no positive-EV combos exist.
+
+    Uses negative_edge_min as the relaxed edge floor, and includes '观察' recommendations.
+    """
+    relaxed = [
+        quote for quote in quotes
+        if quote.get("available")
+        and quote.get("singleEligible")
+        and quote.get("market") in strategy.single_markets
+        and quote.get("recommendation") in {"重点推荐", "小注可选", "观察"}
+        and float(quote.get("coverage") or 0) >= strategy.min_coverage
+        and float(quote.get("modelProbability") or 0) >= strategy.min_probability
+        and float(quote.get("robustExpectedReturn") or -99) >= strategy.negative_edge_min
+        and quote.get("odds")
+        and float(quote["odds"]) <= strategy.max_odds
+    ]
+    groups: dict[tuple[str, str], list[dict[str, Any]]] = {}
+    for quote in relaxed:
+        key = (quote["matchId"], quote["market"])
+        groups.setdefault(key, []).append(quote)
+
+    combos: list[tuple[dict[str, Any], ...]] = []
+    for (match_id, market), group in groups.items():
+        sorted_group = sorted(group, key=lambda q: _candidate_score(q, strategy), reverse=True)
+        max_pick = min(strategy.max_combo_per_market, len(sorted_group))
+        if max_pick <= 0:
+            continue
+        for pick_size in range(1, max_pick + 1):
+            combo = tuple(sorted_group[:pick_size])
+            coverage = sum(float(q["modelProbability"]) for q in combo)
+            combined_edge = sum(float(q["robustExpectedReturn"]) for q in combo) / pick_size
+            if coverage >= strategy.min_combo_coverage and combined_edge >= strategy.negative_edge_min:
+                combos.append(combo)
+            if pick_size == 1 and (coverage < strategy.min_coverage or combined_edge < strategy.negative_edge_min):
+                break
+    return combos
+
+
 def _parlay_score(group: tuple[dict[str, Any], ...], strategy: Strategy) -> float:
     edge_score = math.prod(1 + float(item["robustExpectedReturn"]) for item in group)
     if strategy.key == "aggressive":
@@ -133,28 +236,61 @@ def build_portfolios(
         tickets: list[dict[str, Any]] = []
         used = 0
         parlay_reserve = 0
+        entertainment_mode = False
         if strategy.max_parlay == 2:
             parlay_reserve = round_to_ticket(bankroll * 0.05)
         elif strategy.max_parlay == 3:
             parlay_reserve = round_to_ticket(bankroll * 0.20)
-        singles = _single_candidates(quotes, strategy)
+
+        # Get single-ticket candidate combos
+        strict_quotes = _filter_quotes(quotes, strategy)
+        combos = _build_combo_groups(strict_quotes, strategy)
+
+        # Fallback to relaxed edge when no combos found
+        if not combos and strategy.negative_edge_fallback:
+            combos = _combo_fallback_groups(quotes, strategy)
+            if combos:
+                entertainment_mode = True
+
         used_match_ids: set[str] = set()
-        for quote in singles:
-            if len(used_match_ids) >= strategy.max_singles or quote["matchId"] in used_match_ids:
+        for combo in combos:
+            match_id = combo[0]["matchId"]
+            if len(used_match_ids) >= strategy.max_singles or match_id in used_match_ids:
                 continue
-            robust_probability = (1 + quote["robustExpectedReturn"]) / quote["odds"]
-            suggested = round_to_ticket(bankroll * fractional_kelly(robust_probability, quote["odds"], strategy.kelly_fraction))
-            maximum = round_to_ticket(bankroll * (strategy.score_cap if quote["market"] == "比分" else 0.12))
-            stake = min(maximum, max(2, suggested), cap - parlay_reserve - used)
-            if stake < 2:
-                continue
-            tickets.append(_ticket_from_quotes(
-                [quote], stake, "比分" if quote["market"] == "比分" else "单关", simulation
-            ))
-            used += stake
-            used_match_ids.add(quote["matchId"])
+
+            # Calculate stake for each quote in the combo
+            combo_stake = 0
+            combo_tickets: list[dict[str, Any]] = []
+            for quote in combo:
+                robust_probability = (1 + quote["robustExpectedReturn"]) / quote["odds"]
+                suggested = round_to_ticket(bankroll * fractional_kelly(robust_probability, quote["odds"], strategy.kelly_fraction))
+                maximum = round_to_ticket(bankroll * (strategy.score_cap if quote["market"] == "比分" else 0.12))
+                stake = min(maximum, max(2, suggested), cap - parlay_reserve - used - combo_stake)
+                if stake < 2:
+                    continue
+                ticket = _ticket_from_quotes(
+                    [quote], stake, "比分" if quote["market"] == "比分" else "单关", simulation
+                )
+                # Tag combo tickets for frontend display
+                if len(combo) > 1:
+                    coverage_pct = round(sum(float(q["modelProbability"]) for q in combo) * 100)
+                    ticket["comboGroup"] = {
+                        "matchId": match_id,
+                        "market": quote["market"],
+                        "size": len(combo),
+                        "coveragePct": coverage_pct,
+                    }
+                combo_tickets.append(ticket)
+                combo_stake += stake
+
+            tickets.extend(combo_tickets)
+            used += combo_stake
+            used_match_ids.add(match_id)
+
+        # Parlay logic (unchanged)
         if strategy.max_parlay >= 2 and used + 2 <= cap:
-            candidates = _parlay_candidates(quotes, 2, strategy)
+            parlay_quotes = _filter_quotes(quotes, strategy)
+            candidates = _parlay_candidates(parlay_quotes, 2, strategy)
             if candidates:
                 best = max(candidates, key=lambda group: _parlay_score(group, strategy))
                 stake = min(round_to_ticket(bankroll * (0.05 if strategy.key != "aggressive" else 0.12)), cap - used)
@@ -162,13 +298,15 @@ def build_portfolios(
                     tickets.append(_ticket_from_quotes(list(best), stake, "2串1", simulation))
                     used += stake
         if strategy.max_parlay >= 3 and used + 2 <= cap:
-            candidates = _parlay_candidates(quotes, 3, strategy)
+            parlay_quotes = _filter_quotes(quotes, strategy)
+            candidates = _parlay_candidates(parlay_quotes, 3, strategy)
             if candidates:
                 best = max(candidates, key=lambda group: _parlay_score(group, strategy))
                 stake = min(round_to_ticket(bankroll * 0.08), cap - used)
                 if stake >= 2:
                     tickets.append(_ticket_from_quotes(list(best), stake, "3串1", simulation))
                     used += stake
+
         simulation_summary = simulate_portfolio(tickets, bankroll, simulation)
         results.append({
             "key": strategy.key,
@@ -178,6 +316,7 @@ def build_portfolios(
             "retainedCash": bankroll - used,
             "strategyRules": list(strategy.rules),
             "tickets": tickets,
+            "entertainmentMode": entertainment_mode,
             **simulation_summary,
         })
     return results

@@ -138,6 +138,12 @@ export interface Ticket {
   modelProbability: number
   robustExpectedReturn: number
   potentialPayout: number
+  comboGroup?: {
+    matchId: string
+    market: MarketType
+    size: number
+    coveragePct: number
+  }
 }
 
 export interface DistributionPoint {
@@ -166,6 +172,7 @@ export interface Portfolio {
   strategyRules?: string[]
   tickets: Ticket[]
   distribution: DistributionPoint[]
+  entertainmentMode?: boolean
 }
 
 export interface BacktestMetric {

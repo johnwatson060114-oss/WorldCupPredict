@@ -10,7 +10,6 @@ from .api_football import ApiFootballClient
 from .availability import apply_availability, load_availability
 from .config import (
     FIXTURE_DIR,
-    LEGACY_MODEL_VERSION,
     MANUAL_DIR,
     OUTPUT_DIR,
     OUTCOME_RECOMMENDATION_THRESHOLD,
@@ -19,6 +18,7 @@ from .config import (
     SETTINGS,
     VENUES,
 )
+from .model_registry import check_and_apply_adoption, get_model_version
 from .elo_ratings import EloRatingsClient, expected_goals_from_elo
 from .football_data import (
     FootballDataClient,
@@ -646,7 +646,7 @@ def main() -> None:
         "generatedAt": generated_at,
         "targetDate": target_date,
         "timezone": SETTINGS.timezone,
-        "modelVersion": LEGACY_MODEL_VERSION,
+        "modelVersion": get_model_version(),
         "pipelineVersion": PIPELINE_VERSION,
         "dataSnapshot": build_snapshot_manifest(local_snapshot_paths(), generated_at),
         "reproducibility": {
@@ -688,6 +688,11 @@ def main() -> None:
         archive.parent.mkdir(parents=True, exist_ok=True)
         archive.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"Wrote {args.output} with {len(built_matches)} matches; status={payload['status']}")
+
+    # Auto-switch production model if total-goals adoption gates pass
+    if check_and_apply_adoption():
+        active = get_model_version()
+        print(f"[model] production model is now: {active}")
 
 
 if __name__ == "__main__":

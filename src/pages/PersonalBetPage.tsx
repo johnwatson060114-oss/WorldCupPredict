@@ -146,10 +146,6 @@ export function PersonalBetPage({ forecast, settlements, ledger, onLedgerChange 
   }, [bettingForecast])
 
   const selectedMatch = bettingForecast?.matches.find((match) => match.id === form.matchChoice)
-  const marketQuotes = useMemo(
-    () => selectedMatch?.quotes.filter((quote) => quote.market === form.market) ?? [],
-    [selectedMatch, form.market],
-  )
   const summary = useMemo(() => personalSummary(ledger), [ledger])
   const comparison = useMemo(() => buildFairComparison(ledger, history, comparisonMode), [ledger, history, comparisonMode])
   const actual = useMemo(() => actualStrategyPerformance(history), [history])
@@ -192,8 +188,10 @@ export function PersonalBetPage({ forecast, settlements, ledger, onLedgerChange 
     const leg = quoteToLeg(quote, selectedMatch, matchIndex)
     setForm((current) => {
       if (current.passType === '单关') return { ...current, legs: [leg] }
+      // Toggle: remove if same match+market+selection already selected
       const identical = current.legs.some((item) => item.matchId === leg.matchId && item.market === leg.market && item.selection === leg.selection)
       if (identical) return { ...current, legs: current.legs.filter((item) => !(item.matchId === leg.matchId && item.market === leg.market && item.selection === leg.selection)) }
+      // Allow same-market multi-selection (复式投注): only check match count limit
       const matchIds = new Set(current.legs.map((item) => item.matchId))
       if (!matchIds.has(leg.matchId) && matchIds.size >= PASS_DEFINITIONS[current.passType].matches) {
         setMessage(`${current.passType}需要 ${PASS_DEFINITIONS[current.passType].matches} 场，已选满；同一场仍可继续多选玩法。`)
@@ -360,10 +358,6 @@ export function PersonalBetPage({ forecast, settlements, ledger, onLedgerChange 
               </div>
             ) : (
               <>
-                <div className="sporttery-market-tabs" role="tablist" aria-label="竞彩玩法">
-                  {marketOrder.map((market) => <button key={market} className={form.market === market ? 'active' : ''} onClick={() => setForm((current) => ({ ...current, market }))}>{market}</button>)}
-                </div>
-
                 <div className="sporttery-match-table">
                   <div className="sporttery-match-head"><span>场次</span><span>时间</span><span>主队 vs 客队</span><span>已选</span></div>
                   {bettingForecast.matches.map((match, index) => {
@@ -379,37 +373,53 @@ export function PersonalBetPage({ forecast, settlements, ledger, onLedgerChange 
                   })}
                 </div>
 
-                <div className="selected-match-market">
+                {/* All 5 markets visible simultaneously — sporttery.cn style */}
+                <div className="market-grid">
                   {selectedMatch ? (
-                    <>
-                      <div className="selected-match-heading">
-                        <span>{selectedMatch.lotteryCode || `第${String(Math.max(0, bettingForecast.matches.findIndex((match) => match.id === selectedMatch.id)) + 1).padStart(2, '0')}场`}</span>
-                        <strong>{selectedMatch.homeTeam} vs {selectedMatch.awayTeam}</strong>
-                        <small>{shortDateTime(selectedMatch.kickoffBeijing)} 开球</small>
-                      </div>
-                      <div className="sporttery-options">
-                        {marketQuotes.map((quote) => {
-                          const selected = form.legs.some((leg) => leg.matchId === quote.matchId && leg.market === quote.market && leg.selection === quote.selection)
-                          const singleBlocked = form.passType === '单关' && !quote.singleEligible
-                          return <button key={quote.id} disabled={!quote.available || singleBlocked} className={selected ? 'selected' : ''} onClick={() => chooseQuote(quote)}><span>{quote.selection}</span><strong>{quote.odds?.toFixed(2) ?? '--'}</strong><small>{!quote.available ? '未开售' : singleBlocked ? '不可单关' : quote.singleEligible ? '支持单关' : quote.recommendation}</small></button>
-                        })}
-                        {!marketQuotes.length && (
-                          <div className="market-empty">
-                            历史快照未归档"{form.market}"赔率，无法生成真实票面。
-                            {(() => {
-                              const available = marketOrder.filter((mkt) => selectedMatch.quotes.some((q) => q.market === mkt && q.available))
-                              return available.length ? <> 该场次可用的玩法：{available.join('、')}。</> : null
-                            })()}
+                    marketOrder.map((market) => {
+                      const quotes = selectedMatch.quotes.filter((q) => q.market === market)
+                      if (!quotes.length) return null
+                      const handicap = market === '让球胜平负' ? quotes[0]?.handicap : undefined
+                      return (
+                        <section className="market-grid-section" key={market}>
+                          <div className="market-grid-header">
+                            <span>{market}</span>
+                            {handicap != null && <em className="handicap-badge">让{handicap > 0 ? `+${handicap}` : handicap}球</em>}
                           </div>
-                        )}
-                      </div>
-                    </>
+                          <div className="market-grid-options">
+                            {quotes.map((quote) => {
+                              const sel = form.legs.some((leg) => leg.matchId === quote.matchId && leg.market === quote.market && leg.selection === quote.selection)
+                              const blocked = form.passType === '单关' && !quote.singleEligible
+                              const label = market === '让球胜平负' && quote.handicap != null
+                                ? `${quote.handicap > 0 ? `+${quote.handicap}` : quote.handicap}${quote.selection}`
+                                : quote.selection
+                              return (
+                                <button key={quote.id} disabled={!quote.available || blocked} className={sel ? 'selected' : ''} onClick={() => chooseQuote(quote)}>
+                                  <span>{label}</span>
+                                  <strong>{quote.odds?.toFixed(2) ?? '--'}</strong>
+                                  <small>{!quote.available ? '未开售' : blocked ? '不可单关' : quote.singleEligible ? '单关' : ''}</small>
+                                </button>
+                              )
+                            })}
+                          </div>
+                        </section>
+                      )
+                    })
                   ) : (
-                    <div className="selected-match-heading">
+                    <div className="market-grid-empty">
                       <strong>暂无比赛</strong>
                       <small>请在上方选择一场比赛</small>
                     </div>
                   )}
+                </div>
+
+                {/* Real-time stat bar */}
+                <div className="ticket-stat-bar">
+                  <span>已选 <strong>{selectedGroups.length}</strong> 场</span>
+                  <span>过关 <strong>{form.passType}</strong></span>
+                  <span><strong>{ticketCount}</strong> 注</span>
+                  <span>预计 <strong>{ticketCount && Number.isFinite(actualStake) ? actualStake.toFixed(2) : calculatedStake.toFixed(2)}</strong> 元</span>
+                  {actualMaximumPayout > 0 && <span>最高奖金 <strong>{actualMaximumPayout.toFixed(2)}</strong> 元</span>}
                 </div>
               </>
             )}

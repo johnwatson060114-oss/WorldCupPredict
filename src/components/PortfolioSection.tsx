@@ -35,7 +35,7 @@ export function PortfolioSection({ bankroll, portfolios, emptyReason, selected, 
             >
               <div className="portfolio-title">
                 <span><Icon size={17} /></span>
-                <div><h3>{portfolio.name}</h3><small>{portfolio.subtitle}</small></div>
+                <div><h3>{portfolio.name}{portfolio.entertainmentMode && <em className="entertainment-tag">娱乐方案</em>}</h3><small>{portfolio.subtitle}</small></div>
                 {active && <Check size={16} />}
               </div>
               <div className="portfolio-metrics">
@@ -53,8 +53,11 @@ export function PortfolioSection({ bankroll, portfolios, emptyReason, selected, 
                 )}
                 {portfolio.tickets.slice(0, 4).map((ticket) => (
                   <div key={ticket.id}>
-                    <span>{ticket.type}</span>
-                    <p>{ticket.legs.map((leg) => leg.label).join(' × ')}</p>
+                    <span>{ticket.type}{ticket.comboGroup ? ` · 复式${ticket.comboGroup.size}选` : ''}</span>
+                    <p>
+                      {ticket.legs.map((leg) => leg.label).join(' × ')}
+                      {ticket.comboGroup ? <em>（覆盖 {ticket.comboGroup.coveragePct}%）</em> : ''}
+                    </p>
                     <strong>{ticket.stake}元</strong>
                   </div>
                 ))}

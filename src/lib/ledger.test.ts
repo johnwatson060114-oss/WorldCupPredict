@@ -1,22 +1,28 @@
 import { describe, expect, it } from 'vitest'
-import { combinedAvailableBalance, settleLedger } from './ledger'
+import { currentBalance, settleLedger } from './ledger'
 import type { BankrollLedger } from '../types'
-import type { PersonalBetLedger } from '../features/personal-bets/types'
 
-describe('ledger settlement', () => {
-  it('uses personal pending bets in the global available balance', () => {
+describe('ledger', () => {
+  it('tracks strategy bankroll independently of personal bets', () => {
     const ledger: BankrollLedger = { schemaVersion: 1, initialBankroll: 200, entries: [] }
-    const personal: PersonalBetLedger = {
+    expect(currentBalance(ledger)).toBe(200)
+  })
+
+  it('subtracts pending stakes from strategy balance', () => {
+    const ledger: BankrollLedger = {
       schemaVersion: 1,
       initialBankroll: 200,
-      modelSnapshots: [],
-      bets: [{
-        id: 'personal', createdAt: 'now', targetDate: '2026-06-16', matchLabel: 'A vs B',
-        market: '胜平负', selection: '胜', odds: 2, stake: 3,
-        decisionSource: 'subjective', status: 'pending',
+      entries: [{
+        id: 'entry', createdAt: 'now', targetDate: '2026-06-17', strategy: 'balanced',
+        openingBalance: 200, stake: 10, status: 'pending',
+        tickets: [{
+          id: 'ticket', type: '单关', stake: 10, combinedOdds: 2, modelProbability: .5,
+          robustExpectedReturn: .02, potentialPayout: 20,
+          legs: [{ matchId: 'm1', label: 'A vs B', market: '胜平负', selection: '胜', odds: 2 }],
+        }],
       }],
     }
-    expect(combinedAvailableBalance(ledger, personal)).toBe(197)
+    expect(currentBalance(ledger)).toBe(190)
   })
 
   it('settles a -1 handicap only when the home side wins by two', () => {
