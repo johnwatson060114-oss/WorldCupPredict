@@ -39,13 +39,14 @@ def test_portfolios_respect_bankroll_caps_and_distinct_parlay_matches():
             assert len(ids) == len(set(ids))
 
 
-def test_negative_edge_produces_no_ticket_for_conservative():
+def test_negative_edge_produces_entertainment_tickets_for_all_strategies():
+    """All three strategies now have negative_edge_fallback=True.
+    With a negative-edge quote that passes relaxed filters, all produce tickets."""
     portfolios = build_portfolios([quote("1", -0.01)], bankroll=200, simulation=shared_simulation("1"))
-    # conservative stays empty (min edge 0.02 > -0.01), balanced/aggressive may fall back
-    assert not portfolios[0]["tickets"]  # conservative has no tickets
-    # balanced/aggressive may produce entertainment tickets with fallback
-    assert portfolios[1]["entertainmentMode"] or not portfolios[1]["tickets"]
-    assert portfolios[2]["entertainmentMode"] or not portfolios[2]["tickets"]
+    # All three strategies should produce entertainment-mode tickets
+    for p in portfolios:
+        assert p["entertainmentMode"], f"{p['key']} should be in entertainment mode"
+        assert len(p["tickets"]) >= 1, f"{p['key']} should have tickets"
 
 
 def test_observation_only_quote_blocked_in_conservative_accepted_in_fallback():
@@ -54,7 +55,7 @@ def test_observation_only_quote_blocked_in_conservative_accepted_in_fallback():
 
     portfolios = build_portfolios([observed], bankroll=200, simulation=shared_simulation("1"))
 
-    # conservative (no fallback) should have no tickets
+    # conservative: market "半全场" not in single_markets → no tickets even with fallback
     assert not portfolios[0]["tickets"]
     # balanced/aggressive may accept it via entertainment fallback since edge is positive
     # but the high odds (50.0) exceeds conservative max_odds (2.25) and balanced max_odds (4.50)

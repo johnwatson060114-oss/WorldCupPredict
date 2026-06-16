@@ -35,27 +35,28 @@ class Strategy:
 
 STRATEGIES = (
     Strategy(
-        "conservative", "稳健", "高胜率单关，拒绝串关", 0.25, 0.25, 0.0, 1,
+        "conservative", "稳健", "高胜率单关精选", 0.25, 0.25, 0.0, 1,
         ("胜平负", "总进球数"), (), 0.80, 0.55, 0.02, 2.25, 2, 0,
-        ("只选覆盖率≥80%的高概率单关", "仅胜平负/总进球数", "每玩法只选最佳单个选项"),
-        max_combo_per_market=1, negative_edge_fallback=False,
+        ("高概率单关精选，模型概率≥55%", "仅胜平负/总进球数", "每场每玩法单选最优"),
+        max_combo_per_market=1, min_combo_coverage=0.55,
+        negative_edge_fallback=True, negative_edge_min=-0.05,
     ),
     Strategy(
-        "balanced", "均衡", "价值单关 + 1注2串1", 0.50, 0.40, 0.0, 2,
+        "balanced", "均衡", "复式覆盖 + 1注2串1", 0.50, 0.40, 0.0, 2,
         ("胜平负", "让球胜平负", "总进球数"), ("胜平负", "让球胜平负", "总进球数"),
         0.78, 0.35, 0.01, 4.50, 3, 0,
-        ("正期望优先，允许同场2选复式", "覆盖胜平负/让球/总进球", "最多1注2串1，无正EV时-8%以内"),
+        ("复式覆盖≥55%，同场可选2项组合", "胜平负/让球/总进球", "正期望优先，降级自动切换概率覆盖"),
         max_combo_per_market=2, min_combo_coverage=0.55, combo_edge_tolerance=-0.01,
-        negative_edge_fallback=True, negative_edge_min=-0.08,
+        negative_edge_fallback=True, negative_edge_min=-0.15,
     ),
     Strategy(
-        "aggressive", "激进", "高赔率市场 + 受控串关", 0.75, 0.60, 0.10, 3,
+        "aggressive", "激进", "全市场复式 + 受控串关", 0.75, 0.60, 0.10, 3,
         ("胜平负", "让球胜平负", "比分", "总进球数", "半全场"),
         ("胜平负", "让球胜平负", "比分", "总进球数", "半全场"),
         0.75, 0.08, 0.0, 80.0, 4, 1,
-        ("允许比分/半全场小注，支持同场2选", "降级模式自动放宽至-20%边缘", "可做2串1和3串1，实验观察用"),
+        ("复式覆盖≥40%，全市场5玩法可选", "比分/半全场小注实验", "可做2串1和3串1，降级自动放宽"),
         max_combo_per_market=2, min_combo_coverage=0.40, combo_edge_tolerance=-0.05,
-        negative_edge_fallback=True, negative_edge_min=-0.20,
+        negative_edge_fallback=True, negative_edge_min=-0.25,
     ),
 )
 
@@ -180,17 +181,32 @@ def _combo_fallback_groups(
     quotes: list[dict[str, Any]],
     strategy: Strategy,
 ) -> list[tuple[dict[str, Any], ...]]:
-    """Relaxed combo selection when no positive-EV combos exist.
+    """Degraded-mode combo selection based on probability coverage.
 
-    Drops the singleEligible requirement entirely (degraded mode may have
-    no single-eligible quotes). Uses negative_edge_min as the relaxed edge
-    floor, includes '观察' and '不建议' recommendations, and lowers
-    coverage/probability bars for entertainment strategies.
+    When real-time sporttery odds are unavailable, all robustExpectedReturn
+    values are model-computed and universally negative. Edge-based filtering
+    is meaningless in this regime — it either produces zero bets or selects
+    extreme near-1.01 handicap bets that don't exist on real sporttery.
+
+    Instead, this function selects combos by model probability coverage,
+    which still carries predictive signal. This is the natural home for
+    复式投注 (multi-selection combos): buying 2 selections in the same
+    market to increase hit probability.
+
+    - Drops singleEligible (degraded mode never has it).
+    - Does NOT filter by edge (all edges are fake when odds are snapshots).
+    - Sorts by modelProbability descending (most likely outcomes first).
+    - Does NOT break on size-1 failure — 复式 exists precisely because
+      size-2 achieves coverage that size-1 alone cannot.
+    - Only checks min_combo_coverage at the combo level.
     """
-    # Further relaxed thresholds for fallback mode
     fallback_coverage = max(0.60, strategy.min_coverage - 0.15)
-    fallback_probability = max(0.05, strategy.min_probability - 0.10)
-    fallback_odds = max(strategy.max_odds, 200.0)  # no odds cap in fallback
+    # Use a generous individual-probability floor so the top 2 options
+    # per market both pass.  The combo-level min_combo_coverage is the
+    # real quality gate — this pre-filter just removes noise (< 10%).
+    fallback_probability = max(0.05, strategy.min_probability - 0.25)
+    fallback_max_odds = max(strategy.max_odds, 200.0)
+
     relaxed = [
         quote for quote in quotes
         if quote.get("available")
@@ -198,31 +214,36 @@ def _combo_fallback_groups(
         and quote.get("recommendation") in {"重点推荐", "小注可选", "观察", "不建议"}
         and float(quote.get("coverage") or 0) >= fallback_coverage
         and float(quote.get("modelProbability") or 0) >= fallback_probability
-        and float(quote.get("robustExpectedReturn") or -99) >= strategy.negative_edge_min
         and quote.get("odds")
-        and float(quote["odds"]) <= fallback_odds
+        and float(quote["odds"]) <= fallback_max_odds
     ]
+
     groups: dict[tuple[str, str], list[dict[str, Any]]] = {}
     for quote in relaxed:
         key = (quote["matchId"], quote["market"])
         groups.setdefault(key, []).append(quote)
 
     combos: list[tuple[dict[str, Any], ...]] = []
-    for (match_id, market), group in groups.items():
-        sorted_group = sorted(group, key=lambda q: _candidate_score(q, strategy), reverse=True)
+    for (_match_id, _market), group in groups.items():
+        sorted_group = sorted(
+            group,
+            key=lambda q: float(q["modelProbability"]),
+            reverse=True,
+        )
         max_pick = min(strategy.max_combo_per_market, len(sorted_group))
         if max_pick <= 0:
             continue
+
         for pick_size in range(1, max_pick + 1):
             combo = tuple(sorted_group[:pick_size])
             coverage = sum(float(q["modelProbability"]) for q in combo)
-            combined_edge = sum(float(q["robustExpectedReturn"]) for q in combo) / pick_size
-            if coverage >= strategy.min_combo_coverage and combined_edge >= strategy.negative_edge_min:
+            if coverage >= strategy.min_combo_coverage:
                 combos.append(combo)
-            if pick_size == 1 and (coverage < strategy.min_coverage or combined_edge < strategy.negative_edge_min):
-                break
-    return combos
+            # Do NOT break if size-1 fails coverage.
+            # 复式投注: 让胜+让平 together cover >55% even when
+            # neither alone reaches the threshold.
 
+    return combos
 
 def _parlay_score(group: tuple[dict[str, Any], ...], strategy: Strategy) -> float:
     edge_score = math.prod(1 + float(item["robustExpectedReturn"]) for item in group)
