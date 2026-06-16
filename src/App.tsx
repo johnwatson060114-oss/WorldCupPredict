@@ -16,7 +16,7 @@ import { MethodPage } from './pages/MethodPage'
 import { PersonalBetPage } from './pages/PersonalBetPage'
 import { TotalGoalsPage } from './pages/TotalGoalsPage'
 import { useForecast } from './hooks/useForecast'
-import { captureModelSnapshot, loadPersonalLedger, settlePersonalLedger } from './features/personal-bets/storage'
+import { captureModelSnapshot, loadPersonalLedger, savePersonalLedger, settlePersonalLedger } from './features/personal-bets/storage'
 import type { PersonalBetLedger } from './features/personal-bets/types'
 import { appendLedgerEntry, currentBalance, emptyLedger, loadLedger, saveLedger, settleLedger } from './lib/ledger'
 import { scalePortfolio } from './lib/portfolio'
@@ -48,6 +48,20 @@ export default function App() {
       })
       .catch(() => undefined)
   }, [])
+
+  // Auto-load initial personal ledger on first visit
+  useEffect(() => {
+    if (personalLedger.bets.length > 0) return
+    fetch('./data/personal-ledger-initial.json', { cache: 'no-store' })
+      .then((response) => response.ok ? response.json() as Promise<PersonalBetLedger> : null)
+      .then((parsed) => {
+        if (!parsed || !Array.isArray(parsed.bets) || !parsed.bets.length) return
+        // Merge into ledger: save to localStorage, then update state
+        savePersonalLedger(parsed)
+        setPersonalLedger(parsed)
+      })
+      .catch(() => undefined)
+  }, [personalLedger.bets.length])
 
   useEffect(() => {
     if (!data) return
