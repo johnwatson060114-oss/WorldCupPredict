@@ -144,7 +144,7 @@ export default function App() {
         </>
       )}
       {activeNav === 'analysis' && (selectedMatch ? <AnalysisPage match={selectedMatch} /> : <main className="empty-forecast-panel"><h1>暂无比赛分析</h1><p>当前目标日期没有可分析的比赛；请先使用"我的投注"记录历史票单。</p><button onClick={() => setActiveNav('personal')}>打开我的投注</button></main>)}
-      {activeNav === 'goals' && <TotalGoalsPage matches={data.matches} selectedId={selectedMatch.id} onSelect={setSelectedMatchId} />}
+      {activeNav === 'goals' && <TotalGoalsPage matches={data.matches} selectedId={selectedMatch?.id ?? data.matches[0]?.id ?? ''} onSelect={setSelectedMatchId} />}
       {activeNav === 'personal' && <PersonalBetPage forecast={data} settlements={settlements} ledger={personalLedger} onLedgerChange={setPersonalLedger} />}
       {activeNav === 'ledger' && <LedgerPage ledger={ledger} availableBankroll={availableBankroll} personalBetCount={personalLedger.bets.length} onImport={(next) => { saveLedger(next); setLedger(next) }} onReset={() => { const next = emptyLedger(); saveLedger(next); setLedger(next) }} />}
       {activeNav === 'backtest' && <BacktestPage forecast={data} />}

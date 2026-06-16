@@ -354,18 +354,18 @@ export function PersonalBetPage({ forecast, settlements, ledger, onLedgerChange 
 
           {archiveState === 'ready' && bettingForecast && <>
             {!bettingForecast.matches.length ? (
-              <div className=”archive-state warning”>
+              <div className="archive-state warning">
                 {form.targetDate} 的快照存在但未包含比赛数据，可能该日期无赛程或数据生成时出现异常。
                 请尝试选择其他已有数据的日期（如 2026-06-15 或 2026-06-16）。
               </div>
             ) : (
               <>
-                <div className=”sporttery-market-tabs” role=”tablist” aria-label=”竞彩玩法”>
+                <div className="sporttery-market-tabs" role="tablist" aria-label="竞彩玩法">
                   {marketOrder.map((market) => <button key={market} className={form.market === market ? 'active' : ''} onClick={() => setForm((current) => ({ ...current, market }))}>{market}</button>)}
                 </div>
 
-                <div className=”sporttery-match-table”>
-                  <div className=”sporttery-match-head”><span>场次</span><span>时间</span><span>主队 vs 客队</span><span>已选</span></div>
+                <div className="sporttery-match-table">
+                  <div className="sporttery-match-head"><span>场次</span><span>时间</span><span>主队 vs 客队</span><span>已选</span></div>
                   {bettingForecast.matches.map((match, index) => {
                     const matchLegs = form.legs.filter((leg) => leg.matchId === match.id)
                     return (
@@ -379,23 +379,23 @@ export function PersonalBetPage({ forecast, settlements, ledger, onLedgerChange 
                   })}
                 </div>
 
-                <div className=”selected-match-market”>
+                <div className="selected-match-market">
                   {selectedMatch ? (
                     <>
-                      <div className=”selected-match-heading”>
+                      <div className="selected-match-heading">
                         <span>{selectedMatch.lotteryCode || `第${String(Math.max(0, bettingForecast.matches.findIndex((match) => match.id === selectedMatch.id)) + 1).padStart(2, '0')}场`}</span>
                         <strong>{selectedMatch.homeTeam} vs {selectedMatch.awayTeam}</strong>
                         <small>{shortDateTime(selectedMatch.kickoffBeijing)} 开球</small>
                       </div>
-                      <div className=”sporttery-options”>
+                      <div className="sporttery-options">
                         {marketQuotes.map((quote) => {
                           const selected = form.legs.some((leg) => leg.matchId === quote.matchId && leg.market === quote.market && leg.selection === quote.selection)
                           const singleBlocked = form.passType === '单关' && !quote.singleEligible
                           return <button key={quote.id} disabled={!quote.available || singleBlocked} className={selected ? 'selected' : ''} onClick={() => chooseQuote(quote)}><span>{quote.selection}</span><strong>{quote.odds?.toFixed(2) ?? '--'}</strong><small>{!quote.available ? '未开售' : singleBlocked ? '不可单关' : quote.singleEligible ? '支持单关' : quote.recommendation}</small></button>
                         })}
                         {!marketQuotes.length && (
-                          <div className=”market-empty”>
-                            历史快照未归档”{form.market}”赔率，无法生成真实票面。
+                          <div className="market-empty">
+                            历史快照未归档"{form.market}"赔率，无法生成真实票面。
                             {(() => {
                               const available = marketOrder.filter((mkt) => selectedMatch.quotes.some((q) => q.market === mkt && q.available))
                               return available.length ? <> 该场次可用的玩法：{available.join('、')}。</> : null
@@ -405,7 +405,7 @@ export function PersonalBetPage({ forecast, settlements, ledger, onLedgerChange 
                       </div>
                     </>
                   ) : (
-                    <div className=”selected-match-heading”>
+                    <div className="selected-match-heading">
                       <strong>暂无比赛</strong>
                       <small>请在上方选择一场比赛</small>
                     </div>
@@ -475,7 +475,7 @@ export function PersonalBetPage({ forecast, settlements, ledger, onLedgerChange 
               </article>
             )
           })}
-        </div> : <div className=”saved-ticket-empty”><strong>还没有保存的票型</strong><span>在上方选择比赛、玩法与赔率后保存，这里会出现完整的”2串1 / 4串11”等实体票式记录。</span></div>}
+        </div> : <div className="saved-ticket-empty"><strong>还没有保存的票型</strong><span>在上方选择比赛、玩法与赔率后保存，这里会出现完整的"2串1 / 4串11"等实体票式记录。</span></div>}
       </section>
 
       <details className="personal-analytics">
