@@ -7,6 +7,8 @@ export type PersonalBetStatus = 'pending' | 'settled' | 'void'
 export interface PersonalBetLeg {
   matchId: string
   matchLabel: string
+  lotteryCode?: string
+  kickoffBeijing?: string
   market: MarketType
   selection: string
   odds: number
