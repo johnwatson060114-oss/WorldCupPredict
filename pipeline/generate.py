@@ -17,6 +17,7 @@ from .config import (
     ROOT,
     SETTINGS,
     VENUES,
+    FIXTURE_VENUES,
 )
 from .model_registry import check_and_apply_adoption, get_model_version
 from .elo_ratings import EloRatingsClient, expected_goals_from_elo
@@ -222,7 +223,11 @@ def football_data_seeds(client: FootballDataClient, target_date: str) -> list[di
             "note": "免费数据源不提供教练战术变化，等待带来源的人工校正",
             "active": False,
         }
-        venue_name = fixture.get("venue") or "场馆待确认"
+        venue_name = (
+            FIXTURE_VENUES.get((fixture["homeTeam"]["tla"], fixture["awayTeam"]["tla"]))
+            or fixture.get("venue")
+            or "场馆待确认"
+        )
         venue = VENUES.get(venue_name)
         weather_text = "场馆坐标待确认，天气未启用"
         if venue:
