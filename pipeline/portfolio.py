@@ -31,6 +31,13 @@ class Strategy:
     combo_edge_tolerance: float = 0.0
     negative_edge_fallback: bool = False
     negative_edge_min: float = 0.0
+    # Combo quality gates (entertainment/fallback mode).
+    # min_combo_roi: expected ROI floor — combos below this are rejected.
+    # min_payout_ratio: worst-case (minimum) individual payout / total stake.
+    #   Prevents combos where the most likely outcome still loses most of the
+    #   stake (e.g. 100%-coverage 胜平负 where every payout < cost).
+    min_combo_roi: float = -1.0
+    min_payout_ratio: float = 0.0
 
 
 STRATEGIES = (
@@ -40,23 +47,26 @@ STRATEGIES = (
         ("高概率单关精选，模型概率≥55%", "仅胜平负/总进球数", "每场每玩法单选最优", "无正期望时0元不投"),
         max_combo_per_market=1, min_combo_coverage=0.55,
         negative_edge_fallback=False, negative_edge_min=0.0,
+        min_combo_roi=0.05, min_payout_ratio=0.80,
     ),
     Strategy(
         "balanced", "均衡", "复式双选 + 概率覆盖", 0.50, 0.40, 0.0, 2,
         ("胜平负", "让球胜平负", "总进球数"), ("胜平负", "让球胜平负", "总进球数"),
         0.78, 0.35, 0.01, 4.50, 3, 0,
-        ("复式双选覆盖≥55%，同场可买胜+平", "胜平负/让球/总进球", "正期望优先，降级自动切换概率覆盖"),
+        ("复式双选覆盖≥55%，同场可买胜+平", "胜平负/让球/总进球", "正期望优先，降级自动切换概率覆盖", "预期回报率≥-10%，最差情况返本≥60%"),
         max_combo_per_market=2, min_combo_coverage=0.55, combo_edge_tolerance=-0.01,
         negative_edge_fallback=True, negative_edge_min=-0.15,
+        min_combo_roi=-0.10, min_payout_ratio=0.60,
     ),
     Strategy(
         "aggressive", "激进", "多选复式 + 高风险串关", 0.75, 0.60, 0.10, 3,
         ("胜平负", "让球胜平负", "比分", "总进球数", "半全场"),
         ("胜平负", "让球胜平负", "比分", "总进球数", "半全场"),
         0.75, 0.08, 0.0, 80.0, 4, 1,
-        ("复式覆盖≥35%，全市场5玩法可选", "同场同玩法可3选（胜+平+负全覆盖）", "降级时主动做复式组合增大概率"),
-        max_combo_per_market=3, min_combo_coverage=0.35, combo_edge_tolerance=-0.05,
+        ("复式覆盖≥35%，全市场5玩法可选", "同场同玩法≤2选（禁止3选全覆盖）", "降级时做复式组合增大概率", "预期回报率≥-15%，最差返本≥40%"),
+        max_combo_per_market=2, min_combo_coverage=0.35, combo_edge_tolerance=-0.05,
         negative_edge_fallback=True, negative_edge_min=-0.25,
+        min_combo_roi=-0.15, min_payout_ratio=0.40,
     ),
 )
 
@@ -238,6 +248,11 @@ def _combo_fallback_groups(
             combo = tuple(sorted_group[:pick_size])
             coverage = sum(float(q["modelProbability"]) for q in combo)
             if coverage >= strategy.min_combo_coverage:
+                # Reject combos that cover ALL outcomes of a multi-outcome
+                # market (e.g. win+draw+loss on 胜平负).  Hitting is
+                # guaranteed but the payout never covers total stake.
+                if pick_size == len(group) and len(group) > 1:
+                    continue
                 combos.append(combo)
             # Do NOT break if size-1 fails coverage.
             # 复式投注: 让胜+让平 together cover >55% even when
@@ -298,18 +313,26 @@ def build_portfolios(
             if len(used_match_ids) >= strategy.max_singles or match_id in used_match_ids:
                 continue
 
-            # Calculate stake for each quote in the combo
+            # Calculate stakes for each leg in the combo.
+            # In entertainment mode, allocate proportionally to each leg's
+            # model probability so the high-confidence outcome carries more
+            # money (improving worst-case payout ratio).
+            # Then validate: expected ROI and minimum payout ratio must pass
+            # strategy thresholds.
             combo_stake = 0
             combo_tickets: list[dict[str, Any]] = []
             combo_coverage = sum(float(q["modelProbability"]) for q in combo)
-            for quote in combo:
+
+            # Determine per-leg weight (probability-proportional)
+            probs = [float(q["modelProbability"]) for q in combo]
+            total_prob = sum(probs) or 1.0
+
+            for idx, quote in enumerate(combo):
+                weight = probs[idx] / total_prob
                 if entertainment_mode:
-                    # Coverage-proportional stake: higher coverage → more conviction.
-                    # Kelly is useless here (returns 0 for negative edges), so we
-                    # size bets by how much probability mass the combo covers.
                     coverage_ratio = combo_coverage / max(strategy.min_combo_coverage, 0.01)
                     base_pct = 0.025 if strategy.key == "balanced" else 0.045
-                    suggested = round_to_ticket(bankroll * base_pct * coverage_ratio)
+                    suggested = round_to_ticket(bankroll * base_pct * coverage_ratio * weight * len(combo))
                 else:
                     robust_probability = (1 + quote["robustExpectedReturn"]) / quote["odds"]
                     suggested = round_to_ticket(bankroll * fractional_kelly(robust_probability, quote["odds"], strategy.kelly_fraction))
@@ -320,17 +343,43 @@ def build_portfolios(
                 ticket = _ticket_from_quotes(
                     [quote], stake, "比分" if quote["market"] == "比分" else "单关", simulation
                 )
-                # Tag combo tickets for frontend display
-                if len(combo) > 1:
-                    coverage_pct = round(combo_coverage * 100)
-                    ticket["comboGroup"] = {
-                        "matchId": match_id,
-                        "market": quote["market"],
-                        "size": len(combo),
-                        "coveragePct": coverage_pct,
-                    }
                 combo_tickets.append(ticket)
                 combo_stake += stake
+
+            # --- Combo quality gate: ROI + worst-case payout ratio ---
+            if len(combo_tickets) >= 2 and combo_stake >= 4:
+                expected_return = sum(
+                    probs[i] * combo_tickets[i]["potentialPayout"]
+                    for i in range(len(combo_tickets))
+                )
+                expected_roi = (expected_return - combo_stake) / combo_stake
+                min_payout = min(t["potentialPayout"] for t in combo_tickets)
+                min_payout_ratio = min_payout / combo_stake
+
+                if expected_roi < strategy.min_combo_roi or min_payout_ratio < strategy.min_payout_ratio:
+                    # Combo fails quality gate — skip it entirely
+                    continue
+
+                # Tag combo tickets for frontend display
+                coverage_pct = round(combo_coverage * 100)
+                for t in combo_tickets:
+                    t["comboGroup"] = {
+                        "matchId": match_id,
+                        "market": combo[0]["market"],
+                        "size": len(combo),
+                        "coveragePct": coverage_pct,
+                        "expectedRoi": round(expected_roi * 100),
+                        "minPayoutRatio": round(min_payout_ratio * 100),
+                    }
+            elif len(combo_tickets) == 1 and len(combo) > 1:
+                # Multi-leg combo but only 1 leg got budget — downgrade to single
+                pass
+            elif len(combo_tickets) == 1 and len(combo) == 1:
+                # Single ticket (not a combo).
+                # In entertainment mode, skip ultra-low-odds bets (e.g. 1.01)
+                # — the upside is negligible and the budget is better spent on combos.
+                if entertainment_mode and float(combo[0]["odds"]) < 1.20:
+                    continue
 
             tickets.extend(combo_tickets)
             used += combo_stake

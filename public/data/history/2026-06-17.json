@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-16T20:18:53+08:00",
+  "generatedAt": "2026-06-16T20:28:01+08:00",
   "targetDate": "2026-06-17",
   "timezone": "Asia/Shanghai",
   "modelVersion": "legacy-dixon-coles-v1",
   "pipelineVersion": "2.0.0-dev",
   "dataSnapshot": {
     "id": "f00c5fbd09c1cf9471cc124fe5cb4e19eba0e158c077c11912f4b1292944e82b",
-    "cutoff": "2026-06-16T20:18:53+08:00",
+    "cutoff": "2026-06-16T20:28:01+08:00",
     "files": [
       {
         "path": "manual-data/availability.csv",
@@ -278,7 +278,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "法国-vs-塞内加尔-胜平负-平",
@@ -298,7 +298,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "法国-vs-塞内加尔-胜平负-负",
@@ -318,7 +318,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "法国-vs-塞内加尔-让球胜平负-+1-胜",
@@ -338,7 +338,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "法国-vs-塞内加尔-让球胜平负-+1-平",
@@ -358,7 +358,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "法国-vs-塞内加尔-让球胜平负-+1-负",
@@ -378,7 +378,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "法国-vs-塞内加尔-比分-1:0",
@@ -398,7 +398,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "法国-vs-塞内加尔-比分-2:0",
@@ -418,7 +418,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "法国-vs-塞内加尔-比分-1:1",
@@ -438,7 +438,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "法国-vs-塞内加尔-比分-2:1",
@@ -458,7 +458,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "法国-vs-塞内加尔-比分-3:0",
@@ -478,7 +478,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "法国-vs-塞内加尔-比分-0:0",
@@ -498,7 +498,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "法国-vs-塞内加尔-比分-3:1",
@@ -518,7 +518,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "法国-vs-塞内加尔-比分-0:1",
@@ -538,7 +538,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "法国-vs-塞内加尔-总进球数-0",
@@ -558,7 +558,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "法国-vs-塞内加尔-总进球数-1",
@@ -578,7 +578,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "法国-vs-塞内加尔-总进球数-2",
@@ -598,7 +598,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "法国-vs-塞内加尔-总进球数-3",
@@ -618,7 +618,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "法国-vs-塞内加尔-总进球数-4",
@@ -638,7 +638,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "法国-vs-塞内加尔-总进球数-5",
@@ -658,7 +658,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "法国-vs-塞内加尔-总进球数-6",
@@ -678,7 +678,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "法国-vs-塞内加尔-总进球数-7+",
@@ -698,7 +698,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "法国-vs-塞内加尔-半全场-胜胜",
@@ -718,7 +718,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "法国-vs-塞内加尔-半全场-胜平",
@@ -738,7 +738,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "法国-vs-塞内加尔-半全场-胜负",
@@ -758,7 +758,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "法国-vs-塞内加尔-半全场-平胜",
@@ -778,7 +778,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "法国-vs-塞内加尔-半全场-平平",
@@ -798,7 +798,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "法国-vs-塞内加尔-半全场-平负",
@@ -818,7 +818,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "法国-vs-塞内加尔-半全场-负胜",
@@ -838,7 +838,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "法国-vs-塞内加尔-半全场-负平",
@@ -858,7 +858,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "法国-vs-塞内加尔-半全场-负负",
@@ -878,7 +878,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         }
       ]
     },
@@ -1092,7 +1092,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "伊拉克-vs-挪威-胜平负-平",
@@ -1112,7 +1112,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "伊拉克-vs-挪威-胜平负-负",
@@ -1132,7 +1132,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "伊拉克-vs-挪威-让球胜平负--2-胜",
@@ -1152,7 +1152,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "伊拉克-vs-挪威-让球胜平负--2-平",
@@ -1172,7 +1172,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "伊拉克-vs-挪威-让球胜平负--2-负",
@@ -1192,7 +1192,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "伊拉克-vs-挪威-比分-0:2",
@@ -1212,7 +1212,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "伊拉克-vs-挪威-比分-0:1",
@@ -1232,7 +1232,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "伊拉克-vs-挪威-比分-0:3",
@@ -1252,7 +1252,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "伊拉克-vs-挪威-比分-0:0",
@@ -1272,7 +1272,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "伊拉克-vs-挪威-比分-1:2",
@@ -1292,7 +1292,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "伊拉克-vs-挪威-比分-1:1",
@@ -1312,7 +1312,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "伊拉克-vs-挪威-比分-0:4",
@@ -1332,7 +1332,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "伊拉克-vs-挪威-比分-1:3",
@@ -1352,7 +1352,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "伊拉克-vs-挪威-总进球数-0",
@@ -1372,7 +1372,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "伊拉克-vs-挪威-总进球数-1",
@@ -1392,7 +1392,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "伊拉克-vs-挪威-总进球数-2",
@@ -1412,7 +1412,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "伊拉克-vs-挪威-总进球数-3",
@@ -1432,7 +1432,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "伊拉克-vs-挪威-总进球数-4",
@@ -1452,7 +1452,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "伊拉克-vs-挪威-总进球数-5",
@@ -1472,7 +1472,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "伊拉克-vs-挪威-总进球数-6",
@@ -1492,7 +1492,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "伊拉克-vs-挪威-总进球数-7+",
@@ -1512,7 +1512,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "伊拉克-vs-挪威-半全场-胜胜",
@@ -1532,7 +1532,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "伊拉克-vs-挪威-半全场-胜平",
@@ -1552,7 +1552,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "伊拉克-vs-挪威-半全场-胜负",
@@ -1572,7 +1572,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "伊拉克-vs-挪威-半全场-平胜",
@@ -1592,7 +1592,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "伊拉克-vs-挪威-半全场-平平",
@@ -1612,7 +1612,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "伊拉克-vs-挪威-半全场-平负",
@@ -1632,7 +1632,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "伊拉克-vs-挪威-半全场-负胜",
@@ -1652,7 +1652,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "伊拉克-vs-挪威-半全场-负平",
@@ -1672,7 +1672,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "伊拉克-vs-挪威-半全场-负负",
@@ -1692,7 +1692,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         }
       ]
     },
@@ -1906,7 +1906,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "阿根廷-vs-阿尔及利亚-胜平负-平",
@@ -1926,7 +1926,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "阿根廷-vs-阿尔及利亚-胜平负-负",
@@ -1946,7 +1946,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "阿根廷-vs-阿尔及利亚-让球胜平负-+2-胜",
@@ -1966,7 +1966,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "阿根廷-vs-阿尔及利亚-让球胜平负-+2-平",
@@ -1986,7 +1986,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "阿根廷-vs-阿尔及利亚-让球胜平负-+2-负",
@@ -2006,7 +2006,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "阿根廷-vs-阿尔及利亚-比分-2:0",
@@ -2026,7 +2026,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "阿根廷-vs-阿尔及利亚-比分-1:0",
@@ -2046,7 +2046,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "阿根廷-vs-阿尔及利亚-比分-3:0",
@@ -2066,7 +2066,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "阿根廷-vs-阿尔及利亚-比分-0:0",
@@ -2086,7 +2086,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "阿根廷-vs-阿尔及利亚-比分-4:0",
@@ -2106,7 +2106,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "阿根廷-vs-阿尔及利亚-比分-2:1",
@@ -2126,7 +2126,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "阿根廷-vs-阿尔及利亚-比分-1:1",
@@ -2146,7 +2146,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "阿根廷-vs-阿尔及利亚-比分-3:1",
@@ -2166,7 +2166,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "阿根廷-vs-阿尔及利亚-总进球数-0",
@@ -2186,7 +2186,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "阿根廷-vs-阿尔及利亚-总进球数-1",
@@ -2206,7 +2206,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "阿根廷-vs-阿尔及利亚-总进球数-2",
@@ -2226,7 +2226,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "阿根廷-vs-阿尔及利亚-总进球数-3",
@@ -2246,7 +2246,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "阿根廷-vs-阿尔及利亚-总进球数-4",
@@ -2266,7 +2266,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "阿根廷-vs-阿尔及利亚-总进球数-5",
@@ -2286,7 +2286,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "阿根廷-vs-阿尔及利亚-总进球数-6",
@@ -2306,7 +2306,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "阿根廷-vs-阿尔及利亚-总进球数-7+",
@@ -2326,7 +2326,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "阿根廷-vs-阿尔及利亚-半全场-胜胜",
@@ -2346,7 +2346,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "阿根廷-vs-阿尔及利亚-半全场-胜平",
@@ -2366,7 +2366,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "阿根廷-vs-阿尔及利亚-半全场-胜负",
@@ -2386,7 +2386,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "阿根廷-vs-阿尔及利亚-半全场-平胜",
@@ -2406,7 +2406,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "阿根廷-vs-阿尔及利亚-半全场-平平",
@@ -2426,7 +2426,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "阿根廷-vs-阿尔及利亚-半全场-平负",
@@ -2446,7 +2446,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "阿根廷-vs-阿尔及利亚-半全场-负胜",
@@ -2466,7 +2466,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "阿根廷-vs-阿尔及利亚-半全场-负平",
@@ -2486,7 +2486,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "阿根廷-vs-阿尔及利亚-半全场-负负",
@@ -2506,7 +2506,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         }
       ]
     },
@@ -2720,7 +2720,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "胜平负最高概率 58.5% 低于 60% 门槛",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "奥地利-vs-约旦-胜平负-平",
@@ -2740,7 +2740,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "胜平负最高概率 58.5% 低于 60% 门槛",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "奥地利-vs-约旦-胜平负-负",
@@ -2760,7 +2760,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "胜平负最高概率 58.5% 低于 60% 门槛",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "奥地利-vs-约旦-让球胜平负-+1-胜",
@@ -2780,7 +2780,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "奥地利-vs-约旦-让球胜平负-+1-平",
@@ -2800,7 +2800,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "奥地利-vs-约旦-让球胜平负-+1-负",
@@ -2820,7 +2820,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "奥地利-vs-约旦-比分-1:0",
@@ -2840,7 +2840,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "奥地利-vs-约旦-比分-2:0",
@@ -2860,7 +2860,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "奥地利-vs-约旦-比分-1:1",
@@ -2880,7 +2880,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "奥地利-vs-约旦-比分-2:1",
@@ -2900,7 +2900,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "奥地利-vs-约旦-比分-0:0",
@@ -2920,7 +2920,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "奥地利-vs-约旦-比分-3:0",
@@ -2940,7 +2940,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "奥地利-vs-约旦-比分-0:1",
@@ -2960,7 +2960,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "奥地利-vs-约旦-比分-3:1",
@@ -2980,7 +2980,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "奥地利-vs-约旦-总进球数-0",
@@ -3000,7 +3000,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "奥地利-vs-约旦-总进球数-1",
@@ -3020,7 +3020,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "奥地利-vs-约旦-总进球数-2",
@@ -3040,7 +3040,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "奥地利-vs-约旦-总进球数-3",
@@ -3060,7 +3060,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "奥地利-vs-约旦-总进球数-4",
@@ -3080,7 +3080,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "奥地利-vs-约旦-总进球数-5",
@@ -3100,7 +3100,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "奥地利-vs-约旦-总进球数-6",
@@ -3120,7 +3120,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "奥地利-vs-约旦-总进球数-7+",
@@ -3140,7 +3140,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "奥地利-vs-约旦-半全场-胜胜",
@@ -3160,7 +3160,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "奥地利-vs-约旦-半全场-胜平",
@@ -3180,7 +3180,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "奥地利-vs-约旦-半全场-胜负",
@@ -3200,7 +3200,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "奥地利-vs-约旦-半全场-平胜",
@@ -3220,7 +3220,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "奥地利-vs-约旦-半全场-平平",
@@ -3240,7 +3240,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "奥地利-vs-约旦-半全场-平负",
@@ -3260,7 +3260,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "奥地利-vs-约旦-半全场-负胜",
@@ -3280,7 +3280,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "奥地利-vs-约旦-半全场-负平",
@@ -3300,7 +3300,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         },
         {
           "id": "奥地利-vs-约旦-半全场-负负",
@@ -3320,7 +3320,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T20:18:53+08:00"
+          "observedAt": "2026-06-16T20:28:01+08:00"
         }
       ]
     }
@@ -3363,66 +3363,333 @@
       "key": "balanced",
       "name": "均衡",
       "subtitle": "复式双选 + 概率覆盖",
-      "stake": 48,
-      "retainedCash": 152,
+      "stake": 26,
+      "retainedCash": 174,
       "strategyRules": [
         "复式双选覆盖≥55%，同场可买胜+平",
         "胜平负/让球/总进球",
-        "正期望优先，降级自动切换概率覆盖"
+        "正期望优先，降级自动切换概率覆盖",
+        "预期回报率≥-10%，最差情况返本≥60%"
       ],
       "tickets": [
         {
-          "id": "阿根廷-vs-阿尔及利亚-胜平负-胜",
+          "id": "法国-vs-塞内加尔-胜平负-胜",
           "type": "单关",
           "legs": [
             {
-              "matchId": "阿根廷 vs 阿尔及利亚",
-              "label": "阿根廷 vs 阿尔及利亚",
+              "matchId": "法国 vs 塞内加尔",
+              "label": "法国 vs 塞内加尔",
               "market": "胜平负",
               "selection": "胜",
               "handicap": null,
-              "odds": 1.15,
+              "odds": 1.4,
               "excludedScores": []
             }
           ],
-          "stake": 8,
-          "combinedOdds": 1.15,
-          "modelProbability": 0.80179,
-          "robustExpectedReturn": -0.1438,
-          "potentialPayout": 9.2,
+          "stake": 10,
+          "combinedOdds": 1.4,
+          "modelProbability": 0.65849,
+          "robustExpectedReturn": -0.16817,
+          "potentialPayout": 14.0,
           "comboGroup": {
-            "matchId": "阿根廷 vs 阿尔及利亚",
+            "matchId": "法国 vs 塞内加尔",
             "market": "胜平负",
             "size": 2,
-            "coveragePct": 95
+            "coveragePct": 87,
+            "expectedRoi": -8,
+            "minPayoutRatio": 72
           }
         },
         {
-          "id": "阿根廷-vs-阿尔及利亚-胜平负-平",
+          "id": "法国-vs-塞内加尔-胜平负-平",
           "type": "单关",
           "legs": [
             {
-              "matchId": "阿根廷 vs 阿尔及利亚",
-              "label": "阿根廷 vs 阿尔及利亚",
+              "matchId": "法国 vs 塞内加尔",
+              "label": "法国 vs 塞内加尔",
               "market": "胜平负",
               "selection": "平",
               "handicap": null,
-              "odds": 6.11,
+              "odds": 4.33,
               "excludedScores": []
             }
           ],
-          "stake": 8,
-          "combinedOdds": 6.11,
-          "modelProbability": 0.15069,
-          "robustExpectedReturn": -0.40581,
-          "potentialPayout": 48.88,
+          "stake": 2,
+          "combinedOdds": 4.33,
+          "modelProbability": 0.21223,
+          "robustExpectedReturn": -0.33314,
+          "potentialPayout": 8.66,
           "comboGroup": {
-            "matchId": "阿根廷 vs 阿尔及利亚",
+            "matchId": "法国 vs 塞内加尔",
             "market": "胜平负",
             "size": 2,
-            "coveragePct": 95
+            "coveragePct": 87,
+            "expectedRoi": -8,
+            "minPayoutRatio": 72
           }
         },
+        {
+          "id": "奥地利-vs-约旦-胜平负-胜",
+          "type": "单关",
+          "legs": [
+            {
+              "matchId": "奥地利 vs 约旦",
+              "label": "奥地利 vs 约旦",
+              "market": "胜平负",
+              "selection": "胜",
+              "handicap": null,
+              "odds": 1.57,
+              "excludedScores": []
+            }
+          ],
+          "stake": 10,
+          "combinedOdds": 1.57,
+          "modelProbability": 0.58533,
+          "robustExpectedReturn": -0.18474,
+          "potentialPayout": 15.7,
+          "comboGroup": {
+            "matchId": "奥地利 vs 约旦",
+            "market": "胜平负",
+            "size": 2,
+            "coveragePct": 82,
+            "expectedRoi": -8,
+            "minPayoutRatio": 111
+          }
+        },
+        {
+          "id": "奥地利-vs-约旦-胜平负-平",
+          "type": "单关",
+          "legs": [
+            {
+              "matchId": "奥地利 vs 约旦",
+              "label": "奥地利 vs 约旦",
+              "market": "胜平负",
+              "selection": "平",
+              "handicap": null,
+              "odds": 3.87,
+              "excludedScores": []
+            }
+          ],
+          "stake": 4,
+          "combinedOdds": 3.87,
+          "modelProbability": 0.23803,
+          "robustExpectedReturn": -0.31029,
+          "potentialPayout": 15.48,
+          "comboGroup": {
+            "matchId": "奥地利 vs 约旦",
+            "market": "胜平负",
+            "size": 2,
+            "coveragePct": 82,
+            "expectedRoi": -8,
+            "minPayoutRatio": 111
+          }
+        }
+      ],
+      "entertainmentMode": true,
+      "expectedProfit": -2.1,
+      "profitProbability": 0.5427,
+      "lossProbability": 0.4573,
+      "stopProbability": 0.0,
+      "medianMaxDrawdown": 0.0,
+      "worstCase95": -17,
+      "p05": 183,
+      "median": 203,
+      "p95": 204,
+      "maxPayout": 204,
+      "simulationPaths": 100000,
+      "simulationMode": "shared_score_paths",
+      "distribution": [
+        {
+          "bankroll": 174,
+          "probability": 0.02292
+        },
+        {
+          "bankroll": 175,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 176,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 176,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 177,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 178,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 178,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 179,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 180,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 180,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 181,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 182,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 182,
+          "probability": 0.03793
+        },
+        {
+          "bankroll": 183,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 184,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 184,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 185,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 186,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 186,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 187,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 188,
+          "probability": 0.11579
+        },
+        {
+          "bankroll": 189,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 189,
+          "probability": 0.03123
+        },
+        {
+          "bankroll": 190,
+          "probability": 0.07513
+        },
+        {
+          "bankroll": 191,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 191,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 192,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 193,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 193,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 194,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 195,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 195,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 196,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 197,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 197,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 198,
+          "probability": 0.0505
+        },
+        {
+          "bankroll": 199,
+          "probability": 0.1238
+        },
+        {
+          "bankroll": 199,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 200,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 201,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 201,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 202,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 203,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 203,
+          "probability": 0.5427
+        }
+      ]
+    },
+    {
+      "key": "aggressive",
+      "name": "激进",
+      "subtitle": "多选复式 + 高风险串关",
+      "stake": 120,
+      "retainedCash": 80,
+      "strategyRules": [
+        "复式覆盖≥35%，全市场5玩法可选",
+        "同场同玩法≤2选（禁止3选全覆盖）",
+        "降级时做复式组合增大概率",
+        "预期回报率≥-15%，最差返本≥40%"
+      ],
+      "tickets": [
         {
           "id": "奥地利-vs-约旦-让球胜平负-+1-胜",
           "type": "单关",
@@ -3437,16 +3704,18 @@
               "excludedScores": []
             }
           ],
-          "stake": 8,
+          "stake": 24,
           "combinedOdds": 1.12,
           "modelProbability": 0.82336,
           "robustExpectedReturn": -0.14016,
-          "potentialPayout": 8.96,
+          "potentialPayout": 26.88,
           "comboGroup": {
             "matchId": "奥地利 vs 约旦",
             "market": "让球胜平负",
             "size": 2,
-            "coveragePct": 94
+            "coveragePct": 94,
+            "expectedRoi": -8,
+            "minPayoutRatio": 90
           }
         },
         {
@@ -3463,16 +3732,18 @@
               "excludedScores": []
             }
           ],
-          "stake": 8,
+          "stake": 6,
           "combinedOdds": 7.61,
           "modelProbability": 0.12084,
           "robustExpectedReturn": -0.46447,
-          "potentialPayout": 60.88,
+          "potentialPayout": 45.66,
           "comboGroup": {
             "matchId": "奥地利 vs 约旦",
             "market": "让球胜平负",
             "size": 2,
-            "coveragePct": 94
+            "coveragePct": 94,
+            "expectedRoi": -8,
+            "minPayoutRatio": 90
           }
         },
         {
@@ -3489,16 +3760,18 @@
               "excludedScores": []
             }
           ],
-          "stake": 8,
+          "stake": 24,
           "combinedOdds": 1.19,
           "modelProbability": 0.77168,
           "robustExpectedReturn": -0.15219,
-          "potentialPayout": 9.52,
+          "potentialPayout": 28.56,
           "comboGroup": {
             "matchId": "伊拉克 vs 挪威",
             "market": "胜平负",
             "size": 2,
-            "coveragePct": 94
+            "coveragePct": 94,
+            "expectedRoi": -8,
+            "minPayoutRatio": 89
           }
         },
         {
@@ -3524,214 +3797,11 @@
             "matchId": "伊拉克 vs 挪威",
             "market": "胜平负",
             "size": 2,
-            "coveragePct": 94
+            "coveragePct": 94,
+            "expectedRoi": -8,
+            "minPayoutRatio": 89
           }
-        }
-      ],
-      "entertainmentMode": true,
-      "expectedProfit": -3.8,
-      "profitProbability": 0.3765,
-      "lossProbability": 0.6235,
-      "stopProbability": 0.0,
-      "medianMaxDrawdown": 0.1016,
-      "worstCase95": -30,
-      "p05": 170,
-      "median": 180,
-      "p95": 254,
-      "maxPayout": 306,
-      "simulationPaths": 100000,
-      "simulationMode": "shared_score_paths",
-      "distribution": [
-        {
-          "bankroll": 154,
-          "probability": 0.00018
         },
-        {
-          "bankroll": 157,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 161,
-          "probability": 0.00695
-        },
-        {
-          "bankroll": 164,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 168,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 171,
-          "probability": 0.10696
-        },
-        {
-          "bankroll": 175,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 178,
-          "probability": 0.50888
-        },
-        {
-          "bankroll": 182,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 185,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 189,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 192,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 196,
-          "probability": 0.00049
-        },
-        {
-          "bankroll": 199,
-          "probability": 0.00053
-        },
-        {
-          "bankroll": 203,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 206,
-          "probability": 0.01371
-        },
-        {
-          "bankroll": 210,
-          "probability": 0.01394
-        },
-        {
-          "bankroll": 213,
-          "probability": 0.10993
-        },
-        {
-          "bankroll": 217,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 220,
-          "probability": 0.09609
-        },
-        {
-          "bankroll": 224,
-          "probability": 0.01019
-        },
-        {
-          "bankroll": 227,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 231,
-          "probability": 0.07454
-        },
-        {
-          "bankroll": 234,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 238,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 241,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 245,
-          "probability": 0.00136
-        },
-        {
-          "bankroll": 248,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 252,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 255,
-          "probability": 0.02052
-        },
-        {
-          "bankroll": 259,
-          "probability": 0.00094
-        },
-        {
-          "bankroll": 262,
-          "probability": 0.00127
-        },
-        {
-          "bankroll": 266,
-          "probability": 0.01654
-        },
-        {
-          "bankroll": 269,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 273,
-          "probability": 0.01406
-        },
-        {
-          "bankroll": 276,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 280,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 283,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 287,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 290,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 294,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 297,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 301,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 304,
-          "probability": 0.00292
-        }
-      ]
-    },
-    {
-      "key": "aggressive",
-      "name": "激进",
-      "subtitle": "多选复式 + 高风险串关",
-      "stake": 120,
-      "retainedCash": 80,
-      "strategyRules": [
-        "复式覆盖≥35%，全市场5玩法可选",
-        "同场同玩法可3选（胜+平+负全覆盖）",
-        "降级时主动做复式组合增大概率"
-      ],
-      "tickets": [
         {
           "id": "法国-vs-塞内加尔-胜平负-胜",
           "type": "单关",
@@ -3754,8 +3824,10 @@
           "comboGroup": {
             "matchId": "法国 vs 塞内加尔",
             "market": "胜平负",
-            "size": 3,
-            "coveragePct": 100
+            "size": 2,
+            "coveragePct": 87,
+            "expectedRoi": -8,
+            "minPayoutRatio": 99
           }
         },
         {
@@ -3772,286 +3844,230 @@
               "excludedScores": []
             }
           ],
-          "stake": 24,
+          "stake": 10,
           "combinedOdds": 4.33,
           "modelProbability": 0.21223,
           "robustExpectedReturn": -0.33314,
-          "potentialPayout": 103.92,
+          "potentialPayout": 43.3,
           "comboGroup": {
             "matchId": "法国 vs 塞内加尔",
             "market": "胜平负",
-            "size": 3,
-            "coveragePct": 100
+            "size": 2,
+            "coveragePct": 87,
+            "expectedRoi": -8,
+            "minPayoutRatio": 99
           }
         },
         {
-          "id": "法国-vs-塞内加尔-胜平负-负",
+          "id": "阿根廷-vs-阿尔及利亚-半全场-胜胜",
           "type": "单关",
           "legs": [
             {
-              "matchId": "法国 vs 塞内加尔",
-              "label": "法国 vs 塞内加尔",
-              "market": "胜平负",
-              "selection": "负",
+              "matchId": "阿根廷 vs 阿尔及利亚",
+              "label": "阿根廷 vs 阿尔及利亚",
+              "market": "半全场",
+              "selection": "胜胜",
               "handicap": null,
-              "odds": 7.12,
+              "odds": 1.67,
               "excludedScores": []
             }
           ],
           "stake": 24,
-          "combinedOdds": 7.12,
-          "modelProbability": 0.12928,
-          "robustExpectedReturn": -0.44523,
-          "potentialPayout": 170.88,
-          "comboGroup": {
-            "matchId": "法国 vs 塞内加尔",
-            "market": "胜平负",
-            "size": 3,
-            "coveragePct": 100
-          }
-        },
-        {
-          "id": "伊拉克-vs-挪威-胜平负-负",
-          "type": "单关",
-          "legs": [
-            {
-              "matchId": "伊拉克 vs 挪威",
-              "label": "伊拉克 vs 挪威",
-              "market": "胜平负",
-              "selection": "负",
-              "handicap": null,
-              "odds": 1.19,
-              "excludedScores": []
-            }
-          ],
-          "stake": 24,
-          "combinedOdds": 1.19,
-          "modelProbability": 0.77168,
-          "robustExpectedReturn": -0.15219,
-          "potentialPayout": 28.56,
-          "comboGroup": {
-            "matchId": "伊拉克 vs 挪威",
-            "market": "胜平负",
-            "size": 3,
-            "coveragePct": 100
-          }
-        },
-        {
-          "id": "伊拉克-vs-挪威-胜平负-平",
-          "type": "单关",
-          "legs": [
-            {
-              "matchId": "伊拉克 vs 挪威",
-              "label": "伊拉克 vs 挪威",
-              "market": "胜平负",
-              "selection": "平",
-              "handicap": null,
-              "odds": 5.54,
-              "excludedScores": []
-            }
-          ],
-          "stake": 24,
-          "combinedOdds": 5.54,
-          "modelProbability": 0.16603,
-          "robustExpectedReturn": -0.3837,
-          "potentialPayout": 132.96,
-          "comboGroup": {
-            "matchId": "伊拉克 vs 挪威",
-            "market": "胜平负",
-            "size": 3,
-            "coveragePct": 100
-          }
+          "combinedOdds": 1.67,
+          "modelProbability": 0.55102,
+          "robustExpectedReturn": -0.20604,
+          "potentialPayout": 40.08
         }
       ],
       "entertainmentMode": true,
       "expectedProfit": -9.6,
-      "profitProbability": 0.4375,
-      "lossProbability": 0.5625,
+      "profitProbability": 0.4359,
+      "lossProbability": 0.5641,
       "stopProbability": 0.0,
-      "medianMaxDrawdown": 0.2892,
-      "worstCase95": -58,
-      "p05": 142,
-      "median": 142,
-      "p95": 317,
-      "maxPayout": 384,
+      "medianMaxDrawdown": 0.0609,
+      "worstCase95": -60,
+      "p05": 140,
+      "median": 188,
+      "p95": 228,
+      "maxPayout": 253,
       "simulationPaths": 100000,
       "simulationMode": "shared_score_paths",
       "distribution": [
         {
-          "bankroll": 117,
-          "probability": 0.04075
+          "bankroll": 82,
+          "probability": 0.00021
         },
         {
-          "bankroll": 123,
+          "bankroll": 86,
           "probability": 0.0
+        },
+        {
+          "bankroll": 90,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 94,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 98,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 102,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 106,
+          "probability": 0.00314
+        },
+        {
+          "bankroll": 110,
+          "probability": 0.00231
+        },
+        {
+          "bankroll": 113,
+          "probability": 0.00107
+        },
+        {
+          "bankroll": 117,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 121,
+          "probability": 0.00061
+        },
+        {
+          "bankroll": 125,
+          "probability": 0.00104
         },
         {
           "bankroll": 129,
           "probability": 0.0
         },
         {
-          "bankroll": 135,
+          "bankroll": 133,
           "probability": 0.0
+        },
+        {
+          "bankroll": 137,
+          "probability": 0.03686
         },
         {
           "bankroll": 141,
-          "probability": 0.5085
+          "probability": 0.0277
         },
         {
-          "bankroll": 147,
+          "bankroll": 145,
+          "probability": 0.00368
+        },
+        {
+          "bankroll": 149,
+          "probability": 0.00793
+        },
+        {
+          "bankroll": 153,
+          "probability": 0.01865
+        },
+        {
+          "bankroll": 157,
+          "probability": 0.00264
+        },
+        {
+          "bankroll": 161,
+          "probability": 0.00213
+        },
+        {
+          "bankroll": 165,
+          "probability": 0.0015
+        },
+        {
+          "bankroll": 169,
+          "probability": 0.19122
+        },
+        {
+          "bankroll": 173,
           "probability": 0.0
         },
         {
-          "bankroll": 154,
-          "probability": 0.0
+          "bankroll": 177,
+          "probability": 0.04466
         },
         {
-          "bankroll": 160,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 166,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 172,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 178,
-          "probability": 0.0
+          "bankroll": 180,
+          "probability": 0.0948
         },
         {
           "bankroll": 184,
-          "probability": 0.01324
+          "probability": 0.04028
         },
         {
-          "bankroll": 190,
+          "bankroll": 188,
+          "probability": 0.03374
+        },
+        {
+          "bankroll": 192,
+          "probability": 0.01524
+        },
+        {
+          "bankroll": 196,
+          "probability": 0.03197
+        },
+        {
+          "bankroll": 200,
+          "probability": 0.00268
+        },
+        {
+          "bankroll": 204,
+          "probability": 0.00589
+        },
+        {
+          "bankroll": 208,
+          "probability": 0.23239
+        },
+        {
+          "bankroll": 212,
+          "probability": 0.00357
+        },
+        {
+          "bankroll": 216,
           "probability": 0.0
         },
         {
-          "bankroll": 197,
+          "bankroll": 220,
+          "probability": 0.07489
+        },
+        {
+          "bankroll": 224,
+          "probability": 0.04978
+        },
+        {
+          "bankroll": 228,
+          "probability": 0.03324
+        },
+        {
+          "bankroll": 232,
           "probability": 0.0
         },
         {
-          "bankroll": 203,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 209,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 215,
-          "probability": 0.16405
-        },
-        {
-          "bankroll": 221,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 227,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 233,
-          "probability": 0.0
+          "bankroll": 236,
+          "probability": 0.01567
         },
         {
           "bankroll": 240,
+          "probability": 0.0107
+        },
+        {
+          "bankroll": 244,
+          "probability": 0.00753
+        },
+        {
+          "bankroll": 247,
           "probability": 0.0
         },
         {
-          "bankroll": 246,
-          "probability": 0.10924
-        },
-        {
-          "bankroll": 252,
-          "probability": 0.0083
-        },
-        {
-          "bankroll": 258,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 264,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 270,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 276,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 282,
-          "probability": 0.09913
-        },
-        {
-          "bankroll": 289,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 295,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 301,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 307,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 313,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 319,
-          "probability": 0.03494
-        },
-        {
-          "bankroll": 325,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 332,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 338,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 344,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 350,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 356,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 362,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 368,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 375,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 381,
-          "probability": 0.02185
+          "bankroll": 251,
+          "probability": 0.00228
         }
       ]
     }
@@ -4060,35 +4076,35 @@
     {
       "source": "中国体育彩票",
       "field": "固定奖金/单关资格",
-      "observedAt": "2026-06-16T20:18:53+08:00",
+      "observedAt": "2026-06-16T20:28:01+08:00",
       "confidence": 1.0,
       "status": "manual"
     },
     {
       "source": "football-data.org 免费档",
       "field": "2026 世界杯赛程/赛果",
-      "observedAt": "2026-06-16T20:18:53+08:00",
+      "observedAt": "2026-06-16T20:28:01+08:00",
       "confidence": 0.9,
       "status": "fresh"
     },
     {
       "source": "World Football Elo Ratings",
       "field": "国家队基础实力",
-      "observedAt": "2026-06-16T20:18:53+08:00",
+      "observedAt": "2026-06-16T20:28:01+08:00",
       "confidence": 0.72,
       "status": "fresh"
     },
     {
       "source": "API-Football 免费档",
       "field": "预计首发/伤停/球员数据",
-      "observedAt": "2026-06-16T20:18:53+08:00",
+      "observedAt": "2026-06-16T20:28:01+08:00",
       "confidence": 0.0,
       "status": "missing"
     },
     {
       "source": "Open-Meteo",
       "field": "开球时刻天气",
-      "observedAt": "2026-06-16T20:18:53+08:00",
+      "observedAt": "2026-06-16T20:28:01+08:00",
       "confidence": 0.8,
       "status": "manual"
     }
