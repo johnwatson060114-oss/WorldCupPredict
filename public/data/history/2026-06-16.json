@@ -714,7 +714,13 @@
           "reason": "官方固定奖金未开售",
           "observedAt": "2026-06-15T22:13:32+08:00"
         }
-      ]
+      ],
+      "outcomeDecision": {
+        "threshold": 0.6,
+        "maxProbability": 0.87574,
+        "selection": "home",
+        "status": "recommended"
+      }
     },
     {
       "id": "比利时 vs 埃及",
@@ -1362,7 +1368,13 @@
           "reason": "官方固定奖金未开售",
           "observedAt": "2026-06-15T22:13:32+08:00"
         }
-      ]
+      ],
+      "outcomeDecision": {
+        "threshold": 0.6,
+        "maxProbability": 0.65078,
+        "selection": "home",
+        "status": "recommended"
+      }
     },
     {
       "id": "沙特 vs 乌拉圭",
@@ -2010,7 +2022,13 @@
           "reason": "官方固定奖金未开售",
           "observedAt": "2026-06-15T22:13:32+08:00"
         }
-      ]
+      ],
+      "outcomeDecision": {
+        "threshold": 0.6,
+        "maxProbability": 0.77895,
+        "selection": "away",
+        "status": "recommended"
+      }
     },
     {
       "id": "伊朗 vs 新西兰",
@@ -2658,7 +2676,13 @@
           "reason": "官方固定奖金未开售",
           "observedAt": "2026-06-15T22:13:32+08:00"
         }
-      ]
+      ],
+      "outcomeDecision": {
+        "threshold": 0.6,
+        "maxProbability": 0.66322,
+        "selection": "home",
+        "status": "recommended"
+      }
     }
   ],
   "portfolios": [
