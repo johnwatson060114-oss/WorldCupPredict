@@ -70,8 +70,7 @@ export default function App() {
 
   if (error) return <div className="app-state error-state"><h1>预测数据读取失败</h1><p>{error}</p><p>请先运行 <code>python -m pipeline.generate</code>。</p></div>
   if (!data) return <div className="app-state"><div className="loading-ring" /><p>正在读取明日预测...</p></div>
-  if (!data.matches.length) return <div className="app-state error-state"><h1>次日暂无可用比赛</h1><p>{data.statusMessage}</p><p>实时任务会在北京时间 13:00 再次尝试。</p></div>
-  if (!selectedMatch || !selectedPortfolio) return <div className="app-state"><div className="loading-ring" /><p>正在计算资金方案...</p></div>
+  if (!selectedPortfolio) return <div className="app-state"><div className="loading-ring" /><p>正在计算资金方案...</p></div>
 
   const formalCandidates = data.matches.flatMap((match) => match.quotes).filter((quote) =>
     quote.available
@@ -121,20 +120,31 @@ export default function App() {
               <small>仅用于功能预览，不作为实际投注依据</small>
             </div>
           )}
-          <main className="dashboard-grid">
-            <MatchRail targetDate={data.targetDate} matches={data.matches} selectedId={selectedMatch.id} onSelect={setSelectedMatchId} />
-            <ValueTable matches={data.matches} selectedId={selectedMatch.id} onSelect={setSelectedMatchId} />
-            <TacticalPanel match={selectedMatch} onOpenDetail={() => setActiveNav('analysis')} />
-            <PortfolioSection bankroll={availableBankroll} portfolios={data.portfolios.map((portfolio) => scalePortfolio(portfolio, availableBankroll, data.bankroll))} emptyReason={emptyPortfolioReason} selected={selectedPortfolio.key} onSelect={setSelectedStrategy} onOpenDetails={() => setDrawerOpen(true)} />
-            <div className="right-bottom-stack">
-              <BankrollChart portfolio={selectedPortfolio} portfolios={data.portfolios.map((portfolio) => scalePortfolio(portfolio, availableBankroll, data.bankroll))} onSelect={setSelectedStrategy} />
-              <NoBetPanel hasPositiveOptions={formalCandidates.length > 0} choice={noBetChoice} onChoice={setNoBetChoice} />
-            </div>
-          </main>
-          <StatusBar forecast={data} bankroll={availableBankroll} onOpenDetails={() => setDrawerOpen(true)} />
+          {!data.matches.length || !selectedMatch ? (
+            <main className="empty-forecast-panel">
+              <h1>次日暂无可用比赛</h1>
+              <p>{data.statusMessage}</p>
+              <p>当前只是“今日方案”没有比赛数据；我的投注、资金记录和历史票单仍可继续使用。</p>
+              <button onClick={() => setActiveNav('personal')}>打开我的投注</button>
+            </main>
+          ) : (
+            <>
+              <main className="dashboard-grid">
+                <MatchRail targetDate={data.targetDate} matches={data.matches} selectedId={selectedMatch.id} onSelect={setSelectedMatchId} />
+                <ValueTable matches={data.matches} selectedId={selectedMatch.id} onSelect={setSelectedMatchId} />
+                <TacticalPanel match={selectedMatch} onOpenDetail={() => setActiveNav('analysis')} />
+                <PortfolioSection bankroll={availableBankroll} portfolios={data.portfolios.map((portfolio) => scalePortfolio(portfolio, availableBankroll, data.bankroll))} emptyReason={emptyPortfolioReason} selected={selectedPortfolio.key} onSelect={setSelectedStrategy} onOpenDetails={() => setDrawerOpen(true)} />
+                <div className="right-bottom-stack">
+                  <BankrollChart portfolio={selectedPortfolio} portfolios={data.portfolios.map((portfolio) => scalePortfolio(portfolio, availableBankroll, data.bankroll))} onSelect={setSelectedStrategy} />
+                  <NoBetPanel hasPositiveOptions={formalCandidates.length > 0} choice={noBetChoice} onChoice={setNoBetChoice} />
+                </div>
+              </main>
+              <StatusBar forecast={data} bankroll={availableBankroll} onOpenDetails={() => setDrawerOpen(true)} />
+            </>
+          )}
         </>
       )}
-      {activeNav === 'analysis' && <AnalysisPage match={selectedMatch} />}
+      {activeNav === 'analysis' && (selectedMatch ? <AnalysisPage match={selectedMatch} /> : <main className="empty-forecast-panel"><h1>暂无比赛分析</h1><p>当前目标日期没有可分析的比赛；请先使用“我的投注”记录历史票单。</p><button onClick={() => setActiveNav('personal')}>打开我的投注</button></main>)}
       {activeNav === 'personal' && <PersonalBetPage forecast={data} settlements={settlements} ledger={personalLedger} onLedgerChange={setPersonalLedger} />}
       {activeNav === 'ledger' && <LedgerPage ledger={ledger} availableBankroll={availableBankroll} personalBetCount={personalLedger.bets.length} onImport={(next) => { saveLedger(next); setLedger(next) }} onReset={() => { const next = emptyLedger(); saveLedger(next); setLedger(next) }} />}
       {activeNav === 'backtest' && <BacktestPage forecast={data} />}
