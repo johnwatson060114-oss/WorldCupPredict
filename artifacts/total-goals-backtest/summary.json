@@ -1,0 +1,32 @@
+{
+  "model_spec": "dixon_coles[half_life_days=730,rho=-0.08,shrinkage=6]",
+  "target": "FIFA World Cup 2018 and 2022",
+  "definition": {
+    "exact_hit": "argmax probability over Sporttery total-goals buckets 0,1,2,3,4,5,6,7+",
+    "core_hit": "actual bucket falls inside the strongest adjacent two-bucket interval",
+    "score_source_note": "CSV full score excludes penalty shoot-outs; knockout scores can include extra time when recorded."
+  },
+  "overall": {
+    "matches": 128,
+    "exact_hits": 34,
+    "exact_accuracy": 0.265625,
+    "core_hits": 66,
+    "core_accuracy": 0.515625
+  },
+  "by_year": {
+    "2018": {
+      "matches": 64,
+      "exact_hits": 18,
+      "exact_accuracy": 0.28125,
+      "core_hits": 36,
+      "core_accuracy": 0.5625
+    },
+    "2022": {
+      "matches": 64,
+      "exact_hits": 16,
+      "exact_accuracy": 0.25,
+      "core_hits": 30,
+      "core_accuracy": 0.46875
+    }
+  }
+}

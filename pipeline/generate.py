@@ -13,6 +13,7 @@ from .config import (
     LEGACY_MODEL_VERSION,
     MANUAL_DIR,
     OUTPUT_DIR,
+    OUTCOME_RECOMMENDATION_THRESHOLD,
     PIPELINE_VERSION,
     ROOT,
     SETTINGS,
@@ -301,6 +302,17 @@ def recommendation(raw: float | None, robust: float | None, coverage: float, ava
     return "不建议", "稳健期望为负"
 
 
+def outcome_recommendation_decision(outcomes: dict[str, float]) -> dict[str, float | str]:
+    selection = max(outcomes, key=outcomes.get)
+    probability = float(outcomes[selection])
+    return {
+        "threshold": OUTCOME_RECOMMENDATION_THRESHOLD,
+        "maxProbability": probability,
+        "selection": selection,
+        "status": "recommended" if probability >= OUTCOME_RECOMMENDATION_THRESHOLD else "watch",
+    }
+
+
 def make_quote(
     match_id: str,
     label: str,
@@ -315,12 +327,15 @@ def make_quote(
     stars: int = 0,
     handicap: int | None = None,
     excluded_scores: list[str] | None = None,
+    recommendation_gate: tuple[bool, str] | None = None,
 ) -> dict:
     available = odds is not None
     raw = expected_return(model_probability, odds) if odds else None
     lower = probability_lower_bound(model_probability, coverage)
     robust = expected_return(lower, odds) if odds else None
     advice, reason = recommendation(raw, robust, coverage, available, market == "比分", stars)
+    if available and recommendation_gate is not None and not recommendation_gate[0]:
+        advice, reason = "观察", recommendation_gate[1]
     return {
         "id": f"{match_id}-{market}-{selection}".replace(" ", "-"),
         "matchId": match_id,
@@ -371,6 +386,7 @@ def build_match(
     simulated = simulation.summaries.get(match_id) if simulation else None
     matrix = simulated["matrix"] if simulated else score_matrix(home_xg, away_xg)
     outcomes = simulated["outcomes"] if simulated else outcome_probabilities(matrix)
+    outcome_decision = outcome_recommendation_decision(outcomes)
     scores = top_scores(matrix)
     coverage = float(seed.get("coverage", 0.70))
     stars = score_stars(float(scores[0]["probability"]), coverage)
@@ -383,6 +399,10 @@ def build_match(
         quotes.append(make_quote(
             match_id, label, "胜平负", chinese, normal_odds.get(chinese), outcomes[outcome], normal_market.get(chinese),
             coverage, bool(market and "胜平负" in market.single_markets), generated_at,
+            recommendation_gate=(
+                outcome_decision["status"] == "recommended",
+                f"胜平负最高概率 {float(outcome_decision['maxProbability']):.1%} 低于 60% 门槛",
+            ),
         ))
 
     handicap = market.handicap if market else None
@@ -443,6 +463,10 @@ def build_match(
         "awayFlag": seed.get("away_flag", "🏳"),
         "expectedGoals": {"home": round(home_xg, 2), "away": round(away_xg, 2)},
         "outcomeProbabilities": {key: round(value, 5) for key, value in outcomes.items()},
+        "outcomeDecision": {
+            **outcome_decision,
+            "maxProbability": round(float(outcome_decision["maxProbability"]), 5),
+        },
         "likelyScore": str(scores[0]["score"]).replace(":", "-") ,
         "scoreStars": stars,
         "scoreProbabilities": scores,

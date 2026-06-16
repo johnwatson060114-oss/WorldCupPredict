@@ -29,6 +29,10 @@ if ($LASTEXITCODE -ne 0) { throw 'Prediction pipeline failed.' }
 python -m pipeline.strategy_history
 if ($LASTEXITCODE -ne 0) { throw 'Strategy history refresh failed.' }
 
+$env:PYTHONIOENCODING = 'utf-8'
+python .\artifacts\total-goals-backtest\optimize_and_predict_2026.py > .\artifacts\total-goals-backtest\last_optimization_run.log
+if ($LASTEXITCODE -ne 0) { throw 'Total goals model review failed.' }
+
 npm.cmd run build
 if ($LASTEXITCODE -ne 0) { throw 'Frontend build failed.' }
 

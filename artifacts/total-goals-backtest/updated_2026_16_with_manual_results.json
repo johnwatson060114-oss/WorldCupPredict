@@ -1,0 +1,962 @@
+{
+  "??? current": {
+    "all_16": {
+      "matches": 16,
+      "exact_hits": 8,
+      "exact_accuracy": 0.5,
+      "core_hits": 9,
+      "core_accuracy": 0.5625,
+      "predicted_bucket_counts": {
+        "0": 0,
+        "1": 1,
+        "2": 13,
+        "3": 2,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7+": 0
+      }
+    },
+    "new_4": {
+      "matches": 4,
+      "exact_hits": 2,
+      "exact_accuracy": 0.5,
+      "core_hits": 2,
+      "core_accuracy": 0.5,
+      "predicted_bucket_counts": {
+        "0": 0,
+        "1": 0,
+        "2": 4,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7+": 0
+      }
+    },
+    "new_4_predictions": [
+      {
+        "date": "2026-06-15",
+        "match": "Spain vs Cape Verde",
+        "score": "0-0",
+        "actual_bucket": "0",
+        "predicted_bucket": "2",
+        "predicted_probability": 0.25382994197954634,
+        "exact_hit": false,
+        "core_interval": "2-3",
+        "core_hit": false,
+        "manual_added": true,
+        "probabilities": {
+          "0": 0.076099,
+          "1": 0.165417,
+          "2": 0.25383,
+          "3": 0.220295,
+          "4": 0.148313,
+          "5": 0.079881,
+          "6": 0.035853,
+          "7+": 0.020313
+        }
+      },
+      {
+        "date": "2026-06-15",
+        "match": "Saudi Arabia vs Uruguay",
+        "score": "1-1",
+        "actual_bucket": "2",
+        "predicted_bucket": "2",
+        "predicted_probability": 0.27815983235347175,
+        "exact_hit": true,
+        "core_interval": "1-2",
+        "core_hit": true,
+        "manual_added": true,
+        "probabilities": {
+          "0": 0.176735,
+          "1": 0.277175,
+          "2": 0.27816,
+          "3": 0.16009,
+          "4": 0.071824,
+          "5": 0.025779,
+          "6": 0.00771,
+          "7+": 0.002527
+        }
+      },
+      {
+        "date": "2026-06-15",
+        "match": "Belgium vs Egypt",
+        "score": "1-1",
+        "actual_bucket": "2",
+        "predicted_bucket": "2",
+        "predicted_probability": 0.27468128823446514,
+        "exact_hit": true,
+        "core_interval": "1-2",
+        "core_hit": true,
+        "manual_added": true,
+        "probabilities": {
+          "0": 0.108127,
+          "1": 0.206406,
+          "2": 0.274681,
+          "3": 0.204871,
+          "4": 0.119121,
+          "5": 0.05541,
+          "6": 0.021479,
+          "7+": 0.009904
+        }
+      },
+      {
+        "date": "2026-06-15",
+        "match": "Iran vs New Zealand",
+        "score": "2-2",
+        "actual_bucket": "4",
+        "predicted_bucket": "2",
+        "predicted_probability": 0.2529325595883215,
+        "exact_hit": false,
+        "core_interval": "2-3",
+        "core_hit": false,
+        "manual_added": true,
+        "probabilities": {
+          "0": 0.075125,
+          "1": 0.160966,
+          "2": 0.252933,
+          "3": 0.220914,
+          "4": 0.150157,
+          "5": 0.08165,
+          "6": 0.036999,
+          "7+": 0.021257
+        }
+      }
+    ],
+    "all_predictions": [
+      {
+        "date": "2026-06-11",
+        "match": "Mexico vs South Africa",
+        "score": "2-0",
+        "actual_bucket": "2",
+        "predicted_bucket": "2",
+        "predicted_probability": 0.28083007550638317,
+        "exact_hit": true,
+        "core_interval": "1-2",
+        "core_hit": true,
+        "manual_added": false,
+        "probabilities": {
+          "0": 0.154336,
+          "1": 0.258144,
+          "2": 0.28083,
+          "3": 0.174732,
+          "4": 0.084681,
+          "5": 0.032831,
+          "6": 0.010607,
+          "7+": 0.003839
+        }
+      },
+      {
+        "date": "2026-06-11",
+        "match": "South Korea vs Czech Republic",
+        "score": "2-1",
+        "actual_bucket": "3",
+        "predicted_bucket": "2",
+        "predicted_probability": 0.24332367230864893,
+        "exact_hit": false,
+        "core_interval": "2-3",
+        "core_hit": true,
+        "manual_added": false,
+        "probabilities": {
+          "0": 0.066408,
+          "1": 0.144956,
+          "2": 0.243324,
+          "3": 0.223315,
+          "4": 0.15981,
+          "5": 0.091492,
+          "6": 0.043649,
+          "7+": 0.027046
+        }
+      },
+      {
+        "date": "2026-06-12",
+        "match": "Canada vs Bosnia and Herzegovina",
+        "score": "1-1",
+        "actual_bucket": "2",
+        "predicted_bucket": "2",
+        "predicted_probability": 0.25543629784030447,
+        "exact_hit": true,
+        "core_interval": "2-3",
+        "core_hit": true,
+        "manual_added": false,
+        "probabilities": {
+          "0": 0.07795,
+          "1": 0.17093,
+          "2": 0.255436,
+          "3": 0.219323,
+          "4": 0.145663,
+          "5": 0.077394,
+          "6": 0.034268,
+          "7+": 0.019035
+        }
+      },
+      {
+        "date": "2026-06-12",
+        "match": "United States vs Paraguay",
+        "score": "4-1",
+        "actual_bucket": "5",
+        "predicted_bucket": "2",
+        "predicted_probability": 0.26364886847870694,
+        "exact_hit": false,
+        "core_interval": "2-3",
+        "core_hit": false,
+        "manual_added": false,
+        "probabilities": {
+          "0": 0.08841,
+          "1": 0.18454,
+          "2": 0.263649,
+          "3": 0.214932,
+          "4": 0.135848,
+          "5": 0.068691,
+          "6": 0.028944,
+          "7+": 0.014986
+        }
+      },
+      {
+        "date": "2026-06-13",
+        "match": "Qatar vs Switzerland",
+        "score": "1-1",
+        "actual_bucket": "2",
+        "predicted_bucket": "2",
+        "predicted_probability": 0.23350033580715368,
+        "exact_hit": true,
+        "core_interval": "2-3",
+        "core_hit": true,
+        "manual_added": false,
+        "probabilities": {
+          "0": 0.058968,
+          "1": 0.133262,
+          "2": 0.2335,
+          "3": 0.224038,
+          "4": 0.167395,
+          "5": 0.100058,
+          "6": 0.04984,
+          "7+": 0.032938
+        }
+      },
+      {
+        "date": "2026-06-13",
+        "match": "Brazil vs Morocco",
+        "score": "1-1",
+        "actual_bucket": "2",
+        "predicted_bucket": "2",
+        "predicted_probability": 0.27966512590361103,
+        "exact_hit": true,
+        "core_interval": "1-2",
+        "core_hit": true,
+        "manual_added": false,
+        "probabilities": {
+          "0": 0.131112,
+          "1": 0.236383,
+          "2": 0.279665,
+          "3": 0.189749,
+          "4": 0.100053,
+          "5": 0.042205,
+          "6": 0.014836,
+          "7+": 0.005997
+        }
+      },
+      {
+        "date": "2026-06-13",
+        "match": "Haiti vs Scotland",
+        "score": "0-1",
+        "actual_bucket": "1",
+        "predicted_bucket": "3",
+        "predicted_probability": 0.2206769855745072,
+        "exact_hit": false,
+        "core_interval": "2-3",
+        "core_hit": false,
+        "manual_added": false,
+        "probabilities": {
+          "0": 0.044229,
+          "1": 0.105198,
+          "2": 0.207685,
+          "3": 0.220677,
+          "4": 0.182696,
+          "5": 0.121002,
+          "6": 0.066784,
+          "7+": 0.051728
+        }
+      },
+      {
+        "date": "2026-06-13",
+        "match": "Australia vs Turkey",
+        "score": "2-0",
+        "actual_bucket": "2",
+        "predicted_bucket": "2",
+        "predicted_probability": 0.25068184611022015,
+        "exact_hit": true,
+        "core_interval": "2-3",
+        "core_hit": true,
+        "manual_added": false,
+        "probabilities": {
+          "0": 0.0729,
+          "1": 0.156057,
+          "2": 0.250682,
+          "3": 0.221733,
+          "4": 0.152859,
+          "5": 0.084302,
+          "6": 0.038744,
+          "7+": 0.022723
+        }
+      },
+      {
+        "date": "2026-06-14",
+        "match": "Germany vs Curaçao",
+        "score": "7-1",
+        "actual_bucket": "7+",
+        "predicted_bucket": "3",
+        "predicted_probability": 0.2158294634585699,
+        "exact_hit": false,
+        "core_interval": "2-3",
+        "core_hit": false,
+        "manual_added": false,
+        "probabilities": {
+          "0": 0.037442,
+          "1": 0.091387,
+          "2": 0.192272,
+          "3": 0.215829,
+          "4": 0.188778,
+          "5": 0.132093,
+          "6": 0.077024,
+          "7+": 0.065174
+        }
+      },
+      {
+        "date": "2026-06-14",
+        "match": "Ivory Coast vs Ecuador",
+        "score": "1-0",
+        "actual_bucket": "1",
+        "predicted_bucket": "1",
+        "predicted_probability": 0.28636637738418397,
+        "exact_hit": true,
+        "core_interval": "1-2",
+        "core_hit": true,
+        "manual_added": false,
+        "probabilities": {
+          "0": 0.187587,
+          "1": 0.286366,
+          "2": 0.275478,
+          "3": 0.152926,
+          "4": 0.066119,
+          "5": 0.02287,
+          "6": 0.006592,
+          "7+": 0.002062
+        }
+      },
+      {
+        "date": "2026-06-14",
+        "match": "Netherlands vs Japan",
+        "score": "2-2",
+        "actual_bucket": "4",
+        "predicted_bucket": "2",
+        "predicted_probability": 0.23594055774404754,
+        "exact_hit": false,
+        "core_interval": "2-3",
+        "core_hit": false,
+        "manual_added": false,
+        "probabilities": {
+          "0": 0.060731,
+          "1": 0.135745,
+          "2": 0.235941,
+          "3": 0.223979,
+          "4": 0.165694,
+          "5": 0.098061,
+          "6": 0.048362,
+          "7+": 0.031487
+        }
+      },
+      {
+        "date": "2026-06-14",
+        "match": "Sweden vs Tunisia",
+        "score": "5-1",
+        "actual_bucket": "6",
+        "predicted_bucket": "2",
+        "predicted_probability": 0.26385431848573104,
+        "exact_hit": false,
+        "core_interval": "2-3",
+        "core_hit": false,
+        "manual_added": false,
+        "probabilities": {
+          "0": 0.088068,
+          "1": 0.179076,
+          "2": 0.263854,
+          "3": 0.215792,
+          "4": 0.137579,
+          "5": 0.070171,
+          "6": 0.029825,
+          "7+": 0.015634
+        }
+      },
+      {
+        "date": "2026-06-15",
+        "match": "Spain vs Cape Verde",
+        "score": "0-0",
+        "actual_bucket": "0",
+        "predicted_bucket": "2",
+        "predicted_probability": 0.25382994197954634,
+        "exact_hit": false,
+        "core_interval": "2-3",
+        "core_hit": false,
+        "manual_added": true,
+        "probabilities": {
+          "0": 0.076099,
+          "1": 0.165417,
+          "2": 0.25383,
+          "3": 0.220295,
+          "4": 0.148313,
+          "5": 0.079881,
+          "6": 0.035853,
+          "7+": 0.020313
+        }
+      },
+      {
+        "date": "2026-06-15",
+        "match": "Saudi Arabia vs Uruguay",
+        "score": "1-1",
+        "actual_bucket": "2",
+        "predicted_bucket": "2",
+        "predicted_probability": 0.27815983235347175,
+        "exact_hit": true,
+        "core_interval": "1-2",
+        "core_hit": true,
+        "manual_added": true,
+        "probabilities": {
+          "0": 0.176735,
+          "1": 0.277175,
+          "2": 0.27816,
+          "3": 0.16009,
+          "4": 0.071824,
+          "5": 0.025779,
+          "6": 0.00771,
+          "7+": 0.002527
+        }
+      },
+      {
+        "date": "2026-06-15",
+        "match": "Belgium vs Egypt",
+        "score": "1-1",
+        "actual_bucket": "2",
+        "predicted_bucket": "2",
+        "predicted_probability": 0.27468128823446514,
+        "exact_hit": true,
+        "core_interval": "1-2",
+        "core_hit": true,
+        "manual_added": true,
+        "probabilities": {
+          "0": 0.108127,
+          "1": 0.206406,
+          "2": 0.274681,
+          "3": 0.204871,
+          "4": 0.119121,
+          "5": 0.05541,
+          "6": 0.021479,
+          "7+": 0.009904
+        }
+      },
+      {
+        "date": "2026-06-15",
+        "match": "Iran vs New Zealand",
+        "score": "2-2",
+        "actual_bucket": "4",
+        "predicted_bucket": "2",
+        "predicted_probability": 0.2529325595883215,
+        "exact_hit": false,
+        "core_interval": "2-3",
+        "core_hit": false,
+        "manual_added": true,
+        "probabilities": {
+          "0": 0.075125,
+          "1": 0.160966,
+          "2": 0.252933,
+          "3": 0.220914,
+          "4": 0.150157,
+          "5": 0.08165,
+          "6": 0.036999,
+          "7+": 0.021257
+        }
+      }
+    ]
+  },
+  "???? optimized": {
+    "all_16": {
+      "matches": 16,
+      "exact_hits": 7,
+      "exact_accuracy": 0.4375,
+      "core_hits": 7,
+      "core_accuracy": 0.4375,
+      "predicted_bucket_counts": {
+        "0": 0,
+        "1": 0,
+        "2": 14,
+        "3": 2,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7+": 0
+      }
+    },
+    "new_4": {
+      "matches": 4,
+      "exact_hits": 2,
+      "exact_accuracy": 0.5,
+      "core_hits": 2,
+      "core_accuracy": 0.5,
+      "predicted_bucket_counts": {
+        "0": 0,
+        "1": 0,
+        "2": 4,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7+": 0
+      }
+    },
+    "new_4_predictions": [
+      {
+        "date": "2026-06-15",
+        "match": "Spain vs Cape Verde",
+        "score": "0-0",
+        "actual_bucket": "0",
+        "predicted_bucket": "2",
+        "predicted_probability": 0.2656873852830627,
+        "exact_hit": false,
+        "core_interval": "1-2",
+        "core_hit": false,
+        "manual_added": true,
+        "probabilities": {
+          "0": 0.101757,
+          "1": 0.232532,
+          "2": 0.265687,
+          "3": 0.20238,
+          "4": 0.115618,
+          "5": 0.052841,
+          "6": 0.020125,
+          "7+": 0.009059
+        }
+      },
+      {
+        "date": "2026-06-15",
+        "match": "Saudi Arabia vs Uruguay",
+        "score": "1-1",
+        "actual_bucket": "2",
+        "predicted_bucket": "2",
+        "predicted_probability": 0.2608766672021166,
+        "exact_hit": true,
+        "core_interval": "1-2",
+        "core_hit": true,
+        "manual_added": true,
+        "probabilities": {
+          "0": 0.089914,
+          "1": 0.216594,
+          "2": 0.260877,
+          "3": 0.209476,
+          "4": 0.126152,
+          "5": 0.060778,
+          "6": 0.024401,
+          "7+": 0.01181
+        }
+      },
+      {
+        "date": "2026-06-15",
+        "match": "Belgium vs Egypt",
+        "score": "1-1",
+        "actual_bucket": "2",
+        "predicted_bucket": "2",
+        "predicted_probability": 0.22968264158660473,
+        "exact_hit": true,
+        "core_interval": "2-3",
+        "core_hit": true,
+        "manual_added": true,
+        "probabilities": {
+          "0": 0.05375,
+          "1": 0.157133,
+          "2": 0.229683,
+          "3": 0.223819,
+          "4": 0.163579,
+          "5": 0.095642,
+          "6": 0.0466,
+          "7+": 0.029793
+        }
+      },
+      {
+        "date": "2026-06-15",
+        "match": "Iran vs New Zealand",
+        "score": "2-2",
+        "actual_bucket": "4",
+        "predicted_bucket": "2",
+        "predicted_probability": 0.23351454265832494,
+        "exact_hit": false,
+        "core_interval": "2-3",
+        "core_hit": false,
+        "manual_added": true,
+        "probabilities": {
+          "0": 0.0567,
+          "1": 0.162729,
+          "2": 0.233515,
+          "3": 0.223394,
+          "4": 0.160284,
+          "5": 0.092002,
+          "6": 0.044007,
+          "7+": 0.027368
+        }
+      }
+    ],
+    "all_predictions": [
+      {
+        "date": "2026-06-11",
+        "match": "Mexico vs South Africa",
+        "score": "2-0",
+        "actual_bucket": "2",
+        "predicted_bucket": "2",
+        "predicted_probability": 0.2689860661754832,
+        "exact_hit": true,
+        "core_interval": "1-2",
+        "core_hit": true,
+        "manual_added": false,
+        "probabilities": {
+          "0": 0.11507,
+          "1": 0.248806,
+          "2": 0.268986,
+          "3": 0.193869,
+          "4": 0.104796,
+          "5": 0.045319,
+          "6": 0.016331,
+          "7+": 0.006823
+        }
+      },
+      {
+        "date": "2026-06-11",
+        "match": "South Korea vs Czech Republic",
+        "score": "2-1",
+        "actual_bucket": "3",
+        "predicted_bucket": "2",
+        "predicted_probability": 0.26282643270914297,
+        "exact_hit": false,
+        "core_interval": "1-2",
+        "core_hit": false,
+        "manual_added": false,
+        "probabilities": {
+          "0": 0.094151,
+          "1": 0.222465,
+          "2": 0.262826,
+          "3": 0.207007,
+          "4": 0.122282,
+          "5": 0.057787,
+          "6": 0.022757,
+          "7+": 0.010724
+        }
+      },
+      {
+        "date": "2026-06-12",
+        "match": "Canada vs Bosnia and Herzegovina",
+        "score": "1-1",
+        "actual_bucket": "2",
+        "predicted_bucket": "2",
+        "predicted_probability": 0.2592212872752162,
+        "exact_hit": true,
+        "core_interval": "1-2",
+        "core_hit": true,
+        "manual_added": false,
+        "probabilities": {
+          "0": 0.086718,
+          "1": 0.212034,
+          "2": 0.259221,
+          "3": 0.211273,
+          "4": 0.129146,
+          "5": 0.063155,
+          "6": 0.025736,
+          "7+": 0.012717
+        }
+      },
+      {
+        "date": "2026-06-12",
+        "match": "United States vs Paraguay",
+        "score": "4-1",
+        "actual_bucket": "5",
+        "predicted_bucket": "2",
+        "predicted_probability": 0.24549495793748483,
+        "exact_hit": false,
+        "core_interval": "2-3",
+        "core_hit": false,
+        "manual_added": false,
+        "probabilities": {
+          "0": 0.067771,
+          "1": 0.182414,
+          "2": 0.245495,
+          "3": 0.22026,
+          "4": 0.148214,
+          "5": 0.079787,
+          "6": 0.035793,
+          "7+": 0.020266
+        }
+      },
+      {
+        "date": "2026-06-13",
+        "match": "Qatar vs Switzerland",
+        "score": "1-1",
+        "actual_bucket": "2",
+        "predicted_bucket": "2",
+        "predicted_probability": 0.23837391670295693,
+        "exact_hit": true,
+        "core_interval": "2-3",
+        "core_hit": true,
+        "manual_added": false,
+        "probabilities": {
+          "0": 0.060809,
+          "1": 0.170266,
+          "2": 0.238374,
+          "3": 0.222484,
+          "4": 0.15574,
+          "5": 0.087215,
+          "6": 0.040701,
+          "7+": 0.024411
+        }
+      },
+      {
+        "date": "2026-06-13",
+        "match": "Brazil vs Morocco",
+        "score": "1-1",
+        "actual_bucket": "2",
+        "predicted_bucket": "2",
+        "predicted_probability": 0.26963813387063607,
+        "exact_hit": true,
+        "core_interval": "1-2",
+        "core_hit": true,
+        "manual_added": false,
+        "probabilities": {
+          "0": 0.11929,
+          "1": 0.253634,
+          "2": 0.269638,
+          "3": 0.191102,
+          "4": 0.10158,
+          "5": 0.043196,
+          "6": 0.015307,
+          "7+": 0.006254
+        }
+      },
+      {
+        "date": "2026-06-13",
+        "match": "Haiti vs Scotland",
+        "score": "0-1",
+        "actual_bucket": "1",
+        "predicted_bucket": "2",
+        "predicted_probability": 0.2281711466280987,
+        "exact_hit": false,
+        "core_interval": "2-3",
+        "core_hit": false,
+        "manual_added": false,
+        "probabilities": {
+          "0": 0.052646,
+          "1": 0.154999,
+          "2": 0.228171,
+          "3": 0.223924,
+          "4": 0.164817,
+          "5": 0.09705,
+          "6": 0.047622,
+          "7+": 0.030771
+        }
+      },
+      {
+        "date": "2026-06-13",
+        "match": "Australia vs Turkey",
+        "score": "2-0",
+        "actual_bucket": "2",
+        "predicted_bucket": "2",
+        "predicted_probability": 0.22851407279188482,
+        "exact_hit": true,
+        "core_interval": "2-3",
+        "core_hit": true,
+        "manual_added": false,
+        "probabilities": {
+          "0": 0.052893,
+          "1": 0.155479,
+          "2": 0.228514,
+          "3": 0.223904,
+          "4": 0.164541,
+          "5": 0.096733,
+          "6": 0.047391,
+          "7+": 0.030544
+        }
+      },
+      {
+        "date": "2026-06-14",
+        "match": "Germany vs Curaçao",
+        "score": "7-1",
+        "actual_bucket": "7+",
+        "predicted_bucket": "3",
+        "predicted_probability": 0.20863281942407008,
+        "exact_hit": false,
+        "core_interval": "3-4",
+        "core_hit": false,
+        "manual_added": false,
+        "probabilities": {
+          "0": 0.024664,
+          "1": 0.091319,
+          "2": 0.16905,
+          "3": 0.208633,
+          "4": 0.193112,
+          "5": 0.142997,
+          "6": 0.08824,
+          "7+": 0.081984
+        }
+      },
+      {
+        "date": "2026-06-14",
+        "match": "Ivory Coast vs Ecuador",
+        "score": "1-0",
+        "actual_bucket": "1",
+        "predicted_bucket": "2",
+        "predicted_probability": 0.25469836443183386,
+        "exact_hit": false,
+        "core_interval": "2-3",
+        "core_hit": false,
+        "manual_added": false,
+        "probabilities": {
+          "0": 0.079293,
+          "1": 0.200977,
+          "2": 0.254698,
+          "3": 0.215187,
+          "4": 0.136354,
+          "5": 0.069121,
+          "6": 0.029199,
+          "7+": 0.015172
+        }
+      },
+      {
+        "date": "2026-06-14",
+        "match": "Netherlands vs Japan",
+        "score": "2-2",
+        "actual_bucket": "4",
+        "predicted_bucket": "3",
+        "predicted_probability": 0.2230872602915096,
+        "exact_hit": false,
+        "core_interval": "2-3",
+        "core_hit": false,
+        "manual_added": false,
+        "probabilities": {
+          "0": 0.042301,
+          "1": 0.133795,
+          "2": 0.211594,
+          "3": 0.223087,
+          "4": 0.176404,
+          "5": 0.111591,
+          "6": 0.058826,
+          "7+": 0.042402
+        }
+      },
+      {
+        "date": "2026-06-14",
+        "match": "Sweden vs Tunisia",
+        "score": "5-1",
+        "actual_bucket": "6",
+        "predicted_bucket": "2",
+        "predicted_probability": 0.24871790892588458,
+        "exact_hit": false,
+        "core_interval": "2-3",
+        "core_hit": false,
+        "manual_added": false,
+        "probabilities": {
+          "0": 0.071406,
+          "1": 0.188468,
+          "2": 0.248718,
+          "3": 0.218819,
+          "4": 0.144386,
+          "5": 0.076218,
+          "6": 0.033528,
+          "7+": 0.018457
+        }
+      },
+      {
+        "date": "2026-06-15",
+        "match": "Spain vs Cape Verde",
+        "score": "0-0",
+        "actual_bucket": "0",
+        "predicted_bucket": "2",
+        "predicted_probability": 0.2656873852830627,
+        "exact_hit": false,
+        "core_interval": "1-2",
+        "core_hit": false,
+        "manual_added": true,
+        "probabilities": {
+          "0": 0.101757,
+          "1": 0.232532,
+          "2": 0.265687,
+          "3": 0.20238,
+          "4": 0.115618,
+          "5": 0.052841,
+          "6": 0.020125,
+          "7+": 0.009059
+        }
+      },
+      {
+        "date": "2026-06-15",
+        "match": "Saudi Arabia vs Uruguay",
+        "score": "1-1",
+        "actual_bucket": "2",
+        "predicted_bucket": "2",
+        "predicted_probability": 0.2608766672021166,
+        "exact_hit": true,
+        "core_interval": "1-2",
+        "core_hit": true,
+        "manual_added": true,
+        "probabilities": {
+          "0": 0.089914,
+          "1": 0.216594,
+          "2": 0.260877,
+          "3": 0.209476,
+          "4": 0.126152,
+          "5": 0.060778,
+          "6": 0.024401,
+          "7+": 0.01181
+        }
+      },
+      {
+        "date": "2026-06-15",
+        "match": "Belgium vs Egypt",
+        "score": "1-1",
+        "actual_bucket": "2",
+        "predicted_bucket": "2",
+        "predicted_probability": 0.22968264158660473,
+        "exact_hit": true,
+        "core_interval": "2-3",
+        "core_hit": true,
+        "manual_added": true,
+        "probabilities": {
+          "0": 0.05375,
+          "1": 0.157133,
+          "2": 0.229683,
+          "3": 0.223819,
+          "4": 0.163579,
+          "5": 0.095642,
+          "6": 0.0466,
+          "7+": 0.029793
+        }
+      },
+      {
+        "date": "2026-06-15",
+        "match": "Iran vs New Zealand",
+        "score": "2-2",
+        "actual_bucket": "4",
+        "predicted_bucket": "2",
+        "predicted_probability": 0.23351454265832494,
+        "exact_hit": false,
+        "core_interval": "2-3",
+        "core_hit": false,
+        "manual_added": true,
+        "probabilities": {
+          "0": 0.0567,
+          "1": 0.162729,
+          "2": 0.233515,
+          "3": 0.223394,
+          "4": 0.160284,
+          "5": 0.092002,
+          "6": 0.044007,
+          "7+": 0.027368
+        }
+      }
+    ]
+  }
+}

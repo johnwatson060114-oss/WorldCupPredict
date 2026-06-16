@@ -101,6 +101,12 @@ export interface MatchForecast {
   awayFlag: string
   expectedGoals: { home: number; away: number }
   outcomeProbabilities: { home: number; draw: number; away: number }
+  outcomeDecision?: {
+    threshold: number
+    maxProbability: number
+    selection: Outcome
+    status: 'recommended' | 'watch'
+  }
   likelyScore: string
   scoreStars: 0 | 1 | 2 | 3
   scoreProbabilities: ScoreProbability[]

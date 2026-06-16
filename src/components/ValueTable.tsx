@@ -1,5 +1,6 @@
 import { ArrowDown, ArrowUp, CircleSlash2, Star } from 'lucide-react'
 import { percent, signedPercent } from '../lib/format'
+import { effectiveRecommendation, getOutcomeDecision } from '../lib/outcome-confidence'
 import type { MarketQuote, MatchForecast } from '../types'
 
 interface ValueTableProps {
@@ -53,8 +54,11 @@ export function ValueTable({ matches, selectedId, onSelect }: ValueTableProps) {
           </thead>
           <tbody>
             {matches.map((match) => {
+              const outcomeDecision = getOutcomeDecision(match)
               const quotes = orderedQuotes(match).slice(0, match.id === selectedId ? 5 : 3)
-              return quotes.map((quote, index) => (
+              return quotes.map((quote, index) => {
+                const displayedRecommendation = effectiveRecommendation(match, quote)
+                return (
                 <tr
                   key={quote.id}
                   className={`${match.id === selectedId ? 'selected-group' : ''} ${index === 0 ? 'group-start' : ''}`}
@@ -64,6 +68,9 @@ export function ValueTable({ matches, selectedId, onSelect }: ValueTableProps) {
                     <td rowSpan={quotes.length} className="match-cell">
                       <strong>{match.homeTeam} vs {match.awayTeam}</strong>
                       <span>{match.lotteryCode} · {beijingTimeLabel(match.kickoffBeijing)}</span>
+                      <small className={outcomeDecision.recommended ? 'confidence-inline recommend' : 'confidence-inline watch'}>
+                        胜平负{outcomeDecision.recommended ? '可推荐' : '观望'} · {percent(outcomeDecision.probability)}
+                      </small>
                     </td>
                   )}
                   <td>
@@ -83,20 +90,21 @@ export function ValueTable({ matches, selectedId, onSelect }: ValueTableProps) {
                     <small>{percent(match.coverage)}</small>
                   </td>
                   <td>
-                    <span className={`recommendation ${recommendationClass[quote.recommendation]}`}>
-                      {quote.recommendation === '重点推荐' && <Star size={12} fill="currentColor" />}
-                      {quote.recommendation === '未开售' && <CircleSlash2 size={12} />}
-                      {quote.recommendation}
+                    <span className={`recommendation ${recommendationClass[displayedRecommendation]}`} title={quote.market === '胜平负' && !outcomeDecision.recommended ? '最高胜平负概率不足60%，不进入自动推荐' : quote.reason}>
+                      {displayedRecommendation === '重点推荐' && <Star size={12} fill="currentColor" />}
+                      {displayedRecommendation === '未开售' && <CircleSlash2 size={12} />}
+                      {displayedRecommendation}
                     </span>
                   </td>
                 </tr>
-              ))
+                )
+              })
             })}
           </tbody>
         </table>
       </div>
       <div className="table-note">
-        <span>“模型概率”不是结果保证；只有稳健期望为正且满足覆盖率门槛的选项才能进入资金优化。</span>
+        <span>胜平负最高概率达到60%才允许推荐；低于门槛统一观望，不进入资金优化。</span>
         <span>点击任一对阵查看右侧战术解释</span>
       </div>
     </section>

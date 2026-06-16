@@ -1,5 +1,6 @@
 import { CalendarDays, CircleAlert } from 'lucide-react'
 import { beijingTime, percent } from '../lib/format'
+import { getOutcomeDecision } from '../lib/outcome-confidence'
 import type { MatchForecast } from '../types'
 import { Flag } from './Flag'
 
@@ -28,6 +29,7 @@ export function MatchRail({ targetDate, matches, selectedId, onSelect }: MatchRa
       </div>
       <div className="match-list">
         {matches.map((match) => {
+          const outcomeDecision = getOutcomeDecision(match)
           const normalAvailable = match.quotes.some((quote) => quote.market === '胜平负' && quote.available)
           const handicapAvailable = match.quotes.some((quote) => quote.market === '让球胜平负' && quote.available)
           const marketLabel = normalAvailable ? '胜平负有售' : handicapAvailable ? '仅让球有售' : '未开售'
@@ -55,6 +57,10 @@ export function MatchRail({ targetDate, matches, selectedId, onSelect }: MatchRa
                 <span>{percent(match.outcomeProbabilities.home)}</span>
                 <span>{percent(match.outcomeProbabilities.draw)}</span>
                 <span>{percent(match.outcomeProbabilities.away)}</span>
+              </div>
+              <div className={outcomeDecision.recommended ? 'outcome-decision recommend' : 'outcome-decision watch'}>
+                <strong>胜平负 {outcomeDecision.label} {percent(outcomeDecision.probability)}</strong>
+                <span>{outcomeDecision.recommended ? '达到60% · 可推荐' : '不足60% · 观望'}</span>
               </div>
               <div className="match-prediction">
                 <span>最可能比分 <b>{match.likelyScore}</b></span>

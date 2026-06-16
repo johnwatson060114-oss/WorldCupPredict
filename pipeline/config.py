@@ -12,6 +12,7 @@ SPORTTERY_SNAPSHOT = CACHE_DIR / "sporttery-live.json"
 
 PIPELINE_VERSION = "2.0.0-dev"
 LEGACY_MODEL_VERSION = "legacy-dixon-coles-v1"
+OUTCOME_RECOMMENDATION_THRESHOLD = 0.60
 
 
 @dataclass(frozen=True)

@@ -3,8 +3,8 @@ name: Daily forecast and GitHub Pages
 on:
   workflow_dispatch:
   schedule:
-    # 05:10 UTC = 13:10 Asia/Shanghai, a fallback if the 13:00 local dispatch is unavailable.
-    - cron: '10 5 * * *'
+    # 05:00 UTC = 13:00 Asia/Shanghai. Scheduled updates start on 2026-06-17 Beijing time.
+    - cron: '0 5 * * *'
   push:
     branches: [main, master]
     paths-ignore:
@@ -36,9 +36,22 @@ jobs:
           node-version: '22'
       - run: pip install -r requirements.txt
       - run: npm install
+      - name: Check Beijing schedule start
+        id: schedule_start
+        if: github.event_name == 'schedule'
+        shell: python
+        run: |
+          import os
+          from datetime import date, datetime
+          from zoneinfo import ZoneInfo
+
+          today = datetime.now(ZoneInfo('Asia/Shanghai')).date()
+          enabled = today >= date(2026, 6, 17)
+          with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as output:
+              output.write(f'enabled={str(enabled).lower()}\n')
       - name: Check for a recent local forecast
         id: forecast_freshness
-        if: github.event_name == 'schedule'
+        if: github.event_name == 'schedule' && steps.schedule_start.outputs.enabled == 'true'
         shell: python
         run: |
           import json
@@ -59,7 +72,7 @@ jobs:
           with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as output:
               output.write(f'recent={str(recent).lower()}\n')
       - name: Generate next Beijing-day forecast
-        if: github.event_name == 'workflow_dispatch' || (github.event_name == 'schedule' && steps.forecast_freshness.outputs.recent != 'true')
+        if: github.event_name == 'workflow_dispatch' || (github.event_name == 'schedule' && steps.schedule_start.outputs.enabled == 'true' && steps.forecast_freshness.outputs.recent != 'true')
         env:
           API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
           FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
@@ -67,10 +80,14 @@ jobs:
           python -m pipeline.settle
           python -m pipeline.generate --archive
           python -m pipeline.strategy_history
+      - name: Refresh total-goals model review
+        if: github.event_name == 'workflow_dispatch' || (github.event_name == 'schedule' && steps.schedule_start.outputs.enabled == 'true' && steps.forecast_freshness.outputs.recent != 'true')
+        run: |
+          python artifacts/total-goals-backtest/optimize_and_predict_2026.py > artifacts/total-goals-backtest/last_optimization_run.log
       - run: python -m pytest -q
       - run: npm run build
       - name: Commit forecast history
-        if: github.event_name == 'workflow_dispatch' || (github.event_name == 'schedule' && steps.forecast_freshness.outputs.recent != 'true')
+        if: github.event_name == 'workflow_dispatch' || (github.event_name == 'schedule' && steps.schedule_start.outputs.enabled == 'true' && steps.forecast_freshness.outputs.recent != 'true')
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

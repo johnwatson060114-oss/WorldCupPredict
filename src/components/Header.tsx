@@ -2,7 +2,7 @@ import { Activity, Clock3, Database, Trophy } from 'lucide-react'
 import { shortDateTime } from '../lib/format'
 import type { DailyForecast } from '../types'
 
-export type NavKey = 'today' | 'analysis' | 'personal' | 'ledger' | 'backtest' | 'method'
+export type NavKey = 'today' | 'analysis' | 'goals' | 'personal' | 'ledger' | 'backtest' | 'method'
 
 interface HeaderProps {
   forecast: DailyForecast
@@ -13,6 +13,7 @@ interface HeaderProps {
 const navItems: Array<{ key: NavKey; label: string }> = [
   { key: 'today', label: '今日方案' },
   { key: 'analysis', label: '比赛分析' },
+  { key: 'goals', label: '总进球数' },
   { key: 'personal', label: '我的投注' },
   { key: 'ledger', label: '资金记录' },
   { key: 'backtest', label: '回测' },
@@ -21,7 +22,7 @@ const navItems: Array<{ key: NavKey; label: string }> = [
 
 export function Header({ forecast, active, onNavigate }: HeaderProps) {
   return (
-    <header className="topbar">
+    <header className={active === 'personal' ? 'topbar sporttery-topbar' : 'topbar'}>
       <button className="brand" onClick={() => onNavigate('today')} aria-label="返回今日方案">
         <span className="brand-mark"><Trophy size={20} /></span>
         <span>世界杯比赛推演</span>

@@ -48,7 +48,9 @@ npm.cmd run dev
 powershell -ExecutionPolicy Bypass -File .\scripts\install-scheduled-task.ps1
 ```
 
-GitHub Actions 的 cron 使用 `05:10 UTC`，即北京时间 13:10，作为本机 13:00 任务的兜底。GitHub 调度可能延迟，本机任务用于需要严格准点的情况。
+GitHub Actions 的 cron 使用 `05:00 UTC`，即北京时间 13:00；定时更新从北京时间 2026-06-17 开始。本机计划任务同样从 `2026-06-17 13:00` 起步。
+
+每日任务会同步刷新总进球数模型复盘，并生成 `public/data/total-goals-model-review.json`：旧模型作为主线，新模型作为影子线，`adoptionDecision.should_switch_model` 会直接给出是否需要切换模型。
 
 ## 数据原则
 
@@ -87,6 +89,8 @@ python -m pytest -q -p no:cacheprovider --basetemp .\tmp\pytest
 - `pipeline/intelligence.py`: 不可变、可审计的赛前情报快照。
 
 生产模型仍保留 `legacy-dixon-coles-v1` 基线。只有真实历史数据达到滚动回测样本门槛且样本外 Log Loss、RPS 与校准共同通过时，候选模型才可晋级。
+
+总进球数模型采用双线并行：旧模型继续作为生产主线，候选新模型只做影子验证；当 2026 已结算样本不少于 24 场，且候选模型同时满足精确档命中率提升、额外命中数、Log Loss 改善和核心区间不显著退化时，才允许切换。当前跟踪脚本和门槛记录在 `artifacts/total-goals-backtest/model_adoption_policy.md`。
 
 固定 HTML 快照覆盖未开售、让球正负号、单关标识、比分“其它”和页面结构变化。
 

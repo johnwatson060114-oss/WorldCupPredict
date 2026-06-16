@@ -14,11 +14,13 @@ import { LedgerPage } from './pages/LedgerPage'
 import { BacktestPage } from './pages/BacktestPage'
 import { MethodPage } from './pages/MethodPage'
 import { PersonalBetPage } from './pages/PersonalBetPage'
+import { TotalGoalsPage } from './pages/TotalGoalsPage'
 import { useForecast } from './hooks/useForecast'
 import { captureModelSnapshot, loadPersonalLedger, settlePersonalLedger } from './features/personal-bets/storage'
 import type { PersonalBetLedger } from './features/personal-bets/types'
 import { appendLedgerEntry, combinedAvailableBalance, currentBalance, emptyLedger, loadLedger, saveLedger, settleLedger } from './lib/ledger'
 import { scalePortfolio } from './lib/portfolio'
+import { isFormalCandidate } from './lib/outcome-confidence'
 import type { BankrollLedger, LedgerEntry, SettlementFile, StrategyKey } from './types'
 
 export default function App() {
@@ -73,12 +75,8 @@ export default function App() {
   if (!data.matches.length) return <div className="app-state error-state"><h1>次日暂无可用比赛</h1><p>{data.statusMessage}</p><p>实时任务会在北京时间 13:00 再次尝试。</p></div>
   if (!selectedMatch || !selectedPortfolio) return <div className="app-state"><div className="loading-ring" /><p>正在计算资金方案...</p></div>
 
-  const formalCandidates = data.matches.flatMap((match) => match.quotes).filter((quote) =>
-    quote.available
-    && quote.robustExpectedReturn !== null
-    && quote.robustExpectedReturn > 0
-    && (quote.recommendation === '重点推荐' || quote.recommendation === '小注可选'),
-  )
+  const formalCandidates = data.matches.flatMap((match) => match.quotes.map((quote) => ({ match, quote })))
+    .filter(({ match, quote }) => isFormalCandidate(match, quote))
   const lowCoverageMatches = data.matches.filter((match) => match.coverage < 0.75).length
   const singleEligibleOptions = data.matches.flatMap((match) => match.quotes).filter((quote) => quote.available && quote.singleEligible).length
   const emptyPortfolioReason = formalCandidates.length > 0
@@ -135,6 +133,7 @@ export default function App() {
         </>
       )}
       {activeNav === 'analysis' && <AnalysisPage match={selectedMatch} />}
+      {activeNav === 'goals' && <TotalGoalsPage matches={data.matches} selectedId={selectedMatch.id} onSelect={setSelectedMatchId} />}
       {activeNav === 'personal' && <PersonalBetPage forecast={data} settlements={settlements} ledger={personalLedger} onLedgerChange={setPersonalLedger} />}
       {activeNav === 'ledger' && <LedgerPage ledger={ledger} availableBankroll={availableBankroll} personalBetCount={personalLedger.bets.length} onImport={(next) => { saveLedger(next); setLedger(next) }} onReset={() => { const next = emptyLedger(); saveLedger(next); setLedger(next) }} />}
       {activeNav === 'backtest' && <BacktestPage forecast={data} />}

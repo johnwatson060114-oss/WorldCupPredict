@@ -1,5 +1,6 @@
 import { ArrowRight, CloudSun, Mountain, RotateCcw, ShieldCheck, Shirt, Users } from 'lucide-react'
 import { percent } from '../lib/format'
+import { getOutcomeDecision } from '../lib/outcome-confidence'
 import type { MatchForecast } from '../types'
 import { Flag } from './Flag'
 
@@ -12,6 +13,7 @@ const factorIcons = [ShieldCheck, Shirt, Users, RotateCcw, Mountain, CloudSun]
 
 export function TacticalPanel({ match, onOpenDetail }: TacticalPanelProps) {
   const { home, draw, away } = match.outcomeProbabilities
+  const outcomeDecision = getOutcomeDecision(match)
   return (
     <aside className="tactical-panel panel">
       <div className="section-heading compact">
@@ -43,6 +45,10 @@ export function TacticalPanel({ match, onOpenDetail }: TacticalPanelProps) {
         <span>胜 <b>{percent(home)}</b></span>
         <span>平 <b>{percent(draw)}</b></span>
         <span>负 <b>{percent(away)}</b></span>
+      </div>
+      <div className={outcomeDecision.recommended ? 'outcome-confidence recommend' : 'outcome-confidence watch'}>
+        <div><strong>{outcomeDecision.recommended ? '可推荐' : '观望'}</strong><span>胜平负最高概率门槛 60%</span></div>
+        <b>{outcomeDecision.label} {percent(outcomeDecision.probability)}</b>
       </div>
       <div className="score-list">
         {match.scoreProbabilities.slice(0, 4).map((score) => (

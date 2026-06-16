@@ -78,3 +78,22 @@ def test_spain_cape_verde_uses_elo_gap_instead_of_neutral_fallback(monkeypatch):
     assert seed["coverage"] == 0.8
     assert len(seed["missing_data"]) == 1
     assert seed["factors"][0]["admissionStatus"] == "core"
+
+
+def test_outcome_recommendation_requires_sixty_percent_confidence():
+    watch = generate.outcome_recommendation_decision({"home": 0.59, "draw": 0.26, "away": 0.15})
+    recommended = generate.outcome_recommendation_decision({"home": 0.60, "draw": 0.25, "away": 0.15})
+
+    assert watch == {"threshold": 0.60, "maxProbability": 0.59, "selection": "home", "status": "watch"}
+    assert recommended["status"] == "recommended"
+
+
+def test_low_confidence_outcome_quote_is_downgraded_to_watch():
+    quote = generate.make_quote(
+        "m1", "A vs B", "胜平负", "胜", 3.0, 0.40, 0.34, 0.90, True,
+        "2026-06-15T12:00:00+08:00",
+        recommendation_gate=(False, "胜平负最高概率 59.0% 低于 60% 门槛"),
+    )
+
+    assert quote["recommendation"] == "观察"
+    assert quote["reason"] == "胜平负最高概率 59.0% 低于 60% 门槛"
