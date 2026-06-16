@@ -52,18 +52,22 @@ def test_negative_edge_conservative_empty_balanced_aggressive_fallback():
         assert len(p["tickets"]) >= 1, f"{p['key']} should have tickets"
 
 
-def test_observation_only_quote_blocked_in_conservative_accepted_in_fallback():
+def test_observation_only_quote_strict_path_no_longer_requires_recommendation():
+    """After removing singleEligible/recommendation gates, a positive-edge
+    quote is accepted via the strict path regardless of its recommendation
+    label.  Market and odds still gate per-strategy."""
     observed = quote("1", 4.0, odds=50.0)
     observed.update({"market": "半全场", "selection": "负负", "recommendation": "观察"})
 
     portfolios = build_portfolios([observed], bankroll=200, simulation=shared_simulation("1"))
 
-    # conservative: market "半全场" not in single_markets → no tickets even with fallback
+    # conservative: market "半全场" not in single_markets → no tickets
     assert not portfolios[0]["tickets"]
-    # balanced/aggressive may accept it via entertainment fallback since edge is positive
-    # but the high odds (50.0) exceeds conservative max_odds (2.25) and balanced max_odds (4.50)
-    # only aggressive allows odds up to 80.0 and has fallback
-    assert portfolios[2]["entertainmentMode"] or not portfolios[2]["tickets"]
+    # balanced: market "半全场" not in single_markets → no tickets
+    assert not portfolios[1]["tickets"]
+    # aggressive: semi-full IS in single_markets, odds 50 ≤ 80 → accepted (strict path)
+    assert len(portfolios[2]["tickets"]) >= 1, "aggressive should accept 半全场 with +4 edge"
+    assert not portfolios[2]["entertainmentMode"], "should use strict path, not fallback"
 
 
 def test_strategy_market_and_parlay_rules_are_materially_different():

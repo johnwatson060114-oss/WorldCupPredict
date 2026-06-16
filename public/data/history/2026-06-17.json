@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-16T23:12:49+08:00",
+  "generatedAt": "2026-06-16T23:17:57+08:00",
   "targetDate": "2026-06-17",
   "timezone": "Asia/Shanghai",
   "modelVersion": "legacy-dixon-coles-v1",
   "pipelineVersion": "2.0.0-dev",
   "dataSnapshot": {
     "id": "f00c5fbd09c1cf9471cc124fe5cb4e19eba0e158c077c11912f4b1292944e82b",
-    "cutoff": "2026-06-16T23:12:49+08:00",
+    "cutoff": "2026-06-16T23:17:57+08:00",
     "files": [
       {
         "path": "manual-data/availability.csv",
@@ -270,7 +270,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-胜平负-平",
@@ -290,7 +290,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-胜平负-负",
@@ -310,7 +310,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-让球胜平负--1-胜",
@@ -330,7 +330,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-让球胜平负--1-平",
@@ -350,7 +350,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-让球胜平负--1-负",
@@ -370,7 +370,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-比分-0:0",
@@ -419,7 +419,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-比分-0:1",
@@ -468,7 +468,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-比分-0:2",
@@ -517,7 +517,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-比分-0:3",
@@ -566,7 +566,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-比分-0:4",
@@ -615,7 +615,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-比分-0:5",
@@ -664,7 +664,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-比分-1:0",
@@ -713,7 +713,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-比分-1:1",
@@ -762,7 +762,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-比分-1:2",
@@ -811,7 +811,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-比分-1:3",
@@ -860,7 +860,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-比分-1:4",
@@ -909,7 +909,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-比分-1:5",
@@ -958,7 +958,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-比分-2:0",
@@ -1007,7 +1007,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-比分-2:1",
@@ -1056,7 +1056,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-比分-2:2",
@@ -1105,7 +1105,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-比分-2:3",
@@ -1154,7 +1154,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-比分-2:4",
@@ -1203,7 +1203,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-比分-2:5",
@@ -1252,7 +1252,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-比分-3:0",
@@ -1301,7 +1301,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-比分-3:1",
@@ -1350,7 +1350,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-比分-3:2",
@@ -1399,7 +1399,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-比分-3:3",
@@ -1448,7 +1448,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-比分-4:0",
@@ -1497,7 +1497,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-比分-4:1",
@@ -1546,7 +1546,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-比分-4:2",
@@ -1595,7 +1595,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-比分-5:0",
@@ -1644,7 +1644,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-比分-5:1",
@@ -1693,7 +1693,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-比分-5:2",
@@ -1742,7 +1742,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-比分-负其它",
@@ -1791,7 +1791,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-比分-平其它",
@@ -1840,7 +1840,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-比分-胜其它",
@@ -1889,7 +1889,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-总进球数-0",
@@ -1909,7 +1909,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-总进球数-1",
@@ -1929,7 +1929,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-总进球数-2",
@@ -1949,7 +1949,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-总进球数-3",
@@ -1969,7 +1969,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-总进球数-4",
@@ -1989,7 +1989,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-总进球数-5",
@@ -2009,7 +2009,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-总进球数-6",
@@ -2029,7 +2029,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-总进球数-7+",
@@ -2049,7 +2049,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-半全场-胜胜",
@@ -2069,7 +2069,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-半全场-胜平",
@@ -2089,7 +2089,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-半全场-胜负",
@@ -2109,7 +2109,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-半全场-平胜",
@@ -2129,7 +2129,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-半全场-平平",
@@ -2149,7 +2149,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-半全场-平负",
@@ -2169,7 +2169,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-半全场-负胜",
@@ -2189,7 +2189,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-半全场-负平",
@@ -2209,7 +2209,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040178-半全场-负负",
@@ -2229,7 +2229,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         }
       ]
     },
@@ -2435,7 +2435,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-胜平负-平",
@@ -2455,7 +2455,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-胜平负-负",
@@ -2475,7 +2475,7 @@
           "available": false,
           "recommendation": "未开售",
           "reason": "官方固定奖金未开售",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-让球胜平负-+2-胜",
@@ -2495,7 +2495,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-让球胜平负-+2-平",
@@ -2515,7 +2515,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-让球胜平负-+2-负",
@@ -2535,7 +2535,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-比分-0:0",
@@ -2584,7 +2584,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-比分-0:1",
@@ -2633,7 +2633,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-比分-0:2",
@@ -2682,7 +2682,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-比分-0:3",
@@ -2731,7 +2731,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-比分-0:4",
@@ -2780,7 +2780,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-比分-0:5",
@@ -2829,7 +2829,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-比分-1:0",
@@ -2878,7 +2878,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-比分-1:1",
@@ -2927,7 +2927,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-比分-1:2",
@@ -2976,7 +2976,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-比分-1:3",
@@ -3025,7 +3025,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-比分-1:4",
@@ -3074,7 +3074,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-比分-1:5",
@@ -3123,7 +3123,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-比分-2:0",
@@ -3172,7 +3172,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-比分-2:1",
@@ -3221,7 +3221,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-比分-2:2",
@@ -3270,7 +3270,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-比分-2:3",
@@ -3319,7 +3319,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-比分-2:4",
@@ -3368,7 +3368,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-比分-2:5",
@@ -3417,7 +3417,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-比分-3:0",
@@ -3466,7 +3466,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-比分-3:1",
@@ -3515,7 +3515,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-比分-3:2",
@@ -3564,7 +3564,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-比分-3:3",
@@ -3613,7 +3613,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-比分-4:0",
@@ -3662,7 +3662,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-比分-4:1",
@@ -3711,7 +3711,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-比分-4:2",
@@ -3760,7 +3760,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-比分-5:0",
@@ -3809,7 +3809,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-比分-5:1",
@@ -3858,7 +3858,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-比分-5:2",
@@ -3907,7 +3907,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-比分-负其它",
@@ -3956,7 +3956,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-比分-平其它",
@@ -4005,7 +4005,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-比分-胜其它",
@@ -4054,7 +4054,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-总进球数-0",
@@ -4074,7 +4074,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-总进球数-1",
@@ -4094,7 +4094,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-总进球数-2",
@@ -4114,7 +4114,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-总进球数-3",
@@ -4134,7 +4134,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-总进球数-4",
@@ -4154,7 +4154,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-总进球数-5",
@@ -4174,7 +4174,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-总进球数-6",
@@ -4194,7 +4194,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-总进球数-7+",
@@ -4214,7 +4214,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-半全场-胜胜",
@@ -4234,7 +4234,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-半全场-胜平",
@@ -4254,7 +4254,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-半全场-胜负",
@@ -4274,7 +4274,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-半全场-平胜",
@@ -4294,7 +4294,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-半全场-平平",
@@ -4314,7 +4314,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-半全场-平负",
@@ -4334,7 +4334,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-半全场-负胜",
@@ -4354,7 +4354,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-半全场-负平",
@@ -4374,7 +4374,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040179-半全场-负负",
@@ -4394,7 +4394,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         }
       ]
     },
@@ -4600,7 +4600,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-胜平负-平",
@@ -4620,7 +4620,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-胜平负-负",
@@ -4640,7 +4640,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-让球胜平负--1-胜",
@@ -4660,7 +4660,7 @@
           "available": true,
           "recommendation": "重点推荐",
           "reason": "通过原始与稳健期望双重门槛",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-让球胜平负--1-平",
@@ -4680,7 +4680,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-让球胜平负--1-负",
@@ -4700,7 +4700,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-比分-0:0",
@@ -4749,7 +4749,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-比分-0:1",
@@ -4798,7 +4798,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-比分-0:2",
@@ -4847,7 +4847,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-比分-0:3",
@@ -4896,7 +4896,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-比分-0:4",
@@ -4945,7 +4945,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-比分-0:5",
@@ -4994,7 +4994,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-比分-1:0",
@@ -5043,7 +5043,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-比分-1:1",
@@ -5092,7 +5092,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-比分-1:2",
@@ -5141,7 +5141,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-比分-1:3",
@@ -5190,7 +5190,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-比分-1:4",
@@ -5239,7 +5239,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-比分-1:5",
@@ -5288,7 +5288,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-比分-2:0",
@@ -5337,7 +5337,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-比分-2:1",
@@ -5386,7 +5386,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-比分-2:2",
@@ -5435,7 +5435,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-比分-2:3",
@@ -5484,7 +5484,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-比分-2:4",
@@ -5533,7 +5533,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-比分-2:5",
@@ -5582,7 +5582,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-比分-3:0",
@@ -5631,7 +5631,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-比分-3:1",
@@ -5680,7 +5680,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-比分-3:2",
@@ -5729,7 +5729,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-比分-3:3",
@@ -5778,7 +5778,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-比分-4:0",
@@ -5827,7 +5827,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-比分-4:1",
@@ -5876,7 +5876,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-比分-4:2",
@@ -5925,7 +5925,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-比分-5:0",
@@ -5974,7 +5974,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-比分-5:1",
@@ -6023,7 +6023,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-比分-5:2",
@@ -6072,7 +6072,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-比分-负其它",
@@ -6121,7 +6121,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-比分-平其它",
@@ -6170,7 +6170,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-比分-胜其它",
@@ -6219,7 +6219,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-总进球数-0",
@@ -6239,7 +6239,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-总进球数-1",
@@ -6259,7 +6259,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-总进球数-2",
@@ -6279,7 +6279,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-总进球数-3",
@@ -6299,7 +6299,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-总进球数-4",
@@ -6319,7 +6319,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-总进球数-5",
@@ -6339,7 +6339,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-总进球数-6",
@@ -6359,7 +6359,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-总进球数-7+",
@@ -6379,7 +6379,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-半全场-胜胜",
@@ -6399,7 +6399,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-半全场-胜平",
@@ -6419,7 +6419,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-半全场-胜负",
@@ -6439,7 +6439,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-半全场-平胜",
@@ -6459,7 +6459,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-半全场-平平",
@@ -6479,7 +6479,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-半全场-平负",
@@ -6499,7 +6499,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-半全场-负胜",
@@ -6519,7 +6519,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-半全场-负平",
@@ -6539,7 +6539,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040180-半全场-负负",
@@ -6559,7 +6559,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         }
       ]
     },
@@ -6765,7 +6765,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "胜平负最高概率 58.5% 低于 60% 门槛",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-胜平负-平",
@@ -6785,7 +6785,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "胜平负最高概率 58.5% 低于 60% 门槛",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-胜平负-负",
@@ -6805,7 +6805,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "胜平负最高概率 58.5% 低于 60% 门槛",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-让球胜平负--1-胜",
@@ -6825,7 +6825,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-让球胜平负--1-平",
@@ -6845,7 +6845,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-让球胜平负--1-负",
@@ -6865,7 +6865,7 @@
           "available": true,
           "recommendation": "重点推荐",
           "reason": "通过原始与稳健期望双重门槛",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-比分-0:0",
@@ -6914,7 +6914,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-比分-0:1",
@@ -6963,7 +6963,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-比分-0:2",
@@ -7012,7 +7012,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-比分-0:3",
@@ -7061,7 +7061,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-比分-0:4",
@@ -7110,7 +7110,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-比分-0:5",
@@ -7159,7 +7159,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-比分-1:0",
@@ -7208,7 +7208,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-比分-1:1",
@@ -7257,7 +7257,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-比分-1:2",
@@ -7306,7 +7306,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-比分-1:3",
@@ -7355,7 +7355,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-比分-1:4",
@@ -7404,7 +7404,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-比分-1:5",
@@ -7453,7 +7453,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-比分-2:0",
@@ -7502,7 +7502,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-比分-2:1",
@@ -7551,7 +7551,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-比分-2:2",
@@ -7600,7 +7600,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-比分-2:3",
@@ -7649,7 +7649,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-比分-2:4",
@@ -7698,7 +7698,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-比分-2:5",
@@ -7747,7 +7747,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-比分-3:0",
@@ -7796,7 +7796,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-比分-3:1",
@@ -7845,7 +7845,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-比分-3:2",
@@ -7894,7 +7894,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-比分-3:3",
@@ -7943,7 +7943,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-比分-4:0",
@@ -7992,7 +7992,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-比分-4:1",
@@ -8041,7 +8041,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-比分-4:2",
@@ -8090,7 +8090,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-比分-5:0",
@@ -8139,7 +8139,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-比分-5:1",
@@ -8188,7 +8188,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-比分-5:2",
@@ -8237,7 +8237,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-比分-负其它",
@@ -8286,7 +8286,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-比分-平其它",
@@ -8335,7 +8335,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-比分-胜其它",
@@ -8384,7 +8384,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "比分分布不够集中",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-总进球数-0",
@@ -8404,7 +8404,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-总进球数-1",
@@ -8424,7 +8424,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-总进球数-2",
@@ -8444,7 +8444,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-总进球数-3",
@@ -8464,7 +8464,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-总进球数-4",
@@ -8484,7 +8484,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-总进球数-5",
@@ -8504,7 +8504,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-总进球数-6",
@@ -8524,7 +8524,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-总进球数-7+",
@@ -8544,7 +8544,7 @@
           "available": true,
           "recommendation": "不建议",
           "reason": "稳健期望为负",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-半全场-胜胜",
@@ -8564,7 +8564,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-半全场-胜平",
@@ -8584,7 +8584,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-半全场-胜负",
@@ -8604,7 +8604,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-半全场-平胜",
@@ -8624,7 +8624,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-半全场-平平",
@@ -8644,7 +8644,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-半全场-平负",
@@ -8664,7 +8664,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-半全场-负胜",
@@ -8684,7 +8684,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-半全场-负平",
@@ -8704,7 +8704,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         },
         {
           "id": "2040181-半全场-负负",
@@ -8724,7 +8724,7 @@
           "available": true,
           "recommendation": "观察",
           "reason": "数据覆盖率低于 75%",
-          "observedAt": "2026-06-16T23:12:49+08:00"
+          "observedAt": "2026-06-16T23:17:57+08:00"
         }
       ]
     }
@@ -8733,33 +8733,226 @@
     {
       "key": "conservative",
       "name": "稳健",
-      "subtitle": "无正期望时空仓",
-      "stake": 0,
-      "retainedCash": 200,
+      "subtitle": "正期望单关精选",
+      "stake": 2,
+      "retainedCash": 198,
       "strategyRules": [
-        "高概率单关精选，模型概率≥55%",
-        "仅胜平负/总进球数",
+        "正期望单关精选，模型概率≥55%",
+        "胜平负/让球/总进球",
         "每场每玩法单选最优",
         "无正期望时0元不投"
       ],
-      "tickets": [],
+      "tickets": [
+        {
+          "id": "2040180-让球胜平负--1-胜",
+          "type": "单关",
+          "legs": [
+            {
+              "matchId": "2040180",
+              "label": "阿根廷 vs 阿尔及利亚",
+              "market": "让球胜平负",
+              "selection": "-1 胜",
+              "handicap": -1,
+              "odds": 2.09,
+              "excludedScores": []
+            }
+          ],
+          "stake": 2,
+          "combinedOdds": 2.09,
+          "modelProbability": 0.55558,
+          "robustExpectedReturn": 0.03373,
+          "potentialPayout": 4.18
+        }
+      ],
       "entertainmentMode": false,
-      "expectedProfit": 0.0,
-      "profitProbability": 0.0,
-      "lossProbability": 0.0,
+      "expectedProfit": 0.3,
+      "profitProbability": 0.5556,
+      "lossProbability": 0.4444,
       "stopProbability": 0.0,
       "medianMaxDrawdown": 0.0,
-      "worstCase95": 0,
-      "p05": 200,
-      "median": 200,
-      "p95": 200,
-      "maxPayout": 200,
+      "worstCase95": -2,
+      "p05": 198,
+      "median": 202,
+      "p95": 202,
+      "maxPayout": 202,
       "simulationPaths": 100000,
       "simulationMode": "shared_score_paths",
       "distribution": [
         {
+          "bankroll": 198,
+          "probability": 0.44442
+        },
+        {
+          "bankroll": 198,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 198,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 198,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 198,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 199,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 199,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 199,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 199,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 199,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 199,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 199,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 199,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 199,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 199,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 199,
+          "probability": 0.0
+        },
+        {
           "bankroll": 200,
-          "probability": 1.0
+          "probability": 0.0
+        },
+        {
+          "bankroll": 200,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 200,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 200,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 200,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 200,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 200,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 200,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 200,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 200,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 201,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 201,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 201,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 201,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 201,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 201,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 201,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 201,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 201,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 201,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 201,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 202,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 202,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 202,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 202,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 202,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 202,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 202,
+          "probability": 0.55558
         }
       ]
     },
@@ -8767,8 +8960,8 @@
       "key": "balanced",
       "name": "均衡",
       "subtitle": "复式双选 + 概率覆盖",
-      "stake": 36,
-      "retainedCash": 164,
+      "stake": 12,
+      "retainedCash": 188,
       "strategyRules": [
         "复式双选覆盖≥55%，同场可买胜+平",
         "胜平负/让球/总进球",
@@ -8790,108 +8983,25 @@
               "excludedScores": []
             }
           ],
-          "stake": 10,
+          "stake": 2,
           "combinedOdds": 2.09,
           "modelProbability": 0.55558,
           "robustExpectedReturn": 0.03373,
-          "potentialPayout": 20.9,
-          "comboGroup": {
-            "matchId": "2040180",
-            "market": "让球胜平负",
-            "size": 2,
-            "coveragePct": 80,
-            "expectedRoi": 5,
-            "minPayoutRatio": 91
-          }
+          "potentialPayout": 4.18
         },
         {
-          "id": "2040180-让球胜平负--1-平",
-          "type": "单关",
+          "id": "2040180-让球胜平负--1-胜-2040181-让球胜平负--1-负",
+          "type": "2串1",
           "legs": [
             {
               "matchId": "2040180",
               "label": "阿根廷 vs 阿尔及利亚",
               "market": "让球胜平负",
-              "selection": "-1 平",
+              "selection": "-1 胜",
               "handicap": -1,
-              "odds": 3.17,
+              "odds": 2.09,
               "excludedScores": []
-            }
-          ],
-          "stake": 4,
-          "combinedOdds": 3.17,
-          "modelProbability": 0.24621,
-          "robustExpectedReturn": -0.39384,
-          "potentialPayout": 12.68,
-          "comboGroup": {
-            "matchId": "2040180",
-            "market": "让球胜平负",
-            "size": 2,
-            "coveragePct": 80,
-            "expectedRoi": 5,
-            "minPayoutRatio": 91
-          }
-        },
-        {
-          "id": "2040179-让球胜平负-+2-胜",
-          "type": "单关",
-          "legs": [
-            {
-              "matchId": "2040179",
-              "label": "伊拉克 vs 挪威",
-              "market": "让球胜平负",
-              "selection": "+2 胜",
-              "handicap": 2,
-              "odds": 2.3,
-              "excludedScores": []
-            }
-          ],
-          "stake": 8,
-          "combinedOdds": 2.3,
-          "modelProbability": 0.48392,
-          "robustExpectedReturn": -0.02782,
-          "potentialPayout": 18.4,
-          "comboGroup": {
-            "matchId": "2040179",
-            "market": "让球胜平负",
-            "size": 2,
-            "coveragePct": 77,
-            "expectedRoi": -4,
-            "minPayoutRatio": 76
-          }
-        },
-        {
-          "id": "2040179-让球胜平负-+2-负",
-          "type": "单关",
-          "legs": [
-            {
-              "matchId": "2040179",
-              "label": "伊拉克 vs 挪威",
-              "market": "让球胜平负",
-              "selection": "+2 负",
-              "handicap": 2,
-              "odds": 2.29,
-              "excludedScores": []
-            }
-          ],
-          "stake": 4,
-          "combinedOdds": 2.29,
-          "modelProbability": 0.28192,
-          "robustExpectedReturn": -0.4843,
-          "potentialPayout": 9.16,
-          "comboGroup": {
-            "matchId": "2040179",
-            "market": "让球胜平负",
-            "size": 2,
-            "coveragePct": 77,
-            "expectedRoi": -4,
-            "minPayoutRatio": 76
-          }
-        },
-        {
-          "id": "2040181-让球胜平负--1-负",
-          "type": "单关",
-          "legs": [
+            },
             {
               "matchId": "2040181",
               "label": "奥地利 vs 约旦",
@@ -8902,169 +9012,53 @@
               "excludedScores": []
             }
           ],
-          "stake": 6,
-          "combinedOdds": 3.16,
-          "modelProbability": 0.41467,
-          "robustExpectedReturn": 0.11889,
-          "potentialPayout": 18.96,
-          "comboGroup": {
-            "matchId": "2040181",
-            "market": "让球胜平负",
-            "size": 2,
-            "coveragePct": 74,
-            "expectedRoi": 2,
-            "minPayoutRatio": 72
-          }
-        },
-        {
-          "id": "2040181-让球胜平负--1-胜",
-          "type": "单关",
-          "legs": [
-            {
-              "matchId": "2040181",
-              "label": "奥地利 vs 约旦",
-              "market": "让球胜平负",
-              "selection": "-1 胜",
-              "handicap": -1,
-              "odds": 1.8,
-              "excludedScores": []
-            }
-          ],
-          "stake": 4,
-          "combinedOdds": 1.8,
-          "modelProbability": 0.32921,
-          "robustExpectedReturn": -0.51278,
-          "potentialPayout": 7.2,
-          "comboGroup": {
-            "matchId": "2040181",
-            "market": "让球胜平负",
-            "size": 2,
-            "coveragePct": 74,
-            "expectedRoi": 2,
-            "minPayoutRatio": 72
-          }
+          "stake": 10,
+          "combinedOdds": 6.604,
+          "modelProbability": 0.23037,
+          "robustExpectedReturn": 0.29914,
+          "potentialPayout": 66.04
         }
       ],
-      "entertainmentMode": true,
-      "expectedProfit": 0.5,
-      "profitProbability": 0.5968,
-      "lossProbability": 0.4032,
+      "entertainmentMode": false,
+      "expectedProfit": 5.5,
+      "profitProbability": 0.2304,
+      "lossProbability": 0.7696,
       "stopProbability": 0.0,
-      "medianMaxDrawdown": 0.0,
-      "worstCase95": -23,
-      "p05": 177,
-      "median": 202,
-      "p95": 222,
-      "maxPayout": 222,
+      "medianMaxDrawdown": 0.0391,
+      "worstCase95": -12,
+      "p05": 188,
+      "median": 192,
+      "p95": 258,
+      "maxPayout": 258,
       "simulationPaths": 100000,
       "simulationMode": "shared_score_paths",
       "distribution": [
         {
-          "bankroll": 165,
-          "probability": 0.01183
-        },
-        {
-          "bankroll": 166,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 167,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 169,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 170,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 171,
-          "probability": 0.01537
-        },
-        {
-          "bankroll": 173,
-          "probability": 0.01491
-        },
-        {
-          "bankroll": 174,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 175,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 177,
-          "probability": 0.01506
-        },
-        {
-          "bankroll": 178,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 179,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 181,
-          "probability": 0.01822
-        },
-        {
-          "bankroll": 182,
-          "probability": 0.02482
-        },
-        {
-          "bankroll": 183,
-          "probability": 0.0195
-        },
-        {
-          "bankroll": 185,
-          "probability": 0.0513
-        },
-        {
-          "bankroll": 186,
-          "probability": 0.01762
-        },
-        {
-          "bankroll": 187,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 188,
-          "probability": 0.0
+          "bankroll": 189,
+          "probability": 0.44442
         },
         {
           "bankroll": 190,
-          "probability": 0.03143
-        },
-        {
-          "bankroll": 191,
           "probability": 0.0
         },
         {
           "bankroll": 192,
-          "probability": 0.08847
+          "probability": 0.32521
         },
         {
           "bankroll": 194,
-          "probability": 0.04041
+          "probability": 0.0
         },
         {
           "bankroll": 195,
-          "probability": 0.05424
+          "probability": 0.0
         },
         {
-          "bankroll": 196,
+          "bankroll": 197,
           "probability": 0.0
         },
         {
           "bankroll": 198,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 199,
           "probability": 0.0
         },
         {
@@ -9073,22 +9067,18 @@
         },
         {
           "bankroll": 202,
-          "probability": 0.13059
-        },
-        {
-          "bankroll": 203,
-          "probability": 0.06916
-        },
-        {
-          "bankroll": 204,
-          "probability": 0.08228
-        },
-        {
-          "bankroll": 206,
           "probability": 0.0
         },
         {
-          "bankroll": 207,
+          "bankroll": 203,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 205,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 206,
           "probability": 0.0
         },
         {
@@ -9101,18 +9091,14 @@
         },
         {
           "bankroll": 211,
-          "probability": 0.08829
+          "probability": 0.0
         },
         {
-          "bankroll": 212,
+          "bankroll": 213,
           "probability": 0.0
         },
         {
           "bankroll": 214,
-          "probability": 0.1148
-        },
-        {
-          "bankroll": 215,
           "probability": 0.0
         },
         {
@@ -9128,12 +9114,100 @@
           "probability": 0.0
         },
         {
-          "bankroll": 220,
+          "bankroll": 221,
           "probability": 0.0
         },
         {
           "bankroll": 222,
-          "probability": 0.1117
+          "probability": 0.0
+        },
+        {
+          "bankroll": 224,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 226,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 227,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 229,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 230,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 232,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 233,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 235,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 237,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 238,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 240,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 241,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 243,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 245,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 246,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 248,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 249,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 251,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 253,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 254,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 256,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 257,
+          "probability": 0.23037
         }
       ]
     },
@@ -9141,8 +9215,8 @@
       "key": "aggressive",
       "name": "激进",
       "subtitle": "多选复式 + 高风险串关",
-      "stake": 120,
-      "retainedCash": 80,
+      "stake": 36,
+      "retainedCash": 164,
       "strategyRules": [
         "复式覆盖≥35%，全市场5玩法可选",
         "同场同玩法≤2选（禁止3选全覆盖）",
@@ -9150,118 +9224,6 @@
         "预期回报率≥-15%，最差返本≥40%"
       ],
       "tickets": [
-        {
-          "id": "2040178-胜平负-胜",
-          "type": "单关",
-          "legs": [
-            {
-              "matchId": "2040178",
-              "label": "法国 vs 塞内加尔",
-              "market": "胜平负",
-              "selection": "胜",
-              "handicap": null,
-              "odds": 1.32,
-              "excludedScores": []
-            }
-          ],
-          "stake": 24,
-          "combinedOdds": 1.32,
-          "modelProbability": 0.65849,
-          "robustExpectedReturn": -0.20857,
-          "potentialPayout": 31.68,
-          "comboGroup": {
-            "matchId": "2040178",
-            "market": "胜平负",
-            "size": 2,
-            "coveragePct": 87,
-            "expectedRoi": -12,
-            "minPayoutRatio": 93
-          }
-        },
-        {
-          "id": "2040178-胜平负-平",
-          "type": "单关",
-          "legs": [
-            {
-              "matchId": "2040178",
-              "label": "法国 vs 塞内加尔",
-              "market": "胜平负",
-              "selection": "平",
-              "handicap": null,
-              "odds": 4.2,
-              "excludedScores": []
-            }
-          ],
-          "stake": 10,
-          "combinedOdds": 4.2,
-          "modelProbability": 0.21223,
-          "robustExpectedReturn": -0.33127,
-          "potentialPayout": 42.0,
-          "comboGroup": {
-            "matchId": "2040178",
-            "market": "胜平负",
-            "size": 2,
-            "coveragePct": 87,
-            "expectedRoi": -12,
-            "minPayoutRatio": 93
-          }
-        },
-        {
-          "id": "2040181-胜平负-胜",
-          "type": "单关",
-          "legs": [
-            {
-              "matchId": "2040181",
-              "label": "奥地利 vs 约旦",
-              "market": "胜平负",
-              "selection": "胜",
-              "handicap": null,
-              "odds": 1.26,
-              "excludedScores": []
-            }
-          ],
-          "stake": 24,
-          "combinedOdds": 1.26,
-          "modelProbability": 0.58533,
-          "robustExpectedReturn": -0.33883,
-          "potentialPayout": 30.24,
-          "comboGroup": {
-            "matchId": "2040181",
-            "market": "胜平负",
-            "size": 2,
-            "coveragePct": 82,
-            "expectedRoi": -14,
-            "minPayoutRatio": 84
-          }
-        },
-        {
-          "id": "2040181-胜平负-平",
-          "type": "单关",
-          "legs": [
-            {
-              "matchId": "2040181",
-              "label": "奥地利 vs 约旦",
-              "market": "胜平负",
-              "selection": "平",
-              "handicap": null,
-              "odds": 4.65,
-              "excludedScores": []
-            }
-          ],
-          "stake": 12,
-          "combinedOdds": 4.65,
-          "modelProbability": 0.23803,
-          "robustExpectedReturn": -0.1468,
-          "potentialPayout": 55.8,
-          "comboGroup": {
-            "matchId": "2040181",
-            "market": "胜平负",
-            "size": 2,
-            "coveragePct": 82,
-            "expectedRoi": -14,
-            "minPayoutRatio": 84
-          }
-        },
         {
           "id": "2040180-让球胜平负--1-胜",
           "type": "单关",
@@ -9276,258 +9238,251 @@
               "excludedScores": []
             }
           ],
-          "stake": 24,
+          "stake": 4,
           "combinedOdds": 2.09,
           "modelProbability": 0.55558,
           "robustExpectedReturn": 0.03373,
-          "potentialPayout": 50.16,
-          "comboGroup": {
-            "matchId": "2040180",
-            "market": "让球胜平负",
-            "size": 2,
-            "coveragePct": 80,
-            "expectedRoi": 3,
-            "minPayoutRatio": 106
-          }
+          "potentialPayout": 8.36
         },
         {
-          "id": "2040180-让球胜平负--1-平",
+          "id": "2040181-让球胜平负--1-负",
           "type": "单关",
+          "legs": [
+            {
+              "matchId": "2040181",
+              "label": "奥地利 vs 约旦",
+              "market": "让球胜平负",
+              "selection": "-1 负",
+              "handicap": -1,
+              "odds": 3.16,
+              "excludedScores": []
+            }
+          ],
+          "stake": 8,
+          "combinedOdds": 3.16,
+          "modelProbability": 0.41467,
+          "robustExpectedReturn": 0.11889,
+          "potentialPayout": 25.28
+        },
+        {
+          "id": "2040180-让球胜平负--1-胜-2040181-胜平负-负",
+          "type": "2串1",
           "legs": [
             {
               "matchId": "2040180",
               "label": "阿根廷 vs 阿尔及利亚",
               "market": "让球胜平负",
-              "selection": "-1 平",
+              "selection": "-1 胜",
               "handicap": -1,
-              "odds": 3.17,
+              "odds": 2.09,
               "excludedScores": []
-            }
-          ],
-          "stake": 12,
-          "combinedOdds": 3.17,
-          "modelProbability": 0.24621,
-          "robustExpectedReturn": -0.39384,
-          "potentialPayout": 38.04,
-          "comboGroup": {
-            "matchId": "2040180",
-            "market": "让球胜平负",
-            "size": 2,
-            "coveragePct": 80,
-            "expectedRoi": 3,
-            "minPayoutRatio": 106
-          }
-        },
-        {
-          "id": "2040179-让球胜平负-+2-胜",
-          "type": "单关",
-          "legs": [
+            },
             {
-              "matchId": "2040179",
-              "label": "伊拉克 vs 挪威",
-              "market": "让球胜平负",
-              "selection": "+2 胜",
-              "handicap": 2,
-              "odds": 2.3,
+              "matchId": "2040181",
+              "label": "奥地利 vs 约旦",
+              "market": "胜平负",
+              "selection": "负",
+              "handicap": null,
+              "odds": 8.25,
               "excludedScores": []
             }
           ],
-          "stake": 14,
-          "combinedOdds": 2.3,
-          "modelProbability": 0.48392,
-          "robustExpectedReturn": -0.02782,
-          "potentialPayout": 32.2
+          "stake": 24,
+          "combinedOdds": 17.242,
+          "modelProbability": 0.09837,
+          "robustExpectedReturn": 0.21106,
+          "potentialPayout": 413.82
         }
       ],
-      "entertainmentMode": true,
-      "expectedProfit": -6.4,
-      "profitProbability": 0.4277,
-      "lossProbability": 0.5723,
+      "entertainmentMode": false,
+      "expectedProfit": 19.8,
+      "profitProbability": 0.0984,
+      "lossProbability": 0.9016,
       "stopProbability": 0.0,
-      "medianMaxDrawdown": 0.0396,
-      "worstCase95": -58,
-      "p05": 142,
-      "median": 192,
-      "p95": 250,
-      "maxPayout": 260,
+      "medianMaxDrawdown": 0.1382,
+      "worstCase95": -36,
+      "p05": 164,
+      "median": 172,
+      "p95": 611,
+      "maxPayout": 611,
       "simulationPaths": 100000,
       "simulationMode": "shared_score_paths",
       "distribution": [
         {
-          "bankroll": 82,
-          "probability": 0.0021
+          "bankroll": 169,
+          "probability": 0.58533
         },
         {
-          "bankroll": 86,
+          "bankroll": 179,
           "probability": 0.0
-        },
-        {
-          "bankroll": 90,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 94,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 98,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 103,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 107,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 111,
-          "probability": 0.02212
-        },
-        {
-          "bankroll": 115,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 119,
-          "probability": 0.00271
-        },
-        {
-          "bankroll": 123,
-          "probability": 0.00388
-        },
-        {
-          "bankroll": 127,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 131,
-          "probability": 0.00663
-        },
-        {
-          "bankroll": 135,
-          "probability": 0.00335
-        },
-        {
-          "bankroll": 139,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 143,
-          "probability": 0.05821
-        },
-        {
-          "bankroll": 148,
-          "probability": 0.00953
-        },
-        {
-          "bankroll": 152,
-          "probability": 0.03004
-        },
-        {
-          "bankroll": 156,
-          "probability": 0.00391
-        },
-        {
-          "bankroll": 160,
-          "probability": 0.05996
-        },
-        {
-          "bankroll": 164,
-          "probability": 0.00628
-        },
-        {
-          "bankroll": 168,
-          "probability": 0.01885
-        },
-        {
-          "bankroll": 172,
-          "probability": 0.05108
-        },
-        {
-          "bankroll": 176,
-          "probability": 0.00526
-        },
-        {
-          "bankroll": 180,
-          "probability": 0.07215
-        },
-        {
-          "bankroll": 184,
-          "probability": 0.0208
         },
         {
           "bankroll": 189,
-          "probability": 0.01512
+          "probability": 0.1843
         },
         {
-          "bankroll": 193,
-          "probability": 0.16582
+          "bankroll": 200,
+          "probability": 0.132
         },
         {
-          "bankroll": 197,
+          "bankroll": 210,
           "probability": 0.0
         },
         {
-          "bankroll": 201,
-          "probability": 0.05036
-        },
-        {
-          "bankroll": 205,
-          "probability": 0.03454
-        },
-        {
-          "bankroll": 209,
-          "probability": 0.00476
-        },
-        {
-          "bankroll": 213,
-          "probability": 0.04537
-        },
-        {
-          "bankroll": 217,
-          "probability": 0.05967
-        },
-        {
-          "bankroll": 221,
-          "probability": 0.01487
-        },
-        {
-          "bankroll": 225,
-          "probability": 0.10403
-        },
-        {
-          "bankroll": 229,
-          "probability": 0.01447
-        },
-        {
-          "bankroll": 234,
-          "probability": 0.03367
-        },
-        {
-          "bankroll": 238,
-          "probability": 0.01879
-        },
-        {
-          "bankroll": 242,
+          "bankroll": 220,
           "probability": 0.0
         },
         {
-          "bankroll": 246,
+          "bankroll": 230,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 240,
           "probability": 0.0
         },
         {
           "bankroll": 250,
-          "probability": 0.04821
-        },
-        {
-          "bankroll": 254,
           "probability": 0.0
         },
         {
-          "bankroll": 258,
-          "probability": 0.01346
+          "bankroll": 261,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 271,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 281,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 291,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 301,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 311,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 322,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 332,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 342,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 352,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 362,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 372,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 383,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 393,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 403,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 413,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 423,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 433,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 444,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 454,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 464,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 474,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 484,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 495,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 505,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 515,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 525,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 535,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 545,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 556,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 566,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 576,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 586,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 596,
+          "probability": 0.0
+        },
+        {
+          "bankroll": 606,
+          "probability": 0.09837
         }
       ]
     }
@@ -9536,35 +9491,35 @@
     {
       "source": "中国体育彩票",
       "field": "固定奖金/单关资格",
-      "observedAt": "2026-06-16T23:12:49+08:00",
+      "observedAt": "2026-06-16T23:17:57+08:00",
       "confidence": 1.0,
       "status": "fresh"
     },
     {
       "source": "football-data.org 免费档",
       "field": "2026 世界杯赛程/赛果",
-      "observedAt": "2026-06-16T23:12:49+08:00",
+      "observedAt": "2026-06-16T23:17:57+08:00",
       "confidence": 0.9,
       "status": "fresh"
     },
     {
       "source": "World Football Elo Ratings",
       "field": "国家队基础实力",
-      "observedAt": "2026-06-16T23:12:49+08:00",
+      "observedAt": "2026-06-16T23:17:57+08:00",
       "confidence": 0.72,
       "status": "fresh"
     },
     {
       "source": "API-Football 免费档",
       "field": "预计首发/伤停/球员数据",
-      "observedAt": "2026-06-16T23:12:49+08:00",
+      "observedAt": "2026-06-16T23:17:57+08:00",
       "confidence": 0.0,
       "status": "missing"
     },
     {
       "source": "Open-Meteo",
       "field": "开球时刻天气",
-      "observedAt": "2026-06-16T23:12:49+08:00",
+      "observedAt": "2026-06-16T23:17:57+08:00",
       "confidence": 0.8,
       "status": "manual"
     }

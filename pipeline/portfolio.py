@@ -42,9 +42,9 @@ class Strategy:
 
 STRATEGIES = (
     Strategy(
-        "conservative", "稳健", "无正期望时空仓", 0.25, 0.25, 0.0, 1,
-        ("胜平负", "总进球数"), (), 0.80, 0.55, 0.02, 2.25, 2, 0,
-        ("高概率单关精选，模型概率≥55%", "仅胜平负/总进球数", "每场每玩法单选最优", "无正期望时0元不投"),
+        "conservative", "稳健", "正期望单关精选", 0.25, 0.25, 0.0, 1,
+        ("胜平负", "让球胜平负", "总进球数"), (), 0.80, 0.55, 0.02, 2.25, 2, 0,
+        ("正期望单关精选，模型概率≥55%", "胜平负/让球/总进球", "每场每玩法单选最优", "无正期望时0元不投"),
         max_combo_per_market=1, min_combo_coverage=0.55,
         negative_edge_fallback=False, negative_edge_min=0.0,
         min_combo_roi=0.05, min_payout_ratio=0.80,
@@ -86,9 +86,7 @@ def _single_candidates(quotes: list[dict[str, Any]], strategy: Strategy) -> list
     candidates = [
         quote for quote in quotes
         if quote.get("available")
-        and quote.get("singleEligible")
         and quote.get("market") in strategy.single_markets
-        and quote.get("recommendation") in {"重点推荐", "小注可选"}
         and float(quote.get("coverage") or 0) >= strategy.min_coverage
         and float(quote.get("modelProbability") or 0) >= strategy.min_probability
         and float(quote.get("robustExpectedReturn") or -1) >= strategy.min_edge
@@ -107,7 +105,6 @@ def _parlay_candidates(
         quote for quote in quotes
         if quote.get("available")
         and quote.get("market") in strategy.parlay_markets
-        and quote.get("recommendation") in {"重点推荐", "小注可选"}
         and float(quote.get("coverage") or 0) >= strategy.min_coverage
         and float(quote.get("modelProbability") or 0) >= strategy.min_probability
         and float(quote.get("robustExpectedReturn") or -1) >= strategy.min_edge
@@ -142,10 +139,11 @@ def _filter_quotes(quotes: list[dict[str, Any]], strategy: Strategy, edge_min: f
     return [
         quote for quote in quotes
         if quote.get("available")
-        and quote.get("singleEligible")
         and quote.get("market") in strategy.single_markets
-        and quote.get("recommendation") in {"重点推荐", "小注可选"}
         and float(quote.get("coverage") or 0) >= strategy.min_coverage
+        # Accept any recommendation level — the edge threshold is the
+        # real quality gate.  "观察" quotes with positive edge are
+        # actionable; "未开售" is already excluded by `available`.
         and float(quote.get("modelProbability") or 0) >= strategy.min_probability
         and float(quote.get("robustExpectedReturn") or -1) >= min_edge
         and quote.get("odds")
