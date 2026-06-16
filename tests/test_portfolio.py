@@ -39,12 +39,15 @@ def test_portfolios_respect_bankroll_caps_and_distinct_parlay_matches():
             assert len(ids) == len(set(ids))
 
 
-def test_negative_edge_produces_entertainment_tickets_for_all_strategies():
-    """All three strategies now have negative_edge_fallback=True.
-    With a negative-edge quote that passes relaxed filters, all produce tickets."""
+def test_negative_edge_conservative_empty_balanced_aggressive_fallback():
+    """保守: negative_edge_fallback=False → 0元不投。
+    均衡/激进: fallback → entertainment-mode tickets with combo coverage."""
     portfolios = build_portfolios([quote("1", -0.01)], bankroll=200, simulation=shared_simulation("1"))
-    # All three strategies should produce entertainment-mode tickets
-    for p in portfolios:
+    # Conservative: no fallback → 0 stake, 0 tickets
+    assert portfolios[0]["stake"] == 0, "conservative should not bet on negative edge"
+    assert len(portfolios[0]["tickets"]) == 0, "conservative should have no tickets"
+    # Balanced and aggressive: fallback → entertainment mode with tickets
+    for p in portfolios[1:]:
         assert p["entertainmentMode"], f"{p['key']} should be in entertainment mode"
         assert len(p["tickets"]) >= 1, f"{p['key']} should have tickets"
 
