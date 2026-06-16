@@ -110,14 +110,113 @@ def fetch_page(url: str) -> str:
     return response.text
 
 
+SPORTTERY_API_BASE = "https://webapi.sporttery.cn/gateway/uniform/football/getMatchCalculatorV1.qry"
+
+
+def _api_url(pool_codes: str) -> str:
+    return f"{SPORTTERY_API_BASE}?channel=c&poolCode={pool_codes}"
+
+
+def _api_headers() -> dict[str, str]:
+    return {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+        "Accept-Language": "zh-CN,zh;q=0.9",
+        "Referer": "https://m.sporttery.cn/",
+    }
+
+
+def _fetch_raw_payloads() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any], dict[str, Any]]:
+    """Fetch raw JSON payloads from the 4 sporttery API pools.
+
+    Returns (spf, score, ttg, hafu) — the hafu pool is separate because
+    the API rejects ``poolCode=ttg,hafu`` with 403.
+    """
+    spf_r = requests.get(_api_url("hhad,had"), headers=_api_headers(), timeout=30)
+    spf_r.raise_for_status()
+    score_r = requests.get(_api_url("crs"), headers=_api_headers(), timeout=30)
+    score_r.raise_for_status()
+    ttg_r = requests.get(_api_url("ttg"), headers=_api_headers(), timeout=30)
+    ttg_r.raise_for_status()
+    hafu_r = requests.get(_api_url("hafu"), headers=_api_headers(), timeout=30)
+    hafu_r.raise_for_status()
+    return spf_r.json(), score_r.json(), ttg_r.json(), hafu_r.json()
+
+
+def fetch_sporttery_api() -> dict[str, SportteryMatch]:
+    """Fetch live odds from the sporttery.cn JSON API (no HTML scraping needed)."""
+    spf, score, ttg, hafu = _fetch_raw_payloads()
+    return parse_api_snapshots(spf, score, _merge_ttg_hafu(ttg, hafu))
+
+
+def _api_payload_to_cache(endpoint: str, payload: dict[str, Any]) -> dict[str, Any]:
+    return {"endpoint": endpoint, "payload": payload}
+
+
+def save_live_snapshot(
+    spf_payload: dict[str, Any],
+    score_payload: dict[str, Any],
+    ttg_payload: dict[str, Any],
+    hafu_payload: dict[str, Any],
+    path: Path = SPORTTERY_SNAPSHOT,
+) -> None:
+    """Cache the raw API responses so the pipeline is reproducible offline."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps({
+        "schemaVersion": 2,
+        "fetchedAt": datetime.now(UTC).isoformat().replace("+00:00", "Z"),
+        "spf": _api_payload_to_cache(_api_url("hhad,had"), spf_payload),
+        "score": _api_payload_to_cache(_api_url("crs"), score_payload),
+        "ttg": _api_payload_to_cache(_api_url("ttg"), ttg_payload),
+        "hafu": _api_payload_to_cache(_api_url("hafu"), hafu_payload),
+    }, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
 def fetch_sporttery() -> dict[str, SportteryMatch]:
+    # Try cached snapshot first (fast, offline-safe)
     snapshot = load_live_snapshot()
     if snapshot is not None:
         mixed = snapshot.get("mixed", {}).get("payload")
+        if mixed is None:
+            # schema v2: ttg + hafu stored separately
+            ttg_p = snapshot.get("ttg", {}).get("payload", {})
+            hafu_p = snapshot.get("hafu", {}).get("payload", {})
+            mixed = _merge_ttg_hafu(ttg_p, hafu_p)
         return parse_api_snapshots(snapshot["spf"]["payload"], snapshot["score"]["payload"], mixed)
-    matches = parse_spf_html(fetch_page(SPORTTERY_URLS["spf"]))
-    parse_score_html(fetch_page(SPORTTERY_URLS["score"]), matches)
-    return matches
+
+    # Fresh fetch from sporttery JSON API
+    try:
+        spf, score, ttg, hafu = _fetch_raw_payloads()
+        matches = parse_api_snapshots(spf, score, _merge_ttg_hafu(ttg, hafu))
+        try:
+            save_live_snapshot(spf, score, ttg, hafu)
+        except OSError:
+            pass
+        return matches
+    except (requests.RequestException, ValueError, KeyError) as exc:
+        raise ValueError(f"Sporttery API fetch failed: {exc}") from exc
+
+
+def _merge_ttg_hafu(ttg_data: dict[str, Any], hafu_data: dict[str, Any]) -> dict[str, Any]:
+    """Merge hafu pool data into ttg payload so parse_api_snapshots can read both."""
+    import copy
+    mixed = copy.deepcopy(ttg_data)
+    hafu_val = hafu_data.get("value", {})
+    if "value" not in mixed:
+        mixed["value"] = {}
+    hafu_by_id: dict[str, dict[str, Any]] = {}
+    for group in hafu_val.get("matchInfoList", []):
+        for m in group.get("subMatchList", []):
+            hafu_by_id[str(m.get("matchId", ""))] = m
+    for group in mixed["value"].get("matchInfoList", []):
+        for m in group.get("subMatchList", []):
+            mid = str(m.get("matchId", ""))
+            if mid in hafu_by_id:
+                m["hafu"] = hafu_by_id[mid].get("hafu", {})
+                existing = {str(p.get("poolCode", "")) for p in m.get("poolList", [])}
+                for p in hafu_by_id[mid].get("poolList", []):
+                    if str(p.get("poolCode", "")) not in existing:
+                        m.setdefault("poolList", []).append(p)
+    return mixed
 
 
 def _flatten(payload: dict[str, Any]) -> list[dict[str, Any]]:
