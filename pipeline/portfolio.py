@@ -44,18 +44,18 @@ STRATEGIES = (
         "balanced", "均衡", "价值单关 + 1注2串1", 0.50, 0.40, 0.0, 2,
         ("胜平负", "让球胜平负", "总进球数"), ("胜平负", "让球胜平负", "总进球数"),
         0.78, 0.35, 0.01, 4.50, 3, 0,
-        ("正期望优先，允许同场2选复式", "覆盖胜平负/让球/总进球", "最多1注2串1，接受-1%以内组合"),
+        ("正期望优先，允许同场2选复式", "覆盖胜平负/让球/总进球", "最多1注2串1，无正EV时-8%以内"),
         max_combo_per_market=2, min_combo_coverage=0.55, combo_edge_tolerance=-0.01,
-        negative_edge_fallback=True, negative_edge_min=-0.02,
+        negative_edge_fallback=True, negative_edge_min=-0.08,
     ),
     Strategy(
         "aggressive", "激进", "高赔率市场 + 受控串关", 0.75, 0.60, 0.10, 3,
         ("胜平负", "让球胜平负", "比分", "总进球数", "半全场"),
         ("胜平负", "让球胜平负", "比分", "总进球数", "半全场"),
         0.75, 0.08, 0.0, 80.0, 4, 1,
-        ("允许比分/半全场小注，支持同场2选", "按赔率与稳健期望共同排序", "可做2串1和3串1，-5%以内娱乐"),
+        ("允许比分/半全场小注，支持同场2选", "降级模式自动放宽至-20%边缘", "可做2串1和3串1，实验观察用"),
         max_combo_per_market=2, min_combo_coverage=0.40, combo_edge_tolerance=-0.05,
-        negative_edge_fallback=True, negative_edge_min=-0.05,
+        negative_edge_fallback=True, negative_edge_min=-0.20,
     ),
 )
 
@@ -182,19 +182,25 @@ def _combo_fallback_groups(
 ) -> list[tuple[dict[str, Any], ...]]:
     """Relaxed combo selection when no positive-EV combos exist.
 
-    Uses negative_edge_min as the relaxed edge floor, and includes '观察' recommendations.
+    Drops the singleEligible requirement entirely (degraded mode may have
+    no single-eligible quotes). Uses negative_edge_min as the relaxed edge
+    floor, includes '观察' and '不建议' recommendations, and lowers
+    coverage/probability bars for entertainment strategies.
     """
+    # Further relaxed thresholds for fallback mode
+    fallback_coverage = max(0.60, strategy.min_coverage - 0.15)
+    fallback_probability = max(0.05, strategy.min_probability - 0.10)
+    fallback_odds = max(strategy.max_odds, 200.0)  # no odds cap in fallback
     relaxed = [
         quote for quote in quotes
         if quote.get("available")
-        and quote.get("singleEligible")
         and quote.get("market") in strategy.single_markets
-        and quote.get("recommendation") in {"重点推荐", "小注可选", "观察"}
-        and float(quote.get("coverage") or 0) >= strategy.min_coverage
-        and float(quote.get("modelProbability") or 0) >= strategy.min_probability
+        and quote.get("recommendation") in {"重点推荐", "小注可选", "观察", "不建议"}
+        and float(quote.get("coverage") or 0) >= fallback_coverage
+        and float(quote.get("modelProbability") or 0) >= fallback_probability
         and float(quote.get("robustExpectedReturn") or -99) >= strategy.negative_edge_min
         and quote.get("odds")
-        and float(quote["odds"]) <= strategy.max_odds
+        and float(quote["odds"]) <= fallback_odds
     ]
     groups: dict[tuple[str, str], list[dict[str, Any]]] = {}
     for quote in relaxed:

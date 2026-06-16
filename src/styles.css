@@ -351,6 +351,102 @@ button { color: inherit; }
 .betting-review-panel dt { color: #6ebce7; font-size: 8px; }
 .betting-review-panel dd { margin: 3px 0 0; color: #798e9e; font-size: 8px; line-height: 1.5; }
 
+/* ---- strategy dashboard (LedgerPage) ---- */
+.strategy-dashboard { max-width: 1100px; margin: 0 auto; }
+.strategy-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 18px;
+}
+.strategy-card {
+  background: #0d1f2f;
+  border: 1px solid #1a3a52;
+  border-radius: 10px;
+  padding: 16px;
+}
+.strategy-card.conservative { border-top: 3px solid #2a9fd9; }
+.strategy-card.balanced { border-top: 3px solid #f0a030; }
+.strategy-card.aggressive { border-top: 3px solid #e0556a; }
+.strategy-card-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+.strategy-card-head h3 { margin: 0; font-size: 18px; color: #d7e5ef; }
+.strategy-card-head small { display: block; font-size: 11px; color: #6f8798; }
+.strategy-card-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.strategy-card-body div { min-width: 0; }
+.strategy-card-body span { display: block; font-size: 11px; color: #6f8798; margin-bottom: 2px; }
+.strategy-card-body strong {
+  display: flex; align-items: center; gap: 4px;
+  font: 600 20px 'Barlow Condensed'; color: #d7e5ef;
+}
+.chart-panel { margin-bottom: 18px; }
+.chart-container { width: 100%; }
+.chart-empty { text-align: center; color: #6f8798; font-size: 13px; padding: 20px; }
+.accuracy-panel { margin-bottom: 18px; }
+.accuracy-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  padding: 14px 18px;
+}
+.accuracy-grid > div {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 12px; background: #091520; border-radius: 8px; text-align: center;
+}
+.accuracy-grid > div > svg { color: #f0a030; margin-bottom: 6px; }
+.accuracy-grid span { font-size: 11px; color: #7890a3; }
+.accuracy-grid strong { font: 600 26px 'Barlow Condensed'; color: #d7e5ef; margin: 4px 0; }
+.accuracy-grid small { font-size: 10px; color: #5a7a90; }
+
+.review-panel { margin-bottom: 18px; }
+.review-day { border-bottom: 1px solid #1a3045; }
+.review-day summary {
+  display: flex; align-items: center; gap: 16px; padding: 12px 18px;
+  cursor: pointer; list-style: none;
+}
+.review-day summary::-webkit-details-marker { display: none; }
+.review-day summary span { font-weight: 600; color: #d7e5ef; font-size: 14px; min-width: 90px; }
+.review-day summary strong { font-size: 13px; }
+.review-day summary small { color: #6f8798; font-size: 12px; margin-left: auto; }
+.review-matches { padding: 0 18px 14px; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 8px; }
+.review-match {
+  padding: 10px 12px; border-radius: 6px; background: #091520;
+  border-left: 3px solid #2a9fd9;
+  display: grid; grid-template-columns: 1fr auto; gap: 4px 12px;
+}
+.review-match.wrong { border-left-color: #e0556a; }
+.review-match span { font-weight: 600; color: #d7e5ef; font-size: 13px; }
+.review-match em { color: #7890a3; font-size: 12px; }
+.review-match strong { color: #f3b12a; font-size: 13px; text-align: right; }
+.review-match.wrong strong { color: #e0556a; }
+.review-match small { grid-column: 1 / -1; color: #6f8798; font-size: 11px; line-height: 1.4; }
+
+.ledger-info-panel { margin-bottom: 18px; }
+.ledger-info-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr) auto;
+  gap: 12px; padding: 14px 18px; align-items: center;
+}
+.ledger-info-grid > div { display: flex; align-items: center; gap: 8px; }
+.ledger-info-grid > div > svg { color: #2a9fd9; }
+.ledger-info-grid span { font-size: 12px; color: #7890a3; }
+.ledger-info-grid strong { font-size: 17px; color: #d7e5ef; font-weight: 600; }
+.ledger-actions { display: flex; gap: 6px; }
+.ledger-actions button, .ledger-actions .file-button {
+  padding: 6px 12px; border: 1px solid #1a3a52; border-radius: 5px;
+  background: #091520; color: #7890a3; cursor: pointer; font-size: 12px;
+  display: flex; align-items: center; gap: 4px;
+}
+.ledger-actions button:hover { border-color: #2a9fd9; color: #d7e5ef; }
+.ledger-actions .file-button input { display: none; }
+.ledger-table.compact { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 8px; }
+.ledger-table.compact th { padding: 8px 12px; text-align: left; color: #5a7a90; font-weight: 500; border-bottom: 1px solid #1a3045; }
+.ledger-table.compact td { padding: 6px 12px; color: #9fb1bd; border-top: 1px solid #1a2535; }
+.ledger-table.compact .empty-row { text-align: center; color: #5a7a90; padding: 20px; }
+
 @media (max-width: 1390px) {
   .dashboard-grid { grid-template-columns: 238px minmax(600px, 1fr) 294px; }
   .topbar { gap: 12px; }

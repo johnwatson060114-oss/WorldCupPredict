@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-16T18:24:09+08:00",
+  "generatedAt": "2026-06-16T19:12:32+08:00",
   "finalDate": "2026-07-19",
   "days": [
     {
@@ -220,7 +220,7 @@
     },
     {
       "targetDate": "2026-06-17",
-      "generatedAt": "2026-06-16T18:23:54+08:00",
+      "generatedAt": "2026-06-16T19:12:29+08:00",
       "coverage": 0.75,
       "strategies": [
         {
@@ -235,20 +235,20 @@
         {
           "key": "balanced",
           "name": "均衡",
-          "stake": 0,
-          "payout": 0,
-          "profit": 0,
+          "stake": 4,
+          "payout": null,
+          "profit": null,
           "roi": null,
-          "status": "no-bet"
+          "status": "pending"
         },
         {
           "key": "aggressive",
           "name": "激进",
-          "stake": 0,
-          "payout": 0,
-          "profit": 0,
+          "stake": 8,
+          "payout": null,
+          "profit": null,
           "roi": null,
-          "status": "no-bet"
+          "status": "pending"
         }
       ],
       "review": null
