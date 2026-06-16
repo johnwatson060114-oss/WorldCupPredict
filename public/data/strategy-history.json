@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-16T13:01:26+08:00",
+  "generatedAt": "2026-06-16T18:24:09+08:00",
   "finalDate": "2026-07-19",
   "days": [
     {
@@ -143,12 +143,85 @@
           "status": "no-bet"
         }
       ],
-      "review": null
+      "review": {
+        "snapshotLabel": "升级前基线快照",
+        "matches": [
+          {
+            "matchId": "西班牙 vs 佛得角",
+            "label": "西班牙 vs 佛得角",
+            "predictedScore": "2-0",
+            "actualScore": "0-0",
+            "predictedOutcome": "home",
+            "actualOutcome": "draw",
+            "outcomeCorrect": false,
+            "exactScore": false,
+            "goalAbsoluteError": 2,
+            "actualOutcomeProbability": 0.10922,
+            "logLoss": 2.21439,
+            "brier": 1.56064,
+            "diagnosis": "赛果方向判断错误，需要继续积累同类对阵样本。"
+          },
+          {
+            "matchId": "比利时 vs 埃及",
+            "label": "比利时 vs 埃及",
+            "predictedScore": "1-0",
+            "actualScore": "1-1",
+            "predictedOutcome": "home",
+            "actualOutcome": "draw",
+            "outcomeCorrect": false,
+            "exactScore": false,
+            "goalAbsoluteError": 1,
+            "actualOutcomeProbability": 0.21543,
+            "logLoss": 1.53512,
+            "brier": 1.05696,
+            "diagnosis": "赛果方向判断错误，需要继续积累同类对阵样本。"
+          },
+          {
+            "matchId": "沙特 vs 乌拉圭",
+            "label": "沙特 vs 乌拉圭",
+            "predictedScore": "0-2",
+            "actualScore": "1-1",
+            "predictedOutcome": "away",
+            "actualOutcome": "draw",
+            "outcomeCorrect": false,
+            "exactScore": false,
+            "goalAbsoluteError": 2,
+            "actualOutcomeProbability": 0.1637,
+            "logLoss": 1.80972,
+            "brier": 1.30945,
+            "diagnosis": "赛果方向判断错误，需要继续积累同类对阵样本。"
+          },
+          {
+            "matchId": "伊朗 vs 新西兰",
+            "label": "伊朗 vs 新西兰",
+            "predictedScore": "1-0",
+            "actualScore": "2-2",
+            "predictedOutcome": "home",
+            "actualOutcome": "draw",
+            "outcomeCorrect": false,
+            "exactScore": false,
+            "goalAbsoluteError": 3,
+            "actualOutcomeProbability": 0.2123,
+            "logLoss": 1.54975,
+            "brier": 1.07583,
+            "diagnosis": "赛果方向判断错误，需要继续积累同类对阵样本。"
+          }
+        ],
+        "summary": {
+          "matchCount": 4,
+          "outcomeAccuracy": 0.0,
+          "exactScoreAccuracy": 0.0,
+          "meanGoalAbsoluteError": 2.0,
+          "logLoss": 1.77724,
+          "brier": 1.25072,
+          "strategyDiagnosis": "策略结果已按真实派彩结算，继续观察多日样本后再调整资金规则。"
+        }
+      }
     },
     {
       "targetDate": "2026-06-17",
-      "generatedAt": "2026-06-16T13:01:05+08:00",
-      "coverage": 0,
+      "generatedAt": "2026-06-16T18:23:54+08:00",
+      "coverage": 0.75,
       "strategies": [
         {
           "key": "conservative",
