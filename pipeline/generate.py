@@ -448,17 +448,31 @@ def build_match(
             handicap_market.get(chinese), coverage, bool(market and "让球胜平负" in market.single_markets), generated_at, handicap=handicap,
         ))
 
+    # --- 比分 (31 standard sporttery.cn score options) ---
+    # Real sporttery offers exactly these 31 selections for every match.
+    # We always generate all of them so the personal-betting UI has the
+    # full set — even when live odds are unavailable.
+    SPORTTERY_HOME_SCORES = ["1:0", "2:0", "2:1", "3:0", "3:1", "3:2", "4:0", "4:1", "4:2", "5:0", "5:1", "5:2"]
+    SPORTTERY_DRAW_SCORES = ["0:0", "1:1", "2:2", "3:3"]
+    SPORTTERY_AWAY_SCORES = ["0:1", "0:2", "1:2", "0:3", "1:3", "2:3", "0:4", "1:4", "2:4", "0:5", "1:5", "2:5"]
+    ALL_STANDARD_SCORES = SPORTTERY_HOME_SCORES + ["胜其它"] + SPORTTERY_DRAW_SCORES + ["平其它"] + SPORTTERY_AWAY_SCORES + ["负其它"]
+
     score_odds = market.scores if market else {}
-    for score in scores:
-        score["odds"] = score_odds.get(str(score["score"])) if score_odds else _sample_odds(score["probability"])
-    offered_scores = {selection for selection in score_odds if ":" in selection}
-    if not score_odds:
-        for score in scores[:8]:
-            score_key = str(score["score"])
-            if _sample_odds(score["probability"]):
-                score_odds[score_key] = _sample_odds(score["probability"])
+    if score_odds:
+        # Live market available: use real odds, but still generate ALL 31 scores
+        pass
+    else:
+        # Degraded mode: generate simulated odds for every standard score
+        for sel in ALL_STANDARD_SCORES:
+            prob = score_selection_probability(sel, matrix, set())
+            if prob > 0.0001:
+                sampled = _sample_odds(prob)
+                if sampled:
+                    score_odds[sel] = sampled
+
+    offered_scores = {sel for sel in score_odds if ":" in sel}
     score_market = normalized_market_probabilities(score_odds) if score_odds else {}
-    score_selections = list(score_odds) if score_odds else [str(score["score"]) for score in scores[:3]]
+    score_selections = list(score_odds) if score_odds else ALL_STANDARD_SCORES[:8]
     for selection in score_selections:
         odds = score_odds.get(selection)
         probability = score_selection_probability(selection, matrix, offered_scores)

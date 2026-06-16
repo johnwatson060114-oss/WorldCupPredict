@@ -179,8 +179,10 @@ export function PersonalBetPage({ forecast, settlements, ledger, onLedgerChange 
   }
 
   const chooseQuote = (quote: MarketQuote) => {
-    if (!quote.available || !quote.odds || !selectedMatch) return
-    if (form.passType === '单关' && !quote.singleEligible) {
+    // Manual recording: odds is the only gate. available/singleEligible
+    // are for live auto-betting — users can record any bet they placed.
+    if (!quote.odds || !selectedMatch) return
+    if (form.passType === '单关' && !quote.singleEligible && quote.available) {
       setMessage('该赔率不支持单关，请选择串关票型或改选带"单关"资格的选项。')
       return
     }
@@ -389,15 +391,15 @@ export function PersonalBetPage({ forecast, settlements, ledger, onLedgerChange 
                           <div className="market-grid-options">
                             {quotes.map((quote) => {
                               const sel = form.legs.some((leg) => leg.matchId === quote.matchId && leg.market === quote.market && leg.selection === quote.selection)
-                              const blocked = form.passType === '单关' && !quote.singleEligible
                               const label = market === '让球胜平负' && quote.handicap != null
                                 ? `${quote.handicap > 0 ? `+${quote.handicap}` : quote.handicap}${quote.selection}`
                                 : quote.selection
+                              const noOdds = !quote.odds || quote.odds <= 1
                               return (
-                                <button key={quote.id} disabled={!quote.available || blocked} className={sel ? 'selected' : ''} onClick={() => chooseQuote(quote)}>
+                                <button key={quote.id} disabled={noOdds} className={sel ? 'selected' : ''} onClick={() => chooseQuote(quote)}>
                                   <span>{label}</span>
                                   <strong>{quote.odds?.toFixed(2) ?? '--'}</strong>
-                                  <small>{!quote.available ? '未开售' : blocked ? '不可单关' : quote.singleEligible ? '单关' : ''}</small>
+                                  <small>{noOdds ? '暂无赔率' : sel ? '已选' : '点击选择'}</small>
                                 </button>
                               )
                             })}
