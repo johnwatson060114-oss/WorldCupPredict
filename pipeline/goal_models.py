@@ -58,12 +58,70 @@ def _timestamp(record: dict[str, Any]) -> datetime:
     return parsed
 
 
+# --- Tournament prestige tier weighting ---
+# Higher tiers = matches matter more for evaluating team strength.
+_TOURNAMENT_TIERS: dict[str, float] = {
+    "FIFA World Cup": 3.0,
+    "UEFA Euro": 2.0,
+    "Copa América": 2.0,
+    "AFC Asian Cup": 2.0,
+    "African Cup of Nations": 2.0,
+    "Gold Cup": 2.0,
+    "Confederations Cup": 2.0,
+    "CONMEBOL–UEFA Cup of Champions": 2.0,
+    "Oceania Nations Cup": 1.5,
+    "Arab Cup": 1.5,
+    "FIFA World Cup qualification": 1.0,
+    "UEFA Euro qualification": 1.0,
+    "AFC Asian Cup qualification": 1.0,
+    "African Cup of Nations qualification": 1.0,
+    "Gold Cup qualification": 1.0,
+    "Oceania Nations Cup qualification": 1.0,
+    "UEFA Nations League": 1.0,
+    "CONCACAF Nations League": 1.0,
+    "CONCACAF Nations League qualification": 0.8,
+    "FIFA Series": 0.8,
+    "AFC Challenge Cup": 0.8,
+    "AFC Solidarity Cup": 0.8,
+    "CONIFA World Football Cup": 0.6,
+    "CECAFA Cup": 0.6,
+    "COSAFA Cup": 0.6,
+    "AFF Championship": 0.6,
+    "SAFF Cup": 0.6,
+    "EAFF Championship": 0.6,
+    "WAFF Championship": 0.6,
+    "Gulf Cup": 0.6,
+    "CFU Caribbean Cup": 0.6,
+    "UNCAF Cup": 0.6,
+    "ASEAN Championship": 0.6,
+    "CAFA Nations Cup": 0.6,
+    "King's Cup": 0.5,
+    "Kirin Cup": 0.5,
+    "Nehru Cup": 0.5,
+    "Merdeka Tournament": 0.5,
+    "Cyprus International Tournament": 0.4,
+    "Malta International Tournament": 0.4,
+}
+_TOURNAMENT_DEFAULT_TIER = 0.25  # friendlies and obscure cups
+
+
+def _tournament_weight(tournament: str) -> float:
+    return _TOURNAMENT_TIERS.get(tournament, _TOURNAMENT_DEFAULT_TIER)
+
+
+# Earliest year allowed in training.  Modern football rules and competitive
+# dynamics differ materially from the 19th/20th centuries — pre-2000 matches
+# are excluded except for teams with sparse modern history.
+EARLIEST_YEAR = 2000
+
+
 def fit_goal_model(matches: Iterable[dict[str, Any]], spec: ModelSpec) -> FittedGoalModel:
     records = list(matches)
     if not records:
         return FittedGoalModel(spec, 1.35, 1.10, {}, {})
     reference = max(_timestamp(record) for record in records)
-    half_life = spec.parameters.get("half_life_days")
+    half_life = spec.parameters.get("half_life_days", 730.0)
+    tournament_tier = spec.parameters.get("tournament_tier", 1.0)  # multiplier knob
     weighted_home = weighted_away = total_weight = 0.0
     scored: dict[str, float] = {}
     conceded: dict[str, float] = {}
@@ -72,7 +130,11 @@ def fit_goal_model(matches: Iterable[dict[str, Any]], spec: ModelSpec) -> Fitted
         home_goals = float(record["home_goals_90"])
         away_goals = float(record["away_goals_90"])
         age_days = max(0.0, (reference - _timestamp(record)).total_seconds() / 86400)
-        weight = math.exp(-math.log(2) * age_days / half_life) if half_life else 1.0
+        time_weight = math.exp(-math.log(2) * age_days / half_life) if half_life else 1.0
+        tier_w = _tournament_weight(record.get("tournament", ""))
+        if tournament_tier != 1.0:
+            tier_w = tier_w ** tournament_tier  # compression/expansion knob
+        weight = time_weight * tier_w
         home = str(record["home_team_id"])
         away = str(record["away_team_id"])
         weighted_home += home_goals * weight
@@ -158,8 +220,26 @@ def default_candidate_grid() -> list[ModelSpec]:
 # --- Production goal-model xG provider ---
 # Grid search on 128 WC 2018+2022 matches selected hierarchical_poisson
 # as the best total-goals model (30.5% exact vs 26.6% for Dixon-Coles).
-# We use it to produce team-specific xG estimates from historical data.
-PRODUCTION_GOAL_SPEC = ModelSpec("hierarchical_poisson", {"shrinkage": 16.0, "rho": 0.0})
+# half_life_days=730: matches >2 years old get <50% weight — keeps the
+#   model anchored on recent form rather than historical reputation.
+# tournament_tier=1.0: natural tier multiplier (WC ×3, friendlies ×0.25).
+# shrinkage=24: stronger regression toward global mean for sparse teams.
+PRODUCTION_GOAL_SPEC = ModelSpec(
+    "hierarchical_poisson",
+    {"shrinkage": 24.0, "rho": 0.0, "half_life_days": 730.0, "tournament_tier": 1.0},
+)
+
+# football-data.org → CSV team name aliases
+_TEAM_ALIASES: dict[str, str] = {
+    "Congo DR": "DR Congo",
+    "Czech Republic": "Czech Republic",
+    "Cape Verde Islands": "Cape Verde",
+    "Bosnia-Herzegovina": "Bosnia and Herzegovina",
+    "Korea Republic": "South Korea",
+    "Korea DPR": "North Korea",
+    "United States": "United States",
+    "IR Iran": "Iran",
+}  # fmt: skip
 
 # Fallback when goal-model data is unavailable.
 DEFAULT_GLOBAL_HOME = 1.55
@@ -220,24 +300,30 @@ def goal_model_xg(
 ) -> tuple[float, float] | None:
     """Estimate expected goals using a goal model fit on historical data.
 
-    Filters all international matches before *target_date*, fits the
-    specified model (default: production spec), and returns the
-    matchup-specific xG.
+    Only matches from *EARLIEST_YEAR* (2000) onward are included by default.
+    Pre-2000 data is excluded because modern football rules, tactics and
+    competitive dynamics differ materially from the 19th/20th centuries.
 
-    Returns None when the historical data is unavailable.
+    Returns None when historical data is unavailable or the model can't
+    differentiate the two teams.
     """
     spec = spec or PRODUCTION_GOAL_SPEC
     rows = _read_historical_matches()
     if not rows:
         return None
-    # Keep only matches before the target date
-    prior = [row for row in rows if row["date"] < target_date]
-    if len(prior) < 50:
-        return None  # not enough data for meaningful fit
+    # Keep only matches before the target date, from 2000 onwards
+    prior = [row for row in rows if EARLIEST_YEAR <= int(row["date"][:4]) < int(target_date[:4]) + 1 and row["date"] < target_date]
+    if len(prior) < 200:
+        return None  # not enough recent data
+
     model = fit_goal_model(prior, spec)
-    hxg, axg = model.expected_goals(home_team, away_team, neutral=True)
-    # If the model can't differentiate the teams (both unknown → same xG),
-    # return None to let the caller fall back to Elo.
-    if abs(hxg - axg) < 0.01 * hxg:
+    # Resolve aliases before looking up in fitted model
+    home_key = _TEAM_ALIASES.get(home_team, home_team)
+    away_key = _TEAM_ALIASES.get(away_team, away_team)
+    hxg, axg = model.expected_goals(home_key, away_key, neutral=True)
+
+    # If either team is unknown (no post-2000 history), the model returns
+    # the global average for both — fall back to Elo which has broader coverage.
+    if abs(hxg - axg) < 0.02 * max(hxg, axg):
         return None
     return (hxg, axg)
