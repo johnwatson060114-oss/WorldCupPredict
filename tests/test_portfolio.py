@@ -111,13 +111,19 @@ def test_strategy_market_and_parlay_rules_are_materially_different():
         {**quote("3", 0.09, odds=2.50), "market": "让球胜平负", "selection": "-1 平", "handicap": -1, "modelProbability": 0.48},
         {**quote("4", 0.20, odds=8.00), "market": "半全场", "selection": "胜胜", "modelProbability": 0.18},
         {**quote("5", 0.15, odds=12.0, single=False), "market": "比分", "selection": "2:0", "modelProbability": 0.12},
+        # Extra parlay-only legs on fresh matchIds.  Singles have already
+        # claimed matches 1-4, so these feed the 2串1/3串1 pool without
+        # duplicating existing single exposure.
+        quote("6", 0.10, odds=2.00),
+        quote("7", 0.10, odds=2.00),
+        quote("8", 0.10, odds=2.00),
     ]
     portfolios = {
         item["key"]: item
         for item in build_portfolios(
             quotes,
             bankroll=200,
-            simulation=shared_simulation("1", "2", "3", "4", "5"),
+            simulation=shared_simulation("1", "2", "3", "4", "5", "6", "7", "8"),
         )
     }
 
@@ -127,13 +133,13 @@ def test_strategy_market_and_parlay_rules_are_materially_different():
     assert {leg["market"] for ticket in conservative["tickets"] for leg in ticket["legs"]} <= {"胜平负", "总进球数"}
 
     balanced = portfolios["balanced"]
-    assert any(ticket["type"] == "2串1" for ticket in balanced["tickets"])
+    assert any(ticket["type"] == "2串1" for ticket in balanced["tickets"]), "balanced should have 2串1 from unused matchIds"
     assert not {"比分", "半全场"} & {leg["market"] for ticket in balanced["tickets"] for leg in ticket["legs"]}
 
     aggressive = portfolios["aggressive"]
     aggressive_markets = {leg["market"] for ticket in aggressive["tickets"] for leg in ticket["legs"]}
     assert {"比分", "半全场"} & aggressive_markets
-    assert any(ticket["type"] == "3串1" for ticket in aggressive["tickets"])
+    assert any(ticket["type"] == "3串1" for ticket in aggressive["tickets"]), "aggressive should have 3串1 from unused matchIds"
     assert conservative["strategyRules"] != balanced["strategyRules"] != aggressive["strategyRules"]
 
 

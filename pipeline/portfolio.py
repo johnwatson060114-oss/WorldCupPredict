@@ -189,8 +189,9 @@ def _build_combo_groups(
             combined_edge = sum(float(q["robustExpectedReturn"]) for q in combo) / pick_size
             if coverage >= strategy.min_combo_coverage and combined_edge >= strategy.combo_edge_tolerance:
                 combos.append(combo)
-            # If size-1 doesn't meet thresholds, don't try larger combos
-            if pick_size == 1 and (coverage < strategy.min_coverage or combined_edge < strategy.min_edge):
+            # If size-1 doesn't meet the combo-level threshold, don't try
+            # larger combos — adding a worse pick can't fix a failing best pick.
+            if pick_size == 1 and (coverage < strategy.min_combo_coverage or combined_edge < strategy.combo_edge_tolerance):
                 break
     return combos
 
@@ -395,12 +396,15 @@ def build_portfolios(
 
         parlay_source = parlay_quotes if parlay_quotes is not None else quotes
 
-        # Parlay logic can use a wider cross-day source. Same-day singles
-        # still come only from `quotes`; future matches enter through
-        # 2串1/3串1 tickets when they satisfy the same edge gates.
-        # Drawdown protection: edge threshold is raised and stake is shrunk.
+        # Parlay logic: legs must come from matches NOT already covered by
+        # single tickets.  Without this guard you get wasteful duplicates like
+        # 单关(A) + 单关(B) + 2串1(A,B) — same exposure, double the cost.
+        # Parlays should introduce *new* match exposures, not re-bundle old ones.
         if strategy.max_parlay >= 2 and used + 2 <= cap:
-            filtered_parlay_quotes = _filter_quotes(parlay_source, strategy, edge_min=adjusted_min_edge)
+            filtered_parlay_quotes = [
+                q for q in _filter_quotes(parlay_source, strategy, edge_min=adjusted_min_edge)
+                if q["matchId"] not in used_match_ids
+            ]
             candidates = _parlay_candidates(filtered_parlay_quotes, 2, strategy)
             if candidates:
                 best = max(candidates, key=lambda group: _parlay_score(group, strategy))
@@ -409,7 +413,10 @@ def build_portfolios(
                     tickets.append(_ticket_from_quotes(list(best), stake, "2串1", simulation))
                     used += stake
         if strategy.max_parlay >= 3 and used + 2 <= cap:
-            filtered_parlay_quotes = _filter_quotes(parlay_source, strategy, edge_min=adjusted_min_edge)
+            filtered_parlay_quotes = [
+                q for q in _filter_quotes(parlay_source, strategy, edge_min=adjusted_min_edge)
+                if q["matchId"] not in used_match_ids
+            ]
             candidates = _parlay_candidates(filtered_parlay_quotes, 3, strategy)
             if candidates:
                 best = max(candidates, key=lambda group: _parlay_score(group, strategy))

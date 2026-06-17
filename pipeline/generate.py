@@ -624,11 +624,35 @@ def _sporttery_fixture_seeds(
             "base_xg": [home_xg, away_xg],
             "coverage": 0.80,
             "weather": "天气待更新",
-            "factors": default_factors(),
+            "factors": _sporttery_factors(home_xg, away_xg, elo_live),
             "missing_data": ["赛程来自体彩API（football-data.org不可用）"],
             "elo_live": elo_live,
         })
     return seeds
+
+
+def _sporttery_factors(home_xg: float, away_xg: float, elo_live: bool) -> list[dict]:
+    """Build factor list for sporttery-sourced matches.
+
+    Only the "球队实力" factor is active with core admission status;
+    the rest stay as defaults (inactive observation-only) because we
+    have no lineup/injury/coach/weather data from the sporttery API.
+    """
+    factors = default_factors()
+    xg_diff = abs(home_xg - away_xg)
+    if xg_diff > 1.5:
+        strength_note = "进球模型显示双方进攻实力差距较大"
+    elif xg_diff > 0.6:
+        strength_note = "进球模型显示存在一定实力差距"
+    else:
+        strength_note = "进球模型显示双方实力接近"
+    if elo_live:
+        strength_note += "（Elo实时数据可获取）"
+    factors[0] = {
+        "label": "球队实力", "direction": "neutral", "value": 0.0,
+        "note": strength_note, "active": True, "admissionStatus": "core",
+    }
+    return factors
 
 
 def _compute_xg_for_sporttery_seed(
