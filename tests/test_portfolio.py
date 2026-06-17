@@ -148,6 +148,42 @@ def test_all_markets_settle_from_the_same_score_path():
     assert settle_leg({"market": "半全场", "selection": "胜胜"}, score, halftime)
 
 
+def test_drawdown_shrinks_stakes_but_does_not_silence_strategy():
+    """Underwater aggressive should still bet — just smaller and pickier.
+    Drawdown protection is continuous, not a binary kill switch."""
+    # Quotes with barely-positive edge.  At dr=0.74 the edge requirement
+    # rises to 0.0*1.35=0.0 (aggressive still accepts), and stakes shrink
+    # to ~55 %.  The strategy should find tickets — just fewer/smaller ones.
+    quotes = [
+        quote("1", 0.12, odds=1.80),
+        quote("2", 0.10, odds=2.00),
+        quote("3", 0.08, odds=2.20),
+    ]
+
+    full = build_portfolios(
+        quotes, bankroll=200, simulation=shared_simulation("1", "2", "3"),
+    )
+    aggressive_full = next(p for p in full if p["key"] == "aggressive")
+
+    half = build_portfolios(
+        quotes, bankroll=200, simulation=shared_simulation("1", "2", "3"),
+        strategy_bankrolls={"aggressive": 148.0},  # dr=0.74
+    )
+    aggressive_half = next(p for p in half if p["key"] == "aggressive")
+
+    # Must still have tickets — protection shrinks, doesn't silence
+    assert len(aggressive_half["tickets"]) >= 1, "aggressive should still bet when underwater"
+    # But total stake should be noticeably smaller
+    assert aggressive_half["stake"] < aggressive_full["stake"], (
+        f"underwater stake ({aggressive_half['stake']}) should be less than full ({aggressive_full['stake']})"
+    )
+
+    # Conservative (no override) stays unchanged
+    conservative_full = next(p for p in full if p["key"] == "conservative")
+    conservative_half = next(p for p in half if p["key"] == "conservative")
+    assert conservative_half["stake"] == conservative_full["stake"]
+
+
 def test_parlay_probability_and_payout_use_shared_paths_not_probability_roots():
     simulation = TournamentSimulation(
         paths=4,

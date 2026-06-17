@@ -574,6 +574,34 @@ def build_match(
     }
 
 
+def _load_strategy_bankrolls(history_path: Path, initial_bankroll: int) -> dict[str, float] | None:
+    """Read strategy-history.json and compute per-strategy rolling bankrolls.
+
+    Mirrors the frontend ``strategyRollingBankrolls()`` logic so that the
+    pipeline generates portfolios at the correct scale from the start.
+    Returns None when no history file is available (first run).
+    """
+    if not history_path.exists():
+        return None
+    try:
+        history = json.loads(history_path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return None
+
+    keys = ("conservative", "balanced", "aggressive")
+    bankrolls = {key: float(initial_bankroll) for key in keys}
+
+    for day in sorted(history.get("days", []), key=lambda d: d["targetDate"]):
+        for s in day.get("strategies", []):
+            key = s["key"]
+            if key not in bankrolls:
+                continue
+            if s.get("status") == "settled" and s.get("profit") is not None:
+                bankrolls[key] = max(0.0, bankrolls[key] + float(s["profit"]))
+
+    return bankrolls
+
+
 def main() -> None:
     args = parse_args()
     timezone = ZoneInfo(SETTINGS.timezone)
@@ -719,7 +747,13 @@ def main() -> None:
     parlay_quotes = all_quotes + [
         quote for match in future_parlay_matches for quote in match["quotes"]
     ]
-    portfolios = build_portfolios(all_quotes, SETTINGS.initial_bankroll, simulation=simulation, parlay_quotes=parlay_quotes)
+
+    # Compute per-strategy rolling bankrolls from settled history.
+    # When a strategy is underwater (bankroll < initial), drawdown protection
+    # shrinks stakes and raises edge thresholds inside build_portfolios().
+    strategy_bankrolls = _load_strategy_bankrolls(OUTPUT_DIR / "strategy-history.json", SETTINGS.initial_bankroll)
+
+    portfolios = build_portfolios(all_quotes, SETTINGS.initial_bankroll, simulation=simulation, parlay_quotes=parlay_quotes, strategy_bankrolls=strategy_bankrolls)
     coverage = sum(match["coverage"] for match in built_matches) / len(built_matches) if built_matches else 0
     weather_live = team_data_live and bool(built_matches) and all(
         any(factor["label"] == "温湿度与风" and factor["active"] for factor in match["factors"])

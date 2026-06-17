@@ -5,6 +5,12 @@ import math
 from dataclasses import dataclass
 from typing import Any
 
+from .drawdown import (
+    adjusted_max_singles,
+    drawdown_ratio,
+    edge_multiplier,
+    stake_multiplier as dr_stake_multiplier,
+)
 from .simulation import TournamentSimulation
 
 
@@ -274,16 +280,25 @@ def build_portfolios(
     bankroll: int = 200,
     simulation: TournamentSimulation | None = None,
     parlay_quotes: list[dict[str, Any]] | None = None,
+    strategy_bankrolls: dict[str, float] | None = None,
 ) -> list[dict[str, Any]]:
     results = []
     for strategy in STRATEGIES:
+        # --- Drawdown protection ---
+        strategy_br = (strategy_bankrolls or {}).get(strategy.key, float(bankroll))
+        strategy_br = max(strategy_br, 2.0)  # never below minimum ticket
+        dr = drawdown_ratio(strategy_br, float(bankroll))
+        stake_mult = dr_stake_multiplier(dr)
+        edge_mult = edge_multiplier(dr)
+
         cap = round_to_ticket(bankroll)
         tickets: list[dict[str, Any]] = []
         used = 0
         entertainment_mode = False
 
         # Get single-ticket candidate combos
-        strict_quotes = _filter_quotes(quotes, strategy)
+        adjusted_min_edge = strategy.min_edge * edge_mult
+        strict_quotes = _filter_quotes(quotes, strategy, edge_min=adjusted_min_edge)
         combos = _build_combo_groups(strict_quotes, strategy)
 
         # Fallback to relaxed edge when no combos found
@@ -301,9 +316,10 @@ def build_portfolios(
         )
 
         used_match_ids: set[str] = set()
+        effective_max_singles = adjusted_max_singles(strategy.max_singles, dr)
         for combo in combos:
             match_id = combo[0]["matchId"]
-            if len(used_match_ids) >= strategy.max_singles or match_id in used_match_ids:
+            if len(used_match_ids) >= effective_max_singles or match_id in used_match_ids:
                 continue
 
             # Calculate stakes for each leg in the combo.
@@ -324,11 +340,11 @@ def build_portfolios(
                 weight = probs[idx] / total_prob
                 if entertainment_mode:
                     coverage_ratio = combo_coverage / max(strategy.min_combo_coverage, 0.01)
-                    suggested = round_to_ticket(bankroll * ENTERTAINMENT_STAKE_FRACTION * coverage_ratio * weight * len(combo))
+                    suggested = round_to_ticket(bankroll * ENTERTAINMENT_STAKE_FRACTION * coverage_ratio * weight * len(combo) * stake_mult)
                 else:
                     robust_probability = (1 + quote["robustExpectedReturn"]) / quote["odds"]
-                    suggested = round_to_ticket(bankroll * fractional_kelly(robust_probability, quote["odds"], STANDARD_KELLY_FRACTION))
-                maximum = round_to_ticket(bankroll * (strategy.score_cap if quote["market"] == "比分" else DEFAULT_SINGLE_CAP))
+                    suggested = round_to_ticket(bankroll * fractional_kelly(robust_probability, quote["odds"], STANDARD_KELLY_FRACTION) * stake_mult)
+                maximum = round_to_ticket(bankroll * (strategy.score_cap if quote["market"] == "比分" else DEFAULT_SINGLE_CAP) * stake_mult)
                 stake = min(maximum, max(2, suggested), cap - used - combo_stake)
                 if stake < 2:
                     continue
@@ -382,26 +398,27 @@ def build_portfolios(
         # Parlay logic can use a wider cross-day source. Same-day singles
         # still come only from `quotes`; future matches enter through
         # 2串1/3串1 tickets when they satisfy the same edge gates.
+        # Drawdown protection: edge threshold is raised and stake is shrunk.
         if strategy.max_parlay >= 2 and used + 2 <= cap:
-            filtered_parlay_quotes = _filter_quotes(parlay_source, strategy)
+            filtered_parlay_quotes = _filter_quotes(parlay_source, strategy, edge_min=adjusted_min_edge)
             candidates = _parlay_candidates(filtered_parlay_quotes, 2, strategy)
             if candidates:
                 best = max(candidates, key=lambda group: _parlay_score(group, strategy))
-                stake = min(round_to_ticket(bankroll * PARLAY_STAKE_FRACTIONS[2]), cap - used)
+                stake = min(round_to_ticket(bankroll * PARLAY_STAKE_FRACTIONS[2] * stake_mult), cap - used)
                 if stake >= 2:
                     tickets.append(_ticket_from_quotes(list(best), stake, "2串1", simulation))
                     used += stake
         if strategy.max_parlay >= 3 and used + 2 <= cap:
-            filtered_parlay_quotes = _filter_quotes(parlay_source, strategy)
+            filtered_parlay_quotes = _filter_quotes(parlay_source, strategy, edge_min=adjusted_min_edge)
             candidates = _parlay_candidates(filtered_parlay_quotes, 3, strategy)
             if candidates:
                 best = max(candidates, key=lambda group: _parlay_score(group, strategy))
-                stake = min(round_to_ticket(bankroll * PARLAY_STAKE_FRACTIONS[3]), cap - used)
+                stake = min(round_to_ticket(bankroll * PARLAY_STAKE_FRACTIONS[3] * stake_mult), cap - used)
                 if stake >= 2:
                     tickets.append(_ticket_from_quotes(list(best), stake, "3串1", simulation))
                     used += stake
 
-        simulation_summary = simulate_portfolio(tickets, bankroll, simulation)
+        simulation_summary = simulate_portfolio(tickets, int(strategy_br), simulation)
         results.append({
             "key": strategy.key,
             "name": strategy.name,

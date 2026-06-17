@@ -47,8 +47,10 @@ describe('portfolio scaling', () => {
     const scaled = scalePortfolio(portfolio(42), bankrolls.aggressive)
 
     expect(bankrolls.aggressive).toBe(150)
-    expect(scaled.stake).toBe(30)
-    expect(scaled.tickets[0].stake).toBe(30)
+    // Quadratic scaling: dr=0.75, stakeMult=0.5625
+    // ticket stake = roundTicket(42 * 0.5625) = roundTicket(23.625) = 22
+    expect(scaled.stake).toBe(22)
+    expect(scaled.tickets[0].stake).toBe(22)
   })
 
   it('does not double-subtract the current target date', () => {

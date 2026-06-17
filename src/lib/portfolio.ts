@@ -5,11 +5,26 @@ const roundTicket = (value: number) => Math.max(0, Math.floor(value / 2) * 2)
 const strategyKeys = ['conservative', 'balanced', 'aggressive'] as const
 const roundMoney = (value: number) => Math.round(value * 100) / 100
 
+// --- Drawdown-aware scaling ---
+// When a strategy is underwater (bankroll < initial), risk-of-ruin
+// increases non-linearly.  Ticket stakes shrink quadratically (dr²)
+// while portfolio-level metrics (p05, median, p95) still scale linearly
+// because they represent absolute ending bankroll values.
+
+const drawdownRatio = (bankroll: number, baseBankroll: number): number =>
+  Math.max(0.001, bankroll / Math.max(baseBankroll, 1))
+
+const stakeMultiplier = (dr: number): number =>
+  Math.max(0.01, Math.min(1.0, dr * dr))
+
 export const scalePortfolio = (portfolio: Portfolio, bankroll: number, baseBankroll = 200): Portfolio => {
   if (bankroll === baseBankroll) return portfolio
-  const ratio = bankroll / baseBankroll
+  const dr = drawdownRatio(bankroll, baseBankroll)
+  const stakeMult = stakeMultiplier(dr)       // quadratic: bet sizing
+  const ratio = dr                             // linear: outcome/payout scaling
+
   const tickets = portfolio.tickets.map((ticket) => {
-    const stake = roundTicket(ticket.stake * ratio)
+    const stake = roundTicket(ticket.stake * stakeMult)
     return { ...ticket, stake, potentialPayout: Math.round(stake * ticket.combinedOdds * 100) / 100 }
   }).filter((ticket) => ticket.stake >= 2)
   const stake = tickets.reduce((sum, ticket) => sum + ticket.stake, 0)
