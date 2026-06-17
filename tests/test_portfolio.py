@@ -23,20 +23,24 @@ def test_rounding_is_two_yuan_increment():
     assert round_to_ticket(1.9) == 0
 
 
-def test_portfolios_respect_bankroll_caps_and_distinct_parlay_matches():
+def test_portfolios_use_common_stake_sizing_and_distinct_parlay_matches():
     portfolios = build_portfolios(
-        [quote("1", 0.12), quote("2", 0.10), quote("3", 0.08)],
+        [quote("1", 0.12)],
         bankroll=200,
-        simulation=shared_simulation("1", "2", "3"),
+        simulation=shared_simulation("1"),
     )
-    caps = {"conservative": 50, "balanced": 80, "aggressive": 120}
+    stakes_by_strategy = {}
     for portfolio in portfolios:
-        assert portfolio["stake"] <= caps[portfolio["key"]]
+        assert portfolio["stake"] <= 200
         assert portfolio["stake"] % 2 == 0
         for ticket in portfolio["tickets"]:
             assert ticket["stake"] % 2 == 0
             ids = [leg["matchId"] for leg in ticket["legs"]]
             assert len(ids) == len(set(ids))
+        single = next(ticket for ticket in portfolio["tickets"] if ticket["type"] == "单关")
+        stakes_by_strategy[portfolio["key"]] = single["stake"]
+
+    assert len(set(stakes_by_strategy.values())) == 1
 
 
 def test_cross_day_quotes_only_enter_through_parlays():
@@ -64,6 +68,9 @@ def test_cross_day_quotes_only_enter_through_parlays():
     )
     assert any(ticket["type"] == "2串1" for ticket in portfolios["balanced"]["tickets"])
     assert any(ticket["type"] == "3串1" for ticket in portfolios["aggressive"]["tickets"])
+    balanced_2x1 = next(ticket for ticket in portfolios["balanced"]["tickets"] if ticket["type"] == "2串1")
+    aggressive_2x1 = next(ticket for ticket in portfolios["aggressive"]["tickets"] if ticket["type"] == "2串1")
+    assert balanced_2x1["stake"] == aggressive_2x1["stake"] == 10
 
 
 def test_negative_edge_conservative_empty_balanced_aggressive_fallback():

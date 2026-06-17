@@ -13,8 +13,6 @@ class Strategy:
     key: str
     name: str
     subtitle: str
-    kelly_fraction: float
-    bankroll_cap: float
     score_cap: float
     max_parlay: int
     single_markets: tuple[str, ...]
@@ -42,33 +40,39 @@ class Strategy:
 
 STRATEGIES = (
     Strategy(
-        "conservative", "稳健", "正期望单关精选", 0.25, 0.25, 0.0, 1,
+        "conservative", "稳健", "低波动单关精选", 0.0, 1,
         ("胜平负", "让球胜平负", "总进球数"), (), 0.80, 0.55, 0.02, 2.25, 2, 0,
-        ("只做次日单关", "胜平负/让球/总进球", "正期望优先", "无正期望时0元不投"),
+        ("低波动：只做次日单关", "胜平负/让球/总进球", "高覆盖与正稳健期望优先", "无正期望时0元不投"),
         max_combo_per_market=1, min_combo_coverage=0.55,
         negative_edge_fallback=False, negative_edge_min=0.0,
         min_combo_roi=0.05, min_payout_ratio=0.80,
     ),
     Strategy(
-        "balanced", "均衡", "复式双选 + 跨天2串1", 0.50, 0.40, 0.0, 2,
+        "balanced", "均衡", "中波动复式 + 跨天2串1", 0.0, 2,
         ("胜平负", "让球胜平负", "总进球数"), ("胜平负", "让球胜平负", "总进球数"),
         0.78, 0.35, 0.01, 4.50, 3, 0,
-        ("次日单关 + 在售跨天2串1", "胜平负/让球/总进球", "正期望优先，降级自动切换概率覆盖", "预期回报率≥-10%，最差情况返本≥60%"),
+        ("中波动：次日单关 + 在售跨天2串1", "胜平负/让球/总进球", "复式提高覆盖，接受中等赔率波动", "预期回报率≥-10%，最差情况返本≥60%"),
         max_combo_per_market=2, min_combo_coverage=0.55, combo_edge_tolerance=-0.01,
         negative_edge_fallback=True, negative_edge_min=-0.15,
         min_combo_roi=-0.10, min_payout_ratio=0.60,
     ),
     Strategy(
-        "aggressive", "激进", "全玩法 + 跨天3串1", 0.75, 0.60, 0.10, 3,
+        "aggressive", "激进", "高波动全玩法 + 跨天3串1", 0.10, 3,
         ("胜平负", "让球胜平负", "比分", "总进球数", "半全场"),
         ("胜平负", "让球胜平负", "比分", "总进球数", "半全场"),
         0.75, 0.08, 0.0, 80.0, 4, 1,
-        ("次日单关 + 在售跨天2/3串1", "五类玩法均可入池", "同场同玩法≤2选（禁止3选全覆盖）", "预期回报率≥-15%，最差返本≥40%"),
+        ("高波动：次日单关 + 在售跨天2/3串1", "比分/半全场可入池", "赔率弹性更高，命中概率更低", "预期回报率≥-15%，最差返本≥40%"),
         max_combo_per_market=2, min_combo_coverage=0.35, combo_edge_tolerance=-0.05,
         negative_edge_fallback=True, negative_edge_min=-0.25,
         min_combo_roi=-0.15, min_payout_ratio=0.40,
     ),
 )
+
+
+STANDARD_KELLY_FRACTION = 0.25
+ENTERTAINMENT_STAKE_FRACTION = 0.03
+PARLAY_STAKE_FRACTIONS = {2: 0.05, 3: 0.04}
+DEFAULT_SINGLE_CAP = 0.12
 
 
 def fractional_kelly(probability: float, odds: float, fraction: float) -> float:
@@ -273,7 +277,7 @@ def build_portfolios(
 ) -> list[dict[str, Any]]:
     results = []
     for strategy in STRATEGIES:
-        cap = round_to_ticket(bankroll * strategy.bankroll_cap)
+        cap = round_to_ticket(bankroll)
         tickets: list[dict[str, Any]] = []
         used = 0
         entertainment_mode = False
@@ -287,16 +291,6 @@ def build_portfolios(
             combos = _combo_fallback_groups(quotes, strategy)
             if combos:
                 entertainment_mode = True
-
-        # Parlay reserve: only in normal mode (parlays need positive edges).
-        # In entertainment mode, all edges are negative → parlays never fire,
-        # so reserve 0 to free budget for combos.
-        parlay_reserve = 0
-        if not entertainment_mode:
-            if strategy.max_parlay == 2:
-                parlay_reserve = round_to_ticket(bankroll * 0.05)
-            elif strategy.max_parlay == 3:
-                parlay_reserve = round_to_ticket(bankroll * 0.20)
 
         # Sort combos: larger combos (more picks) first, then by coverage.
         # This ensures the 复式 (multi-pick) version of a match+market gets
@@ -330,13 +324,12 @@ def build_portfolios(
                 weight = probs[idx] / total_prob
                 if entertainment_mode:
                     coverage_ratio = combo_coverage / max(strategy.min_combo_coverage, 0.01)
-                    base_pct = 0.025 if strategy.key == "balanced" else 0.045
-                    suggested = round_to_ticket(bankroll * base_pct * coverage_ratio * weight * len(combo))
+                    suggested = round_to_ticket(bankroll * ENTERTAINMENT_STAKE_FRACTION * coverage_ratio * weight * len(combo))
                 else:
                     robust_probability = (1 + quote["robustExpectedReturn"]) / quote["odds"]
-                    suggested = round_to_ticket(bankroll * fractional_kelly(robust_probability, quote["odds"], strategy.kelly_fraction))
-                maximum = round_to_ticket(bankroll * (strategy.score_cap if quote["market"] == "比分" else 0.12))
-                stake = min(maximum, max(2, suggested), cap - parlay_reserve - used - combo_stake)
+                    suggested = round_to_ticket(bankroll * fractional_kelly(robust_probability, quote["odds"], STANDARD_KELLY_FRACTION))
+                maximum = round_to_ticket(bankroll * (strategy.score_cap if quote["market"] == "比分" else DEFAULT_SINGLE_CAP))
+                stake = min(maximum, max(2, suggested), cap - used - combo_stake)
                 if stake < 2:
                     continue
                 ticket = _ticket_from_quotes(
@@ -394,7 +387,7 @@ def build_portfolios(
             candidates = _parlay_candidates(filtered_parlay_quotes, 2, strategy)
             if candidates:
                 best = max(candidates, key=lambda group: _parlay_score(group, strategy))
-                stake = min(round_to_ticket(bankroll * (0.05 if strategy.key != "aggressive" else 0.12)), cap - used)
+                stake = min(round_to_ticket(bankroll * PARLAY_STAKE_FRACTIONS[2]), cap - used)
                 if stake >= 2:
                     tickets.append(_ticket_from_quotes(list(best), stake, "2串1", simulation))
                     used += stake
@@ -403,7 +396,7 @@ def build_portfolios(
             candidates = _parlay_candidates(filtered_parlay_quotes, 3, strategy)
             if candidates:
                 best = max(candidates, key=lambda group: _parlay_score(group, strategy))
-                stake = min(round_to_ticket(bankroll * 0.08), cap - used)
+                stake = min(round_to_ticket(bankroll * PARLAY_STAKE_FRACTIONS[3]), cap - used)
                 if stake >= 2:
                     tickets.append(_ticket_from_quotes(list(best), stake, "3串1", simulation))
                     used += stake

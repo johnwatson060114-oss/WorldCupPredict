@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-17T16:00:27+08:00",
+  "generatedAt": "2026-06-17T16:36:33+08:00",
   "finalDate": "2026-07-19",
   "days": [
     {
@@ -328,7 +328,7 @@
     },
     {
       "targetDate": "2026-06-18",
-      "generatedAt": "2026-06-17T16:00:20+08:00",
+      "generatedAt": "2026-06-17T16:36:26+08:00",
       "coverage": 0.8,
       "strategies": [
         {
@@ -352,7 +352,7 @@
         {
           "key": "aggressive",
           "name": "激进",
-          "stake": 64,
+          "stake": 42,
           "payout": null,
           "profit": null,
           "roi": null,
