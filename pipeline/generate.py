@@ -622,7 +622,7 @@ def _sporttery_fixture_seeds(
             "lottery_code": m.lottery_code,
             "venue": "待定",
             "base_xg": [home_xg, away_xg],
-            "coverage": 0.75,
+            "coverage": 0.80,
             "weather": "天气待更新",
             "factors": default_factors(),
             "missing_data": ["赛程来自体彩API（football-data.org不可用）"],
