@@ -18,8 +18,8 @@ export function PortfolioSection({ bankroll, portfolios, emptyReason, selected, 
     <section className="portfolio-section panel">
       <div className="section-heading portfolio-heading">
         <div>
-          <h2>{bankroll}元滚动本金 · 风险结构方案</h2>
-          <p>三套方案按波动、玩法池和串关长度区分；金额只是票面计算结果</p>
+          <h2>初始{bankroll}元滚动本金 · 风险结构方案</h2>
+          <p>三套方案按各自已结算余额动态缩放，风险来自波动、玩法池和串关长度</p>
         </div>
         <button className="text-button" onClick={onOpenDetails}>查看投注明细 <ChevronRight size={15} /></button>
       </div>
