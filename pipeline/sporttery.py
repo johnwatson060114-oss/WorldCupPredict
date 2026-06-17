@@ -20,7 +20,9 @@ class SportteryMatch:
     kickoff_text: str
     home_team: str
     away_team: str
-    handicap: int | None
+    match_date: str = ""  # "2026-06-18" — preserved for date-based filtering
+    league_name: str = ""  # "世界杯" — preserved for league filtering
+    handicap: int | None = None
     win_draw_loss: dict[str, float | None] = field(default_factory=dict)
     handicap_win_draw_loss: dict[str, float | None] = field(default_factory=dict)
     scores: dict[str, float] = field(default_factory=dict)
@@ -319,6 +321,8 @@ def parse_api_snapshots(
             kickoff_text=kickoff,
             home_team=str(item.get("homeTeamAbbName") or item.get("homeTeamAllName") or ""),
             away_team=str(item.get("awayTeamAbbName") or item.get("awayTeamAllName") or ""),
+            match_date=match_date,
+            league_name=str(item.get("leagueAllName") or item.get("leagueAbbName") or ""),
             handicap=int(handicap_match.group(1)) if handicap_match else None,
             win_draw_loss=_api_odds(item, "had"),
             handicap_win_draw_loss=_api_odds(item, "hhad"),

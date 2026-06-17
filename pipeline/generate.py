@@ -25,6 +25,7 @@ from .elo_ratings import EloRatingsClient, expected_goals_from_elo
 from .goal_models import goal_model_xg
 from .football_data import (
     FootballDataClient,
+    TEAM_NAMES_ZH,
     api_football_shape,
     localized_team_name,
     parse_utc,
@@ -574,6 +575,105 @@ def build_match(
     }
 
 
+def _sporttery_fixture_seeds(
+    all_markets: list[SportteryMatch],
+    target_date: str,
+) -> list[dict]:
+    """Build match seeds from live sporttery.cn match data.
+
+    When football-data.org is unavailable, sporttery already returns correct
+    Chinese team names and kickoff times — this function extracts them into
+    the seed format the rest of the pipeline expects.
+    """
+    # Try Elo for better xG, fall back to neutral
+    try:
+        elo_client = EloRatingsClient()
+        elo_ratings = elo_client.ratings()
+        elo_live = True
+    except Exception:
+        elo_ratings = {}
+        elo_live = False
+
+    seeds = []
+    for m in all_markets:
+        if m.match_date != target_date:
+            continue
+        # Only World Cup matches — sporttery also lists domestic leagues
+        if m.league_name and m.league_name != "世界杯":
+            continue
+        if not m.home_team or not m.away_team:
+            continue
+        # Reconstruct ISO kickoff from match_date + kickoff_text
+        time_part = m.kickoff_text.split()[-1] if m.kickoff_text else "12:00"
+        kickoff = f"{m.match_date}T{time_part}:00+08:00"
+
+        # Compute xG: goal model → Elo → neutral
+        home_xg, away_xg = _compute_xg_for_sporttery_seed(
+            m.home_team, m.away_team, target_date, elo_ratings,
+        )
+
+        seeds.append({
+            "home_team": m.home_team,
+            "away_team": m.away_team,
+            "home_flag": team_flag({"name": m.home_team}),
+            "away_flag": team_flag({"name": m.away_team}),
+            "kickoff": kickoff,
+            "sporttery_id": m.match_id,
+            "lottery_code": m.lottery_code,
+            "venue": "待定",
+            "base_xg": [home_xg, away_xg],
+            "coverage": 0.75,
+            "weather": "天气待更新",
+            "factors": default_factors(),
+            "missing_data": ["赛程来自体彩API（football-data.org不可用）"],
+            "elo_live": elo_live,
+        })
+    return seeds
+
+
+def _compute_xg_for_sporttery_seed(
+    home_cn: str,
+    away_cn: str,
+    target_date: str,
+    elo_ratings: dict[str, int],
+) -> tuple[float, float]:
+    """Best-effort xG for a match whose teams come from sporttery (Chinese names)."""
+    # 1) Hierarchical Poisson goal model (needs English names)
+    home_en = _cn_to_en_team_name(home_cn)
+    away_en = _cn_to_en_team_name(away_cn)
+    if home_en and away_en:
+        try:
+            gm = goal_model_xg(home_en, away_en, target_date)
+            if gm is not None:
+                return gm
+        except Exception:
+            pass
+
+    # 2) Elo ratings → Poisson xG
+    home_elo = elo_ratings.get(home_cn) or elo_ratings.get(team_key(home_cn))
+    away_elo = elo_ratings.get(away_cn) or elo_ratings.get(team_key(away_cn))
+    if home_elo and away_elo:
+        return expected_goals_from_elo(home_elo, away_elo)
+
+    # 3) Neutral fallback
+    return 1.35, 1.10
+
+
+def _cn_to_en_team_name(cn_name: str) -> str | None:
+    """Reverse-map Chinese team name to English for the goal model."""
+    # Direct reverse of TEAM_NAMES_ZH
+    reverse: dict[str, str] = {}
+    for en, zh in TEAM_NAMES_ZH.items():
+        reverse[zh] = en
+    # Handle sporttery abbreviations
+    aliases = {
+        "刚果金": "Congo DR",
+        "民主刚果": "Congo DR",
+        "沙特": "Saudi Arabia",
+    }
+    return aliases.get(cn_name) or reverse.get(cn_name)
+
+
 def _load_strategy_bankrolls(history_path: Path, initial_bankroll: int) -> dict[str, float] | None:
     """Read strategy-history.json and compute per-strategy rolling bankrolls.
 
@@ -661,6 +761,17 @@ def main() -> None:
             degraded_reasons.append("球队实时数据暂时不可用，已切换到固定开发样例")
     elif not seeds:
         degraded_reasons.append("球队与阵容实时数据尚未启用，当前使用固定开发样例")
+
+    # --- Sporttery fixture fallback ---
+    # When football-data.org / API-Football are unavailable but sporttery.cn is
+    # live, use sporttery's own match list as the fixture source.  Team names,
+    # kickoff times, and match IDs are all correct — no date-shifting of stale
+    # demo data.
+    if not seeds and sporttery_live and all_markets:
+        sporttery_seeds = _sporttery_fixture_seeds(all_markets, target_date)
+        if sporttery_seeds:
+            seeds = sporttery_seeds
+            degraded_reasons.append("赛程来自体彩API（football-data.org不可用），xG由Elo/进球模型估算")
 
     demo = load_demo()
     if not seeds and target_date == demo["target_date"]:
