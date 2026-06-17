@@ -86,6 +86,9 @@ export interface MarketQuote {
   recommendation: Recommendation
   reason: string
   observedAt: string
+  kickoffBeijing?: string
+  lotteryCode?: string
+  matchDate?: string
 }
 
 export interface MatchForecast {
@@ -127,6 +130,9 @@ export interface TicketLeg {
   market: MarketType
   selection: string
   odds: number
+  kickoffBeijing?: string
+  lotteryCode?: string
+  matchDate?: string
 }
 
 export interface Ticket {
@@ -209,6 +215,15 @@ export interface DailyForecast {
   statusMessage: string
   matches: MatchForecast[]
   portfolios: Portfolio[]
+  parlayLookaheadDays?: number
+  parlayCandidateMatches?: Array<{
+    id: string
+    lotteryCode: string
+    kickoffBeijing: string
+    homeTeam: string
+    awayTeam: string
+    coverage: number
+  }>
   evidence: SourceEvidence[]
   backtest: BacktestMetric[]
 }

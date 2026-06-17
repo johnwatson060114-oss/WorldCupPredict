@@ -23,6 +23,7 @@ class PipelineSettings:
     simulations: int = 100_000
     random_seed: int = 20_260_615
     initial_bankroll: int = 200
+    parlay_lookahead_days: int = 3
     world_cup_league_id: int = 1
     world_cup_season: int = 2026
 

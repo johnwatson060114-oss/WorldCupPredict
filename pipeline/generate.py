@@ -4,6 +4,7 @@ import argparse
 import json
 from datetime import datetime, timedelta
 from pathlib import Path
+from typing import Any
 from zoneinfo import ZoneInfo
 
 from .api_football import ApiFootballClient
@@ -155,9 +156,9 @@ def live_seeds(client: ApiFootballClient, target_date: str) -> list[dict]:
     return seeds
 
 
-def football_data_seeds(client: FootballDataClient, target_date: str) -> list[dict]:
+def football_data_seeds(client: FootballDataClient, target_date: str, all_matches: list[dict] | None = None) -> list[dict]:
     timezone = ZoneInfo(SETTINGS.timezone)
-    all_matches = client.world_cup_matches()
+    all_matches = all_matches if all_matches is not None else client.world_cup_matches()
     fixtures = client.matches_on_beijing_date(target_date, all_matches)
     seeds = []
     try:
@@ -273,17 +274,33 @@ def football_data_seeds(client: FootballDataClient, target_date: str) -> list[di
 def team_key(name: str) -> str:
     aliases = {
         "沙特阿拉伯": "沙特", "阿尔及利亚": "阿尔及利", "乌兹别克斯坦": "乌兹别克",
+        "刚果金": "民主刚果",
         "Curaçao": "库拉索", "Curacao": "库拉索", "Netherlands": "荷兰", "Japan": "日本",
         "Germany": "德国", "Sweden": "瑞典", "Tunisia": "突尼斯", "Ecuador": "厄瓜多尔",
-        "Ivory Coast": "科特迪瓦", "Côte d'Ivoire": "科特迪瓦",
+        "Ivory Coast": "科特迪瓦", "Côte d'Ivoire": "科特迪瓦", "DR Congo": "民主刚果",
+        "Congo DR": "民主刚果",
     }
     return aliases.get(name, name).replace(" ", "").lower()
+
+
+def _market_date_matches_seed(seed: dict, market: SportteryMatch) -> bool:
+    if not market.kickoff_text:
+        return True
+    try:
+        seed_prefix = datetime.fromisoformat(seed["kickoff"]).strftime("%m-%d")
+    except ValueError:
+        return True
+    return market.kickoff_text.startswith(seed_prefix)
 
 
 def match_seed_to_market(seed: dict, markets: list[SportteryMatch]) -> SportteryMatch | None:
     home_key, away_key = team_key(seed["home_team"]), team_key(seed["away_team"])
     for market in markets:
-        if team_key(market.home_team) == home_key and team_key(market.away_team) == away_key:
+        if (
+            _market_date_matches_seed(seed, market)
+            and team_key(market.home_team) == home_key
+            and team_key(market.away_team) == away_key
+        ):
             return market
     return None
 
@@ -333,6 +350,7 @@ def make_quote(
     handicap: int | None = None,
     excluded_scores: list[str] | None = None,
     recommendation_gate: tuple[bool, str] | None = None,
+    metadata: dict[str, Any] | None = None,
 ) -> dict:
     available = odds is not None
     raw = expected_return(model_probability, odds) if odds else None
@@ -360,6 +378,7 @@ def make_quote(
         "recommendation": advice,
         "reason": reason,
         "observedAt": observed_at,
+        **(metadata or {}),
     }
 
 
@@ -415,6 +434,11 @@ def build_match(
     stars = score_stars(float(scores[0]["probability"]), coverage)
     quotes = []
     label = f"{seed['home_team']} vs {seed['away_team']}"
+    quote_metadata = {
+        "kickoffBeijing": seed["kickoff"],
+        "lotteryCode": market.lottery_code if market else seed.get("lottery_code", ""),
+        "matchDate": datetime.fromisoformat(seed["kickoff"]).date().isoformat(),
+    }
 
     if market:
         normal_odds = market.win_draw_loss
@@ -431,6 +455,7 @@ def build_match(
                 outcome_decision["status"] == "recommended",
                 f"胜平负最高概率 {float(outcome_decision['maxProbability']):.1%} 低于 60% 门槛",
             ),
+            metadata=quote_metadata,
         ))
 
     handicap = market.handicap if market else round(home_xg - away_xg)
@@ -446,6 +471,7 @@ def build_match(
         quotes.append(make_quote(
             match_id, label, "让球胜平负", f"{handicap:+d} {chinese}", handicap_odds.get(chinese), handicap_outcomes[outcome],
             handicap_market.get(chinese), coverage, bool(market and "让球胜平负" in market.single_markets), generated_at, handicap=handicap,
+            metadata=quote_metadata,
         ))
 
     # --- 比分 (31 standard sporttery.cn score options) ---
@@ -479,6 +505,7 @@ def build_match(
         quotes.append(make_quote(
             match_id, label, "比分", selection, odds, probability, score_market.get(selection),
             coverage, False, generated_at, stars=stars, excluded_scores=sorted(offered_scores),
+            metadata=quote_metadata,
         ))
 
     total_goal_model = total_goals_probabilities(matrix)
@@ -491,6 +518,7 @@ def build_match(
         quotes.append(make_quote(
             match_id, label, "总进球数", selection, total_goal_odds.get(selection), probability,
             total_goal_market.get(selection), coverage, bool(market and "总进球数" in market.single_markets), generated_at,
+            metadata=quote_metadata,
         ))
 
     half_full_model = simulated["halfFull"] if simulated else half_full_probabilities(home_xg, away_xg)
@@ -504,6 +532,7 @@ def build_match(
         quotes.append(make_quote(
             match_id, label, "半全场", selection, half_full_odds.get(selection), probability,
             half_full_market.get(selection), half_full_coverage, bool(market and "半全场" in market.single_markets), generated_at,
+            metadata=quote_metadata,
         ))
 
 
@@ -565,14 +594,16 @@ def main() -> None:
             print(f"[sporttery] live fetch failed: {type(exc).__name__}: {exc}")
             markets_by_id = load_fixture(FIXTURE_DIR / "sporttery-spf.html", FIXTURE_DIR / "sporttery-score.html")
             degraded_reasons.append("体彩实时赔率暂时不可用，已切换到固定快照")
-    markets = filter_by_beijing_date(markets_by_id.values(), target_date)
+    all_markets = list(markets_by_id.values())
 
     football_client = FootballDataClient()
     client = ApiFootballClient()
     seeds: list[dict]
+    all_football_matches: list[dict] | None = None
     if football_client.enabled and not args.offline:
         try:
-            seeds = football_data_seeds(football_client, target_date)
+            all_football_matches = football_client.world_cup_matches()
+            seeds = football_data_seeds(football_client, target_date, all_football_matches)
             football_data_live = bool(seeds)
             elo_live = bool(seeds) and all(seed.get("elo_live", False) for seed in seeds)
             team_data_live = bool(seeds)
@@ -618,14 +649,36 @@ def main() -> None:
     elif not seeds:
         degraded_reasons.append("目标日期没有可用比赛种子数据")
 
-    apply_availability(seeds, target_date, load_availability())
-    apply_intelligence(seeds, load_daily_intelligence(target_date, generated_at))
-    apply_lineup_impacts(seeds)
-    apply_factor_admissions(seeds, load_factor_admissions())
+    availability_records = load_availability()
+    factor_admissions = load_factor_admissions()
+
+    def prepare_seeds(batch: list[dict], batch_date: str) -> None:
+        apply_availability(batch, batch_date, availability_records)
+        apply_intelligence(batch, load_daily_intelligence(batch_date, generated_at))
+        apply_lineup_impacts(batch)
+        apply_factor_admissions(batch, factor_admissions)
+
+    prepare_seeds(seeds, target_date)
+
+    future_parlay_seeds: list[dict] = []
+    if football_client.enabled and all_football_matches is not None and not args.offline:
+        target_day = datetime.fromisoformat(target_date).date()
+        for offset in range(1, SETTINGS.parlay_lookahead_days + 1):
+            future_date = (target_day + timedelta(days=offset)).isoformat()
+            try:
+                batch = football_data_seeds(football_client, future_date, all_football_matches)
+            except Exception:  # noqa: BLE001 - future parlay pool is optional
+                continue
+            prepare_seeds(batch, future_date)
+            future_parlay_seeds.extend(
+                seed for seed in batch
+                if match_seed_to_market(seed, all_markets) is not None
+            )
 
     simulation_inputs = []
-    for seed in seeds:
-        market = match_seed_to_market(seed, markets)
+    simulation_seeds = seeds + future_parlay_seeds
+    for seed in simulation_seeds:
+        market = match_seed_to_market(seed, all_markets)
         match_id = market.match_id if market else seed.get("sporttery_id") or f"{seed['home_team']} vs {seed['away_team']}"
         factors = seed.get("factors", default_factors())
         home_xg, away_xg = adjust_xg(float(seed["base_xg"][0]), float(seed["base_xg"][1]), factors)
@@ -648,13 +701,20 @@ def main() -> None:
 
     built_matches = []
     for seed in seeds:
-        market = match_seed_to_market(seed, markets)
+        market = match_seed_to_market(seed, all_markets)
         if market is None:
             degraded_reasons.append(f"{seed['home_team']} vs {seed['away_team']} 未匹配到体彩赔率")
         built_matches.append(build_match(seed, market, generated_at, simulation))
 
+    future_parlay_matches = [
+        build_match(seed, match_seed_to_market(seed, all_markets), generated_at, simulation)
+        for seed in future_parlay_seeds
+    ]
     all_quotes = [quote for match in built_matches for quote in match["quotes"]]
-    portfolios = build_portfolios(all_quotes, SETTINGS.initial_bankroll, simulation=simulation)
+    parlay_quotes = all_quotes + [
+        quote for match in future_parlay_matches for quote in match["quotes"]
+    ]
+    portfolios = build_portfolios(all_quotes, SETTINGS.initial_bankroll, simulation=simulation, parlay_quotes=parlay_quotes)
     coverage = sum(match["coverage"] for match in built_matches) / len(built_matches) if built_matches else 0
     weather_live = team_data_live and bool(built_matches) and all(
         any(factor["label"] == "温湿度与风" and factor["active"] for factor in match["factors"])
@@ -686,6 +746,18 @@ def main() -> None:
         "statusMessage": "；".join(degraded_reasons) if degraded_reasons else "实时数据管线正常",
         "matches": built_matches,
         "portfolios": portfolios,
+        "parlayLookaheadDays": SETTINGS.parlay_lookahead_days,
+        "parlayCandidateMatches": [
+            {
+                "id": match["id"],
+                "lotteryCode": match["lotteryCode"],
+                "kickoffBeijing": match["kickoffBeijing"],
+                "homeTeam": match["homeTeam"],
+                "awayTeam": match["awayTeam"],
+                "coverage": match["coverage"],
+            }
+            for match in future_parlay_matches
+        ],
         "evidence": [
             {"source": "中国体育彩票", "field": "固定奖金/单关资格", "observedAt": generated_at, "confidence": 1.0, "status": "fresh" if sporttery_live else "manual"},
             {"source": "football-data.org 免费档", "field": "2026 世界杯赛程/赛果", "observedAt": generated_at, "confidence": 0.9, "status": "fresh" if football_data_live else "missing"},

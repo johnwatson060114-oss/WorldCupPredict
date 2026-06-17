@@ -39,18 +39,31 @@ def test_portfolios_respect_bankroll_caps_and_distinct_parlay_matches():
             assert len(ids) == len(set(ids))
 
 
-def test_positive_single_uses_strategy_specific_ticket_caps():
-    high_confidence = quote("1", 0.30, odds=1.60)
-    high_confidence["modelProbability"] = 0.85
+def test_cross_day_quotes_only_enter_through_parlays():
+    same_day = [quote("1", 0.12, odds=1.80)]
+    cross_day = [
+        {**quote("2", 0.12, odds=1.80), "matchDate": "2026-06-19", "kickoffBeijing": "2026-06-19T03:00:00+08:00"},
+        {**quote("3", 0.12, odds=1.80), "matchDate": "2026-06-19", "kickoffBeijing": "2026-06-19T06:00:00+08:00"},
+        {**quote("4", 0.12, odds=1.80), "matchDate": "2026-06-20", "kickoffBeijing": "2026-06-20T03:00:00+08:00"},
+    ]
 
-    portfolios = build_portfolios(
-        [high_confidence],
-        bankroll=200,
-        simulation=shared_simulation("1"),
+    portfolios = {
+        item["key"]: item
+        for item in build_portfolios(
+            same_day,
+            bankroll=200,
+            simulation=shared_simulation("1", "2", "3", "4"),
+            parlay_quotes=same_day + cross_day,
+        )
+    }
+
+    assert all(
+        leg["matchId"] == "1"
+        for ticket in portfolios["conservative"]["tickets"]
+        for leg in ticket["legs"]
     )
-
-    stakes = {portfolio["key"]: portfolio["stake"] for portfolio in portfolios}
-    assert stakes == {"conservative": 12, "balanced": 20, "aggressive": 32}
+    assert any(ticket["type"] == "2串1" for ticket in portfolios["balanced"]["tickets"])
+    assert any(ticket["type"] == "3串1" for ticket in portfolios["aggressive"]["tickets"])
 
 
 def test_negative_edge_conservative_empty_balanced_aggressive_fallback():

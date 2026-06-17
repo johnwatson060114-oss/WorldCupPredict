@@ -1,5 +1,5 @@
 import { Check, ChevronRight, CircleGauge, Shield, Sparkles, Zap } from 'lucide-react'
-import { money, percent } from '../lib/format'
+import { money, percent, shortDateTime } from '../lib/format'
 import type { Portfolio, StrategyKey } from '../types'
 
 interface PortfolioSectionProps {
@@ -56,6 +56,10 @@ export function PortfolioSection({ bankroll, portfolios, emptyReason, selected, 
                     <span>{ticket.type}{ticket.comboGroup ? ` · 复式${ticket.comboGroup.size}选` : ''}</span>
                     <p>
                       {ticket.legs.map((leg) => leg.label).join(' × ')}
+                      {new Set(ticket.legs.map((leg) => leg.matchDate).filter(Boolean)).size > 1 ? <em>（跨天）</em> : ''}
+                      {ticket.legs.length > 1 && ticket.legs.some((leg) => leg.kickoffBeijing)
+                        ? <em>（{ticket.legs.map((leg) => leg.kickoffBeijing ? shortDateTime(leg.kickoffBeijing) : '').filter(Boolean).join(' / ')}）</em>
+                        : ''}
                       {ticket.comboGroup ? <em>（覆盖 {ticket.comboGroup.coveragePct}%）</em> : ''}
                     </p>
                     <strong>{ticket.stake}元</strong>
