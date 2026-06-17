@@ -11,7 +11,11 @@ date,match,score,actual_total_goals,actual_bucket,current_predicted_bucket,curre
 2026-06-14,Ivory Coast vs Ecuador,1-0,1,1,1,True,1-2,True,1.250483248188853,2,False,2-3,False,1.6045669734865133
 2026-06-14,Netherlands vs Japan,2-2,4,4,2,False,2-3,False,1.7976116811255103,3,False,2-3,False,1.734980496893917
 2026-06-14,Sweden vs Tunisia,5-1,6,6,2,False,2-3,False,3.5123985060637963,2,False,2-3,False,3.395381533717359
-2026-06-15,Spain vs Cape Verde,0-0,0,0,2,False,2-3,False,2.5757141236170864,2,False,1-2,False,2.285165312695658
-2026-06-15,Saudi Arabia vs Uruguay,1-1,2,2,2,True,1-2,True,1.2795593939809018,2,True,1-2,True,1.3437075227968882
 2026-06-15,Belgium vs Egypt,1-1,2,2,2,True,1-2,True,1.2921438052943028,2,True,2-3,True,1.4710567420747005
 2026-06-15,Iran vs New Zealand,2-2,4,4,2,False,2-3,False,1.8960741878398872,2,False,2-3,False,1.8308088128734064
+2026-06-15,Spain vs Cape Verde,0-0,0,0,2,False,2-3,False,2.5757141236170864,2,False,1-2,False,2.285165312695658
+2026-06-15,Saudi Arabia vs Uruguay,1-1,2,2,2,True,1-2,True,1.2795593939809018,2,True,1-2,True,1.3437075227968882
+2026-06-16,France vs Senegal,3-1,4,4,2,False,2-3,False,2.057722790192667,2,False,1-2,False,2.072773428581733
+2026-06-16,Iraq vs Norway,1-4,5,5,2,False,2-3,False,2.6867976142101035,2,False,2-3,False,2.535219690311535
+2026-06-16,Argentina vs Algeria,3-0,3,3,2,False,1-2,False,1.674113053028679,2,False,1-2,False,1.5767049390825612
+2026-06-16,Austria vs Jordan,3-1,4,4,2,False,2-3,False,1.8380070112284543,2,False,2-3,False,1.903702872574242

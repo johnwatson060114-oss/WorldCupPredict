@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-16T19:12:32+08:00",
+  "generatedAt": "2026-06-17T15:34:21+08:00",
   "finalDate": "2026-07-19",
   "days": [
     {
@@ -220,22 +220,130 @@
     },
     {
       "targetDate": "2026-06-17",
-      "generatedAt": "2026-06-16T19:12:29+08:00",
-      "coverage": 0.75,
+      "generatedAt": "2026-06-16T23:17:57+08:00",
+      "coverage": 0.8,
       "strategies": [
         {
           "key": "conservative",
           "name": "稳健",
-          "stake": 0,
-          "payout": 0,
-          "profit": 0,
-          "roi": null,
-          "status": "no-bet"
+          "stake": 2.0,
+          "payout": 4.18,
+          "profit": 2.18,
+          "roi": 1.09,
+          "status": "settled"
         },
         {
           "key": "balanced",
           "name": "均衡",
-          "stake": 4,
+          "stake": 12.0,
+          "payout": 4.18,
+          "profit": -7.82,
+          "roi": -0.651667,
+          "status": "settled"
+        },
+        {
+          "key": "aggressive",
+          "name": "激进",
+          "stake": 36.0,
+          "payout": 8.36,
+          "profit": -27.64,
+          "roi": -0.767778,
+          "status": "settled"
+        }
+      ],
+      "review": {
+        "snapshotLabel": "升级前基线快照",
+        "matches": [
+          {
+            "matchId": "2040178",
+            "label": "法国 vs 塞内加尔",
+            "predictedScore": "1-0",
+            "actualScore": "3-1",
+            "predictedOutcome": "home",
+            "actualOutcome": "home",
+            "outcomeCorrect": true,
+            "exactScore": false,
+            "goalAbsoluteError": 3,
+            "actualOutcomeProbability": 0.65849,
+            "logLoss": 0.41781,
+            "brier": 0.17838,
+            "diagnosis": "赛果方向正确，但比分尺度仍有偏差。"
+          },
+          {
+            "matchId": "2040179",
+            "label": "伊拉克 vs 挪威",
+            "predictedScore": "0-2",
+            "actualScore": "1-4",
+            "predictedOutcome": "away",
+            "actualOutcome": "away",
+            "outcomeCorrect": true,
+            "exactScore": false,
+            "goalAbsoluteError": 3,
+            "actualOutcomeProbability": 0.77168,
+            "logLoss": 0.25919,
+            "brier": 0.08358,
+            "diagnosis": "赛果方向正确，但比分尺度仍有偏差。"
+          },
+          {
+            "matchId": "2040180",
+            "label": "阿根廷 vs 阿尔及利亚",
+            "predictedScore": "2-0",
+            "actualScore": "3-0",
+            "predictedOutcome": "home",
+            "actualOutcome": "home",
+            "outcomeCorrect": true,
+            "exactScore": false,
+            "goalAbsoluteError": 1,
+            "actualOutcomeProbability": 0.80179,
+            "logLoss": 0.22091,
+            "brier": 0.06425,
+            "diagnosis": "赛果方向正确，但比分尺度仍有偏差。"
+          },
+          {
+            "matchId": "2040181",
+            "label": "奥地利 vs 约旦",
+            "predictedScore": "1-0",
+            "actualScore": "3-1",
+            "predictedOutcome": "home",
+            "actualOutcome": "home",
+            "outcomeCorrect": true,
+            "exactScore": false,
+            "goalAbsoluteError": 3,
+            "actualOutcomeProbability": 0.58533,
+            "logLoss": 0.53558,
+            "brier": 0.25981,
+            "diagnosis": "赛果方向正确，但比分尺度仍有偏差。"
+          }
+        ],
+        "summary": {
+          "matchCount": 4,
+          "outcomeAccuracy": 1.0,
+          "exactScoreAccuracy": 0.0,
+          "meanGoalAbsoluteError": 2.5,
+          "logLoss": 0.35837,
+          "brier": 0.1465,
+          "strategyDiagnosis": "策略结果已按真实派彩结算，继续观察多日样本后再调整资金规则。"
+        }
+      }
+    },
+    {
+      "targetDate": "2026-06-18",
+      "generatedAt": "2026-06-17T15:34:18+08:00",
+      "coverage": 0.7875,
+      "strategies": [
+        {
+          "key": "conservative",
+          "name": "稳健",
+          "stake": 12,
+          "payout": null,
+          "profit": null,
+          "roi": null,
+          "status": "pending"
+        },
+        {
+          "key": "balanced",
+          "name": "均衡",
+          "stake": 20,
           "payout": null,
           "profit": null,
           "roi": null,
@@ -244,7 +352,7 @@
         {
           "key": "aggressive",
           "name": "激进",
-          "stake": 8,
+          "stake": 32,
           "payout": null,
           "profit": null,
           "roi": null,

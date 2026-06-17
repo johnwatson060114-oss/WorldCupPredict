@@ -16,6 +16,7 @@ class Strategy:
     kelly_fraction: float
     bankroll_cap: float
     score_cap: float
+    single_cap: float
     max_parlay: int
     single_markets: tuple[str, ...]
     parlay_markets: tuple[str, ...]
@@ -42,28 +43,28 @@ class Strategy:
 
 STRATEGIES = (
     Strategy(
-        "conservative", "稳健", "正期望单关精选", 0.25, 0.25, 0.0, 1,
+        "conservative", "稳健", "正期望单关精选", 0.25, 0.25, 0.0, 0.06, 1,
         ("胜平负", "让球胜平负", "总进球数"), (), 0.80, 0.55, 0.02, 2.25, 2, 0,
-        ("正期望单关精选，模型概率≥55%", "胜平负/让球/总进球", "每场每玩法单选最优", "无正期望时0元不投"),
+        ("正期望单关精选，模型概率≥55%", "胜平负/让球/总进球", "单票最高本金6%", "无正期望时0元不投"),
         max_combo_per_market=1, min_combo_coverage=0.55,
         negative_edge_fallback=False, negative_edge_min=0.0,
         min_combo_roi=0.05, min_payout_ratio=0.80,
     ),
     Strategy(
-        "balanced", "均衡", "复式双选 + 概率覆盖", 0.50, 0.40, 0.0, 2,
+        "balanced", "均衡", "复式双选 + 概率覆盖", 0.50, 0.40, 0.0, 0.10, 2,
         ("胜平负", "让球胜平负", "总进球数"), ("胜平负", "让球胜平负", "总进球数"),
         0.78, 0.35, 0.01, 4.50, 3, 0,
-        ("复式双选覆盖≥55%，同场可买胜+平", "胜平负/让球/总进球", "正期望优先，降级自动切换概率覆盖", "预期回报率≥-10%，最差情况返本≥60%"),
+        ("复式双选覆盖≥55%，同场可买胜+平", "胜平负/让球/总进球", "单票最高本金10%", "预期回报率≥-10%，最差情况返本≥60%"),
         max_combo_per_market=2, min_combo_coverage=0.55, combo_edge_tolerance=-0.01,
         negative_edge_fallback=True, negative_edge_min=-0.15,
         min_combo_roi=-0.10, min_payout_ratio=0.60,
     ),
     Strategy(
-        "aggressive", "激进", "多选复式 + 高风险串关", 0.75, 0.60, 0.10, 3,
+        "aggressive", "激进", "多选复式 + 高风险串关", 0.75, 0.60, 0.10, 0.16, 3,
         ("胜平负", "让球胜平负", "比分", "总进球数", "半全场"),
         ("胜平负", "让球胜平负", "比分", "总进球数", "半全场"),
         0.75, 0.08, 0.0, 80.0, 4, 1,
-        ("复式覆盖≥35%，全市场5玩法可选", "同场同玩法≤2选（禁止3选全覆盖）", "降级时做复式组合增大概率", "预期回报率≥-15%，最差返本≥40%"),
+        ("复式覆盖≥35%，全市场5玩法可选", "同场同玩法≤2选（禁止3选全覆盖）", "单票最高本金16%，比分最高10%", "预期回报率≥-15%，最差返本≥40%"),
         max_combo_per_market=2, min_combo_coverage=0.35, combo_edge_tolerance=-0.05,
         negative_edge_fallback=True, negative_edge_min=-0.25,
         min_combo_roi=-0.15, min_payout_ratio=0.40,
@@ -334,7 +335,8 @@ def build_portfolios(
                 else:
                     robust_probability = (1 + quote["robustExpectedReturn"]) / quote["odds"]
                     suggested = round_to_ticket(bankroll * fractional_kelly(robust_probability, quote["odds"], strategy.kelly_fraction))
-                maximum = round_to_ticket(bankroll * (strategy.score_cap if quote["market"] == "比分" else 0.12))
+                cap_ratio = strategy.score_cap if quote["market"] == "比分" else strategy.single_cap
+                maximum = round_to_ticket(bankroll * cap_ratio)
                 stake = min(maximum, max(2, suggested), cap - parlay_reserve - used - combo_stake)
                 if stake < 2:
                     continue

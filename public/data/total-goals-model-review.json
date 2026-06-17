@@ -1,50 +1,50 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-16T15:54:23+08:00",
+  "generatedAt": "2026-06-17T15:34:30+08:00",
   "timezone": "Asia/Shanghai",
   "scheduledReviewStartDate": "2026-06-17",
   "productionPolicy": "current model remains primary; optimized model runs as shadow until adoption gates pass",
   "currentModel": {
     "role": "production",
     "spec": "dixon_coles[half_life_days=730,rho=-0.08,shrinkage=6]",
-    "matches": 16,
+    "matches": 20,
     "exact_hits": 8,
-    "exact_accuracy": 0.5,
+    "exact_accuracy": 0.4,
     "core_hits": 9,
-    "core_accuracy": 0.5625,
-    "average_log_loss": 1.8444376044874813,
+    "core_accuracy": 0.45,
+    "average_log_loss": 1.88838210702298,
     "predicted_bucket_counts": {
       "0": 0,
       "1": 1,
-      "2": 13,
+      "2": 17,
       "3": 2,
       "4": 0,
       "5": 0,
       "6": 0,
       "7+": 0
     },
-    "average_bucketed_expected_total": 2.5779314333307495
+    "average_bucketed_expected_total": 2.555106621239088
   },
   "shadowModel": {
     "role": "shadow",
     "spec": "hierarchical_poisson[rho=0,shrinkage=16]",
-    "matches": 16,
+    "matches": 20,
     "exact_hits": 7,
-    "exact_accuracy": 0.4375,
+    "exact_accuracy": 0.35,
     "core_hits": 7,
-    "core_accuracy": 0.4375,
-    "average_log_loss": 1.8136585348891325,
+    "core_accuracy": 0.35,
+    "average_log_loss": 1.8553468744388095,
     "predicted_bucket_counts": {
       "0": 0,
       "1": 0,
-      "2": 14,
+      "2": 18,
       "3": 2,
       "4": 0,
       "5": 0,
       "6": 0,
       "7+": 0
     },
-    "average_bucketed_expected_total": 2.6752532284168935
+    "average_bucketed_expected_total": 2.646281462074411
   },
   "adoptionDecision": {
     "status": "observe",
@@ -59,10 +59,10 @@
       "core_accuracy_not_materially_worse": false
     },
     "deltas": {
-      "exact_accuracy_lift": -0.0625,
+      "exact_accuracy_lift": -0.050000000000000044,
       "extra_exact_hits": -1,
-      "log_loss_improvement": 0.03077906959834875,
-      "core_accuracy_delta": -0.125
+      "log_loss_improvement": 0.033035232584170515,
+      "core_accuracy_delta": -0.10000000000000003
     },
     "thresholds": {
       "min_matches": 24,
@@ -75,9 +75,9 @@
   "dataRefresh": {
     "status": "ok",
     "url": "https://raw.githubusercontent.com/martj42/international_results/master/results.csv",
-    "bytes": 3724375,
+    "bytes": 3724359,
     "path": "artifacts\\total-goals-backtest\\international_results.csv",
-    "refreshedAt": "2026-06-16T15:54:20+08:00"
+    "refreshedAt": "2026-06-17T15:34:26+08:00"
   },
   "manualResultRows": 4,
   "comparisonPath": "artifacts\\total-goals-backtest\\model_comparison_2026.csv"

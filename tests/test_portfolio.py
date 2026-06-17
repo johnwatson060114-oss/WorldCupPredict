@@ -39,6 +39,20 @@ def test_portfolios_respect_bankroll_caps_and_distinct_parlay_matches():
             assert len(ids) == len(set(ids))
 
 
+def test_positive_single_uses_strategy_specific_ticket_caps():
+    high_confidence = quote("1", 0.30, odds=1.60)
+    high_confidence["modelProbability"] = 0.85
+
+    portfolios = build_portfolios(
+        [high_confidence],
+        bankroll=200,
+        simulation=shared_simulation("1"),
+    )
+
+    stakes = {portfolio["key"]: portfolio["stake"] for portfolio in portfolios}
+    assert stakes == {"conservative": 12, "balanced": 20, "aggressive": 32}
+
+
 def test_negative_edge_conservative_empty_balanced_aggressive_fallback():
     """保守: negative_edge_fallback=False → 0元不投。
     均衡/激进: fallback → entertainment-mode tickets with combo coverage."""
