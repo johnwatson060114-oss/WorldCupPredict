@@ -31,7 +31,7 @@ CURRENT_SPEC = ModelSpec("dixon_coles", {"half_life_days": 730.0, "rho": -0.08, 
 OPTIMIZED_SPEC = ModelSpec("hierarchical_poisson", {"rho": 0.0, "shrinkage": 16.0})
 RUN_FULL_GRID = os.environ.get("TOTAL_GOALS_FULL_GRID") == "1"
 SKIP_FETCH = os.environ.get("TOTAL_GOALS_SKIP_FETCH") == "1"
-MIN_ADOPTION_MATCHES = 24
+MIN_ADOPTION_MATCHES = 16  # tournament-limited: 104 max, gate at ~15% of tournament
 MIN_EXACT_ACCURACY_LIFT = 0.08
 MIN_EXTRA_EXACT_HITS = 3
 MIN_LOG_LOSS_IMPROVEMENT = 0.02

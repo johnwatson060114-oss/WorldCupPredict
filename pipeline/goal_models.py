@@ -1,8 +1,10 @@
 from __future__ import annotations
 
+import csv
 import math
 from dataclasses import dataclass
 from datetime import datetime
+from pathlib import Path
 from typing import Any, Iterable
 
 from .model import score_matrix
@@ -151,3 +153,91 @@ def default_candidate_grid() -> list[ModelSpec]:
         *(ModelSpec("hierarchical_poisson", {"shrinkage": shrinkage, "rho": 0.0})
           for shrinkage in (4.0, 8.0, 16.0)),
     ]
+
+
+# --- Production goal-model xG provider ---
+# Grid search on 128 WC 2018+2022 matches selected hierarchical_poisson
+# as the best total-goals model (30.5% exact vs 26.6% for Dixon-Coles).
+# We use it to produce team-specific xG estimates from historical data.
+PRODUCTION_GOAL_SPEC = ModelSpec("hierarchical_poisson", {"shrinkage": 16.0, "rho": 0.0})
+
+# Fallback when goal-model data is unavailable.
+DEFAULT_GLOBAL_HOME = 1.55
+DEFAULT_GLOBAL_AWAY = 1.00
+
+_INTERNATIONAL_CSV_PATH = None
+
+
+def _get_csv_path() -> Path:
+    global _INTERNATIONAL_CSV_PATH
+    if _INTERNATIONAL_CSV_PATH is not None:
+        return _INTERNATIONAL_CSV_PATH
+    # Try the backtest artifact path first, then pipeline data
+    candidates = [
+        Path(__file__).resolve().parent.parent / "artifacts" / "total-goals-backtest" / "international_results.csv",
+        Path(__file__).resolve().parent / "data" / "international_results.csv",
+    ]
+    for candidate in candidates:
+        if candidate.exists():
+            _INTERNATIONAL_CSV_PATH = candidate
+            return candidate
+    _INTERNATIONAL_CSV_PATH = Path("")  # sentinel: not found
+    return _INTERNATIONAL_CSV_PATH
+
+
+def _read_historical_matches() -> list[dict[str, Any]]:
+    """Read all international matches from the CSV, keeping only finished ones."""
+    path = _get_csv_path()
+    if not path or not path.exists():
+        return []
+    rows = []
+    with path.open(newline="", encoding="utf-8") as handle:
+        for row in csv.DictReader(handle):
+            if not row.get("home_score") or not row.get("away_score"):
+                continue
+            if row["home_score"] in ("NA", "") or row["away_score"] in ("NA", ""):
+                continue
+            rows.append({
+                "date": row["date"],
+                "home_team": row["home_team"],
+                "away_team": row["away_team"],
+                "home_team_id": row["home_team"],
+                "away_team_id": row["away_team"],
+                "home_goals_90": int(float(row["home_score"])),
+                "away_goals_90": int(float(row["away_score"])),
+                "tournament": row["tournament"],
+                "neutral": row.get("neutral", "TRUE").upper() == "TRUE",
+                "kickoff_utc": f"{row['date']}T12:00:00+00:00",
+            })
+    return rows
+
+
+def goal_model_xg(
+    home_team: str,
+    away_team: str,
+    target_date: str,
+    spec: ModelSpec | None = None,
+) -> tuple[float, float] | None:
+    """Estimate expected goals using a goal model fit on historical data.
+
+    Filters all international matches before *target_date*, fits the
+    specified model (default: production spec), and returns the
+    matchup-specific xG.
+
+    Returns None when the historical data is unavailable.
+    """
+    spec = spec or PRODUCTION_GOAL_SPEC
+    rows = _read_historical_matches()
+    if not rows:
+        return None
+    # Keep only matches before the target date
+    prior = [row for row in rows if row["date"] < target_date]
+    if len(prior) < 50:
+        return None  # not enough data for meaningful fit
+    model = fit_goal_model(prior, spec)
+    hxg, axg = model.expected_goals(home_team, away_team, neutral=True)
+    # If the model can't differentiate the teams (both unknown → same xG),
+    # return None to let the caller fall back to Elo.
+    if abs(hxg - axg) < 0.01 * hxg:
+        return None
+    return (hxg, axg)

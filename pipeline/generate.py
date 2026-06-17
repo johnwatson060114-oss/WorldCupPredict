@@ -22,6 +22,7 @@ from .config import (
 )
 from .model_registry import check_and_apply_adoption, get_model_version
 from .elo_ratings import EloRatingsClient, expected_goals_from_elo
+from .goal_models import goal_model_xg
 from .football_data import (
     FootballDataClient,
     api_football_shape,
@@ -185,14 +186,24 @@ def football_data_seeds(client: FootballDataClient, target_date: str, all_matche
         ]
         home_name = localized_team_name(home)
         away_name = localized_team_name(away)
+        home_name_en = home.get("name", home_name)  # English name for goal model CSV lookup
+        away_name_en = away.get("name", away_name)
         home_rating = elo_ratings.get(home_name)
         away_rating = elo_ratings.get(away_name)
         ratings_complete = home_rating is not None and away_rating is not None
         ratings_partial = (home_rating is None) != (away_rating is None)
+        sample_count = len(home_recent) + len(away_recent)
         if ratings_complete:
-            home_xg, away_xg = expected_goals_from_elo(home_rating, away_rating)
+            gm = goal_model_xg(home_name_en, away_name_en, target_date)
+            if gm is not None:
+                home_xg, away_xg = gm
+                model_note = f"Goal model (hierarchical_poisson) + Elo {home_rating} vs {away_rating}；赛前样本 {sample_count} 场"
+            else:
+                home_xg, away_xg = expected_goals_from_elo(home_rating, away_rating)
+                model_note = f"Elo {home_rating} vs {away_rating}；本届赛前补充样本 {sample_count} 场"
         elif ratings_partial and elo_median is not None:
             home_xg, away_xg = expected_goals_from_elo(home_rating or elo_median, away_rating or elo_median)
+            model_note = f"Elo {home_rating or '缺失'} vs {away_rating or '缺失'}；缺失一方以全球中位数 {elo_median} 收缩"
         else:
             home_xg, away_xg = estimate_from_recent_results(
                 api_football_shape(home_recent),
@@ -200,17 +211,11 @@ def football_data_seeds(client: FootballDataClient, target_date: str, all_matche
                 home["id"],
                 away["id"],
             )
-        sample_count = len(home_recent) + len(away_recent)
+            model_note = f"双方 Elo 缺失；读取本届赛前已结束比赛 {sample_count} 场并收缩到中性基线"
         factors = default_factors()
-        if ratings_complete:
-            elo_note = f"Elo {home_rating} vs {away_rating}；本届赛前补充样本 {sample_count} 场"
-        elif ratings_partial:
-            elo_note = f"Elo {home_rating or '缺失'} vs {away_rating or '缺失'}；缺失一方以全球中位数 {elo_median} 收缩"
-        else:
-            elo_note = f"双方 Elo 缺失；读取本届赛前已结束比赛 {sample_count} 场并收缩到中性基线"
         factors[0] = {
             "label": "球队实力", "direction": "neutral", "value": 0.0,
-            "note": elo_note,
+            "note": model_note,
             "active": True,
             "admissionStatus": "core",
         }

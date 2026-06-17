@@ -1,12 +1,10 @@
 {
-  "generatedAt": "2026-06-17T16:37:02+08:00",
+  "generatedAt": "2026-06-17T17:35:08+08:00",
   "timezone": "Asia/Shanghai",
   "data_refresh": {
-    "status": "ok",
-    "url": "https://raw.githubusercontent.com/martj42/international_results/master/results.csv",
-    "bytes": 3724359,
-    "path": "artifacts\\total-goals-backtest\\international_results.csv",
-    "refreshedAt": "2026-06-17T16:36:59+08:00"
+    "status": "skipped",
+    "reason": "TOTAL_GOALS_SKIP_FETCH=1",
+    "path": "artifacts\\total-goals-backtest\\international_results.csv"
   },
   "optimization": {
     "validation_set": "FIFA World Cup 2018 and 2022",
@@ -14,9 +12,170 @@
     "production_policy": "current model remains primary; optimized model runs as shadow until adoption gates pass",
     "current_model_spec": "dixon_coles[half_life_days=730,rho=-0.08,shrinkage=6]",
     "optimized_model_spec": "hierarchical_poisson[rho=0,shrinkage=16]",
-    "optimized_model_spec_source": "locked from the 2018+2022 grid search; set TOTAL_GOALS_FULL_GRID=1 to reselect",
-    "full_grid_was_run": false,
-    "top_candidates": []
+    "optimized_model_spec_source": "selected by full 2018+2022 grid search in this run",
+    "full_grid_was_run": true,
+    "top_candidates": [
+      {
+        "model_spec": "hierarchical_poisson[rho=0,shrinkage=16]",
+        "matches": 128,
+        "exact_hits": 39,
+        "exact_accuracy": 0.3046875,
+        "core_hits": 59,
+        "core_accuracy": 0.4609375,
+        "average_log_loss": 1.893032031789462,
+        "predicted_bucket_counts": {
+          "0": 0,
+          "1": 4,
+          "2": 94,
+          "3": 30,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7+": 0
+        },
+        "average_bucketed_expected_total": 2.6851431302834534
+      },
+      {
+        "model_spec": "hierarchical_poisson[rho=0,shrinkage=8]",
+        "matches": 128,
+        "exact_hits": 39,
+        "exact_accuracy": 0.3046875,
+        "core_hits": 58,
+        "core_accuracy": 0.453125,
+        "average_log_loss": 1.8938304792543055,
+        "predicted_bucket_counts": {
+          "0": 0,
+          "1": 5,
+          "2": 93,
+          "3": 30,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7+": 0
+        },
+        "average_bucketed_expected_total": 2.6796129065846586
+      },
+      {
+        "model_spec": "hierarchical_poisson[rho=0,shrinkage=4]",
+        "matches": 128,
+        "exact_hits": 39,
+        "exact_accuracy": 0.3046875,
+        "core_hits": 58,
+        "core_accuracy": 0.453125,
+        "average_log_loss": 1.8942511994387305,
+        "predicted_bucket_counts": {
+          "0": 0,
+          "1": 5,
+          "2": 93,
+          "3": 30,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7+": 0
+        },
+        "average_bucketed_expected_total": 2.6767675793787546
+      },
+      {
+        "model_spec": "dixon_coles[half_life_days=730,rho=-0.04,shrinkage=6]",
+        "matches": 128,
+        "exact_hits": 36,
+        "exact_accuracy": 0.28125,
+        "core_hits": 67,
+        "core_accuracy": 0.5234375,
+        "average_log_loss": 1.8809945068006864,
+        "predicted_bucket_counts": {
+          "0": 0,
+          "1": 3,
+          "2": 119,
+          "3": 6,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7+": 0
+        },
+        "average_bucketed_expected_total": 2.3990426155964273
+      },
+      {
+        "model_spec": "bivariate_poisson[half_life_days=730,shared_rate=0.1,shrinkage=8]",
+        "matches": 128,
+        "exact_hits": 35,
+        "exact_accuracy": 0.2734375,
+        "core_hits": 63,
+        "core_accuracy": 0.4921875,
+        "average_log_loss": 1.8732690777014689,
+        "predicted_bucket_counts": {
+          "0": 0,
+          "1": 10,
+          "2": 113,
+          "3": 5,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7+": 0
+        },
+        "average_bucketed_expected_total": 2.4186003988729747
+      },
+      {
+        "model_spec": "bivariate_poisson[half_life_days=730,shared_rate=0.05,shrinkage=8]",
+        "matches": 128,
+        "exact_hits": 35,
+        "exact_accuracy": 0.2734375,
+        "core_hits": 65,
+        "core_accuracy": 0.5078125,
+        "average_log_loss": 1.874602681201165,
+        "predicted_bucket_counts": {
+          "0": 0,
+          "1": 6,
+          "2": 116,
+          "3": 6,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7+": 0
+        },
+        "average_bucketed_expected_total": 2.420006922613974
+      },
+      {
+        "model_spec": "negative_binomial[dispersion=4,half_life_days=730,shrinkage=8]",
+        "matches": 128,
+        "exact_hits": 34,
+        "exact_accuracy": 0.265625,
+        "core_hits": 58,
+        "core_accuracy": 0.453125,
+        "average_log_loss": 1.8734015878452395,
+        "predicted_bucket_counts": {
+          "0": 0,
+          "1": 50,
+          "2": 78,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7+": 0
+        },
+        "average_bucketed_expected_total": 2.404861610286473
+      },
+      {
+        "model_spec": "dixon_coles[half_life_days=730,rho=-0.08,shrinkage=6]",
+        "matches": 128,
+        "exact_hits": 34,
+        "exact_accuracy": 0.265625,
+        "core_hits": 66,
+        "core_accuracy": 0.515625,
+        "average_log_loss": 1.8823934297973184,
+        "predicted_bucket_counts": {
+          "0": 0,
+          "1": 1,
+          "2": 125,
+          "3": 2,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7+": 0
+        },
+        "average_bucketed_expected_total": 2.3990426155964273
+      }
+    ]
   },
   "current_model_2026": {
     "matches": 20,
