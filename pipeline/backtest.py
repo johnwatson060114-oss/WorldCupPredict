@@ -4,8 +4,10 @@ import math
 from collections import defaultdict
 from typing import Any, Iterable
 
+from .elo_ratings import allocate_total_goals_by_elo
 from .goal_models import ModelSpec, default_candidate_grid, fit_goal_model
 from .model import normalized_market_probabilities, outcome_probabilities
+from .model import score_matrix
 
 
 OUTCOMES = ("home", "draw", "away")
@@ -86,6 +88,70 @@ def market_probabilities(match: dict[str, Any]) -> dict[str, float] | None:
     if any(normalized[outcome] is None for outcome in OUTCOMES):
         return None
     return {outcome: float(normalized[outcome]) for outcome in OUTCOMES}
+
+
+def learn_elo_allocation_weight(
+    matches: Iterable[dict[str, Any]],
+    validation_years: set[str] | None = None,
+    validation_tournament: str = "FIFA World Cup",
+    candidates: Iterable[float] | None = None,
+    min_history: int = 100,
+) -> dict[str, Any]:
+    """Learn the Elo share of strength allocation without future leakage."""
+
+    years = validation_years or {"2018", "2022"}
+    weights = list(candidates or (0.0, 0.25, 0.50, 0.75, 1.0))
+    ordered = sorted(matches, key=lambda item: item["kickoff_utc"])
+    ratings: dict[str, float] = {}
+    rows_by_weight: dict[float, list[tuple[dict[str, float], str]]] = {weight: [] for weight in weights}
+    validation_matches = 0
+    spec = ModelSpec("hierarchical_poisson", {"half_life_days": 730.0, "shrinkage": 16.0, "rho": 0.0})
+
+    for index, match in enumerate(ordered):
+        home = str(match["home_team_id"])
+        away = str(match["away_team_id"])
+        home_rating = ratings.get(home, 1500.0)
+        away_rating = ratings.get(away, 1500.0)
+        year = str(match["kickoff_utc"])[:4]
+        is_validation_match = (
+            year in years
+            and str(match.get("tournament", "")) == validation_tournament
+        )
+        if index >= min_history and is_validation_match:
+            model = fit_goal_model(ordered[:index], spec)
+            stat_home, stat_away = model.expected_goals(home, away, bool(match.get("neutral", True)))
+            total = stat_home + stat_away
+            elo_home, elo_away = allocate_total_goals_by_elo(total, round(home_rating), round(away_rating))
+            actual = observed_outcome(match)
+            for weight in weights:
+                blended_home = (1 - weight) * stat_home + weight * elo_home
+                blended_away = (1 - weight) * stat_away + weight * elo_away
+                probabilities = outcome_probabilities(score_matrix(blended_home, blended_away))
+                rows_by_weight[weight].append((probabilities, actual))
+            validation_matches += 1
+
+        expected = 1 / (1 + 10 ** ((away_rating - home_rating) / 400))
+        home_goals = int(match["home_goals_90"])
+        away_goals = int(match["away_goals_90"])
+        actual_points = 1.0 if home_goals > away_goals else 0.5 if home_goals == away_goals else 0.0
+        change = 20.0 * (actual_points - expected)
+        ratings[home] = home_rating + change
+        ratings[away] = away_rating - change
+
+    metrics = {str(weight): score_predictions(rows) for weight, rows in rows_by_weight.items()}
+    selected = min(
+        weights,
+        key=lambda weight: (metrics[str(weight)]["log_loss"], metrics[str(weight)]["rps"]),
+    ) if validation_matches else 1.0
+    return {
+        "eloAllocationWeight": selected,
+        "validationYears": sorted(years),
+        "validationTournament": validation_tournament,
+        "validationMatches": validation_matches,
+        "candidates": metrics,
+        "selectionRule": "lowest chronological validation log loss; tie-break by RPS",
+        "excludedYears": ["2026"],
+    }
 
 
 def rolling_backtest(

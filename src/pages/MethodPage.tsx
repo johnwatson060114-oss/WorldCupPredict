@@ -10,6 +10,9 @@ const steps = [
   ['9', '结构化赛前情报', '大模型只整理来源、时间、确认等级和冲突，本地统计程序决定概率影响。'],
   ['10', '持续监控', '展示校准、覆盖、漂移、模型版本、快照和实际模拟路径数。'],
   ['11', '胜平负拒绝机制', '胜平负最高概率达到 60% 才允许推荐；低于门槛统一标记观望，不进入自动资金方案。'],
+  ['12', '首轮赛事状态层', '官方赛果与Elo预期残差只形成封顶、衰减的短期状态；文字赛况只提供标签和置信度。'],
+  ['13', '模型—市场冲突隔离', '最大概率差超过15个百分点，或市场55%以上热门与模型方向相反时，不进入正式资金方案。'],
+  ['14', '生产与影子双轨', '高比分尾部候选只做前瞻对照；没有通过Log Loss、RPS、校准和多窗口门槛就保持原模型。'],
 ]
 
 export function MethodPage() {
@@ -17,7 +20,7 @@ export function MethodPage() {
     <main className="content-page">
       <div className="page-title"><div><span>可解释、可回测、可拒绝下注</span><h1>模型方法</h1></div></div>
       <section className="method-flow panel">{steps.map(([number, title, body]) => <div key={number}><b>{number}</b><section><h2>{title}</h2><p>{body}</p></section></div>)}</section>
-      <section className="panel methodology-block"><h2>明确不做的事</h2><p>不让大模型自由修改概率，不把未回测因素写进均值，不隐藏缺失数据，不因为用户有 200 元就要求花完，也不提供代购、登录或支付能力。</p></section>
+      <section className="panel methodology-block"><h2>明确不做的事</h2><p>不让文字赛况或大模型自由修改概率，不把未回测因素写进均值，不用首轮24场强行重拟长期参数，不隐藏缺失数据，也不自动生成负期望娱乐投注。</p></section>
     </main>
   )
 }

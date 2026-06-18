@@ -85,6 +85,17 @@ export interface MarketQuote {
   available: boolean
   recommendation: Recommendation
   reason: string
+  oddsSource?: 'official' | 'simulated'
+  formalEligible?: boolean
+  formalBlockReason?: string | null
+  marketConflict?: {
+    status: 'clear' | 'conflict' | 'unavailable'
+    blocked: boolean
+    maxGap: number | null
+    modelFavorite: string | null
+    marketFavorite: string | null
+    reason: string
+  }
   observedAt: string
   kickoffBeijing?: string
   lotteryCode?: string
@@ -103,6 +114,25 @@ export interface MatchForecast {
   homeFlag: string
   awayFlag: string
   expectedGoals: { home: number; away: number }
+  modelDecomposition?: {
+    longTermExpectedGoals?: { home: number; away: number }
+    tournamentFormNet?: { home: number; away: number }
+    adjustedExpectedGoals?: { home: number; away: number }
+    totalGoalsProvider?: string
+    strengthAllocator?: string
+    allocationPolicy?: string
+    eloAllocationWeight?: number
+    allocationValidationSet?: string
+    estimatedTotalGoals?: number
+    formLayer?: string
+  }
+  tournamentForm?: {
+    sourceRound: string
+    commentaryMode: 'text_only'
+    applied: boolean
+    home: TournamentFormSide
+    away: TournamentFormSide
+  } | null
   outcomeProbabilities: { home: number; draw: number; away: number }
   outcomeDecision?: {
     threshold: number
@@ -122,6 +152,120 @@ export interface MatchForecast {
   intelligence?: IntelligenceEvent[]
   simulation?: SimulationQuality | null
   quotes: MarketQuote[]
+}
+
+export interface TournamentFormSide {
+  team: string
+  attackDelta: number
+  defenseDelta: number
+  decay: number
+  observedMatchday: number
+  targetMatchday: number
+  confidence: number
+  admissionStatus: string
+  summary: string
+}
+
+export interface FirstRoundSource {
+  type: 'official_result' | 'text_match_centre'
+  url: string
+  publishedAt: string
+  summary: string
+  archivedText: boolean
+}
+
+export interface FirstRoundTeamProfile {
+  team: string
+  teamEn: string
+  opponent: string
+  matchId: string
+  scoreFor: number
+  scoreAgainst: number
+  performanceStatus: 'above_expectation' | 'near_expectation' | 'below_expectation'
+  summary: string
+  evidenceConfidence: number
+  dimensions: {
+    attackCreation: number | null
+    defensiveControl: number | null
+    midfieldProgression: number | null
+    transition: number | null
+    setPieces: number | null
+    goalkeeping: number | null
+    stamina: number | null
+    status: string
+  }
+  commentaryEvidence: {
+    mode: 'text_only'
+    archivedMinuteByMinute: boolean
+    labels: string[]
+    note: string
+    sources: FirstRoundSource[]
+  }
+  objectiveForm: {
+    attackDelta: number
+    defenseDelta: number
+    admissionStatus: 'enabled' | 'observation_only'
+    redCardAdjusted: boolean
+    finishingOutlierShrunk: boolean
+    opponentStrengthAdjusted: boolean
+    leadingStateAdjusted: boolean
+  }
+}
+
+export interface FirstRoundReview {
+  schemaVersion: number
+  generatedAt: string
+  round: {
+    name: string
+    completedLocalDate: string
+    matches: number
+    teams: number
+    totalGoals: number
+    averageGoals: number
+    commentaryMode: 'text_only'
+  }
+  method: {
+    stateCapPerTeamDirectionXg: number
+    conversionWasFitOnFirstRound: boolean
+    commentaryDirectlyChangesProbability: boolean
+    missingTextPolicy: string
+    productionPolicy: string
+  }
+  teams: FirstRoundTeamProfile[]
+}
+
+export interface TotalGoalsModelReview {
+  generatedAt: string
+  productionPolicy: string
+  currentModel: ModelReviewSummary
+  shadowModel: ModelReviewSummary
+  tailShadowModel?: ModelReviewSummary & { reason?: string }
+  strengthAllocationPolicy?: {
+    eloAllocationWeight: number
+    validationYears: string[]
+    validationTournament: string
+    validationMatches: number
+    selectionRule: string
+    excludedYears: string[]
+  }
+  adoptionDecision: {
+    status: 'keep' | 'observe' | 'switch'
+    should_switch_model: boolean
+    recommendation_zh: string
+    reason: string
+    gates: Record<string, boolean>
+  }
+}
+
+export interface ModelReviewSummary {
+  role: string
+  spec: string
+  matches: number
+  exact_accuracy: number
+  core_accuracy: number
+  average_log_loss: number
+  average_rps?: number
+  calibration_error?: number
 }
 
 export interface TicketLeg {

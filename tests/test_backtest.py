@@ -2,7 +2,7 @@ import math
 import random
 from datetime import UTC, datetime, timedelta
 
-from pipeline.backtest import blend_probabilities, learn_blend_alpha, rolling_backtest, score_predictions
+from pipeline.backtest import blend_probabilities, learn_blend_alpha, learn_elo_allocation_weight, rolling_backtest, score_predictions
 
 
 def poisson(randomizer: random.Random, mean: float) -> int:
@@ -80,3 +80,22 @@ def test_market_blend_weight_is_learned_from_validation_records():
 
     assert alpha == 1.0
     assert math.isclose(sum(blended.values()), 1.0)
+
+
+def test_elo_allocation_weight_excludes_2026_from_selection():
+    matches = synthetic_matches(130)
+    for index, match in enumerate(matches):
+        year = 2017 + index // 40
+        match["kickoff_utc"] = f"{year}-06-{index % 28 + 1:02d}T12:00:00+00:00"
+        match["tournament"] = "FIFA World Cup" if year in {2018, 2019} else "Friendly"
+    matches[-1]["kickoff_utc"] = "2026-06-20T12:00:00+00:00"
+    report = learn_elo_allocation_weight(
+        matches,
+        validation_years={"2018", "2019"},
+        candidates=(0.0, 1.0),
+        min_history=20,
+    )
+    assert report["validationYears"] == ["2018", "2019"]
+    assert report["validationTournament"] == "FIFA World Cup"
+    assert report["excludedYears"] == ["2026"]
+    assert report["validationMatches"] > 0

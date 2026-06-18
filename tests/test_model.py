@@ -1,5 +1,6 @@
 import math
 
+from pipeline.goal_models import poisson_negative_binomial_mixture_matrix
 from pipeline.model import (
     half_full_probabilities,
     normalized_market_probabilities,
@@ -35,3 +36,12 @@ def test_total_goals_and_half_full_are_normalized():
     assert math.isclose(sum(totals.values()), 1.0, rel_tol=1e-9)
     assert len(half_full) == 9
     assert math.isclose(sum(half_full.values()), 1.0, rel_tol=1e-9)
+
+
+def test_poisson_negative_binomial_shadow_mixture_is_normalized_and_widens_tail():
+    poisson = score_matrix(1.7, 1.1)
+    mixture = poisson_negative_binomial_mixture_matrix(1.7, 1.1, dispersion=2.0, tail_weight=0.25)
+    assert math.isclose(sum(sum(row) for row in mixture), 1.0, rel_tol=1e-9)
+    poisson_high = sum(value for home, row in enumerate(poisson) for away, value in enumerate(row) if home + away >= 6)
+    mixture_high = sum(value for home, row in enumerate(mixture) for away, value in enumerate(row) if home + away >= 6)
+    assert mixture_high > poisson_high

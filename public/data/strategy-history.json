@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-18T17:20:01+08:00",
+  "generatedAt": "2026-06-18T23:31:58+08:00",
   "finalDate": "2026-07-19",
   "days": [
     {
@@ -436,8 +436,8 @@
     },
     {
       "targetDate": "2026-06-19",
-      "generatedAt": "2026-06-18T17:19:50+08:00",
-      "coverage": 0.7557,
+      "generatedAt": "2026-06-18T13:00:00+08:00",
+      "coverage": 0.7858,
       "strategies": [
         {
           "key": "conservative",
@@ -451,7 +451,7 @@
         {
           "key": "balanced",
           "name": "均衡",
-          "stake": 24,
+          "stake": 8,
           "payout": null,
           "profit": null,
           "roi": null,
@@ -460,7 +460,7 @@
         {
           "key": "aggressive",
           "name": "激进",
-          "stake": 24,
+          "stake": 10,
           "payout": null,
           "profit": null,
           "roi": null,

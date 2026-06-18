@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-06-18T16:43:48+08:00",
+  "status": "selected_on_chronological_validation",
+  "validationSet": "FIFA World Cup 2018 and 2022",
+  "eloAllocationWeight": 1.0,
+  "validationYears": [
+    "2018",
+    "2022"
+  ],
+  "validationTournament": "FIFA World Cup",
+  "validationMatches": 128,
+  "candidates": {
+    "0.0": {
+      "log_loss": 1.05820066621139,
+      "rps": 0.2305689769195159,
+      "brier": 0.6365667807686298,
+      "calibration_error": 0.059635416666666684
+    },
+    "0.25": {
+      "log_loss": 1.0300898031564707,
+      "rps": 0.22091739430507615,
+      "brier": 0.616784275580417,
+      "calibration_error": 0.05911458333333332
+    },
+    "0.5": {
+      "log_loss": 1.0100955720455662,
+      "rps": 0.21366824481330976,
+      "brier": 0.6015022707644204,
+      "calibration_error": 0.06770833333333331
+    },
+    "0.75": {
+      "log_loss": 0.9983424317317814,
+      "rps": 0.2087979927210718,
+      "brier": 0.5907551176226217,
+      "calibration_error": 0.07526041666666668
+    },
+    "1.0": {
+      "log_loss": 0.9956599332430888,
+      "rps": 0.206183751889683,
+      "brier": 0.5844177652726107,
+      "calibration_error": 0.06848958333333335
+    }
+  },
+  "selectionRule": "lowest chronological validation log loss; tie-break by RPS",
+  "excludedYears": [
+    "2026"
+  ]
+}

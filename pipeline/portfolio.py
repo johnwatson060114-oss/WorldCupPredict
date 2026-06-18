@@ -59,7 +59,7 @@ STRATEGIES = (
         0.78, 0.35, 0.01, 4.50, 3, 0,
         ("中波动：次日单关 + 在售跨天2串1", "胜平负/让球/总进球", "复式提高覆盖，接受中等赔率波动", "预期回报率≥-10%，最差情况返本≥60%"),
         max_combo_per_market=2, min_combo_coverage=0.55, combo_edge_tolerance=-0.01,
-        negative_edge_fallback=True, negative_edge_min=-0.15,
+        negative_edge_fallback=False, negative_edge_min=0.0,
         min_combo_roi=-0.10, min_payout_ratio=0.60,
     ),
     Strategy(
@@ -69,7 +69,7 @@ STRATEGIES = (
         0.75, 0.08, 0.0, 80.0, 4, 1,
         ("高波动：次日单关 + 在售跨天2/3串1", "比分/半全场可入池", "赔率弹性更高，命中概率更低", "预期回报率≥-15%，最差返本≥40%"),
         max_combo_per_market=2, min_combo_coverage=0.35, combo_edge_tolerance=-0.05,
-        negative_edge_fallback=True, negative_edge_min=-0.25,
+        negative_edge_fallback=False, negative_edge_min=0.0,
         min_combo_roi=-0.15, min_payout_ratio=0.40,
     ),
 )
@@ -95,7 +95,8 @@ def round_to_ticket(value: float) -> int:
 def _single_candidates(quotes: list[dict[str, Any]], strategy: Strategy) -> list[dict[str, Any]]:
     candidates = [
         quote for quote in quotes
-        if quote.get("available")
+        if quote.get("formalEligible") is True
+        and quote.get("available")
         and quote.get("market") in strategy.single_markets
         and float(quote.get("coverage") or 0) >= strategy.min_coverage
         and float(quote.get("modelProbability") or 0) >= strategy.min_probability
@@ -113,7 +114,8 @@ def _parlay_candidates(
 ) -> list[tuple[dict[str, Any], ...]]:
     positive = [
         quote for quote in quotes
-        if quote.get("available")
+        if quote.get("formalEligible") is True
+        and quote.get("available")
         and quote.get("market") in strategy.parlay_markets
         and float(quote.get("coverage") or 0) >= strategy.min_coverage
         and float(quote.get("modelProbability") or 0) >= strategy.min_probability
@@ -148,12 +150,10 @@ def _filter_quotes(quotes: list[dict[str, Any]], strategy: Strategy, edge_min: f
     min_edge = edge_min if edge_min is not None else strategy.min_edge
     return [
         quote for quote in quotes
-        if quote.get("available")
+        if quote.get("formalEligible") is True
+        and quote.get("available")
         and quote.get("market") in strategy.single_markets
         and float(quote.get("coverage") or 0) >= strategy.min_coverage
-        # Accept any recommendation level — the edge threshold is the
-        # real quality gate.  "观察" quotes with positive edge are
-        # actionable; "未开售" is already excluded by `available`.
         and float(quote.get("modelProbability") or 0) >= strategy.min_probability
         and float(quote.get("robustExpectedReturn") or -1) >= min_edge
         and quote.get("odds")
@@ -302,11 +302,9 @@ def build_portfolios(
         strict_quotes = _filter_quotes(quotes, strategy, edge_min=adjusted_min_edge)
         combos = _build_combo_groups(strict_quotes, strategy)
 
-        # Fallback to relaxed edge when no combos found
-        if not combos and strategy.negative_edge_fallback:
-            combos = _combo_fallback_groups(quotes, strategy)
-            if combos:
-                entertainment_mode = True
+        # Formal portfolios never fall back to negative-edge or simulated
+        # odds. Entertainment betting is an explicit user action and is kept
+        # outside tracked strategy performance.
 
         # Sort combos: larger combos (more picks) first, then by coverage.
         # This ensures the 复式 (multi-pick) version of a match+market gets

@@ -138,6 +138,32 @@ def test_spain_cape_verde_uses_elo_gap_instead_of_neutral_fallback(monkeypatch):
     assert seed["factors"][0]["admissionStatus"] == "core"
 
 
+def test_sporttery_seed_uses_model_policy_for_strength_allocation(monkeypatch):
+    monkeypatch.setattr(generate, "goal_model_xg", lambda *_args: (1.4, 1.0))
+    monkeypatch.setattr(generate, "_cn_to_en_team_name", lambda name: name)
+
+    home, away, provider = generate._compute_xg_for_sporttery_seed(
+        "Home",
+        "Away",
+        "2026-06-19",
+        {"Home": 1800, "Away": 1400},
+        0.0,
+    )
+    elo_home, elo_away, _ = generate._compute_xg_for_sporttery_seed(
+        "Home",
+        "Away",
+        "2026-06-19",
+        {"Home": 1800, "Away": 1400},
+        1.0,
+    )
+
+    assert provider == "hierarchical_goal_model"
+    assert (home, away) == (1.4, 1.0)
+    assert elo_home + elo_away == home + away
+    assert elo_home > home
+    assert elo_away < away
+
+
 def test_outcome_recommendation_requires_sixty_percent_confidence():
     watch = generate.outcome_recommendation_decision({"home": 0.59, "draw": 0.26, "away": 0.15})
     recommended = generate.outcome_recommendation_decision({"home": 0.60, "draw": 0.25, "away": 0.15})
@@ -155,3 +181,36 @@ def test_low_confidence_outcome_quote_is_downgraded_to_watch():
 
     assert quote["recommendation"] == "观察"
     assert quote["reason"] == "胜平负最高概率 59.0% 低于 60% 门槛"
+    assert quote["formalEligible"] is False
+
+
+def test_positive_official_quote_requires_clear_market_guard_for_formal_pool():
+    clear = {
+        "status": "clear", "blocked": False, "maxGap": 0.04,
+        "modelFavorite": "胜", "marketFavorite": "胜", "reason": "未触发冲突",
+    }
+    quote = generate.make_quote(
+        "m1", "A vs B", "胜平负", "胜", 2.0, 0.62, 0.58, 0.90, True,
+        "2026-06-15T12:00:00+08:00",
+        recommendation_gate=(True, ""),
+        market_conflict=clear,
+        odds_source="official",
+    )
+    assert quote["robustExpectedReturn"] > 0
+    assert quote["formalEligible"] is True
+
+
+def test_market_conflict_blocks_positive_edge_quote():
+    conflict = {
+        "status": "conflict", "blocked": True, "maxGap": 0.25,
+        "modelFavorite": "胜", "marketFavorite": "负", "reason": "模型与市场最大概率差 25.0% 超过 15%",
+    }
+    quote = generate.make_quote(
+        "m1", "A vs B", "让球胜平负", "-1 胜", 3.0, 0.50, 0.25, 0.90, True,
+        "2026-06-15T12:00:00+08:00",
+        market_conflict=conflict,
+        odds_source="official",
+    )
+    assert quote["rawExpectedReturn"] > 0
+    assert quote["recommendation"] == "观察"
+    assert quote["formalEligible"] is False

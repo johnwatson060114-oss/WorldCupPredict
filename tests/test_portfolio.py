@@ -8,6 +8,8 @@ def quote(match_id: str, edge: float, odds: float = 2.0, single: bool = True):
         "market": "胜平负", "selection": "胜", "odds": odds, "modelProbability": 0.60,
         "robustExpectedReturn": edge, "available": True, "singleEligible": single,
         "recommendation": "重点推荐", "coverage": 0.90,
+        "oddsSource": "official", "formalEligible": edge > 0,
+        "marketConflict": {"status": "clear", "blocked": False},
     }
 
 
@@ -73,35 +75,31 @@ def test_cross_day_quotes_only_enter_through_parlays():
     assert balanced_2x1["stake"] == aggressive_2x1["stake"] == 10
 
 
-def test_negative_edge_conservative_empty_balanced_aggressive_fallback():
-    """保守: negative_edge_fallback=False → 0元不投。
-    均衡/激进: fallback → entertainment-mode tickets with combo coverage."""
+def test_negative_edge_never_enters_formal_portfolios():
     portfolios = build_portfolios([quote("1", -0.01)], bankroll=200, simulation=shared_simulation("1"))
-    # Conservative: no fallback → 0 stake, 0 tickets
-    assert portfolios[0]["stake"] == 0, "conservative should not bet on negative edge"
-    assert len(portfolios[0]["tickets"]) == 0, "conservative should have no tickets"
-    # Balanced and aggressive: fallback → entertainment mode with tickets
-    for p in portfolios[1:]:
-        assert p["entertainmentMode"], f"{p['key']} should be in entertainment mode"
-        assert len(p["tickets"]) >= 1, f"{p['key']} should have tickets"
+    assert all(portfolio["stake"] == 0 for portfolio in portfolios)
+    assert all(not portfolio["tickets"] for portfolio in portfolios)
+    assert all(not portfolio["entertainmentMode"] for portfolio in portfolios)
 
 
-def test_observation_only_quote_strict_path_no_longer_requires_recommendation():
-    """After removing singleEligible/recommendation gates, a positive-edge
-    quote is accepted via the strict path regardless of its recommendation
-    label.  Market and odds still gate per-strategy."""
+def test_observation_only_quote_never_enters_formal_portfolio():
     observed = quote("1", 4.0, odds=50.0)
-    observed.update({"market": "半全场", "selection": "负负", "recommendation": "观察"})
+    observed.update({"market": "半全场", "selection": "负负", "recommendation": "观察", "formalEligible": False})
 
     portfolios = build_portfolios([observed], bankroll=200, simulation=shared_simulation("1"))
 
-    # conservative: market "半全场" not in single_markets → no tickets
-    assert not portfolios[0]["tickets"]
-    # balanced: market "半全场" not in single_markets → no tickets
-    assert not portfolios[1]["tickets"]
-    # aggressive: semi-full IS in single_markets, odds 50 ≤ 80 → accepted (strict path)
-    assert len(portfolios[2]["tickets"]) >= 1, "aggressive should accept 半全场 with +4 edge"
-    assert not portfolios[2]["entertainmentMode"], "should use strict path, not fallback"
+    assert all(not portfolio["tickets"] for portfolio in portfolios)
+
+
+def test_market_conflict_quote_never_enters_formal_portfolio():
+    conflicted = quote("1", 0.50, odds=2.0)
+    conflicted.update({
+        "formalEligible": False,
+        "marketConflict": {"status": "conflict", "blocked": True},
+        "formalBlockReason": "模型与市场最大概率差超过15%",
+    })
+    portfolios = build_portfolios([conflicted], bankroll=200, simulation=shared_simulation("1"))
+    assert all(not portfolio["tickets"] for portfolio in portfolios)
 
 
 def test_strategy_market_and_parlay_rules_are_materially_different():

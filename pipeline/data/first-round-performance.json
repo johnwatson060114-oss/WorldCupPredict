@@ -1,0 +1,3672 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-06-18T13:00:00+08:00",
+  "round": {
+    "name": "group_matchday_1",
+    "completedLocalDate": "2026-06-17",
+    "matches": 24,
+    "teams": 48,
+    "totalGoals": 75,
+    "averageGoals": 3.125,
+    "commentaryMode": "text_only"
+  },
+  "method": {
+    "stateCapPerTeamDirectionXg": 0.12,
+    "conversionWasFitOnFirstRound": false,
+    "commentaryDirectlyChangesProbability": false,
+    "missingTextPolicy": "show evidence gap; do not invent tactical ratings",
+    "productionPolicy": "bounded tournament form can apply; distribution changes remain shadow-only"
+  },
+  "matches": [
+    {
+      "id": "md1-01",
+      "date": "2026-06-11",
+      "homeTeam": "墨西哥",
+      "awayTeam": "南非",
+      "score": "2-0",
+      "redCardDistorted": true,
+      "highVarianceFinishing": false,
+      "lineupStatus": "unavailable",
+      "eventStatus": "partial",
+      "statisticsStatus": "result_only",
+      "sources": [
+        {
+          "type": "official_result",
+          "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+          "publishedAt": "2026-06-11T23:59:00Z",
+          "summary": "FIFA赛程与赛果入口：Mexico 2-0 South Africa。",
+          "archivedText": true
+        },
+        {
+          "type": "text_match_centre",
+          "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+          "publishedAt": "2026-06-11T23:59:00Z",
+          "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+          "archivedText": false
+        }
+      ]
+    },
+    {
+      "id": "md1-02",
+      "date": "2026-06-11",
+      "homeTeam": "韩国",
+      "awayTeam": "捷克",
+      "score": "2-1",
+      "redCardDistorted": false,
+      "highVarianceFinishing": false,
+      "lineupStatus": "unavailable",
+      "eventStatus": "unavailable",
+      "statisticsStatus": "result_only",
+      "sources": [
+        {
+          "type": "official_result",
+          "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+          "publishedAt": "2026-06-11T23:59:00Z",
+          "summary": "FIFA赛程与赛果入口：South Korea 2-1 Czechia。",
+          "archivedText": true
+        },
+        {
+          "type": "text_match_centre",
+          "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+          "publishedAt": "2026-06-11T23:59:00Z",
+          "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+          "archivedText": false
+        }
+      ]
+    },
+    {
+      "id": "md1-03",
+      "date": "2026-06-12",
+      "homeTeam": "加拿大",
+      "awayTeam": "波黑",
+      "score": "1-1",
+      "redCardDistorted": false,
+      "highVarianceFinishing": false,
+      "lineupStatus": "unavailable",
+      "eventStatus": "unavailable",
+      "statisticsStatus": "result_only",
+      "sources": [
+        {
+          "type": "official_result",
+          "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+          "publishedAt": "2026-06-12T23:59:00Z",
+          "summary": "FIFA赛程与赛果入口：Canada 1-1 Bosnia and Herzegovina。",
+          "archivedText": true
+        },
+        {
+          "type": "text_match_centre",
+          "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+          "publishedAt": "2026-06-12T23:59:00Z",
+          "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+          "archivedText": false
+        }
+      ]
+    },
+    {
+      "id": "md1-04",
+      "date": "2026-06-12",
+      "homeTeam": "美国",
+      "awayTeam": "巴拉圭",
+      "score": "4-1",
+      "redCardDistorted": false,
+      "highVarianceFinishing": false,
+      "lineupStatus": "unavailable",
+      "eventStatus": "unavailable",
+      "statisticsStatus": "result_only",
+      "sources": [
+        {
+          "type": "official_result",
+          "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+          "publishedAt": "2026-06-12T23:59:00Z",
+          "summary": "FIFA赛程与赛果入口：United States 4-1 Paraguay。",
+          "archivedText": true
+        },
+        {
+          "type": "text_match_centre",
+          "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+          "publishedAt": "2026-06-12T23:59:00Z",
+          "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+          "archivedText": false
+        }
+      ]
+    },
+    {
+      "id": "md1-05",
+      "date": "2026-06-13",
+      "homeTeam": "卡塔尔",
+      "awayTeam": "瑞士",
+      "score": "1-1",
+      "redCardDistorted": false,
+      "highVarianceFinishing": false,
+      "lineupStatus": "unavailable",
+      "eventStatus": "unavailable",
+      "statisticsStatus": "result_only",
+      "sources": [
+        {
+          "type": "official_result",
+          "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+          "publishedAt": "2026-06-13T23:59:00Z",
+          "summary": "FIFA赛程与赛果入口：Qatar 1-1 Switzerland。",
+          "archivedText": true
+        },
+        {
+          "type": "text_match_centre",
+          "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+          "publishedAt": "2026-06-13T23:59:00Z",
+          "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+          "archivedText": false
+        }
+      ]
+    },
+    {
+      "id": "md1-06",
+      "date": "2026-06-13",
+      "homeTeam": "巴西",
+      "awayTeam": "摩洛哥",
+      "score": "1-1",
+      "redCardDistorted": false,
+      "highVarianceFinishing": false,
+      "lineupStatus": "unavailable",
+      "eventStatus": "unavailable",
+      "statisticsStatus": "result_only",
+      "sources": [
+        {
+          "type": "official_result",
+          "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+          "publishedAt": "2026-06-13T23:59:00Z",
+          "summary": "FIFA赛程与赛果入口：Brazil 1-1 Morocco。",
+          "archivedText": true
+        },
+        {
+          "type": "text_match_centre",
+          "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+          "publishedAt": "2026-06-13T23:59:00Z",
+          "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+          "archivedText": false
+        }
+      ]
+    },
+    {
+      "id": "md1-07",
+      "date": "2026-06-13",
+      "homeTeam": "海地",
+      "awayTeam": "苏格兰",
+      "score": "0-1",
+      "redCardDistorted": false,
+      "highVarianceFinishing": false,
+      "lineupStatus": "unavailable",
+      "eventStatus": "unavailable",
+      "statisticsStatus": "result_only",
+      "sources": [
+        {
+          "type": "official_result",
+          "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+          "publishedAt": "2026-06-13T23:59:00Z",
+          "summary": "FIFA赛程与赛果入口：Haiti 0-1 Scotland。",
+          "archivedText": true
+        },
+        {
+          "type": "text_match_centre",
+          "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+          "publishedAt": "2026-06-13T23:59:00Z",
+          "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+          "archivedText": false
+        }
+      ]
+    },
+    {
+      "id": "md1-08",
+      "date": "2026-06-13",
+      "homeTeam": "澳大利亚",
+      "awayTeam": "土耳其",
+      "score": "2-0",
+      "redCardDistorted": false,
+      "highVarianceFinishing": false,
+      "lineupStatus": "unavailable",
+      "eventStatus": "unavailable",
+      "statisticsStatus": "result_only",
+      "sources": [
+        {
+          "type": "official_result",
+          "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+          "publishedAt": "2026-06-13T23:59:00Z",
+          "summary": "FIFA赛程与赛果入口：Australia 2-0 Turkey。",
+          "archivedText": true
+        },
+        {
+          "type": "text_match_centre",
+          "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+          "publishedAt": "2026-06-13T23:59:00Z",
+          "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+          "archivedText": false
+        }
+      ]
+    },
+    {
+      "id": "md1-09",
+      "date": "2026-06-14",
+      "homeTeam": "德国",
+      "awayTeam": "库拉索",
+      "score": "7-1",
+      "redCardDistorted": false,
+      "highVarianceFinishing": true,
+      "lineupStatus": "unavailable",
+      "eventStatus": "unavailable",
+      "statisticsStatus": "result_only",
+      "sources": [
+        {
+          "type": "official_result",
+          "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+          "publishedAt": "2026-06-14T23:59:00Z",
+          "summary": "FIFA赛程与赛果入口：Germany 7-1 Curaçao。",
+          "archivedText": true
+        },
+        {
+          "type": "text_match_centre",
+          "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+          "publishedAt": "2026-06-14T23:59:00Z",
+          "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+          "archivedText": false
+        }
+      ]
+    },
+    {
+      "id": "md1-10",
+      "date": "2026-06-14",
+      "homeTeam": "科特迪瓦",
+      "awayTeam": "厄瓜多尔",
+      "score": "1-0",
+      "redCardDistorted": false,
+      "highVarianceFinishing": false,
+      "lineupStatus": "unavailable",
+      "eventStatus": "unavailable",
+      "statisticsStatus": "result_only",
+      "sources": [
+        {
+          "type": "official_result",
+          "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+          "publishedAt": "2026-06-14T23:59:00Z",
+          "summary": "FIFA赛程与赛果入口：Ivory Coast 1-0 Ecuador。",
+          "archivedText": true
+        },
+        {
+          "type": "text_match_centre",
+          "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+          "publishedAt": "2026-06-14T23:59:00Z",
+          "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+          "archivedText": false
+        }
+      ]
+    },
+    {
+      "id": "md1-11",
+      "date": "2026-06-14",
+      "homeTeam": "荷兰",
+      "awayTeam": "日本",
+      "score": "2-2",
+      "redCardDistorted": false,
+      "highVarianceFinishing": false,
+      "lineupStatus": "unavailable",
+      "eventStatus": "unavailable",
+      "statisticsStatus": "result_only",
+      "sources": [
+        {
+          "type": "official_result",
+          "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+          "publishedAt": "2026-06-14T23:59:00Z",
+          "summary": "FIFA赛程与赛果入口：Netherlands 2-2 Japan。",
+          "archivedText": true
+        },
+        {
+          "type": "text_match_centre",
+          "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+          "publishedAt": "2026-06-14T23:59:00Z",
+          "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+          "archivedText": false
+        }
+      ]
+    },
+    {
+      "id": "md1-12",
+      "date": "2026-06-14",
+      "homeTeam": "瑞典",
+      "awayTeam": "突尼斯",
+      "score": "5-1",
+      "redCardDistorted": false,
+      "highVarianceFinishing": true,
+      "lineupStatus": "unavailable",
+      "eventStatus": "unavailable",
+      "statisticsStatus": "result_only",
+      "sources": [
+        {
+          "type": "official_result",
+          "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+          "publishedAt": "2026-06-14T23:59:00Z",
+          "summary": "FIFA赛程与赛果入口：Sweden 5-1 Tunisia。",
+          "archivedText": true
+        },
+        {
+          "type": "text_match_centre",
+          "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+          "publishedAt": "2026-06-14T23:59:00Z",
+          "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+          "archivedText": false
+        }
+      ]
+    },
+    {
+      "id": "md1-13",
+      "date": "2026-06-15",
+      "homeTeam": "比利时",
+      "awayTeam": "埃及",
+      "score": "1-1",
+      "redCardDistorted": false,
+      "highVarianceFinishing": false,
+      "lineupStatus": "unavailable",
+      "eventStatus": "unavailable",
+      "statisticsStatus": "result_only",
+      "sources": [
+        {
+          "type": "official_result",
+          "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+          "publishedAt": "2026-06-15T23:59:00Z",
+          "summary": "FIFA赛程与赛果入口：Belgium 1-1 Egypt。",
+          "archivedText": true
+        },
+        {
+          "type": "text_match_centre",
+          "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+          "publishedAt": "2026-06-15T23:59:00Z",
+          "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+          "archivedText": false
+        }
+      ]
+    },
+    {
+      "id": "md1-14",
+      "date": "2026-06-15",
+      "homeTeam": "伊朗",
+      "awayTeam": "新西兰",
+      "score": "2-2",
+      "redCardDistorted": false,
+      "highVarianceFinishing": false,
+      "lineupStatus": "unavailable",
+      "eventStatus": "unavailable",
+      "statisticsStatus": "result_only",
+      "sources": [
+        {
+          "type": "official_result",
+          "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+          "publishedAt": "2026-06-15T23:59:00Z",
+          "summary": "FIFA赛程与赛果入口：Iran 2-2 New Zealand。",
+          "archivedText": true
+        },
+        {
+          "type": "text_match_centre",
+          "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+          "publishedAt": "2026-06-15T23:59:00Z",
+          "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+          "archivedText": false
+        }
+      ]
+    },
+    {
+      "id": "md1-15",
+      "date": "2026-06-15",
+      "homeTeam": "西班牙",
+      "awayTeam": "佛得角",
+      "score": "0-0",
+      "redCardDistorted": false,
+      "highVarianceFinishing": false,
+      "lineupStatus": "unavailable",
+      "eventStatus": "unavailable",
+      "statisticsStatus": "result_only",
+      "sources": [
+        {
+          "type": "official_result",
+          "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+          "publishedAt": "2026-06-15T23:59:00Z",
+          "summary": "FIFA赛程与赛果入口：Spain 0-0 Cape Verde。",
+          "archivedText": true
+        },
+        {
+          "type": "text_match_centre",
+          "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+          "publishedAt": "2026-06-15T23:59:00Z",
+          "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+          "archivedText": false
+        }
+      ]
+    },
+    {
+      "id": "md1-16",
+      "date": "2026-06-15",
+      "homeTeam": "沙特",
+      "awayTeam": "乌拉圭",
+      "score": "1-1",
+      "redCardDistorted": false,
+      "highVarianceFinishing": false,
+      "lineupStatus": "unavailable",
+      "eventStatus": "unavailable",
+      "statisticsStatus": "result_only",
+      "sources": [
+        {
+          "type": "official_result",
+          "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+          "publishedAt": "2026-06-15T23:59:00Z",
+          "summary": "FIFA赛程与赛果入口：Saudi Arabia 1-1 Uruguay。",
+          "archivedText": true
+        },
+        {
+          "type": "text_match_centre",
+          "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+          "publishedAt": "2026-06-15T23:59:00Z",
+          "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+          "archivedText": false
+        }
+      ]
+    },
+    {
+      "id": "md1-17",
+      "date": "2026-06-16",
+      "homeTeam": "法国",
+      "awayTeam": "塞内加尔",
+      "score": "3-1",
+      "redCardDistorted": false,
+      "highVarianceFinishing": false,
+      "lineupStatus": "unavailable",
+      "eventStatus": "unavailable",
+      "statisticsStatus": "result_only",
+      "sources": [
+        {
+          "type": "official_result",
+          "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+          "publishedAt": "2026-06-16T23:59:00Z",
+          "summary": "FIFA赛程与赛果入口：France 3-1 Senegal。",
+          "archivedText": true
+        },
+        {
+          "type": "text_match_centre",
+          "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+          "publishedAt": "2026-06-16T23:59:00Z",
+          "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+          "archivedText": false
+        }
+      ]
+    },
+    {
+      "id": "md1-18",
+      "date": "2026-06-16",
+      "homeTeam": "伊拉克",
+      "awayTeam": "挪威",
+      "score": "1-4",
+      "redCardDistorted": false,
+      "highVarianceFinishing": false,
+      "lineupStatus": "unavailable",
+      "eventStatus": "unavailable",
+      "statisticsStatus": "result_only",
+      "sources": [
+        {
+          "type": "official_result",
+          "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+          "publishedAt": "2026-06-16T23:59:00Z",
+          "summary": "FIFA赛程与赛果入口：Iraq 1-4 Norway。",
+          "archivedText": true
+        },
+        {
+          "type": "text_match_centre",
+          "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+          "publishedAt": "2026-06-16T23:59:00Z",
+          "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+          "archivedText": false
+        }
+      ]
+    },
+    {
+      "id": "md1-19",
+      "date": "2026-06-16",
+      "homeTeam": "阿根廷",
+      "awayTeam": "阿尔及利亚",
+      "score": "3-0",
+      "redCardDistorted": false,
+      "highVarianceFinishing": false,
+      "lineupStatus": "unavailable",
+      "eventStatus": "unavailable",
+      "statisticsStatus": "result_only",
+      "sources": [
+        {
+          "type": "official_result",
+          "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+          "publishedAt": "2026-06-16T23:59:00Z",
+          "summary": "FIFA赛程与赛果入口：Argentina 3-0 Algeria。",
+          "archivedText": true
+        },
+        {
+          "type": "text_match_centre",
+          "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+          "publishedAt": "2026-06-16T23:59:00Z",
+          "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+          "archivedText": false
+        }
+      ]
+    },
+    {
+      "id": "md1-20",
+      "date": "2026-06-16",
+      "homeTeam": "奥地利",
+      "awayTeam": "约旦",
+      "score": "3-1",
+      "redCardDistorted": false,
+      "highVarianceFinishing": false,
+      "lineupStatus": "unavailable",
+      "eventStatus": "unavailable",
+      "statisticsStatus": "result_only",
+      "sources": [
+        {
+          "type": "official_result",
+          "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+          "publishedAt": "2026-06-16T23:59:00Z",
+          "summary": "FIFA赛程与赛果入口：Austria 3-1 Jordan。",
+          "archivedText": true
+        },
+        {
+          "type": "text_match_centre",
+          "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+          "publishedAt": "2026-06-16T23:59:00Z",
+          "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+          "archivedText": false
+        }
+      ]
+    },
+    {
+      "id": "md1-21",
+      "date": "2026-06-17",
+      "homeTeam": "葡萄牙",
+      "awayTeam": "民主刚果",
+      "score": "1-1",
+      "redCardDistorted": false,
+      "highVarianceFinishing": false,
+      "lineupStatus": "unavailable",
+      "eventStatus": "unavailable",
+      "statisticsStatus": "result_only",
+      "sources": [
+        {
+          "type": "official_result",
+          "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+          "publishedAt": "2026-06-17T23:59:00Z",
+          "summary": "FIFA赛程与赛果入口：Portugal 1-1 DR Congo。",
+          "archivedText": true
+        },
+        {
+          "type": "text_match_centre",
+          "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+          "publishedAt": "2026-06-17T23:59:00Z",
+          "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+          "archivedText": false
+        }
+      ]
+    },
+    {
+      "id": "md1-22",
+      "date": "2026-06-17",
+      "homeTeam": "乌兹别克斯坦",
+      "awayTeam": "哥伦比亚",
+      "score": "1-3",
+      "redCardDistorted": false,
+      "highVarianceFinishing": false,
+      "lineupStatus": "unavailable",
+      "eventStatus": "unavailable",
+      "statisticsStatus": "result_only",
+      "sources": [
+        {
+          "type": "official_result",
+          "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+          "publishedAt": "2026-06-17T23:59:00Z",
+          "summary": "FIFA赛程与赛果入口：Uzbekistan 1-3 Colombia。",
+          "archivedText": true
+        },
+        {
+          "type": "text_match_centre",
+          "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+          "publishedAt": "2026-06-17T23:59:00Z",
+          "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+          "archivedText": false
+        }
+      ]
+    },
+    {
+      "id": "md1-23",
+      "date": "2026-06-17",
+      "homeTeam": "加纳",
+      "awayTeam": "巴拿马",
+      "score": "1-0",
+      "redCardDistorted": false,
+      "highVarianceFinishing": false,
+      "lineupStatus": "unavailable",
+      "eventStatus": "unavailable",
+      "statisticsStatus": "result_only",
+      "sources": [
+        {
+          "type": "official_result",
+          "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+          "publishedAt": "2026-06-17T23:59:00Z",
+          "summary": "FIFA赛程与赛果入口：Ghana 1-0 Panama。",
+          "archivedText": true
+        },
+        {
+          "type": "text_match_centre",
+          "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+          "publishedAt": "2026-06-17T23:59:00Z",
+          "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+          "archivedText": false
+        }
+      ]
+    },
+    {
+      "id": "md1-24",
+      "date": "2026-06-17",
+      "homeTeam": "英格兰",
+      "awayTeam": "克罗地亚",
+      "score": "4-2",
+      "redCardDistorted": false,
+      "highVarianceFinishing": true,
+      "lineupStatus": "unavailable",
+      "eventStatus": "unavailable",
+      "statisticsStatus": "result_only",
+      "sources": [
+        {
+          "type": "official_result",
+          "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+          "publishedAt": "2026-06-17T23:59:00Z",
+          "summary": "FIFA赛程与赛果入口：England 4-2 Croatia。",
+          "archivedText": true
+        },
+        {
+          "type": "text_match_centre",
+          "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+          "publishedAt": "2026-06-17T23:59:00Z",
+          "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+          "archivedText": false
+        }
+      ]
+    }
+  ],
+  "teams": [
+    {
+      "team": "乌兹别克斯坦",
+      "teamEn": "Uzbekistan",
+      "opponent": "哥伦比亚",
+      "side": "home",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-17",
+      "matchId": "md1-22",
+      "scoreFor": 1,
+      "scoreAgainst": 3,
+      "eloBeforeReview": 1714,
+      "expectedGoalsReference": 0.52,
+      "expectedGoalsAgainstReference": 2.03,
+      "performanceStatus": "near_expectation",
+      "summary": "乌兹别克斯坦首轮对阵哥伦比亚取得负；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.65,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-17T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：Uzbekistan 1-3 Colombia。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-17T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": 0.0078,
+        "defenseDelta": -0.0158,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "乌拉圭",
+      "teamEn": "Uruguay",
+      "opponent": "沙特",
+      "side": "away",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-15",
+      "matchId": "md1-16",
+      "scoreFor": 1,
+      "scoreAgainst": 1,
+      "eloBeforeReview": 1870,
+      "expectedGoalsReference": 2.0396,
+      "expectedGoalsAgainstReference": 0.5104,
+      "performanceStatus": "near_expectation",
+      "summary": "乌拉圭首轮对阵沙特取得平；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.65,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-15T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：Saudi Arabia 1-1 Uruguay。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-15T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": -0.0169,
+        "defenseDelta": -0.008,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "伊拉克",
+      "teamEn": "Iraq",
+      "opponent": "挪威",
+      "side": "home",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-16",
+      "matchId": "md1-18",
+      "scoreFor": 1,
+      "scoreAgainst": 4,
+      "eloBeforeReview": 1592,
+      "expectedGoalsReference": 0.3638,
+      "expectedGoalsAgainstReference": 2.1862,
+      "performanceStatus": "near_expectation",
+      "summary": "伊拉克首轮对阵挪威取得负；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.65,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-16T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：Iraq 1-4 Norway。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-16T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": 0.0103,
+        "defenseDelta": -0.0295,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "伊朗",
+      "teamEn": "Iran",
+      "opponent": "新西兰",
+      "side": "home",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-15",
+      "matchId": "md1-14",
+      "scoreFor": 2,
+      "scoreAgainst": 2,
+      "eloBeforeReview": 1756,
+      "expectedGoalsReference": 1.7981,
+      "expectedGoalsAgainstReference": 0.7519,
+      "performanceStatus": "near_expectation",
+      "summary": "伊朗首轮对阵新西兰取得平；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.65,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-15T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：Iran 2-2 New Zealand。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-15T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": 0.0033,
+        "defenseDelta": -0.0203,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "佛得角",
+      "teamEn": "Cape Verde",
+      "opponent": "西班牙",
+      "side": "away",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-15",
+      "matchId": "md1-15",
+      "scoreFor": 0,
+      "scoreAgainst": 0,
+      "eloBeforeReview": 1606,
+      "expectedGoalsReference": 0.15,
+      "expectedGoalsAgainstReference": 2.4,
+      "performanceStatus": "near_expectation",
+      "summary": "佛得角首轮对阵西班牙取得平；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.65,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-15T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：Spain 0-0 Cape Verde。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-15T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": -0.0024,
+        "defenseDelta": 0.039,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "克罗地亚",
+      "teamEn": "Croatia",
+      "opponent": "英格兰",
+      "side": "away",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-17",
+      "matchId": "md1-24",
+      "scoreFor": 2,
+      "scoreAgainst": 4,
+      "eloBeforeReview": 1881,
+      "expectedGoalsReference": 0.7629,
+      "expectedGoalsAgainstReference": 1.7871,
+      "performanceStatus": "near_expectation",
+      "summary": "克罗地亚首轮对阵英格兰取得负；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.5,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-17T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：England 4-2 Croatia。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-17T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": 0.0155,
+        "defenseDelta": -0.0277,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": true,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "加拿大",
+      "teamEn": "Canada",
+      "opponent": "波黑",
+      "side": "home",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-12",
+      "matchId": "md1-03",
+      "scoreFor": 1,
+      "scoreAgainst": 1,
+      "eloBeforeReview": 1767,
+      "expectedGoalsReference": 1.7231,
+      "expectedGoalsAgainstReference": 0.8269,
+      "performanceStatus": "near_expectation",
+      "summary": "加拿大首轮对阵波黑取得平；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.65,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-12T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：Canada 1-1 Bosnia and Herzegovina。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-12T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": -0.0118,
+        "defenseDelta": -0.0028,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "加纳",
+      "teamEn": "Ghana",
+      "opponent": "巴拿马",
+      "side": "home",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-17",
+      "matchId": "md1-23",
+      "scoreFor": 1,
+      "scoreAgainst": 0,
+      "eloBeforeReview": 1510,
+      "expectedGoalsReference": 0.64,
+      "expectedGoalsAgainstReference": 1.91,
+      "performanceStatus": "near_expectation",
+      "summary": "加纳首轮对阵巴拿马取得胜；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.65,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-17T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：Ghana 1-0 Panama。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-17T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": 0.0058,
+        "defenseDelta": 0.031,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "南非",
+      "teamEn": "South Africa",
+      "opponent": "墨西哥",
+      "side": "away",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-11",
+      "matchId": "md1-01",
+      "scoreFor": 0,
+      "scoreAgainst": 2,
+      "eloBeforeReview": 1511,
+      "expectedGoalsReference": 0.2962,
+      "expectedGoalsAgainstReference": 2.2538,
+      "performanceStatus": "near_expectation",
+      "summary": "南非首轮对阵墨西哥取得负；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.4,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-11T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：Mexico 2-0 South Africa。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-11T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": -0.003,
+        "defenseDelta": 0.0025,
+        "admissionStatus": "observation_only",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": true,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "卡塔尔",
+      "teamEn": "Qatar",
+      "opponent": "瑞士",
+      "side": "home",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-13",
+      "matchId": "md1-05",
+      "scoreFor": 1,
+      "scoreAgainst": 1,
+      "eloBeforeReview": 1447,
+      "expectedGoalsReference": 0.2061,
+      "expectedGoalsAgainstReference": 2.3439,
+      "performanceStatus": "near_expectation",
+      "summary": "卡塔尔首轮对阵瑞士取得平；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.65,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-13T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：Qatar 1-1 Switzerland。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-13T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": 0.0129,
+        "defenseDelta": 0.0218,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "厄瓜多尔",
+      "teamEn": "Ecuador",
+      "opponent": "科特迪瓦",
+      "side": "away",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-14",
+      "matchId": "md1-10",
+      "scoreFor": 0,
+      "scoreAgainst": 1,
+      "eloBeforeReview": 1890,
+      "expectedGoalsReference": 1.7118,
+      "expectedGoalsAgainstReference": 0.8382,
+      "performanceStatus": "near_expectation",
+      "summary": "厄瓜多尔首轮对阵科特迪瓦取得负；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.65,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-14T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：Ivory Coast 1-0 Ecuador。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-14T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": -0.0278,
+        "defenseDelta": -0.0026,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "哥伦比亚",
+      "teamEn": "Colombia",
+      "opponent": "乌兹别克斯坦",
+      "side": "away",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-17",
+      "matchId": "md1-22",
+      "scoreFor": 3,
+      "scoreAgainst": 1,
+      "eloBeforeReview": 1982,
+      "expectedGoalsReference": 2.03,
+      "expectedGoalsAgainstReference": 0.52,
+      "performanceStatus": "near_expectation",
+      "summary": "哥伦比亚首轮对阵乌兹别克斯坦取得胜；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.65,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-17T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：Uzbekistan 1-3 Colombia。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-17T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": 0.0158,
+        "defenseDelta": -0.0078,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "土耳其",
+      "teamEn": "Turkey",
+      "opponent": "澳大利亚",
+      "side": "away",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-13",
+      "matchId": "md1-08",
+      "scoreFor": 0,
+      "scoreAgainst": 2,
+      "eloBeforeReview": 1849,
+      "expectedGoalsReference": 1.3055,
+      "expectedGoalsAgainstReference": 1.2445,
+      "performanceStatus": "near_expectation",
+      "summary": "土耳其首轮对阵澳大利亚取得负；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.65,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-13T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：Australia 2-0 Turkey。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-13T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": -0.0212,
+        "defenseDelta": -0.0123,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "埃及",
+      "teamEn": "Egypt",
+      "opponent": "比利时",
+      "side": "away",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-15",
+      "matchId": "md1-13",
+      "scoreFor": 1,
+      "scoreAgainst": 1,
+      "eloBeforeReview": 1711,
+      "expectedGoalsReference": 0.7794,
+      "expectedGoalsAgainstReference": 1.7706,
+      "performanceStatus": "near_expectation",
+      "summary": "埃及首轮对阵比利时取得平；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.65,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-15T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：Belgium 1-1 Egypt。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-15T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": 0.0036,
+        "defenseDelta": 0.0125,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "塞内加尔",
+      "teamEn": "Senegal",
+      "opponent": "法国",
+      "side": "away",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-16",
+      "matchId": "md1-17",
+      "scoreFor": 1,
+      "scoreAgainst": 3,
+      "eloBeforeReview": 1839,
+      "expectedGoalsReference": 0.5764,
+      "expectedGoalsAgainstReference": 1.9736,
+      "performanceStatus": "near_expectation",
+      "summary": "塞内加尔首轮对阵法国取得负；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.65,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-16T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：France 3-1 Senegal。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-16T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": 0.0069,
+        "defenseDelta": -0.0167,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "墨西哥",
+      "teamEn": "Mexico",
+      "opponent": "南非",
+      "side": "home",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-11",
+      "matchId": "md1-01",
+      "scoreFor": 2,
+      "scoreAgainst": 0,
+      "eloBeforeReview": 1881,
+      "expectedGoalsReference": 2.2538,
+      "expectedGoalsAgainstReference": 0.2962,
+      "performanceStatus": "near_expectation",
+      "summary": "墨西哥首轮对阵南非取得胜；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.4,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-11T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：Mexico 2-0 South Africa。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-11T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": -0.0025,
+        "defenseDelta": 0.003,
+        "admissionStatus": "observation_only",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": true,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "奥地利",
+      "teamEn": "Austria",
+      "opponent": "约旦",
+      "side": "home",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-16",
+      "matchId": "md1-20",
+      "scoreFor": 3,
+      "scoreAgainst": 1,
+      "eloBeforeReview": 1857,
+      "expectedGoalsReference": 1.8681,
+      "expectedGoalsAgainstReference": 0.6819,
+      "performanceStatus": "near_expectation",
+      "summary": "奥地利首轮对阵约旦取得胜；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.65,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-16T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：Austria 3-1 Jordan。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-16T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": 0.0184,
+        "defenseDelta": -0.0052,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "巴拉圭",
+      "teamEn": "Paraguay",
+      "opponent": "美国",
+      "side": "away",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-12",
+      "matchId": "md1-04",
+      "scoreFor": 1,
+      "scoreAgainst": 4,
+      "eloBeforeReview": 1780,
+      "expectedGoalsReference": 1.275,
+      "expectedGoalsAgainstReference": 1.275,
+      "performanceStatus": "near_expectation",
+      "summary": "巴拉圭首轮对阵美国取得负；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.65,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-12T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：United States 4-1 Paraguay。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-12T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": -0.0045,
+        "defenseDelta": -0.0443,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "巴拿马",
+      "teamEn": "Panama",
+      "opponent": "加纳",
+      "side": "away",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-17",
+      "matchId": "md1-23",
+      "scoreFor": 0,
+      "scoreAgainst": 1,
+      "eloBeforeReview": 1730,
+      "expectedGoalsReference": 1.91,
+      "expectedGoalsAgainstReference": 0.64,
+      "performanceStatus": "near_expectation",
+      "summary": "巴拿马首轮对阵加纳取得负；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.65,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-17T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：Ghana 1-0 Panama。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-17T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": -0.031,
+        "defenseDelta": -0.0058,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "巴西",
+      "teamEn": "Brazil",
+      "opponent": "摩洛哥",
+      "side": "home",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-13",
+      "matchId": "md1-06",
+      "scoreFor": 1,
+      "scoreAgainst": 1,
+      "eloBeforeReview": 1978,
+      "expectedGoalsReference": 1.6862,
+      "expectedGoalsAgainstReference": 0.8638,
+      "performanceStatus": "near_expectation",
+      "summary": "巴西首轮对阵摩洛哥取得平；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.65,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-13T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：Brazil 1-1 Morocco。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-13T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": -0.0112,
+        "defenseDelta": -0.0022,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "库拉索",
+      "teamEn": "Curaçao",
+      "opponent": "德国",
+      "side": "away",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-14",
+      "matchId": "md1-09",
+      "scoreFor": 1,
+      "scoreAgainst": 7,
+      "eloBeforeReview": 1427,
+      "expectedGoalsReference": 0.15,
+      "expectedGoalsAgainstReference": 2.4,
+      "performanceStatus": "near_expectation",
+      "summary": "库拉索首轮对阵德国取得负；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.5,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-14T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：Germany 7-1 Curaçao。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-14T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": 0.0106,
+        "defenseDelta": -0.0575,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": true,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "德国",
+      "teamEn": "Germany",
+      "opponent": "库拉索",
+      "side": "home",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-14",
+      "matchId": "md1-09",
+      "scoreFor": 7,
+      "scoreAgainst": 1,
+      "eloBeforeReview": 1939,
+      "expectedGoalsReference": 2.4,
+      "expectedGoalsAgainstReference": 0.15,
+      "performanceStatus": "near_expectation",
+      "summary": "德国首轮对阵库拉索取得胜；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.5,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-14T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：Germany 7-1 Curaçao。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-14T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": 0.0575,
+        "defenseDelta": -0.0106,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": true,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "挪威",
+      "teamEn": "Norway",
+      "opponent": "伊拉克",
+      "side": "away",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-16",
+      "matchId": "md1-18",
+      "scoreFor": 4,
+      "scoreAgainst": 1,
+      "eloBeforeReview": 1929,
+      "expectedGoalsReference": 2.1862,
+      "expectedGoalsAgainstReference": 0.3638,
+      "performanceStatus": "near_expectation",
+      "summary": "挪威首轮对阵伊拉克取得胜；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.65,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-16T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：Iraq 1-4 Norway。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-16T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": 0.0295,
+        "defenseDelta": -0.0103,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "捷克",
+      "teamEn": "Czechia",
+      "opponent": "韩国",
+      "side": "away",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-11",
+      "matchId": "md1-02",
+      "scoreFor": 1,
+      "scoreAgainst": 2,
+      "eloBeforeReview": 1712,
+      "expectedGoalsReference": 1.0511,
+      "expectedGoalsAgainstReference": 1.4989,
+      "performanceStatus": "near_expectation",
+      "summary": "捷克首轮对阵韩国取得负；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.65,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-11T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：South Korea 2-1 Czechia。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-11T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": -0.0008,
+        "defenseDelta": -0.0081,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "摩洛哥",
+      "teamEn": "Morocco",
+      "opponent": "巴西",
+      "side": "away",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-13",
+      "matchId": "md1-06",
+      "scoreFor": 1,
+      "scoreAgainst": 1,
+      "eloBeforeReview": 1840,
+      "expectedGoalsReference": 0.8638,
+      "expectedGoalsAgainstReference": 1.6862,
+      "performanceStatus": "near_expectation",
+      "summary": "摩洛哥首轮对阵巴西取得平；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.65,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-13T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：Brazil 1-1 Morocco。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-13T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": 0.0022,
+        "defenseDelta": 0.0112,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "新西兰",
+      "teamEn": "New Zealand",
+      "opponent": "伊朗",
+      "side": "away",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-15",
+      "matchId": "md1-14",
+      "scoreFor": 2,
+      "scoreAgainst": 2,
+      "eloBeforeReview": 1578,
+      "expectedGoalsReference": 0.7519,
+      "expectedGoalsAgainstReference": 1.7981,
+      "performanceStatus": "near_expectation",
+      "summary": "新西兰首轮对阵伊朗取得平；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.65,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-15T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：Iran 2-2 New Zealand。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-15T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": 0.0203,
+        "defenseDelta": -0.0033,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "日本",
+      "teamEn": "Japan",
+      "opponent": "荷兰",
+      "side": "away",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-14",
+      "matchId": "md1-11",
+      "scoreFor": 2,
+      "scoreAgainst": 2,
+      "eloBeforeReview": 1910,
+      "expectedGoalsReference": 1.1716,
+      "expectedGoalsAgainstReference": 1.3784,
+      "performanceStatus": "near_expectation",
+      "summary": "日本首轮对阵荷兰取得平；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.65,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-14T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：Netherlands 2-2 Japan。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-14T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": 0.0135,
+        "defenseDelta": -0.0101,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "比利时",
+      "teamEn": "Belgium",
+      "opponent": "埃及",
+      "side": "home",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-15",
+      "matchId": "md1-13",
+      "scoreFor": 1,
+      "scoreAgainst": 1,
+      "eloBeforeReview": 1879,
+      "expectedGoalsReference": 1.7706,
+      "expectedGoalsAgainstReference": 0.7794,
+      "performanceStatus": "near_expectation",
+      "summary": "比利时首轮对阵埃及取得平；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.65,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-15T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：Belgium 1-1 Egypt。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-15T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": -0.0125,
+        "defenseDelta": -0.0036,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "民主刚果",
+      "teamEn": "DR Congo",
+      "opponent": "葡萄牙",
+      "side": "away",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-17",
+      "matchId": "md1-21",
+      "scoreFor": 1,
+      "scoreAgainst": 1,
+      "eloBeforeReview": 1674,
+      "expectedGoalsReference": 0.4611,
+      "expectedGoalsAgainstReference": 2.0889,
+      "performanceStatus": "near_expectation",
+      "summary": "民主刚果首轮对阵葡萄牙取得平；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.65,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-17T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：Portugal 1-1 DR Congo。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-17T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": 0.0088,
+        "defenseDelta": 0.0177,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "沙特",
+      "teamEn": "Saudi Arabia",
+      "opponent": "乌拉圭",
+      "side": "home",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-15",
+      "matchId": "md1-16",
+      "scoreFor": 1,
+      "scoreAgainst": 1,
+      "eloBeforeReview": 1598,
+      "expectedGoalsReference": 0.5104,
+      "expectedGoalsAgainstReference": 2.0396,
+      "performanceStatus": "near_expectation",
+      "summary": "沙特首轮对阵乌拉圭取得平；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.65,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-15T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：Saudi Arabia 1-1 Uruguay。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-15T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": 0.008,
+        "defenseDelta": 0.0169,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "法国",
+      "teamEn": "France",
+      "opponent": "塞内加尔",
+      "side": "home",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-16",
+      "matchId": "md1-17",
+      "scoreFor": 3,
+      "scoreAgainst": 1,
+      "eloBeforeReview": 2084,
+      "expectedGoalsReference": 1.9736,
+      "expectedGoalsAgainstReference": 0.5764,
+      "performanceStatus": "near_expectation",
+      "summary": "法国首轮对阵塞内加尔取得胜；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.65,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-16T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：France 3-1 Senegal。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-16T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": 0.0167,
+        "defenseDelta": -0.0069,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "波黑",
+      "teamEn": "Bosnia and Herzegovina",
+      "opponent": "加拿大",
+      "side": "away",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-12",
+      "matchId": "md1-03",
+      "scoreFor": 1,
+      "scoreAgainst": 1,
+      "eloBeforeReview": 1616,
+      "expectedGoalsReference": 0.8269,
+      "expectedGoalsAgainstReference": 1.7231,
+      "performanceStatus": "near_expectation",
+      "summary": "波黑首轮对阵加拿大取得平；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.65,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-12T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：Canada 1-1 Bosnia and Herzegovina。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-12T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": 0.0028,
+        "defenseDelta": 0.0118,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "海地",
+      "teamEn": "Haiti",
+      "opponent": "苏格兰",
+      "side": "home",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-13",
+      "matchId": "md1-07",
+      "scoreFor": 0,
+      "scoreAgainst": 1,
+      "eloBeforeReview": 1536,
+      "expectedGoalsReference": 0.5443,
+      "expectedGoalsAgainstReference": 2.0057,
+      "performanceStatus": "near_expectation",
+      "summary": "海地首轮对阵苏格兰取得负；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.65,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-13T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：Haiti 0-1 Scotland。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-13T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": -0.0088,
+        "defenseDelta": 0.0163,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "澳大利亚",
+      "teamEn": "Australia",
+      "opponent": "土耳其",
+      "side": "home",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-13",
+      "matchId": "md1-08",
+      "scoreFor": 2,
+      "scoreAgainst": 0,
+      "eloBeforeReview": 1839,
+      "expectedGoalsReference": 1.2445,
+      "expectedGoalsAgainstReference": 1.3055,
+      "performanceStatus": "near_expectation",
+      "summary": "澳大利亚首轮对阵土耳其取得胜；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.65,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-13T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：Australia 2-0 Turkey。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-13T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": 0.0123,
+        "defenseDelta": 0.0212,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "瑞典",
+      "teamEn": "Sweden",
+      "opponent": "突尼斯",
+      "side": "home",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-14",
+      "matchId": "md1-12",
+      "scoreFor": 5,
+      "scoreAgainst": 1,
+      "eloBeforeReview": 1755,
+      "expectedGoalsReference": 1.7761,
+      "expectedGoalsAgainstReference": 0.7739,
+      "performanceStatus": "near_expectation",
+      "summary": "瑞典首轮对阵突尼斯取得胜；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.5,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-14T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：Sweden 5-1 Tunisia。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-14T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": 0.0403,
+        "defenseDelta": -0.0028,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": true,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "瑞士",
+      "teamEn": "Switzerland",
+      "opponent": "卡塔尔",
+      "side": "away",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-13",
+      "matchId": "md1-05",
+      "scoreFor": 1,
+      "scoreAgainst": 1,
+      "eloBeforeReview": 1865,
+      "expectedGoalsReference": 2.3439,
+      "expectedGoalsAgainstReference": 0.2061,
+      "performanceStatus": "near_expectation",
+      "summary": "瑞士首轮对阵卡塔尔取得平；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.65,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-13T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：Qatar 1-1 Switzerland。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-13T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": -0.0218,
+        "defenseDelta": -0.0129,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "科特迪瓦",
+      "teamEn": "Ivory Coast",
+      "opponent": "厄瓜多尔",
+      "side": "home",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-14",
+      "matchId": "md1-10",
+      "scoreFor": 1,
+      "scoreAgainst": 0,
+      "eloBeforeReview": 1743,
+      "expectedGoalsReference": 0.8382,
+      "expectedGoalsAgainstReference": 1.7118,
+      "performanceStatus": "near_expectation",
+      "summary": "科特迪瓦首轮对阵厄瓜多尔取得胜；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.65,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-14T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：Ivory Coast 1-0 Ecuador。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-14T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": 0.0026,
+        "defenseDelta": 0.0278,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "突尼斯",
+      "teamEn": "Tunisia",
+      "opponent": "瑞典",
+      "side": "away",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-14",
+      "matchId": "md1-12",
+      "scoreFor": 1,
+      "scoreAgainst": 5,
+      "eloBeforeReview": 1585,
+      "expectedGoalsReference": 0.7739,
+      "expectedGoalsAgainstReference": 1.7761,
+      "performanceStatus": "near_expectation",
+      "summary": "突尼斯首轮对阵瑞典取得负；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.5,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-14T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：Sweden 5-1 Tunisia。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-14T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": 0.0028,
+        "defenseDelta": -0.0403,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": true,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "约旦",
+      "teamEn": "Jordan",
+      "opponent": "奥地利",
+      "side": "away",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-16",
+      "matchId": "md1-20",
+      "scoreFor": 1,
+      "scoreAgainst": 3,
+      "eloBeforeReview": 1653,
+      "expectedGoalsReference": 0.6819,
+      "expectedGoalsAgainstReference": 1.8681,
+      "performanceStatus": "near_expectation",
+      "summary": "约旦首轮对阵奥地利取得负；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.65,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-16T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：Austria 3-1 Jordan。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-16T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": 0.0052,
+        "defenseDelta": -0.0184,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "美国",
+      "teamEn": "United States",
+      "opponent": "巴拉圭",
+      "side": "home",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-12",
+      "matchId": "md1-04",
+      "scoreFor": 4,
+      "scoreAgainst": 1,
+      "eloBeforeReview": 1780,
+      "expectedGoalsReference": 1.275,
+      "expectedGoalsAgainstReference": 1.275,
+      "performanceStatus": "near_expectation",
+      "summary": "美国首轮对阵巴拉圭取得胜；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.65,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-12T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：United States 4-1 Paraguay。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-12T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": 0.0443,
+        "defenseDelta": 0.0045,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "苏格兰",
+      "teamEn": "Scotland",
+      "opponent": "海地",
+      "side": "away",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-13",
+      "matchId": "md1-07",
+      "scoreFor": 1,
+      "scoreAgainst": 0,
+      "eloBeforeReview": 1794,
+      "expectedGoalsReference": 2.0057,
+      "expectedGoalsAgainstReference": 0.5443,
+      "performanceStatus": "near_expectation",
+      "summary": "苏格兰首轮对阵海地取得胜；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.65,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-13T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：Haiti 0-1 Scotland。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-13T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": -0.0163,
+        "defenseDelta": 0.0088,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "英格兰",
+      "teamEn": "England",
+      "opponent": "克罗地亚",
+      "side": "home",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-17",
+      "matchId": "md1-24",
+      "scoreFor": 4,
+      "scoreAgainst": 2,
+      "eloBeforeReview": 2055,
+      "expectedGoalsReference": 1.7871,
+      "expectedGoalsAgainstReference": 0.7629,
+      "performanceStatus": "near_expectation",
+      "summary": "英格兰首轮对阵克罗地亚取得胜；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.5,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-17T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：England 4-2 Croatia。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-17T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": 0.0277,
+        "defenseDelta": -0.0155,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": true,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "荷兰",
+      "teamEn": "Netherlands",
+      "opponent": "日本",
+      "side": "home",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-14",
+      "matchId": "md1-11",
+      "scoreFor": 2,
+      "scoreAgainst": 2,
+      "eloBeforeReview": 1944,
+      "expectedGoalsReference": 1.3784,
+      "expectedGoalsAgainstReference": 1.1716,
+      "performanceStatus": "near_expectation",
+      "summary": "荷兰首轮对阵日本取得平；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.65,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-14T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：Netherlands 2-2 Japan。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-14T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": 0.0101,
+        "defenseDelta": -0.0135,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "葡萄牙",
+      "teamEn": "Portugal",
+      "opponent": "民主刚果",
+      "side": "home",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-17",
+      "matchId": "md1-21",
+      "scoreFor": 1,
+      "scoreAgainst": 1,
+      "eloBeforeReview": 1967,
+      "expectedGoalsReference": 2.0889,
+      "expectedGoalsAgainstReference": 0.4611,
+      "performanceStatus": "near_expectation",
+      "summary": "葡萄牙首轮对阵民主刚果取得平；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.65,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-17T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：Portugal 1-1 DR Congo。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-17T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": -0.0177,
+        "defenseDelta": -0.0088,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "西班牙",
+      "teamEn": "Spain",
+      "opponent": "佛得角",
+      "side": "home",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-15",
+      "matchId": "md1-15",
+      "scoreFor": 0,
+      "scoreAgainst": 0,
+      "eloBeforeReview": 2129,
+      "expectedGoalsReference": 2.4,
+      "expectedGoalsAgainstReference": 0.15,
+      "performanceStatus": "near_expectation",
+      "summary": "西班牙首轮对阵佛得角取得平；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.65,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-15T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：Spain 0-0 Cape Verde。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-15T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": -0.039,
+        "defenseDelta": 0.0024,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "阿尔及利亚",
+      "teamEn": "Algeria",
+      "opponent": "阿根廷",
+      "side": "away",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-16",
+      "matchId": "md1-19",
+      "scoreFor": 0,
+      "scoreAgainst": 3,
+      "eloBeforeReview": 1759,
+      "expectedGoalsReference": 0.2982,
+      "expectedGoalsAgainstReference": 2.2518,
+      "performanceStatus": "near_expectation",
+      "summary": "阿尔及利亚首轮对阵阿根廷取得负；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.65,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-16T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：Argentina 3-0 Algeria。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-16T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": -0.0048,
+        "defenseDelta": -0.0122,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "阿根廷",
+      "teamEn": "Argentina",
+      "opponent": "阿尔及利亚",
+      "side": "home",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-16",
+      "matchId": "md1-19",
+      "scoreFor": 3,
+      "scoreAgainst": 0,
+      "eloBeforeReview": 2128,
+      "expectedGoalsReference": 2.2518,
+      "expectedGoalsAgainstReference": 0.2982,
+      "performanceStatus": "near_expectation",
+      "summary": "阿根廷首轮对阵阿尔及利亚取得胜；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.65,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-16T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：Argentina 3-0 Algeria。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-16T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": 0.0122,
+        "defenseDelta": 0.0048,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    },
+    {
+      "team": "韩国",
+      "teamEn": "South Korea",
+      "opponent": "捷克",
+      "side": "home",
+      "observedMatchday": 1,
+      "observedDate": "2026-06-11",
+      "matchId": "md1-02",
+      "scoreFor": 2,
+      "scoreAgainst": 1,
+      "eloBeforeReview": 1786,
+      "expectedGoalsReference": 1.4989,
+      "expectedGoalsAgainstReference": 1.0511,
+      "performanceStatus": "near_expectation",
+      "summary": "韩国首轮对阵捷克取得胜；首轮赛果兑现大致处于Elo赛前中性预期附近。详细战术维度等待可归档文字赛况佐证。",
+      "evidenceConfidence": 0.65,
+      "dimensions": {
+        "attackCreation": null,
+        "defensiveControl": null,
+        "midfieldProgression": null,
+        "transition": null,
+        "setPieces": null,
+        "goalkeeping": null,
+        "stamina": null,
+        "status": "insufficient_archived_text_detail"
+      },
+      "commentaryEvidence": {
+        "mode": "text_only",
+        "archivedMinuteByMinute": false,
+        "labels": [],
+        "note": "文字赛况入口已记录，但逐分钟正文未归档；文本评价不直接修改概率或xG。",
+        "sources": [
+          {
+            "type": "official_result",
+            "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+            "publishedAt": "2026-06-11T23:59:00Z",
+            "summary": "FIFA赛程与赛果入口：South Korea 2-1 Czechia。",
+            "archivedText": true
+          },
+          {
+            "type": "text_match_centre",
+            "url": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "publishedAt": "2026-06-11T23:59:00Z",
+            "summary": "文字比赛中心来源索引；本地未归档逐分钟正文，因此不据此推断压迫、推进或机会质量。",
+            "archivedText": false
+          }
+        ]
+      },
+      "objectiveForm": {
+        "attackDelta": 0.0081,
+        "defenseDelta": 0.0008,
+        "admissionStatus": "enabled",
+        "derivedFrom": [
+          "official_result",
+          "pre-review_elo_reference"
+        ],
+        "redCardAdjusted": false,
+        "finishingOutlierShrunk": false,
+        "opponentStrengthAdjusted": true,
+        "leadingStateAdjusted": false
+      }
+    }
+  ]
+}

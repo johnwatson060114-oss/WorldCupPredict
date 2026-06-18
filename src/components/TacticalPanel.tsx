@@ -36,6 +36,12 @@ export function TacticalPanel({ match, onOpenDetail }: TacticalPanelProps) {
         <div className="xg-divider" />
         <div><strong>{match.expectedGoals.away.toFixed(2)}</strong><span>客队 xG</span></div>
       </div>
+      {match.modelDecomposition?.longTermExpectedGoals && (
+        <div className="model-decomposition-inline">
+          <span>长期基线 {match.modelDecomposition.longTermExpectedGoals.home.toFixed(2)}-{match.modelDecomposition.longTermExpectedGoals.away.toFixed(2)}</span>
+          <b>首轮状态 {match.tournamentForm?.applied ? '有界生效' : '未改变均值'}</b>
+        </div>
+      )}
       <div className="outcome-bar" aria-label="胜平负概率">
         <span className="home" style={{ width: percent(home) }} />
         <span className="draw" style={{ width: percent(draw) }} />
@@ -71,7 +77,7 @@ export function TacticalPanel({ match, onOpenDetail }: TacticalPanelProps) {
         })}
       </div>
       <div className="uncertainty-note">
-        实际路径数 {match.simulation?.actualPaths.toLocaleString() ?? '100,000'}；未通过消融回测的因素只展示，不修改 xG。
+        实际路径数 {match.simulation?.actualPaths.toLocaleString() ?? '100,000'}；文字赛况只提供标签和置信度，不能直接修改 xG。
       </div>
       <button className="outline-button wide" onClick={onOpenDetail}>查看完整战术推演 <ArrowRight size={15} /></button>
     </aside>

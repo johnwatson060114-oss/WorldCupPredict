@@ -1,84 +1,229 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-18T17:20:06+08:00",
+  "generatedAt": "2026-06-18T16:43:48+08:00",
   "timezone": "Asia/Shanghai",
   "scheduledReviewStartDate": "2026-06-17",
   "productionPolicy": "current model remains primary; optimized model runs as shadow until adoption gates pass",
   "currentModel": {
     "role": "production",
     "spec": "dixon_coles[half_life_days=730,rho=-0.08,shrinkage=6]",
-    "matches": 20,
-    "exact_hits": 5,
+    "matches": 24,
+    "exact_hits": 6,
     "exact_accuracy": 0.25,
-    "core_hits": 9,
-    "core_accuracy": 0.45,
-    "average_log_loss": 1.9030787469219366,
+    "core_hits": 10,
+    "core_accuracy": 0.4166666666666667,
+    "average_log_loss": 1.962818596787418,
+    "average_rps": 0.14654259145926918,
+    "calibration_error": 0.06874999999999999,
     "predicted_bucket_counts": {
       "0": 0,
       "1": 2,
-      "2": 15,
+      "2": 19,
       "3": 3,
       "4": 0,
       "5": 0,
       "6": 0,
       "7+": 0
     },
-    "average_bucketed_expected_total": 2.556589502407718
+    "average_bucketed_expected_total": 2.5251779397991982
   },
   "shadowModel": {
     "role": "shadow",
     "spec": "hierarchical_poisson[rho=0,shrinkage=16]",
-    "matches": 20,
-    "exact_hits": 5,
+    "matches": 24,
+    "exact_hits": 6,
     "exact_accuracy": 0.25,
-    "core_hits": 9,
-    "core_accuracy": 0.45,
-    "average_log_loss": 1.902739991571666,
+    "core_hits": 10,
+    "core_accuracy": 0.4166666666666667,
+    "average_log_loss": 1.948474231622636,
+    "average_rps": 0.1439199198383599,
+    "calibration_error": 0.06874999999999999,
     "predicted_bucket_counts": {
       "0": 0,
       "1": 2,
-      "2": 14,
+      "2": 18,
       "3": 4,
       "4": 0,
       "5": 0,
       "6": 0,
       "7+": 0
     },
-    "average_bucketed_expected_total": 2.611755333108979
+    "average_bucketed_expected_total": 2.590027114410043
+  },
+  "tailShadowModel": {
+    "role": "shadow_only",
+    "spec": "poisson_nb_mixture[dispersion=2,half_life_days=730,rho=-0.04,shrinkage=8,tail_weight=0.2]",
+    "reason": "tests wider high-score tails; first round is diagnostic only",
+    "matches": 24,
+    "exact_hits": 6,
+    "exact_accuracy": 0.25,
+    "core_hits": 10,
+    "core_accuracy": 0.4166666666666667,
+    "average_log_loss": 1.958528823167603,
+    "average_rps": 0.14602008031187472,
+    "calibration_error": 0.0671875,
+    "predicted_bucket_counts": {
+      "0": 0,
+      "1": 4,
+      "2": 18,
+      "3": 2,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7+": 0
+    },
+    "average_bucketed_expected_total": 2.5303467360185667
+  },
+  "strengthAllocationPolicy": {
+    "eloAllocationWeight": 1.0,
+    "validationYears": [
+      "2018",
+      "2022"
+    ],
+    "validationTournament": "FIFA World Cup",
+    "validationMatches": 128,
+    "candidates": {
+      "0.0": {
+        "log_loss": 1.05820066621139,
+        "rps": 0.2305689769195159,
+        "brier": 0.6365667807686298,
+        "calibration_error": 0.059635416666666684
+      },
+      "0.25": {
+        "log_loss": 1.0300898031564707,
+        "rps": 0.22091739430507615,
+        "brier": 0.616784275580417,
+        "calibration_error": 0.05911458333333332
+      },
+      "0.5": {
+        "log_loss": 1.0100955720455662,
+        "rps": 0.21366824481330976,
+        "brier": 0.6015022707644204,
+        "calibration_error": 0.06770833333333331
+      },
+      "0.75": {
+        "log_loss": 0.9983424317317814,
+        "rps": 0.2087979927210718,
+        "brier": 0.5907551176226217,
+        "calibration_error": 0.07526041666666668
+      },
+      "1.0": {
+        "log_loss": 0.9956599332430888,
+        "rps": 0.206183751889683,
+        "brier": 0.5844177652726107,
+        "calibration_error": 0.06848958333333335
+      }
+    },
+    "selectionRule": "lowest chronological validation log loss; tie-break by RPS",
+    "excludedYears": [
+      "2026"
+    ]
+  },
+  "validation2018And2022": {
+    "current": {
+      "matches": 128,
+      "exact_hits": 35,
+      "exact_accuracy": 0.2734375,
+      "core_hits": 65,
+      "core_accuracy": 0.5078125,
+      "average_log_loss": 1.9091964887859956,
+      "average_rps": 0.13621367847656188,
+      "calibration_error": 0.038085937499999986,
+      "predicted_bucket_counts": {
+        "0": 0,
+        "1": 1,
+        "2": 124,
+        "3": 3,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7+": 0
+      },
+      "average_bucketed_expected_total": 2.3958934755050554
+    },
+    "candidate": {
+      "matches": 128,
+      "exact_hits": 36,
+      "exact_accuracy": 0.28125,
+      "core_hits": 64,
+      "core_accuracy": 0.5,
+      "average_log_loss": 1.891425395092195,
+      "average_rps": 0.13475259662832376,
+      "calibration_error": 0.0224609375,
+      "predicted_bucket_counts": {
+        "0": 0,
+        "1": 1,
+        "2": 120,
+        "3": 7,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7+": 0
+      },
+      "average_bucketed_expected_total": 2.4780102811888898
+    },
+    "stable_windows": 4,
+    "windows": [
+      {
+        "window": 1,
+        "matches": 32,
+        "logLossDelta": -0.02380123221702135,
+        "rpsDelta": -0.0003493231514821171,
+        "improved": true
+      },
+      {
+        "window": 2,
+        "matches": 32,
+        "logLossDelta": -0.02314717917451481,
+        "rpsDelta": -0.0019718600347313625,
+        "improved": true
+      },
+      {
+        "window": 3,
+        "matches": 32,
+        "logLossDelta": -0.012386558474715592,
+        "rpsDelta": -0.002028998613695099,
+        "improved": true
+      },
+      {
+        "window": 4,
+        "matches": 32,
+        "logLossDelta": -0.011749404908950156,
+        "rpsDelta": -0.0014941455930439496,
+        "improved": true
+      }
+    ]
   },
   "adoptionDecision": {
-    "status": "keep",
+    "status": "observe",
     "should_switch_model": false,
-    "reason": "candidate has not shown a significant, stable advantage over the current model",
-    "recommendation_zh": "新模型优势不显著，继续使用旧模型。",
+    "reason": "first round is diagnostic only; wait for a forward second-round sample",
+    "recommendation_zh": "首轮只作诊断，等待至少8场第二轮前瞻样本后再判断。",
     "gates": {
       "sample_size": true,
-      "exact_accuracy_lift": false,
-      "extra_exact_hits": false,
-      "log_loss_improvement": false,
-      "core_accuracy_not_materially_worse": true
+      "log_loss_improvement": true,
+      "rps_improvement": true,
+      "calibration_not_materially_worse": true,
+      "stable_windows": true,
+      "second_round_forward_sample": false
     },
     "deltas": {
-      "exact_accuracy_lift": 0.0,
-      "extra_exact_hits": 0,
-      "log_loss_improvement": 0.0003387553502705032,
-      "core_accuracy_delta": 0.0
+      "log_loss_improvement": 0.014344365164782102,
+      "rps_improvement": 0.0026226716209092893,
+      "calibration_delta": 0.0
     },
     "thresholds": {
-      "min_matches": 16,
-      "min_exact_accuracy_lift": 0.08,
-      "min_extra_exact_hits": 3,
-      "min_log_loss_improvement": 0.02,
-      "max_core_accuracy_drop": 0.05
+      "min_matches": 24,
+      "min_second_round_forward_matches": 8,
+      "min_stable_windows": 3,
+      "calibration_tolerance": 0.01
     }
   },
   "dataRefresh": {
-    "status": "ok",
-    "url": "https://raw.githubusercontent.com/martj42/international_results/master/results.csv",
-    "bytes": 3724359,
-    "path": "artifacts/total-goals-backtest/international_results.csv",
-    "refreshedAt": "2026-06-18T17:20:01+08:00"
+    "status": "skipped",
+    "reason": "TOTAL_GOALS_SKIP_FETCH=1",
+    "path": "artifacts\\total-goals-backtest\\international_results.csv"
   },
-  "manualResultRows": 4,
-  "comparisonPath": "artifacts/total-goals-backtest/model_comparison_2026.csv"
+  "manualResultRows": 8,
+  "comparisonPath": "artifacts\\total-goals-backtest\\model_comparison_2026.csv"
 }

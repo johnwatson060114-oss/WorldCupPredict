@@ -90,11 +90,13 @@ export function ValueTable({ matches, selectedId, onSelect }: ValueTableProps) {
                     <small>{percent(match.coverage)}</small>
                   </td>
                   <td>
-                    <span className={`recommendation ${recommendationClass[displayedRecommendation]}`} title={quote.market === '胜平负' && !outcomeDecision.recommended ? '最高胜平负概率不足60%，不进入自动推荐' : quote.reason}>
+                    <span className={`recommendation ${recommendationClass[displayedRecommendation]}`} title={quote.formalBlockReason ?? quote.reason}>
                       {displayedRecommendation === '重点推荐' && <Star size={12} fill="currentColor" />}
                       {displayedRecommendation === '未开售' && <CircleSlash2 size={12} />}
                       {displayedRecommendation}
                     </span>
+                    {quote.marketConflict?.status === 'conflict' && <small className="market-conflict-badge">市场冲突</small>}
+                    {quote.formalEligible && <small className="formal-eligible-badge">正式入池</small>}
                   </td>
                 </tr>
                 )
@@ -104,7 +106,7 @@ export function ValueTable({ matches, selectedId, onSelect }: ValueTableProps) {
         </table>
       </div>
       <div className="table-note">
-        <span>胜平负最高概率达到60%才允许推荐；低于门槛统一观望，不进入资金优化。</span>
+        <span>正式入池还要求官方赔率、正稳健期望且模型与市场最大概率差不超过15%。</span>
         <span>点击任一对阵查看右侧战术解释</span>
       </div>
     </section>

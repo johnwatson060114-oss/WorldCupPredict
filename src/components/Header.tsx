@@ -2,7 +2,7 @@ import { Activity, Clock3, Database, Trophy } from 'lucide-react'
 import { shortDateTime } from '../lib/format'
 import type { DailyForecast } from '../types'
 
-export type NavKey = 'today' | 'analysis' | 'goals' | 'personal' | 'ledger' | 'backtest' | 'method'
+export type NavKey = 'today' | 'analysis' | 'round1' | 'goals' | 'personal' | 'ledger' | 'backtest' | 'method'
 
 interface HeaderProps {
   forecast: DailyForecast
@@ -13,6 +13,7 @@ interface HeaderProps {
 const navItems: Array<{ key: NavKey; label: string }> = [
   { key: 'today', label: '今日方案' },
   { key: 'analysis', label: '比赛分析' },
+  { key: 'round1', label: '首轮评估' },
   { key: 'goals', label: '总进球数' },
   { key: 'personal', label: '我的投注' },
   { key: 'ledger', label: '资金记录' },

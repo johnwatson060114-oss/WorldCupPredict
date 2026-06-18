@@ -69,6 +69,22 @@ export function AnalysisPage({ match }: { match: MatchForecast }) {
           </div>
         </section>
         <section className="panel detail-section audit-section">
+          <div className="section-heading"><div><h2>模型分解与首轮状态</h2><p>总进球环境、实力分配和短期状态分开记录</p></div></div>
+          <div className="model-breakdown-grid">
+            <div><span>长期基线</span><strong>{match.modelDecomposition?.longTermExpectedGoals ? `${match.modelDecomposition.longTermExpectedGoals.home.toFixed(2)} - ${match.modelDecomposition.longTermExpectedGoals.away.toFixed(2)}` : '旧格式'}</strong></div>
+            <div><span>首轮净修正</span><strong>{match.modelDecomposition?.tournamentFormNet ? `${match.modelDecomposition.tournamentFormNet.home >= 0 ? '+' : ''}${match.modelDecomposition.tournamentFormNet.home.toFixed(3)} / ${match.modelDecomposition.tournamentFormNet.away >= 0 ? '+' : ''}${match.modelDecomposition.tournamentFormNet.away.toFixed(3)}` : '0 / 0'}</strong></div>
+            <div><span>最终 xG</span><strong>{match.expectedGoals.home.toFixed(2)} - {match.expectedGoals.away.toFixed(2)}</strong></div>
+            <div><span>Elo 份额权重</span><strong>{match.modelDecomposition?.eloAllocationWeight === undefined ? '--' : `${Math.round(match.modelDecomposition.eloAllocationWeight * 100)}%`}</strong></div>
+            <div><span>文字赛况</span><strong>只做证据标签</strong></div>
+          </div>
+          <div className="audit-list">
+            {match.tournamentForm ? <>
+              <div><b>{match.tournamentForm.home.team}</b><span>{match.tournamentForm.home.summary}</span><small>进攻 {match.tournamentForm.home.attackDelta >= 0 ? '+' : ''}{match.tournamentForm.home.attackDelta.toFixed(3)} · 防守 {match.tournamentForm.home.defenseDelta >= 0 ? '+' : ''}{match.tournamentForm.home.defenseDelta.toFixed(3)} · 衰减 {percent(match.tournamentForm.home.decay)}</small></div>
+              <div><b>{match.tournamentForm.away.team}</b><span>{match.tournamentForm.away.summary}</span><small>进攻 {match.tournamentForm.away.attackDelta >= 0 ? '+' : ''}{match.tournamentForm.away.attackDelta.toFixed(3)} · 防守 {match.tournamentForm.away.defenseDelta >= 0 ? '+' : ''}{match.tournamentForm.away.defenseDelta.toFixed(3)} · 衰减 {percent(match.tournamentForm.away.decay)}</small></div>
+            </> : <p>该快照尚未包含首轮状态层。</p>}
+          </div>
+        </section>
+        <section className="panel detail-section audit-section">
           <div className="section-heading"><div><h2>停赛与替补价值</h2><p>只应用可追踪的首发-替补差值</p></div></div>
           <div className="audit-list">
             {match.lineupImpact?.length ? match.lineupImpact.map((impact) => (

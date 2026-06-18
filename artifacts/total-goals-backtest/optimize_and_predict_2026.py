@@ -15,6 +15,7 @@ from zoneinfo import ZoneInfo
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
+from pipeline.backtest import learn_elo_allocation_weight
 from pipeline.goal_models import ModelSpec, default_candidate_grid, fit_goal_model
 from pipeline.model import total_goals_probabilities
 
@@ -25,17 +26,22 @@ OUT_JSON = ROOT / "artifacts" / "total-goals-backtest" / "optimized_2026_summary
 OUT_CSV = ROOT / "artifacts" / "total-goals-backtest" / "optimized_2026_predictions.csv"
 OUT_COMPARISON_CSV = ROOT / "artifacts" / "total-goals-backtest" / "model_comparison_2026.csv"
 OUT_PUBLIC_REVIEW_JSON = ROOT / "public" / "data" / "total-goals-model-review.json"
+OUT_MODEL_POLICY_JSON = ROOT / "public" / "data" / "model-policy.json"
+PIPELINE_MODEL_POLICY_JSON = ROOT / "pipeline" / "data" / "model-policy.json"
 RESULTS_CSV_URL = "https://raw.githubusercontent.com/martj42/international_results/master/results.csv"
 GOAL_ORDER = ["0", "1", "2", "3", "4", "5", "6", "7+"]
 CURRENT_SPEC = ModelSpec("dixon_coles", {"half_life_days": 730.0, "rho": -0.08, "shrinkage": 6.0})
 OPTIMIZED_SPEC = ModelSpec("hierarchical_poisson", {"rho": 0.0, "shrinkage": 16.0})
+TAIL_SHADOW_SPEC = ModelSpec(
+    "poisson_nb_mixture",
+    {"half_life_days": 730.0, "dispersion": 2.0, "tail_weight": 0.20, "rho": -0.04, "shrinkage": 8.0},
+)
 RUN_FULL_GRID = os.environ.get("TOTAL_GOALS_FULL_GRID") == "1"
 SKIP_FETCH = os.environ.get("TOTAL_GOALS_SKIP_FETCH") == "1"
-MIN_ADOPTION_MATCHES = 16  # tournament-limited: 104 max, gate at ~15% of tournament
-MIN_EXACT_ACCURACY_LIFT = 0.08
-MIN_EXTRA_EXACT_HITS = 3
-MIN_LOG_LOSS_IMPROVEMENT = 0.02
-MAX_CORE_ACCURACY_DROP = 0.05
+MIN_ADOPTION_MATCHES = 24
+MIN_FORWARD_SECOND_ROUND_MATCHES = 8
+MIN_STABLE_WINDOWS = 3
+CALIBRATION_TOLERANCE = 0.01
 
 
 def beijing_now() -> str:
@@ -140,6 +146,15 @@ def strongest_adjacent(probabilities: dict[str, float]) -> tuple[str, set[str], 
     return best_label, best_set, best_probability
 
 
+def ranked_probability_score(probabilities: dict[str, float], actual_bucket: str) -> float:
+    predicted = [probabilities[key] for key in GOAL_ORDER]
+    observed = [1.0 if key == actual_bucket else 0.0 for key in GOAL_ORDER]
+    return sum(
+        (sum(predicted[:index]) - sum(observed[:index])) ** 2
+        for index in range(1, len(GOAL_ORDER))
+    ) / (len(GOAL_ORDER) - 1)
+
+
 def predict(rows: list[dict[str, Any]], targets: list[dict[str, Any]], spec: ModelSpec) -> list[dict[str, Any]]:
     predictions = []
     for match in targets:
@@ -163,6 +178,7 @@ def predict(rows: list[dict[str, Any]], targets: list[dict[str, Any]], spec: Mod
             "core_probability": core_probability,
             "core_hit": actual_bucket in core_set,
             "log_loss": -math.log(max(1e-12, probabilities[actual_bucket])),
+            "rps": ranked_probability_score(probabilities, actual_bucket),
             "bucketed_expected_total": sum((7 if key == "7+" else int(key)) * probabilities[key] for key in GOAL_ORDER),
             "probabilities": probabilities,
         })
@@ -173,6 +189,17 @@ def summarize(predictions: list[dict[str, Any]]) -> dict[str, Any]:
     total = len(predictions)
     exact_hits = sum(item["exact_hit"] for item in predictions)
     core_hits = sum(item["core_hit"] for item in predictions)
+    calibration_total = 0.0
+    calibration_points = 0
+    buckets: dict[tuple[str, int], list[float]] = {}
+    for item in predictions:
+        for key in GOAL_ORDER:
+            probability = float(item["probabilities"][key])
+            bucket_index = min(9, int(probability * 10))
+            buckets.setdefault((key, bucket_index), []).append(1.0 if item["actual_bucket"] == key else 0.0)
+    for (_key, bucket_index), observations in buckets.items():
+        calibration_total += len(observations) * abs(sum(observations) / len(observations) - (bucket_index + 0.5) / 10)
+        calibration_points += len(observations)
     return {
         "matches": total,
         "exact_hits": exact_hits,
@@ -180,23 +207,55 @@ def summarize(predictions: list[dict[str, Any]]) -> dict[str, Any]:
         "core_hits": core_hits,
         "core_accuracy": core_hits / total if total else 0,
         "average_log_loss": sum(item["log_loss"] for item in predictions) / total if total else math.inf,
+        "average_rps": sum(item["rps"] for item in predictions) / total if total else math.inf,
+        "calibration_error": calibration_total / calibration_points if calibration_points else math.inf,
         "predicted_bucket_counts": {bucket: sum(item["predicted_bucket"] == bucket for item in predictions) for bucket in GOAL_ORDER},
         "average_bucketed_expected_total": sum(item["bucketed_expected_total"] for item in predictions) / total if total else 0,
     }
 
 
-def adoption_decision(current: dict[str, Any], candidate: dict[str, Any]) -> dict[str, Any]:
+def stable_window_count(
+    current: list[dict[str, Any]],
+    candidate: list[dict[str, Any]],
+    windows: int = 4,
+) -> tuple[int, list[dict[str, Any]]]:
+    size = max(1, len(current) // windows)
+    reports = []
+    stable = 0
+    for index in range(windows):
+        start = index * size
+        end = len(current) if index == windows - 1 else min(len(current), (index + 1) * size)
+        old = summarize(current[start:end])
+        new = summarize(candidate[start:end])
+        improved = new["average_log_loss"] < old["average_log_loss"] and new["average_rps"] <= old["average_rps"]
+        stable += int(improved)
+        reports.append({
+            "window": index + 1,
+            "matches": end - start,
+            "logLossDelta": new["average_log_loss"] - old["average_log_loss"],
+            "rpsDelta": new["average_rps"] - old["average_rps"],
+            "improved": improved,
+        })
+    return stable, reports
+
+
+def adoption_decision(
+    current: dict[str, Any],
+    candidate: dict[str, Any],
+    stable_windows: int,
+    forward_second_round_matches: int,
+) -> dict[str, Any]:
     matches = min(current["matches"], candidate["matches"])
-    exact_lift = candidate["exact_accuracy"] - current["exact_accuracy"]
-    extra_hits = candidate["exact_hits"] - current["exact_hits"]
     log_loss_improvement = current["average_log_loss"] - candidate["average_log_loss"]
-    core_delta = candidate["core_accuracy"] - current["core_accuracy"]
+    rps_improvement = current["average_rps"] - candidate["average_rps"]
+    calibration_delta = candidate["calibration_error"] - current["calibration_error"]
     gates = {
         "sample_size": matches >= MIN_ADOPTION_MATCHES,
-        "exact_accuracy_lift": exact_lift >= MIN_EXACT_ACCURACY_LIFT,
-        "extra_exact_hits": extra_hits >= MIN_EXTRA_EXACT_HITS,
-        "log_loss_improvement": log_loss_improvement >= MIN_LOG_LOSS_IMPROVEMENT,
-        "core_accuracy_not_materially_worse": core_delta >= -MAX_CORE_ACCURACY_DROP,
+        "log_loss_improvement": log_loss_improvement > 0,
+        "rps_improvement": rps_improvement > 0,
+        "calibration_not_materially_worse": calibration_delta <= CALIBRATION_TOLERANCE,
+        "stable_windows": stable_windows >= MIN_STABLE_WINDOWS,
+        "second_round_forward_sample": forward_second_round_matches >= MIN_FORWARD_SECOND_ROUND_MATCHES,
     }
     if all(gates.values()):
         status = "switch"
@@ -206,6 +265,10 @@ def adoption_decision(current: dict[str, Any], candidate: dict[str, Any]) -> dic
         status = "observe"
         reason = f"need at least {MIN_ADOPTION_MATCHES} settled 2026 matches before switching"
         recommendation_zh = "样本还不够，旧模型继续主用，新模型继续影子观察。"
+    elif not gates["second_round_forward_sample"]:
+        status = "observe"
+        reason = "first round is diagnostic only; wait for a forward second-round sample"
+        recommendation_zh = "首轮只作诊断，等待至少8场第二轮前瞻样本后再判断。"
     else:
         status = "keep"
         reason = "candidate has not shown a significant, stable advantage over the current model"
@@ -217,17 +280,15 @@ def adoption_decision(current: dict[str, Any], candidate: dict[str, Any]) -> dic
         "recommendation_zh": recommendation_zh,
         "gates": gates,
         "deltas": {
-            "exact_accuracy_lift": exact_lift,
-            "extra_exact_hits": extra_hits,
             "log_loss_improvement": log_loss_improvement,
-            "core_accuracy_delta": core_delta,
+            "rps_improvement": rps_improvement,
+            "calibration_delta": calibration_delta,
         },
         "thresholds": {
             "min_matches": MIN_ADOPTION_MATCHES,
-            "min_exact_accuracy_lift": MIN_EXACT_ACCURACY_LIFT,
-            "min_extra_exact_hits": MIN_EXTRA_EXACT_HITS,
-            "min_log_loss_improvement": MIN_LOG_LOSS_IMPROVEMENT,
-            "max_core_accuracy_drop": MAX_CORE_ACCURACY_DROP,
+            "min_second_round_forward_matches": MIN_FORWARD_SECOND_ROUND_MATCHES,
+            "min_stable_windows": MIN_STABLE_WINDOWS,
+            "calibration_tolerance": CALIBRATION_TOLERANCE,
         },
     }
 
@@ -267,12 +328,19 @@ def compare_predictions(current: list[dict[str, Any]], candidate: list[dict[str,
 
 
 def main() -> None:
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")
     data_refresh = refresh_results_csv()
     rows = read_rows()
     validation = [
         row for row in rows
         if row["tournament"] == "FIFA World Cup" and row["date"][:4] in {"2018", "2022"}
     ]
+    allocation_policy = learn_elo_allocation_weight(
+        rows,
+        validation_years={"2018", "2022"},
+        min_history=100,
+    )
     world_cup_2026 = [
         row for row in rows
         if row["tournament"] == "FIFA World Cup" and row["date"].startswith("2026")
@@ -296,8 +364,14 @@ def main() -> None:
 
     current_2026 = predict(rows, world_cup_2026, CURRENT_SPEC)
     optimized_2026 = predict(rows, world_cup_2026, candidate_spec)
+    tail_shadow_2026 = predict(rows, world_cup_2026, TAIL_SHADOW_SPEC)
     current_summary = summarize(current_2026)
     optimized_summary = summarize(optimized_2026)
+    tail_shadow_summary = summarize(tail_shadow_2026)
+    validation_current = predict(rows, validation, CURRENT_SPEC)
+    validation_candidate = predict(rows, validation, candidate_spec)
+    stable_windows, stability_report = stable_window_count(validation_current, validation_candidate)
+    second_round_matches = sum(item["date"] > "2026-06-17" for item in world_cup_2026)
     current_rows = [public_prediction(item) for item in current_2026]
     optimized_rows = [public_prediction(item) for item in optimized_2026]
     comparison_rows = compare_predictions(current_2026, optimized_2026)
@@ -315,10 +389,23 @@ def main() -> None:
             "optimized_model_spec_source": optimized_spec_source,
             "full_grid_was_run": RUN_FULL_GRID,
             "top_candidates": ranking[:8],
+            "strength_allocation": allocation_policy,
         },
         "current_model_2026": current_summary,
         "optimized_model_2026": optimized_summary,
-        "adoption_decision": adoption_decision(current_summary, optimized_summary),
+        "tail_shadow_model_2026": tail_shadow_summary,
+        "validation_2018_2022": {
+            "current": summarize(validation_current),
+            "candidate": summarize(validation_candidate),
+            "stable_windows": stable_windows,
+            "windows": stability_report,
+        },
+        "adoption_decision": adoption_decision(
+            current_summary,
+            optimized_summary,
+            stable_windows,
+            second_round_matches,
+        ),
         "current_predictions_2026": current_rows,
         "optimized_predictions_2026": optimized_rows,
         "comparison_2026": comparison_rows,
@@ -341,6 +428,14 @@ def main() -> None:
             "spec": summary["optimization"]["optimized_model_spec"],
             **optimized_summary,
         },
+        "tailShadowModel": {
+            "role": "shadow_only",
+            "spec": TAIL_SHADOW_SPEC.key,
+            "reason": "tests wider high-score tails; first round is diagnostic only",
+            **tail_shadow_summary,
+        },
+        "strengthAllocationPolicy": allocation_policy,
+        "validation2018And2022": summary["validation_2018_2022"],
         "adoptionDecision": summary["adoption_decision"],
         "dataRefresh": data_refresh,
         "manualResultRows": count_manual_results(),
@@ -348,6 +443,16 @@ def main() -> None:
     }
     OUT_PUBLIC_REVIEW_JSON.parent.mkdir(parents=True, exist_ok=True)
     OUT_PUBLIC_REVIEW_JSON.write_text(json.dumps(public_review, ensure_ascii=False, indent=2), encoding="utf-8")
+    model_policy = {
+        "schemaVersion": 1,
+        "generatedAt": summary["generatedAt"],
+        "status": "selected_on_chronological_validation",
+        "validationSet": "FIFA World Cup 2018 and 2022",
+        **allocation_policy,
+    }
+    policy_content = json.dumps(model_policy, ensure_ascii=False, indent=2)
+    OUT_MODEL_POLICY_JSON.write_text(policy_content, encoding="utf-8")
+    PIPELINE_MODEL_POLICY_JSON.write_text(policy_content, encoding="utf-8")
     with OUT_CSV.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=list(optimized_rows[0]))
         writer.writeheader()

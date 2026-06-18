@@ -58,3 +58,18 @@ def expected_goals_from_elo(home_rating: int, away_rating: int, total_goals: flo
             high = home_xg
     home_xg = (low + high) / 2
     return home_xg, max(0.15, total_goals - home_xg)
+
+
+def allocate_total_goals_by_elo(
+    total_goals: float,
+    home_rating: int,
+    away_rating: int,
+) -> tuple[float, float]:
+    """Allocate an independently estimated match total using Elo strength.
+
+    The goal model owns the total scoring environment; Elo only decides how
+    that total is split between the two teams. This avoids counting recent
+    score information twice in both the total and the strength allocation.
+    """
+
+    return expected_goals_from_elo(home_rating, away_rating, total_goals=max(0.30, total_goals))

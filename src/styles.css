@@ -1357,3 +1357,71 @@ body:has(.sporttery-ledger-page) .topbar {
     gap: 4px;
   }
 }
+
+/* First-round review and post-match model controls */
+.model-decomposition-inline { display: flex; justify-content: space-between; gap: 8px; margin: 0 12px 10px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 5px; background: #091c2b; color: var(--muted); font-size: 10px; }
+.model-decomposition-inline b { color: var(--teal); font-weight: 600; }
+.market-conflict-badge, .formal-eligible-badge { display: block; width: fit-content; margin-top: 4px; padding: 2px 5px; border-radius: 3px; font-size: 8px; font-weight: 700; letter-spacing: .04em; }
+.market-conflict-badge { border: 1px solid rgba(224, 91, 91, .45); color: #f19595; background: rgba(139, 31, 31, .18); }
+.formal-eligible-badge { border: 1px solid rgba(40, 188, 148, .4); color: #75dfbf; background: rgba(20, 113, 88, .16); }
+.model-breakdown-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; margin-bottom: 12px; }
+.model-breakdown-grid > div { padding: 10px; border: 1px solid var(--line); border-radius: 5px; background: #091b2a; }
+.model-breakdown-grid span { display: block; color: var(--muted); font-size: 9px; }
+.model-breakdown-grid strong { display: block; margin-top: 5px; color: #dbeaf3; font: 700 16px 'Barlow Condensed'; }
+.first-round-page { max-width: 1500px; margin: 0 auto; }
+.round-method { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; overflow: hidden; padding: 0; margin-bottom: 12px; }
+.round-method > div { min-height: 86px; padding: 15px; background: #091b2a; }
+.round-method strong, .round-method span { display: block; }
+.round-method strong { color: var(--blue); font-size: 10px; text-transform: uppercase; letter-spacing: .05em; }
+.round-method span { margin-top: 8px; color: #d7e3eb; font-size: 12px; line-height: 1.55; }
+.round-filter { display: flex; align-items: center; gap: 7px; margin: 12px 0; color: var(--muted); }
+.round-filter button { border: 1px solid var(--line); border-radius: 4px; padding: 7px 11px; background: #0a1b29; color: var(--muted); cursor: pointer; }
+.round-filter button.active { border-color: var(--blue); background: #10354d; color: #e3f4ff; }
+.round-team-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.round-team-card { min-width: 0; padding: 14px; }
+.round-team-card header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.round-team-card header span { color: var(--muted); font-size: 9px; text-transform: uppercase; }
+.round-team-card h2 { margin: 3px 0 0; font-size: 18px; }
+.round-team-card header > b { border: 1px solid var(--line); border-radius: 3px; padding: 4px 7px; font-size: 9px; }
+.round-team-card header > b.positive { border-color: rgba(36, 181, 140, .45); color: #79e0c1; }
+.round-team-card header > b.neutral { color: var(--amber); }
+.round-team-card header > b.negative { border-color: rgba(219, 86, 86, .45); color: #ed9494; }
+.round-scoreline { display: flex; align-items: baseline; gap: 10px; margin: 12px 0 8px; }
+.round-scoreline strong { color: var(--amber); font: 700 30px 'Barlow Condensed'; }
+.round-scoreline span, .round-team-card > p { color: #a7bac7; font-size: 10px; line-height: 1.6; }
+.round-form-deltas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; margin: 12px 0; }
+.round-form-deltas > div { padding: 8px; border: 1px solid var(--line); border-radius: 4px; background: #081725; }
+.round-form-deltas span, .round-form-deltas strong { display: block; }
+.round-form-deltas span { color: var(--muted); font-size: 8px; }
+.round-form-deltas strong { margin-top: 4px; color: #d9e8f1; font: 700 13px 'Barlow Condensed'; }
+.round-admission { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; padding: 8px; background: rgba(20, 97, 78, .12); color: #8dd9c2; font-size: 9px; }
+.round-admission i { color: var(--amber); font-style: normal; }
+.round-evidence { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; margin-top: 10px; }
+.round-evidence a { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 5px; padding: 7px; border: 1px solid var(--line); border-radius: 4px; color: #b8ceda; text-decoration: none; font-size: 9px; }
+.round-evidence a small { grid-column: 2; color: var(--muted); font-size: 8px; }
+.round-team-card footer { display: flex; gap: 6px; margin-top: 10px; padding-top: 9px; border-top: 1px solid var(--line); color: var(--muted); font-size: 9px; line-height: 1.5; }
+.separated-backtest-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 9px; margin: 12px 0; }
+.separated-metric { padding: 14px; }
+.separated-metric span { color: var(--muted); font-size: 10px; }
+.separated-metric strong { display: block; margin: 7px 0; color: var(--amber); font: 700 28px 'Barlow Condensed'; }
+.separated-metric p { margin: 0; color: #9fb1bd; font-size: 9px; line-height: 1.6; }
+.model-review-panel { margin: 12px 0; padding: 15px; }
+.adoption-state { align-self: center; border: 1px solid var(--line); border-radius: 4px; padding: 6px 12px; color: var(--amber); font-size: 11px; }
+.adoption-state.switch { border-color: #247c67; color: #75dfbf; }
+.model-review-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; }
+.model-review-grid article { padding: 11px; border: 1px solid var(--line); border-radius: 5px; background: #081a28; }
+.model-review-grid span { color: var(--blue); font-size: 9px; }
+.model-review-grid strong { display: block; margin: 5px 0; overflow-wrap: anywhere; color: #dce9f0; font-size: 11px; }
+.model-review-grid p, .model-review-decision { color: var(--muted); font-size: 9px; line-height: 1.6; }
+.model-review-decision { margin: 10px 0 0; padding: 9px; border-left: 2px solid var(--amber); background: rgba(139, 87, 11, .09); }
+
+@media (max-width: 1100px) {
+  .round-team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .round-method, .separated-backtest-grid, .model-breakdown-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 700px) {
+  .round-team-grid, .round-method, .separated-backtest-grid, .model-review-grid, .model-breakdown-grid { grid-template-columns: 1fr; }
+  .round-filter { align-items: stretch; overflow-x: auto; }
+  .round-filter button { flex: 0 0 auto; }
+}

@@ -47,6 +47,15 @@ class FittedGoalModel:
             return bivariate_poisson_matrix(home_xg, away_xg, self.spec.parameters["shared_rate"], max_goals)
         if self.spec.family == "negative_binomial":
             return negative_binomial_matrix(home_xg, away_xg, self.spec.parameters["dispersion"], max_goals)
+        if self.spec.family == "poisson_nb_mixture":
+            return poisson_negative_binomial_mixture_matrix(
+                home_xg,
+                away_xg,
+                self.spec.parameters["dispersion"],
+                self.spec.parameters["tail_weight"],
+                max_goals,
+                self.spec.parameters.get("rho", -0.04),
+            )
         raise ValueError(f"unknown goal model family: {self.spec.family}")
 
 
@@ -204,6 +213,28 @@ def negative_binomial_matrix(home_mean: float, away_mean: float, dispersion: flo
     return _normalize([[home_goals * away_goals for away_goals in away] for home_goals in home])
 
 
+def poisson_negative_binomial_mixture_matrix(
+    home_mean: float,
+    away_mean: float,
+    dispersion: float,
+    tail_weight: float,
+    max_goals: int = 10,
+    rho: float = -0.04,
+) -> list[list[float]]:
+    """Shadow candidate that preserves the Poisson center and widens tails."""
+
+    weight = max(0.0, min(1.0, tail_weight))
+    poisson = score_matrix(home_mean, away_mean, max_goals=max_goals, rho=rho)
+    negative_binomial = negative_binomial_matrix(home_mean, away_mean, dispersion, max_goals)
+    return _normalize([
+        [
+            (1 - weight) * poisson[home][away] + weight * negative_binomial[home][away]
+            for away in range(max_goals + 1)
+        ]
+        for home in range(max_goals + 1)
+    ])
+
+
 def default_candidate_grid() -> list[ModelSpec]:
     return [
         *(ModelSpec("dixon_coles", {"half_life_days": half_life, "rho": rho, "shrinkage": 6.0})
@@ -212,6 +243,10 @@ def default_candidate_grid() -> list[ModelSpec]:
           for shared in (0.05, 0.10, 0.15)),
         *(ModelSpec("negative_binomial", {"half_life_days": 730.0, "dispersion": dispersion, "shrinkage": 8.0})
           for dispersion in (2.0, 4.0, 8.0)),
+        *(ModelSpec("poisson_nb_mixture", {
+            "half_life_days": 730.0, "dispersion": dispersion, "tail_weight": tail_weight,
+            "rho": -0.04, "shrinkage": 8.0,
+        }) for dispersion in (2.0, 4.0) for tail_weight in (0.15, 0.25)),
         *(ModelSpec("hierarchical_poisson", {"shrinkage": shrinkage, "rho": 0.0})
           for shrinkage in (4.0, 8.0, 16.0)),
     ]

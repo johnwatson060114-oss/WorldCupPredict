@@ -21,7 +21,9 @@ from .config import (
     FIXTURE_VENUES,
 )
 from .model_registry import check_and_apply_adoption, get_model_version
-from .elo_ratings import EloRatingsClient, expected_goals_from_elo
+from .model_policy import load_model_policy
+from .odds_history import save_odds_snapshot
+from .elo_ratings import EloRatingsClient, allocate_total_goals_by_elo, expected_goals_from_elo
 from .goal_models import goal_model_xg
 from .football_data import (
     FootballDataClient,
@@ -47,10 +49,12 @@ from .model import (
 )
 from .lineup import apply_lineup_impacts
 from .intelligence import apply_intelligence, load_daily_intelligence
+from .market_guard import market_conflict_decision
 from .portfolio import build_portfolios
 from .provenance import build_snapshot_manifest
 from .simulation import MatchSimulationInput, TournamentSimulation, simulate_tournament
 from .sporttery import SportteryMatch, fetch_sporttery, filter_by_beijing_date, load_fixture
+from .tournament_form import apply_tournament_form, load_first_round_profiles
 from .weather import OpenMeteoClient
 
 OUTCOME_KEYS = {"胜": "home", "平": "draw", "负": "away"}
@@ -119,6 +123,8 @@ def local_snapshot_paths() -> list[Path]:
         ROOT / "pipeline" / "data" / "demo_matches.json",
         ROOT / "pipeline" / "data" / "fifa-2026-discipline.json",
         ROOT / "pipeline" / "data" / "factor-admissions.json",
+        ROOT / "pipeline" / "data" / "first-round-performance.json",
+        ROOT / "pipeline" / "data" / "model-policy.json",
         FIXTURE_DIR / "sporttery-spf.html",
         FIXTURE_DIR / "sporttery-score.html",
         *sorted(MANUAL_DIR.glob("*.csv")),
@@ -212,6 +218,8 @@ def football_data_seeds(client: FootballDataClient, target_date: str, all_matche
     except Exception:  # noqa: BLE001 - tournament results remain a valid lower-coverage fallback
         elo_ratings = {}
     elo_median = sorted(elo_ratings.values())[len(elo_ratings) // 2] if elo_ratings else None
+    model_policy = load_model_policy()
+    elo_allocation_weight = float(model_policy["eloAllocationWeight"])
     for fixture in fixtures:
         kickoff_utc = parse_utc(fixture["utcDate"])
         kickoff = kickoff_utc.astimezone(timezone)
@@ -241,11 +249,18 @@ def football_data_seeds(client: FootballDataClient, target_date: str, all_matche
         if ratings_complete:
             gm = goal_model_xg(home_name_en, away_name_en, target_date)
             if gm is not None:
-                home_xg, away_xg = gm
-                model_note = f"Goal model (hierarchical_poisson) + Elo {home_rating} vs {away_rating}；赛前样本 {sample_count} 场"
+                total_xg = sum(gm)
+                elo_home_xg, elo_away_xg = allocate_total_goals_by_elo(total_xg, home_rating, away_rating)
+                home_xg = (1 - elo_allocation_weight) * gm[0] + elo_allocation_weight * elo_home_xg
+                away_xg = (1 - elo_allocation_weight) * gm[1] + elo_allocation_weight * elo_away_xg
+                model_note = (
+                    f"进球模型估计总量 {total_xg:.2f}，Elo {home_rating} vs {away_rating} "
+                    f"按历史验证权重 {elo_allocation_weight:.2f} 分配双方份额；赛前样本 {sample_count} 场"
+                )
             else:
                 home_xg, away_xg = expected_goals_from_elo(home_rating, away_rating)
-                model_note = f"Elo {home_rating} vs {away_rating}；本届赛前补充样本 {sample_count} 场"
+                total_xg = home_xg + away_xg
+                model_note = f"Elo {home_rating} vs {away_rating}；总量回退至 {total_xg:.2f}，本届赛前补充样本 {sample_count} 场"
         elif ratings_partial and elo_median is not None:
             home_xg, away_xg = expected_goals_from_elo(home_rating or elo_median, away_rating or elo_median)
             model_note = f"Elo {home_rating or '缺失'} vs {away_rating or '缺失'}；缺失一方以全球中位数 {elo_median} 收缩"
@@ -312,6 +327,14 @@ def football_data_seeds(client: FootballDataClient, target_date: str, all_matche
             "away_flag": team_flag(away),
             "venue": venue_name,
             "base_xg": [home_xg, away_xg],
+            "model_decomposition": {
+                "totalGoalsProvider": "hierarchical_goal_model" if ratings_complete and gm is not None else "elo_fallback",
+                "strengthAllocator": "world_football_elo",
+                "allocationPolicy": "separated_total_and_strength_v1",
+                "eloAllocationWeight": elo_allocation_weight,
+                "allocationValidationSet": model_policy.get("validationSet", "FIFA World Cup 2018 and 2022"),
+                "estimatedTotalGoals": round(home_xg + away_xg, 4),
+            },
             "coverage": round(min(0.86, (0.80 if ratings_complete else 0.66 if ratings_partial else 0.58) + sample_count * 0.01), 3),
             "weather": weather_text,
             "factors": factors,
@@ -400,6 +423,8 @@ def make_quote(
     handicap: int | None = None,
     excluded_scores: list[str] | None = None,
     recommendation_gate: tuple[bool, str] | None = None,
+    market_conflict: dict[str, Any] | None = None,
+    odds_source: str = "official",
     metadata: dict[str, Any] | None = None,
 ) -> dict:
     available = odds is not None
@@ -409,6 +434,25 @@ def make_quote(
     advice, reason = recommendation(raw, robust, coverage, available, market == "比分", stars)
     if available and recommendation_gate is not None and not recommendation_gate[0]:
         advice, reason = "观察", recommendation_gate[1]
+    conflict = market_conflict or {
+        "status": "unavailable",
+        "blocked": True,
+        "maxGap": None,
+        "modelFavorite": None,
+        "marketFavorite": None,
+        "reason": "缺少市场冲突判断",
+    }
+    if available and market_conflict is not None and conflict["blocked"]:
+        advice, reason = "观察", str(conflict["reason"])
+    formal_eligible = bool(
+        available
+        and odds_source == "official"
+        and advice in {"重点推荐", "小注可选"}
+        and robust is not None
+        and robust > 0
+        and not conflict["blocked"]
+        and (recommendation_gate is None or recommendation_gate[0])
+    )
     return {
         "id": f"{match_id}-{market}-{selection}".replace(" ", "-"),
         "matchId": match_id,
@@ -427,6 +471,10 @@ def make_quote(
         "available": available,
         "recommendation": advice,
         "reason": reason,
+        "oddsSource": odds_source,
+        "marketConflict": conflict,
+        "formalEligible": formal_eligible,
+        "formalBlockReason": None if formal_eligible else reason,
         "observedAt": observed_at,
         **(metadata or {}),
     }
@@ -497,6 +545,8 @@ def build_match(
             {"胜": outcomes["home"], "平": outcomes["draw"], "负": outcomes["away"]}
         )
     normal_market = normalized_market_probabilities(normal_odds)
+    normal_model = {"胜": outcomes["home"], "平": outcomes["draw"], "负": outcomes["away"]}
+    normal_conflict = market_conflict_decision(normal_model, normal_market)
     for chinese, outcome in OUTCOME_KEYS.items():
         quotes.append(make_quote(
             match_id, label, "胜平负", chinese, normal_odds.get(chinese), outcomes[outcome], normal_market.get(chinese),
@@ -505,6 +555,8 @@ def build_match(
                 outcome_decision["status"] == "recommended",
                 f"胜平负最高概率 {float(outcome_decision['maxProbability']):.1%} 低于 60% 门槛",
             ),
+            market_conflict=normal_conflict,
+            odds_source="official" if market else "simulated",
             metadata=quote_metadata,
         ))
 
@@ -517,10 +569,14 @@ def build_match(
             {"胜": handicap_outcomes["home"], "平": handicap_outcomes["draw"], "负": handicap_outcomes["away"]}
         )
     handicap_market = normalized_market_probabilities(handicap_odds)
+    handicap_model = {"胜": handicap_outcomes["home"], "平": handicap_outcomes["draw"], "负": handicap_outcomes["away"]}
+    handicap_conflict = market_conflict_decision(handicap_model, handicap_market)
     for chinese, outcome in OUTCOME_KEYS.items():
         quotes.append(make_quote(
             match_id, label, "让球胜平负", f"{handicap:+d} {chinese}", handicap_odds.get(chinese), handicap_outcomes[outcome],
             handicap_market.get(chinese), coverage, bool(market and "让球胜平负" in market.single_markets), generated_at, handicap=handicap,
+            market_conflict=handicap_conflict,
+            odds_source="official" if market else "simulated",
             metadata=quote_metadata,
         ))
 
@@ -549,12 +605,19 @@ def build_match(
     offered_scores = {sel for sel in score_odds if ":" in sel}
     score_market = normalized_market_probabilities(score_odds) if score_odds else {}
     score_selections = list(score_odds) if score_odds else ALL_STANDARD_SCORES[:8]
+    score_model = {
+        selection: score_selection_probability(selection, matrix, {sel for sel in score_odds if ":" in sel})
+        for selection in score_selections
+    }
+    score_conflict = market_conflict_decision(score_model, score_market)
     for selection in score_selections:
         odds = score_odds.get(selection)
         probability = score_selection_probability(selection, matrix, offered_scores)
         quotes.append(make_quote(
             match_id, label, "比分", selection, odds, probability, score_market.get(selection),
             coverage, False, generated_at, stars=stars, excluded_scores=sorted(offered_scores),
+            market_conflict=score_conflict,
+            odds_source="official" if market else "simulated",
             metadata=quote_metadata,
         ))
 
@@ -564,10 +627,13 @@ def build_match(
     else:
         total_goal_odds = _sample_odds_dict(total_goal_model)
     total_goal_market = normalized_market_probabilities(total_goal_odds) if total_goal_odds else {}
+    total_goal_conflict = market_conflict_decision(total_goal_model, total_goal_market)
     for selection, probability in total_goal_model.items():
         quotes.append(make_quote(
             match_id, label, "总进球数", selection, total_goal_odds.get(selection), probability,
             total_goal_market.get(selection), coverage, bool(market and "总进球数" in market.single_markets), generated_at,
+            market_conflict=total_goal_conflict,
+            odds_source="official" if market else "simulated",
             metadata=quote_metadata,
         ))
 
@@ -577,11 +643,14 @@ def build_match(
     else:
         half_full_odds = _sample_odds_dict(half_full_model)
     half_full_market = normalized_market_probabilities(half_full_odds) if half_full_odds else {}
+    half_full_conflict = market_conflict_decision(half_full_model, half_full_market)
     for selection, probability in half_full_model.items():
         half_full_coverage = max(0.0, coverage - 0.08)
         quotes.append(make_quote(
             match_id, label, "半全场", selection, half_full_odds.get(selection), probability,
             half_full_market.get(selection), half_full_coverage, bool(market and "半全场" in market.single_markets), generated_at,
+            market_conflict=half_full_conflict,
+            odds_source="official" if market else "simulated",
             metadata=quote_metadata,
         ))
 
@@ -599,6 +668,11 @@ def build_match(
         "homeFlag": seed.get("home_flag", "🏳"),
         "awayFlag": seed.get("away_flag", "🏳"),
         "expectedGoals": {"home": round(home_xg, 2), "away": round(away_xg, 2)},
+        "modelDecomposition": seed.get("model_decomposition", {
+            "longTermExpectedGoals": {"home": round(home_xg, 4), "away": round(away_xg, 4)},
+            "adjustedExpectedGoals": {"home": round(home_xg, 4), "away": round(away_xg, 4)},
+        }),
+        "tournamentForm": seed.get("tournament_form"),
         "outcomeProbabilities": {key: round(value, 5) for key, value in outcomes.items()},
         "outcomeDecision": {
             **outcome_decision,
@@ -637,6 +711,8 @@ def _sporttery_fixture_seeds(
     except Exception:
         elo_ratings = {}
         elo_live = False
+    model_policy = load_model_policy()
+    elo_allocation_weight = float(model_policy["eloAllocationWeight"])
 
     seeds = []
     for m in all_markets:
@@ -652,8 +728,12 @@ def _sporttery_fixture_seeds(
         kickoff = f"{m.match_date}T{time_part}:00+08:00"
 
         # Compute xG: goal model → Elo → neutral
-        home_xg, away_xg = _compute_xg_for_sporttery_seed(
-            m.home_team, m.away_team, target_date, elo_ratings,
+        home_xg, away_xg, total_provider = _compute_xg_for_sporttery_seed(
+            m.home_team,
+            m.away_team,
+            target_date,
+            elo_ratings,
+            elo_allocation_weight,
         )
 
         seeds.append({
@@ -666,6 +746,14 @@ def _sporttery_fixture_seeds(
             "lottery_code": m.lottery_code,
             "venue": "待定",
             "base_xg": [home_xg, away_xg],
+            "model_decomposition": {
+                "totalGoalsProvider": total_provider,
+                "strengthAllocator": "world_football_elo" if elo_live else "statistical_split",
+                "allocationPolicy": "separated_total_and_strength_v1",
+                "eloAllocationWeight": elo_allocation_weight if total_provider == "hierarchical_goal_model" else 0.0,
+                "allocationValidationSet": model_policy.get("validationSet", "FIFA World Cup 2018 and 2022"),
+                "estimatedTotalGoals": round(home_xg + away_xg, 4),
+            },
             "coverage": 0.80,
             "weather": "天气待更新",
             "factors": _sporttery_factors(home_xg, away_xg, elo_live),
@@ -704,7 +792,8 @@ def _compute_xg_for_sporttery_seed(
     away_cn: str,
     target_date: str,
     elo_ratings: dict[str, int],
-) -> tuple[float, float]:
+    elo_allocation_weight: float,
+) -> tuple[float, float, str]:
     """Best-effort xG for a match whose teams come from sporttery (Chinese names)."""
     # 1) Hierarchical Poisson goal model (needs English names)
     home_en = _cn_to_en_team_name(home_cn)
@@ -713,7 +802,16 @@ def _compute_xg_for_sporttery_seed(
         try:
             gm = goal_model_xg(home_en, away_en, target_date)
             if gm is not None:
-                return gm
+                home_elo = elo_ratings.get(home_cn) or elo_ratings.get(team_key(home_cn))
+                away_elo = elo_ratings.get(away_cn) or elo_ratings.get(team_key(away_cn))
+                if home_elo and away_elo:
+                    elo_home, elo_away = allocate_total_goals_by_elo(sum(gm), home_elo, away_elo)
+                    return (
+                        (1 - elo_allocation_weight) * gm[0] + elo_allocation_weight * elo_home,
+                        (1 - elo_allocation_weight) * gm[1] + elo_allocation_weight * elo_away,
+                        "hierarchical_goal_model",
+                    )
+                return gm[0], gm[1], "hierarchical_goal_model"
         except Exception:
             pass
 
@@ -721,10 +819,11 @@ def _compute_xg_for_sporttery_seed(
     home_elo = elo_ratings.get(home_cn) or elo_ratings.get(team_key(home_cn))
     away_elo = elo_ratings.get(away_cn) or elo_ratings.get(team_key(away_cn))
     if home_elo and away_elo:
-        return expected_goals_from_elo(home_elo, away_elo)
+        home_xg, away_xg = expected_goals_from_elo(home_elo, away_elo)
+        return home_xg, away_xg, "elo_fallback"
 
     # 3) Neutral fallback
-    return 1.35, 1.10
+    return 1.35, 1.10, "neutral_fallback"
 
 
 def _cn_to_en_team_name(cn_name: str) -> str | None:
@@ -796,6 +895,11 @@ def main() -> None:
             markets_by_id = load_fixture(FIXTURE_DIR / "sporttery-spf.html", FIXTURE_DIR / "sporttery-score.html")
             degraded_reasons.append("体彩实时赔率暂时不可用，已切换到固定快照")
     all_markets = list(markets_by_id.values())
+    if sporttery_live and not args.offline:
+        try:
+            save_odds_snapshot(all_markets, now)
+        except OSError:
+            degraded_reasons.append("赔率历史快照写入失败，当前预测仍可继续")
 
     football_client = FootballDataClient()
     client = ApiFootballClient()
@@ -863,12 +967,14 @@ def main() -> None:
 
     availability_records = load_availability()
     factor_admissions = load_factor_admissions()
+    first_round_profiles = load_first_round_profiles()
 
     def prepare_seeds(batch: list[dict], batch_date: str) -> None:
         apply_availability(batch, batch_date, availability_records)
         apply_intelligence(batch, load_daily_intelligence(batch_date, generated_at))
         apply_lineup_impacts(batch)
         apply_factor_admissions(batch, factor_admissions)
+        apply_tournament_form(batch, batch_date, first_round_profiles)
 
     prepare_seeds(seeds, target_date)
 

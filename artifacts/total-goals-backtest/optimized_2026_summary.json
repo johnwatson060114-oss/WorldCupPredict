@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-17T17:35:08+08:00",
+  "generatedAt": "2026-06-18T16:43:48+08:00",
   "timezone": "Asia/Shanghai",
   "data_refresh": {
     "status": "skipped",
@@ -12,200 +12,109 @@
     "production_policy": "current model remains primary; optimized model runs as shadow until adoption gates pass",
     "current_model_spec": "dixon_coles[half_life_days=730,rho=-0.08,shrinkage=6]",
     "optimized_model_spec": "hierarchical_poisson[rho=0,shrinkage=16]",
-    "optimized_model_spec_source": "selected by full 2018+2022 grid search in this run",
-    "full_grid_was_run": true,
-    "top_candidates": [
-      {
-        "model_spec": "hierarchical_poisson[rho=0,shrinkage=16]",
-        "matches": 128,
-        "exact_hits": 39,
-        "exact_accuracy": 0.3046875,
-        "core_hits": 59,
-        "core_accuracy": 0.4609375,
-        "average_log_loss": 1.893032031789462,
-        "predicted_bucket_counts": {
-          "0": 0,
-          "1": 4,
-          "2": 94,
-          "3": 30,
-          "4": 0,
-          "5": 0,
-          "6": 0,
-          "7+": 0
+    "optimized_model_spec_source": "locked from the 2018+2022 grid search; set TOTAL_GOALS_FULL_GRID=1 to reselect",
+    "full_grid_was_run": false,
+    "top_candidates": [],
+    "strength_allocation": {
+      "eloAllocationWeight": 1.0,
+      "validationYears": [
+        "2018",
+        "2022"
+      ],
+      "validationTournament": "FIFA World Cup",
+      "validationMatches": 128,
+      "candidates": {
+        "0.0": {
+          "log_loss": 1.05820066621139,
+          "rps": 0.2305689769195159,
+          "brier": 0.6365667807686298,
+          "calibration_error": 0.059635416666666684
         },
-        "average_bucketed_expected_total": 2.6851431302834534
+        "0.25": {
+          "log_loss": 1.0300898031564707,
+          "rps": 0.22091739430507615,
+          "brier": 0.616784275580417,
+          "calibration_error": 0.05911458333333332
+        },
+        "0.5": {
+          "log_loss": 1.0100955720455662,
+          "rps": 0.21366824481330976,
+          "brier": 0.6015022707644204,
+          "calibration_error": 0.06770833333333331
+        },
+        "0.75": {
+          "log_loss": 0.9983424317317814,
+          "rps": 0.2087979927210718,
+          "brier": 0.5907551176226217,
+          "calibration_error": 0.07526041666666668
+        },
+        "1.0": {
+          "log_loss": 0.9956599332430888,
+          "rps": 0.206183751889683,
+          "brier": 0.5844177652726107,
+          "calibration_error": 0.06848958333333335
+        }
       },
-      {
-        "model_spec": "hierarchical_poisson[rho=0,shrinkage=8]",
-        "matches": 128,
-        "exact_hits": 39,
-        "exact_accuracy": 0.3046875,
-        "core_hits": 58,
-        "core_accuracy": 0.453125,
-        "average_log_loss": 1.8938304792543055,
-        "predicted_bucket_counts": {
-          "0": 0,
-          "1": 5,
-          "2": 93,
-          "3": 30,
-          "4": 0,
-          "5": 0,
-          "6": 0,
-          "7+": 0
-        },
-        "average_bucketed_expected_total": 2.6796129065846586
-      },
-      {
-        "model_spec": "hierarchical_poisson[rho=0,shrinkage=4]",
-        "matches": 128,
-        "exact_hits": 39,
-        "exact_accuracy": 0.3046875,
-        "core_hits": 58,
-        "core_accuracy": 0.453125,
-        "average_log_loss": 1.8942511994387305,
-        "predicted_bucket_counts": {
-          "0": 0,
-          "1": 5,
-          "2": 93,
-          "3": 30,
-          "4": 0,
-          "5": 0,
-          "6": 0,
-          "7+": 0
-        },
-        "average_bucketed_expected_total": 2.6767675793787546
-      },
-      {
-        "model_spec": "dixon_coles[half_life_days=730,rho=-0.04,shrinkage=6]",
-        "matches": 128,
-        "exact_hits": 36,
-        "exact_accuracy": 0.28125,
-        "core_hits": 67,
-        "core_accuracy": 0.5234375,
-        "average_log_loss": 1.8809945068006864,
-        "predicted_bucket_counts": {
-          "0": 0,
-          "1": 3,
-          "2": 119,
-          "3": 6,
-          "4": 0,
-          "5": 0,
-          "6": 0,
-          "7+": 0
-        },
-        "average_bucketed_expected_total": 2.3990426155964273
-      },
-      {
-        "model_spec": "bivariate_poisson[half_life_days=730,shared_rate=0.1,shrinkage=8]",
-        "matches": 128,
-        "exact_hits": 35,
-        "exact_accuracy": 0.2734375,
-        "core_hits": 63,
-        "core_accuracy": 0.4921875,
-        "average_log_loss": 1.8732690777014689,
-        "predicted_bucket_counts": {
-          "0": 0,
-          "1": 10,
-          "2": 113,
-          "3": 5,
-          "4": 0,
-          "5": 0,
-          "6": 0,
-          "7+": 0
-        },
-        "average_bucketed_expected_total": 2.4186003988729747
-      },
-      {
-        "model_spec": "bivariate_poisson[half_life_days=730,shared_rate=0.05,shrinkage=8]",
-        "matches": 128,
-        "exact_hits": 35,
-        "exact_accuracy": 0.2734375,
-        "core_hits": 65,
-        "core_accuracy": 0.5078125,
-        "average_log_loss": 1.874602681201165,
-        "predicted_bucket_counts": {
-          "0": 0,
-          "1": 6,
-          "2": 116,
-          "3": 6,
-          "4": 0,
-          "5": 0,
-          "6": 0,
-          "7+": 0
-        },
-        "average_bucketed_expected_total": 2.420006922613974
-      },
-      {
-        "model_spec": "negative_binomial[dispersion=4,half_life_days=730,shrinkage=8]",
-        "matches": 128,
-        "exact_hits": 34,
-        "exact_accuracy": 0.265625,
-        "core_hits": 58,
-        "core_accuracy": 0.453125,
-        "average_log_loss": 1.8734015878452395,
-        "predicted_bucket_counts": {
-          "0": 0,
-          "1": 50,
-          "2": 78,
-          "3": 0,
-          "4": 0,
-          "5": 0,
-          "6": 0,
-          "7+": 0
-        },
-        "average_bucketed_expected_total": 2.404861610286473
-      },
-      {
-        "model_spec": "dixon_coles[half_life_days=730,rho=-0.08,shrinkage=6]",
-        "matches": 128,
-        "exact_hits": 34,
-        "exact_accuracy": 0.265625,
-        "core_hits": 66,
-        "core_accuracy": 0.515625,
-        "average_log_loss": 1.8823934297973184,
-        "predicted_bucket_counts": {
-          "0": 0,
-          "1": 1,
-          "2": 125,
-          "3": 2,
-          "4": 0,
-          "5": 0,
-          "6": 0,
-          "7+": 0
-        },
-        "average_bucketed_expected_total": 2.3990426155964273
-      }
-    ]
+      "selectionRule": "lowest chronological validation log loss; tie-break by RPS",
+      "excludedYears": [
+        "2026"
+      ]
+    }
   },
   "current_model_2026": {
-    "matches": 20,
-    "exact_hits": 8,
-    "exact_accuracy": 0.4,
-    "core_hits": 9,
-    "core_accuracy": 0.45,
-    "average_log_loss": 1.88838210702298,
+    "matches": 24,
+    "exact_hits": 6,
+    "exact_accuracy": 0.25,
+    "core_hits": 10,
+    "core_accuracy": 0.4166666666666667,
+    "average_log_loss": 1.962818596787418,
+    "average_rps": 0.14654259145926918,
+    "calibration_error": 0.06874999999999999,
     "predicted_bucket_counts": {
       "0": 0,
-      "1": 1,
-      "2": 17,
-      "3": 2,
+      "1": 2,
+      "2": 19,
+      "3": 3,
       "4": 0,
       "5": 0,
       "6": 0,
       "7+": 0
     },
-    "average_bucketed_expected_total": 2.555106621239088
+    "average_bucketed_expected_total": 2.5251779397991982
   },
   "optimized_model_2026": {
-    "matches": 20,
-    "exact_hits": 7,
-    "exact_accuracy": 0.35,
-    "core_hits": 7,
-    "core_accuracy": 0.35,
-    "average_log_loss": 1.8553468744388095,
+    "matches": 24,
+    "exact_hits": 6,
+    "exact_accuracy": 0.25,
+    "core_hits": 10,
+    "core_accuracy": 0.4166666666666667,
+    "average_log_loss": 1.948474231622636,
+    "average_rps": 0.1439199198383599,
+    "calibration_error": 0.06874999999999999,
     "predicted_bucket_counts": {
       "0": 0,
-      "1": 0,
+      "1": 2,
+      "2": 18,
+      "3": 4,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7+": 0
+    },
+    "average_bucketed_expected_total": 2.590027114410043
+  },
+  "tail_shadow_model_2026": {
+    "matches": 24,
+    "exact_hits": 6,
+    "exact_accuracy": 0.25,
+    "core_hits": 10,
+    "core_accuracy": 0.4166666666666667,
+    "average_log_loss": 1.958528823167603,
+    "average_rps": 0.14602008031187472,
+    "calibration_error": 0.0671875,
+    "predicted_bucket_counts": {
+      "0": 0,
+      "1": 4,
       "2": 18,
       "3": 2,
       "4": 0,
@@ -213,32 +122,106 @@
       "6": 0,
       "7+": 0
     },
-    "average_bucketed_expected_total": 2.646281462074411
+    "average_bucketed_expected_total": 2.5303467360185667
+  },
+  "validation_2018_2022": {
+    "current": {
+      "matches": 128,
+      "exact_hits": 35,
+      "exact_accuracy": 0.2734375,
+      "core_hits": 65,
+      "core_accuracy": 0.5078125,
+      "average_log_loss": 1.9091964887859956,
+      "average_rps": 0.13621367847656188,
+      "calibration_error": 0.038085937499999986,
+      "predicted_bucket_counts": {
+        "0": 0,
+        "1": 1,
+        "2": 124,
+        "3": 3,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7+": 0
+      },
+      "average_bucketed_expected_total": 2.3958934755050554
+    },
+    "candidate": {
+      "matches": 128,
+      "exact_hits": 36,
+      "exact_accuracy": 0.28125,
+      "core_hits": 64,
+      "core_accuracy": 0.5,
+      "average_log_loss": 1.891425395092195,
+      "average_rps": 0.13475259662832376,
+      "calibration_error": 0.0224609375,
+      "predicted_bucket_counts": {
+        "0": 0,
+        "1": 1,
+        "2": 120,
+        "3": 7,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7+": 0
+      },
+      "average_bucketed_expected_total": 2.4780102811888898
+    },
+    "stable_windows": 4,
+    "windows": [
+      {
+        "window": 1,
+        "matches": 32,
+        "logLossDelta": -0.02380123221702135,
+        "rpsDelta": -0.0003493231514821171,
+        "improved": true
+      },
+      {
+        "window": 2,
+        "matches": 32,
+        "logLossDelta": -0.02314717917451481,
+        "rpsDelta": -0.0019718600347313625,
+        "improved": true
+      },
+      {
+        "window": 3,
+        "matches": 32,
+        "logLossDelta": -0.012386558474715592,
+        "rpsDelta": -0.002028998613695099,
+        "improved": true
+      },
+      {
+        "window": 4,
+        "matches": 32,
+        "logLossDelta": -0.011749404908950156,
+        "rpsDelta": -0.0014941455930439496,
+        "improved": true
+      }
+    ]
   },
   "adoption_decision": {
     "status": "observe",
     "should_switch_model": false,
-    "reason": "need at least 24 settled 2026 matches before switching",
-    "recommendation_zh": "样本还不够，旧模型继续主用，新模型继续影子观察。",
+    "reason": "first round is diagnostic only; wait for a forward second-round sample",
+    "recommendation_zh": "首轮只作诊断，等待至少8场第二轮前瞻样本后再判断。",
     "gates": {
-      "sample_size": false,
-      "exact_accuracy_lift": false,
-      "extra_exact_hits": false,
+      "sample_size": true,
       "log_loss_improvement": true,
-      "core_accuracy_not_materially_worse": false
+      "rps_improvement": true,
+      "calibration_not_materially_worse": true,
+      "stable_windows": true,
+      "second_round_forward_sample": false
     },
     "deltas": {
-      "exact_accuracy_lift": -0.050000000000000044,
-      "extra_exact_hits": -1,
-      "log_loss_improvement": 0.033035232584170515,
-      "core_accuracy_delta": -0.10000000000000003
+      "log_loss_improvement": 0.014344365164782102,
+      "rps_improvement": 0.0026226716209092893,
+      "calibration_delta": 0.0
     },
     "thresholds": {
       "min_matches": 24,
-      "min_exact_accuracy_lift": 0.08,
-      "min_extra_exact_hits": 3,
-      "min_log_loss_improvement": 0.02,
-      "max_core_accuracy_drop": 0.05
+      "min_second_round_forward_matches": 8,
+      "min_stable_windows": 3,
+      "calibration_tolerance": 0.01
     }
   },
   "current_predictions_2026": [
@@ -249,13 +232,13 @@
       "actual_total_goals": 2,
       "actual_bucket": "2",
       "predicted_bucket": "2",
-      "predicted_probability": 0.28083007550638317,
+      "predicted_probability": 0.28037112800888336,
       "exact_hit": true,
       "core_interval": "1-2",
-      "core_probability": 0.5389739156325655,
+      "core_probability": 0.5401729562250431,
       "core_hit": true,
-      "bucketed_expected_total": 1.9373923138849718,
-      "probabilities": "{\"0\": 0.154336, \"1\": 0.258144, \"2\": 0.28083, \"3\": 0.174732, \"4\": 0.084681, \"5\": 0.032831, \"6\": 0.010607, \"7+\": 0.003839}"
+      "bucketed_expected_total": 1.931089739788872,
+      "probabilities": "{\"0\": 0.154848, \"1\": 0.259802, \"2\": 0.280371, \"3\": 0.174125, \"4\": 0.084111, \"5\": 0.032504, \"6\": 0.010467, \"7+\": 0.003772}"
     },
     {
       "date": "2026-06-11",
@@ -264,13 +247,13 @@
       "actual_total_goals": 3,
       "actual_bucket": "3",
       "predicted_bucket": "2",
-      "predicted_probability": 0.24332367230864893,
+      "predicted_probability": 0.24101347329450348,
       "exact_hit": false,
       "core_interval": "2-3",
-      "core_probability": 0.46663869351119874,
+      "core_probability": 0.464615729365913,
       "core_hit": true,
-      "bucketed_expected_total": 2.8494656680837016,
-      "probabilities": "{\"0\": 0.066408, \"1\": 0.144956, \"2\": 0.243324, \"3\": 0.223315, \"4\": 0.15981, \"5\": 0.091492, \"6\": 0.043649, \"7+\": 0.027046}"
+      "bucketed_expected_total": 2.878834189236095,
+      "probabilities": "{\"0\": 0.064544, \"1\": 0.142093, \"2\": 0.241013, \"3\": 0.223602, \"4\": 0.161705, \"5\": 0.093553, \"6\": 0.045104, \"7+\": 0.028386}"
     },
     {
       "date": "2026-06-12",
@@ -279,13 +262,13 @@
       "actual_total_goals": 2,
       "actual_bucket": "2",
       "predicted_bucket": "2",
-      "predicted_probability": 0.25543629784030447,
+      "predicted_probability": 0.23001773809292836,
       "exact_hit": true,
       "core_interval": "2-3",
-      "core_probability": 0.47475902162575556,
+      "core_probability": 0.454052347638058,
       "core_hit": true,
-      "bucketed_expected_total": 2.6482469228856997,
-      "probabilities": "{\"0\": 0.07795, \"1\": 0.17093, \"2\": 0.255436, \"3\": 0.219323, \"4\": 0.145663, \"5\": 0.077394, \"6\": 0.034268, \"7+\": 0.019035}"
+      "bucketed_expected_total": 2.9993011072198454,
+      "probabilities": "{\"0\": 0.056198, \"1\": 0.133152, \"2\": 0.230018, \"3\": 0.224035, \"4\": 0.168986, \"5\": 0.101971, \"6\": 0.051277, \"7+\": 0.034364}"
     },
     {
       "date": "2026-06-12",
@@ -294,13 +277,13 @@
       "actual_total_goals": 5,
       "actual_bucket": "5",
       "predicted_bucket": "2",
-      "predicted_probability": 0.26364886847870694,
+      "predicted_probability": 0.2615464060065036,
       "exact_hit": false,
       "core_interval": "2-3",
-      "core_probability": 0.47858115213452324,
+      "core_probability": 0.4772451456907163,
       "core_hit": false,
-      "bucketed_expected_total": 2.5220455868438982,
-      "probabilities": "{\"0\": 0.08841, \"1\": 0.18454, \"2\": 0.263649, \"3\": 0.214932, \"4\": 0.135848, \"5\": 0.068691, \"6\": 0.028944, \"7+\": 0.014986}"
+      "bucketed_expected_total": 2.541270119375293,
+      "probabilities": "{\"0\": 0.085817, \"1\": 0.184265, \"2\": 0.261546, \"3\": 0.215699, \"4\": 0.137386, \"5\": 0.070005, \"6\": 0.029726, \"7+\": 0.015556}"
     },
     {
       "date": "2026-06-13",
@@ -309,13 +292,13 @@
       "actual_total_goals": 2,
       "actual_bucket": "2",
       "predicted_bucket": "2",
-      "predicted_probability": 0.23350033580715368,
+      "predicted_probability": 0.23578659651405082,
       "exact_hit": true,
       "core_interval": "2-3",
-      "core_probability": 0.45753807213869613,
+      "core_probability": 0.4597763557529242,
       "core_hit": true,
-      "bucketed_expected_total": 2.9718565663464336,
-      "probabilities": "{\"0\": 0.058968, \"1\": 0.133262, \"2\": 0.2335, \"3\": 0.224038, \"4\": 0.167395, \"5\": 0.100058, \"6\": 0.04984, \"7+\": 0.032938}"
+      "bucketed_expected_total": 2.9467202264335635,
+      "probabilities": "{\"0\": 0.060656, \"1\": 0.135155, \"2\": 0.235787, \"3\": 0.22399, \"4\": 0.165904, \"5\": 0.098305, \"6\": 0.048541, \"7+\": 0.031662}"
     },
     {
       "date": "2026-06-13",
@@ -323,14 +306,14 @@
       "score": "1-1",
       "actual_total_goals": 2,
       "actual_bucket": "2",
-      "predicted_bucket": "2",
-      "predicted_probability": 0.27966512590361103,
-      "exact_hit": true,
+      "predicted_bucket": "1",
+      "predicted_probability": 0.2816584559639016,
+      "exact_hit": false,
       "core_interval": "1-2",
-      "core_probability": 0.5160478302445608,
+      "core_probability": 0.5583926839874009,
       "core_hit": true,
-      "bucketed_expected_total": 2.1071931706613896,
-      "probabilities": "{\"0\": 0.131112, \"1\": 0.236383, \"2\": 0.279665, \"3\": 0.189749, \"4\": 0.100053, \"5\": 0.042205, \"6\": 0.014836, \"7+\": 0.005997}"
+      "bucketed_expected_total": 1.7693585916978285,
+      "probabilities": "{\"0\": 0.180253, \"1\": 0.281658, \"2\": 0.276734, \"3\": 0.15742, \"4\": 0.069658, \"5\": 0.024659, \"6\": 0.007274, \"7+\": 0.002343}"
     },
     {
       "date": "2026-06-13",
@@ -339,13 +322,13 @@
       "actual_total_goals": 1,
       "actual_bucket": "1",
       "predicted_bucket": "3",
-      "predicted_probability": 0.2206769855745072,
+      "predicted_probability": 0.2209814807061162,
       "exact_hit": false,
       "core_interval": "2-3",
-      "core_probability": 0.4283619598024813,
+      "core_probability": 0.42990864607503154,
       "core_hit": false,
-      "bucketed_expected_total": 3.281198464736503,
-      "probabilities": "{\"0\": 0.044229, \"1\": 0.105198, \"2\": 0.207685, \"3\": 0.220677, \"4\": 0.182696, \"5\": 0.121002, \"6\": 0.066784, \"7+\": 0.051728}"
+      "bucketed_expected_total": 3.266979939471181,
+      "probabilities": "{\"0\": 0.044836, \"1\": 0.106354, \"2\": 0.208927, \"3\": 0.220981, \"4\": 0.182121, \"5\": 0.120075, \"6\": 0.065973, \"7+\": 0.050734}"
     },
     {
       "date": "2026-06-13",
@@ -354,13 +337,13 @@
       "actual_total_goals": 2,
       "actual_bucket": "2",
       "predicted_bucket": "2",
-      "predicted_probability": 0.25068184611022015,
+      "predicted_probability": 0.24382496837368392,
       "exact_hit": true,
       "core_interval": "2-3",
-      "core_probability": 0.47241459051172585,
+      "core_probability": 0.4670314897898057,
       "core_hit": true,
-      "bucketed_expected_total": 2.7470920564310415,
-      "probabilities": "{\"0\": 0.0729, \"1\": 0.156057, \"2\": 0.250682, \"3\": 0.221733, \"4\": 0.152859, \"5\": 0.084302, \"6\": 0.038744, \"7+\": 0.022723}"
+      "bucketed_expected_total": 2.839956522303301,
+      "probabilities": "{\"0\": 0.066783, \"1\": 0.14637, \"2\": 0.243825, \"3\": 0.223207, \"4\": 0.159188, \"5\": 0.090824, \"6\": 0.043183, \"7+\": 0.026621}"
     },
     {
       "date": "2026-06-14",
@@ -369,13 +352,13 @@
       "actual_total_goals": 8,
       "actual_bucket": "7+",
       "predicted_bucket": "3",
-      "predicted_probability": 0.2158294634585699,
+      "predicted_probability": 0.22283323196536786,
       "exact_hit": false,
       "core_interval": "2-3",
-      "core_probability": 0.408101554752177,
+      "core_probability": 0.4410662156405197,
       "core_hit": false,
-      "bucketed_expected_total": 3.4573594024007135,
-      "probabilities": "{\"0\": 0.037442, \"1\": 0.091387, \"2\": 0.192272, \"3\": 0.215829, \"4\": 0.188778, \"5\": 0.132093, \"6\": 0.077024, \"7+\": 0.065174}"
+      "bucketed_expected_total": 3.1595595610201186,
+      "probabilities": "{\"0\": 0.049693, \"1\": 0.115364, \"2\": 0.218233, \"3\": 0.222833, \"4\": 0.177366, \"5\": 0.112941, \"6\": 0.059931, \"7+\": 0.04364}"
     },
     {
       "date": "2026-06-14",
@@ -383,14 +366,14 @@
       "score": "1-0",
       "actual_total_goals": 1,
       "actual_bucket": "1",
-      "predicted_bucket": "1",
-      "predicted_probability": 0.28636637738418397,
-      "exact_hit": true,
+      "predicted_bucket": "2",
+      "predicted_probability": 0.2794376479191238,
+      "exact_hit": false,
       "core_interval": "1-2",
-      "core_probability": 0.5618444151553056,
+      "core_probability": 0.5489662081432987,
       "core_hit": true,
-      "bucketed_expected_total": 1.7289114816338897,
-      "probabilities": "{\"0\": 0.187587, \"1\": 0.286366, \"2\": 0.275478, \"3\": 0.152926, \"4\": 0.066119, \"5\": 0.02287, \"6\": 0.006592, \"7+\": 0.002062}"
+      "bucketed_expected_total": 1.8560468212352186,
+      "probabilities": "{\"0\": 0.166375, \"1\": 0.269529, \"2\": 0.279438, \"3\": 0.166638, \"4\": 0.077357, \"5\": 0.028729, \"6\": 0.008891, \"7+\": 0.003044}"
     },
     {
       "date": "2026-06-14",
@@ -398,14 +381,14 @@
       "score": "2-2",
       "actual_total_goals": 4,
       "actual_bucket": "4",
-      "predicted_bucket": "2",
-      "predicted_probability": 0.23594055774404754,
+      "predicted_bucket": "3",
+      "predicted_probability": 0.2233993686272714,
       "exact_hit": false,
       "core_interval": "2-3",
-      "core_probability": 0.45991978205771084,
+      "core_probability": 0.44576944131110113,
       "core_hit": false,
-      "bucketed_expected_total": 2.943225237144364,
-      "probabilities": "{\"0\": 0.060731, \"1\": 0.135745, \"2\": 0.235941, \"3\": 0.223979, \"4\": 0.165694, \"5\": 0.098061, \"6\": 0.048362, \"7+\": 0.031487}"
+      "bucketed_expected_total": 3.1111036375124552,
+      "probabilities": "{\"0\": 0.052047, \"1\": 0.119594, \"2\": 0.22237, \"3\": 0.223399, \"4\": 0.174991, \"5\": 0.109658, \"6\": 0.057264, \"7+\": 0.040676}"
     },
     {
       "date": "2026-06-14",
@@ -414,13 +397,13 @@
       "actual_total_goals": 6,
       "actual_bucket": "6",
       "predicted_bucket": "2",
-      "predicted_probability": 0.26385431848573104,
+      "predicted_probability": 0.268397719892181,
       "exact_hit": false,
       "core_interval": "2-3",
-      "core_probability": 0.4796461864175664,
+      "core_probability": 0.4805454683460013,
       "core_hit": false,
-      "bucketed_expected_total": 2.5437245095377867,
-      "probabilities": "{\"0\": 0.088068, \"1\": 0.179076, \"2\": 0.263854, \"3\": 0.215792, \"4\": 0.137579, \"5\": 0.070171, \"6\": 0.029825, \"7+\": 0.015634}"
+      "bucketed_expected_total": 2.4584264160262506,
+      "probabilities": "{\"0\": 0.095188, \"1\": 0.189579, \"2\": 0.268398, \"3\": 0.212148, \"4\": 0.130666, \"5\": 0.064383, \"6\": 0.026437, \"7+\": 0.013201}"
     },
     {
       "date": "2026-06-15",
@@ -429,13 +412,13 @@
       "actual_total_goals": 2,
       "actual_bucket": "2",
       "predicted_bucket": "2",
-      "predicted_probability": 0.27468128823446514,
+      "predicted_probability": 0.27937035038226404,
       "exact_hit": true,
       "core_interval": "1-2",
-      "core_probability": 0.48108744964775246,
+      "core_probability": 0.5054141985606815,
       "core_hit": true,
-      "bucketed_expected_total": 2.3221193455235474,
-      "probabilities": "{\"0\": 0.108127, \"1\": 0.206406, \"2\": 0.274681, \"3\": 0.204871, \"4\": 0.119121, \"5\": 0.05541, \"6\": 0.021479, \"7+\": 0.009904}"
+      "bucketed_expected_total": 2.171207570169935,
+      "probabilities": "{\"0\": 0.12439, \"1\": 0.226044, \"2\": 0.27937, \"3\": 0.194717, \"4\": 0.105809, \"5\": 0.045997, \"6\": 0.016663, \"7+\": 0.007011}"
     },
     {
       "date": "2026-06-15",
@@ -444,13 +427,13 @@
       "actual_total_goals": 4,
       "actual_bucket": "4",
       "predicted_bucket": "2",
-      "predicted_probability": 0.2529325595883215,
+      "predicted_probability": 0.23217975936589186,
       "exact_hit": false,
       "core_interval": "2-3",
-      "core_probability": 0.4738464006500937,
+      "core_probability": 0.4562195145689254,
       "core_hit": false,
-      "bucketed_expected_total": 2.7092422135588783,
-      "probabilities": "{\"0\": 0.075125, \"1\": 0.160966, \"2\": 0.252933, \"3\": 0.220914, \"4\": 0.150157, \"5\": 0.08165, \"6\": 0.036999, \"7+\": 0.021257}"
+      "bucketed_expected_total": 2.990766506644654,
+      "probabilities": "{\"0\": 0.058132, \"1\": 0.131034, \"2\": 0.23218, \"3\": 0.22404, \"4\": 0.168492, \"5\": 0.101373, \"6\": 0.050826, \"7+\": 0.033924}"
     },
     {
       "date": "2026-06-15",
@@ -459,13 +442,13 @@
       "actual_total_goals": 0,
       "actual_bucket": "0",
       "predicted_bucket": "2",
-      "predicted_probability": 0.25382994197954634,
+      "predicted_probability": 0.2604883622654963,
       "exact_hit": false,
       "core_interval": "2-3",
-      "core_probability": 0.47412458055135165,
+      "core_probability": 0.4777088083647417,
       "core_hit": false,
-      "bucketed_expected_total": 2.6839234482350327,
-      "probabilities": "{\"0\": 0.076099, \"1\": 0.165417, \"2\": 0.25383, \"3\": 0.220295, \"4\": 0.148313, \"5\": 0.079881, \"6\": 0.035853, \"7+\": 0.020313}"
+      "bucketed_expected_total": 2.5824872190444728,
+      "probabilities": "{\"0\": 0.083894, \"1\": 0.176656, \"2\": 0.260488, \"3\": 0.21722, \"4\": 0.14063, \"5\": 0.072836, \"6\": 0.031436, \"7+\": 0.016839}"
     },
     {
       "date": "2026-06-15",
@@ -473,14 +456,14 @@
       "score": "1-1",
       "actual_total_goals": 2,
       "actual_bucket": "2",
-      "predicted_bucket": "2",
-      "predicted_probability": 0.27815983235347175,
-      "exact_hit": true,
+      "predicted_bucket": "1",
+      "predicted_probability": 0.2888956519188376,
+      "exact_hit": false,
       "core_interval": "1-2",
-      "core_probability": 0.555335017606253,
+      "core_probability": 0.5635776791583627,
       "core_hit": true,
-      "bucketed_expected_total": 1.7939065453841407,
-      "probabilities": "{\"0\": 0.176735, \"1\": 0.277175, \"2\": 0.27816, \"3\": 0.16009, \"4\": 0.071824, \"5\": 0.025779, \"6\": 0.00771, \"7+\": 0.002527}"
+      "bucketed_expected_total": 1.7066418944693325,
+      "probabilities": "{\"0\": 0.191762, \"1\": 0.288896, \"2\": 0.274682, \"3\": 0.150401, \"4\": 0.064189, \"5\": 0.021916, \"6\": 0.006235, \"7+\": 0.001919}"
     },
     {
       "date": "2026-06-16",
@@ -489,13 +472,13 @@
       "actual_total_goals": 4,
       "actual_bucket": "4",
       "predicted_bucket": "2",
-      "predicted_probability": 0.2703484389035263,
+      "predicted_probability": 0.2767627538416424,
       "exact_hit": false,
-      "core_interval": "2-3",
-      "core_probability": 0.48079278074542653,
+      "core_interval": "1-2",
+      "core_probability": 0.4900461625980373,
       "core_hit": false,
-      "bucketed_expected_total": 2.4233000834185723,
-      "probabilities": "{\"0\": 0.098541, \"1\": 0.193497, \"2\": 0.270348, \"3\": 0.210444, \"4\": 0.127745, \"5\": 0.062035, \"6\": 0.025104, \"7+\": 0.012285}"
+      "bucketed_expected_total": 2.267202787770955,
+      "probabilities": "{\"0\": 0.113872, \"1\": 0.213283, \"2\": 0.276763, \"3\": 0.201431, \"4\": 0.114329, \"5\": 0.051913, \"6\": 0.019644, \"7+\": 0.008765}"
     },
     {
       "date": "2026-06-16",
@@ -504,13 +487,13 @@
       "actual_total_goals": 5,
       "actual_bucket": "5",
       "predicted_bucket": "2",
-      "predicted_probability": 0.2651093237732721,
+      "predicted_probability": 0.24599984150480206,
       "exact_hit": false,
       "core_interval": "2-3",
-      "core_probability": 0.4796838125711006,
+      "core_probability": 0.46876941598745125,
       "core_hit": false,
-      "bucketed_expected_total": 2.5133635863612254,
-      "probabilities": "{\"0\": 0.09011, \"1\": 0.18363, \"2\": 0.265109, \"3\": 0.214574, \"4\": 0.135149, \"5\": 0.068099, \"6\": 0.028595, \"7+\": 0.014733}"
+      "bucketed_expected_total": 2.806978122326537,
+      "probabilities": "{\"0\": 0.06859, \"1\": 0.150374, \"2\": 0.246, \"3\": 0.22277, \"4\": 0.156991, \"5\": 0.088508, \"6\": 0.041582, \"7+\": 0.025185}"
     },
     {
       "date": "2026-06-16",
@@ -519,13 +502,13 @@
       "actual_total_goals": 3,
       "actual_bucket": "3",
       "predicted_bucket": "2",
-      "predicted_probability": 0.2809317971678489,
+      "predicted_probability": 0.28124669490965787,
       "exact_hit": false,
       "core_interval": "1-2",
-      "core_probability": 0.5192297336402538,
+      "core_probability": 0.5222184294247274,
       "core_hit": false,
-      "bucketed_expected_total": 2.0794271715457846,
-      "probabilities": "{\"0\": 0.135472, \"1\": 0.238298, \"2\": 0.280932, \"3\": 0.187474, \"4\": 0.097544, \"5\": 0.040602, \"6\": 0.014084, \"7+\": 0.005593}"
+      "bucketed_expected_total": 2.0580096322086776,
+      "probabilities": "{\"0\": 0.138306, \"1\": 0.240972, \"2\": 0.281247, \"3\": 0.185671, \"4\": 0.095606, \"5\": 0.039384, \"6\": 0.01352, \"7+\": 0.005296}"
     },
     {
       "date": "2026-06-16",
@@ -534,13 +517,73 @@
       "actual_total_goals": 4,
       "actual_bucket": "4",
       "predicted_bucket": "2",
-      "predicted_probability": 0.24368333969542127,
+      "predicted_probability": 0.2478096309274484,
       "exact_hit": false,
       "core_interval": "2-3",
-      "core_probability": 0.4668803708553496,
+      "core_probability": 0.47031439377513107,
       "core_hit": false,
-      "bucketed_expected_total": 2.839138650164186,
-      "probabilities": "{\"0\": 0.06663, \"1\": 0.14686, \"2\": 0.243683, \"3\": 0.223197, \"4\": 0.159134, \"5\": 0.090767, \"6\": 0.043143, \"7+\": 0.026584}"
+      "bucketed_expected_total": 2.7898494441997714,
+      "probabilities": "{\"0\": 0.070254, \"1\": 0.151076, \"2\": 0.24781, \"3\": 0.222505, \"4\": 0.155827, \"5\": 0.087304, \"6\": 0.040761, \"7+\": 0.024464}"
+    },
+    {
+      "date": "2026-06-17",
+      "match": "Portugal vs DR Congo",
+      "score": "1-1",
+      "actual_total_goals": 2,
+      "actual_bucket": "2",
+      "predicted_bucket": "2",
+      "predicted_probability": 0.2806294961233458,
+      "exact_hit": true,
+      "core_interval": "1-2",
+      "core_probability": 0.5177279256958423,
+      "core_hit": true,
+      "bucketed_expected_total": 2.090826562299904,
+      "probabilities": "{\"0\": 0.133877, \"1\": 0.237098, \"2\": 0.280629, \"3\": 0.188417, \"4\": 0.098575, \"5\": 0.041257, \"6\": 0.01439, \"7+\": 0.005756}"
+    },
+    {
+      "date": "2026-06-17",
+      "match": "Uzbekistan vs Colombia",
+      "score": "1-3",
+      "actual_total_goals": 4,
+      "actual_bucket": "4",
+      "predicted_bucket": "2",
+      "predicted_probability": 0.28124966122587586,
+      "exact_hit": false,
+      "core_interval": "1-2",
+      "core_probability": 0.5226080733766081,
+      "core_hit": false,
+      "bucketed_expected_total": 2.055413940563269,
+      "probabilities": "{\"0\": 0.138622, \"1\": 0.241358, \"2\": 0.28125, \"3\": 0.185449, \"4\": 0.095371, \"5\": 0.039237, \"6\": 0.013452, \"7+\": 0.005261}"
+    },
+    {
+      "date": "2026-06-17",
+      "match": "Ghana vs Panama",
+      "score": "1-0",
+      "actual_total_goals": 1,
+      "actual_bucket": "1",
+      "predicted_bucket": "2",
+      "predicted_probability": 0.24729416129751663,
+      "exact_hit": false,
+      "core_interval": "2-3",
+      "core_probability": 0.46990166429159197,
+      "core_hit": false,
+      "bucketed_expected_total": 2.7963110544938705,
+      "probabilities": "{\"0\": 0.06979, \"1\": 0.150479, \"2\": 0.247294, \"3\": 0.222608, \"4\": 0.156267, \"5\": 0.087758, \"6\": 0.04107, \"7+\": 0.024735}"
+    },
+    {
+      "date": "2026-06-17",
+      "match": "England vs Croatia",
+      "score": "4-2",
+      "actual_total_goals": 6,
+      "actual_bucket": "6",
+      "predicted_bucket": "2",
+      "predicted_probability": 0.26388601989494287,
+      "exact_hit": false,
+      "core_interval": "2-3",
+      "core_probability": 0.4791358699556872,
+      "core_hit": false,
+      "bucketed_expected_total": 2.52992894966936,
+      "probabilities": "{\"0\": 0.08844, \"1\": 0.182234, \"2\": 0.263886, \"3\": 0.21525, \"4\": 0.13648, \"5\": 0.069228, \"6\": 0.029263, \"7+\": 0.01522}"
     }
   ],
   "optimized_predictions_2026": [
@@ -551,13 +594,13 @@
       "actual_total_goals": 2,
       "actual_bucket": "2",
       "predicted_bucket": "2",
-      "predicted_probability": 0.2689860661754832,
+      "predicted_probability": 0.27012504399159026,
       "exact_hit": true,
       "core_interval": "1-2",
-      "core_probability": 0.5177919778548874,
+      "core_probability": 0.5284712860163101,
       "core_hit": true,
-      "bucketed_expected_total": 2.15991257315695,
-      "probabilities": "{\"0\": 0.11507, \"1\": 0.248806, \"2\": 0.268986, \"3\": 0.193869, \"4\": 0.104796, \"5\": 0.045319, \"6\": 0.016331, \"7+\": 0.006823}"
+      "bucketed_expected_total": 2.0893283007694374,
+      "probabilities": "{\"0\": 0.123541, \"1\": 0.258346, \"2\": 0.270125, \"3\": 0.188294, \"4\": 0.098439, \"5\": 0.041171, \"6\": 0.014349, \"7+\": 0.005734}"
     },
     {
       "date": "2026-06-11",
@@ -566,13 +609,13 @@
       "actual_total_goals": 3,
       "actual_bucket": "3",
       "predicted_bucket": "2",
-      "predicted_probability": 0.26282643270914297,
+      "predicted_probability": 0.2333767874495335,
       "exact_hit": false,
-      "core_interval": "1-2",
-      "core_probability": 0.4852911855983189,
-      "core_hit": false,
-      "bucketed_expected_total": 2.358817353815953,
-      "probabilities": "{\"0\": 0.094151, \"1\": 0.222465, \"2\": 0.262826, \"3\": 0.207007, \"4\": 0.122282, \"5\": 0.057787, \"6\": 0.022757, \"7+\": 0.010724}"
+      "core_interval": "2-3",
+      "core_probability": 0.4567890379334776,
+      "core_hit": true,
+      "bucketed_expected_total": 2.858606058166504,
+      "probabilities": "{\"0\": 0.056591, \"1\": 0.162524, \"2\": 0.233377, \"3\": 0.223412, \"4\": 0.160405, \"5\": 0.092134, \"6\": 0.0441, \"7+\": 0.027458}"
     },
     {
       "date": "2026-06-12",
@@ -581,13 +624,13 @@
       "actual_total_goals": 2,
       "actual_bucket": "2",
       "predicted_bucket": "2",
-      "predicted_probability": 0.2592212872752162,
+      "predicted_probability": 0.22817641140196876,
       "exact_hit": true,
-      "core_interval": "1-2",
-      "core_probability": 0.4712552906616919,
+      "core_interval": "2-3",
+      "core_probability": 0.4521023014657251,
       "core_hit": true,
-      "bucketed_expected_total": 2.440086407685341,
-      "probabilities": "{\"0\": 0.086718, \"1\": 0.212034, \"2\": 0.259221, \"3\": 0.211273, \"4\": 0.129146, \"5\": 0.063155, \"6\": 0.025736, \"7+\": 0.012717}"
+      "bucketed_expected_total": 2.9286777425839863,
+      "probabilities": "{\"0\": 0.052649, \"1\": 0.155005, \"2\": 0.228176, \"3\": 0.223926, \"4\": 0.164816, \"5\": 0.097047, \"6\": 0.04762, \"7+\": 0.03076}"
     },
     {
       "date": "2026-06-12",
@@ -596,13 +639,13 @@
       "actual_total_goals": 5,
       "actual_bucket": "5",
       "predicted_bucket": "2",
-      "predicted_probability": 0.24549495793748483,
+      "predicted_probability": 0.25039658029296974,
       "exact_hit": false,
       "core_interval": "2-3",
-      "core_probability": 0.46575488369806306,
+      "core_probability": 0.4683370323091871,
       "core_hit": false,
-      "bucketed_expected_total": 2.682593571491269,
-      "probabilities": "{\"0\": 0.067771, \"1\": 0.182414, \"2\": 0.245495, \"3\": 0.22026, \"4\": 0.148214, \"5\": 0.079787, \"6\": 0.035793, \"7+\": 0.020266}"
+      "bucketed_expected_total": 2.603622776574538,
+      "probabilities": "{\"0\": 0.073451, \"1\": 0.191791, \"2\": 0.250397, \"3\": 0.21794, \"4\": 0.142268, \"5\": 0.074297, \"6\": 0.032333, \"7+\": 0.017523}"
     },
     {
       "date": "2026-06-13",
@@ -611,13 +654,13 @@
       "actual_total_goals": 2,
       "actual_bucket": "2",
       "predicted_bucket": "2",
-      "predicted_probability": 0.23837391670295693,
+      "predicted_probability": 0.22994894390822215,
       "exact_hit": true,
       "core_interval": "2-3",
-      "core_probability": 0.4608582781130567,
+      "core_probability": 0.4537462364401159,
       "core_hit": true,
-      "bucketed_expected_total": 2.7885866254832083,
-      "probabilities": "{\"0\": 0.060809, \"1\": 0.170266, \"2\": 0.238374, \"3\": 0.222484, \"4\": 0.15574, \"5\": 0.087215, \"6\": 0.040701, \"7+\": 0.024411}"
+      "bucketed_expected_total": 2.90507598263225,
+      "probabilities": "{\"0\": 0.053948, \"1\": 0.157513, \"2\": 0.229949, \"3\": 0.223797, \"4\": 0.163358, \"5\": 0.095392, \"6\": 0.04642, \"7+\": 0.029623}"
     },
     {
       "date": "2026-06-13",
@@ -625,14 +668,14 @@
       "score": "1-1",
       "actual_total_goals": 2,
       "actual_bucket": "2",
-      "predicted_bucket": "2",
-      "predicted_probability": 0.26963813387063607,
-      "exact_hit": true,
+      "predicted_bucket": "1",
+      "predicted_probability": 0.27144144453350344,
+      "exact_hit": false,
       "core_interval": "1-2",
-      "core_probability": 0.5232718715111817,
+      "core_probability": 0.5421098324136628,
       "core_hit": true,
-      "bucketed_expected_total": 2.1241335845334217,
-      "probabilities": "{\"0\": 0.11929, \"1\": 0.253634, \"2\": 0.269638, \"3\": 0.191102, \"4\": 0.10158, \"5\": 0.043196, \"6\": 0.015307, \"7+\": 0.006254}"
+      "bucketed_expected_total": 1.992938727006967,
+      "probabilities": "{\"0\": 0.136108, \"1\": 0.271441, \"2\": 0.270668, \"3\": 0.179932, \"4\": 0.08971, \"5\": 0.035782, \"6\": 0.011893, \"7+\": 0.004466}"
     },
     {
       "date": "2026-06-13",
@@ -640,14 +683,14 @@
       "score": "0-1",
       "actual_total_goals": 1,
       "actual_bucket": "1",
-      "predicted_bucket": "2",
-      "predicted_probability": 0.2281711466280987,
+      "predicted_bucket": "3",
+      "predicted_probability": 0.22304537385609363,
       "exact_hit": false,
       "core_interval": "2-3",
-      "core_probability": 0.45209533253277057,
+      "core_probability": 0.434357003585723,
       "core_hit": false,
-      "bucketed_expected_total": 2.9287563684096605,
-      "probabilities": "{\"0\": 0.052646, \"1\": 0.154999, \"2\": 0.228171, \"3\": 0.223924, \"4\": 0.164817, \"5\": 0.09705, \"6\": 0.047622, \"7+\": 0.030771}"
+      "bucketed_expected_total": 3.1430571588223906,
+      "probabilities": "{\"0\": 0.042147, \"1\": 0.133463, \"2\": 0.211312, \"3\": 0.223045, \"4\": 0.176573, \"5\": 0.111827, \"6\": 0.059018, \"7+\": 0.042614}"
     },
     {
       "date": "2026-06-13",
@@ -656,13 +699,13 @@
       "actual_total_goals": 2,
       "actual_bucket": "2",
       "predicted_bucket": "2",
-      "predicted_probability": 0.22851407279188482,
+      "predicted_probability": 0.23439121777371247,
       "exact_hit": true,
       "core_interval": "2-3",
-      "core_probability": 0.4524185431763383,
+      "core_probability": 0.45765195542338644,
       "core_hit": true,
-      "bucketed_expected_total": 2.9242045756592923,
-      "probabilities": "{\"0\": 0.052893, \"1\": 0.155479, \"2\": 0.228514, \"3\": 0.223904, \"4\": 0.164541, \"5\": 0.096733, \"6\": 0.047391, \"7+\": 0.030544}"
+      "bucketed_expected_total": 2.8446268445862724,
+      "probabilities": "{\"0\": 0.05741, \"1\": 0.164051, \"2\": 0.234391, \"3\": 0.223261, \"4\": 0.159494, \"5\": 0.091152, \"6\": 0.043412, \"7+\": 0.026829}"
     },
     {
       "date": "2026-06-14",
@@ -671,13 +714,13 @@
       "actual_total_goals": 8,
       "actual_bucket": "7+",
       "predicted_bucket": "3",
-      "predicted_probability": 0.20863281942407008,
+      "predicted_probability": 0.22349651479254995,
       "exact_hit": false,
-      "core_interval": "3-4",
-      "core_probability": 0.4017451976063618,
+      "core_interval": "2-3",
+      "core_probability": 0.43821727446923575,
       "core_hit": false,
-      "bucketed_expected_total": 3.646082752278501,
-      "probabilities": "{\"0\": 0.024664, \"1\": 0.091319, \"2\": 0.16905, \"3\": 0.208633, \"4\": 0.193112, \"5\": 0.142997, \"6\": 0.08824, \"7+\": 0.081984}"
+      "bucketed_expected_total": 3.1009047121018822,
+      "probabilities": "{\"0\": 0.044042, \"1\": 0.137526, \"2\": 0.214721, \"3\": 0.223497, \"4\": 0.174473, \"5\": 0.108962, \"6\": 0.056708, \"7+\": 0.040071}"
     },
     {
       "date": "2026-06-14",
@@ -686,13 +729,13 @@
       "actual_total_goals": 1,
       "actual_bucket": "1",
       "predicted_bucket": "2",
-      "predicted_probability": 0.25469836443183386,
+      "predicted_probability": 0.27044640452030155,
       "exact_hit": false,
-      "core_interval": "2-3",
-      "core_probability": 0.46988516854497053,
-      "core_hit": false,
-      "bucketed_expected_total": 2.5283502225512247,
-      "probabilities": "{\"0\": 0.079293, \"1\": 0.200977, \"2\": 0.254698, \"3\": 0.215187, \"4\": 0.136354, \"5\": 0.069121, \"6\": 0.029199, \"7+\": 0.015172}"
+      "core_interval": "1-2",
+      "core_probability": 0.5332550306628205,
+      "core_hit": true,
+      "bucketed_expected_total": 2.0564486578431103,
+      "probabilities": "{\"0\": 0.127693, \"1\": 0.262809, \"2\": 0.270446, \"3\": 0.185537, \"4\": 0.095465, \"5\": 0.039296, \"6\": 0.013479, \"7+\": 0.005275}"
     },
     {
       "date": "2026-06-14",
@@ -701,13 +744,13 @@
       "actual_total_goals": 4,
       "actual_bucket": "4",
       "predicted_bucket": "3",
-      "predicted_probability": 0.2230872602915096,
+      "predicted_probability": 0.22342825193293356,
       "exact_hit": false,
       "core_interval": "2-3",
-      "core_probability": 0.4346812168342965,
+      "core_probability": 0.4375661665973276,
       "core_hit": false,
-      "bucketed_expected_total": 3.1395851957921455,
-      "probabilities": "{\"0\": 0.042301, \"1\": 0.133795, \"2\": 0.211594, \"3\": 0.223087, \"4\": 0.176404, \"5\": 0.111591, \"6\": 0.058826, \"7+\": 0.042402}"
+      "bucketed_expected_total": 3.1081458930716437,
+      "probabilities": "{\"0\": 0.043711, \"1\": 0.136823, \"2\": 0.214138, \"3\": 0.223428, \"4\": 0.174841, \"5\": 0.109456, \"6\": 0.057102, \"7+\": 0.0405}"
     },
     {
       "date": "2026-06-14",
@@ -716,13 +759,13 @@
       "actual_total_goals": 6,
       "actual_bucket": "6",
       "predicted_bucket": "2",
-      "predicted_probability": 0.24871790892588458,
+      "predicted_probability": 0.25594911496590894,
       "exact_hit": false,
       "core_interval": "2-3",
-      "core_probability": 0.46753729628365454,
+      "core_probability": 0.4701751492520342,
       "core_hit": false,
-      "bucketed_expected_total": 2.6313598007769867,
-      "probabilities": "{\"0\": 0.071406, \"1\": 0.188468, \"2\": 0.248718, \"3\": 0.218819, \"4\": 0.144386, \"5\": 0.076218, \"6\": 0.033528, \"7+\": 0.018457}"
+      "bucketed_expected_total": 2.5050602942312805,
+      "probabilities": "{\"0\": 0.08119, \"1\": 0.203866, \"2\": 0.255949, \"3\": 0.214226, \"4\": 0.134478, \"5\": 0.067534, \"6\": 0.028263, \"7+\": 0.014494}"
     },
     {
       "date": "2026-06-15",
@@ -731,13 +774,13 @@
       "actual_total_goals": 2,
       "actual_bucket": "2",
       "predicted_bucket": "2",
-      "predicted_probability": 0.22968264158660473,
+      "predicted_probability": 0.2650396844339606,
       "exact_hit": true,
-      "core_interval": "2-3",
-      "core_probability": 0.45350212331975914,
+      "core_interval": "1-2",
+      "core_probability": 0.49509211394363345,
       "core_hit": true,
-      "bucketed_expected_total": 2.908639840868004,
-      "probabilities": "{\"0\": 0.05375, \"1\": 0.157133, \"2\": 0.229683, \"3\": 0.223819, \"4\": 0.163579, \"5\": 0.095642, \"6\": 0.0466, \"7+\": 0.029793}"
+      "bucketed_expected_total": 2.30071738741345,
+      "probabilities": "{\"0\": 0.099842, \"1\": 0.230052, \"2\": 0.26504, \"3\": 0.203565, \"4\": 0.117262, \"5\": 0.054038, \"6\": 0.020752, \"7+\": 0.009448}"
     },
     {
       "date": "2026-06-15",
@@ -745,14 +788,14 @@
       "score": "2-2",
       "actual_total_goals": 4,
       "actual_bucket": "4",
-      "predicted_bucket": "2",
-      "predicted_probability": 0.23351454265832494,
+      "predicted_bucket": "3",
+      "predicted_probability": 0.22404183264442049,
       "exact_hit": false,
       "core_interval": "2-3",
-      "core_probability": 0.45690841283093453,
+      "core_probability": 0.4478786887002404,
       "core_hit": false,
-      "bucketed_expected_total": 2.8567100003947923,
-      "probabilities": "{\"0\": 0.0567, \"1\": 0.162729, \"2\": 0.233515, \"3\": 0.223394, \"4\": 0.160284, \"5\": 0.092002, \"6\": 0.044007, \"7+\": 0.027368}"
+      "bucketed_expected_total": 2.985455403805508,
+      "probabilities": "{\"0\": 0.049651, \"1\": 0.149088, \"2\": 0.223837, \"3\": 0.224042, \"4\": 0.168185, \"5\": 0.101004, \"6\": 0.050548, \"7+\": 0.033646}"
     },
     {
       "date": "2026-06-15",
@@ -761,13 +804,13 @@
       "actual_total_goals": 0,
       "actual_bucket": "0",
       "predicted_bucket": "2",
-      "predicted_probability": 0.2656873852830627,
+      "predicted_probability": 0.2464172010411239,
       "exact_hit": false,
-      "core_interval": "1-2",
-      "core_probability": 0.4982195970338756,
+      "core_interval": "2-3",
+      "core_probability": 0.46629627546555674,
       "core_hit": false,
-      "bucketed_expected_total": 2.2818877600664282,
-      "probabilities": "{\"0\": 0.101757, \"1\": 0.232532, \"2\": 0.265687, \"3\": 0.20238, \"4\": 0.115618, \"5\": 0.052841, \"6\": 0.020125, \"7+\": 0.009059}"
+      "bucketed_expected_total": 2.668178666954456,
+      "probabilities": "{\"0\": 0.068775, \"1\": 0.184106, \"2\": 0.246417, \"3\": 0.219879, \"4\": 0.147149, \"5\": 0.078781, \"6\": 0.035148, \"7+\": 0.019744}"
     },
     {
       "date": "2026-06-15",
@@ -775,14 +818,14 @@
       "score": "1-1",
       "actual_total_goals": 2,
       "actual_bucket": "2",
-      "predicted_bucket": "2",
-      "predicted_probability": 0.2608766672021166,
-      "exact_hit": true,
+      "predicted_bucket": "1",
+      "predicted_probability": 0.28475883936223384,
+      "exact_hit": false,
       "core_interval": "1-2",
-      "core_probability": 0.47747020345382196,
+      "core_probability": 0.5546677508059765,
       "core_hit": true,
-      "bucketed_expected_total": 2.404345021707118,
-      "probabilities": "{\"0\": 0.089914, \"1\": 0.216594, \"2\": 0.260877, \"3\": 0.209476, \"4\": 0.126152, \"5\": 0.060778, \"6\": 0.024401, \"7+\": 0.01181}"
+      "bucketed_expected_total": 1.8947228997066268,
+      "probabilities": "{\"0\": 0.150213, \"1\": 0.284759, \"2\": 0.269909, \"3\": 0.170556, \"4\": 0.080831, \"5\": 0.030646, \"6\": 0.009683, \"7+\": 0.003404}"
     },
     {
       "date": "2026-06-16",
@@ -791,13 +834,13 @@
       "actual_total_goals": 4,
       "actual_bucket": "4",
       "predicted_bucket": "2",
-      "predicted_probability": 0.2610436276984436,
+      "predicted_probability": 0.26115311175969563,
       "exact_hit": false,
       "core_interval": "1-2",
-      "core_probability": 0.4781167475003337,
+      "core_probability": 0.47854285472798996,
       "core_hit": false,
-      "bucketed_expected_total": 2.4006058689735434,
-      "probabilities": "{\"0\": 0.090255, \"1\": 0.217073, \"2\": 0.261044, \"3\": 0.209281, \"4\": 0.125836, \"5\": 0.06053, \"6\": 0.024264, \"7+\": 0.011718}"
+      "bucketed_expected_total": 2.3981392366148455,
+      "probabilities": "{\"0\": 0.09048, \"1\": 0.21739, \"2\": 0.261153, \"3\": 0.209151, \"4\": 0.125628, \"5\": 0.060367, \"6\": 0.024173, \"7+\": 0.011657}"
     },
     {
       "date": "2026-06-16",
@@ -806,13 +849,13 @@
       "actual_total_goals": 5,
       "actual_bucket": "5",
       "predicted_bucket": "2",
-      "predicted_probability": 0.24599377423913873,
+      "predicted_probability": 0.23778975940394897,
       "exact_hit": false,
       "core_interval": "2-3",
-      "core_probability": 0.4660504756264695,
+      "core_probability": 0.4604071504293693,
       "core_hit": false,
-      "bucketed_expected_total": 2.6748201605172843,
-      "probabilities": "{\"0\": 0.068311, \"1\": 0.183325, \"2\": 0.245994, \"3\": 0.220057, \"4\": 0.147641, \"5\": 0.079244, \"6\": 0.035444, \"7+\": 0.019984}"
+      "bucketed_expected_total": 2.7969306069076803,
+      "probabilities": "{\"0\": 0.06029, \"1\": 0.169331, \"2\": 0.23779, \"3\": 0.222617, \"4\": 0.15631, \"5\": 0.087802, \"6\": 0.0411, \"7+\": 0.02476}"
     },
     {
       "date": "2026-06-16",
@@ -821,13 +864,13 @@
       "actual_total_goals": 3,
       "actual_bucket": "3",
       "predicted_bucket": "2",
-      "predicted_probability": 0.2630781152184085,
+      "predicted_probability": 0.26670068733045627,
       "exact_hit": false,
       "core_interval": "1-2",
-      "core_probability": 0.4863491777216804,
+      "core_probability": 0.5034462336536758,
       "core_hit": false,
-      "bucketed_expected_total": 2.3526055277296822,
-      "probabilities": "{\"0\": 0.094744, \"1\": 0.223271, \"2\": 0.263078, \"3\": 0.206655, \"4\": 0.12175, \"5\": 0.057383, \"6\": 0.022538, \"7+\": 0.010582}"
+      "bucketed_expected_total": 2.2500641446151177,
+      "probabilities": "{\"0\": 0.105077, \"1\": 0.236746, \"2\": 0.266701, \"3\": 0.200297, \"4\": 0.11282, \"5\": 0.050838, \"6\": 0.01909, \"7+\": 0.00843}"
     },
     {
       "date": "2026-06-16",
@@ -836,13 +879,73 @@
       "actual_total_goals": 4,
       "actual_bucket": "4",
       "predicted_bucket": "2",
-      "predicted_probability": 0.24478650489024054,
+      "predicted_probability": 0.23726385052118265,
       "exact_hit": false,
       "core_interval": "2-3",
-      "core_probability": 0.46532239541206843,
+      "core_probability": 0.4599948305481668,
       "core_hit": false,
-      "bucketed_expected_total": 2.6935460295974076,
-      "probabilities": "{\"0\": 0.067018, \"1\": 0.181136, \"2\": 0.244787, \"3\": 0.220536, \"4\": 0.149016, \"5\": 0.080552, \"6\": 0.036286, \"7+\": 0.02067}"
+      "bucketed_expected_total": 2.804405167771638,
+      "probabilities": "{\"0\": 0.05983, \"1\": 0.168497, \"2\": 0.237264, \"3\": 0.222731, \"4\": 0.156816, \"5\": 0.088327, \"6\": 0.041458, \"7+\": 0.025077}"
+    },
+    {
+      "date": "2026-06-17",
+      "match": "Portugal vs DR Congo",
+      "score": "1-1",
+      "actual_total_goals": 2,
+      "actual_bucket": "2",
+      "predicted_bucket": "2",
+      "predicted_probability": 0.26615905320389666,
+      "exact_hit": true,
+      "core_interval": "1-2",
+      "core_probability": 0.5005963769598217,
+      "core_hit": true,
+      "bucketed_expected_total": 2.267475167826441,
+      "probabilities": "{\"0\": 0.103248, \"1\": 0.234437, \"2\": 0.266159, \"3\": 0.201449, \"4\": 0.114353, \"5\": 0.051931, \"6\": 0.019652, \"7+\": 0.00877}"
+    },
+    {
+      "date": "2026-06-17",
+      "match": "Uzbekistan vs Colombia",
+      "score": "1-3",
+      "actual_total_goals": 4,
+      "actual_bucket": "4",
+      "predicted_bucket": "2",
+      "predicted_probability": 0.266807218424759,
+      "exact_hit": false,
+      "core_interval": "1-2",
+      "core_probability": 0.5040240590009992,
+      "core_hit": false,
+      "bucketed_expected_total": 2.246516064044907,
+      "probabilities": "{\"0\": 0.105454, \"1\": 0.237217, \"2\": 0.266807, \"3\": 0.200059, \"4\": 0.112507, \"5\": 0.050617, \"6\": 0.018977, \"7+\": 0.008362}"
+    },
+    {
+      "date": "2026-06-17",
+      "match": "Ghana vs Panama",
+      "score": "1-0",
+      "actual_total_goals": 1,
+      "actual_bucket": "1",
+      "predicted_bucket": "2",
+      "predicted_probability": 0.2375378639566055,
+      "exact_hit": false,
+      "core_interval": "2-3",
+      "core_probability": 0.4602102329216884,
+      "core_hit": false,
+      "bucketed_expected_total": 2.8005155115537748,
+      "probabilities": "{\"0\": 0.060069, \"1\": 0.168931, \"2\": 0.237538, \"3\": 0.222672, \"4\": 0.156553, \"5\": 0.088053, \"6\": 0.041271, \"7+\": 0.024912}"
+    },
+    {
+      "date": "2026-06-17",
+      "match": "England vs Croatia",
+      "score": "4-2",
+      "actual_total_goals": 6,
+      "actual_bucket": "6",
+      "predicted_bucket": "2",
+      "predicted_probability": 0.249952595976354,
+      "exact_hit": false,
+      "core_interval": "2-3",
+      "core_probability": 0.46813409226994696,
+      "core_hit": false,
+      "bucketed_expected_total": 2.611037340236321,
+      "probabilities": "{\"0\": 0.0729, \"1\": 0.1909, \"2\": 0.249953, \"3\": 0.218181, \"4\": 0.142837, \"5\": 0.074809, \"6\": 0.03265, \"7+\": 0.017771}"
     }
   ],
   "comparison_2026": [
@@ -856,12 +959,12 @@
       "current_exact_hit": true,
       "current_core_interval": "1-2",
       "current_core_hit": true,
-      "current_log_loss": 1.2700055060617594,
+      "current_log_loss": 1.2716410962812317,
       "candidate_predicted_bucket": "2",
       "candidate_exact_hit": true,
       "candidate_core_interval": "1-2",
       "candidate_core_hit": true,
-      "candidate_log_loss": 1.3130956993260436
+      "candidate_log_loss": 1.3088703012986809
     },
     {
       "date": "2026-06-11",
@@ -873,12 +976,12 @@
       "current_exact_hit": false,
       "current_core_interval": "2-3",
       "current_core_hit": true,
-      "current_log_loss": 1.4991718532424259,
+      "current_log_loss": 1.4978864479872933,
       "candidate_predicted_bucket": "2",
       "candidate_exact_hit": false,
-      "candidate_core_interval": "1-2",
-      "candidate_core_hit": false,
-      "candidate_log_loss": 1.5750013368914721
+      "candidate_core_interval": "2-3",
+      "candidate_core_hit": true,
+      "candidate_log_loss": 1.4987365573064402
     },
     {
       "date": "2026-06-12",
@@ -890,12 +993,12 @@
       "current_exact_hit": true,
       "current_core_interval": "2-3",
       "current_core_hit": true,
-      "current_log_loss": 1.3647822239459675,
+      "current_log_loss": 1.4695988508895346,
       "candidate_predicted_bucket": "2",
       "candidate_exact_hit": true,
-      "candidate_core_interval": "1-2",
+      "candidate_core_interval": "2-3",
       "candidate_core_hit": true,
-      "candidate_log_loss": 1.3500731910428454
+      "candidate_log_loss": 1.4776362149865432
     },
     {
       "date": "2026-06-12",
@@ -907,12 +1010,12 @@
       "current_exact_hit": false,
       "current_core_interval": "2-3",
       "current_core_hit": false,
-      "current_log_loss": 2.678141446837475,
+      "current_log_loss": 2.6591862880458534,
       "candidate_predicted_bucket": "2",
       "candidate_exact_hit": false,
       "candidate_core_interval": "2-3",
       "candidate_core_hit": false,
-      "candidate_log_loss": 2.528390804332062
+      "candidate_log_loss": 2.5996893307524265
     },
     {
       "date": "2026-06-13",
@@ -924,12 +1027,12 @@
       "current_exact_hit": true,
       "current_core_interval": "2-3",
       "current_core_hit": true,
-      "current_log_loss": 1.4545717637279507,
+      "current_log_loss": 1.4448281350981547,
       "candidate_predicted_bucket": "2",
       "candidate_exact_hit": true,
       "candidate_core_interval": "2-3",
       "candidate_core_hit": true,
-      "candidate_log_loss": 1.4339147595796644
+      "candidate_log_loss": 1.4698979777085461
     },
     {
       "date": "2026-06-13",
@@ -937,16 +1040,16 @@
       "score": "1-1",
       "actual_total_goals": 2,
       "actual_bucket": "2",
-      "current_predicted_bucket": "2",
-      "current_exact_hit": true,
+      "current_predicted_bucket": "1",
+      "current_exact_hit": false,
       "current_core_interval": "1-2",
       "current_core_hit": true,
-      "current_log_loss": 1.2741623704820866,
-      "candidate_predicted_bucket": "2",
-      "candidate_exact_hit": true,
+      "current_log_loss": 1.2846976989957033,
+      "candidate_predicted_bucket": "1",
+      "candidate_exact_hit": false,
       "candidate_core_interval": "1-2",
       "candidate_core_hit": true,
-      "candidate_log_loss": 1.3106744638388421
+      "candidate_log_loss": 1.306860868345638
     },
     {
       "date": "2026-06-13",
@@ -958,12 +1061,12 @@
       "current_exact_hit": false,
       "current_core_interval": "2-3",
       "current_core_hit": false,
-      "current_log_loss": 2.251915663737555,
-      "candidate_predicted_bucket": "2",
+      "current_log_loss": 2.2409854766799655,
+      "candidate_predicted_bucket": "3",
       "candidate_exact_hit": false,
       "candidate_core_interval": "2-3",
       "candidate_core_hit": false,
-      "candidate_log_loss": 1.864335944936524
+      "candidate_log_loss": 2.0139276839498015
     },
     {
       "date": "2026-06-13",
@@ -975,12 +1078,12 @@
       "current_exact_hit": true,
       "current_core_interval": "2-3",
       "current_core_hit": true,
-      "current_log_loss": 1.3835706892430932,
+      "current_log_loss": 1.4113046538331453,
       "candidate_predicted_bucket": "2",
       "candidate_exact_hit": true,
       "candidate_core_interval": "2-3",
       "candidate_core_hit": true,
-      "candidate_log_loss": 1.4761574828336672
+      "candidate_log_loss": 1.4507636888168767
     },
     {
       "date": "2026-06-14",
@@ -992,12 +1095,12 @@
       "current_exact_hit": false,
       "current_core_interval": "2-3",
       "current_core_hit": false,
-      "current_log_loss": 2.7306952084110483,
+      "current_log_loss": 3.1317808076118467,
       "candidate_predicted_bucket": "3",
       "candidate_exact_hit": false,
-      "candidate_core_interval": "3-4",
+      "candidate_core_interval": "2-3",
       "candidate_core_hit": false,
-      "candidate_log_loss": 2.501225480906556
+      "candidate_log_loss": 3.2171092554747247
     },
     {
       "date": "2026-06-14",
@@ -1005,16 +1108,16 @@
       "score": "1-0",
       "actual_total_goals": 1,
       "actual_bucket": "1",
-      "current_predicted_bucket": "1",
-      "current_exact_hit": true,
+      "current_predicted_bucket": "2",
+      "current_exact_hit": false,
       "current_core_interval": "1-2",
       "current_core_hit": true,
-      "current_log_loss": 1.250483248188853,
+      "current_log_loss": 1.3110809193902322,
       "candidate_predicted_bucket": "2",
       "candidate_exact_hit": false,
-      "candidate_core_interval": "2-3",
-      "candidate_core_hit": false,
-      "candidate_log_loss": 1.6045669734865133
+      "candidate_core_interval": "1-2",
+      "candidate_core_hit": true,
+      "candidate_log_loss": 1.3363291689281886
     },
     {
       "date": "2026-06-14",
@@ -1022,16 +1125,16 @@
       "score": "2-2",
       "actual_total_goals": 4,
       "actual_bucket": "4",
-      "current_predicted_bucket": "2",
+      "current_predicted_bucket": "3",
       "current_exact_hit": false,
       "current_core_interval": "2-3",
       "current_core_hit": false,
-      "current_log_loss": 1.7976116811255103,
+      "current_log_loss": 1.7430212426859955,
       "candidate_predicted_bucket": "3",
       "candidate_exact_hit": false,
       "candidate_core_interval": "2-3",
       "candidate_core_hit": false,
-      "candidate_log_loss": 1.734980496893917
+      "candidate_log_loss": 1.7438769357660324
     },
     {
       "date": "2026-06-14",
@@ -1043,12 +1146,12 @@
       "current_exact_hit": false,
       "current_core_interval": "2-3",
       "current_core_hit": false,
-      "current_log_loss": 3.5123985060637963,
+      "current_log_loss": 3.633005146232235,
       "candidate_predicted_bucket": "2",
       "candidate_exact_hit": false,
       "candidate_core_interval": "2-3",
       "candidate_core_hit": false,
-      "candidate_log_loss": 3.395381533717359
+      "candidate_log_loss": 3.566219350613139
     },
     {
       "date": "2026-06-15",
@@ -1060,12 +1163,12 @@
       "current_exact_hit": true,
       "current_core_interval": "1-2",
       "current_core_hit": true,
-      "current_log_loss": 1.2921438052943028,
+      "current_log_loss": 1.275216956679818,
       "candidate_predicted_bucket": "2",
       "candidate_exact_hit": true,
-      "candidate_core_interval": "2-3",
+      "candidate_core_interval": "1-2",
       "candidate_core_hit": true,
-      "candidate_log_loss": 1.4710567420747005
+      "candidate_log_loss": 1.32787571162673
     },
     {
       "date": "2026-06-15",
@@ -1077,12 +1180,12 @@
       "current_exact_hit": false,
       "current_core_interval": "2-3",
       "current_core_hit": false,
-      "current_log_loss": 1.8960741878398872,
-      "candidate_predicted_bucket": "2",
+      "current_log_loss": 1.780868509440994,
+      "candidate_predicted_bucket": "3",
       "candidate_exact_hit": false,
       "candidate_core_interval": "2-3",
       "candidate_core_hit": false,
-      "candidate_log_loss": 1.8308088128734064
+      "candidate_log_loss": 1.7826892421633238
     },
     {
       "date": "2026-06-15",
@@ -1094,12 +1197,12 @@
       "current_exact_hit": false,
       "current_core_interval": "2-3",
       "current_core_hit": false,
-      "current_log_loss": 2.5757141236170864,
+      "current_log_loss": 2.47820555297016,
       "candidate_predicted_bucket": "2",
       "candidate_exact_hit": false,
-      "candidate_core_interval": "1-2",
+      "candidate_core_interval": "2-3",
       "candidate_core_hit": false,
-      "candidate_log_loss": 2.285165312695658
+      "candidate_log_loss": 2.676910026881298
     },
     {
       "date": "2026-06-15",
@@ -1107,16 +1210,16 @@
       "score": "1-1",
       "actual_total_goals": 2,
       "actual_bucket": "2",
-      "current_predicted_bucket": "2",
-      "current_exact_hit": true,
+      "current_predicted_bucket": "1",
+      "current_exact_hit": false,
       "current_core_interval": "1-2",
       "current_core_hit": true,
-      "current_log_loss": 1.2795593939809018,
-      "candidate_predicted_bucket": "2",
-      "candidate_exact_hit": true,
+      "current_log_loss": 1.2921411148887403,
+      "candidate_predicted_bucket": "1",
+      "candidate_exact_hit": false,
       "candidate_core_interval": "1-2",
       "candidate_core_hit": true,
-      "candidate_log_loss": 1.3437075227968882
+      "candidate_log_loss": 1.309670741927319
     },
     {
       "date": "2026-06-16",
@@ -1126,14 +1229,14 @@
       "actual_bucket": "4",
       "current_predicted_bucket": "2",
       "current_exact_hit": false,
-      "current_core_interval": "2-3",
+      "current_core_interval": "1-2",
       "current_core_hit": false,
-      "current_log_loss": 2.057722790192667,
+      "current_log_loss": 2.168671493479611,
       "candidate_predicted_bucket": "2",
       "candidate_exact_hit": false,
       "candidate_core_interval": "1-2",
       "candidate_core_hit": false,
-      "candidate_log_loss": 2.072773428581733
+      "candidate_log_loss": 2.074430542638511
     },
     {
       "date": "2026-06-16",
@@ -1145,12 +1248,12 @@
       "current_exact_hit": false,
       "current_core_interval": "2-3",
       "current_core_hit": false,
-      "current_log_loss": 2.6867976142101035,
+      "current_log_loss": 2.4246621955696805,
       "candidate_predicted_bucket": "2",
       "candidate_exact_hit": false,
       "candidate_core_interval": "2-3",
       "candidate_core_hit": false,
-      "candidate_log_loss": 2.535219690311535
+      "candidate_log_loss": 2.4326731262877965
     },
     {
       "date": "2026-06-16",
@@ -1162,12 +1265,12 @@
       "current_exact_hit": false,
       "current_core_interval": "1-2",
       "current_core_hit": false,
-      "current_log_loss": 1.674113053028679,
+      "current_log_loss": 1.6837814832507252,
       "candidate_predicted_bucket": "2",
       "candidate_exact_hit": false,
       "candidate_core_interval": "1-2",
       "candidate_core_hit": false,
-      "candidate_log_loss": 1.5767049390825612
+      "candidate_log_loss": 1.6079522905473755
     },
     {
       "date": "2026-06-16",
@@ -1179,12 +1282,80 @@
       "current_exact_hit": false,
       "current_core_interval": "2-3",
       "current_core_hit": false,
-      "current_log_loss": 1.8380070112284543,
+      "current_log_loss": 1.859010868427809,
       "candidate_predicted_bucket": "2",
       "candidate_exact_hit": false,
       "candidate_core_interval": "2-3",
       "candidate_core_hit": false,
-      "candidate_log_loss": 1.903702872574242
+      "candidate_log_loss": 1.8526808154139316
+    },
+    {
+      "date": "2026-06-17",
+      "match": "Portugal vs DR Congo",
+      "score": "1-1",
+      "actual_total_goals": 2,
+      "actual_bucket": "2",
+      "current_predicted_bucket": "2",
+      "current_exact_hit": true,
+      "current_core_interval": "1-2",
+      "current_core_hit": true,
+      "current_log_loss": 1.2707199987935804,
+      "candidate_predicted_bucket": "2",
+      "candidate_exact_hit": true,
+      "candidate_core_interval": "1-2",
+      "candidate_core_hit": true,
+      "candidate_log_loss": 1.323661204522394
+    },
+    {
+      "date": "2026-06-17",
+      "match": "Uzbekistan vs Colombia",
+      "score": "1-3",
+      "actual_total_goals": 4,
+      "actual_bucket": "4",
+      "current_predicted_bucket": "2",
+      "current_exact_hit": false,
+      "current_core_interval": "1-2",
+      "current_core_hit": false,
+      "current_log_loss": 2.3499801780306218,
+      "candidate_predicted_bucket": "2",
+      "candidate_exact_hit": false,
+      "candidate_core_interval": "1-2",
+      "candidate_core_hit": false,
+      "candidate_log_loss": 2.1847377838760305
+    },
+    {
+      "date": "2026-06-17",
+      "match": "Ghana vs Panama",
+      "score": "1-0",
+      "actual_total_goals": 1,
+      "actual_bucket": "1",
+      "current_predicted_bucket": "2",
+      "current_exact_hit": false,
+      "current_core_interval": "2-3",
+      "current_core_hit": false,
+      "current_log_loss": 1.89393459575425,
+      "candidate_predicted_bucket": "2",
+      "candidate_exact_hit": false,
+      "candidate_core_interval": "2-3",
+      "candidate_core_hit": false,
+      "candidate_log_loss": 1.7782678048490732
+    },
+    {
+      "date": "2026-06-17",
+      "match": "England vs Croatia",
+      "score": "4-2",
+      "actual_total_goals": 6,
+      "actual_bucket": "6",
+      "current_predicted_bucket": "2",
+      "current_exact_hit": false,
+      "current_core_interval": "2-3",
+      "current_core_hit": false,
+      "current_log_loss": 3.531436611880854,
+      "candidate_predicted_bucket": "2",
+      "candidate_exact_hit": false,
+      "candidate_core_interval": "2-3",
+      "candidate_core_hit": false,
+      "candidate_log_loss": 3.4219149342624444
     }
   ]
 }

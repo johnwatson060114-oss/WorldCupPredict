@@ -1,21 +1,25 @@
 date,match,score,actual_total_goals,actual_bucket,current_predicted_bucket,current_exact_hit,current_core_interval,current_core_hit,current_log_loss,candidate_predicted_bucket,candidate_exact_hit,candidate_core_interval,candidate_core_hit,candidate_log_loss
-2026-06-11,Mexico vs South Africa,2-0,2,2,2,True,1-2,True,1.2700055060617594,2,True,1-2,True,1.3130956993260436
-2026-06-11,South Korea vs Czech Republic,2-1,3,3,2,False,2-3,True,1.4991718532424259,2,False,1-2,False,1.5750013368914721
-2026-06-12,Canada vs Bosnia and Herzegovina,1-1,2,2,2,True,2-3,True,1.3647822239459675,2,True,1-2,True,1.3500731910428454
-2026-06-12,United States vs Paraguay,4-1,5,5,2,False,2-3,False,2.678141446837475,2,False,2-3,False,2.528390804332062
-2026-06-13,Qatar vs Switzerland,1-1,2,2,2,True,2-3,True,1.4545717637279507,2,True,2-3,True,1.4339147595796644
-2026-06-13,Brazil vs Morocco,1-1,2,2,2,True,1-2,True,1.2741623704820866,2,True,1-2,True,1.3106744638388421
-2026-06-13,Haiti vs Scotland,0-1,1,1,3,False,2-3,False,2.251915663737555,2,False,2-3,False,1.864335944936524
-2026-06-13,Australia vs Turkey,2-0,2,2,2,True,2-3,True,1.3835706892430932,2,True,2-3,True,1.4761574828336672
-2026-06-14,Germany vs Curaçao,7-1,8,7+,3,False,2-3,False,2.7306952084110483,3,False,3-4,False,2.501225480906556
-2026-06-14,Ivory Coast vs Ecuador,1-0,1,1,1,True,1-2,True,1.250483248188853,2,False,2-3,False,1.6045669734865133
-2026-06-14,Netherlands vs Japan,2-2,4,4,2,False,2-3,False,1.7976116811255103,3,False,2-3,False,1.734980496893917
-2026-06-14,Sweden vs Tunisia,5-1,6,6,2,False,2-3,False,3.5123985060637963,2,False,2-3,False,3.395381533717359
-2026-06-15,Belgium vs Egypt,1-1,2,2,2,True,1-2,True,1.2921438052943028,2,True,2-3,True,1.4710567420747005
-2026-06-15,Iran vs New Zealand,2-2,4,4,2,False,2-3,False,1.8960741878398872,2,False,2-3,False,1.8308088128734064
-2026-06-15,Spain vs Cape Verde,0-0,0,0,2,False,2-3,False,2.5757141236170864,2,False,1-2,False,2.285165312695658
-2026-06-15,Saudi Arabia vs Uruguay,1-1,2,2,2,True,1-2,True,1.2795593939809018,2,True,1-2,True,1.3437075227968882
-2026-06-16,France vs Senegal,3-1,4,4,2,False,2-3,False,2.057722790192667,2,False,1-2,False,2.072773428581733
-2026-06-16,Iraq vs Norway,1-4,5,5,2,False,2-3,False,2.6867976142101035,2,False,2-3,False,2.535219690311535
-2026-06-16,Argentina vs Algeria,3-0,3,3,2,False,1-2,False,1.674113053028679,2,False,1-2,False,1.5767049390825612
-2026-06-16,Austria vs Jordan,3-1,4,4,2,False,2-3,False,1.8380070112284543,2,False,2-3,False,1.903702872574242
+2026-06-11,Mexico vs South Africa,2-0,2,2,2,True,1-2,True,1.2716410962812317,2,True,1-2,True,1.3088703012986809
+2026-06-11,South Korea vs Czech Republic,2-1,3,3,2,False,2-3,True,1.4978864479872933,2,False,2-3,True,1.4987365573064402
+2026-06-12,Canada vs Bosnia and Herzegovina,1-1,2,2,2,True,2-3,True,1.4695988508895346,2,True,2-3,True,1.4776362149865432
+2026-06-12,United States vs Paraguay,4-1,5,5,2,False,2-3,False,2.6591862880458534,2,False,2-3,False,2.5996893307524265
+2026-06-13,Qatar vs Switzerland,1-1,2,2,2,True,2-3,True,1.4448281350981547,2,True,2-3,True,1.4698979777085461
+2026-06-13,Brazil vs Morocco,1-1,2,2,1,False,1-2,True,1.2846976989957033,1,False,1-2,True,1.306860868345638
+2026-06-13,Haiti vs Scotland,0-1,1,1,3,False,2-3,False,2.2409854766799655,3,False,2-3,False,2.0139276839498015
+2026-06-13,Australia vs Turkey,2-0,2,2,2,True,2-3,True,1.4113046538331453,2,True,2-3,True,1.4507636888168767
+2026-06-14,Germany vs Curaçao,7-1,8,7+,3,False,2-3,False,3.1317808076118467,3,False,2-3,False,3.2171092554747247
+2026-06-14,Ivory Coast vs Ecuador,1-0,1,1,2,False,1-2,True,1.3110809193902322,2,False,1-2,True,1.3363291689281886
+2026-06-14,Netherlands vs Japan,2-2,4,4,3,False,2-3,False,1.7430212426859955,3,False,2-3,False,1.7438769357660324
+2026-06-14,Sweden vs Tunisia,5-1,6,6,2,False,2-3,False,3.633005146232235,2,False,2-3,False,3.566219350613139
+2026-06-15,Belgium vs Egypt,1-1,2,2,2,True,1-2,True,1.275216956679818,2,True,1-2,True,1.32787571162673
+2026-06-15,Iran vs New Zealand,2-2,4,4,2,False,2-3,False,1.780868509440994,3,False,2-3,False,1.7826892421633238
+2026-06-15,Spain vs Cape Verde,0-0,0,0,2,False,2-3,False,2.47820555297016,2,False,2-3,False,2.676910026881298
+2026-06-15,Saudi Arabia vs Uruguay,1-1,2,2,1,False,1-2,True,1.2921411148887403,1,False,1-2,True,1.309670741927319
+2026-06-16,France vs Senegal,3-1,4,4,2,False,1-2,False,2.168671493479611,2,False,1-2,False,2.074430542638511
+2026-06-16,Iraq vs Norway,1-4,5,5,2,False,2-3,False,2.4246621955696805,2,False,2-3,False,2.4326731262877965
+2026-06-16,Argentina vs Algeria,3-0,3,3,2,False,1-2,False,1.6837814832507252,2,False,1-2,False,1.6079522905473755
+2026-06-16,Austria vs Jordan,3-1,4,4,2,False,2-3,False,1.859010868427809,2,False,2-3,False,1.8526808154139316
+2026-06-17,Portugal vs DR Congo,1-1,2,2,2,True,1-2,True,1.2707199987935804,2,True,1-2,True,1.323661204522394
+2026-06-17,Uzbekistan vs Colombia,1-3,4,4,2,False,1-2,False,2.3499801780306218,2,False,1-2,False,2.1847377838760305
+2026-06-17,Ghana vs Panama,1-0,1,1,2,False,2-3,False,1.89393459575425,2,False,2-3,False,1.7782678048490732
+2026-06-17,England vs Croatia,4-2,6,6,2,False,2-3,False,3.531436611880854,2,False,2-3,False,3.4219149342624444

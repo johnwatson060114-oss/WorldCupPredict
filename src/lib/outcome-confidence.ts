@@ -36,6 +36,7 @@ export const effectiveRecommendation = (match: MatchForecast, quote: MarketQuote
 }
 
 export const isFormalCandidate = (match: MatchForecast, quote: MarketQuote) => {
+  if (typeof quote.formalEligible === 'boolean') return quote.formalEligible
   const recommendation = effectiveRecommendation(match, quote)
   return quote.available
     && quote.robustExpectedReturn !== null
