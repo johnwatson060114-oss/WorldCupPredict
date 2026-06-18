@@ -829,14 +829,18 @@ def main() -> None:
     prepare_seeds(seeds, target_date)
 
     future_parlay_seeds: list[dict] = []
-    if football_client.enabled and all_football_matches is not None and not args.offline:
+    if not args.offline:
         target_day = datetime.fromisoformat(target_date).date()
         for offset in range(1, SETTINGS.parlay_lookahead_days + 1):
             future_date = (target_day + timedelta(days=offset)).isoformat()
-            try:
-                batch = football_data_seeds(football_client, future_date, all_football_matches)
-            except Exception:  # noqa: BLE001 - future parlay pool is optional
-                continue
+            batch: list[dict] = []
+            if football_client.enabled and all_football_matches is not None:
+                try:
+                    batch = football_data_seeds(football_client, future_date, all_football_matches)
+                except Exception:  # noqa: BLE001 - future parlay pool is optional
+                    batch = []
+            if not batch and sporttery_live and all_markets:
+                batch = _sporttery_fixture_seeds(all_markets, future_date)
             prepare_seeds(batch, future_date)
             future_parlay_seeds.extend(
                 seed for seed in batch
@@ -921,6 +925,7 @@ def main() -> None:
         "matches": built_matches,
         "portfolios": portfolios,
         "parlayLookaheadDays": SETTINGS.parlay_lookahead_days,
+        "parlayMatches": future_parlay_matches,
         "parlayCandidateMatches": [
             {
                 "id": match["id"],

@@ -1,5 +1,6 @@
 import { Scissors, TicketCheck, X } from 'lucide-react'
 import { groupLegsByMatch, type PassType } from './pass-types'
+import { legMatchDate, ticketMatchDates } from './cross-day'
 import type { PersonalBetLeg, PersonalBetStatus } from './types'
 
 interface TicketReceiptProps {
@@ -46,6 +47,7 @@ export function TicketReceipt({
   onRemoveLeg,
 }: TicketReceiptProps) {
   const groups = groupLegsByMatch(legs)
+  const matchDates = ticketMatchDates(legs)
 
   return (
     <div className={compact ? 'sporttery-receipt compact' : 'sporttery-receipt'}>
@@ -58,12 +60,16 @@ export function TicketReceipt({
       <div className="receipt-game">混合过关</div>
       <div className="receipt-pass-type">{passType}</div>
       <div className="receipt-date">出票日期：{purchaseDate || '---- -- --'}</div>
+      {matchDates.length > 1 && <div className="receipt-cross-day">跨天串关 · {matchDates.map((date) => date.slice(5).replace('-', '/')).join(' + ')}</div>}
 
       <div className="receipt-divider" />
       <div className="receipt-leg-list">
         {groups.map((group, index) => (
           <div className="receipt-leg" key={group.matchId}>
-            <span className="receipt-code">{group.legs[0].lotteryCode || `第${String(index + 1).padStart(2, '0')}场`}</span>
+            <span className="receipt-code">
+              {group.legs[0].lotteryCode || `第${String(index + 1).padStart(2, '0')}场`}
+              {legMatchDate(group.legs[0]) && <small>{legMatchDate(group.legs[0])!.slice(5).replace('-', '/')}</small>}
+            </span>
             <span className="receipt-match">
               <b>{group.matchLabel}</b>
               <small>{group.legs.map((leg) => `${leg.market} ${leg.selection}`).join(' / ')}</small>

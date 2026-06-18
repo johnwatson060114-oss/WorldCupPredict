@@ -4,6 +4,7 @@ import { percent, shortDateTime, signedPercent } from '../lib/format'
 import type { DailyForecast, MarketQuote, MarketType, MatchForecast, SettlementFile } from '../types'
 import { FairComparisonChart, StrategyActualChart, StrategyProjectionChart } from '../features/personal-bets/Charts'
 import { TicketReceipt } from '../features/personal-bets/TicketReceipt'
+import { embeddedMatchDates, embeddedMatchesForDate, legMatchDate, matchDate, ticketMatchDates } from '../features/personal-bets/cross-day'
 import { actualStrategyPerformance, buildFairComparison, personalSummary, projectToFinal, type ComparisonMode } from '../features/personal-bets/analytics'
 import {
   captureModelSnapshot,
@@ -86,6 +87,7 @@ const quoteToLeg = (quote: MarketQuote, match: MatchForecast, matchIndex: number
   matchLabel: `${match.homeTeam} vs ${match.awayTeam}`,
   lotteryCode: match.lotteryCode || `第${String(matchIndex + 1).padStart(2, '0')}场`,
   kickoffBeijing: match.kickoffBeijing,
+  matchDate: quote.matchDate ?? matchDate(match),
   market: quote.market,
   selection: quote.selection,
   odds: quote.odds ?? 0,
@@ -105,6 +107,8 @@ export function PersonalBetPage({ forecast, settlements, ledger, onLedgerChange 
   const [bettingForecast, setBettingForecast] = useState<DailyForecast | null>(forecast)
   const [archiveState, setArchiveState] = useState<'ready' | 'loading' | 'missing'>('ready')
   const [message, setMessage] = useState('')
+  const selectableDates = useMemo(() => embeddedMatchDates(forecast), [forecast])
+  const maximumSelectableDate = selectableDates.at(-1) ?? forecast.targetDate
 
   useEffect(() => {
     fetch('./data/strategy-history.json', { cache: 'no-store' })
@@ -114,8 +118,11 @@ export function PersonalBetPage({ forecast, settlements, ledger, onLedgerChange 
   }, [forecast.generatedAt])
 
   useEffect(() => {
-    if (form.targetDate === forecast.targetDate) {
-      setBettingForecast(forecast)
+    const matches = embeddedMatchesForDate(forecast, form.targetDate)
+    if (form.targetDate === forecast.targetDate || matches.length) {
+      setBettingForecast(form.targetDate === forecast.targetDate
+        ? forecast
+        : { ...forecast, targetDate: form.targetDate, matches })
       setArchiveState('ready')
       return
     }
@@ -152,6 +159,7 @@ export function PersonalBetPage({ forecast, settlements, ledger, onLedgerChange 
   const projection = useMemo(() => projectToFinal(forecast.portfolios, history, ledger, forecast.targetDate), [forecast.portfolios, forecast.targetDate, history, ledger])
   const projectionReady = actual.summaries.every((item) => item.settledDays >= 5)
   const selectedGroups = useMemo(() => groupLegsByMatch(form.legs), [form.legs])
+  const selectedMatchDates = useMemo(() => ticketMatchDates(form.legs), [form.legs])
   const requiredMatches = PASS_DEFINITIONS[form.passType].matches
   const multiple = Number(form.multiple)
   const ticketComplete = selectedGroups.length === requiredMatches
@@ -167,7 +175,7 @@ export function PersonalBetPage({ forecast, settlements, ledger, onLedgerChange 
 
   const chooseDate = (targetDate: string) => {
     setMessage('')
-    setForm((current) => ({ ...current, targetDate, id: '', legs: [], matchChoice: '', market: '胜平负' }))
+    setForm((current) => ({ ...current, targetDate, matchChoice: '', market: '胜平负' }))
   }
 
   const choosePassType = (passType: PassType) => {
@@ -216,8 +224,9 @@ export function PersonalBetPage({ forecast, settlements, ledger, onLedgerChange 
       setMessage('请选择实际出票日期；可以补记前一天的票。')
       return
     }
-    if (form.purchaseDate > form.targetDate) {
-      setMessage('出票日期不能晚于所选比赛日期。')
+    const earliestMatchDate = selectedMatchDates[0] ?? form.targetDate
+    if (form.purchaseDate > earliestMatchDate) {
+      setMessage(`出票日期不能晚于最早一场比赛日期 ${earliestMatchDate}。`)
       return
     }
     if (!Number.isFinite(actualStake) || actualStake <= 0) {
@@ -240,7 +249,7 @@ export function PersonalBetPage({ forecast, settlements, ledger, onLedgerChange 
       id: form.id || crypto.randomUUID(),
       createdAt: existing?.createdAt ?? new Date().toISOString(),
       purchaseDate: form.purchaseDate,
-      targetDate: form.targetDate,
+      targetDate: earliestMatchDate,
       matchId: form.legs.length === 1 ? form.legs[0].matchId : undefined,
       matchLabel: form.legs.map((leg) => leg.matchLabel).join(' × '),
       market: form.legs.length === 1 ? form.legs[0].market : '混合过关',
@@ -273,7 +282,7 @@ export function PersonalBetPage({ forecast, settlements, ledger, onLedgerChange 
     setForm({
       id: bet.id,
       purchaseDate: bet.purchaseDate ?? bet.targetDate,
-      targetDate: bet.targetDate,
+      targetDate: legMatchDate(legs[0]) ?? bet.targetDate,
       passType: bet.passType ?? inferPassType(groupLegsByMatch(legs).length),
       matchChoice: legs[0].matchId,
       market: legs[0].market,
@@ -339,14 +348,19 @@ export function PersonalBetPage({ forecast, settlements, ledger, onLedgerChange 
       <div className="sporttery-workbench">
         <section className="sporttery-selector-panel">
           <div className="sporttery-section-title">
-            <div><h2>竞彩足球</h2><p>先选过关方式，再按场次点选玩法与赔率</p></div>
+            <div><h2>竞彩足球</h2><p>切换比赛日期不会清空已选场次，可直接组合跨天串关</p></div>
             <span>{selectedGroups.length}/{requiredMatches} 场已选</span>
           </div>
 
           <div className="ticket-date-controls">
             <label><CalendarDays size={15} />出票日期<input type="date" min="2026-06-11" max={beijingToday()} value={form.purchaseDate} onInput={(event) => { const purchaseDate = event.currentTarget.value; setForm((current) => ({ ...current, purchaseDate })) }} /></label>
-            <label><CalendarDays size={15} />比赛日期<input type="date" min="2026-06-11" max={forecast.targetDate} value={form.targetDate} onInput={(event) => chooseDate(event.currentTarget.value)} /></label>
+            <label><CalendarDays size={15} />浏览比赛日期<input type="date" min="2026-06-11" max={maximumSelectableDate} value={form.targetDate} onInput={(event) => chooseDate(event.currentTarget.value)} /></label>
             <label>过关方式<select value={form.passType} onChange={(event) => choosePassType(event.target.value as PassType)}>{PASS_GROUPS.map((group) => <optgroup key={group.label} label={group.label}>{group.options.map((passType) => <option key={passType}>{passType}</option>)}</optgroup>)}</select></label>
+          </div>
+          <div className="cross-day-date-bar">
+            <span>可选比赛日</span>
+            {selectableDates.map((date) => <button type="button" key={date} className={form.targetDate === date ? 'active' : ''} onClick={() => chooseDate(date)}>{date.slice(5).replace('-', '/')}</button>)}
+            {selectedMatchDates.length > 0 && <em>票内日期：{selectedMatchDates.map((date) => date.slice(5).replace('-', '/')).join('、')}{selectedMatchDates.length > 1 ? '（跨天）' : ''}</em>}
           </div>
 
           {archiveState === 'loading' && <div className="archive-state">正在读取 {form.targetDate} 的体彩归档…</div>}

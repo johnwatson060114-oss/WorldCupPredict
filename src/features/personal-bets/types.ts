@@ -9,6 +9,7 @@ export interface PersonalBetLeg {
   matchLabel: string
   lotteryCode?: string
   kickoffBeijing?: string
+  matchDate?: string
   market: MarketType
   selection: string
   odds: number

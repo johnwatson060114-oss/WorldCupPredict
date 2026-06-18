@@ -604,6 +604,11 @@ body:has(.sporttery-ledger-page) .topbar {
 .ticket-config-grid input:focus,
 .ticket-config-grid select:focus,
 .ticket-config-grid textarea:focus { border-color: #d3222a; box-shadow: 0 0 0 2px rgba(211, 34, 42, .08); }
+.cross-day-date-bar { min-height: 40px; display: flex; flex-wrap: wrap; align-items: center; gap: 7px; padding: 7px 14px; border-bottom: 1px solid #e0e1e4; background: #fff; color: #777; font-size: 10px; }
+.cross-day-date-bar > span { font-weight: 700; color: #555; }
+.cross-day-date-bar button { height: 27px; padding: 0 10px; border: 1px solid #d2d4d7; border-radius: 3px; background: #fafafa; color: #555; cursor: pointer; }
+.cross-day-date-bar button:hover, .cross-day-date-bar button.active { border-color: #d3222a; background: #fff3f3; color: #d3222a; }
+.cross-day-date-bar em { margin-left: auto; color: #d3222a; font-style: normal; font-weight: 700; }
 .sporttery-ledger-page .archive-state { margin: 12px 14px; border-color: #d0d3d7; background: #fafafa; color: #666; font-size: 12px; }
 .sporttery-ledger-page .archive-state.warning { border-color: #e8b78d; background: #fff8f1; color: #a25719; }
 
@@ -820,10 +825,12 @@ body:has(.sporttery-ledger-page) .topbar {
 .receipt-game { margin-top: 5px; color: #666; text-align: center; font-size: 12px; letter-spacing: .2em; }
 .receipt-pass-type { margin-top: -3px; color: #111; text-align: center; font: 700 38px 'Barlow Condensed', 'Noto Sans SC', sans-serif; letter-spacing: .04em; }
 .receipt-date { color: #555; font-size: 11px; }
+.receipt-cross-day { margin-top: 3px; color: #d3222a; font-size: 9px; font-weight: 800; letter-spacing: .04em; text-align: center; }
 .receipt-divider { margin: 7px 0; border-top: 1px dashed #777; }
 .receipt-leg-list { display: grid; gap: 7px; min-height: 42px; }
 .receipt-leg { display: grid; grid-template-columns: 64px minmax(0, 1fr) 70px 24px; align-items: center; gap: 7px; font-size: 11px; }
 .receipt-code { color: #333; white-space: nowrap; }
+.receipt-code small { display: block; margin-top: 2px; color: #999; font-size: 8px; font-weight: 500; }
 .receipt-match { min-width: 0; }
 .receipt-match b,
 .receipt-match small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }

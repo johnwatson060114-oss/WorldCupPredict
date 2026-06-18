@@ -216,6 +216,7 @@ export interface DailyForecast {
   matches: MatchForecast[]
   portfolios: Portfolio[]
   parlayLookaheadDays?: number
+  parlayMatches?: MatchForecast[]
   parlayCandidateMatches?: Array<{
     id: string
     lotteryCode: string
