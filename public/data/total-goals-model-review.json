@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-17T17:35:08+08:00",
+  "generatedAt": "2026-06-18T13:00:29+08:00",
   "timezone": "Asia/Shanghai",
   "scheduledReviewStartDate": "2026-06-17",
   "productionPolicy": "current model remains primary; optimized model runs as shadow until adoption gates pass",
@@ -8,64 +8,64 @@
     "role": "production",
     "spec": "dixon_coles[half_life_days=730,rho=-0.08,shrinkage=6]",
     "matches": 20,
-    "exact_hits": 8,
-    "exact_accuracy": 0.4,
+    "exact_hits": 5,
+    "exact_accuracy": 0.25,
     "core_hits": 9,
     "core_accuracy": 0.45,
-    "average_log_loss": 1.88838210702298,
+    "average_log_loss": 1.9030787469219366,
     "predicted_bucket_counts": {
       "0": 0,
-      "1": 1,
-      "2": 17,
-      "3": 2,
+      "1": 2,
+      "2": 15,
+      "3": 3,
       "4": 0,
       "5": 0,
       "6": 0,
       "7+": 0
     },
-    "average_bucketed_expected_total": 2.555106621239088
+    "average_bucketed_expected_total": 2.556589502407718
   },
   "shadowModel": {
     "role": "shadow",
     "spec": "hierarchical_poisson[rho=0,shrinkage=16]",
     "matches": 20,
-    "exact_hits": 7,
-    "exact_accuracy": 0.35,
-    "core_hits": 7,
-    "core_accuracy": 0.35,
-    "average_log_loss": 1.8553468744388095,
+    "exact_hits": 5,
+    "exact_accuracy": 0.25,
+    "core_hits": 9,
+    "core_accuracy": 0.45,
+    "average_log_loss": 1.902739991571666,
     "predicted_bucket_counts": {
       "0": 0,
-      "1": 0,
-      "2": 18,
-      "3": 2,
+      "1": 2,
+      "2": 14,
+      "3": 4,
       "4": 0,
       "5": 0,
       "6": 0,
       "7+": 0
     },
-    "average_bucketed_expected_total": 2.646281462074411
+    "average_bucketed_expected_total": 2.611755333108979
   },
   "adoptionDecision": {
-    "status": "observe",
+    "status": "keep",
     "should_switch_model": false,
-    "reason": "need at least 24 settled 2026 matches before switching",
-    "recommendation_zh": "样本还不够，旧模型继续主用，新模型继续影子观察。",
+    "reason": "candidate has not shown a significant, stable advantage over the current model",
+    "recommendation_zh": "新模型优势不显著，继续使用旧模型。",
     "gates": {
-      "sample_size": false,
+      "sample_size": true,
       "exact_accuracy_lift": false,
       "extra_exact_hits": false,
-      "log_loss_improvement": true,
-      "core_accuracy_not_materially_worse": false
+      "log_loss_improvement": false,
+      "core_accuracy_not_materially_worse": true
     },
     "deltas": {
-      "exact_accuracy_lift": -0.050000000000000044,
-      "extra_exact_hits": -1,
-      "log_loss_improvement": 0.033035232584170515,
-      "core_accuracy_delta": -0.10000000000000003
+      "exact_accuracy_lift": 0.0,
+      "extra_exact_hits": 0,
+      "log_loss_improvement": 0.0003387553502705032,
+      "core_accuracy_delta": 0.0
     },
     "thresholds": {
-      "min_matches": 24,
+      "min_matches": 16,
       "min_exact_accuracy_lift": 0.08,
       "min_extra_exact_hits": 3,
       "min_log_loss_improvement": 0.02,
@@ -73,9 +73,11 @@
     }
   },
   "dataRefresh": {
-    "status": "skipped",
-    "reason": "TOTAL_GOALS_SKIP_FETCH=1",
-    "path": "artifacts\\total-goals-backtest\\international_results.csv"
+    "status": "ok",
+    "url": "https://raw.githubusercontent.com/martj42/international_results/master/results.csv",
+    "bytes": 3724359,
+    "path": "artifacts\\total-goals-backtest\\international_results.csv",
+    "refreshedAt": "2026-06-18T13:00:25+08:00"
   },
   "manualResultRows": 4,
   "comparisonPath": "artifacts\\total-goals-backtest\\model_comparison_2026.csv"
