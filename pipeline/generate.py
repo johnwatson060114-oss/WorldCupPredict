@@ -70,6 +70,50 @@ def load_demo() -> dict:
     return json.loads((ROOT / "pipeline" / "data" / "demo_matches.json").read_text(encoding="utf-8"))
 
 
+def preserve_parlay_matches(
+    fresh_matches: list[dict[str, Any]],
+    cache_path: Path,
+    target_date: str,
+    generated_at: str,
+) -> tuple[list[dict[str, Any]], int]:
+    cached_matches: list[dict[str, Any]] = []
+    if cache_path.exists():
+        try:
+            cached_payload = json.loads(cache_path.read_text(encoding="utf-8"))
+            cached_matches = cached_payload.get("matches", [])
+        except (OSError, json.JSONDecodeError, AttributeError):
+            cached_matches = []
+
+    def remains_selectable(match: dict[str, Any]) -> bool:
+        kickoff_date = str(match.get("kickoffBeijing", ""))[:10]
+        quotes = match.get("quotes", [])
+        return (
+            kickoff_date > target_date
+            and isinstance(quotes, list)
+            and any(quote.get("odds") for quote in quotes if isinstance(quote, dict))
+        )
+
+    merged = {
+        match["id"]: match
+        for match in cached_matches
+        if isinstance(match, dict) and match.get("id") and remains_selectable(match)
+    }
+    cached_ids = set(merged)
+    fresh_ids = {match.get("id") for match in fresh_matches}
+    for match in fresh_matches:
+        if match.get("id") and remains_selectable(match):
+            merged[match["id"]] = match
+
+    published = sorted(merged.values(), key=lambda match: match["kickoffBeijing"])
+    fallback_count = sum(match["id"] in cached_ids and match["id"] not in fresh_ids for match in published)
+    cache_path.parent.mkdir(parents=True, exist_ok=True)
+    cache_path.write_text(
+        json.dumps({"generatedAt": generated_at, "matches": published}, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+    return published, fallback_count
+
+
 def local_snapshot_paths() -> list[Path]:
     return [
         ROOT / "pipeline" / "data" / "demo_matches.json",
@@ -882,6 +926,12 @@ def main() -> None:
         build_match(seed, match_seed_to_market(seed, all_markets), generated_at, simulation)
         for seed in future_parlay_seeds
     ]
+    published_parlay_matches, cached_parlay_count = preserve_parlay_matches(
+        future_parlay_matches,
+        args.output.parent / "parlay-cache.json",
+        target_date,
+        generated_at,
+    )
     all_quotes = [quote for match in built_matches for quote in match["quotes"]]
     parlay_quotes = all_quotes + [
         quote for match in future_parlay_matches for quote in match["quotes"]
@@ -925,7 +975,8 @@ def main() -> None:
         "matches": built_matches,
         "portfolios": portfolios,
         "parlayLookaheadDays": SETTINGS.parlay_lookahead_days,
-        "parlayMatches": future_parlay_matches,
+        "parlayMatches": published_parlay_matches,
+        "cachedParlayMatchCount": cached_parlay_count,
         "parlayCandidateMatches": [
             {
                 "id": match["id"],
@@ -935,7 +986,7 @@ def main() -> None:
                 "awayTeam": match["awayTeam"],
                 "coverage": match["coverage"],
             }
-            for match in future_parlay_matches
+            for match in published_parlay_matches
         ],
         "evidence": [
             {"source": "中国体育彩票", "field": "固定奖金/单关资格", "observedAt": generated_at, "confidence": 1.0, "status": "fresh" if sporttery_live else "manual"},

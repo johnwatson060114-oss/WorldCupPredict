@@ -5,6 +5,61 @@ import sys
 from pipeline import generate
 
 
+def test_parlay_cache_keeps_future_matches_when_refresh_is_empty(tmp_path):
+    cached_match = {
+        "id": "future-1",
+        "kickoffBeijing": "2026-06-20T03:00:00+08:00",
+        "quotes": [{"odds": 1.88}],
+    }
+    expired_match = {
+        "id": "today-1",
+        "kickoffBeijing": "2026-06-19T03:00:00+08:00",
+        "quotes": [{"odds": 2.1}],
+    }
+    cache_path = tmp_path / "parlay-cache.json"
+    cache_path.write_text(
+        json.dumps({"generatedAt": "old", "matches": [cached_match, expired_match]}),
+        encoding="utf-8",
+    )
+
+    matches, fallback_count = generate.preserve_parlay_matches(
+        [],
+        cache_path,
+        "2026-06-19",
+        "2026-06-18T18:00:00+08:00",
+    )
+
+    assert matches == [cached_match]
+    assert fallback_count == 1
+
+
+def test_fresh_parlay_match_replaces_cached_version(tmp_path):
+    cache_path = tmp_path / "parlay-cache.json"
+    cache_path.write_text(json.dumps({
+        "generatedAt": "old",
+        "matches": [{
+            "id": "future-1",
+            "kickoffBeijing": "2026-06-20T03:00:00+08:00",
+            "quotes": [{"odds": 1.88}],
+        }],
+    }), encoding="utf-8")
+    fresh_match = {
+        "id": "future-1",
+        "kickoffBeijing": "2026-06-20T03:00:00+08:00",
+        "quotes": [{"odds": 1.95}],
+    }
+
+    matches, fallback_count = generate.preserve_parlay_matches(
+        [fresh_match],
+        cache_path,
+        "2026-06-19",
+        "2026-06-18T18:00:00+08:00",
+    )
+
+    assert matches == [fresh_match]
+    assert fallback_count == 0
+
+
 def test_offline_generation(tmp_path):
     output = tmp_path / "forecast.json"
     subprocess.run([
