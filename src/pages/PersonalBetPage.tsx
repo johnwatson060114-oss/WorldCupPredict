@@ -4,7 +4,7 @@ import { percent, shortDateTime, signedPercent } from '../lib/format'
 import type { DailyForecast, MarketQuote, MarketType, MatchForecast, SettlementFile } from '../types'
 import { FairComparisonChart, StrategyActualChart, StrategyProjectionChart } from '../features/personal-bets/Charts'
 import { TicketReceipt } from '../features/personal-bets/TicketReceipt'
-import { embeddedMatchDates, embeddedMatchesForDate, legMatchDate, matchDate, ticketMatchDates } from '../features/personal-bets/cross-day'
+import { embeddedMatchesForDate, legMatchDate, matchDate, selectableMatchDates, ticketMatchDates } from '../features/personal-bets/cross-day'
 import { actualStrategyPerformance, buildFairComparison, personalSummary, projectToFinal, type ComparisonMode } from '../features/personal-bets/analytics'
 import {
   captureModelSnapshot,
@@ -46,6 +46,11 @@ interface FormState {
   decisionSource: DecisionSource
   note: string
   legs: PersonalBetLeg[]
+}
+
+interface HistoryDateIndex {
+  generatedAt: string
+  dates: string[]
 }
 
 const marketOrder: MarketType[] = ['胜平负', '让球胜平负', '比分', '总进球数', '半全场']
@@ -106,9 +111,18 @@ export function PersonalBetPage({ forecast, settlements, ledger, onLedgerChange 
   const [form, setForm] = useState<FormState>(() => initialForm(forecast))
   const [bettingForecast, setBettingForecast] = useState<DailyForecast | null>(forecast)
   const [archiveState, setArchiveState] = useState<'ready' | 'loading' | 'missing'>('ready')
+  const [historyDates, setHistoryDates] = useState<string[]>([])
   const [message, setMessage] = useState('')
-  const selectableDates = useMemo(() => embeddedMatchDates(forecast), [forecast])
+  const selectableDates = useMemo(() => selectableMatchDates(forecast, historyDates), [forecast, historyDates])
+  const minimumSelectableDate = selectableDates[0] ?? forecast.targetDate
   const maximumSelectableDate = selectableDates.at(-1) ?? forecast.targetDate
+
+  useEffect(() => {
+    fetch('./data/history-index.json', { cache: 'no-store' })
+      .then((response) => response.ok ? response.json() as Promise<HistoryDateIndex> : null)
+      .then((index) => setHistoryDates(index?.dates ?? []))
+      .catch(() => setHistoryDates([]))
+  }, [forecast.generatedAt])
 
   useEffect(() => {
     fetch('./data/strategy-history.json', { cache: 'no-store' })
@@ -353,8 +367,8 @@ export function PersonalBetPage({ forecast, settlements, ledger, onLedgerChange 
           </div>
 
           <div className="ticket-date-controls">
-            <label><CalendarDays size={15} />出票日期<input type="date" min="2026-06-11" max={beijingToday()} value={form.purchaseDate} onInput={(event) => { const purchaseDate = event.currentTarget.value; setForm((current) => ({ ...current, purchaseDate })) }} /></label>
-            <label><CalendarDays size={15} />浏览比赛日期<input type="date" min="2026-06-11" max={maximumSelectableDate} value={form.targetDate} onInput={(event) => chooseDate(event.currentTarget.value)} /></label>
+            <label><CalendarDays size={15} />出票日期<input type="date" min={minimumSelectableDate} max={beijingToday()} value={form.purchaseDate} onInput={(event) => { const purchaseDate = event.currentTarget.value; setForm((current) => ({ ...current, purchaseDate })) }} /></label>
+            <label><CalendarDays size={15} />浏览比赛日期<input type="date" min={minimumSelectableDate} max={maximumSelectableDate} value={form.targetDate} onInput={(event) => chooseDate(event.currentTarget.value)} /></label>
             <label>过关方式<select value={form.passType} onChange={(event) => choosePassType(event.target.value as PassType)}>{PASS_GROUPS.map((group) => <optgroup key={group.label} label={group.label}>{group.options.map((passType) => <option key={passType}>{passType}</option>)}</optgroup>)}</select></label>
           </div>
           <div className="cross-day-date-bar">

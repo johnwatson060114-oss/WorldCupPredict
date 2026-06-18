@@ -18,9 +18,11 @@ export const embeddedMatches = (forecast: DailyForecast) => {
 export const embeddedMatchDates = (forecast: DailyForecast) =>
   [...new Set(embeddedMatches(forecast).map(matchDate))].sort()
 
+export const selectableMatchDates = (forecast: DailyForecast, historyDates: string[]) =>
+  [...new Set([...historyDates, ...embeddedMatchDates(forecast)])].sort()
+
 export const embeddedMatchesForDate = (forecast: DailyForecast, targetDate: string) =>
   embeddedMatches(forecast).filter((match) => matchDate(match) === targetDate)
 
 export const ticketMatchDates = (legs: PersonalBetLeg[]) =>
   [...new Set(legs.map(legMatchDate).filter((date): date is string => Boolean(date)))].sort()
-

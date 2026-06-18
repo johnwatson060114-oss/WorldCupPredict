@@ -957,6 +957,22 @@ def main() -> None:
         archive = args.output.parent / "history" / f"{target_date}.json"
         archive.parent.mkdir(parents=True, exist_ok=True)
         archive.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+        history_dates = []
+        for history_path in sorted(archive.parent.glob("*.json")):
+            try:
+                historical_payload = json.loads(history_path.read_text(encoding="utf-8"))
+            except (OSError, json.JSONDecodeError):
+                continue
+            if historical_payload.get("matches"):
+                history_dates.append(historical_payload.get("targetDate", history_path.stem))
+        history_index = {
+            "generatedAt": generated_at,
+            "dates": sorted(set(history_dates)),
+        }
+        (args.output.parent / "history-index.json").write_text(
+            json.dumps(history_index, ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
     print(f"Wrote {args.output} with {len(built_matches)} matches; status={payload['status']}")
 
     # Auto-switch production model if total-goals adoption gates pass

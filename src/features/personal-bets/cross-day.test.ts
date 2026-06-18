@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import type { DailyForecast, MatchForecast } from '../../types'
-import { embeddedMatchDates, embeddedMatchesForDate, ticketMatchDates } from './cross-day'
+import { embeddedMatchDates, embeddedMatchesForDate, selectableMatchDates, ticketMatchDates } from './cross-day'
 import type { PersonalBetLeg } from './types'
 
 const match = (id: string, date: string): MatchForecast => ({
@@ -36,6 +36,11 @@ describe('cross-day personal tickets', () => {
   it('exposes embedded future match dates for manual selection', () => {
     expect(embeddedMatchDates(forecast)).toEqual(['2026-06-18', '2026-06-19', '2026-06-20'])
     expect(embeddedMatchesForDate(forecast, '2026-06-19').map((item) => item.id)).toEqual(['b'])
+  })
+
+  it('combines archived and embedded dates for backward and forward parlays', () => {
+    expect(selectableMatchDates(forecast, ['2026-06-16', '2026-06-17', '2026-06-18']))
+      .toEqual(['2026-06-16', '2026-06-17', '2026-06-18', '2026-06-19', '2026-06-20'])
   })
 
   it('derives every date represented on one ticket', () => {
