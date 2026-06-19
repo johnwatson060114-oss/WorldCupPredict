@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-18T17:19:50+08:00",
+  "generatedAt": "2026-06-19T11:33:29+08:00",
   "matches": [
     {
       "matchId": "2040170",
@@ -160,6 +160,38 @@
       "halfTimeHomeScore": 0,
       "halfTimeAwayScore": 1,
       "settledAt": "2026-06-18T02:00:00Z"
+    },
+    {
+      "matchId": "2040235",
+      "homeScore": 1,
+      "awayScore": 1,
+      "halfTimeHomeScore": 1,
+      "halfTimeAwayScore": 0,
+      "settledAt": "2026-06-18T16:00:00Z"
+    },
+    {
+      "matchId": "2040236",
+      "homeScore": 4,
+      "awayScore": 1,
+      "halfTimeHomeScore": 0,
+      "halfTimeAwayScore": 0,
+      "settledAt": "2026-06-18T19:00:00Z"
+    },
+    {
+      "matchId": "2040237",
+      "homeScore": 6,
+      "awayScore": 0,
+      "halfTimeHomeScore": 3,
+      "halfTimeAwayScore": 0,
+      "settledAt": "2026-06-18T22:00:00Z"
+    },
+    {
+      "matchId": "2040238",
+      "homeScore": 1,
+      "awayScore": 0,
+      "halfTimeHomeScore": 0,
+      "halfTimeAwayScore": 0,
+      "settledAt": "2026-06-19T01:00:00Z"
     }
   ]
 }
