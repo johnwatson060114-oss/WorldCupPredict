@@ -1,5 +1,7 @@
 import math
+import csv
 
+from pipeline import goal_models
 from pipeline.goal_models import poisson_negative_binomial_mixture_matrix
 from pipeline.model import (
     half_full_probabilities,
@@ -45,3 +47,46 @@ def test_poisson_negative_binomial_shadow_mixture_is_normalized_and_widens_tail(
     poisson_high = sum(value for home, row in enumerate(poisson) for away, value in enumerate(row) if home + away >= 6)
     mixture_high = sum(value for home, row in enumerate(mixture) for away, value in enumerate(row) if home + away >= 6)
     assert mixture_high > poisson_high
+
+
+def test_confirmed_manual_results_feed_production_training(tmp_path, monkeypatch):
+    history = tmp_path / "history.csv"
+    history.write_text(
+        "date,home_team,away_team,home_score,away_score,tournament,city,country,neutral\n"
+        "2026-06-18,Mexico,South Korea,NA,NA,FIFA World Cup,Zapopan,Mexico,FALSE\n",
+        encoding="utf-8",
+    )
+    manual = tmp_path / "manual.csv"
+    with manual.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=["date", "home_team", "away_team", "home_score", "away_score", "source", "neutral"],
+        )
+        writer.writeheader()
+        writer.writerow({
+            "date": "2026-06-18",
+            "home_team": "Mexico",
+            "away_team": "South Korea",
+            "home_score": 1,
+            "away_score": 0,
+            "source": "confirmed",
+            "neutral": "FALSE",
+        })
+
+    monkeypatch.setattr(goal_models, "_INTERNATIONAL_CSV_PATH", history)
+    monkeypatch.setattr(goal_models, "_MANUAL_RESULTS_PATH", manual)
+
+    rows = goal_models._read_historical_matches()
+
+    assert rows == [{
+        "date": "2026-06-18",
+        "home_team": "Mexico",
+        "away_team": "South Korea",
+        "home_team_id": "Mexico",
+        "away_team_id": "South Korea",
+        "home_goals_90": 1,
+        "away_goals_90": 0,
+        "tournament": "FIFA World Cup",
+        "neutral": False,
+        "kickoff_utc": "2026-06-18T12:00:00+00:00",
+    }]

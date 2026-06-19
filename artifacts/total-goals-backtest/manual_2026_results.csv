@@ -1,9 +1,13 @@
-date,home_team,away_team,home_score,away_score,source
-2026-06-15,Spain,Cape Verde,0,0,manual-news-confirmed
-2026-06-15,Saudi Arabia,Uruguay,1,1,manual-news-confirmed
-2026-06-15,Belgium,Egypt,1,1,manual-news-confirmed
-2026-06-15,Iran,New Zealand,2,2,manual-news-confirmed
-2026-06-17,Portugal,DR Congo,1,1,fifa-score-confirmed
-2026-06-17,Uzbekistan,Colombia,1,3,fifa-score-confirmed
-2026-06-17,Ghana,Panama,1,0,fifa-score-confirmed
-2026-06-17,England,Croatia,4,2,fifa-score-confirmed
+date,home_team,away_team,home_score,away_score,source,neutral
+2026-06-15,Spain,Cape Verde,0,0,manual-news-confirmed,TRUE
+2026-06-15,Saudi Arabia,Uruguay,1,1,manual-news-confirmed,TRUE
+2026-06-15,Belgium,Egypt,1,1,manual-news-confirmed,TRUE
+2026-06-15,Iran,New Zealand,2,2,manual-news-confirmed,TRUE
+2026-06-17,Portugal,DR Congo,1,1,fifa-score-confirmed,TRUE
+2026-06-17,Uzbekistan,Colombia,1,3,fifa-score-confirmed,TRUE
+2026-06-17,Ghana,Panama,1,0,fifa-score-confirmed,TRUE
+2026-06-17,England,Croatia,4,2,fifa-score-confirmed,TRUE
+2026-06-18,Czech Republic,South Africa,1,1,settlement-confirmed,TRUE
+2026-06-18,Switzerland,Bosnia and Herzegovina,4,1,settlement-confirmed,TRUE
+2026-06-18,Canada,Qatar,6,0,settlement-confirmed,FALSE
+2026-06-18,Mexico,South Korea,1,0,score-confirmed,FALSE

@@ -98,7 +98,7 @@ const calculateBetPayout = (bet: PersonalBet, results: Map<string, MatchSettleme
     for (const leg of group.legs) {
       const won = legWon(leg, result)
       if (won === null) return null
-      if (won) winningOdds += leg.odds
+      if (won) winningOdds += leg.settlementOdds ?? leg.odds
     }
     winningOddsByMatch.push(winningOdds)
   }
@@ -113,17 +113,31 @@ export const settlePersonalLedger = (ledger: PersonalBetLedger, settlementFile: 
   const results = new Map(settlementFile.matches.map((match) => [match.matchId, match]))
   let changed = false
   const bets = ledger.bets.map((bet) => {
-    if (bet.status !== 'pending') return bet
-    const payout = calculateBetPayout(bet, results)
+    if (bet.status === 'void' || (bet.status === 'settled' && bet.oddsVerifiedAt)) return bet
+    const verifiedLegs = bet.legs?.map((leg) => {
+      const result = results.get(leg.matchId)
+      const verifiedOdds = result?.closingOdds?.[leg.market]?.[leg.selection]
+      return verifiedOdds ? { ...leg, settlementOdds: verifiedOdds } : leg
+    })
+    const hasVerifiedOdds = verifiedLegs?.some((leg) => leg.settlementOdds !== undefined) ?? false
+    if (bet.status === 'settled' && !hasVerifiedOdds) return bet
+    const verifiedBet = verifiedLegs ? { ...bet, legs: verifiedLegs } : bet
+    const payout = calculateBetPayout(verifiedBet, results)
     if (payout === null) return bet
     const matchIds = bet.legs?.map((leg) => leg.matchId) ?? (bet.matchId ? [bet.matchId] : [])
     const settledAt = matchIds.map((matchId) => results.get(matchId)?.settledAt).filter(Boolean).sort().at(-1)
     changed = true
     return {
-      ...bet,
+      ...verifiedBet,
       status: 'settled' as const,
       payout,
       settledAt,
+      oddsVerifiedAt: hasVerifiedOdds
+        ? matchIds.map((matchId) => results.get(matchId)?.closingOddsCheckedAt).filter(Boolean).sort().at(-1)
+        : undefined,
+      oddsSource: hasVerifiedOdds && matchIds.some((matchId) => results.get(matchId)?.closingOddsSource === 'zgzcw.com')
+        ? 'zgzcw.com'
+        : undefined,
     }
   })
   if (!changed) return ledger

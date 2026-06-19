@@ -69,7 +69,7 @@ def test_offline_generation(tmp_path):
     ], check=True)
     payload = json.loads(output.read_text(encoding="utf-8"))
     assert payload["targetDate"] == "2026-06-15"
-    assert payload["modelVersion"] == "legacy-dixon-coles-v1"
+    assert payload["modelVersion"].startswith("hierarchical_poisson[")
     assert payload["reproducibility"] == {"baselineFrozen": True, "randomSeed": 20260615}
     assert payload["simulationQuality"]["actualPaths"] == 100000
     assert payload["simulationQuality"]["seed"] == 20260615

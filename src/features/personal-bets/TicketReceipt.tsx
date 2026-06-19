@@ -74,7 +74,10 @@ export function TicketReceipt({
               <b>{group.matchLabel}</b>
               <small>{group.legs.map((leg) => `${leg.market} ${leg.selection}`).join(' / ')}</small>
             </span>
-            <span className="receipt-odds">{group.legs.map((leg) => leg.odds.toFixed(2)).join(' / ')}</span>
+            <span className="receipt-odds">
+              {group.legs.map((leg) => (leg.settlementOdds ?? leg.odds).toFixed(2)).join(' / ')}
+              {group.legs.some((leg) => leg.settlementOdds !== undefined) && <small>终盘核验</small>}
+            </span>
             {onRemoveLeg && <button type="button" onClick={() => group.legs.forEach(onRemoveLeg)} aria-label={`移除 ${group.matchLabel}`}><X size={14} /></button>}
           </div>
         ))}

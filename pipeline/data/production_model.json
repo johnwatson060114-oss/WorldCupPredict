@@ -1,0 +1,12 @@
+{
+  "family": "hierarchical_poisson",
+  "parameters": {
+    "half_life_days": 730.0,
+    "rho": 0.0,
+    "shrinkage": 24.0,
+    "tournament_tier": 1.0
+  },
+  "key": "hierarchical_poisson[half_life_days=730.0,rho=0.0,shrinkage=24.0,tournament_tier=1.0]",
+  "updatedAt": "2026-06-19T12:00:00+08:00",
+  "reason": "formalized the model already used by production forecasts and synchronized review/training inputs"
+}

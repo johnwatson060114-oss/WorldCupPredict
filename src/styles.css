@@ -837,6 +837,7 @@ body:has(.sporttery-ledger-page) .topbar {
 .receipt-match b { color: #222; font-size: 11px; font-weight: 600; }
 .receipt-match small { margin-top: 2px; color: #d3222a; font-size: 10px; }
 .receipt-odds { color: #333; text-align: right; font-family: 'Barlow Condensed', sans-serif; font-size: 14px; }
+.receipt-odds small { display: block; color: #16845b; font-family: sans-serif; font-size: 10px; white-space: nowrap; }
 .receipt-leg > button { width: 24px; height: 24px; padding: 0; border: 0; background: transparent; color: #bd242b; cursor: pointer; }
 .receipt-empty { min-height: 42px; display: grid; place-items: center; padding: 7px 10px; color: #888; text-align: center; font-size: 10px; line-height: 1.5; }
 .receipt-metrics { margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px 12px; }

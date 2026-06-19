@@ -1,10 +1,34 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-18T13:00:00+08:00",
+  "generatedAt": "2026-06-19T18:21:28+08:00",
   "snapshots": [
     {
       "observedAt": "2026-06-18T13:00:00+08:00",
       "path": "odds-history/2026-06-18/130000.json",
+      "matches": 12,
+      "closingWindowMatches": 0
+    },
+    {
+      "observedAt": "2026-06-19T10:23:28+08:00",
+      "path": "odds-history/2026-06-19/102328.json",
+      "matches": 8,
+      "closingWindowMatches": 0
+    },
+    {
+      "observedAt": "2026-06-19T10:29:25+08:00",
+      "path": "odds-history/2026-06-19/closing-final.json",
+      "matches": 4,
+      "closingWindowMatches": 4
+    },
+    {
+      "observedAt": "2026-06-19T18:18:58+08:00",
+      "path": "odds-history/2026-06-19/181858.json",
+      "matches": 12,
+      "closingWindowMatches": 0
+    },
+    {
+      "observedAt": "2026-06-19T18:21:28+08:00",
+      "path": "odds-history/2026-06-19/182128.json",
       "matches": 12,
       "closingWindowMatches": 0
     }

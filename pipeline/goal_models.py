@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Any, Iterable
 
 from .model import score_matrix
+from .model_registry import get_production_spec
 
 
 @dataclass(frozen=True)
@@ -281,6 +282,12 @@ DEFAULT_GLOBAL_HOME = 1.55
 DEFAULT_GLOBAL_AWAY = 1.00
 
 _INTERNATIONAL_CSV_PATH = None
+_MANUAL_RESULTS_PATH = (
+    Path(__file__).resolve().parent.parent
+    / "artifacts"
+    / "total-goals-backtest"
+    / "manual_2026_results.csv"
+)
 
 
 def _get_csv_path() -> Path:
@@ -324,7 +331,34 @@ def _read_historical_matches() -> list[dict[str, Any]]:
                 "neutral": row.get("neutral", "TRUE").upper() == "TRUE",
                 "kickoff_utc": f"{row['date']}T12:00:00+00:00",
             })
-    return rows
+    seen = {(row["date"], row["home_team"], row["away_team"]) for row in rows}
+    if _MANUAL_RESULTS_PATH.exists():
+        with _MANUAL_RESULTS_PATH.open(newline="", encoding="utf-8") as handle:
+            for row in csv.DictReader(handle):
+                key = (row["date"], row["home_team"], row["away_team"])
+                if key in seen:
+                    continue
+                rows.append({
+                    "date": row["date"],
+                    "home_team": row["home_team"],
+                    "away_team": row["away_team"],
+                    "home_team_id": row["home_team"],
+                    "away_team_id": row["away_team"],
+                    "home_goals_90": int(float(row["home_score"])),
+                    "away_goals_90": int(float(row["away_score"])),
+                    "tournament": "FIFA World Cup",
+                    "neutral": str(row.get("neutral", "TRUE")).upper() == "TRUE",
+                    "kickoff_utc": f"{row['date']}T12:00:00+00:00",
+                })
+                seen.add(key)
+    return sorted(rows, key=lambda item: item["date"])
+
+
+def active_production_goal_spec() -> ModelSpec:
+    registered = get_production_spec()
+    if registered.family == "legacy":
+        return PRODUCTION_GOAL_SPEC
+    return ModelSpec(registered.family, registered.parameters)
 
 
 def goal_model_xg(
@@ -342,7 +376,7 @@ def goal_model_xg(
     Returns None when historical data is unavailable or the model can't
     differentiate the two teams.
     """
-    spec = spec or PRODUCTION_GOAL_SPEC
+    spec = spec or active_production_goal_spec()
     rows = _read_historical_matches()
     if not rows:
         return None

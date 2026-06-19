@@ -2,7 +2,7 @@
 
 ## Current Production Rule
 
-- The current `dixon_coles[half_life_days=730,rho=-0.08,shrinkage=6]` model remains the primary production model.
+- The current `hierarchical_poisson[half_life_days=730,rho=0,shrinkage=24,tournament_tier=1]` model remains the primary production model.
 - The optimized candidate selected from 2018 and 2022 World Cup validation runs in shadow mode.
 - Daily reports should show both model lines: exact total-goals bucket accuracy, strongest adjacent two-bucket accuracy, average log loss, and prediction distribution.
 - Do not switch models because of one matchday or a small-sample swing.

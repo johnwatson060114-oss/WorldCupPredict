@@ -87,4 +87,51 @@ describe('personal ledger settlement', () => {
     expect(settled.bets[0].status).toBe('settled')
     expect(settled.bets[0].payout).toBe(40)
   })
+
+  it('checks archived closing odds before calculating the payout', () => {
+    const ledger: PersonalBetLedger = {
+      schemaVersion: 1,
+      initialBankroll: 200,
+      modelSnapshots: [],
+      bets: [{
+        id: 'verified-odds',
+        createdAt: 'now',
+        targetDate: '2026-06-18',
+        matchLabel: 'Portugal vs DR Congo',
+        market: '比分',
+        selection: '1:1',
+        odds: 9,
+        stake: 2,
+        standardStake: 2,
+        passType: '单关',
+        multiple: 1,
+        ticketCount: 1,
+        decisionSource: 'subjective',
+        status: 'settled',
+        payout: 18,
+        legs: [{
+          matchId: '2040182',
+          matchLabel: 'Portugal vs DR Congo',
+          market: '比分',
+          selection: '1:1',
+          odds: 9,
+        }],
+      }],
+    }
+    const settled = settlePersonalLedger(ledger, {
+      generatedAt: 'now',
+      matches: [{
+        matchId: '2040182',
+        homeScore: 1,
+        awayScore: 1,
+        settledAt: 'now',
+        closingOdds: { 比分: { '1:1': 11 } },
+        closingOddsSource: 'zgzcw.com',
+        closingOddsCheckedAt: '2026-06-18T23:00:00+08:00',
+      }],
+    })
+    expect(settled.bets[0].payout).toBe(22)
+    expect(settled.bets[0].legs?.[0].settlementOdds).toBe(11)
+    expect(settled.bets[0].oddsSource).toBe('zgzcw.com')
+  })
 })

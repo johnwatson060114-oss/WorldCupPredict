@@ -30,7 +30,10 @@ OUT_MODEL_POLICY_JSON = ROOT / "public" / "data" / "model-policy.json"
 PIPELINE_MODEL_POLICY_JSON = ROOT / "pipeline" / "data" / "model-policy.json"
 RESULTS_CSV_URL = "https://raw.githubusercontent.com/martj42/international_results/master/results.csv"
 GOAL_ORDER = ["0", "1", "2", "3", "4", "5", "6", "7+"]
-CURRENT_SPEC = ModelSpec("dixon_coles", {"half_life_days": 730.0, "rho": -0.08, "shrinkage": 6.0})
+CURRENT_SPEC = ModelSpec(
+    "hierarchical_poisson",
+    {"half_life_days": 730.0, "rho": 0.0, "shrinkage": 24.0, "tournament_tier": 1.0},
+)
 OPTIMIZED_SPEC = ModelSpec("hierarchical_poisson", {"rho": 0.0, "shrinkage": 16.0})
 TAIL_SHADOW_SPEC = ModelSpec(
     "poisson_nb_mixture",
@@ -113,7 +116,7 @@ def read_rows() -> list[dict[str, Any]]:
                     "home_goals_90": int(float(row["home_score"])),
                     "away_goals_90": int(float(row["away_score"])),
                     "tournament": "FIFA World Cup",
-                    "neutral": True,
+                    "neutral": str(row.get("neutral", "TRUE")).upper() == "TRUE",
                     "kickoff_utc": f"{row['date']}T12:00:00+00:00",
                     "source": row.get("source") or "manual",
                 })

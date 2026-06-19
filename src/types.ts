@@ -399,6 +399,10 @@ export interface MatchSettlement {
   halfTimeHomeScore?: number | null
   halfTimeAwayScore?: number | null
   settledAt: string
+  closingOdds?: Partial<Record<MarketType, Record<string, number>>>
+  closingOddsSource?: string
+  closingOddsIssue?: string
+  closingOddsCheckedAt?: string
 }
 
 export interface SettlementFile {
