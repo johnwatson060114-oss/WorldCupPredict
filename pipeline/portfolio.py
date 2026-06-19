@@ -79,6 +79,10 @@ STANDARD_KELLY_FRACTION = 0.25
 ENTERTAINMENT_STAKE_FRACTION = 0.03
 PARLAY_STAKE_FRACTIONS = {2: 0.05, 3: 0.04}
 DEFAULT_SINGLE_CAP = 0.12
+MIN_SINGLE_STAKE = 10
+MIN_COMBO_SELECTION_STAKE = 6
+MIN_COMBO_TOTAL_STAKE = 10
+MIN_PARLAY_STAKE = 4
 
 
 def fractional_kelly(probability: float, odds: float, fraction: float) -> float:
@@ -335,6 +339,7 @@ def build_portfolios(
             combo_stake = 0
             combo_tickets: list[dict[str, Any]] = []
             combo_coverage = sum(float(q["modelProbability"]) for q in combo)
+            minimum_leg_stake = MIN_COMBO_SELECTION_STAKE if len(combo) > 1 else MIN_SINGLE_STAKE
 
             # Determine per-leg weight (probability-proportional)
             probs = [float(q["modelProbability"]) for q in combo]
@@ -349,8 +354,8 @@ def build_portfolios(
                     robust_probability = (1 + quote["robustExpectedReturn"]) / quote["odds"]
                     suggested = round_to_ticket(bankroll * fractional_kelly(robust_probability, quote["odds"], STANDARD_KELLY_FRACTION) * stake_mult)
                 maximum = round_to_ticket(bankroll * (strategy.score_cap if quote["market"] == "比分" else DEFAULT_SINGLE_CAP) * stake_mult)
-                stake = min(maximum, max(2, suggested), cap - used - combo_stake)
-                if stake < 2:
+                stake = min(maximum, max(minimum_leg_stake, suggested), cap - used - combo_stake)
+                if stake < minimum_leg_stake:
                     continue
                 ticket = _ticket_from_quotes(
                     [quote], stake, "比分" if quote["market"] == "比分" else "单关", simulation
@@ -359,7 +364,13 @@ def build_portfolios(
                 combo_stake += stake
 
             # --- Combo quality gate: ROI + worst-case payout ratio ---
-            if len(combo_tickets) >= 2 and combo_stake >= 4:
+            if len(combo) > 1 and (
+                len(combo_tickets) != len(combo)
+                or combo_stake < MIN_COMBO_TOTAL_STAKE
+            ):
+                continue
+
+            if len(combo_tickets) >= 2:
                 expected_return = sum(
                     probs[i] * combo_tickets[i]["potentialPayout"]
                     for i in range(len(combo_tickets))
@@ -407,7 +418,7 @@ def build_portfolios(
         # Normal parlays introduce new match exposures. Cross-day parlays may
         # reuse a current-day match as the required anchor, but combinations
         # made entirely from future matches are not today's recommendations.
-        if strategy.max_parlay >= 2 and used + 2 <= cap:
+        if strategy.max_parlay >= 2 and used + MIN_PARLAY_STAKE <= cap:
             filtered_parlay_quotes = [
                 q for q in _filter_quotes(parlay_source, strategy, edge_min=adjusted_min_edge)
                 if q["matchId"] not in used_match_ids
@@ -422,10 +433,10 @@ def build_portfolios(
             if candidates:
                 best = max(candidates, key=lambda group: _parlay_score(group, strategy))
                 stake = min(round_to_ticket(bankroll * PARLAY_STAKE_FRACTIONS[2] * stake_mult), cap - used)
-                if stake >= 2:
+                if stake >= MIN_PARLAY_STAKE:
                     tickets.append(_ticket_from_quotes(list(best), stake, "2串1", simulation))
                     used += stake
-        if strategy.max_parlay >= 3 and used + 2 <= cap:
+        if strategy.max_parlay >= 3 and used + MIN_PARLAY_STAKE <= cap:
             filtered_parlay_quotes = [
                 q for q in _filter_quotes(parlay_source, strategy, edge_min=adjusted_min_edge)
                 if q["matchId"] not in used_match_ids
@@ -440,7 +451,7 @@ def build_portfolios(
             if candidates:
                 best = max(candidates, key=lambda group: _parlay_score(group, strategy))
                 stake = min(round_to_ticket(bankroll * PARLAY_STAKE_FRACTIONS[3] * stake_mult), cap - used)
-                if stake >= 2:
+                if stake >= MIN_PARLAY_STAKE:
                     tickets.append(_ticket_from_quotes(list(best), stake, "3串1", simulation))
                     used += stake
 

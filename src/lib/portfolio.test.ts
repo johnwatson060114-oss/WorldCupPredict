@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import type { StrategyHistory } from '../features/personal-bets/types'
 import type { Portfolio } from '../types'
-import { scalePortfolio, strategyRollingBankrolls } from './portfolio'
+import { filterCrossDayRecommendations, scalePortfolio, strategyRollingBankrolls } from './portfolio'
 
 const portfolio = (stake: number): Portfolio => ({
   key: 'aggressive',
@@ -30,7 +30,53 @@ const portfolio = (stake: number): Portfolio => ({
   distribution: [{ bankroll: 200 - stake, probability: 1 }],
 })
 
+const singlePortfolio = (stake: number, combo = false): Portfolio => ({
+  ...portfolio(stake),
+  tickets: [{
+    ...portfolio(stake).tickets[0],
+    type: '单关',
+    stake,
+    legs: [portfolio(stake).tickets[0].legs[0]],
+    comboGroup: combo ? {
+      matchId: 'm1',
+      market: portfolio(stake).tickets[0].legs[0].market,
+      size: 2,
+      coveragePct: 70,
+    } : undefined,
+  }],
+})
+
 describe('portfolio scaling', () => {
+  it('removes a parlay made entirely from future matches', () => {
+    const base = portfolio(12)
+    base.tickets = [
+      {
+        ...base.tickets[0],
+        id: 'future-only',
+        stake: 10,
+        legs: [
+          { ...base.tickets[0].legs[0], matchId: 'm1', matchDate: '2026-06-20' },
+          { ...base.tickets[0].legs[0], matchId: 'm2', matchDate: '2026-06-21' },
+        ],
+      },
+      {
+        ...base.tickets[0],
+        id: 'current-day-anchor',
+        stake: 2,
+        legs: [
+          { ...base.tickets[0].legs[0], matchId: 'm3', matchDate: '2026-06-19' },
+          { ...base.tickets[0].legs[0], matchId: 'm4', matchDate: '2026-06-20' },
+        ],
+      },
+    ]
+
+    const filtered = filterCrossDayRecommendations(base, '2026-06-19')
+
+    expect(filtered.tickets.map((ticket) => ticket.id)).toEqual(['current-day-anchor'])
+    expect(filtered.stake).toBe(2)
+    expect(filtered.retainedCash).toBe(198)
+  })
+
   it('uses settled strategy performance to reduce the next stake', () => {
     const history: StrategyHistory = {
       generatedAt: 'now',
@@ -70,6 +116,35 @@ describe('portfolio scaling', () => {
 
   it('removes tickets once a strategy balance falls below one base stake', () => {
     const scaled = scalePortfolio(portfolio(42), 1.8)
+
+    expect(scaled.stake).toBe(0)
+    expect(scaled.tickets).toHaveLength(0)
+  })
+
+  it('drops an ordinary single when drawdown scaling puts it below ten yuan', () => {
+    const scaled = scalePortfolio(singlePortfolio(10), 150)
+
+    expect(scaled.stake).toBe(0)
+    expect(scaled.tickets).toHaveLength(0)
+  })
+
+  it('applies minimum stakes even before any bankroll drawdown', () => {
+    expect(scalePortfolio(singlePortfolio(8), 200).tickets).toHaveLength(0)
+  })
+
+  it('keeps a parlay at four yuan but drops it below four yuan', () => {
+    expect(scalePortfolio(portfolio(8), 150).tickets[0].stake).toBe(4)
+    expect(scalePortfolio(portfolio(6), 150).tickets).toHaveLength(0)
+  })
+
+  it('drops an incomplete same-match multi-result single as one atomic group', () => {
+    const base = singlePortfolio(12, true)
+    base.tickets = [
+      { ...base.tickets[0], id: 'combo-a', stake: 12 },
+      { ...base.tickets[0], id: 'combo-b', stake: 6 },
+    ]
+
+    const scaled = scalePortfolio(base, 150)
 
     expect(scaled.stake).toBe(0)
     expect(scaled.tickets).toHaveLength(0)

@@ -25,6 +25,46 @@ def test_rounding_is_two_yuan_increment():
     assert round_to_ticket(1.9) == 0
 
 
+def test_recommendation_minimum_stakes_match_purchase_rules():
+    portfolios = build_portfolios(
+        [
+            quote("1", 0.12, odds=1.80),
+            quote("2", 0.12, odds=1.80),
+            quote("3", 0.12, odds=1.80),
+        ],
+        bankroll=200,
+        simulation=shared_simulation("1", "2", "3"),
+    )
+
+    for portfolio in portfolios:
+        for ticket in portfolio["tickets"]:
+            if len(ticket["legs"]) > 1:
+                assert ticket["stake"] >= 4
+            else:
+                assert ticket["stake"] >= 10
+
+
+def test_multi_result_single_uses_six_yuan_per_selection_and_ten_yuan_total():
+    first = quote("1", 0.12, odds=3.0)
+    first.update({"id": "q-1-home", "selection": "鑳?", "modelProbability": 0.40})
+    second = quote("1", 0.10, odds=3.2)
+    second.update({"id": "q-1-draw", "selection": "骞?", "modelProbability": 0.30})
+
+    aggressive = next(
+        portfolio for portfolio in build_portfolios(
+            [first, second],
+            bankroll=200,
+            simulation=shared_simulation("1"),
+        )
+        if portfolio["key"] == "aggressive"
+    )
+    combo = [ticket for ticket in aggressive["tickets"] if ticket.get("comboGroup")]
+
+    assert len(combo) == 2
+    assert all(ticket["stake"] >= 6 for ticket in combo)
+    assert sum(ticket["stake"] for ticket in combo) >= 10
+
+
 def test_portfolios_use_common_stake_sizing_and_distinct_parlay_matches():
     portfolios = build_portfolios(
         [quote("1", 0.12)],

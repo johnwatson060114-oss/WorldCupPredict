@@ -20,7 +20,7 @@ import { useForecast } from './hooks/useForecast'
 import { captureModelSnapshot, loadPersonalLedger, savePersonalLedger, settlePersonalLedger } from './features/personal-bets/storage'
 import type { PersonalBetLedger, StrategyHistory } from './features/personal-bets/types'
 import { appendLedgerEntry, currentBalance, emptyLedger, loadLedger, saveLedger, settleLedger } from './lib/ledger'
-import { scalePortfolio, strategyRollingBankrolls } from './lib/portfolio'
+import { filterCrossDayRecommendations, scalePortfolio, strategyRollingBankrolls } from './lib/portfolio'
 import { isFormalCandidate } from './lib/outcome-confidence'
 import type { BankrollLedger, LedgerEntry, SettlementFile, StrategyKey } from './types'
 
@@ -87,7 +87,10 @@ export default function App() {
   }, [data, strategyHistory])
   const scaledPortfolios = useMemo(() => {
     if (!data || !strategyBankrolls) return []
-    return data.portfolios.map((portfolio) => scalePortfolio(portfolio, strategyBankrolls[portfolio.key], data.bankroll))
+    return data.portfolios.map((portfolio) => {
+      const filtered = filterCrossDayRecommendations(portfolio, data.targetDate, data.bankroll)
+      return scalePortfolio(filtered, strategyBankrolls[portfolio.key], data.bankroll)
+    })
   }, [data, strategyBankrolls])
 
   const selectedMatch = useMemo(() => {
