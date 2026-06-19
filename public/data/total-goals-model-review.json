@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-19T11:35:03+08:00",
+  "generatedAt": "2026-06-19T17:48:27+08:00",
   "timezone": "Asia/Shanghai",
   "scheduledReviewStartDate": "2026-06-17",
   "productionPolicy": "current model remains primary; optimized model runs as shadow until adoption gates pass",
@@ -224,7 +224,7 @@
     "url": "https://raw.githubusercontent.com/martj42/international_results/master/results.csv",
     "bytes": 3724351,
     "path": "artifacts/total-goals-backtest/international_results.csv",
-    "refreshedAt": "2026-06-19T11:34:12+08:00"
+    "refreshedAt": "2026-06-19T17:47:37+08:00"
   },
   "manualResultRows": 8,
   "comparisonPath": "artifacts/total-goals-backtest/model_comparison_2026.csv"
