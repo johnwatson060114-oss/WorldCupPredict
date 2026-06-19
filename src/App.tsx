@@ -16,6 +16,7 @@ import { MethodPage } from './pages/MethodPage'
 import { PersonalBetPage } from './pages/PersonalBetPage'
 import { TotalGoalsPage } from './pages/TotalGoalsPage'
 import { FirstRoundPage } from './pages/FirstRoundPage'
+import { ForecastHorizon } from './components/ForecastHorizon'
 import { useForecast } from './hooks/useForecast'
 import { captureModelSnapshot, loadPersonalLedger, savePersonalLedger, settlePersonalLedger } from './features/personal-bets/storage'
 import type { PersonalBetLedger, StrategyHistory } from './features/personal-bets/types'
@@ -150,6 +151,7 @@ export default function App() {
               <small>仅用于功能预览，不作为实际投注依据</small>
             </div>
           )}
+          <ForecastHorizon targetDate={data.targetDate} matches={data.parlayMatches ?? []} />
           {!data.matches.length || !selectedMatch ? (
             <main className="empty-forecast-panel">
               <h1>次日暂无可用比赛</h1>
