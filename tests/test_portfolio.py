@@ -48,9 +48,9 @@ def test_portfolios_use_common_stake_sizing_and_distinct_parlay_matches():
 def test_cross_day_quotes_only_enter_through_parlays():
     same_day = [quote("1", 0.12, odds=1.80)]
     cross_day = [
-        {**quote("2", 0.12, odds=1.80), "matchDate": "2026-06-19", "kickoffBeijing": "2026-06-19T03:00:00+08:00"},
-        {**quote("3", 0.12, odds=1.80), "matchDate": "2026-06-19", "kickoffBeijing": "2026-06-19T06:00:00+08:00"},
-        {**quote("4", 0.12, odds=1.80), "matchDate": "2026-06-20", "kickoffBeijing": "2026-06-20T03:00:00+08:00"},
+        {**quote("2", 0.50, odds=1.80), "matchDate": "2026-06-19", "kickoffBeijing": "2026-06-19T03:00:00+08:00"},
+        {**quote("3", 0.50, odds=1.80), "matchDate": "2026-06-19", "kickoffBeijing": "2026-06-19T06:00:00+08:00"},
+        {**quote("4", 0.50, odds=1.80), "matchDate": "2026-06-20", "kickoffBeijing": "2026-06-20T03:00:00+08:00"},
     ]
 
     portfolios = {
@@ -73,6 +73,15 @@ def test_cross_day_quotes_only_enter_through_parlays():
     balanced_2x1 = next(ticket for ticket in portfolios["balanced"]["tickets"] if ticket["type"] == "2串1")
     aggressive_2x1 = next(ticket for ticket in portfolios["aggressive"]["tickets"] if ticket["type"] == "2串1")
     assert balanced_2x1["stake"] == aggressive_2x1["stake"] == 10
+    for strategy in ("balanced", "aggressive"):
+        parlays = [
+            ticket for ticket in portfolios[strategy]["tickets"]
+            if len(ticket["legs"]) >= 2
+        ]
+        assert all(
+            any(leg["matchId"] == "1" for leg in ticket["legs"])
+            for ticket in parlays
+        )
 
 
 def test_negative_edge_never_enters_formal_portfolios():

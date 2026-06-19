@@ -111,6 +111,7 @@ def _parlay_candidates(
     quotes: list[dict[str, Any]],
     size: int,
     strategy: Strategy,
+    required_match_ids: set[str] | None = None,
 ) -> list[tuple[dict[str, Any], ...]]:
     positive = [
         quote for quote in quotes
@@ -129,6 +130,10 @@ def _parlay_candidates(
         if (
             len({item["matchId"] for item in group}) == size
             and volatile_legs <= strategy.max_volatile_parlay_legs
+            and (
+                required_match_ids is None
+                or any(item["matchId"] in required_match_ids for item in group)
+            )
         ):
             combinations.append(group)
     return combinations
@@ -392,18 +397,28 @@ def build_portfolios(
             used += combo_stake
             used_match_ids.add(match_id)
 
-        parlay_source = parlay_quotes if parlay_quotes is not None else quotes
+        cross_day_parlays = parlay_quotes is not None
+        parlay_source = parlay_quotes if cross_day_parlays else quotes
+        current_match_ids = {quote["matchId"] for quote in quotes}
 
         # Parlay logic: legs must come from matches NOT already covered by
         # single tickets.  Without this guard you get wasteful duplicates like
         # 单关(A) + 单关(B) + 2串1(A,B) — same exposure, double the cost.
-        # Parlays should introduce *new* match exposures, not re-bundle old ones.
+        # Normal parlays introduce new match exposures. Cross-day parlays may
+        # reuse a current-day match as the required anchor, but combinations
+        # made entirely from future matches are not today's recommendations.
         if strategy.max_parlay >= 2 and used + 2 <= cap:
             filtered_parlay_quotes = [
                 q for q in _filter_quotes(parlay_source, strategy, edge_min=adjusted_min_edge)
                 if q["matchId"] not in used_match_ids
+                or (cross_day_parlays and q["matchId"] in current_match_ids)
             ]
-            candidates = _parlay_candidates(filtered_parlay_quotes, 2, strategy)
+            candidates = _parlay_candidates(
+                filtered_parlay_quotes,
+                2,
+                strategy,
+                required_match_ids=current_match_ids if cross_day_parlays else None,
+            )
             if candidates:
                 best = max(candidates, key=lambda group: _parlay_score(group, strategy))
                 stake = min(round_to_ticket(bankroll * PARLAY_STAKE_FRACTIONS[2] * stake_mult), cap - used)
@@ -414,8 +429,14 @@ def build_portfolios(
             filtered_parlay_quotes = [
                 q for q in _filter_quotes(parlay_source, strategy, edge_min=adjusted_min_edge)
                 if q["matchId"] not in used_match_ids
+                or (cross_day_parlays and q["matchId"] in current_match_ids)
             ]
-            candidates = _parlay_candidates(filtered_parlay_quotes, 3, strategy)
+            candidates = _parlay_candidates(
+                filtered_parlay_quotes,
+                3,
+                strategy,
+                required_match_ids=current_match_ids if cross_day_parlays else None,
+            )
             if candidates:
                 best = max(candidates, key=lambda group: _parlay_score(group, strategy))
                 stake = min(round_to_ticket(bankroll * PARLAY_STAKE_FRACTIONS[3] * stake_mult), cap - used)
