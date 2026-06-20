@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-19T10:29:39+08:00",
+  "generatedAt": "2026-06-20T14:44:05+08:00",
   "finalDate": "2026-07-19",
   "days": [
     {
@@ -343,20 +343,20 @@
         {
           "key": "balanced",
           "name": "均衡",
-          "stake": 54,
-          "payout": null,
-          "profit": null,
-          "roi": null,
-          "status": "pending"
+          "stake": 54.0,
+          "payout": 49.44,
+          "profit": -4.56,
+          "roi": -0.084444,
+          "status": "settled"
         },
         {
           "key": "aggressive",
           "name": "激进",
-          "stake": 64,
-          "payout": null,
-          "profit": null,
-          "roi": null,
-          "status": "pending"
+          "stake": 64.0,
+          "payout": 49.44,
+          "profit": -14.56,
+          "roi": -0.2275,
+          "status": "settled"
         }
       ],
       "review": {
@@ -467,11 +467,84 @@
           "status": "pending"
         }
       ],
-      "review": null
+      "review": {
+        "snapshotLabel": "升级前基线快照",
+        "matches": [
+          {
+            "matchId": "2040235",
+            "label": "捷克 vs 南非",
+            "predictedScore": "1-0",
+            "actualScore": "1-1",
+            "predictedOutcome": "home",
+            "actualOutcome": "draw",
+            "outcomeCorrect": false,
+            "exactScore": false,
+            "goalAbsoluteError": 1,
+            "actualOutcomeProbability": 0.21775,
+            "logLoss": 1.52441,
+            "brier": 1.05272,
+            "diagnosis": "赛果方向判断错误，需要继续积累同类对阵样本。"
+          },
+          {
+            "matchId": "2040236",
+            "label": "瑞士 vs 波黑",
+            "predictedScore": "2-0",
+            "actualScore": "4-1",
+            "predictedOutcome": "home",
+            "actualOutcome": "home",
+            "outcomeCorrect": true,
+            "exactScore": false,
+            "goalAbsoluteError": 3,
+            "actualOutcomeProbability": 0.70316,
+            "logLoss": 0.35217,
+            "brier": 0.13526,
+            "diagnosis": "赛果方向正确，但比分尺度仍有偏差。"
+          },
+          {
+            "matchId": "2040237",
+            "label": "加拿大 vs 卡塔尔",
+            "predictedScore": "2-0",
+            "actualScore": "6-0",
+            "predictedOutcome": "home",
+            "actualOutcome": "home",
+            "outcomeCorrect": true,
+            "exactScore": false,
+            "goalAbsoluteError": 4,
+            "actualOutcomeProbability": 0.78053,
+            "logLoss": 0.24778,
+            "brier": 0.07666,
+            "diagnosis": "方向正确，但明显低估比赛开放度和大比分尾部。"
+          },
+          {
+            "matchId": "2040238",
+            "label": "墨西哥 vs 韩国",
+            "predictedScore": "1-0",
+            "actualScore": "1-0",
+            "predictedOutcome": "home",
+            "actualOutcome": "home",
+            "outcomeCorrect": true,
+            "exactScore": true,
+            "goalAbsoluteError": 0,
+            "actualOutcomeProbability": 0.49815,
+            "logLoss": 0.69685,
+            "brier": 0.37826,
+            "diagnosis": "赛果方向正确，但比分尺度仍有偏差。"
+          }
+        ],
+        "summary": {
+          "matchCount": 4,
+          "outcomeAccuracy": 0.75,
+          "exactScoreAccuracy": 0.25,
+          "meanGoalAbsoluteError": 2.0,
+          "logLoss": 0.7053,
+          "brier": 0.41073,
+          "strategyDiagnosis": "策略结果已按真实派彩结算，继续观察多日样本后再调整资金规则。"
+        }
+      }
     },
     {
       "targetDate": "2026-06-20",
-      "generatedAt": "2026-06-19T10:23:28+08:00",
+      "generatedAt": "2026-06-19T18:21:28+08:00",
       "coverage": 0.7963,
       "strategies": [
         {
@@ -495,11 +568,119 @@
         {
           "key": "aggressive",
           "name": "激进",
-          "stake": 4,
+          "stake": 8,
           "payout": null,
           "profit": null,
           "roi": null,
           "status": "pending"
+        }
+      ],
+      "review": {
+        "snapshotLabel": "升级前基线快照",
+        "matches": [
+          {
+            "matchId": "2040239",
+            "label": "美国 vs 澳大利亚",
+            "predictedScore": "1-1",
+            "actualScore": "2-0",
+            "predictedOutcome": "draw",
+            "actualOutcome": "home",
+            "outcomeCorrect": false,
+            "exactScore": false,
+            "goalAbsoluteError": 2,
+            "actualOutcomeProbability": 0.28914,
+            "logLoss": 1.24084,
+            "brier": 0.77661,
+            "diagnosis": "平局倾向失效，主队进攻上限被明显低估。"
+          },
+          {
+            "matchId": "2040240",
+            "label": "苏格兰 vs 摩洛哥",
+            "predictedScore": "1-1",
+            "actualScore": "0-1",
+            "predictedOutcome": "draw",
+            "actualOutcome": "away",
+            "outcomeCorrect": false,
+            "exactScore": false,
+            "goalAbsoluteError": 1,
+            "actualOutcomeProbability": 0.43231,
+            "logLoss": 0.83861,
+            "brier": 0.48352,
+            "diagnosis": "赛果方向判断错误，需要继续积累同类对阵样本。"
+          },
+          {
+            "matchId": "2040241",
+            "label": "巴西 vs 海地",
+            "predictedScore": "2-0",
+            "actualScore": "3-0",
+            "predictedOutcome": "home",
+            "actualOutcome": "home",
+            "outcomeCorrect": true,
+            "exactScore": false,
+            "goalAbsoluteError": 1,
+            "actualOutcomeProbability": 0.87143,
+            "logLoss": 0.13762,
+            "brier": 0.02917,
+            "diagnosis": "赛果方向正确，但比分尺度仍有偏差。"
+          },
+          {
+            "matchId": "2040242",
+            "label": "土耳其 vs 巴拉圭",
+            "predictedScore": "1-1",
+            "actualScore": "0-1",
+            "predictedOutcome": "draw",
+            "actualOutcome": "away",
+            "outcomeCorrect": false,
+            "exactScore": false,
+            "goalAbsoluteError": 1,
+            "actualOutcomeProbability": 0.278,
+            "logLoss": 1.28013,
+            "brier": 0.80951,
+            "diagnosis": "赛果方向判断错误，需要继续积累同类对阵样本。"
+          }
+        ],
+        "summary": {
+          "matchCount": 4,
+          "outcomeAccuracy": 0.25,
+          "exactScoreAccuracy": 0.0,
+          "meanGoalAbsoluteError": 1.25,
+          "logLoss": 0.8743,
+          "brier": 0.5247,
+          "strategyDiagnosis": "策略结果已按真实派彩结算，继续观察多日样本后再调整资金规则。"
+        }
+      }
+    },
+    {
+      "targetDate": "2026-06-21",
+      "generatedAt": "2026-06-20T14:43:56+08:00",
+      "coverage": 0.77,
+      "strategies": [
+        {
+          "key": "conservative",
+          "name": "稳健",
+          "stake": 0,
+          "payout": 0,
+          "profit": 0,
+          "roi": null,
+          "status": "no-bet"
+        },
+        {
+          "key": "balanced",
+          "name": "均衡",
+          "stake": 0,
+          "payout": 0,
+          "profit": 0,
+          "roi": null,
+          "status": "no-bet"
+        },
+        {
+          "key": "aggressive",
+          "name": "激进",
+          "stake": 0,
+          "payout": 0,
+          "profit": 0,
+          "roi": null,
+          "status": "no-bet"
         }
       ],
       "review": null

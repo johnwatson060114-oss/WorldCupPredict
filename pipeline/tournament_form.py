@@ -11,7 +11,8 @@ from .config import ROOT
 
 
 DEFAULT_PROFILE_PATH = ROOT / "pipeline" / "data" / "first-round-performance.json"
-MAX_TEAM_DIRECTION_XG = 0.12
+MAX_TEAM_DIRECTION_XG = 0.18
+CURRENT_TOURNAMENT_FORM_MULTIPLIER = 1.5
 DECAY_START_MATCHDAYS = 2
 DECAY_HALF_LIFE_MATCHDAYS = 2.0
 
@@ -127,8 +128,14 @@ def team_form_adjustment(
     decay = form_decay(observed_matchday, target_matchday)
     status = str(objective.get("admissionStatus", "observation_only"))
     enabled = status == "enabled"
-    raw_attack = float(objective.get("attackDelta", 0.0)) if enabled else 0.0
-    raw_defense = float(objective.get("defenseDelta", 0.0)) if enabled else 0.0
+    raw_attack = (
+        float(objective.get("attackDelta", 0.0)) * CURRENT_TOURNAMENT_FORM_MULTIPLIER
+        if enabled else 0.0
+    )
+    raw_defense = (
+        float(objective.get("defenseDelta", 0.0)) * CURRENT_TOURNAMENT_FORM_MULTIPLIER
+        if enabled else 0.0
+    )
     attack = max(-MAX_TEAM_DIRECTION_XG, min(MAX_TEAM_DIRECTION_XG, raw_attack)) * decay
     defense = max(-MAX_TEAM_DIRECTION_XG, min(MAX_TEAM_DIRECTION_XG, raw_defense)) * decay
     confidence = max(0.0, min(1.0, float(profile.get("evidenceConfidence", 0.0))))
@@ -170,10 +177,10 @@ def apply_tournament_form(
             "longTermExpectedGoals": {"home": round(base_home, 4), "away": round(base_away, 4)},
             "tournamentFormNet": {"home": round(home_net, 4), "away": round(away_net, 4)},
             "adjustedExpectedGoals": {"home": round(adjusted_home, 4), "away": round(adjusted_away, 4)},
-            "formLayer": "first_round_bounded_v1",
+            "formLayer": "current_tournament_weighted_v2",
         }
         seed["tournament_form"] = {
-            "sourceRound": "group_matchday_1",
+            "sourceRound": "current_tournament_from_group_matchday_1",
             "commentaryMode": "text_only",
             "home": home.to_dict(),
             "away": away.to_dict(),

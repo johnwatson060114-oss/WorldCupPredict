@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-19T18:13:21+08:00",
+  "generatedAt": "2026-06-20T14:43:56+08:00",
   "matches": [
     {
       "matchId": "2040170",
@@ -1194,6 +1194,46 @@
       "closingOddsSource": "zgzcw.com",
       "closingOddsIssue": "2026-06-18",
       "closingOddsCheckedAt": "2026-06-19T10:29:25+08:00"
+    },
+    {
+      "matchId": "2040238",
+      "homeScore": 1,
+      "awayScore": 0,
+      "halfTimeHomeScore": 0,
+      "halfTimeAwayScore": 0,
+      "settledAt": "2026-06-19T01:00:00Z"
+    },
+    {
+      "matchId": "2040239",
+      "homeScore": 2,
+      "awayScore": 0,
+      "halfTimeHomeScore": 2,
+      "halfTimeAwayScore": 0,
+      "settledAt": "2026-06-19T19:00:00Z"
+    },
+    {
+      "matchId": "2040240",
+      "homeScore": 0,
+      "awayScore": 1,
+      "halfTimeHomeScore": 0,
+      "halfTimeAwayScore": 1,
+      "settledAt": "2026-06-19T22:00:00Z"
+    },
+    {
+      "matchId": "2040241",
+      "homeScore": 3,
+      "awayScore": 0,
+      "halfTimeHomeScore": 3,
+      "halfTimeAwayScore": 0,
+      "settledAt": "2026-06-20T00:30:00Z"
+    },
+    {
+      "matchId": "2040242",
+      "homeScore": 0,
+      "awayScore": 1,
+      "halfTimeHomeScore": 0,
+      "halfTimeAwayScore": 1,
+      "settledAt": "2026-06-20T03:00:00Z"
     }
   ]
 }

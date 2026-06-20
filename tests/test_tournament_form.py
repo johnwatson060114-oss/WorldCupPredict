@@ -3,6 +3,7 @@ import json
 import pytest
 
 from pipeline.tournament_form import (
+    CURRENT_TOURNAMENT_FORM_MULTIPLIER,
     MAX_TEAM_DIRECTION_XG,
     apply_tournament_form,
     form_decay,
@@ -34,6 +35,7 @@ def test_team_form_caps_each_direction_and_decays_after_two_matchdays():
     assert early.defense_delta == -MAX_TEAM_DIRECTION_XG
     assert form_decay(1, 3) == 1.0
     assert 0 < later.attack_delta < early.attack_delta
+    assert CURRENT_TOURNAMENT_FORM_MULTIPLIER > 1
 
 
 def test_form_layer_adjusts_xg_without_mutating_long_term_baseline():

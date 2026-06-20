@@ -49,7 +49,8 @@ from .model import (
 )
 from .lineup import apply_lineup_impacts
 from .intelligence import apply_intelligence, load_daily_intelligence
-from .market_guard import market_conflict_decision
+from .current_tournament import apply_current_tournament_context
+from .market_guard import apply_market_strength_calibration, market_conflict_decision
 from .portfolio import build_portfolios
 from .provenance import build_snapshot_manifest
 from .simulation import MatchSimulationInput, TournamentSimulation, simulate_tournament
@@ -673,6 +674,7 @@ def build_match(
             "adjustedExpectedGoals": {"home": round(home_xg, 4), "away": round(away_xg, 4)},
         }),
         "tournamentForm": seed.get("tournament_form"),
+        "currentTournament": seed.get("current_tournament"),
         "outcomeProbabilities": {key: round(value, 5) for key, value in outcomes.items()},
         "outcomeDecision": {
             **outcome_decision,
@@ -975,6 +977,7 @@ def main() -> None:
         apply_lineup_impacts(batch)
         apply_factor_admissions(batch, factor_admissions)
         apply_tournament_form(batch, batch_date, first_round_profiles)
+        apply_current_tournament_context(batch, all_football_matches)
 
     prepare_seeds(seeds, target_date)
 
@@ -1001,6 +1004,8 @@ def main() -> None:
     simulation_seeds = seeds + future_parlay_seeds
     for seed in simulation_seeds:
         market = match_seed_to_market(seed, all_markets)
+        if market is not None:
+            apply_market_strength_calibration(seed, market.win_draw_loss)
         match_id = market.match_id if market else seed.get("sporttery_id") or f"{seed['home_team']} vs {seed['away_team']}"
         factors = seed.get("factors", default_factors())
         home_xg, away_xg = adjust_xg(float(seed["base_xg"][0]), float(seed["base_xg"][1]), factors)

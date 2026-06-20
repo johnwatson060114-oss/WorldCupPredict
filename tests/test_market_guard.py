@@ -1,4 +1,4 @@
-from pipeline.market_guard import market_conflict_decision
+from pipeline.market_guard import apply_market_strength_calibration, market_conflict_decision
 
 
 def test_probability_gap_over_fifteen_points_blocks_market():
@@ -29,3 +29,18 @@ def test_incomplete_market_probabilities_are_not_formally_eligible():
     )
     assert decision["status"] == "unavailable"
     assert decision["blocked"]
+
+
+def test_extreme_market_conflict_is_bounded_and_preserves_total_xg():
+    seed = {"base_xg": [1.1, 1.45], "model_decomposition": {}}
+    result = apply_market_strength_calibration(
+        seed,
+        {"胜": 1.45, "平": 3.83, "负": 5.60},
+    )
+
+    assert result["applied"]
+    assert result["homeShift"] <= 0.20
+    assert result["awayShift"] >= -0.20
+    assert abs(sum(seed["base_xg"]) - 2.55) < 1e-9
+    assert seed["base_xg"][0] > 1.1
+    assert seed["base_xg"][1] < 1.45
