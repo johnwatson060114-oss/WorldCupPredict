@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-20T14:44:05+08:00",
+  "generatedAt": "2026-06-20T16:24:45+08:00",
   "finalDate": "2026-07-19",
   "days": [
     {
@@ -652,7 +652,7 @@
     },
     {
       "targetDate": "2026-06-21",
-      "generatedAt": "2026-06-20T14:43:56+08:00",
+      "generatedAt": "2026-06-20T16:24:00+08:00",
       "coverage": 0.77,
       "strategies": [
         {
