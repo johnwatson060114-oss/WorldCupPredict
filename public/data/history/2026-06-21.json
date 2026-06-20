@@ -11980,6 +11980,7 @@
       "stake": 0,
       "retainedCash": 200,
       "strategyRules": [
+        "比分推演复核：当期无满足稳健门槛的单关，0元不投",
         "低波动：只做次日单关",
         "胜平负/让球/总进球",
         "高覆盖与正稳健期望优先",
@@ -11987,22 +11988,22 @@
       ],
       "tickets": [],
       "entertainmentMode": false,
-      "expectedProfit": 0.0,
-      "profitProbability": 0.0,
-      "lossProbability": 0.0,
-      "stopProbability": 0.0,
-      "medianMaxDrawdown": 0.0,
+      "expectedProfit": 0,
+      "profitProbability": 0,
+      "lossProbability": 0,
+      "stopProbability": 0,
+      "medianMaxDrawdown": 0,
       "worstCase95": 0,
-      "p05": 217,
-      "median": 217,
-      "p95": 217,
-      "maxPayout": 217,
+      "p05": 200,
+      "median": 200,
+      "p95": 200,
+      "maxPayout": 200,
       "simulationPaths": 100000,
       "simulationMode": "shared_score_paths",
       "distribution": [
         {
-          "bankroll": 217,
-          "probability": 1.0
+          "bankroll": 200,
+          "probability": 0
         }
       ]
     },
@@ -12010,32 +12011,73 @@
       "key": "balanced",
       "name": "均衡",
       "subtitle": "中波动复式 + 跨天2串1",
-      "stake": 0,
-      "retainedCash": 200,
+      "stake": 6,
+      "retainedCash": 194,
       "strategyRules": [
+        "比分推演复核：日本胜 + 比利时让一球负，跨天2串1小注",
         "中波动：次日单关 + 在售跨天2串1",
         "胜平负/让球/总进球",
         "复式提高覆盖，接受中等赔率波动",
         "预期回报率≥-10%，最差情况返本≥60%"
       ],
-      "tickets": [],
+      "tickets": [
+        {
+          "id": "score-review-2040246-胜平负-负-2040248-让球胜平负--1-负",
+          "type": "2串1",
+          "legs": [
+            {
+              "matchId": "2040246",
+              "label": "突尼斯 vs 日本",
+              "market": "胜平负",
+              "selection": "负",
+              "handicap": null,
+              "odds": 1.39,
+              "excludedScores": [],
+              "kickoffBeijing": "2026-06-21T12:00:00+08:00",
+              "lotteryCode": "周六036",
+              "matchDate": "2026-06-21"
+            },
+            {
+              "matchId": "2040248",
+              "label": "比利时 vs 伊朗",
+              "market": "让球胜平负",
+              "selection": "-1 负",
+              "handicap": -1,
+              "odds": 2.83,
+              "excludedScores": [],
+              "kickoffBeijing": "2026-06-22T03:00:00+08:00",
+              "lotteryCode": "周日038",
+              "matchDate": "2026-06-22"
+            }
+          ],
+          "stake": 6,
+          "combinedOdds": 3.934,
+          "modelProbability": 0.33098,
+          "robustExpectedReturn": 0.0396,
+          "potentialPayout": 23.6
+        }
+      ],
       "entertainmentMode": false,
-      "expectedProfit": 0.0,
-      "profitProbability": 0.0,
-      "lossProbability": 0.0,
-      "stopProbability": 0.0,
-      "medianMaxDrawdown": 0.0,
-      "worstCase95": 0,
-      "p05": 177,
-      "median": 177,
-      "p95": 177,
-      "maxPayout": 177,
+      "expectedProfit": 0.2,
+      "profitProbability": 0.331,
+      "lossProbability": 0.669,
+      "stopProbability": 0,
+      "medianMaxDrawdown": 0,
+      "worstCase95": -4,
+      "p05": 194,
+      "median": 194,
+      "p95": 218,
+      "maxPayout": 218,
       "simulationPaths": 100000,
       "simulationMode": "shared_score_paths",
       "distribution": [
         {
-          "bankroll": 177,
-          "probability": 1.0
+          "bankroll": 194,
+          "probability": 0.669
+        },
+        {
+          "bankroll": 218,
+          "probability": 0.331
         }
       ]
     },
@@ -12043,9 +12085,10 @@
       "key": "aggressive",
       "name": "激进",
       "subtitle": "高波动全玩法 + 跨天3串1",
-      "stake": 4,
-      "retainedCash": 196,
+      "stake": 6,
+      "retainedCash": 194,
       "strategyRules": [
+        "比分推演复核：均衡组合 + 阿根廷让一球胜，跨天3串1小注",
         "高波动：次日单关 + 在售跨天2/3串1",
         "比分/半全场可入池",
         "赔率弹性更高，命中概率更低",
@@ -12053,230 +12096,74 @@
       ],
       "tickets": [
         {
-          "id": "2040245-总进球数-0-2040247-总进球数-0",
-          "type": "2串1",
+          "id": "score-review-2040246-胜平负-负-2040248-让球胜平负--1-负-2040251-让球胜平负--1-胜",
+          "type": "3串1",
           "legs": [
             {
-              "matchId": "2040245",
-              "label": "厄瓜多尔 vs 库拉索",
-              "market": "总进球数",
-              "selection": "0",
+              "matchId": "2040246",
+              "label": "突尼斯 vs 日本",
+              "market": "胜平负",
+              "selection": "负",
               "handicap": null,
-              "odds": 21.0,
+              "odds": 1.39,
               "excludedScores": [],
-              "kickoffBeijing": "2026-06-21T08:00:00+08:00",
-              "lotteryCode": "周六035",
+              "kickoffBeijing": "2026-06-21T12:00:00+08:00",
+              "lotteryCode": "周六036",
               "matchDate": "2026-06-21"
             },
             {
-              "matchId": "2040247",
-              "label": "西班牙 vs 沙特",
-              "market": "总进球数",
-              "selection": "0",
-              "handicap": null,
-              "odds": 26.0,
+              "matchId": "2040248",
+              "label": "比利时 vs 伊朗",
+              "market": "让球胜平负",
+              "selection": "-1 负",
+              "handicap": -1,
+              "odds": 2.83,
               "excludedScores": [],
-              "kickoffBeijing": "2026-06-22T00:00:00+08:00",
-              "lotteryCode": "周日037",
+              "kickoffBeijing": "2026-06-22T03:00:00+08:00",
+              "lotteryCode": "周日038",
               "matchDate": "2026-06-22"
+            },
+            {
+              "matchId": "2040251",
+              "label": "阿根廷 vs 奥地利",
+              "market": "让球胜平负",
+              "selection": "-1 胜",
+              "handicap": -1,
+              "odds": 2.6,
+              "excludedScores": [],
+              "kickoffBeijing": "2026-06-23T01:00:00+08:00",
+              "lotteryCode": "周一041",
+              "matchDate": "2026-06-23"
             }
           ],
-          "stake": 4,
-          "combinedOdds": 546.0,
-          "modelProbability": 0.00946,
-          "robustExpectedReturn": 1.7993,
-          "potentialPayout": 2184.0
+          "stake": 6,
+          "combinedOdds": 10.228,
+          "modelProbability": 0.16045,
+          "robustExpectedReturn": 0.14479,
+          "potentialPayout": 61.37
         }
       ],
       "entertainmentMode": false,
-      "expectedProfit": 16.7,
-      "profitProbability": 0.0095,
-      "lossProbability": 0.9905,
-      "stopProbability": 0.0,
+      "expectedProfit": 0.9,
+      "profitProbability": 0.1605,
+      "lossProbability": 0.8396,
+      "stopProbability": 0,
       "medianMaxDrawdown": 0.0301,
-      "worstCase95": -4,
-      "p05": 129,
-      "median": 129,
-      "p95": 129,
-      "maxPayout": 2313,
+      "worstCase95": -6,
+      "p05": 194,
+      "median": 194,
+      "p95": 255,
+      "maxPayout": 255,
       "simulationPaths": 100000,
       "simulationMode": "shared_score_paths",
       "distribution": [
         {
-          "bankroll": 154,
-          "probability": 0.99054
+          "bankroll": 194,
+          "probability": 0.8396
         },
         {
-          "bankroll": 203,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 253,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 303,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 352,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 402,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 452,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 501,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 551,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 601,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 650,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 700,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 749,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 799,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 849,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 898,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 948,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 998,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 1047,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 1097,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 1147,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 1196,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 1246,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 1295,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 1345,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 1395,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 1444,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 1494,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 1544,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 1593,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 1643,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 1693,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 1742,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 1792,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 1841,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 1891,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 1941,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 1990,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 2040,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 2090,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 2139,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 2189,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 2239,
-          "probability": 0.0
-        },
-        {
-          "bankroll": 2288,
-          "probability": 0.00946
+          "bankroll": 255,
+          "probability": 0.1605
         }
       ]
     }
