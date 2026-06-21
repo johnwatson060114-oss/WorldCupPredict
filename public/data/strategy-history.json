@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-20T14:44:05+08:00",
+  "generatedAt": "2026-06-21T13:00:41+08:00",
   "finalDate": "2026-07-19",
   "days": [
     {
@@ -451,20 +451,20 @@
         {
           "key": "balanced",
           "name": "均衡",
-          "stake": 8,
-          "payout": null,
-          "profit": null,
-          "roi": null,
-          "status": "pending"
+          "stake": 8.0,
+          "payout": 0.0,
+          "profit": -8.0,
+          "roi": -1.0,
+          "status": "settled"
         },
         {
           "key": "aggressive",
           "name": "激进",
-          "stake": 10,
-          "payout": null,
-          "profit": null,
-          "roi": null,
-          "status": "pending"
+          "stake": 10.0,
+          "payout": 0.0,
+          "profit": -10.0,
+          "roi": -1.0,
+          "status": "settled"
         }
       ],
       "review": {
@@ -652,8 +652,43 @@
     },
     {
       "targetDate": "2026-06-21",
-      "generatedAt": "2026-06-20T14:43:56+08:00",
-      "coverage": 0.77,
+      "generatedAt": "2026-06-20T15:39:35+08:00",
+      "coverage": 0.8,
+      "strategies": [
+        {
+          "key": "conservative",
+          "name": "稳健",
+          "stake": 0,
+          "payout": 0,
+          "profit": 0,
+          "roi": null,
+          "status": "no-bet"
+        },
+        {
+          "key": "balanced",
+          "name": "均衡",
+          "stake": 6,
+          "payout": null,
+          "profit": null,
+          "roi": null,
+          "status": "pending"
+        },
+        {
+          "key": "aggressive",
+          "name": "激进",
+          "stake": 6,
+          "payout": null,
+          "profit": null,
+          "roi": null,
+          "status": "pending"
+        }
+      ],
+      "review": null
+    },
+    {
+      "targetDate": "2026-06-22",
+      "generatedAt": "2026-06-21T13:00:15+08:00",
+      "coverage": 0.82,
       "strategies": [
         {
           "key": "conservative",
@@ -676,11 +711,11 @@
         {
           "key": "aggressive",
           "name": "激进",
-          "stake": 0,
-          "payout": 0,
-          "profit": 0,
+          "stake": 14,
+          "payout": null,
+          "profit": null,
           "roi": null,
-          "status": "no-bet"
+          "status": "pending"
         }
       ],
       "review": null
