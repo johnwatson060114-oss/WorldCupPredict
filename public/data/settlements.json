@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-21T14:55:59+08:00",
+  "generatedAt": "2026-06-21T15:05:12+08:00",
   "matches": [
     {
       "matchId": "2040170",
@@ -1803,6 +1803,38 @@
     },
     {
       "matchId": "2040246",
+      "homeScore": 0,
+      "awayScore": 4,
+      "halfTimeHomeScore": 0,
+      "halfTimeAwayScore": 2,
+      "settledAt": "2026-06-21T04:00:00Z"
+    },
+    {
+      "matchId": "荷兰 vs 瑞典",
+      "homeScore": 5,
+      "awayScore": 1,
+      "halfTimeHomeScore": 2,
+      "halfTimeAwayScore": 0,
+      "settledAt": "2026-06-20T17:00:00Z"
+    },
+    {
+      "matchId": "德国 vs 科特迪瓦",
+      "homeScore": 2,
+      "awayScore": 1,
+      "halfTimeHomeScore": 0,
+      "halfTimeAwayScore": 1,
+      "settledAt": "2026-06-20T20:00:00Z"
+    },
+    {
+      "matchId": "厄瓜多尔 vs 库拉索",
+      "homeScore": 0,
+      "awayScore": 0,
+      "halfTimeHomeScore": 0,
+      "halfTimeAwayScore": 0,
+      "settledAt": "2026-06-21T00:00:00Z"
+    },
+    {
+      "matchId": "突尼斯 vs 日本",
       "homeScore": 0,
       "awayScore": 4,
       "halfTimeHomeScore": 0,

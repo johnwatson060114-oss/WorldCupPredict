@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-21T13:00:15+08:00",
+  "generatedAt": "2026-06-21T15:10:29+08:00",
   "snapshots": [
     {
       "observedAt": "2026-06-18T13:00:00+08:00",
@@ -41,6 +41,18 @@
     {
       "observedAt": "2026-06-21T13:00:15+08:00",
       "path": "odds-history/2026-06-21/130015.json",
+      "matches": 12,
+      "closingWindowMatches": 0
+    },
+    {
+      "observedAt": "2026-06-21T15:05:13+08:00",
+      "path": "odds-history/2026-06-21/150513.json",
+      "matches": 12,
+      "closingWindowMatches": 0
+    },
+    {
+      "observedAt": "2026-06-21T15:10:29+08:00",
+      "path": "odds-history/2026-06-21/151029.json",
       "matches": 12,
       "closingWindowMatches": 0
     }
