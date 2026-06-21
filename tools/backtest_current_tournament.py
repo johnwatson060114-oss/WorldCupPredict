@@ -41,6 +41,17 @@ def market_odds(match: dict[str, Any]) -> dict[str, float | None]:
     return result
 
 
+def settlement_key(match: dict[str, Any]) -> str:
+    direct = str(match.get("id") or "")
+    if direct.isdigit():
+        return direct
+    for quote in match.get("quotes", []):
+        quote_match_id = str(quote.get("matchId") or "")
+        if quote_match_id.isdigit():
+            return quote_match_id
+    return direct
+
+
 def metric_row(probabilities: dict[str, float], actual: str) -> dict[str, Any]:
     prediction = max(probabilities, key=probabilities.get)
     return {
@@ -81,9 +92,22 @@ def main() -> None:
     for target_date in backtest_days:
         archive = ROOT / "public" / "data" / "history" / f"{target_date}.json"
         payload = json.loads(archive.read_text(encoding="utf-8"))
-        scheduled_by_day[target_date] = len(payload.get("matches", []))
-        for match in payload.get("matches", []):
-            settlement = settlements.get(str(match["id"]))
+        forecast_matches = payload.get("matches", [])
+        scheduled_by_day[target_date] = len(forecast_matches)
+        day_settlements = sorted(
+            (
+                item for item in settlements.values()
+                if datetime.fromisoformat(str(item["settledAt"]).replace("Z", "+00:00"))
+                .astimezone(ZoneInfo("Asia/Shanghai"))
+                .date()
+                .isoformat() == target_date
+            ),
+            key=lambda item: str(item["settledAt"]),
+        )
+        for match_index, match in enumerate(forecast_matches):
+            settlement = settlements.get(settlement_key(match))
+            if settlement is None and len(day_settlements) == len(forecast_matches):
+                settlement = day_settlements[match_index]
             if not settlement:
                 continue
             home_goals = int(settlement["homeScore"])

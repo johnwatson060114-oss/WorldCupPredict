@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-21T13:00:15+08:00",
+  "generatedAt": "2026-06-21T14:55:59+08:00",
   "matches": [
     {
       "matchId": "2040170",
@@ -1800,6 +1800,14 @@
       "closingOddsSource": "zgzcw.com",
       "closingOddsIssue": "2026-06-20",
       "closingOddsCheckedAt": "2026-06-21T13:00:08+08:00"
+    },
+    {
+      "matchId": "2040246",
+      "homeScore": 0,
+      "awayScore": 4,
+      "halfTimeHomeScore": 0,
+      "halfTimeAwayScore": 2,
+      "settledAt": "2026-06-21T04:00:00Z"
     }
   ]
 }

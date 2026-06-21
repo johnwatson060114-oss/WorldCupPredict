@@ -1,21 +1,20 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-21T14:51:57+08:00",
+  "generatedAt": "2026-06-21T14:57:34+08:00",
   "scope": {
     "dates": [
       "2026-06-19",
       "2026-06-20",
       "2026-06-21"
     ],
-    "matches": 11,
+    "matches": 12,
     "description": "chronological archived forecasts with all currently settled matches",
     "completeDates": [
       "2026-06-19",
-      "2026-06-20"
-    ],
-    "partialDates": [
+      "2026-06-20",
       "2026-06-21"
     ],
+    "partialDates": [],
     "motivationLayerEvaluation": "not active before group matchday three"
   },
   "changes": {
@@ -27,21 +26,21 @@
     "motivationPolicy": "matchday_three_bounded_v1"
   },
   "baseline": {
-    "matches": 11,
-    "hits": 7,
-    "accuracy": 0.6363636363636364,
-    "averageLogLoss": 0.8301717019880829
+    "matches": 12,
+    "hits": 8,
+    "accuracy": 0.6666666666666666,
+    "averageLogLoss": 0.7995728210286789
   },
   "optimized": {
-    "matches": 11,
-    "hits": 8,
-    "accuracy": 0.7272727272727273,
-    "averageLogLoss": 0.7972732332464045
+    "matches": 12,
+    "hits": 9,
+    "accuracy": 0.75,
+    "averageLogLoss": 0.7703688965767368
   },
   "improvement": {
     "additionalHits": 1,
-    "accuracyDelta": 0.09090909090909094,
-    "averageLogLossReduction": 0.032898468741678344
+    "accuracyDelta": 0.08333333333333337,
+    "averageLogLossReduction": 0.029203924451942087
   },
   "byDay": {
     "2026-06-19": {
@@ -80,19 +79,19 @@
     },
     "2026-06-21": {
       "scheduledMatches": 4,
-      "settledMatches": 3,
-      "complete": false,
+      "settledMatches": 4,
+      "complete": true,
       "baseline": {
-        "matches": 3,
-        "hits": 2,
-        "accuracy": 0.6666666666666666,
-        "averageLogLoss": 0.9378211859311331
+        "matches": 4,
+        "hits": 3,
+        "accuracy": 0.75,
+        "averageLogLoss": 0.8191121720671589
       },
       "optimized": {
-        "matches": 3,
-        "hits": 2,
-        "accuracy": 0.6666666666666666,
-        "averageLogLoss": 0.9307940373076334
+        "matches": 4,
+        "hits": 3,
+        "accuracy": 0.75,
+        "averageLogLoss": 0.8167008262833229
       }
     }
   },
@@ -392,11 +391,11 @@
       "baseline": {
         "prediction": "home",
         "hit": true,
-        "logLoss": 0.44799167959462316,
+        "logLoss": 0.4430890967048541,
         "probabilities": {
-          "home": 0.63891,
-          "draw": 0.1888,
-          "away": 0.17229
+          "home": 0.64205,
+          "draw": 0.18622,
+          "away": 0.17173
         }
       },
       "optimized": {
@@ -416,7 +415,7 @@
       "marketCalibration": {
         "applied": false,
         "reason": "within_threshold",
-        "maxGap": 0.051807
+        "maxGap": 0.013918
       }
     },
     {
@@ -427,11 +426,11 @@
       "baseline": {
         "prediction": "home",
         "hit": true,
-        "logLoss": 0.41902158329095346,
+        "logLoss": 0.41785150375921354,
         "probabilities": {
-          "home": 0.65769,
-          "draw": 0.19795,
-          "away": 0.14436
+          "home": 0.65846,
+          "draw": 0.19616,
+          "away": 0.14538
         }
       },
       "optimized": {
@@ -451,7 +450,7 @@
       "marketCalibration": {
         "applied": false,
         "reason": "within_threshold",
-        "maxGap": 0.017606
+        "maxGap": 0.015111
       }
     },
     {
@@ -462,30 +461,66 @@
       "baseline": {
         "prediction": "home",
         "hit": false,
-        "logLoss": 1.9464502949078226,
+        "logLoss": 2.1935513319699234,
         "probabilities": {
-          "home": 0.83486,
-          "draw": 0.14278,
-          "away": 0.02236
+          "home": 0.87188,
+          "draw": 0.11152,
+          "away": 0.0166
         }
       },
       "optimized": {
         "prediction": "home",
         "hit": false,
-        "logLoss": 1.909544233670666,
+        "logLoss": 2.1536964033951054,
         "probabilities": {
-          "home": 0.83237,
-          "draw": 0.148148,
-          "away": 0.019483
+          "home": 0.869276,
+          "draw": 0.116054,
+          "away": 0.014669
         }
       },
       "optimizedExpectedGoals": {
-        "home": 2.1107,
+        "home": 2.4002,
         "away": 0.1698
       },
       "marketCalibration": {
         "applied": false,
-        "reason": "incomplete_market"
+        "reason": "within_threshold",
+        "maxGap": 0.004096
+      }
+    },
+    {
+      "targetDate": "2026-06-21",
+      "match": "突尼斯 vs 日本",
+      "score": "0-4",
+      "actualOutcome": "away",
+      "baseline": {
+        "prediction": "away",
+        "hit": true,
+        "logLoss": 0.2219567558346445,
+        "probabilities": {
+          "home": 0.05837,
+          "draw": 0.14068,
+          "away": 0.80095
+        }
+      },
+      "optimized": {
+        "prediction": "away",
+        "hit": true,
+        "logLoss": 0.230269023485952,
+        "probabilities": {
+          "home": 0.05295,
+          "draw": 0.15273,
+          "away": 0.79432
+        }
+      },
+      "optimizedExpectedGoals": {
+        "home": 0.494,
+        "away": 2.4095
+      },
+      "marketCalibration": {
+        "applied": false,
+        "reason": "within_threshold",
+        "maxGap": 0.011924
       }
     }
   ]
