@@ -41,13 +41,13 @@
       },
       {
         "path": "pipeline/data/first-round-performance.json",
-        "sha256": "e6bd8b367b711f8e857f2992ae165d4405e31a2521915ca822c7039a23bdc68f",
-        "bytes": 140545
+        "sha256": "41b509d57ca4222b665ab3df3d6079717b1f1e2467fa3b17942dcdd427f91563",
+        "bytes": 136873
       },
       {
         "path": "pipeline/data/model-policy.json",
-        "sha256": "a966b28a4856a873c1858e605439bd39f10fbee8489b361f53eaed93473fdbaf",
-        "bytes": 1380
+        "sha256": "7ac116010f853c51315f081dbc73451af4cf19c42d4c6f64ad0ffd7cb7f22efe",
+        "bytes": 1332
       },
       {
         "path": "tests/fixtures/sporttery-score.html",
@@ -36559,7 +36559,7 @@
       ]
     }
   ],
-  "cachedParlayMatchCount": 0,
+  "cachedParlayMatchCount": 8,
   "parlayCandidateMatches": [
     {
       "id": "2040251",
@@ -36632,7 +36632,7 @@
       "field": "固定奖金/单关资格",
       "observedAt": "2026-06-21T13:00:15+08:00",
       "confidence": 1.0,
-      "status": "fresh"
+      "status": "manual"
     },
     {
       "source": "football-data.org 免费档",

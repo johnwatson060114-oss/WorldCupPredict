@@ -36,7 +36,7 @@
     "core_hits": 12,
     "core_accuracy": 0.42857142857142855,
     "average_log_loss": 1.9737172836772021,
-    "average_rps": 0.14832857547677736,
+    "average_rps": 0.14832857547677739,
     "calibration_error": 0.0674107142857143,
     "predicted_bucket_counts": {
       "0": 0,
@@ -110,7 +110,7 @@
       "1.0": {
         "log_loss": 0.9956599332430888,
         "rps": 0.206183751889683,
-        "brier": 0.5844177652726107,
+        "brier": 0.5844177652726106,
         "calibration_error": 0.06848958333333335
       }
     },
@@ -189,7 +189,7 @@
         "window": 4,
         "matches": 32,
         "logLossDelta": 0.004852608661605862,
-        "rpsDelta": 0.0006742282970945424,
+        "rpsDelta": 0.0006742282970945701,
         "improved": false
       }
     ]
@@ -209,7 +209,7 @@
     },
     "deltas": {
       "log_loss_improvement": -0.002320770552102447,
-      "rps_improvement": -0.0004387013763821057,
+      "rps_improvement": -0.00043870137638213347,
       "calibration_delta": 0.005357142857142866
     },
     "thresholds": {
@@ -228,5 +228,5 @@
     "refreshedAt": "2026-06-21T13:01:02+08:00"
   },
   "manualResultRows": 12,
-  "comparisonPath": "artifacts\\total-goals-backtest\\model_comparison_2026.csv"
+  "comparisonPath": "artifacts/total-goals-backtest/model_comparison_2026.csv"
 }
