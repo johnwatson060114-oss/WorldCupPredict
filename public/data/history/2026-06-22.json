@@ -12237,8 +12237,8 @@
       "key": "conservative",
       "name": "稳健",
       "subtitle": "低波动单关精选",
-      "stake": 2,
-      "retainedCash": 198,
+      "stake": 10,
+      "retainedCash": 190,
       "strategyRules": [
         "回测后复核：比利时让一球负，当天单关小注",
         "低波动：只做次日单关",
@@ -12264,33 +12264,33 @@
               "matchDate": "2026-06-22"
             }
           ],
-          "stake": 2,
+          "stake": 10,
           "combinedOdds": 2.94,
           "modelProbability": 0.44411,
           "robustExpectedReturn": 0.13275,
-          "potentialPayout": 5.88
+          "potentialPayout": 29.4
         }
       ],
       "entertainmentMode": false,
-      "expectedProfit": 0.3,
+      "expectedProfit": 1.3,
       "profitProbability": 0.4441,
       "lossProbability": 0.5559,
       "stopProbability": 0,
       "medianMaxDrawdown": 0,
-      "worstCase95": -2,
-      "p05": 198,
-      "median": 198,
-      "p95": 204,
-      "maxPayout": 204,
+      "worstCase95": -10,
+      "p05": 190,
+      "median": 190,
+      "p95": 219,
+      "maxPayout": 219,
       "simulationPaths": 100000,
       "simulationMode": "shared_score_paths",
       "distribution": [
         {
-          "bankroll": 198,
+          "bankroll": 190,
           "probability": 0.5559
         },
         {
-          "bankroll": 204,
+          "bankroll": 219,
           "probability": 0.4441
         }
       ]
@@ -12373,8 +12373,8 @@
       "key": "aggressive",
       "name": "激进",
       "subtitle": "高波动全玩法 + 跨天3串1",
-      "stake": 6,
-      "retainedCash": 194,
+      "stake": 10,
+      "retainedCash": 190,
       "strategyRules": [
         "回测后复核：均衡组合 + 哥伦比亚胜，覆盖未来三天",
         "高波动：次日单关 + 在售跨天2/3串1",
@@ -12424,33 +12424,33 @@
               "matchDate": "2026-06-24"
             }
           ],
-          "stake": 6,
+          "stake": 10,
           "combinedOdds": 9.316,
           "modelProbability": 0.1649,
           "robustExpectedReturn": 0.09049,
-          "potentialPayout": 55.9
+          "potentialPayout": 93.16
         }
       ],
       "entertainmentMode": false,
-      "expectedProfit": 0.5,
+      "expectedProfit": 0.9,
       "profitProbability": 0.1649,
       "lossProbability": 0.8351,
       "stopProbability": 0,
       "medianMaxDrawdown": 0,
-      "worstCase95": -6,
-      "p05": 194,
-      "median": 194,
-      "p95": 250,
-      "maxPayout": 250,
+      "worstCase95": -10,
+      "p05": 190,
+      "median": 190,
+      "p95": 283,
+      "maxPayout": 283,
       "simulationPaths": 100000,
       "simulationMode": "shared_score_paths",
       "distribution": [
         {
-          "bankroll": 194,
+          "bankroll": 190,
           "probability": 0.8351
         },
         {
-          "bankroll": 250,
+          "bankroll": 283,
           "probability": 0.1649
         }
       ]
