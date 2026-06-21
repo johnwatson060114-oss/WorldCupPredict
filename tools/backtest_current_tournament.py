@@ -11,13 +11,12 @@ from zoneinfo import ZoneInfo
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from pipeline.football_data import FootballDataClient, localized_team_name
 from pipeline.market_guard import apply_market_strength_calibration
 from pipeline.model import outcome_probabilities, score_matrix
 from pipeline.tournament_form import apply_tournament_form, load_first_round_profiles
 
 
-BACKTEST_DAYS = ("2026-06-19", "2026-06-20")
+BACKTEST_START_DATE = "2026-06-19"
 OUT_ARTIFACT = ROOT / "artifacts" / "current-tournament-backtest.json"
 OUT_PUBLIC = ROOT / "public" / "data" / "current-tournament-model-review.json"
 OUTCOME_LABELS = {"胜": "home", "平": "draw", "负": "away"}
@@ -64,22 +63,31 @@ def summarize(rows: list[dict[str, Any]], key: str) -> dict[str, Any]:
 
 def main() -> None:
     profiles = load_first_round_profiles()
-    fixtures = FootballDataClient().world_cup_matches()
-    finished = {
-        (localized_team_name(item["homeTeam"]), localized_team_name(item["awayTeam"])): item
-        for item in fixtures
-        if item.get("status") == "FINISHED"
+    settlement_payload = json.loads(
+        (ROOT / "public" / "data" / "settlements.json").read_text(encoding="utf-8")
+    )
+    settlements = {
+        str(item["matchId"]): item
+        for item in settlement_payload.get("matches", [])
     }
+    archives = sorted((ROOT / "public" / "data" / "history").glob("2026-*.json"))
+    backtest_days = tuple(
+        path.stem
+        for path in archives
+        if BACKTEST_START_DATE <= path.stem <= datetime.now(ZoneInfo("Asia/Shanghai")).date().isoformat()
+    )
     rows: list[dict[str, Any]] = []
-    for target_date in BACKTEST_DAYS:
+    scheduled_by_day: dict[str, int] = {}
+    for target_date in backtest_days:
         archive = ROOT / "public" / "data" / "history" / f"{target_date}.json"
         payload = json.loads(archive.read_text(encoding="utf-8"))
+        scheduled_by_day[target_date] = len(payload.get("matches", []))
         for match in payload.get("matches", []):
-            fixture = finished.get((match["homeTeam"], match["awayTeam"]))
-            if not fixture:
+            settlement = settlements.get(str(match["id"]))
+            if not settlement:
                 continue
-            home_goals = int(fixture["score"]["fullTime"]["home"])
-            away_goals = int(fixture["score"]["fullTime"]["away"])
+            home_goals = int(settlement["homeScore"])
+            away_goals = int(settlement["awayScore"])
             actual = actual_outcome(home_goals, away_goals)
             baseline = metric_row(
                 {key: float(value) for key, value in match["outcomeProbabilities"].items()},
@@ -116,9 +124,14 @@ def main() -> None:
     baseline_summary = summarize(rows, "baseline")
     optimized_summary = summarize(rows, "optimized")
     by_day = {}
-    for target_date in BACKTEST_DAYS:
+    for target_date in backtest_days:
         day_rows = [row for row in rows if row["targetDate"] == target_date]
+        if not day_rows:
+            continue
         by_day[target_date] = {
+            "scheduledMatches": scheduled_by_day[target_date],
+            "settledMatches": len(day_rows),
+            "complete": len(day_rows) == scheduled_by_day[target_date],
             "baseline": summarize(day_rows, "baseline"),
             "optimized": summarize(day_rows, "optimized"),
         }
@@ -126,9 +139,15 @@ def main() -> None:
         "schemaVersion": 1,
         "generatedAt": datetime.now(ZoneInfo("Asia/Shanghai")).isoformat(timespec="seconds"),
         "scope": {
-            "dates": list(BACKTEST_DAYS),
+            "dates": list(by_day),
             "matches": len(rows),
-            "description": "first completed second-round sample; chronological archived forecasts",
+            "description": "chronological archived forecasts with all currently settled matches",
+            "completeDates": [
+                target_date for target_date, item in by_day.items() if item["complete"]
+            ],
+            "partialDates": [
+                target_date for target_date, item in by_day.items() if not item["complete"]
+            ],
             "motivationLayerEvaluation": "not active before group matchday three",
         },
         "changes": {
