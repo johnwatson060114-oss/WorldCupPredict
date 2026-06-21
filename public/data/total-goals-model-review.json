@@ -1,78 +1,78 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-21T13:01:39+08:00",
+  "generatedAt": "2026-06-21T17:01:37+08:00",
   "timezone": "Asia/Shanghai",
   "scheduledReviewStartDate": "2026-06-17",
   "productionPolicy": "current model remains primary; optimized model runs as shadow until adoption gates pass",
   "currentModel": {
     "role": "production",
     "spec": "hierarchical_poisson[half_life_days=730,rho=0,shrinkage=24,tournament_tier=1]",
-    "matches": 28,
-    "exact_hits": 9,
-    "exact_accuracy": 0.32142857142857145,
-    "core_hits": 12,
-    "core_accuracy": 0.42857142857142855,
-    "average_log_loss": 1.9713965131250997,
-    "average_rps": 0.14788987410039525,
-    "calibration_error": 0.06205357142857143,
+    "matches": 36,
+    "exact_hits": 10,
+    "exact_accuracy": 0.2777777777777778,
+    "core_hits": 16,
+    "core_accuracy": 0.4444444444444444,
+    "average_log_loss": 1.9412396057439179,
+    "average_rps": 0.1432711486153115,
+    "calibration_error": 0.04687499999999999,
     "predicted_bucket_counts": {
       "0": 0,
       "1": 0,
-      "2": 25,
-      "3": 3,
-      "4": 0,
-      "5": 0,
-      "6": 0,
-      "7+": 0
-    },
-    "average_bucketed_expected_total": 2.6205982886237487
-  },
-  "shadowModel": {
-    "role": "shadow",
-    "spec": "hierarchical_poisson[rho=0,shrinkage=16]",
-    "matches": 28,
-    "exact_hits": 7,
-    "exact_accuracy": 0.25,
-    "core_hits": 12,
-    "core_accuracy": 0.42857142857142855,
-    "average_log_loss": 1.9737172836772021,
-    "average_rps": 0.14832857547677739,
-    "calibration_error": 0.0674107142857143,
-    "predicted_bucket_counts": {
-      "0": 0,
-      "1": 2,
-      "2": 22,
+      "2": 32,
       "3": 4,
       "4": 0,
       "5": 0,
       "6": 0,
       "7+": 0
     },
-    "average_bucketed_expected_total": 2.5921668780747487
+    "average_bucketed_expected_total": 2.6484832425686147
   },
-  "tailShadowModel": {
-    "role": "shadow_only",
-    "spec": "poisson_nb_mixture[dispersion=2,half_life_days=730,rho=-0.04,shrinkage=8,tail_weight=0.2]",
-    "reason": "tests wider high-score tails; first round is diagnostic only",
-    "matches": 28,
-    "exact_hits": 7,
-    "exact_accuracy": 0.25,
-    "core_hits": 12,
-    "core_accuracy": 0.42857142857142855,
-    "average_log_loss": 1.9805652147288768,
-    "average_rps": 0.1496701008468794,
-    "calibration_error": 0.06696428571428571,
+  "shadowModel": {
+    "role": "shadow",
+    "spec": "hierarchical_poisson[rho=0,shrinkage=16]",
+    "matches": 36,
+    "exact_hits": 8,
+    "exact_accuracy": 0.2222222222222222,
+    "core_hits": 16,
+    "core_accuracy": 0.4444444444444444,
+    "average_log_loss": 1.9386418300258275,
+    "average_rps": 0.14295204345322224,
+    "calibration_error": 0.05208333333333334,
     "predicted_bucket_counts": {
       "0": 0,
-      "1": 4,
-      "2": 22,
-      "3": 2,
+      "1": 2,
+      "2": 29,
+      "3": 5,
       "4": 0,
       "5": 0,
       "6": 0,
       "7+": 0
     },
-    "average_bucketed_expected_total": 2.535375599254252
+    "average_bucketed_expected_total": 2.6234321126372513
+  },
+  "tailShadowModel": {
+    "role": "shadow_only",
+    "spec": "poisson_nb_mixture[dispersion=2,half_life_days=730,rho=-0.04,shrinkage=8,tail_weight=0.2]",
+    "reason": "tests wider high-score tails; first round is diagnostic only",
+    "matches": 36,
+    "exact_hits": 8,
+    "exact_accuracy": 0.2222222222222222,
+    "core_hits": 16,
+    "core_accuracy": 0.4444444444444444,
+    "average_log_loss": 1.9397627777319673,
+    "average_rps": 0.14313407098777384,
+    "calibration_error": 0.04722222222222222,
+    "predicted_bucket_counts": {
+      "0": 0,
+      "1": 4,
+      "2": 29,
+      "3": 3,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7+": 0
+    },
+    "average_bucketed_expected_total": 2.570527438282495
   },
   "strengthAllocationPolicy": {
     "eloAllocationWeight": 1.0,
@@ -195,22 +195,22 @@
     ]
   },
   "adoptionDecision": {
-    "status": "observe",
+    "status": "keep",
     "should_switch_model": false,
-    "reason": "first round is diagnostic only; wait for a forward second-round sample",
-    "recommendation_zh": "首轮只作诊断，等待至少8场第二轮前瞻样本后再判断。",
+    "reason": "candidate has not shown a significant, stable advantage over the current model",
+    "recommendation_zh": "新模型优势不显著，继续使用旧模型。",
     "gates": {
       "sample_size": true,
-      "log_loss_improvement": false,
-      "rps_improvement": false,
+      "log_loss_improvement": true,
+      "rps_improvement": true,
       "calibration_not_materially_worse": true,
       "stable_windows": false,
-      "second_round_forward_sample": false
+      "second_round_forward_sample": true
     },
     "deltas": {
-      "log_loss_improvement": -0.002320770552102447,
-      "rps_improvement": -0.00043870137638213347,
-      "calibration_delta": 0.005357142857142866
+      "log_loss_improvement": 0.0025977757180903893,
+      "rps_improvement": 0.00031910516208927264,
+      "calibration_delta": 0.0052083333333333495
     },
     "thresholds": {
       "min_matches": 24,
@@ -220,12 +220,11 @@
     }
   },
   "dataRefresh": {
-    "status": "failed",
+    "status": "ok",
     "url": "https://raw.githubusercontent.com/martj42/international_results/master/results.csv",
-    "error": "The read operation timed out",
-    "path": "artifacts\\total-goals-backtest\\international_results.csv",
-    "fallback": "kept existing local CSV",
-    "refreshedAt": "2026-06-21T13:01:02+08:00"
+    "bytes": 3724327,
+    "path": "artifacts/total-goals-backtest/international_results.csv",
+    "refreshedAt": "2026-06-21T17:00:46+08:00"
   },
   "manualResultRows": 12,
   "comparisonPath": "artifacts/total-goals-backtest/model_comparison_2026.csv"
