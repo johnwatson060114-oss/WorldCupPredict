@@ -26,3 +26,6 @@ export const embeddedMatchesForDate = (forecast: DailyForecast, targetDate: stri
 
 export const ticketMatchDates = (legs: PersonalBetLeg[]) =>
   [...new Set(legs.map(legMatchDate).filter((date): date is string => Boolean(date)))].sort()
+
+export const validPurchaseDate = (purchaseDate: string, earliestMatchDate: string) =>
+  purchaseDate && purchaseDate <= earliestMatchDate ? purchaseDate : earliestMatchDate

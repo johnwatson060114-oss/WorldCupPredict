@@ -4,7 +4,7 @@ import { percent, shortDateTime, signedPercent } from '../lib/format'
 import type { DailyForecast, MarketQuote, MarketType, MatchForecast } from '../types'
 import { FairComparisonChart, StrategyActualChart, StrategyProjectionChart } from '../features/personal-bets/Charts'
 import { TicketReceipt } from '../features/personal-bets/TicketReceipt'
-import { embeddedMatchesForDate, legMatchDate, matchDate, selectableMatchDates, ticketMatchDates } from '../features/personal-bets/cross-day'
+import { embeddedMatchesForDate, legMatchDate, matchDate, selectableMatchDates, ticketMatchDates, validPurchaseDate } from '../features/personal-bets/cross-day'
 import { actualStrategyPerformance, buildFairComparison, personalSummary, projectToFinal, type ComparisonMode } from '../features/personal-bets/analytics'
 import {
   captureModelSnapshot,
@@ -195,7 +195,13 @@ export function PersonalBetPage({ forecast, ledger, onLedgerChange }: PersonalBe
 
   const chooseDate = (targetDate: string) => {
     setMessage('')
-    setForm((current) => ({ ...current, targetDate, matchChoice: '', market: '胜平负' }))
+    setForm((current) => ({
+      ...current,
+      purchaseDate: validPurchaseDate(current.purchaseDate, targetDate),
+      targetDate,
+      matchChoice: '',
+      market: '胜平负',
+    }))
   }
 
   const choosePassType = (passType: PassType) => {
@@ -217,7 +223,12 @@ export function PersonalBetPage({ forecast, ledger, onLedgerChange }: PersonalBe
     const matchIndex = bettingForecast?.matches.findIndex((match) => match.id === selectedMatch.id) ?? 0
     const leg = quoteToLeg(quote, selectedMatch, matchIndex)
     setForm((current) => {
-      if (current.passType === '单关') return { ...current, legs: [leg] }
+      const earliestMatchDate = [leg, ...current.legs]
+        .map(legMatchDate)
+        .filter((date): date is string => Boolean(date))
+        .sort()[0] ?? current.targetDate
+      const purchaseDate = validPurchaseDate(current.purchaseDate, earliestMatchDate)
+      if (current.passType === '单关') return { ...current, purchaseDate, legs: [leg] }
       // Toggle: remove if same match+market+selection already selected
       const identical = current.legs.some((item) => item.matchId === leg.matchId && item.market === leg.market && item.selection === leg.selection)
       if (identical) return { ...current, legs: current.legs.filter((item) => !(item.matchId === leg.matchId && item.market === leg.market && item.selection === leg.selection)) }
@@ -227,7 +238,7 @@ export function PersonalBetPage({ forecast, ledger, onLedgerChange }: PersonalBe
         setMessage(`${current.passType}需要 ${PASS_DEFINITIONS[current.passType].matches} 场，已选满；同一场仍可继续多选玩法。`)
         return current
       }
-      return { ...current, legs: [...current.legs, leg] }
+      return { ...current, purchaseDate, legs: [...current.legs, leg] }
     })
   }
 
