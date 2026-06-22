@@ -169,6 +169,11 @@ export function PersonalBetPage({ forecast, ledger, onLedgerChange }: PersonalBe
 
   const selectedMatch = bettingForecast?.matches.find((match) => match.id === form.matchChoice)
   const summary = useMemo(() => personalSummary(ledger), [ledger])
+  const sortedBets = useMemo(() => [...ledger.bets].sort((left, right) => {
+    const leftPending = left.status === 'pending' ? 0 : 1
+    const rightPending = right.status === 'pending' ? 0 : 1
+    return leftPending - rightPending
+  }), [ledger.bets])
   const comparison = useMemo(() => buildFairComparison(ledger, history, comparisonMode), [ledger, history, comparisonMode])
   const actual = useMemo(() => actualStrategyPerformance(history), [history])
   const projection = useMemo(() => projectToFinal(forecast.portfolios, history, ledger, forecast.targetDate), [forecast.portfolios, forecast.targetDate, history, ledger])
@@ -249,16 +254,6 @@ export function PersonalBetPage({ forecast, ledger, onLedgerChange }: PersonalBe
       return
     }
     const existing = form.id ? ledger.bets.find((item) => item.id === form.id) : undefined
-    const reusableStake = existing?.status === 'pending'
-      ? existing.stake
-      : existing?.status === 'settled'
-        ? existing.stake - (existing.payout ?? 0)
-        : 0
-    const availableForSave = personalBalance(ledger) + reusableStake
-    if (actualStake > availableForSave) {
-      setMessage(`实际投入 ${preciseMoney(actualStake)}，已超过当前可用余额 ${preciseMoney(availableForSave)}。`)
-      return
-    }
     const odds = actualStake > 0 ? actualMaximumPayout / actualStake : 0
     const bet: PersonalBet = {
       id: form.id || crypto.randomUUID(),
@@ -513,7 +508,7 @@ export function PersonalBetPage({ forecast, ledger, onLedgerChange }: PersonalBe
           <span>{ledger.bets.length} 张</span>
         </div>
         {ledger.bets.length ? <div className="saved-ticket-grid">
-          {ledger.bets.map((bet) => {
+          {sortedBets.map((bet) => {
             const legs = legsForBet(bet)
             const passType = bet.passType ?? inferPassType(groupLegsByMatch(legs).length)
             return (

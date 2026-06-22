@@ -63,6 +63,28 @@ describe('personal ledger settlement', () => {
     expect(personalBalance(ledger)).toBe(197)
   })
 
+  it('keeps recording a negative bankroll instead of clamping at zero', () => {
+    const ledger: PersonalBetLedger = {
+      schemaVersion: 1,
+      initialBankroll: 20,
+      modelSnapshots: [],
+      bets: [{
+        id: 'over-limit',
+        createdAt: 'now',
+        targetDate: '2026-06-22',
+        matchLabel: 'A vs B',
+        market: '胜平负',
+        selection: '胜',
+        odds: 2,
+        stake: 35,
+        decisionSource: 'subjective',
+        status: 'pending',
+        legs: [leg('m1')],
+      }],
+    }
+    expect(personalBalance(ledger)).toBe(-15)
+  })
+
   it('scales payout to the actual amount paid instead of the standard two-yuan ticket', () => {
     const ledger: PersonalBetLedger = {
       schemaVersion: 1,

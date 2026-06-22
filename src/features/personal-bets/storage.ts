@@ -193,7 +193,7 @@ export const settlePersonalLedger = (ledger: PersonalBetLedger, settlementFile: 
 export const personalBalance = (ledger: PersonalBetLedger) => {
   const settledNet = ledger.bets.reduce((sum, bet) => bet.status === 'settled' ? sum + (bet.payout ?? 0) - bet.stake : sum, 0)
   const pending = ledger.bets.reduce((sum, bet) => bet.status === 'pending' ? sum + bet.stake : sum, 0)
-  return Math.max(0, ledger.initialBankroll + settledNet - pending)
+  return ledger.initialBankroll + settledNet - pending
 }
 
 export const exportPersonalLedger = (ledger: PersonalBetLedger) => {
