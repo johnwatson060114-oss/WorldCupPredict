@@ -11977,32 +11977,61 @@
       "key": "conservative",
       "name": "稳健",
       "subtitle": "低波动单关精选",
-      "stake": 0,
-      "retainedCash": 200,
+      "stake": 10,
+      "retainedCash": 190,
       "strategyRules": [
+        "预测复核：法国让三球负，当天单关",
         "低波动：只做次日单关",
         "胜平负/让球/总进球",
         "高覆盖与正稳健期望优先",
         "无正期望时0元不投"
       ],
-      "tickets": [],
+      "tickets": [
+        {
+          "id": "backtest-review-2040252-让球胜平负--3-负",
+          "type": "单关",
+          "legs": [
+            {
+              "matchId": "2040252",
+              "label": "法国 vs 伊拉克",
+              "market": "让球胜平负",
+              "selection": "-3 负",
+              "handicap": -3,
+              "odds": 2.15,
+              "excludedScores": [],
+              "kickoffBeijing": "2026-06-23T05:00:00+08:00",
+              "lotteryCode": "周一042",
+              "matchDate": "2026-06-23"
+            }
+          ],
+          "stake": 10,
+          "combinedOdds": 2.15,
+          "modelProbability": 0.53691,
+          "robustExpectedReturn": 0.02292,
+          "potentialPayout": 21.5
+        }
+      ],
       "entertainmentMode": false,
-      "expectedProfit": 0.0,
-      "profitProbability": 0.0,
-      "lossProbability": 0.0,
+      "expectedProfit": 0.2,
+      "profitProbability": 0.5369,
+      "lossProbability": 0.4631,
       "stopProbability": 0.0,
       "medianMaxDrawdown": 0.0,
-      "worstCase95": 0,
-      "p05": 217,
-      "median": 217,
-      "p95": 217,
-      "maxPayout": 217,
+      "worstCase95": -10,
+      "p05": 190,
+      "median": 190,
+      "p95": 212,
+      "maxPayout": 212,
       "simulationPaths": 100000,
       "simulationMode": "shared_score_paths",
       "distribution": [
         {
-          "bankroll": 217,
-          "probability": 1.0
+          "bankroll": 190,
+          "probability": 0.4631
+        },
+        {
+          "bankroll": 212,
+          "probability": 0.5369
         }
       ]
     },
@@ -12010,32 +12039,73 @@
       "key": "balanced",
       "name": "均衡",
       "subtitle": "中波动复式 + 跨天2串1",
-      "stake": 0,
-      "retainedCash": 200,
+      "stake": 6,
+      "retainedCash": 194,
       "strategyRules": [
+        "预测复核：法国让三球负 + 哥伦比亚胜",
         "中波动：次日单关 + 在售跨天2串1",
         "胜平负/让球/总进球",
         "复式提高覆盖，接受中等赔率波动",
         "预期回报率≥-10%，最差情况返本≥60%"
       ],
-      "tickets": [],
+      "tickets": [
+        {
+          "id": "backtest-review-2040252-让球胜平负--3-负-2040258-胜平负-胜",
+          "type": "2串1",
+          "legs": [
+            {
+              "matchId": "2040252",
+              "label": "法国 vs 伊拉克",
+              "market": "让球胜平负",
+              "selection": "-3 负",
+              "handicap": -3,
+              "odds": 2.15,
+              "excludedScores": [],
+              "kickoffBeijing": "2026-06-23T05:00:00+08:00",
+              "lotteryCode": "周一042",
+              "matchDate": "2026-06-23"
+            },
+            {
+              "matchId": "2040258",
+              "label": "哥伦比亚 vs 刚果金",
+              "market": "胜平负",
+              "selection": "胜",
+              "handicap": null,
+              "odds": 1.36,
+              "excludedScores": [],
+              "kickoffBeijing": "2026-06-24T10:00:00+08:00",
+              "lotteryCode": "周二048",
+              "matchDate": "2026-06-24"
+            }
+          ],
+          "stake": 6,
+          "combinedOdds": 2.924,
+          "modelProbability": 0.41688,
+          "robustExpectedReturn": 0.00544,
+          "potentialPayout": 17.54
+        }
+      ],
       "entertainmentMode": false,
       "expectedProfit": 0.0,
-      "profitProbability": 0.0,
-      "lossProbability": 0.0,
+      "profitProbability": 0.4169,
+      "lossProbability": 0.5831,
       "stopProbability": 0.0,
       "medianMaxDrawdown": 0.0,
-      "worstCase95": 0,
-      "p05": 169,
-      "median": 169,
-      "p95": 169,
-      "maxPayout": 169,
+      "worstCase95": -6,
+      "p05": 194,
+      "median": 194,
+      "p95": 212,
+      "maxPayout": 212,
       "simulationPaths": 100000,
       "simulationMode": "shared_score_paths",
       "distribution": [
         {
-          "bankroll": 169,
-          "probability": 1.0
+          "bankroll": 194,
+          "probability": 0.5831
+        },
+        {
+          "bankroll": 212,
+          "probability": 0.4169
         }
       ]
     },
@@ -12043,32 +12113,85 @@
       "key": "aggressive",
       "name": "激进",
       "subtitle": "高波动全玩法 + 跨天3串1",
-      "stake": 0,
-      "retainedCash": 200,
+      "stake": 10,
+      "retainedCash": 190,
       "strategyRules": [
+        "预测复核：均衡组合 + 墨西哥胜，跨三天",
         "高波动：次日单关 + 在售跨天2/3串1",
         "比分/半全场可入池",
         "赔率弹性更高，命中概率更低",
         "预期回报率≥-15%，最差返本≥40%"
       ],
-      "tickets": [],
+      "tickets": [
+        {
+          "id": "backtest-review-2040252-让球胜平负--3-负-2040258-胜平负-胜-2040290-胜平负-负",
+          "type": "3串1",
+          "legs": [
+            {
+              "matchId": "2040252",
+              "label": "法国 vs 伊拉克",
+              "market": "让球胜平负",
+              "selection": "-3 负",
+              "handicap": -3,
+              "odds": 2.15,
+              "excludedScores": [],
+              "kickoffBeijing": "2026-06-23T05:00:00+08:00",
+              "lotteryCode": "周一042",
+              "matchDate": "2026-06-23"
+            },
+            {
+              "matchId": "2040258",
+              "label": "哥伦比亚 vs 刚果金",
+              "market": "胜平负",
+              "selection": "胜",
+              "handicap": null,
+              "odds": 1.36,
+              "excludedScores": [],
+              "kickoffBeijing": "2026-06-24T10:00:00+08:00",
+              "lotteryCode": "周二048",
+              "matchDate": "2026-06-24"
+            },
+            {
+              "matchId": "2040290",
+              "label": "捷克 vs 墨西哥",
+              "market": "胜平负",
+              "selection": "负",
+              "handicap": null,
+              "odds": 1.91,
+              "excludedScores": [],
+              "kickoffBeijing": "2026-06-25T09:00:00+08:00",
+              "lotteryCode": "周三054",
+              "matchDate": "2026-06-25"
+            }
+          ],
+          "stake": 10,
+          "combinedOdds": 5.585,
+          "modelProbability": 0.24523,
+          "robustExpectedReturn": 0.0134,
+          "potentialPayout": 55.85
+        }
+      ],
       "entertainmentMode": false,
-      "expectedProfit": 0.0,
-      "profitProbability": 0.0,
-      "lossProbability": 0.0,
+      "expectedProfit": 0.1,
+      "profitProbability": 0.2452,
+      "lossProbability": 0.7548,
       "stopProbability": 0.0,
       "medianMaxDrawdown": 0.0,
-      "worstCase95": 0,
-      "p05": 123,
-      "median": 123,
-      "p95": 123,
-      "maxPayout": 123,
+      "worstCase95": -10,
+      "p05": 190,
+      "median": 190,
+      "p95": 246,
+      "maxPayout": 246,
       "simulationPaths": 100000,
       "simulationMode": "shared_score_paths",
       "distribution": [
         {
-          "bankroll": 123,
-          "probability": 1.0
+          "bankroll": 190,
+          "probability": 0.7548
+        },
+        {
+          "bankroll": 246,
+          "probability": 0.2452
         }
       ]
     }
