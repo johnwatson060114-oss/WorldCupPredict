@@ -512,6 +512,11 @@ def _sample_odds_dict(probabilities: dict[str, float], margin: float = 0.08) -> 
     return {key: _sample_odds(value, margin) for key, value in probabilities.items()}
 
 
+def fallback_handicap(home_xg: float, away_xg: float) -> int:
+    # The line is applied to the home score: favorites give goals, underdogs receive them.
+    return -round(home_xg - away_xg)
+
+
 def build_match(
     seed: dict,
     market: SportteryMatch | None,
@@ -561,7 +566,7 @@ def build_match(
             metadata=quote_metadata,
         ))
 
-    handicap = market.handicap if market else round(home_xg - away_xg)
+    handicap = market.handicap if market else fallback_handicap(home_xg, away_xg)
     handicap_outcomes = outcome_probabilities(matrix, handicap)
     if market:
         handicap_odds = market.handicap_win_draw_loss

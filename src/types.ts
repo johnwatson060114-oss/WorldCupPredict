@@ -394,6 +394,7 @@ export interface BankrollLedger {
 
 export interface MatchSettlement {
   matchId: string
+  matchLabel?: string
   homeScore: number
   awayScore: number
   halfTimeHomeScore?: number | null

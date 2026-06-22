@@ -85,6 +85,7 @@ def main() -> None:
                     continue
                 by_id[match["id"]] = {
                     "matchId": match["id"],
+                    "matchLabel": f"{match['homeTeam']} vs {match['awayTeam']}",
                     "homeScore": score["home"],
                     "awayScore": score["away"],
                     "halfTimeHomeScore": half_time.get("home"),
@@ -92,6 +93,11 @@ def main() -> None:
                     "settledAt": settled_at,
                 }
                 break
+
+    for match_id, match in forecast_matches.items():
+        settlement = by_id.get(match_id)
+        if settlement is not None:
+            settlement.setdefault("matchLabel", f"{match['homeTeam']} vs {match['awayTeam']}")
 
     issue_matches: dict[str, list[str]] = {}
     for match_id, match in forecast_matches.items():

@@ -942,6 +942,16 @@ body:has(.sporttery-ledger-page) .topbar {
 .saved-ticket-actions button { height: 36px; display: flex; align-items: center; justify-content: center; gap: 6px; border: 0; border-right: 1px solid #e3e4e6; background: #fff; color: #555; cursor: pointer; font-size: 11px; }
 .saved-ticket-actions button:last-child { border: 0; color: #d3222a; }
 .saved-ticket-actions button:hover { background: #fff6f6; color: #d3222a; }
+.saved-ticket-actions.manual { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.saved-ticket-actions.manual button:nth-last-child(2) { border-top: 1px solid #e3e4e6; }
+.saved-ticket-actions.manual button:last-child { border-top: 1px solid #e3e4e6; }
+.manual-settlement-editor { padding: 10px 13px; border-top: 1px solid #e3e4e6; background: #fff8ef; }
+.manual-settlement-editor label { display: block; color: #555; font-size: 11px; font-weight: 700; }
+.manual-settlement-editor input { width: 100%; height: 34px; margin-top: 5px; padding: 0 9px; border: 1px solid #d9b27d; border-radius: 4px; background: #fff; color: #222; font-size: 13px; }
+.manual-settlement-editor small { display: block; margin-top: 5px; color: #8a6844; font-size: 9px; line-height: 1.45; }
+.manual-settlement-editor > div { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 8px; }
+.manual-settlement-editor button { height: 32px; border: 1px solid #d6c1a6; border-radius: 4px; background: #fff; color: #666; cursor: pointer; }
+.manual-settlement-editor button.primary { border-color: #d3222a; background: #d3222a; color: #fff; }
 .saved-ticket-empty { min-height: 150px; display: grid; place-content: center; gap: 7px; padding: 24px; background: #fafafa; text-align: center; }
 .saved-ticket-empty strong { color: #333; font-size: 17px; }
 .saved-ticket-empty span { max-width: 560px; color: #777; font-size: 12px; line-height: 1.7; }

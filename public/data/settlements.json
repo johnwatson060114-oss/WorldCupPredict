@@ -960,6 +960,7 @@
     },
     {
       "matchId": "2040235",
+      "matchLabel": "捷克 vs 南非",
       "homeScore": 1,
       "awayScore": 1,
       "halfTimeHomeScore": 1,
@@ -1039,6 +1040,7 @@
     },
     {
       "matchId": "2040236",
+      "matchLabel": "瑞士 vs 波黑",
       "homeScore": 4,
       "awayScore": 1,
       "halfTimeHomeScore": 0,
@@ -1118,6 +1120,7 @@
     },
     {
       "matchId": "2040237",
+      "matchLabel": "加拿大 vs 卡塔尔",
       "homeScore": 6,
       "awayScore": 0,
       "halfTimeHomeScore": 3,
@@ -1197,6 +1200,7 @@
     },
     {
       "matchId": "2040238",
+      "matchLabel": "墨西哥 vs 韩国",
       "homeScore": 1,
       "awayScore": 0,
       "halfTimeHomeScore": 0,
@@ -1274,6 +1278,7 @@
     },
     {
       "matchId": "2040239",
+      "matchLabel": "美国 vs 澳大利亚",
       "homeScore": 2,
       "awayScore": 0,
       "halfTimeHomeScore": 2,
@@ -1351,6 +1356,7 @@
     },
     {
       "matchId": "2040240",
+      "matchLabel": "苏格兰 vs 摩洛哥",
       "homeScore": 0,
       "awayScore": 1,
       "halfTimeHomeScore": 0,
@@ -1428,6 +1434,7 @@
     },
     {
       "matchId": "2040241",
+      "matchLabel": "巴西 vs 海地",
       "homeScore": 3,
       "awayScore": 0,
       "halfTimeHomeScore": 3,
@@ -1500,6 +1507,7 @@
     },
     {
       "matchId": "2040242",
+      "matchLabel": "土耳其 vs 巴拉圭",
       "homeScore": 0,
       "awayScore": 1,
       "halfTimeHomeScore": 0,
@@ -1577,6 +1585,7 @@
     },
     {
       "matchId": "2040243",
+      "matchLabel": "荷兰 vs 瑞典",
       "homeScore": 5,
       "awayScore": 1,
       "halfTimeHomeScore": 2,
@@ -1654,6 +1663,7 @@
     },
     {
       "matchId": "2040244",
+      "matchLabel": "德国 vs 科特迪瓦",
       "homeScore": 2,
       "awayScore": 1,
       "halfTimeHomeScore": 0,
@@ -1731,6 +1741,7 @@
     },
     {
       "matchId": "2040245",
+      "matchLabel": "厄瓜多尔 vs 库拉索",
       "homeScore": 0,
       "awayScore": 0,
       "halfTimeHomeScore": 0,
@@ -1803,6 +1814,7 @@
     },
     {
       "matchId": "2040246",
+      "matchLabel": "突尼斯 vs 日本",
       "homeScore": 0,
       "awayScore": 4,
       "halfTimeHomeScore": 0,

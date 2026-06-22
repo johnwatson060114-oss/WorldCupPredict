@@ -13,6 +13,7 @@ export interface PersonalBetLeg {
   market: MarketType
   selection: string
   odds: number
+  settlementSelection?: string
   settlementOdds?: number
   modelProbability?: number
 }
@@ -37,6 +38,7 @@ export interface PersonalBet {
   status: PersonalBetStatus
   payout?: number
   settledAt?: string
+  settlementMode?: 'manual' | 'automatic'
   oddsVerifiedAt?: string
   oddsSource?: string
   note?: string

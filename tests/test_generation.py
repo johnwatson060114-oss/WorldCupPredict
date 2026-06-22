@@ -172,6 +172,11 @@ def test_outcome_recommendation_requires_sixty_percent_confidence():
     assert recommended["status"] == "recommended"
 
 
+def test_simulated_handicap_gives_goals_to_the_weaker_home_team():
+    assert generate.fallback_handicap(2.1, 1.0) == -1
+    assert generate.fallback_handicap(0.6, 2.4) == 2
+
+
 def test_low_confidence_outcome_quote_is_downgraded_to_watch():
     quote = generate.make_quote(
         "m1", "A vs B", "胜平负", "胜", 3.0, 0.40, 0.34, 0.90, True,

@@ -18,7 +18,7 @@ import { TotalGoalsPage } from './pages/TotalGoalsPage'
 import { FirstRoundPage } from './pages/FirstRoundPage'
 import { ForecastHorizon } from './components/ForecastHorizon'
 import { useForecast } from './hooks/useForecast'
-import { captureModelSnapshot, loadPersonalLedger, savePersonalLedger, settlePersonalLedger } from './features/personal-bets/storage'
+import { captureModelSnapshot, loadPersonalLedger, savePersonalLedger } from './features/personal-bets/storage'
 import type { PersonalBetLedger, StrategyHistory } from './features/personal-bets/types'
 import { appendLedgerEntry, currentBalance, emptyLedger, loadLedger, saveLedger, settleLedger } from './lib/ledger'
 import { filterCrossDayRecommendations, scalePortfolio, strategyRollingBankrolls } from './lib/portfolio'
@@ -34,7 +34,6 @@ export default function App() {
   const [noBetChoice, setNoBetChoice] = useState<'hold' | 'fun'>('hold')
   const [ledger, setLedger] = useState<BankrollLedger>(() => loadLedger())
   const [personalLedger, setPersonalLedger] = useState<PersonalBetLedger>(() => loadPersonalLedger())
-  const [settlements, setSettlements] = useState<SettlementFile | null>(null)
   const [strategyHistory, setStrategyHistory] = useState<StrategyHistory | null>(null)
 
   useEffect(() => {
@@ -42,7 +41,6 @@ export default function App() {
       .then((response) => response.ok ? response.json() as Promise<SettlementFile> : null)
       .then((settlements) => {
         if (!settlements) return
-        setSettlements(settlements)
         setLedger((current) => {
           const next = settleLedger(current, settlements)
           if (next !== current) saveLedger(next)
@@ -75,11 +73,8 @@ export default function App() {
 
   useEffect(() => {
     if (!data) return
-    setPersonalLedger((current) => {
-      const captured = captureModelSnapshot(current, data)
-      return settlements ? settlePersonalLedger(captured, settlements) : captured
-    })
-  }, [data, settlements])
+    setPersonalLedger((current) => captureModelSnapshot(current, data))
+  }, [data])
 
   const availableBankroll = currentBalance(ledger)
   const strategyBankrolls = useMemo(() => {
@@ -180,7 +175,7 @@ export default function App() {
       {activeNav === 'analysis' && (selectedMatch ? <AnalysisPage match={selectedMatch} /> : <main className="empty-forecast-panel"><h1>暂无比赛分析</h1><p>当前目标日期没有可分析的比赛；请先使用"我的投注"记录历史票单。</p><button onClick={() => setActiveNav('personal')}>打开我的投注</button></main>)}
       {activeNav === 'round1' && <FirstRoundPage />}
       {activeNav === 'goals' && <TotalGoalsPage matches={data.matches} selectedId={selectedMatch?.id ?? data.matches[0]?.id ?? ''} onSelect={setSelectedMatchId} />}
-      {activeNav === 'personal' && <PersonalBetPage forecast={data} settlements={settlements} ledger={personalLedger} onLedgerChange={setPersonalLedger} />}
+      {activeNav === 'personal' && <PersonalBetPage forecast={data} ledger={personalLedger} onLedgerChange={setPersonalLedger} />}
       {activeNav === 'ledger' && <LedgerPage ledger={ledger} personalLedger={personalLedger} onImport={(next) => { saveLedger(next); setLedger(next) }} onReset={() => { const next = emptyLedger(); saveLedger(next); setLedger(next) }} />}
       {activeNav === 'backtest' && <BacktestPage forecast={data} />}
       {activeNav === 'method' && <MethodPage />}

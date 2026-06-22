@@ -72,7 +72,7 @@ export function TicketReceipt({
             </span>
             <span className="receipt-match">
               <b>{group.matchLabel}</b>
-              <small>{group.legs.map((leg) => `${leg.market} ${leg.selection}`).join(' / ')}</small>
+              <small>{group.legs.map((leg) => `${leg.market} ${leg.settlementSelection ?? leg.selection}`).join(' / ')}</small>
             </span>
             <span className="receipt-odds">
               {group.legs.map((leg) => (leg.settlementOdds ?? leg.odds).toFixed(2)).join(' / ')}

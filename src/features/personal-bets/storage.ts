@@ -45,6 +45,32 @@ export const deletePersonalBet = (ledger: PersonalBetLedger, id: string) => {
   return next
 }
 
+export const settlePersonalBetManually = (ledger: PersonalBetLedger, id: string, profit: number) => {
+  const bets = ledger.bets.map((bet) => bet.id === id
+    ? {
+        ...bet,
+        status: 'settled' as const,
+        payout: Math.round((bet.stake + profit) * 100) / 100,
+        settledAt: new Date().toISOString(),
+        settlementMode: 'manual' as const,
+      }
+    : bet)
+  const next = { ...ledger, bets }
+  savePersonalLedger(next)
+  return next
+}
+
+export const reopenPersonalBet = (ledger: PersonalBetLedger, id: string) => {
+  const bets = ledger.bets.map((bet) => {
+    if (bet.id !== id) return bet
+    const { payout: _payout, settledAt: _settledAt, settlementMode: _settlementMode, ...pending } = bet
+    return { ...pending, status: 'pending' as const }
+  })
+  const next = { ...ledger, bets }
+  savePersonalLedger(next)
+  return next
+}
+
 export const captureModelSnapshot = (ledger: PersonalBetLedger, forecast: DailyForecast) => {
   if (ledger.modelSnapshots.some((item) => item.targetDate === forecast.targetDate)) return ledger
   const snapshot: ModelDaySnapshot = {
@@ -59,26 +85,27 @@ export const captureModelSnapshot = (ledger: PersonalBetLedger, forecast: DailyF
 }
 
 const legWon = (leg: PersonalBetLeg, result: MatchSettlement) => {
+  const effectiveSelection = leg.settlementSelection ?? leg.selection
   if (leg.market === '比分') {
     const score = `${result.homeScore}:${result.awayScore}`
-    if (leg.selection === score || leg.selection === score.replace(':', '-')) return true
+    if (effectiveSelection === score || effectiveSelection === score.replace(':', '-')) return true
     if (standardScores.has(score)) return false
     const outcome = result.homeScore > result.awayScore ? '胜其它' : result.homeScore === result.awayScore ? '平其它' : '负其它'
-    return leg.selection === outcome
+    return effectiveSelection === outcome
   }
   if (leg.market === '总进球数') {
     const total = result.homeScore + result.awayScore
-    return leg.selection === (total >= 7 ? '7+' : String(total))
+    return effectiveSelection === (total >= 7 ? '7+' : String(total))
   }
   if (leg.market === '半全场') {
     if (result.halfTimeHomeScore === null || result.halfTimeHomeScore === undefined || result.halfTimeAwayScore === null || result.halfTimeAwayScore === undefined) return null
     const half = result.halfTimeHomeScore > result.halfTimeAwayScore ? '胜' : result.halfTimeHomeScore === result.halfTimeAwayScore ? '平' : '负'
     const full = result.homeScore > result.awayScore ? '胜' : result.homeScore === result.awayScore ? '平' : '负'
-    return leg.selection === `${half}${full}`
+    return effectiveSelection === `${half}${full}`
   }
-  const handicapMatch = leg.selection.match(/^([+-]\d+)\s+(胜|平|负)$/)
+  const handicapMatch = effectiveSelection.match(/^([+-]\d+)\s+(胜|平|负)$/)
   const handicap = handicapMatch ? Number(handicapMatch[1]) : 0
-  const selection = handicapMatch?.[2] ?? leg.selection
+  const selection = handicapMatch?.[2] ?? effectiveSelection
   const adjustedHome = result.homeScore + handicap
   const outcome = adjustedHome > result.awayScore ? '胜' : adjustedHome === result.awayScore ? '平' : '负'
   return selection === outcome
@@ -110,14 +137,31 @@ const calculateBetPayout = (bet: PersonalBet, results: Map<string, MatchSettleme
 }
 
 export const settlePersonalLedger = (ledger: PersonalBetLedger, settlementFile: SettlementFile) => {
-  const results = new Map(settlementFile.matches.map((match) => [match.matchId, match]))
+  const results = new Map<string, MatchSettlement>()
+  const registerResult = (key: string, match: MatchSettlement) => {
+    const existing = results.get(key)
+    if (!existing || (!existing.closingOdds && match.closingOdds)) results.set(key, match)
+  }
+  for (const match of settlementFile.matches) {
+    registerResult(match.matchId, match)
+    if (match.matchLabel) registerResult(match.matchLabel, match)
+  }
   let changed = false
   const bets = ledger.bets.map((bet) => {
-    if (bet.status === 'void' || (bet.status === 'settled' && bet.oddsVerifiedAt)) return bet
+    if (bet.status === 'void' || bet.settlementMode === 'manual' || (bet.status === 'settled' && bet.oddsVerifiedAt)) return bet
     const verifiedLegs = bet.legs?.map((leg) => {
       const result = results.get(leg.matchId)
-      const verifiedOdds = result?.closingOdds?.[leg.market]?.[leg.selection]
-      return verifiedOdds ? { ...leg, settlementOdds: verifiedOdds } : leg
+      const marketOdds = result?.closingOdds?.[leg.market]
+      const verifiedOdds = marketOdds?.[leg.selection]
+      if (verifiedOdds) return { ...leg, settlementOdds: verifiedOdds }
+      if (leg.market !== '让球胜平负' || !marketOdds) return leg
+      const handicap = leg.selection.match(/^([+-]\d+)\s+(胜|平|负)$/)
+      if (!handicap) return leg
+      const correctedSelection = `${-Number(handicap[1]) >= 0 ? '+' : ''}${-Number(handicap[1])} ${handicap[2]}`
+      const correctedOdds = marketOdds[correctedSelection]
+      return correctedOdds
+        ? { ...leg, settlementSelection: correctedSelection, settlementOdds: correctedOdds }
+        : leg
     })
     const hasVerifiedOdds = verifiedLegs?.some((leg) => leg.settlementOdds !== undefined) ?? false
     if (bet.status === 'settled' && !hasVerifiedOdds) return bet

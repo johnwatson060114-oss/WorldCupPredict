@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState, type CSSProperties, type Dispatch, type SetStateAction } from 'react'
 import { CalendarDays, CheckCircle2, ChevronDown, CircleAlert, Database, Download, Pencil, RefreshCw, RotateCcw, Save, Trash2 } from 'lucide-react'
 import { percent, shortDateTime, signedPercent } from '../lib/format'
-import type { DailyForecast, MarketQuote, MarketType, MatchForecast, SettlementFile } from '../types'
+import type { DailyForecast, MarketQuote, MarketType, MatchForecast } from '../types'
 import { FairComparisonChart, StrategyActualChart, StrategyProjectionChart } from '../features/personal-bets/Charts'
 import { TicketReceipt } from '../features/personal-bets/TicketReceipt'
 import { embeddedMatchesForDate, legMatchDate, matchDate, selectableMatchDates, ticketMatchDates } from '../features/personal-bets/cross-day'
@@ -11,8 +11,9 @@ import {
   deletePersonalBet,
   exportPersonalLedger,
   personalBalance,
+  reopenPersonalBet,
   savePersonalLedger,
-  settlePersonalLedger,
+  settlePersonalBetManually,
   upsertPersonalBet,
 } from '../features/personal-bets/storage'
 import type { DecisionSource, PersonalBet, PersonalBetLedger, PersonalBetLeg, StrategyHistory } from '../features/personal-bets/types'
@@ -29,7 +30,6 @@ import {
 
 interface PersonalBetPageProps {
   forecast: DailyForecast
-  settlements: SettlementFile | null
   ledger: PersonalBetLedger
   onLedgerChange: Dispatch<SetStateAction<PersonalBetLedger>>
 }
@@ -105,7 +105,7 @@ const legsForBet = (bet: PersonalBet): PersonalBetLeg[] => bet.legs?.length
     ? [{ matchId: bet.matchId, matchLabel: bet.matchLabel, market: bet.market, selection: bet.selection, odds: bet.odds, modelProbability: bet.modelProbability }]
     : []
 
-export function PersonalBetPage({ forecast, settlements, ledger, onLedgerChange }: PersonalBetPageProps) {
+export function PersonalBetPage({ forecast, ledger, onLedgerChange }: PersonalBetPageProps) {
   const [history, setHistory] = useState<StrategyHistory | null>(null)
   const [comparisonMode, setComparisonMode] = useState<ComparisonMode>('matched')
   const [form, setForm] = useState<FormState>(() => initialForm(forecast))
@@ -113,6 +113,7 @@ export function PersonalBetPage({ forecast, settlements, ledger, onLedgerChange 
   const [archiveState, setArchiveState] = useState<'ready' | 'loading' | 'missing'>('ready')
   const [historyDates, setHistoryDates] = useState<string[]>([])
   const [message, setMessage] = useState('')
+  const [settlementEditor, setSettlementEditor] = useState<{ id: string; profit: string } | null>(null)
   const selectableDates = useMemo(() => selectableMatchDates(forecast, historyDates), [forecast, historyDates])
   const minimumSelectableDate = selectableDates[0] ?? forecast.targetDate
   const maximumSelectableDate = selectableDates.at(-1) ?? forecast.targetDate
@@ -282,8 +283,8 @@ export function PersonalBetPage({ forecast, settlements, ledger, onLedgerChange 
       legs: form.legs,
     }
     const next = upsertPersonalBet(captureModelSnapshot(ledger, forecast), bet)
-    onLedgerChange(settlements ? settlePersonalLedger(next, settlements) : next)
-    setMessage(form.id ? '记录已更新，并按已有赛果重新结算。' : '已写入本机投注账本。')
+    onLedgerChange(next)
+    setMessage(form.id ? '票单已更新，结算结果请在已保存票单中手动填写。' : '已写入本机投注账本，赛后请手动填写实际盈亏。')
     resetForm()
   }
 
@@ -312,6 +313,29 @@ export function PersonalBetPage({ forecast, settlements, ledger, onLedgerChange 
   const removeBet = (id: string) => {
     onLedgerChange((current) => deletePersonalBet(current, id))
     if (form.id === id) resetForm()
+  }
+
+  const openSettlementEditor = (bet: PersonalBet) => {
+    const profit = bet.status === 'settled' ? (bet.payout ?? 0) - bet.stake : -bet.stake
+    setSettlementEditor({ id: bet.id, profit: profit.toFixed(2) })
+  }
+
+  const saveManualSettlement = (bet: PersonalBet) => {
+    if (!settlementEditor || settlementEditor.id !== bet.id) return
+    const profit = Number(settlementEditor.profit)
+    if (!Number.isFinite(profit) || profit < -bet.stake) {
+      setMessage(`实际盈亏不能低于 -${preciseMoney(bet.stake)}。`)
+      return
+    }
+    onLedgerChange((current) => settlePersonalBetManually(current, bet.id, profit))
+    setSettlementEditor(null)
+    setMessage(`已手动记录盈亏 ${profit >= 0 ? '+' : ''}${preciseMoney(profit)}。`)
+  }
+
+  const reopenBet = (bet: PersonalBet) => {
+    onLedgerChange((current) => reopenPersonalBet(current, bet.id))
+    setSettlementEditor(null)
+    setMessage('已撤回为待开奖，可稍后重新手动结算。')
   }
 
   const importLedger = async (file: File | undefined) => {
@@ -511,7 +535,17 @@ export function PersonalBetPage({ forecast, settlements, ledger, onLedgerChange 
                   <span><b>{decisionLabels[bet.decisionSource]}</b>{bet.note && <small>{bet.note}</small>}</span>
                   {bet.status === 'settled' && <strong className={(bet.payout ?? 0) - bet.stake >= 0 ? 'positive-text' : 'negative-text'}>盈亏 {preciseMoney((bet.payout ?? 0) - bet.stake)}</strong>}
                 </div>
-                <div className="saved-ticket-actions"><button onClick={() => editBet(bet)}><Pencil size={14} />编辑票单</button><button onClick={() => removeBet(bet.id)}><Trash2 size={14} />删除</button></div>
+                {settlementEditor?.id === bet.id && <div className="manual-settlement-editor">
+                  <label>实际盈亏（元）<input type="number" step="0.01" min={-bet.stake} value={settlementEditor.profit} onChange={(event) => setSettlementEditor({ id: bet.id, profit: event.target.value })} /></label>
+                  <small>亏损填负数，例如亏 {bet.stake.toFixed(2)} 元填 -{bet.stake.toFixed(2)}；盈利填正数。</small>
+                  <div><button onClick={() => setSettlementEditor(null)}>取消</button><button className="primary" onClick={() => saveManualSettlement(bet)}><Save size={14} />保存盈亏</button></div>
+                </div>}
+                <div className="saved-ticket-actions manual">
+                  <button onClick={() => openSettlementEditor(bet)}><CheckCircle2 size={14} />{bet.status === 'settled' ? '修改盈亏' : '手动结算'}</button>
+                  {bet.status === 'settled' && <button onClick={() => reopenBet(bet)}><RefreshCw size={14} />撤回待开奖</button>}
+                  <button onClick={() => editBet(bet)}><Pencil size={14} />编辑票单</button>
+                  <button onClick={() => removeBet(bet.id)}><Trash2 size={14} />删除</button>
+                </div>
               </article>
             )
           })}
