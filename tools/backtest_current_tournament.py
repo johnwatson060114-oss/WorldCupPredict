@@ -11,8 +11,9 @@ from zoneinfo import ZoneInfo
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
+from pipeline.goal_models import poisson_negative_binomial_mixture_matrix
 from pipeline.market_guard import apply_market_strength_calibration
-from pipeline.model import outcome_probabilities, score_matrix
+from pipeline.model import outcome_probabilities, score_matrix, total_goals_probabilities
 from pipeline.tournament_form import apply_tournament_form, load_first_round_profiles
 
 
@@ -20,6 +21,7 @@ BACKTEST_START_DATE = "2026-06-19"
 OUT_ARTIFACT = ROOT / "artifacts" / "current-tournament-backtest.json"
 OUT_PUBLIC = ROOT / "public" / "data" / "current-tournament-model-review.json"
 OUTCOME_LABELS = {"胜": "home", "平": "draw", "负": "away"}
+GOAL_ORDER = ["0", "1", "2", "3", "4", "5", "6", "7+"]
 
 
 def actual_outcome(home_goals: int, away_goals: int) -> str:
@@ -50,6 +52,76 @@ def settlement_key(match: dict[str, Any]) -> str:
         if quote_match_id.isdigit():
             return quote_match_id
     return direct
+
+
+def goal_bucket(home_goals: int, away_goals: int) -> str:
+    total = home_goals + away_goals
+    return "7+" if total >= 7 else str(total)
+
+
+def total_goal_probabilities_from_quotes(match: dict[str, Any]) -> dict[str, float]:
+    return {
+        str(quote["selection"]): float(quote["modelProbability"])
+        for quote in match.get("quotes", [])
+        if quote.get("market") == "总进球数"
+    }
+
+
+def strongest_adjacent(probabilities: dict[str, float]) -> tuple[str, set[str]]:
+    best_label = ""
+    best_pair: set[str] = set()
+    best_probability = -1.0
+    for left, right in zip(GOAL_ORDER, GOAL_ORDER[1:]):
+        probability = probabilities.get(left, 0.0) + probabilities.get(right, 0.0)
+        if probability > best_probability:
+            best_label = f"{left}-{right}"
+            best_pair = {left, right}
+            best_probability = probability
+    return best_label, best_pair
+
+
+def forecast_diagnostics(
+    match: dict[str, Any],
+    home_goals: int,
+    away_goals: int,
+) -> dict[str, Any]:
+    actual_bucket = goal_bucket(home_goals, away_goals)
+    probabilities = total_goal_probabilities_from_quotes(match)
+    predicted_bucket = max(probabilities, key=probabilities.get) if probabilities else None
+    core_label, core_pair = strongest_adjacent(probabilities)
+    expected_total = sum(
+        (7 if label == "7+" else int(label)) * probability
+        for label, probability in probabilities.items()
+    )
+    return {
+        "likelyScoreHit": match.get("likelyScore") == f"{home_goals}-{away_goals}",
+        "actualTotalGoals": home_goals + away_goals,
+        "expectedTotalGoals": round(expected_total, 4),
+        "totalGoalsAbsoluteError": round(abs(expected_total - home_goals - away_goals), 4),
+        "actualTotalBucket": actual_bucket,
+        "predictedTotalBucket": predicted_bucket,
+        "totalGoalsExactHit": predicted_bucket == actual_bucket,
+        "totalGoalsCoreInterval": core_label,
+        "totalGoalsCoreHit": actual_bucket in core_pair,
+        "actualTotalProbability": round(probabilities.get(actual_bucket, 0.0), 6),
+        "totalGoalsLogLoss": -math.log(max(1e-12, probabilities.get(actual_bucket, 0.0))),
+    }
+
+
+def summarize_diagnostics(rows: list[dict[str, Any]]) -> dict[str, Any]:
+    values = [row["forecastDiagnostics"] for row in rows]
+    return {
+        "matches": len(values),
+        "likelyScoreHits": sum(value["likelyScoreHit"] for value in values),
+        "totalGoalsExactHits": sum(value["totalGoalsExactHit"] for value in values),
+        "totalGoalsCoreHits": sum(value["totalGoalsCoreHit"] for value in values),
+        "averageTotalGoalsAbsoluteError": (
+            sum(value["totalGoalsAbsoluteError"] for value in values) / len(values)
+        ),
+        "averageTotalGoalsLogLoss": (
+            sum(value["totalGoalsLogLoss"] for value in values) / len(values)
+        ),
+    }
 
 
 def metric_row(probabilities: dict[str, float], actual: str) -> dict[str, Any]:
@@ -142,6 +214,11 @@ def main() -> None:
                     "home": round(home_xg, 4),
                     "away": round(away_xg, 4),
                 },
+                "forecastExpectedGoals": {
+                    "home": float(match["expectedGoals"]["home"]),
+                    "away": float(match["expectedGoals"]["away"]),
+                },
+                "forecastDiagnostics": forecast_diagnostics(match, home_goals, away_goals),
                 "marketCalibration": calibration,
             })
 
@@ -158,7 +235,47 @@ def main() -> None:
             "complete": len(day_rows) == scheduled_by_day[target_date],
             "baseline": summarize(day_rows, "baseline"),
             "optimized": summarize(day_rows, "optimized"),
+            "forecastDiagnostics": summarize_diagnostics(day_rows),
         }
+    poisson_total_loss = 0.0
+    tail_total_loss = 0.0
+    poisson_outcome_loss = 0.0
+    tail_outcome_loss = 0.0
+    for row in rows:
+        home_xg = float(row["forecastExpectedGoals"]["home"])
+        away_xg = float(row["forecastExpectedGoals"]["away"])
+        home_goals, away_goals = (int(value) for value in row["score"].split("-"))
+        actual = row["actualOutcome"]
+        actual_bucket = goal_bucket(home_goals, away_goals)
+        poisson_matrix = score_matrix(home_xg, away_xg, rho=0.0)
+        tail_matrix = poisson_negative_binomial_mixture_matrix(
+            home_xg,
+            away_xg,
+            dispersion=2.0,
+            tail_weight=0.20,
+            rho=0.0,
+        )
+        poisson_outcome = outcome_probabilities(poisson_matrix)
+        tail_outcome = outcome_probabilities(tail_matrix)
+        poisson_totals = total_goals_probabilities(poisson_matrix)
+        tail_totals = total_goals_probabilities(tail_matrix)
+        poisson_outcome_loss -= math.log(max(1e-12, poisson_outcome[actual]))
+        tail_outcome_loss -= math.log(max(1e-12, tail_outcome[actual]))
+        poisson_total_loss -= math.log(max(1e-12, poisson_totals[actual_bucket]))
+        tail_total_loss -= math.log(max(1e-12, tail_totals[actual_bucket]))
+    distribution_review = {
+        "sampleMatches": len(rows),
+        "productionFamily": "poisson",
+        "shadowFamily": "poisson_negative_binomial_mixture",
+        "shadowParameters": {"dispersion": 2.0, "tailWeight": 0.20},
+        "productionAverageOutcomeLogLoss": poisson_outcome_loss / len(rows),
+        "shadowAverageOutcomeLogLoss": tail_outcome_loss / len(rows),
+        "productionAverageTotalGoalsLogLoss": poisson_total_loss / len(rows),
+        "shadowAverageTotalGoalsLogLoss": tail_total_loss / len(rows),
+        "totalGoalsLogLossReduction": (poisson_total_loss - tail_total_loss) / len(rows),
+        "decision": "keep_shadow",
+        "reason": "loss improvement is small and the settled sample remains below 24 matches",
+    }
     report = {
         "schemaVersion": 1,
         "generatedAt": datetime.now(ZoneInfo("Asia/Shanghai")).isoformat(timespec="seconds"),
@@ -191,6 +308,8 @@ def main() -> None:
                 baseline_summary["averageLogLoss"] - optimized_summary["averageLogLoss"]
             ),
         },
+        "forecastDiagnostics": summarize_diagnostics(rows),
+        "distributionReview": distribution_review,
         "byDay": by_day,
         "matches": rows,
     }

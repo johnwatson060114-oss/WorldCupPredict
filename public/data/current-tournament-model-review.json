@@ -1,18 +1,20 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-21T14:57:34+08:00",
+  "generatedAt": "2026-06-22T19:04:47+08:00",
   "scope": {
     "dates": [
       "2026-06-19",
       "2026-06-20",
-      "2026-06-21"
+      "2026-06-21",
+      "2026-06-22"
     ],
-    "matches": 12,
+    "matches": 16,
     "description": "chronological archived forecasts with all currently settled matches",
     "completeDates": [
       "2026-06-19",
       "2026-06-20",
-      "2026-06-21"
+      "2026-06-21",
+      "2026-06-22"
     ],
     "partialDates": [],
     "motivationLayerEvaluation": "not active before group matchday three"
@@ -26,21 +28,45 @@
     "motivationPolicy": "matchday_three_bounded_v1"
   },
   "baseline": {
-    "matches": 12,
-    "hits": 8,
-    "accuracy": 0.6666666666666666,
-    "averageLogLoss": 0.7995728210286789
+    "matches": 16,
+    "hits": 10,
+    "accuracy": 0.625,
+    "averageLogLoss": 0.8280617870710401
   },
   "optimized": {
-    "matches": 12,
-    "hits": 9,
-    "accuracy": 0.75,
-    "averageLogLoss": 0.7703688965767368
+    "matches": 16,
+    "hits": 11,
+    "accuracy": 0.6875,
+    "averageLogLoss": 0.7993838779304598
   },
   "improvement": {
     "additionalHits": 1,
-    "accuracyDelta": 0.08333333333333337,
-    "averageLogLossReduction": 0.029203924451942087
+    "accuracyDelta": 0.0625,
+    "averageLogLossReduction": 0.028677909140580216
+  },
+  "forecastDiagnostics": {
+    "matches": 16,
+    "likelyScoreHits": 1,
+    "totalGoalsExactHits": 2,
+    "totalGoalsCoreHits": 6,
+    "averageTotalGoalsAbsoluteError": 1.6111875,
+    "averageTotalGoalsLogLoss": 2.0453616865127393
+  },
+  "distributionReview": {
+    "sampleMatches": 16,
+    "productionFamily": "poisson",
+    "shadowFamily": "poisson_negative_binomial_mixture",
+    "shadowParameters": {
+      "dispersion": 2.0,
+      "tailWeight": 0.2
+    },
+    "productionAverageOutcomeLogLoss": 0.8277292468166841,
+    "shadowAverageOutcomeLogLoss": 0.8240627672212454,
+    "productionAverageTotalGoalsLogLoss": 2.0445215986754945,
+    "shadowAverageTotalGoalsLogLoss": 2.0368286245562337,
+    "totalGoalsLogLossReduction": 0.0076929741192608425,
+    "decision": "keep_shadow",
+    "reason": "loss improvement is small and the settled sample remains below 24 matches"
   },
   "byDay": {
     "2026-06-19": {
@@ -58,6 +84,14 @@
         "hits": 3,
         "accuracy": 0.75,
         "averageLogLoss": 0.6986949099056342
+      },
+      "forecastDiagnostics": {
+        "matches": 4,
+        "likelyScoreHits": 1,
+        "totalGoalsExactHits": 1,
+        "totalGoalsCoreHits": 2,
+        "averageTotalGoalsAbsoluteError": 1.84315,
+        "averageTotalGoalsLogLoss": 2.1604354945445245
       }
     },
     "2026-06-20": {
@@ -75,6 +109,14 @@
         "hits": 3,
         "accuracy": 0.75,
         "averageLogLoss": 0.7957109535412534
+      },
+      "forecastDiagnostics": {
+        "matches": 4,
+        "likelyScoreHits": 0,
+        "totalGoalsExactHits": 1,
+        "totalGoalsCoreHits": 3,
+        "averageTotalGoalsAbsoluteError": 1.0267,
+        "averageTotalGoalsLogLoss": 1.542271610704511
       }
     },
     "2026-06-21": {
@@ -92,6 +134,39 @@
         "hits": 3,
         "accuracy": 0.75,
         "averageLogLoss": 0.8167008262833229
+      },
+      "forecastDiagnostics": {
+        "matches": 4,
+        "likelyScoreHits": 0,
+        "totalGoalsExactHits": 0,
+        "totalGoalsCoreHits": 1,
+        "averageTotalGoalsAbsoluteError": 1.562725,
+        "averageTotalGoalsLogLoss": 2.1104438126745295
+      }
+    },
+    "2026-06-22": {
+      "scheduledMatches": 4,
+      "settledMatches": 4,
+      "complete": true,
+      "baseline": {
+        "matches": 4,
+        "hits": 2,
+        "accuracy": 0.5,
+        "averageLogLoss": 0.9135286851981234
+      },
+      "optimized": {
+        "matches": 4,
+        "hits": 2,
+        "accuracy": 0.5,
+        "averageLogLoss": 0.886428821991629
+      },
+      "forecastDiagnostics": {
+        "matches": 4,
+        "likelyScoreHits": 0,
+        "totalGoalsExactHits": 0,
+        "totalGoalsCoreHits": 0,
+        "averageTotalGoalsAbsoluteError": 2.012175,
+        "averageTotalGoalsLogLoss": 2.368295828127392
       }
     }
   },
@@ -124,6 +199,23 @@
       "optimizedExpectedGoals": {
         "home": 1.8229,
         "away": 0.6784
+      },
+      "forecastExpectedGoals": {
+        "home": 1.82,
+        "away": 0.67
+      },
+      "forecastDiagnostics": {
+        "likelyScoreHit": false,
+        "actualTotalGoals": 2,
+        "expectedTotalGoals": 2.486,
+        "totalGoalsAbsoluteError": 0.486,
+        "actualTotalBucket": "2",
+        "predictedTotalBucket": "2",
+        "totalGoalsExactHit": true,
+        "totalGoalsCoreInterval": "2-3",
+        "totalGoalsCoreHit": true,
+        "actualTotalProbability": 0.25728,
+        "totalGoalsLogLoss": 1.3575902929915356
       },
       "marketCalibration": {
         "applied": false,
@@ -160,6 +252,23 @@
         "home": 2.1082,
         "away": 0.6946
       },
+      "forecastExpectedGoals": {
+        "home": 2.13,
+        "away": 0.69
+      },
+      "forecastDiagnostics": {
+        "likelyScoreHit": false,
+        "actualTotalGoals": 5,
+        "expectedTotalGoals": 2.7988,
+        "totalGoalsAbsoluteError": 2.2012,
+        "actualTotalBucket": "5",
+        "predictedTotalBucket": "2",
+        "totalGoalsExactHit": false,
+        "totalGoalsCoreInterval": "2-3",
+        "totalGoalsCoreHit": false,
+        "actualTotalProbability": 0.08791,
+        "totalGoalsLogLoss": 2.4314417151190497
+      },
       "marketCalibration": {
         "applied": false,
         "reason": "within_threshold",
@@ -194,6 +303,23 @@
       "optimizedExpectedGoals": {
         "home": 2.2018,
         "away": 0.4762
+      },
+      "forecastExpectedGoals": {
+        "home": 2.22,
+        "away": 0.47
+      },
+      "forecastDiagnostics": {
+        "likelyScoreHit": false,
+        "actualTotalGoals": 6,
+        "expectedTotalGoals": 2.6873,
+        "totalGoalsAbsoluteError": 3.3127,
+        "actualTotalBucket": "6",
+        "predictedTotalBucket": "2",
+        "totalGoalsExactHit": false,
+        "totalGoalsCoreInterval": "2-3",
+        "totalGoalsCoreHit": false,
+        "actualTotalProbability": 0.03562,
+        "totalGoalsLogLoss": 3.3348480011206214
       },
       "marketCalibration": {
         "applied": false,
@@ -230,6 +356,23 @@
         "home": 1.4589,
         "away": 0.9181
       },
+      "forecastExpectedGoals": {
+        "home": 1.46,
+        "away": 0.91
+      },
+      "forecastDiagnostics": {
+        "likelyScoreHit": true,
+        "actualTotalGoals": 1,
+        "expectedTotalGoals": 2.3727,
+        "totalGoalsAbsoluteError": 1.3727,
+        "actualTotalBucket": "1",
+        "predictedTotalBucket": "2",
+        "totalGoalsExactHit": false,
+        "totalGoalsCoreInterval": "1-2",
+        "totalGoalsCoreHit": true,
+        "actualTotalProbability": 0.21918,
+        "totalGoalsLogLoss": 1.5178619689468908
+      },
       "marketCalibration": {
         "applied": false,
         "reason": "within_threshold",
@@ -264,6 +407,23 @@
       "optimizedExpectedGoals": {
         "home": 1.3307,
         "away": 1.2657
+      },
+      "forecastExpectedGoals": {
+        "home": 1.12,
+        "away": 1.46
+      },
+      "forecastDiagnostics": {
+        "likelyScoreHit": false,
+        "actualTotalGoals": 2,
+        "expectedTotalGoals": 2.5746,
+        "totalGoalsAbsoluteError": 0.5746,
+        "actualTotalBucket": "2",
+        "predictedTotalBucket": "2",
+        "totalGoalsExactHit": true,
+        "totalGoalsCoreInterval": "2-3",
+        "totalGoalsCoreHit": true,
+        "actualTotalProbability": 0.25315,
+        "totalGoalsLogLoss": 1.373773080566219
       },
       "marketCalibration": {
         "applied": true,
@@ -304,6 +464,23 @@
         "home": 0.8999,
         "away": 1.4137
       },
+      "forecastExpectedGoals": {
+        "home": 1.02,
+        "away": 1.31
+      },
+      "forecastDiagnostics": {
+        "likelyScoreHit": false,
+        "actualTotalGoals": 1,
+        "expectedTotalGoals": 2.3225,
+        "totalGoalsAbsoluteError": 1.3225,
+        "actualTotalBucket": "1",
+        "predictedTotalBucket": "2",
+        "totalGoalsExactHit": false,
+        "totalGoalsCoreInterval": "1-2",
+        "totalGoalsCoreHit": true,
+        "actualTotalProbability": 0.2265,
+        "totalGoalsLogLoss": 1.4850103340590484
+      },
       "marketCalibration": {
         "applied": true,
         "method": "bounded_1x2_strength_shrinkage_v1",
@@ -343,6 +520,23 @@
         "home": 2.4161,
         "away": 0.1823
       },
+      "forecastExpectedGoals": {
+        "home": 2.43,
+        "away": 0.19
+      },
+      "forecastDiagnostics": {
+        "likelyScoreHit": false,
+        "actualTotalGoals": 3,
+        "expectedTotalGoals": 2.6166,
+        "totalGoalsAbsoluteError": 0.3834,
+        "actualTotalBucket": "3",
+        "predictedTotalBucket": "2",
+        "totalGoalsExactHit": false,
+        "totalGoalsCoreInterval": "2-3",
+        "totalGoalsCoreHit": true,
+        "actualTotalProbability": 0.219,
+        "totalGoalsLogLoss": 1.5186835491656363
+      },
       "marketCalibration": {
         "applied": false,
         "reason": "incomplete_market"
@@ -376,6 +570,23 @@
       "optimizedExpectedGoals": {
         "home": 1.6519,
         "away": 1.1934
+      },
+      "forecastExpectedGoals": {
+        "home": 1.64,
+        "away": 1.19
+      },
+      "forecastDiagnostics": {
+        "likelyScoreHit": false,
+        "actualTotalGoals": 1,
+        "expectedTotalGoals": 2.8263,
+        "totalGoalsAbsoluteError": 1.8263,
+        "actualTotalBucket": "1",
+        "predictedTotalBucket": "2",
+        "totalGoalsExactHit": false,
+        "totalGoalsCoreInterval": "2-3",
+        "totalGoalsCoreHit": false,
+        "actualTotalProbability": 0.16669,
+        "totalGoalsLogLoss": 1.7916194790271405
       },
       "marketCalibration": {
         "applied": false,
@@ -412,6 +623,23 @@
         "home": 2.3456,
         "away": 1.1456
       },
+      "forecastExpectedGoals": {
+        "home": 2.35,
+        "away": 1.15
+      },
+      "forecastDiagnostics": {
+        "likelyScoreHit": false,
+        "actualTotalGoals": 6,
+        "expectedTotalGoals": 3.4491,
+        "totalGoalsAbsoluteError": 2.5509,
+        "actualTotalBucket": "6",
+        "predictedTotalBucket": "3",
+        "totalGoalsExactHit": false,
+        "totalGoalsCoreInterval": "3-4",
+        "totalGoalsCoreHit": false,
+        "actualTotalProbability": 0.07719,
+        "totalGoalsLogLoss": 2.5614853640203745
+      },
       "marketCalibration": {
         "applied": false,
         "reason": "within_threshold",
@@ -446,6 +674,23 @@
       "optimizedExpectedGoals": {
         "home": 2.1099,
         "away": 0.8694
+      },
+      "forecastExpectedGoals": {
+        "home": 2.11,
+        "away": 0.87
+      },
+      "forecastDiagnostics": {
+        "likelyScoreHit": false,
+        "actualTotalGoals": 3,
+        "expectedTotalGoals": 2.9688,
+        "totalGoalsAbsoluteError": 0.0312,
+        "actualTotalBucket": "3",
+        "predictedTotalBucket": "2",
+        "totalGoalsExactHit": false,
+        "totalGoalsCoreInterval": "2-3",
+        "totalGoalsCoreHit": true,
+        "actualTotalProbability": 0.22313,
+        "totalGoalsLogLoss": 1.5000007177357253
       },
       "marketCalibration": {
         "applied": false,
@@ -482,6 +727,23 @@
         "home": 2.4002,
         "away": 0.1698
       },
+      "forecastExpectedGoals": {
+        "home": 2.4,
+        "away": 0.17
+      },
+      "forecastDiagnostics": {
+        "likelyScoreHit": false,
+        "actualTotalGoals": 0,
+        "expectedTotalGoals": 2.5639,
+        "totalGoalsAbsoluteError": 2.5639,
+        "actualTotalBucket": "0",
+        "predictedTotalBucket": "2",
+        "totalGoalsExactHit": false,
+        "totalGoalsCoreInterval": "2-3",
+        "totalGoalsCoreHit": false,
+        "actualTotalProbability": 0.07638,
+        "totalGoalsLogLoss": 2.572034397184767
+      },
       "marketCalibration": {
         "applied": false,
         "reason": "within_threshold",
@@ -517,10 +779,235 @@
         "home": 0.494,
         "away": 2.4095
       },
+      "forecastExpectedGoals": {
+        "home": 0.49,
+        "away": 2.41
+      },
+      "forecastDiagnostics": {
+        "likelyScoreHit": false,
+        "actualTotalGoals": 4,
+        "expectedTotalGoals": 2.8951,
+        "totalGoalsAbsoluteError": 1.1049,
+        "actualTotalBucket": "4",
+        "predictedTotalBucket": "2",
+        "totalGoalsExactHit": false,
+        "totalGoalsCoreInterval": "2-3",
+        "totalGoalsCoreHit": false,
+        "actualTotalProbability": 0.16394,
+        "totalGoalsLogLoss": 1.8082547717572524
+      },
       "marketCalibration": {
         "applied": false,
         "reason": "within_threshold",
         "maxGap": 0.011924
+      }
+    },
+    {
+      "targetDate": "2026-06-22",
+      "match": "西班牙 vs 沙特",
+      "score": "4-0",
+      "actualOutcome": "home",
+      "baseline": {
+        "prediction": "home",
+        "hit": true,
+        "logLoss": 0.16104942151841498,
+        "probabilities": {
+          "home": 0.85125,
+          "draw": 0.12934,
+          "away": 0.01941
+        }
+      },
+      "optimized": {
+        "prediction": "home",
+        "hit": true,
+        "logLoss": 0.1630874652188776,
+        "probabilities": {
+          "home": 0.849517,
+          "draw": 0.134196,
+          "away": 0.016287
+        }
+      },
+      "optimizedExpectedGoals": {
+        "home": 2.2138,
+        "away": 0.1584
+      },
+      "forecastExpectedGoals": {
+        "home": 2.21,
+        "away": 0.16
+      },
+      "forecastDiagnostics": {
+        "likelyScoreHit": false,
+        "actualTotalGoals": 4,
+        "expectedTotalGoals": 2.3723,
+        "totalGoalsAbsoluteError": 1.6277,
+        "actualTotalBucket": "4",
+        "predictedTotalBucket": "2",
+        "totalGoalsExactHit": false,
+        "totalGoalsCoreInterval": "1-2",
+        "totalGoalsCoreHit": false,
+        "actualTotalProbability": 0.12395,
+        "totalGoalsLogLoss": 2.0878770205009376
+      },
+      "marketCalibration": {
+        "applied": false,
+        "reason": "within_threshold",
+        "maxGap": 0.004886
+      }
+    },
+    {
+      "targetDate": "2026-06-22",
+      "match": "比利时 vs 伊朗",
+      "score": "0-0",
+      "actualOutcome": "draw",
+      "baseline": {
+        "prediction": "home",
+        "hit": false,
+        "logLoss": 1.4837307998113665,
+        "probabilities": {
+          "home": 0.5559,
+          "draw": 0.22679,
+          "away": 0.21731
+        }
+      },
+      "optimized": {
+        "prediction": "home",
+        "hit": false,
+        "logLoss": 1.4058321523785235,
+        "probabilities": {
+          "home": 0.547104,
+          "draw": 0.245163,
+          "away": 0.207733
+        }
+      },
+      "optimizedExpectedGoals": {
+        "home": 1.8348,
+        "away": 1.0573
+      },
+      "forecastExpectedGoals": {
+        "home": 1.83,
+        "away": 1.06
+      },
+      "forecastDiagnostics": {
+        "likelyScoreHit": false,
+        "actualTotalGoals": 0,
+        "expectedTotalGoals": 2.8824,
+        "totalGoalsAbsoluteError": 2.8824,
+        "actualTotalBucket": "0",
+        "predictedTotalBucket": "2",
+        "totalGoalsExactHit": false,
+        "totalGoalsCoreInterval": "2-3",
+        "totalGoalsCoreHit": false,
+        "actualTotalProbability": 0.05494,
+        "totalGoalsLogLoss": 2.901513598315009
+      },
+      "marketCalibration": {
+        "applied": false,
+        "reason": "within_threshold",
+        "maxGap": 0.01894
+      }
+    },
+    {
+      "targetDate": "2026-06-22",
+      "match": "乌拉圭 vs 佛得角",
+      "score": "2-2",
+      "actualOutcome": "draw",
+      "baseline": {
+        "prediction": "home",
+        "hit": false,
+        "logLoss": 1.4337214546922816,
+        "probabilities": {
+          "home": 0.68701,
+          "draw": 0.23842,
+          "away": 0.07457
+        }
+      },
+      "optimized": {
+        "prediction": "home",
+        "hit": false,
+        "logLoss": 1.3824294021516095,
+        "probabilities": {
+          "home": 0.680552,
+          "draw": 0.250968,
+          "away": 0.06848
+        }
+      },
+      "optimizedExpectedGoals": {
+        "home": 1.5659,
+        "away": 0.3317
+      },
+      "forecastExpectedGoals": {
+        "home": 1.57,
+        "away": 0.33
+      },
+      "forecastDiagnostics": {
+        "likelyScoreHit": false,
+        "actualTotalGoals": 4,
+        "expectedTotalGoals": 1.8898,
+        "totalGoalsAbsoluteError": 2.1102,
+        "actualTotalBucket": "4",
+        "predictedTotalBucket": "1",
+        "totalGoalsExactHit": false,
+        "totalGoalsCoreInterval": "1-2",
+        "totalGoalsCoreHit": false,
+        "actualTotalProbability": 0.08012,
+        "totalGoalsLogLoss": 2.5242297681845196
+      },
+      "marketCalibration": {
+        "applied": false,
+        "reason": "within_threshold",
+        "maxGap": 0.012498
+      }
+    },
+    {
+      "targetDate": "2026-06-22",
+      "match": "新西兰 vs 埃及",
+      "score": "1-3",
+      "actualOutcome": "away",
+      "baseline": {
+        "prediction": "away",
+        "hit": true,
+        "logLoss": 0.5756130647704305,
+        "probabilities": {
+          "home": 0.19786,
+          "draw": 0.23978,
+          "away": 0.56236
+        }
+      },
+      "optimized": {
+        "prediction": "away",
+        "hit": true,
+        "logLoss": 0.5943662682175053,
+        "probabilities": {
+          "home": 0.188651,
+          "draw": 0.259437,
+          "away": 0.551912
+        }
+      },
+      "optimizedExpectedGoals": {
+        "home": 0.8909,
+        "away": 1.6839
+      },
+      "forecastExpectedGoals": {
+        "home": 0.89,
+        "away": 1.68
+      },
+      "forecastDiagnostics": {
+        "likelyScoreHit": false,
+        "actualTotalGoals": 4,
+        "expectedTotalGoals": 2.5716,
+        "totalGoalsAbsoluteError": 1.4284,
+        "actualTotalBucket": "4",
+        "predictedTotalBucket": "2",
+        "totalGoalsExactHit": false,
+        "totalGoalsCoreInterval": "2-3",
+        "totalGoalsCoreHit": false,
+        "actualTotalProbability": 0.14092,
+        "totalGoalsLogLoss": 1.9595629255091003
+      },
+      "marketCalibration": {
+        "applied": false,
+        "reason": "within_threshold",
+        "maxGap": 0.019472
       }
     }
   ]
