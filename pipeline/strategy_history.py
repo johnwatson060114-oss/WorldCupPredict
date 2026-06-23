@@ -21,13 +21,22 @@ def outcome_label(home_score: int, away_score: int) -> str:
     return "home" if home_score > away_score else "draw" if home_score == away_score else "away"
 
 
+def predicted_outcome_for_review(match: dict) -> tuple[str, str]:
+    decision = match.get("outcomeDecision") or {}
+    selection = decision.get("selection")
+    if selection in {"home", "draw", "away"}:
+        return selection, "outcomeDecision"
+    probabilities = match["outcomeProbabilities"]
+    return max(("home", "draw", "away"), key=lambda key: float(probabilities[key])), "outcomeProbabilities"
+
+
 def build_match_review(match: dict, result: dict) -> dict:
     actual_home = int(result["homeScore"])
     actual_away = int(result["awayScore"])
     probabilities = match["outcomeProbabilities"]
     actual_outcome = outcome_label(actual_home, actual_away)
     predicted_home, predicted_away = (int(value) for value in match["likelyScore"].split("-"))
-    predicted_outcome = outcome_label(predicted_home, predicted_away)
+    predicted_outcome, predicted_outcome_source = predicted_outcome_for_review(match)
     goal_error = abs(predicted_home - actual_home) + abs(predicted_away - actual_away)
     actual_vector = {key: 1.0 if key == actual_outcome else 0.0 for key in ("home", "draw", "away")}
     brier = sum((float(probabilities[key]) - actual_vector[key]) ** 2 for key in actual_vector)
@@ -48,6 +57,7 @@ def build_match_review(match: dict, result: dict) -> dict:
         "predictedScore": match["likelyScore"],
         "actualScore": f"{actual_home}-{actual_away}",
         "predictedOutcome": predicted_outcome,
+        "predictedOutcomeSource": predicted_outcome_source,
         "actualOutcome": actual_outcome,
         "outcomeCorrect": outcome_correct,
         "exactScore": predicted_home == actual_home and predicted_away == actual_away,
