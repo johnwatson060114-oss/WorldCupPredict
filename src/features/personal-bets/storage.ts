@@ -196,6 +196,12 @@ export const personalBalance = (ledger: PersonalBetLedger) => {
   return ledger.initialBankroll + settledNet - pending
 }
 
+export const personalBetProfit = (bet: Pick<PersonalBet, 'payout' | 'stake' | 'status'>) =>
+  bet.status === 'settled' ? (bet.payout ?? 0) - bet.stake : 0
+
+export const isWinningPersonalBet = (bet: Pick<PersonalBet, 'payout' | 'stake' | 'status'>) =>
+  personalBetProfit(bet) > 0
+
 export const exportPersonalLedger = (ledger: PersonalBetLedger) => {
   const blob = new Blob([JSON.stringify(ledger, null, 2)], { type: 'application/json' })
   const url = URL.createObjectURL(blob)

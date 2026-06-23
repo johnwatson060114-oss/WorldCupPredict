@@ -48,9 +48,15 @@ export function TicketReceipt({
 }: TicketReceiptProps) {
   const groups = groupLegsByMatch(legs)
   const matchDates = ticketMatchDates(legs)
+  const isWinner = status === 'settled' && (payout ?? 0) > stake
+  const receiptClassName = [
+    'sporttery-receipt',
+    compact ? 'compact' : '',
+    isWinner ? 'winner' : '',
+  ].filter(Boolean).join(' ')
 
   return (
-    <div className={compact ? 'sporttery-receipt compact' : 'sporttery-receipt'}>
+    <div className={receiptClassName}>
       <header className="receipt-brand-row">
         <span className="receipt-brand-mark"><TicketCheck size={compact ? 18 : 24} /></span>
         <span><strong>中国体育彩票</strong><small>个人记录票 · 非官方购彩</small></span>
@@ -96,8 +102,8 @@ export function TicketReceipt({
       <div className="receipt-number">票单编号：{receiptNumber(purchaseDate, ticketId)}</div>
       <div className="receipt-tear"><Scissors size={15} /></div>
       <div className="receipt-barcode" aria-hidden="true" />
-      <footer className={`receipt-status ${status}`}>
-        <strong>{statusLabels[status]}</strong>
+      <footer className={`receipt-status ${status}${isWinner ? ' winner' : ''}`}>
+        <strong>{isWinner ? '已中奖' : statusLabels[status]}</strong>
         <span>感谢您为公益事业贡献力量</span>
       </footer>
     </div>

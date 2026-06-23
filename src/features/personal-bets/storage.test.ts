@@ -1,5 +1,5 @@
 import { beforeAll, describe, expect, it } from 'vitest'
-import { personalBalance, reopenPersonalBet, settlePersonalBetManually, settlePersonalLedger } from './storage'
+import { isWinningPersonalBet, personalBalance, reopenPersonalBet, settlePersonalBetManually, settlePersonalLedger } from './storage'
 import type { PersonalBetLedger, PersonalBetLeg } from './types'
 
 beforeAll(() => {
@@ -18,6 +18,12 @@ const leg = (matchId: string): PersonalBetLeg => ({
 })
 
 describe('personal ledger settlement', () => {
+  it('marks only positive settled profit as a winning ticket', () => {
+    expect(isWinningPersonalBet({ status: 'settled', stake: 10, payout: 18 })).toBe(true)
+    expect(isWinningPersonalBet({ status: 'settled', stake: 10, payout: 10 })).toBe(false)
+    expect(isWinningPersonalBet({ status: 'pending', stake: 10, payout: 18 })).toBe(false)
+  })
+
   it('records manual profit and can reopen the ticket', () => {
     const ledger: PersonalBetLedger = {
       schemaVersion: 1,

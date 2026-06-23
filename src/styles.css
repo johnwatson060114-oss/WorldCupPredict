@@ -878,6 +878,7 @@ body:has(.sporttery-ledger-page) .topbar {
 .receipt-status { margin-top: 6px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .receipt-status strong { color: #d3222a; font-size: 14px; }
 .receipt-status.settled strong { color: #16845b; }
+.receipt-status.winner strong { color: #b56a00; font-weight: 900; }
 .receipt-status.void strong { color: #777; }
 .receipt-status span { color: #777; font-size: 9px; }
 
@@ -911,10 +912,14 @@ body:has(.sporttery-ledger-page) .topbar {
 
 .saved-ticket-section { margin-top: 12px; overflow: hidden; }
 .saved-ticket-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; padding: 14px; background: #fafafa; }
-.saved-ticket-card { min-width: 0; border: 1px solid #d5d7da; border-radius: 5px; background: #fff; overflow: hidden; transition: transform .16s ease, box-shadow .16s ease; }
+.saved-ticket-card { min-width: 0; position: relative; border: 1px solid #d5d7da; border-radius: 5px; background: #fff; overflow: hidden; transition: transform .16s ease, box-shadow .16s ease; }
 .saved-ticket-card:hover { transform: translateY(-2px); box-shadow: 0 7px 18px rgba(30, 36, 43, .08); }
 .saved-ticket-card.pending { border-top: 3px solid #d3222a; }
 .saved-ticket-card.settled { border-top: 3px solid #16845b; opacity: .58; filter: saturate(.55); }
+.saved-ticket-card.settled.winner { border: 1px solid #e2aa3b; border-top: 4px solid #e29612; opacity: 1; filter: none; box-shadow: 0 6px 20px rgba(190, 125, 8, .16); }
+.saved-ticket-card.settled.winner:hover { opacity: 1; box-shadow: 0 9px 24px rgba(190, 125, 8, .24); }
+.saved-ticket-card.settled.winner .sporttery-receipt { background: linear-gradient(145deg, #fffdf7 0%, #fff8df 100%); }
+.saved-ticket-card.settled.winner .receipt-barcode { opacity: .72; }
 .saved-ticket-card.void { border-top: 3px solid #888; opacity: .46; filter: grayscale(.45) saturate(.45); }
 .saved-ticket-card.settled:hover,
 .saved-ticket-card.void:hover { opacity: .82; }
@@ -940,6 +945,7 @@ body:has(.sporttery-ledger-page) .topbar {
 .saved-ticket-caption span b { color: #555; font-size: 10px; }
 .saved-ticket-caption span small { margin-top: 2px; color: #888; font-size: 9px; }
 .saved-ticket-caption > strong { flex: 0 0 auto; font-size: 11px; }
+.saved-ticket-win-badge { display: inline-flex; align-items: center; gap: 5px; padding: 5px 8px; border: 1px solid #e4b350; border-radius: 999px; background: #fff3c9; color: #a55d00; font-weight: 900; white-space: nowrap; }
 .saved-ticket-actions { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid #e3e4e6; }
 .saved-ticket-actions button { height: 36px; display: flex; align-items: center; justify-content: center; gap: 6px; border: 0; border-right: 1px solid #e3e4e6; background: #fff; color: #555; cursor: pointer; font-size: 11px; }
 .saved-ticket-actions button:last-child { border: 0; color: #d3222a; }

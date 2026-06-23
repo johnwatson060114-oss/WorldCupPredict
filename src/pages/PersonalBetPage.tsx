@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState, type CSSProperties, type Dispatch, type SetStateAction } from 'react'
-import { CalendarDays, CheckCircle2, ChevronDown, CircleAlert, Database, Download, Pencil, RefreshCw, RotateCcw, Save, Trash2 } from 'lucide-react'
+import { CalendarDays, CheckCircle2, ChevronDown, CircleAlert, Database, Download, Pencil, RefreshCw, RotateCcw, Save, Trash2, Trophy } from 'lucide-react'
 import { percent, shortDateTime, signedPercent } from '../lib/format'
 import type { DailyForecast, MarketQuote, MarketType, MatchForecast } from '../types'
 import { FairComparisonChart, StrategyActualChart, StrategyProjectionChart } from '../features/personal-bets/Charts'
@@ -10,7 +10,9 @@ import {
   captureModelSnapshot,
   deletePersonalBet,
   exportPersonalLedger,
+  isWinningPersonalBet,
   personalBalance,
+  personalBetProfit,
   reopenPersonalBet,
   savePersonalLedger,
   settlePersonalBetManually,
@@ -522,8 +524,10 @@ export function PersonalBetPage({ forecast, ledger, onLedgerChange }: PersonalBe
           {sortedBets.map((bet) => {
             const legs = legsForBet(bet)
             const passType = bet.passType ?? inferPassType(groupLegsByMatch(legs).length)
+            const profit = personalBetProfit(bet)
+            const isWinner = isWinningPersonalBet(bet)
             return (
-              <article className={`saved-ticket-card ${bet.status}`} key={bet.id}>
+              <article className={`saved-ticket-card ${bet.status}${isWinner ? ' winner' : ''}`} key={bet.id}>
                 <TicketReceipt
                   compact
                   passType={passType}
@@ -539,7 +543,9 @@ export function PersonalBetPage({ forecast, ledger, onLedgerChange }: PersonalBe
                 />
                 <div className="saved-ticket-caption">
                   <span><b>{decisionLabels[bet.decisionSource]}</b>{bet.note && <small>{bet.note}</small>}</span>
-                  {bet.status === 'settled' && <strong className={(bet.payout ?? 0) - bet.stake >= 0 ? 'positive-text' : 'negative-text'}>盈亏 {preciseMoney((bet.payout ?? 0) - bet.stake)}</strong>}
+                  {isWinner
+                    ? <strong className="saved-ticket-win-badge"><Trophy size={14} />中奖 +{preciseMoney(profit)}</strong>
+                    : bet.status === 'settled' && <strong className={profit >= 0 ? 'positive-text' : 'negative-text'}>盈亏 {preciseMoney(profit)}</strong>}
                 </div>
                 {settlementEditor?.id === bet.id && <div className="manual-settlement-editor">
                   <label>实际盈亏（元）<input type="number" step="0.01" min={-bet.stake} value={settlementEditor.profit} onChange={(event) => setSettlementEditor({ id: bet.id, profit: event.target.value })} /></label>
