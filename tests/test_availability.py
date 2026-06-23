@@ -1,4 +1,5 @@
 from pipeline.availability import apply_availability
+from pipeline.availability import load_availability
 
 
 def test_availability_record_lowers_coverage_without_inventing_xg_adjustment():
@@ -41,6 +42,29 @@ def test_availability_only_applies_to_matching_date_and_team():
 
     assert seeds[0]["coverage"] == 0.72
     assert "availability" not in seeds[0]
+
+
+def test_tournament_availability_is_loaded_and_deduplicated(tmp_path):
+    csv_path = tmp_path / "availability.csv"
+    csv_path.write_text(
+        "team,player,target_date,status,availability_probability,confidence,source_url,observed_at,note\n"
+        "A,P1,2026-06-25,doubtful,0.5,0.4,https://example.test/a,2026-06-23T00:00:00Z,csv\n",
+        encoding="utf-8",
+    )
+    json_path = tmp_path / "tournament.json"
+    json_path.write_text(__import__("json").dumps({
+        "records": [{
+            "team": "A", "player": "P1", "target_date": "2026-06-25",
+            "status": "suspended", "availability_probability": 0.0, "confidence": 1.0,
+            "source_url": "https://example.test/b", "observed_at": "2026-06-23T01:00:00Z",
+            "note": "cards",
+        }],
+    }), encoding="utf-8")
+
+    records = load_availability(csv_path, json_path)
+
+    assert len(records) == 1
+    assert records[0]["status"] == "suspended"
 
 
 def test_multiple_suspensions_accumulate_confidence_penalty():

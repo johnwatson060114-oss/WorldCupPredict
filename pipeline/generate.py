@@ -55,7 +55,7 @@ from .portfolio import build_portfolios
 from .provenance import build_snapshot_manifest
 from .simulation import MatchSimulationInput, TournamentSimulation, simulate_tournament
 from .sporttery import SportteryMatch, fetch_sporttery, filter_by_beijing_date, load_fixture
-from .tournament_form import apply_tournament_form, load_first_round_profiles
+from .two_round_form import apply_two_round_form, load_two_round_profiles
 from .weather import OpenMeteoClient
 
 OUTCOME_KEYS = {"胜": "home", "平": "draw", "负": "away"}
@@ -124,7 +124,10 @@ def local_snapshot_paths() -> list[Path]:
         ROOT / "pipeline" / "data" / "demo_matches.json",
         ROOT / "pipeline" / "data" / "fifa-2026-discipline.json",
         ROOT / "pipeline" / "data" / "factor-admissions.json",
-        ROOT / "pipeline" / "data" / "first-round-performance.json",
+        ROOT / "pipeline" / "data" / "two-round-performance.json",
+        ROOT / "pipeline" / "data" / "tournament-availability.json",
+        ROOT / "public" / "data" / "two-round-match-timelines.json",
+        ROOT / "pipeline" / "data" / "fifa-2026-annex-c.json",
         ROOT / "pipeline" / "data" / "model-policy.json",
         FIXTURE_DIR / "sporttery-spf.html",
         FIXTURE_DIR / "sporttery-score.html",
@@ -974,14 +977,14 @@ def main() -> None:
 
     availability_records = load_availability()
     factor_admissions = load_factor_admissions()
-    first_round_profiles = load_first_round_profiles()
+    two_round_profiles = load_two_round_profiles()
 
     def prepare_seeds(batch: list[dict], batch_date: str) -> None:
         apply_availability(batch, batch_date, availability_records)
         apply_intelligence(batch, load_daily_intelligence(batch_date, generated_at))
         apply_lineup_impacts(batch)
         apply_factor_admissions(batch, factor_admissions)
-        apply_tournament_form(batch, batch_date, first_round_profiles)
+        apply_two_round_form(batch, batch_date, two_round_profiles)
         apply_current_tournament_context(batch, all_football_matches)
 
     prepare_seeds(seeds, target_date)
@@ -1024,6 +1027,18 @@ def main() -> None:
             group=seed.get("group"),
             stage_complete=bool(seed.get("stage_complete", False)),
             parameter_samples=tuple(tuple(sample) for sample in seed.get("parameter_samples", [])),
+            home_late_attack_multiplier=float(
+                (seed.get("current_tournament") or {}).get("homeLatePressure", {}).get("attackMultiplier", 1.0)
+            ),
+            away_late_attack_multiplier=float(
+                (seed.get("current_tournament") or {}).get("awayLatePressure", {}).get("attackMultiplier", 1.0)
+            ),
+            home_late_defensive_risk_multiplier=float(
+                (seed.get("current_tournament") or {}).get("homeLatePressure", {}).get("defensiveRiskMultiplier", 1.0)
+            ),
+            away_late_defensive_risk_multiplier=float(
+                (seed.get("current_tournament") or {}).get("awayLatePressure", {}).get("defensiveRiskMultiplier", 1.0)
+            ),
         ))
     simulation = simulate_tournament(
         simulation_inputs,

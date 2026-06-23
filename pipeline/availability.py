@@ -1,10 +1,12 @@
 from __future__ import annotations
 
 import csv
+import json
 from pathlib import Path
 from typing import Any
 
 from .config import MANUAL_DIR
+from .config import ROOT
 
 
 STATUS_LABELS = {
@@ -16,22 +18,45 @@ STATUS_LABELS = {
 }
 
 
-def load_availability(path: Path = MANUAL_DIR / "availability.csv") -> list[dict[str, Any]]:
+TOURNAMENT_AVAILABILITY_PATH = ROOT / "pipeline" / "data" / "tournament-availability.json"
+
+
+def load_availability(
+    path: Path = MANUAL_DIR / "availability.csv",
+    tournament_path: Path = TOURNAMENT_AVAILABILITY_PATH,
+) -> list[dict[str, Any]]:
+    records: list[dict[str, Any]] = []
     if not path.exists():
-        return []
-    with path.open(encoding="utf-8-sig", newline="") as source:
-        records = []
-        for row in csv.DictReader(source):
-            if not row.get("team") or not row.get("player") or not row.get("target_date"):
-                continue
-            if not row.get("source_url") or not row.get("observed_at"):
-                continue
+        pass
+    else:
+        with path.open(encoding="utf-8-sig", newline="") as source:
+            for row in csv.DictReader(source):
+                if not row.get("team") or not row.get("player") or not row.get("target_date"):
+                    continue
+                if not row.get("source_url") or not row.get("observed_at"):
+                    continue
+                records.append({
+                    **row,
+                    "availability_probability": min(1.0, max(0.0, float(row["availability_probability"]))),
+                    "confidence": min(1.0, max(0.0, float(row.get("confidence") or 0.5))),
+                })
+    if tournament_path.exists():
+        payload = json.loads(tournament_path.read_text(encoding="utf-8"))
+        for item in payload.get("records", []):
             records.append({
-                **row,
-                "availability_probability": min(1.0, max(0.0, float(row["availability_probability"]))),
-                "confidence": min(1.0, max(0.0, float(row.get("confidence") or 0.5))),
+                **item,
+                "availability_probability": min(
+                    1.0, max(0.0, float(item["availability_probability"]))
+                ),
+                "confidence": min(1.0, max(0.0, float(item.get("confidence") or 0.5))),
             })
-        return records
+    deduplicated: dict[tuple[str, str, str], dict[str, Any]] = {}
+    for record in records:
+        key = (str(record["team"]), str(record["player"]), str(record["target_date"]))
+        previous = deduplicated.get(key)
+        if previous is None or float(record["confidence"]) > float(previous["confidence"]):
+            deduplicated[key] = record
+    return list(deduplicated.values())
 
 
 def apply_availability(seeds: list[dict[str, Any]], target_date: str, records: list[dict[str, Any]]) -> None:

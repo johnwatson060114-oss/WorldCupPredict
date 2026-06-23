@@ -8,6 +8,7 @@ from zoneinfo import ZoneInfo
 from .api_football import ApiFootballClient
 from .config import OUTPUT_DIR, SETTINGS
 from .football_data import FootballDataClient, localized_team_name
+from .settlement_store import deduplicate_settlements
 from .zgzcw_history import closing_odds_metadata, fetch_closing_odds, sales_issue
 
 
@@ -21,7 +22,8 @@ def main() -> None:
     existing = {"generatedAt": datetime.now(ZoneInfo(SETTINGS.timezone)).isoformat(timespec="seconds"), "matches": []}
     if output.exists():
         existing = json.loads(output.read_text(encoding="utf-8"))
-    by_id = {item["matchId"]: item for item in existing.get("matches", [])}
+    existing_matches = deduplicate_settlements(existing.get("matches", []))
+    by_id = {str(item["matchId"]): item for item in existing_matches}
     football_client = FootballDataClient()
     api_client = ApiFootballClient()
     if not history_dir.exists():
@@ -85,6 +87,7 @@ def main() -> None:
                     continue
                 by_id[match["id"]] = {
                     "matchId": match["id"],
+                    "fixtureId": fixture_id,
                     "matchLabel": f"{match['homeTeam']} vs {match['awayTeam']}",
                     "homeScore": score["home"],
                     "awayScore": score["away"],
@@ -119,13 +122,14 @@ def main() -> None:
             if odds:
                 by_id[match_id].update(closing_odds_metadata(issue, odds, checked_at))
 
+    deduplicated = deduplicate_settlements(by_id.values())
     payload = {
         "generatedAt": datetime.now(ZoneInfo(SETTINGS.timezone)).isoformat(timespec="seconds"),
-        "matches": list(by_id.values()),
+        "matches": deduplicated,
     }
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"Wrote {output} with {len(by_id)} settled matches")
+    print(f"Wrote {output} with {len(deduplicated)} unique settled matches")
     if unavailable_dates:
         print(f"Settlement refresh skipped {len(unavailable_dates)} date(s); existing results were preserved")
 

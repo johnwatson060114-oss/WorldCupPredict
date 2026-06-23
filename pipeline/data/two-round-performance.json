@@ -1,0 +1,5087 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-23T16:38:49+08:00",
+  "round": {
+    "name": "group_matchdays_1_2",
+    "scheduledMatches": 48,
+    "completedMatches": 44,
+    "teams": 48,
+    "matchdayWeights": {
+      "1": 0.45,
+      "2": 0.55
+    }
+  },
+  "method": {
+    "objectiveAndTacticalSeparated": true,
+    "objectiveDirectionCap": 0.08,
+    "objectiveMultiplier": 1.5,
+    "tacticalDirectionCap": 0.05,
+    "combinedTeamDirectionCap": 0.18,
+    "tacticalAdmissionStatus": "observation_only"
+  },
+  "teams": [
+    {
+      "team": "乌兹别克斯坦",
+      "summary": "乌兹别克斯坦 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537404,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-18",
+          "opponent": "哥伦比亚",
+          "scoreFor": 1,
+          "scoreAgainst": 3,
+          "expectedGoalsReference": 0.4451,
+          "expectedGoalsAgainstReference": 2.1049,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": 0.0086,
+            "defenseDelta": -0.0139,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.035,
+            "defenseDelta": -0.0125,
+            "labels": [
+              "second_break_attack_increase",
+              "late_pressure",
+              "post_break_substitution_burst"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 39,
+            "coolingBreakMinutes": [
+              23.0,
+              69.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760436",
+                "archived": true,
+                "espnEventId": "760436"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 1,
+        "tacticalLabels": [
+          "second_break_attack_increase",
+          "late_pressure",
+          "post_break_substitution_burst"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "乌拉圭",
+      "summary": "乌拉圭 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537370,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-16",
+          "opponent": "沙特",
+          "scoreFor": 1,
+          "scoreAgainst": 1,
+          "expectedGoalsReference": 2.0057,
+          "expectedGoalsAgainstReference": 0.5443,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": -0.0156,
+            "defenseDelta": -0.0071,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.03,
+            "defenseDelta": -0.0175,
+            "labels": [
+              "first_break_attack_decrease",
+              "second_break_attack_increase",
+              "late_pressure",
+              "set_piece_creation"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 48,
+            "coolingBreakMinutes": [
+              23.0,
+              69.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760429",
+                "archived": true,
+                "espnEventId": "760429"
+              }
+            ]
+          }
+        },
+        {
+          "fixtureId": 537372,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-22",
+          "opponent": "佛得角",
+          "scoreFor": 2,
+          "scoreAgainst": 2,
+          "expectedGoalsReference": 2.2155,
+          "expectedGoalsAgainstReference": 0.3345,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": -0.0033,
+            "defenseDelta": -0.0258,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.035,
+            "defenseDelta": -0.0,
+            "labels": [
+              "first_break_attack_increase",
+              "second_break_attack_increase"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 46,
+            "coolingBreakMinutes": [
+              25.0,
+              71.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760450",
+                "archived": true,
+                "espnEventId": "760450"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 2,
+        "tacticalLabels": [
+          "first_break_attack_decrease",
+          "second_break_attack_increase",
+          "late_pressure",
+          "set_piece_creation",
+          "first_break_attack_increase",
+          "second_break_attack_increase"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "伊拉克",
+      "summary": "伊拉克 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537392,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-17",
+          "opponent": "挪威",
+          "scoreFor": 1,
+          "scoreAgainst": 4,
+          "expectedGoalsReference": 0.3638,
+          "expectedGoalsAgainstReference": 2.1862,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": 0.0099,
+            "defenseDelta": -0.0281,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.03,
+            "defenseDelta": -0.025,
+            "labels": [
+              "second_break_attack_decrease",
+              "late_attack_drop",
+              "set_piece_creation",
+              "post_break_substitution_burst"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 39,
+            "coolingBreakMinutes": [
+              24.0,
+              69.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760430",
+                "archived": true,
+                "espnEventId": "760430"
+              }
+            ]
+          }
+        },
+        {
+          "fixtureId": 537393,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-23",
+          "opponent": "法国",
+          "scoreFor": 0,
+          "scoreAgainst": 3,
+          "expectedGoalsReference": 0.15,
+          "expectedGoalsAgainstReference": 2.4,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": -0.0023,
+            "defenseDelta": -0.0093,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.035,
+            "defenseDelta": 0.0125,
+            "labels": [
+              "first_break_attack_increase",
+              "second_break_attack_increase"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 36,
+            "coolingBreakMinutes": [
+              23.0,
+              70.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760457",
+                "archived": true,
+                "espnEventId": "760457"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 2,
+        "tacticalLabels": [
+          "second_break_attack_decrease",
+          "late_attack_drop",
+          "set_piece_creation",
+          "post_break_substitution_burst",
+          "first_break_attack_increase",
+          "second_break_attack_increase"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "伊朗",
+      "summary": "伊朗 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537364,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-16",
+          "opponent": "新西兰",
+          "scoreFor": 2,
+          "scoreAgainst": 2,
+          "expectedGoalsReference": 1.9022,
+          "expectedGoalsAgainstReference": 0.6478,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": 0.0015,
+            "defenseDelta": -0.021,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.0,
+            "defenseDelta": 0.0025,
+            "labels": [],
+            "corroboration": "insufficient",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 48,
+            "coolingBreakMinutes": [
+              25.0,
+              68.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760427",
+                "archived": true,
+                "espnEventId": "760427"
+              }
+            ]
+          }
+        },
+        {
+          "fixtureId": 537365,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-22",
+          "opponent": "比利时",
+          "scoreFor": 0,
+          "scoreAgainst": 0,
+          "expectedGoalsReference": 0.9651,
+          "expectedGoalsAgainstReference": 1.5849,
+          "evidenceConfidence": 0.35,
+          "objectiveForm": {
+            "attackDelta": -0.0084,
+            "defenseDelta": 0.0139,
+            "redCardAdjusted": true,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.0,
+            "defenseDelta": 0.0025,
+            "labels": [],
+            "corroboration": "insufficient",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 48,
+            "coolingBreakMinutes": [
+              30.0,
+              70.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760451",
+                "archived": true,
+                "espnEventId": "760451"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 2,
+        "tacticalLabels": [],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "佛得角",
+      "summary": "佛得角 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537369,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-16",
+          "opponent": "西班牙",
+          "scoreFor": 0,
+          "scoreAgainst": 0,
+          "expectedGoalsReference": 0.15,
+          "expectedGoalsAgainstReference": 2.4,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": -0.0023,
+            "defenseDelta": 0.0372,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.0,
+            "defenseDelta": -0.0225,
+            "labels": [],
+            "corroboration": "insufficient",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 49,
+            "coolingBreakMinutes": [
+              23.0,
+              68.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760428",
+                "archived": true,
+                "espnEventId": "760428"
+              }
+            ]
+          }
+        },
+        {
+          "fixtureId": 537372,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-22",
+          "opponent": "乌拉圭",
+          "scoreFor": 2,
+          "scoreAgainst": 2,
+          "expectedGoalsReference": 0.3345,
+          "expectedGoalsAgainstReference": 2.2155,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": 0.0258,
+            "defenseDelta": 0.0033,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.0,
+            "defenseDelta": -0.0175,
+            "labels": [],
+            "corroboration": "insufficient",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 46,
+            "coolingBreakMinutes": [
+              25.0,
+              71.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760450",
+                "archived": true,
+                "espnEventId": "760450"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 2,
+        "tacticalLabels": [],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "克罗地亚",
+      "summary": "克罗地亚 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537409,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-18",
+          "opponent": "英格兰",
+          "scoreFor": 2,
+          "scoreAgainst": 4,
+          "expectedGoalsReference": 0.7629,
+          "expectedGoalsAgainstReference": 1.7871,
+          "evidenceConfidence": 0.45,
+          "objectiveForm": {
+            "attackDelta": 0.0139,
+            "defenseDelta": -0.0249,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": true,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.015,
+            "defenseDelta": 0.0125,
+            "labels": [
+              "late_pressure",
+              "post_break_substitution_burst"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 46,
+            "coolingBreakMinutes": [
+              23.0,
+              69.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760437",
+                "archived": true,
+                "espnEventId": "760437"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 1,
+        "tacticalLabels": [
+          "late_pressure",
+          "post_break_substitution_burst"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "加拿大",
+      "summary": "加拿大 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537333,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-13",
+          "opponent": "波黑",
+          "scoreFor": 1,
+          "scoreAgainst": 1,
+          "expectedGoalsReference": 2.0515,
+          "expectedGoalsAgainstReference": 0.4985,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": -0.0163,
+            "defenseDelta": -0.0078,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.005,
+            "defenseDelta": -0.0,
+            "labels": [
+              "first_break_attack_increase",
+              "second_break_attack_decrease",
+              "set_piece_creation"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 42,
+            "coolingBreakMinutes": [
+              23.0,
+              69.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760416",
+                "archived": true,
+                "espnEventId": "760416"
+              }
+            ]
+          }
+        },
+        {
+          "fixtureId": 537336,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-19",
+          "opponent": "卡塔尔",
+          "scoreFor": 6,
+          "scoreAgainst": 0,
+          "expectedGoalsReference": 2.1925,
+          "expectedGoalsAgainstReference": 0.3575,
+          "evidenceConfidence": 0.35,
+          "objectiveForm": {
+            "attackDelta": 0.0333,
+            "defenseDelta": 0.0031,
+            "redCardAdjusted": true,
+            "finishingOutlierShrunk": true,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.05,
+            "defenseDelta": 0.0075,
+            "labels": [
+              "first_break_attack_increase",
+              "second_break_attack_increase",
+              "late_pressure",
+              "set_piece_creation",
+              "post_break_substitution_burst"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 57,
+            "coolingBreakMinutes": [
+              25.0,
+              68.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760440",
+                "archived": true,
+                "espnEventId": "760440"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 2,
+        "tacticalLabels": [
+          "first_break_attack_increase",
+          "second_break_attack_decrease",
+          "set_piece_creation",
+          "first_break_attack_increase",
+          "second_break_attack_increase",
+          "late_pressure",
+          "set_piece_creation",
+          "post_break_substitution_burst"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "加纳",
+      "summary": "加纳 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537410,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-18",
+          "opponent": "巴拿马",
+          "scoreFor": 1,
+          "scoreAgainst": 0,
+          "expectedGoalsReference": 0.8982,
+          "expectedGoalsAgainstReference": 1.6518,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": 0.0016,
+            "defenseDelta": 0.0256,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.01,
+            "defenseDelta": 0.01,
+            "labels": [
+              "second_break_attack_decrease",
+              "set_piece_creation"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 36,
+            "coolingBreakMinutes": [
+              24.0,
+              68.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760434",
+                "archived": true,
+                "espnEventId": "760434"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 1,
+        "tacticalLabels": [
+          "second_break_attack_decrease",
+          "set_piece_creation"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "南非",
+      "summary": "南非 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537327,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-12",
+          "opponent": "墨西哥",
+          "scoreFor": 0,
+          "scoreAgainst": 2,
+          "expectedGoalsReference": 0.2982,
+          "expectedGoalsAgainstReference": 2.2518,
+          "evidenceConfidence": 0.35,
+          "objectiveForm": {
+            "attackDelta": -0.0026,
+            "defenseDelta": 0.0022,
+            "redCardAdjusted": true,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.02,
+            "defenseDelta": 0.015,
+            "labels": [
+              "second_break_attack_decrease",
+              "post_break_substitution_burst"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 39,
+            "coolingBreakMinutes": [
+              25.0,
+              68.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760415",
+                "archived": true,
+                "espnEventId": "760415"
+              }
+            ]
+          }
+        },
+        {
+          "fixtureId": 537329,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-19",
+          "opponent": "捷克",
+          "scoreFor": 1,
+          "scoreAgainst": 1,
+          "expectedGoalsReference": 0.7767,
+          "expectedGoalsAgainstReference": 1.7733,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": 0.0035,
+            "defenseDelta": 0.012,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.03,
+            "defenseDelta": 0.0025,
+            "labels": [
+              "first_break_attack_decrease",
+              "second_break_attack_increase",
+              "late_pressure",
+              "set_piece_creation"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 44,
+            "coolingBreakMinutes": [
+              23.0,
+              69.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760438",
+                "archived": true,
+                "espnEventId": "760438"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 2,
+        "tacticalLabels": [
+          "second_break_attack_decrease",
+          "post_break_substitution_burst",
+          "first_break_attack_decrease",
+          "second_break_attack_increase",
+          "late_pressure",
+          "set_piece_creation"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "卡塔尔",
+      "summary": "卡塔尔 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537334,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-14",
+          "opponent": "瑞士",
+          "scoreFor": 1,
+          "scoreAgainst": 1,
+          "expectedGoalsReference": 0.1548,
+          "expectedGoalsAgainstReference": 2.3952,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": 0.0131,
+            "defenseDelta": 0.0216,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.025,
+            "defenseDelta": 0.0025,
+            "labels": [
+              "first_break_attack_increase",
+              "set_piece_creation"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 51,
+            "coolingBreakMinutes": [
+              24.0,
+              68.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760420",
+                "archived": true,
+                "espnEventId": "760420"
+              }
+            ]
+          }
+        },
+        {
+          "fixtureId": 537336,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-19",
+          "opponent": "加拿大",
+          "scoreFor": 0,
+          "scoreAgainst": 6,
+          "expectedGoalsReference": 0.3575,
+          "expectedGoalsAgainstReference": 2.1925,
+          "evidenceConfidence": 0.35,
+          "objectiveForm": {
+            "attackDelta": -0.0031,
+            "defenseDelta": -0.0333,
+            "redCardAdjusted": true,
+            "finishingOutlierShrunk": true,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.015,
+            "defenseDelta": -0.025,
+            "labels": [
+              "first_break_attack_decrease"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 57,
+            "coolingBreakMinutes": [
+              25.0,
+              68.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760440",
+                "archived": true,
+                "espnEventId": "760440"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 2,
+        "tacticalLabels": [
+          "first_break_attack_increase",
+          "set_piece_creation",
+          "first_break_attack_decrease"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "厄瓜多尔",
+      "summary": "厄瓜多尔 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537352,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-15",
+          "opponent": "科特迪瓦",
+          "scoreFor": 0,
+          "scoreAgainst": 1,
+          "expectedGoalsReference": 1.6805,
+          "expectedGoalsAgainstReference": 0.8695,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": -0.026,
+            "defenseDelta": -0.002,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.015,
+            "defenseDelta": -0.0,
+            "labels": [
+              "first_break_attack_decrease"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 44,
+            "coolingBreakMinutes": [
+              24.0,
+              69.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760423",
+                "archived": true,
+                "espnEventId": "760423"
+              }
+            ]
+          }
+        },
+        {
+          "fixtureId": 537354,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-21",
+          "opponent": "库拉索",
+          "scoreFor": 0,
+          "scoreAgainst": 0,
+          "expectedGoalsReference": 2.3313,
+          "expectedGoalsAgainstReference": 0.2187,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": -0.0361,
+            "defenseDelta": 0.0034,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.025,
+            "defenseDelta": 0.02,
+            "labels": [
+              "first_break_attack_decrease",
+              "second_break_attack_decrease",
+              "set_piece_creation"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 59,
+            "coolingBreakMinutes": [
+              24.0,
+              68.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760446",
+                "archived": true,
+                "espnEventId": "760446"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 2,
+        "tacticalLabels": [
+          "first_break_attack_decrease",
+          "first_break_attack_decrease",
+          "second_break_attack_decrease",
+          "set_piece_creation"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "哥伦比亚",
+      "summary": "哥伦比亚 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537404,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-18",
+          "opponent": "乌兹别克斯坦",
+          "scoreFor": 3,
+          "scoreAgainst": 1,
+          "expectedGoalsReference": 2.1049,
+          "expectedGoalsAgainstReference": 0.4451,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": 0.0139,
+            "defenseDelta": -0.0086,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.025,
+            "defenseDelta": -0.0175,
+            "labels": [
+              "first_break_attack_increase",
+              "set_piece_creation"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 39,
+            "coolingBreakMinutes": [
+              23.0,
+              69.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760436",
+                "archived": true,
+                "espnEventId": "760436"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 1,
+        "tacticalLabels": [
+          "first_break_attack_increase",
+          "set_piece_creation"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "土耳其",
+      "summary": "土耳其 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537346,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-14",
+          "opponent": "澳大利亚",
+          "scoreFor": 0,
+          "scoreAgainst": 2,
+          "expectedGoalsReference": 1.3176,
+          "expectedGoalsAgainstReference": 1.2324,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": -0.0204,
+            "defenseDelta": -0.0119,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.01,
+            "defenseDelta": -0.0125,
+            "labels": [
+              "second_break_attack_decrease",
+              "set_piece_creation"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 53,
+            "coolingBreakMinutes": [
+              23.0,
+              68.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760421",
+                "archived": true,
+                "espnEventId": "760421"
+              }
+            ]
+          }
+        },
+        {
+          "fixtureId": 537347,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-20",
+          "opponent": "巴拉圭",
+          "scoreFor": 0,
+          "scoreAgainst": 1,
+          "expectedGoalsReference": 1.2659,
+          "expectedGoalsAgainstReference": 1.2841,
+          "evidenceConfidence": 0.35,
+          "objectiveForm": {
+            "attackDelta": -0.0111,
+            "defenseDelta": 0.0025,
+            "redCardAdjusted": true,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.035,
+            "defenseDelta": -0.0,
+            "labels": [
+              "second_break_attack_increase",
+              "late_pressure"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 63,
+            "coolingBreakMinutes": [
+              26.0,
+              68.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760443",
+                "archived": true,
+                "espnEventId": "760443"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 2,
+        "tacticalLabels": [
+          "second_break_attack_decrease",
+          "set_piece_creation",
+          "second_break_attack_increase",
+          "late_pressure"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "埃及",
+      "summary": "埃及 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537363,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-16",
+          "opponent": "比利时",
+          "scoreFor": 1,
+          "scoreAgainst": 1,
+          "expectedGoalsReference": 0.8895,
+          "expectedGoalsAgainstReference": 1.6605,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": 0.0017,
+            "defenseDelta": 0.0102,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.02,
+            "defenseDelta": -0.0125,
+            "labels": [
+              "second_break_attack_decrease",
+              "post_break_substitution_burst"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 46,
+            "coolingBreakMinutes": [
+              22.0,
+              67.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760426",
+                "archived": true,
+                "espnEventId": "760426"
+              }
+            ]
+          }
+        },
+        {
+          "fixtureId": 537366,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-22",
+          "opponent": "新西兰",
+          "scoreFor": 3,
+          "scoreAgainst": 1,
+          "expectedGoalsReference": 1.8334,
+          "expectedGoalsAgainstReference": 0.7166,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": 0.0181,
+            "defenseDelta": -0.0044,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.025,
+            "defenseDelta": -0.0025,
+            "labels": [
+              "first_break_attack_decrease",
+              "second_break_attack_decrease",
+              "set_piece_creation",
+              "post_break_substitution_burst"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 49,
+            "coolingBreakMinutes": [
+              22.0,
+              72.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760452",
+                "archived": true,
+                "espnEventId": "760452"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 2,
+        "tacticalLabels": [
+          "second_break_attack_decrease",
+          "post_break_substitution_burst",
+          "first_break_attack_decrease",
+          "second_break_attack_decrease",
+          "set_piece_creation",
+          "post_break_substitution_burst"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "塞内加尔",
+      "summary": "塞内加尔 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537391,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-17",
+          "opponent": "法国",
+          "scoreFor": 1,
+          "scoreAgainst": 3,
+          "expectedGoalsReference": 0.5764,
+          "expectedGoalsAgainstReference": 1.9736,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": 0.0066,
+            "defenseDelta": -0.0159,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.0,
+            "defenseDelta": -0.0,
+            "labels": [
+              "post_break_substitution_burst"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 29,
+            "coolingBreakMinutes": [
+              26.0,
+              68.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760432",
+                "archived": true,
+                "espnEventId": "760432"
+              }
+            ]
+          }
+        },
+        {
+          "fixtureId": 537394,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-23",
+          "opponent": "挪威",
+          "scoreFor": 2,
+          "scoreAgainst": 3,
+          "expectedGoalsReference": 1.0035,
+          "expectedGoalsAgainstReference": 1.5465,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": 0.0154,
+            "defenseDelta": -0.0225,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.02,
+            "defenseDelta": 0.01,
+            "labels": [
+              "second_break_attack_increase"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 43,
+            "coolingBreakMinutes": [
+              23.0,
+              68.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760454",
+                "archived": true,
+                "espnEventId": "760454"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 2,
+        "tacticalLabels": [
+          "post_break_substitution_burst",
+          "second_break_attack_increase"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "墨西哥",
+      "summary": "墨西哥 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537327,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-12",
+          "opponent": "南非",
+          "scoreFor": 2,
+          "scoreAgainst": 0,
+          "expectedGoalsReference": 2.2518,
+          "expectedGoalsAgainstReference": 0.2982,
+          "evidenceConfidence": 0.35,
+          "objectiveForm": {
+            "attackDelta": -0.0022,
+            "defenseDelta": 0.0026,
+            "redCardAdjusted": true,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.03,
+            "defenseDelta": 0.01,
+            "labels": [
+              "second_break_attack_decrease",
+              "late_attack_drop",
+              "set_piece_creation",
+              "post_break_substitution_burst"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 39,
+            "coolingBreakMinutes": [
+              25.0,
+              68.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760415",
+                "archived": true,
+                "espnEventId": "760415"
+              }
+            ]
+          }
+        },
+        {
+          "fixtureId": 537330,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-19",
+          "opponent": "韩国",
+          "scoreFor": 1,
+          "scoreAgainst": 0,
+          "expectedGoalsReference": 1.6489,
+          "expectedGoalsAgainstReference": 0.9011,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": -0.0101,
+            "defenseDelta": 0.014,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.0,
+            "defenseDelta": -0.0,
+            "labels": [
+              "first_break_attack_decrease",
+              "late_pressure",
+              "post_break_substitution_burst"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 32,
+            "coolingBreakMinutes": [
+              23.0,
+              68.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760441",
+                "archived": true,
+                "espnEventId": "760441"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 2,
+        "tacticalLabels": [
+          "second_break_attack_decrease",
+          "late_attack_drop",
+          "set_piece_creation",
+          "post_break_substitution_burst",
+          "first_break_attack_decrease",
+          "late_pressure",
+          "post_break_substitution_burst"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "奥地利",
+      "summary": "奥地利 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537398,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-17",
+          "opponent": "约旦",
+          "scoreFor": 3,
+          "scoreAgainst": 1,
+          "expectedGoalsReference": 1.8253,
+          "expectedGoalsAgainstReference": 0.7247,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": 0.0182,
+            "defenseDelta": -0.0043,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.015,
+            "defenseDelta": -0.005,
+            "labels": [
+              "first_break_attack_decrease"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 42,
+            "coolingBreakMinutes": [
+              23.0,
+              72.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760431",
+                "archived": true,
+                "espnEventId": "760431"
+              }
+            ]
+          }
+        },
+        {
+          "fixtureId": 537399,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-23",
+          "opponent": "阿根廷",
+          "scoreFor": 0,
+          "scoreAgainst": 2,
+          "expectedGoalsReference": 0.4383,
+          "expectedGoalsAgainstReference": 2.1117,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": -0.0068,
+            "defenseDelta": 0.0017,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.015,
+            "defenseDelta": -0.025,
+            "labels": [
+              "first_break_attack_decrease"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 38,
+            "coolingBreakMinutes": [
+              23.0,
+              69.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760456",
+                "archived": true,
+                "espnEventId": "760456"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 2,
+        "tacticalLabels": [
+          "first_break_attack_decrease",
+          "first_break_attack_decrease"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "巴拉圭",
+      "summary": "巴拉圭 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537345,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-13",
+          "opponent": "美国",
+          "scoreFor": 1,
+          "scoreAgainst": 4,
+          "expectedGoalsReference": 1.2628,
+          "expectedGoalsAgainstReference": 1.2872,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": -0.0041,
+            "defenseDelta": -0.042,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.035,
+            "defenseDelta": -0.0,
+            "labels": [
+              "first_break_attack_decrease",
+              "second_break_attack_decrease"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 48,
+            "coolingBreakMinutes": [
+              24.0,
+              68.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760417",
+                "archived": true,
+                "espnEventId": "760417"
+              }
+            ]
+          }
+        },
+        {
+          "fixtureId": 537347,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-20",
+          "opponent": "土耳其",
+          "scoreFor": 1,
+          "scoreAgainst": 0,
+          "expectedGoalsReference": 1.2841,
+          "expectedGoalsAgainstReference": 1.2659,
+          "evidenceConfidence": 0.35,
+          "objectiveForm": {
+            "attackDelta": -0.0025,
+            "defenseDelta": 0.0111,
+            "redCardAdjusted": true,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.0,
+            "defenseDelta": -0.0175,
+            "labels": [],
+            "corroboration": "insufficient",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 63,
+            "coolingBreakMinutes": [
+              26.0,
+              68.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760443",
+                "archived": true,
+                "espnEventId": "760443"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 2,
+        "tacticalLabels": [
+          "first_break_attack_decrease",
+          "second_break_attack_decrease"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "巴拿马",
+      "summary": "巴拿马 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537410,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-18",
+          "opponent": "加纳",
+          "scoreFor": 0,
+          "scoreAgainst": 1,
+          "expectedGoalsReference": 1.6518,
+          "expectedGoalsAgainstReference": 0.8982,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": -0.0256,
+            "defenseDelta": -0.0016,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.02,
+            "defenseDelta": 0.005,
+            "labels": [
+              "second_break_attack_decrease"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 36,
+            "coolingBreakMinutes": [
+              24.0,
+              68.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760434",
+                "archived": true,
+                "espnEventId": "760434"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 1,
+        "tacticalLabels": [
+          "second_break_attack_decrease"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "巴西",
+      "summary": "巴西 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537339,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-14",
+          "opponent": "摩洛哥",
+          "scoreFor": 1,
+          "scoreAgainst": 1,
+          "expectedGoalsReference": 1.6345,
+          "expectedGoalsAgainstReference": 0.9155,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": -0.0098,
+            "defenseDelta": -0.0013,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.035,
+            "defenseDelta": -0.0025,
+            "labels": [
+              "first_break_attack_decrease",
+              "second_break_attack_decrease"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 43,
+            "coolingBreakMinutes": [
+              23.0,
+              68.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760419",
+                "archived": true,
+                "espnEventId": "760419"
+              }
+            ]
+          }
+        },
+        {
+          "fixtureId": 537341,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-20",
+          "opponent": "海地",
+          "scoreFor": 3,
+          "scoreAgainst": 0,
+          "expectedGoalsReference": 2.4,
+          "expectedGoalsAgainstReference": 0.15,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": 0.0093,
+            "defenseDelta": 0.0023,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.02,
+            "defenseDelta": 0.005,
+            "labels": [
+              "second_break_attack_increase"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 33,
+            "coolingBreakMinutes": [
+              26.0,
+              69.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760444",
+                "archived": true,
+                "espnEventId": "760444"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 2,
+        "tacticalLabels": [
+          "first_break_attack_decrease",
+          "second_break_attack_decrease",
+          "second_break_attack_increase"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "库拉索",
+      "summary": "库拉索 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537351,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-15",
+          "opponent": "德国",
+          "scoreFor": 1,
+          "scoreAgainst": 7,
+          "expectedGoalsReference": 0.15,
+          "expectedGoalsAgainstReference": 2.4,
+          "evidenceConfidence": 0.45,
+          "objectiveForm": {
+            "attackDelta": 0.0096,
+            "defenseDelta": -0.0518,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": true,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.01,
+            "defenseDelta": 0.01,
+            "labels": [
+              "set_piece_creation"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 44,
+            "coolingBreakMinutes": [
+              23.0,
+              69.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760422",
+                "archived": true,
+                "espnEventId": "760422"
+              }
+            ]
+          }
+        },
+        {
+          "fixtureId": 537354,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-21",
+          "opponent": "厄瓜多尔",
+          "scoreFor": 0,
+          "scoreAgainst": 0,
+          "expectedGoalsReference": 0.2187,
+          "expectedGoalsAgainstReference": 2.3313,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": -0.0034,
+            "defenseDelta": 0.0361,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.04,
+            "defenseDelta": 0.0125,
+            "labels": [
+              "second_break_attack_decrease",
+              "late_attack_drop",
+              "post_break_substitution_burst"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 59,
+            "coolingBreakMinutes": [
+              24.0,
+              68.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760446",
+                "archived": true,
+                "espnEventId": "760446"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 2,
+        "tacticalLabels": [
+          "set_piece_creation",
+          "second_break_attack_decrease",
+          "late_attack_drop",
+          "post_break_substitution_burst"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "德国",
+      "summary": "德国 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537351,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-15",
+          "opponent": "库拉索",
+          "scoreFor": 7,
+          "scoreAgainst": 1,
+          "expectedGoalsReference": 2.4,
+          "expectedGoalsAgainstReference": 0.15,
+          "evidenceConfidence": 0.45,
+          "objectiveForm": {
+            "attackDelta": 0.0518,
+            "defenseDelta": -0.0096,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": true,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.02,
+            "defenseDelta": -0.005,
+            "labels": [
+              "second_break_attack_decrease",
+              "post_break_substitution_burst"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 44,
+            "coolingBreakMinutes": [
+              23.0,
+              69.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760422",
+                "archived": true,
+                "espnEventId": "760422"
+              }
+            ]
+          }
+        },
+        {
+          "fixtureId": 537353,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-21",
+          "opponent": "科特迪瓦",
+          "scoreFor": 2,
+          "scoreAgainst": 1,
+          "expectedGoalsReference": 1.9255,
+          "expectedGoalsAgainstReference": 0.6245,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": 0.0012,
+            "defenseDelta": -0.0058,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.0,
+            "defenseDelta": -0.0,
+            "labels": [],
+            "corroboration": "insufficient",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 40,
+            "coolingBreakMinutes": [
+              25.0,
+              71.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760448",
+                "archived": true,
+                "espnEventId": "760448"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 2,
+        "tacticalLabels": [
+          "second_break_attack_decrease",
+          "post_break_substitution_burst"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "挪威",
+      "summary": "挪威 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537392,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-17",
+          "opponent": "伊拉克",
+          "scoreFor": 4,
+          "scoreAgainst": 1,
+          "expectedGoalsReference": 2.1862,
+          "expectedGoalsAgainstReference": 0.3638,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": 0.0281,
+            "defenseDelta": -0.0099,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.05,
+            "defenseDelta": 0.015,
+            "labels": [
+              "first_break_attack_increase",
+              "second_break_attack_increase",
+              "late_pressure",
+              "set_piece_creation",
+              "post_break_substitution_burst"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 39,
+            "coolingBreakMinutes": [
+              24.0,
+              69.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760430",
+                "archived": true,
+                "espnEventId": "760430"
+              }
+            ]
+          }
+        },
+        {
+          "fixtureId": 537394,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-23",
+          "opponent": "塞内加尔",
+          "scoreFor": 3,
+          "scoreAgainst": 2,
+          "expectedGoalsReference": 1.5465,
+          "expectedGoalsAgainstReference": 1.0035,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": 0.0225,
+            "defenseDelta": -0.0154,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.02,
+            "defenseDelta": -0.01,
+            "labels": [
+              "second_break_attack_decrease"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 43,
+            "coolingBreakMinutes": [
+              23.0,
+              68.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760454",
+                "archived": true,
+                "espnEventId": "760454"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 2,
+        "tacticalLabels": [
+          "first_break_attack_increase",
+          "second_break_attack_increase",
+          "late_pressure",
+          "set_piece_creation",
+          "post_break_substitution_burst",
+          "second_break_attack_decrease"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "捷克",
+      "summary": "捷克 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537328,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-12",
+          "opponent": "韩国",
+          "scoreFor": 1,
+          "scoreAgainst": 2,
+          "expectedGoalsReference": 1.0481,
+          "expectedGoalsAgainstReference": 1.5019,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": -0.0007,
+            "defenseDelta": -0.0077,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.0,
+            "defenseDelta": -0.0,
+            "labels": [],
+            "corroboration": "insufficient",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 34,
+            "coolingBreakMinutes": [
+              23.0,
+              70.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760414",
+                "archived": true,
+                "espnEventId": "760414"
+              }
+            ]
+          }
+        },
+        {
+          "fixtureId": 537329,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-19",
+          "opponent": "南非",
+          "scoreFor": 1,
+          "scoreAgainst": 1,
+          "expectedGoalsReference": 1.7733,
+          "expectedGoalsAgainstReference": 0.7767,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": -0.012,
+            "defenseDelta": -0.0035,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.005,
+            "defenseDelta": -0.015,
+            "labels": [
+              "first_break_attack_decrease",
+              "set_piece_creation"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 44,
+            "coolingBreakMinutes": [
+              23.0,
+              69.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760438",
+                "archived": true,
+                "espnEventId": "760438"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 2,
+        "tacticalLabels": [
+          "first_break_attack_decrease",
+          "set_piece_creation"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "摩洛哥",
+      "summary": "摩洛哥 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537339,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-14",
+          "opponent": "巴西",
+          "scoreFor": 1,
+          "scoreAgainst": 1,
+          "expectedGoalsReference": 0.9155,
+          "expectedGoalsAgainstReference": 1.6345,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": 0.0013,
+            "defenseDelta": 0.0098,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.005,
+            "defenseDelta": 0.0175,
+            "labels": [
+              "first_break_attack_decrease",
+              "second_break_attack_increase"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 43,
+            "coolingBreakMinutes": [
+              23.0,
+              68.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760419",
+                "archived": true,
+                "espnEventId": "760419"
+              }
+            ]
+          }
+        },
+        {
+          "fixtureId": 537342,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-20",
+          "opponent": "苏格兰",
+          "scoreFor": 1,
+          "scoreAgainst": 0,
+          "expectedGoalsReference": 1.5702,
+          "expectedGoalsAgainstReference": 0.9798,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": -0.0088,
+            "defenseDelta": 0.0152,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.0,
+            "defenseDelta": -0.0075,
+            "labels": [],
+            "corroboration": "insufficient",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 34,
+            "coolingBreakMinutes": [
+              24.0,
+              68.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760445",
+                "archived": true,
+                "espnEventId": "760445"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 2,
+        "tacticalLabels": [
+          "first_break_attack_decrease",
+          "second_break_attack_increase"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "新西兰",
+      "summary": "新西兰 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537364,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-16",
+          "opponent": "伊朗",
+          "scoreFor": 2,
+          "scoreAgainst": 2,
+          "expectedGoalsReference": 0.6478,
+          "expectedGoalsAgainstReference": 1.9022,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": 0.021,
+            "defenseDelta": -0.0015,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.005,
+            "defenseDelta": -0.0,
+            "labels": [
+              "first_break_attack_decrease",
+              "set_piece_creation"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 48,
+            "coolingBreakMinutes": [
+              25.0,
+              68.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760427",
+                "archived": true,
+                "espnEventId": "760427"
+              }
+            ]
+          }
+        },
+        {
+          "fixtureId": 537366,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-22",
+          "opponent": "埃及",
+          "scoreFor": 1,
+          "scoreAgainst": 3,
+          "expectedGoalsReference": 0.7166,
+          "expectedGoalsAgainstReference": 1.8334,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": 0.0044,
+            "defenseDelta": -0.0181,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.005,
+            "defenseDelta": 0.0125,
+            "labels": [
+              "first_break_attack_decrease",
+              "second_break_attack_increase",
+              "post_break_substitution_burst"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 49,
+            "coolingBreakMinutes": [
+              22.0,
+              72.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760452",
+                "archived": true,
+                "espnEventId": "760452"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 2,
+        "tacticalLabels": [
+          "first_break_attack_decrease",
+          "set_piece_creation",
+          "first_break_attack_decrease",
+          "second_break_attack_increase",
+          "post_break_substitution_burst"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "日本",
+      "summary": "日本 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537357,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-15",
+          "opponent": "荷兰",
+          "scoreFor": 2,
+          "scoreAgainst": 2,
+          "expectedGoalsReference": 1.1322,
+          "expectedGoalsAgainstReference": 1.4178,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": 0.0135,
+            "defenseDelta": -0.009,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.05,
+            "defenseDelta": -0.025,
+            "labels": [
+              "first_break_attack_increase",
+              "second_break_attack_increase",
+              "late_pressure",
+              "set_piece_creation",
+              "post_break_substitution_burst"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 36,
+            "coolingBreakMinutes": [
+              23.0,
+              67.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760425",
+                "archived": true,
+                "espnEventId": "760425"
+              }
+            ]
+          }
+        },
+        {
+          "fixtureId": 537360,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-21",
+          "opponent": "突尼斯",
+          "scoreFor": 4,
+          "scoreAgainst": 0,
+          "expectedGoalsReference": 2.2237,
+          "expectedGoalsAgainstReference": 0.3263,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": 0.0275,
+            "defenseDelta": 0.0051,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.015,
+            "defenseDelta": 0.0075,
+            "labels": [
+              "first_break_attack_decrease",
+              "post_break_substitution_burst"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 26,
+            "coolingBreakMinutes": [
+              24.0,
+              70.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760449",
+                "archived": true,
+                "espnEventId": "760449"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 2,
+        "tacticalLabels": [
+          "first_break_attack_increase",
+          "second_break_attack_increase",
+          "late_pressure",
+          "set_piece_creation",
+          "post_break_substitution_burst",
+          "first_break_attack_decrease",
+          "post_break_substitution_burst"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "比利时",
+      "summary": "比利时 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537363,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-16",
+          "opponent": "埃及",
+          "scoreFor": 1,
+          "scoreAgainst": 1,
+          "expectedGoalsReference": 1.6605,
+          "expectedGoalsAgainstReference": 0.8895,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": -0.0102,
+            "defenseDelta": -0.0017,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.025,
+            "defenseDelta": 0.01,
+            "labels": [
+              "first_break_attack_increase",
+              "set_piece_creation"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 46,
+            "coolingBreakMinutes": [
+              22.0,
+              67.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760426",
+                "archived": true,
+                "espnEventId": "760426"
+              }
+            ]
+          }
+        },
+        {
+          "fixtureId": 537365,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-22",
+          "opponent": "伊朗",
+          "scoreFor": 0,
+          "scoreAgainst": 0,
+          "expectedGoalsReference": 1.5849,
+          "expectedGoalsAgainstReference": 0.9651,
+          "evidenceConfidence": 0.35,
+          "objectiveForm": {
+            "attackDelta": -0.0139,
+            "defenseDelta": 0.0084,
+            "redCardAdjusted": true,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.005,
+            "defenseDelta": -0.0,
+            "labels": [
+              "first_break_attack_decrease",
+              "set_piece_creation"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 48,
+            "coolingBreakMinutes": [
+              30.0,
+              70.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760451",
+                "archived": true,
+                "espnEventId": "760451"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 2,
+        "tacticalLabels": [
+          "first_break_attack_increase",
+          "set_piece_creation",
+          "first_break_attack_decrease",
+          "set_piece_creation"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "民主刚果",
+      "summary": "民主刚果 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537403,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-18",
+          "opponent": "葡萄牙",
+          "scoreFor": 1,
+          "scoreAgainst": 1,
+          "expectedGoalsReference": 0.15,
+          "expectedGoalsAgainstReference": 2.4,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": 0.0132,
+            "defenseDelta": 0.0217,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.035,
+            "defenseDelta": -0.0175,
+            "labels": [
+              "first_break_attack_decrease",
+              "second_break_attack_decrease",
+              "post_break_substitution_burst"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 30,
+            "coolingBreakMinutes": [
+              23.0,
+              69.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760435",
+                "archived": true,
+                "espnEventId": "760435"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 1,
+        "tacticalLabels": [
+          "first_break_attack_decrease",
+          "second_break_attack_decrease",
+          "post_break_substitution_burst"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "沙特",
+      "summary": "沙特 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537370,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-16",
+          "opponent": "乌拉圭",
+          "scoreFor": 1,
+          "scoreAgainst": 1,
+          "expectedGoalsReference": 0.5443,
+          "expectedGoalsAgainstReference": 2.0057,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": 0.0071,
+            "defenseDelta": 0.0156,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.035,
+            "defenseDelta": -0.015,
+            "labels": [
+              "first_break_attack_increase",
+              "second_break_attack_increase"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 48,
+            "coolingBreakMinutes": [
+              23.0,
+              69.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760429",
+                "archived": true,
+                "espnEventId": "760429"
+              }
+            ]
+          }
+        },
+        {
+          "fixtureId": 537371,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-22",
+          "opponent": "西班牙",
+          "scoreFor": 0,
+          "scoreAgainst": 4,
+          "expectedGoalsReference": 0.15,
+          "expectedGoalsAgainstReference": 2.4,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": -0.0023,
+            "defenseDelta": -0.0248,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.02,
+            "defenseDelta": 0.0025,
+            "labels": [
+              "second_break_attack_decrease"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 43,
+            "coolingBreakMinutes": [
+              25.0,
+              68.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760453",
+                "archived": true,
+                "espnEventId": "760453"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 2,
+        "tacticalLabels": [
+          "first_break_attack_increase",
+          "second_break_attack_increase",
+          "second_break_attack_decrease"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "法国",
+      "summary": "法国 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537391,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-17",
+          "opponent": "塞内加尔",
+          "scoreFor": 3,
+          "scoreAgainst": 1,
+          "expectedGoalsReference": 1.9736,
+          "expectedGoalsAgainstReference": 0.5764,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": 0.0159,
+            "defenseDelta": -0.0066,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.0,
+            "defenseDelta": -0.0,
+            "labels": [],
+            "corroboration": "insufficient",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 29,
+            "coolingBreakMinutes": [
+              26.0,
+              68.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760432",
+                "archived": true,
+                "espnEventId": "760432"
+              }
+            ]
+          }
+        },
+        {
+          "fixtureId": 537393,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-23",
+          "opponent": "伊拉克",
+          "scoreFor": 3,
+          "scoreAgainst": 0,
+          "expectedGoalsReference": 2.4,
+          "expectedGoalsAgainstReference": 0.15,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": 0.0093,
+            "defenseDelta": 0.0023,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.025,
+            "defenseDelta": -0.0175,
+            "labels": [
+              "first_break_attack_decrease",
+              "second_break_attack_decrease",
+              "set_piece_creation"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 36,
+            "coolingBreakMinutes": [
+              23.0,
+              70.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760457",
+                "archived": true,
+                "espnEventId": "760457"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 2,
+        "tacticalLabels": [
+          "first_break_attack_decrease",
+          "second_break_attack_decrease",
+          "set_piece_creation"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "波黑",
+      "summary": "波黑 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537333,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-13",
+          "opponent": "加拿大",
+          "scoreFor": 1,
+          "scoreAgainst": 1,
+          "expectedGoalsReference": 0.4985,
+          "expectedGoalsAgainstReference": 2.0515,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": 0.0078,
+            "defenseDelta": 0.0163,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.0,
+            "defenseDelta": -0.0025,
+            "labels": [],
+            "corroboration": "insufficient",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 42,
+            "coolingBreakMinutes": [
+              23.0,
+              69.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760416",
+                "archived": true,
+                "espnEventId": "760416"
+              }
+            ]
+          }
+        },
+        {
+          "fixtureId": 537335,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-19",
+          "opponent": "瑞士",
+          "scoreFor": 1,
+          "scoreAgainst": 4,
+          "expectedGoalsReference": 0.267,
+          "expectedGoalsAgainstReference": 2.283,
+          "evidenceConfidence": 0.35,
+          "objectiveForm": {
+            "attackDelta": 0.0064,
+            "defenseDelta": -0.015,
+            "redCardAdjusted": true,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.0,
+            "defenseDelta": 0.0075,
+            "labels": [],
+            "corroboration": "insufficient",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 35,
+            "coolingBreakMinutes": [
+              23.0,
+              69.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760439",
+                "archived": true,
+                "espnEventId": "760439"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 2,
+        "tacticalLabels": [],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "海地",
+      "summary": "海地 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537340,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-14",
+          "opponent": "苏格兰",
+          "scoreFor": 0,
+          "scoreAgainst": 1,
+          "expectedGoalsReference": 0.5889,
+          "expectedGoalsAgainstReference": 1.9611,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": -0.0091,
+            "defenseDelta": 0.0149,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.045,
+            "defenseDelta": -0.0,
+            "labels": [
+              "second_break_attack_increase",
+              "late_pressure",
+              "set_piece_creation"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 39,
+            "coolingBreakMinutes": [
+              23.0,
+              67.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760418",
+                "archived": true,
+                "espnEventId": "760418"
+              }
+            ]
+          }
+        },
+        {
+          "fixtureId": 537341,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-20",
+          "opponent": "巴西",
+          "scoreFor": 0,
+          "scoreAgainst": 3,
+          "expectedGoalsReference": 0.15,
+          "expectedGoalsAgainstReference": 2.4,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": -0.0023,
+            "defenseDelta": -0.0093,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.01,
+            "defenseDelta": -0.01,
+            "labels": [
+              "second_break_attack_decrease",
+              "set_piece_creation"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 33,
+            "coolingBreakMinutes": [
+              26.0,
+              69.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760444",
+                "archived": true,
+                "espnEventId": "760444"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 2,
+        "tacticalLabels": [
+          "second_break_attack_increase",
+          "late_pressure",
+          "set_piece_creation",
+          "second_break_attack_decrease",
+          "set_piece_creation"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "澳大利亚",
+      "summary": "澳大利亚 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537346,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-14",
+          "opponent": "土耳其",
+          "scoreFor": 2,
+          "scoreAgainst": 0,
+          "expectedGoalsReference": 1.2324,
+          "expectedGoalsAgainstReference": 1.3176,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": 0.0119,
+            "defenseDelta": 0.0204,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.025,
+            "defenseDelta": 0.005,
+            "labels": [
+              "first_break_attack_increase",
+              "set_piece_creation",
+              "post_break_substitution_burst"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 53,
+            "coolingBreakMinutes": [
+              23.0,
+              68.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760421",
+                "archived": true,
+                "espnEventId": "760421"
+              }
+            ]
+          }
+        },
+        {
+          "fixtureId": 537348,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-20",
+          "opponent": "美国",
+          "scoreFor": 0,
+          "scoreAgainst": 2,
+          "expectedGoalsReference": 1.2111,
+          "expectedGoalsAgainstReference": 1.3389,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": -0.0188,
+            "defenseDelta": -0.0102,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.035,
+            "defenseDelta": -0.0,
+            "labels": [
+              "first_break_attack_decrease",
+              "second_break_attack_decrease"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 41,
+            "coolingBreakMinutes": [
+              24.0,
+              68.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760442",
+                "archived": true,
+                "espnEventId": "760442"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 2,
+        "tacticalLabels": [
+          "first_break_attack_increase",
+          "set_piece_creation",
+          "post_break_substitution_burst",
+          "first_break_attack_decrease",
+          "second_break_attack_decrease"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "瑞典",
+      "summary": "瑞典 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537358,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-15",
+          "opponent": "突尼斯",
+          "scoreFor": 5,
+          "scoreAgainst": 1,
+          "expectedGoalsReference": 1.7399,
+          "expectedGoalsAgainstReference": 0.8101,
+          "evidenceConfidence": 0.45,
+          "objectiveForm": {
+            "attackDelta": 0.0367,
+            "defenseDelta": -0.0021,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": true,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.02,
+            "defenseDelta": -0.0,
+            "labels": [
+              "second_break_attack_decrease"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 34,
+            "coolingBreakMinutes": [
+              22.0,
+              69.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760424",
+                "archived": true,
+                "espnEventId": "760424"
+              }
+            ]
+          }
+        },
+        {
+          "fixtureId": 537359,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-21",
+          "opponent": "荷兰",
+          "scoreFor": 1,
+          "scoreAgainst": 5,
+          "expectedGoalsReference": 0.5764,
+          "expectedGoalsAgainstReference": 1.9736,
+          "evidenceConfidence": 0.45,
+          "objectiveForm": {
+            "attackDelta": 0.0048,
+            "defenseDelta": -0.034,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": true,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.005,
+            "defenseDelta": 0.0075,
+            "labels": [
+              "first_break_attack_increase",
+              "second_break_attack_decrease"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 42,
+            "coolingBreakMinutes": [
+              23.0,
+              69.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760447",
+                "archived": true,
+                "espnEventId": "760447"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 2,
+        "tacticalLabels": [
+          "second_break_attack_decrease",
+          "first_break_attack_increase",
+          "second_break_attack_decrease"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "瑞士",
+      "summary": "瑞士 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537334,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-14",
+          "opponent": "卡塔尔",
+          "scoreFor": 1,
+          "scoreAgainst": 1,
+          "expectedGoalsReference": 2.3952,
+          "expectedGoalsAgainstReference": 0.1548,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": -0.0216,
+            "defenseDelta": -0.0131,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.005,
+            "defenseDelta": -0.0125,
+            "labels": [
+              "first_break_attack_decrease",
+              "set_piece_creation"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 51,
+            "coolingBreakMinutes": [
+              24.0,
+              68.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760420",
+                "archived": true,
+                "espnEventId": "760420"
+              }
+            ]
+          }
+        },
+        {
+          "fixtureId": 537335,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-19",
+          "opponent": "波黑",
+          "scoreFor": 4,
+          "scoreAgainst": 1,
+          "expectedGoalsReference": 2.283,
+          "expectedGoalsAgainstReference": 0.267,
+          "evidenceConfidence": 0.35,
+          "objectiveForm": {
+            "attackDelta": 0.015,
+            "defenseDelta": -0.0064,
+            "redCardAdjusted": true,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.015,
+            "defenseDelta": -0.0,
+            "labels": [
+              "first_break_attack_decrease",
+              "post_break_substitution_burst"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 35,
+            "coolingBreakMinutes": [
+              23.0,
+              69.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760439",
+                "archived": true,
+                "espnEventId": "760439"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 2,
+        "tacticalLabels": [
+          "first_break_attack_decrease",
+          "set_piece_creation",
+          "first_break_attack_decrease",
+          "post_break_substitution_burst"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "科特迪瓦",
+      "summary": "科特迪瓦 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537352,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-15",
+          "opponent": "厄瓜多尔",
+          "scoreFor": 1,
+          "scoreAgainst": 0,
+          "expectedGoalsReference": 0.8695,
+          "expectedGoalsAgainstReference": 1.6805,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": 0.002,
+            "defenseDelta": 0.026,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.0,
+            "defenseDelta": 0.0075,
+            "labels": [],
+            "corroboration": "insufficient",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 44,
+            "coolingBreakMinutes": [
+              24.0,
+              69.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760423",
+                "archived": true,
+                "espnEventId": "760423"
+              }
+            ]
+          }
+        },
+        {
+          "fixtureId": 537353,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-21",
+          "opponent": "德国",
+          "scoreFor": 1,
+          "scoreAgainst": 2,
+          "expectedGoalsReference": 0.6245,
+          "expectedGoalsAgainstReference": 1.9255,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": 0.0058,
+            "defenseDelta": -0.0012,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.0,
+            "defenseDelta": -0.0,
+            "labels": [],
+            "corroboration": "insufficient",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 40,
+            "coolingBreakMinutes": [
+              25.0,
+              71.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760448",
+                "archived": true,
+                "espnEventId": "760448"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 2,
+        "tacticalLabels": [],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "突尼斯",
+      "summary": "突尼斯 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537358,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-15",
+          "opponent": "瑞典",
+          "scoreFor": 1,
+          "scoreAgainst": 5,
+          "expectedGoalsReference": 0.8101,
+          "expectedGoalsAgainstReference": 1.7399,
+          "evidenceConfidence": 0.45,
+          "objectiveForm": {
+            "attackDelta": 0.0021,
+            "defenseDelta": -0.0367,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": true,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.0,
+            "defenseDelta": 0.01,
+            "labels": [
+              "post_break_substitution_burst"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 34,
+            "coolingBreakMinutes": [
+              22.0,
+              69.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760424",
+                "archived": true,
+                "espnEventId": "760424"
+              }
+            ]
+          }
+        },
+        {
+          "fixtureId": 537360,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-21",
+          "opponent": "日本",
+          "scoreFor": 0,
+          "scoreAgainst": 4,
+          "expectedGoalsReference": 0.3263,
+          "expectedGoalsAgainstReference": 2.2237,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": -0.0051,
+            "defenseDelta": -0.0275,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.015,
+            "defenseDelta": 0.0075,
+            "labels": [
+              "first_break_attack_decrease"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 26,
+            "coolingBreakMinutes": [
+              24.0,
+              70.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760449",
+                "archived": true,
+                "espnEventId": "760449"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 2,
+        "tacticalLabels": [
+          "post_break_substitution_burst",
+          "first_break_attack_decrease"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "约旦",
+      "summary": "约旦 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537398,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-17",
+          "opponent": "奥地利",
+          "scoreFor": 1,
+          "scoreAgainst": 3,
+          "expectedGoalsReference": 0.7247,
+          "expectedGoalsAgainstReference": 1.8253,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": 0.0043,
+            "defenseDelta": -0.0182,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.01,
+            "defenseDelta": 0.0075,
+            "labels": [
+              "set_piece_creation",
+              "post_break_substitution_burst"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 42,
+            "coolingBreakMinutes": [
+              23.0,
+              72.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760431",
+                "archived": true,
+                "espnEventId": "760431"
+              }
+            ]
+          }
+        },
+        {
+          "fixtureId": 537400,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-23",
+          "opponent": "阿尔及利亚",
+          "scoreFor": 1,
+          "scoreAgainst": 2,
+          "expectedGoalsReference": 0.9563,
+          "expectedGoalsAgainstReference": 1.5937,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": 0.0007,
+            "defenseDelta": -0.0063,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.02,
+            "defenseDelta": 0.0025,
+            "labels": [
+              "second_break_attack_decrease",
+              "post_break_substitution_burst"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 39,
+            "coolingBreakMinutes": [
+              24.0,
+              74.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760455",
+                "archived": true,
+                "espnEventId": "760455"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 2,
+        "tacticalLabels": [
+          "set_piece_creation",
+          "post_break_substitution_burst",
+          "second_break_attack_decrease",
+          "post_break_substitution_burst"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "美国",
+      "summary": "美国 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537345,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-13",
+          "opponent": "巴拉圭",
+          "scoreFor": 4,
+          "scoreAgainst": 1,
+          "expectedGoalsReference": 1.2872,
+          "expectedGoalsAgainstReference": 1.2628,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": 0.042,
+            "defenseDelta": 0.0041,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.0,
+            "defenseDelta": 0.0175,
+            "labels": [],
+            "corroboration": "insufficient",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 48,
+            "coolingBreakMinutes": [
+              24.0,
+              68.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760417",
+                "archived": true,
+                "espnEventId": "760417"
+              }
+            ]
+          }
+        },
+        {
+          "fixtureId": 537348,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-20",
+          "opponent": "澳大利亚",
+          "scoreFor": 2,
+          "scoreAgainst": 0,
+          "expectedGoalsReference": 1.3389,
+          "expectedGoalsAgainstReference": 1.2111,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": 0.0102,
+            "defenseDelta": 0.0188,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.0,
+            "defenseDelta": 0.0175,
+            "labels": [],
+            "corroboration": "insufficient",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 41,
+            "coolingBreakMinutes": [
+              24.0,
+              68.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760442",
+                "archived": true,
+                "espnEventId": "760442"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 2,
+        "tacticalLabels": [],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "苏格兰",
+      "summary": "苏格兰 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537340,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-14",
+          "opponent": "海地",
+          "scoreFor": 1,
+          "scoreAgainst": 0,
+          "expectedGoalsReference": 1.9611,
+          "expectedGoalsAgainstReference": 0.5889,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": -0.0149,
+            "defenseDelta": 0.0091,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.0,
+            "defenseDelta": -0.0225,
+            "labels": [
+              "post_break_substitution_burst"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 39,
+            "coolingBreakMinutes": [
+              23.0,
+              67.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760418",
+                "archived": true,
+                "espnEventId": "760418"
+              }
+            ]
+          }
+        },
+        {
+          "fixtureId": 537342,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-20",
+          "opponent": "摩洛哥",
+          "scoreFor": 0,
+          "scoreAgainst": 1,
+          "expectedGoalsReference": 0.9798,
+          "expectedGoalsAgainstReference": 1.5702,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": -0.0152,
+            "defenseDelta": 0.0088,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.015,
+            "defenseDelta": -0.0,
+            "labels": [
+              "late_pressure",
+              "post_break_substitution_burst"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 34,
+            "coolingBreakMinutes": [
+              24.0,
+              68.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760445",
+                "archived": true,
+                "espnEventId": "760445"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 2,
+        "tacticalLabels": [
+          "post_break_substitution_burst",
+          "late_pressure",
+          "post_break_substitution_burst"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "英格兰",
+      "summary": "英格兰 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537409,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-18",
+          "opponent": "克罗地亚",
+          "scoreFor": 4,
+          "scoreAgainst": 2,
+          "expectedGoalsReference": 1.7871,
+          "expectedGoalsAgainstReference": 0.7629,
+          "evidenceConfidence": 0.45,
+          "objectiveForm": {
+            "attackDelta": 0.0249,
+            "defenseDelta": -0.0139,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": true,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.025,
+            "defenseDelta": -0.0075,
+            "labels": [
+              "first_break_attack_decrease",
+              "second_break_attack_decrease",
+              "set_piece_creation",
+              "post_break_substitution_burst"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 46,
+            "coolingBreakMinutes": [
+              23.0,
+              69.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760437",
+                "archived": true,
+                "espnEventId": "760437"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 1,
+        "tacticalLabels": [
+          "first_break_attack_decrease",
+          "second_break_attack_decrease",
+          "set_piece_creation",
+          "post_break_substitution_burst"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "荷兰",
+      "summary": "荷兰 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537357,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-15",
+          "opponent": "日本",
+          "scoreFor": 2,
+          "scoreAgainst": 2,
+          "expectedGoalsReference": 1.4178,
+          "expectedGoalsAgainstReference": 1.1322,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": 0.009,
+            "defenseDelta": -0.0135,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.05,
+            "defenseDelta": -0.025,
+            "labels": [
+              "first_break_attack_increase",
+              "second_break_attack_increase",
+              "late_pressure",
+              "set_piece_creation",
+              "post_break_substitution_burst"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 36,
+            "coolingBreakMinutes": [
+              23.0,
+              67.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760425",
+                "archived": true,
+                "espnEventId": "760425"
+              }
+            ]
+          }
+        },
+        {
+          "fixtureId": 537359,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-21",
+          "opponent": "瑞典",
+          "scoreFor": 5,
+          "scoreAgainst": 1,
+          "expectedGoalsReference": 1.9736,
+          "expectedGoalsAgainstReference": 0.5764,
+          "evidenceConfidence": 0.45,
+          "objectiveForm": {
+            "attackDelta": 0.034,
+            "defenseDelta": -0.0048,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": true,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.015,
+            "defenseDelta": 0.0025,
+            "labels": [
+              "first_break_attack_decrease"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 42,
+            "coolingBreakMinutes": [
+              23.0,
+              69.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760447",
+                "archived": true,
+                "espnEventId": "760447"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 2,
+        "tacticalLabels": [
+          "first_break_attack_increase",
+          "second_break_attack_increase",
+          "late_pressure",
+          "set_piece_creation",
+          "post_break_substitution_burst",
+          "first_break_attack_decrease"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "葡萄牙",
+      "summary": "葡萄牙 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537403,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-18",
+          "opponent": "民主刚果",
+          "scoreFor": 1,
+          "scoreAgainst": 1,
+          "expectedGoalsReference": 2.4,
+          "expectedGoalsAgainstReference": 0.15,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": -0.0217,
+            "defenseDelta": -0.0132,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.035,
+            "defenseDelta": 0.0175,
+            "labels": [
+              "second_break_attack_increase",
+              "late_pressure",
+              "post_break_substitution_burst"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 30,
+            "coolingBreakMinutes": [
+              23.0,
+              69.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760435",
+                "archived": true,
+                "espnEventId": "760435"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 1,
+        "tacticalLabels": [
+          "second_break_attack_increase",
+          "late_pressure",
+          "post_break_substitution_burst"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "西班牙",
+      "summary": "西班牙 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537369,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-16",
+          "opponent": "佛得角",
+          "scoreFor": 0,
+          "scoreAgainst": 0,
+          "expectedGoalsReference": 2.4,
+          "expectedGoalsAgainstReference": 0.15,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": -0.0372,
+            "defenseDelta": 0.0023,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.045,
+            "defenseDelta": -0.0,
+            "labels": [
+              "first_break_attack_increase",
+              "second_break_attack_increase",
+              "set_piece_creation",
+              "post_break_substitution_burst"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 49,
+            "coolingBreakMinutes": [
+              23.0,
+              68.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760428",
+                "archived": true,
+                "espnEventId": "760428"
+              }
+            ]
+          }
+        },
+        {
+          "fixtureId": 537371,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-22",
+          "opponent": "沙特",
+          "scoreFor": 4,
+          "scoreAgainst": 0,
+          "expectedGoalsReference": 2.4,
+          "expectedGoalsAgainstReference": 0.15,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": 0.0248,
+            "defenseDelta": 0.0023,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.005,
+            "defenseDelta": 0.01,
+            "labels": [
+              "first_break_attack_decrease",
+              "set_piece_creation"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 43,
+            "coolingBreakMinutes": [
+              25.0,
+              68.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760453",
+                "archived": true,
+                "espnEventId": "760453"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 2,
+        "tacticalLabels": [
+          "first_break_attack_increase",
+          "second_break_attack_increase",
+          "set_piece_creation",
+          "post_break_substitution_burst",
+          "first_break_attack_decrease",
+          "set_piece_creation"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "阿尔及利亚",
+      "summary": "阿尔及利亚 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537397,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-17",
+          "opponent": "阿根廷",
+          "scoreFor": 0,
+          "scoreAgainst": 3,
+          "expectedGoalsReference": 0.267,
+          "expectedGoalsAgainstReference": 2.283,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": -0.0041,
+            "defenseDelta": -0.0111,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.005,
+            "defenseDelta": 0.01,
+            "labels": [
+              "first_break_attack_increase",
+              "second_break_attack_decrease"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 32,
+            "coolingBreakMinutes": [
+              25.0,
+              69.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760433",
+                "archived": true,
+                "espnEventId": "760433"
+              }
+            ]
+          }
+        },
+        {
+          "fixtureId": 537400,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-23",
+          "opponent": "约旦",
+          "scoreFor": 2,
+          "scoreAgainst": 1,
+          "expectedGoalsReference": 1.5937,
+          "expectedGoalsAgainstReference": 0.9563,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": 0.0063,
+            "defenseDelta": -0.0007,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.005,
+            "defenseDelta": 0.01,
+            "labels": [
+              "first_break_attack_decrease",
+              "set_piece_creation"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 39,
+            "coolingBreakMinutes": [
+              24.0,
+              74.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760455",
+                "archived": true,
+                "espnEventId": "760455"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 2,
+        "tacticalLabels": [
+          "first_break_attack_increase",
+          "second_break_attack_decrease",
+          "first_break_attack_decrease",
+          "set_piece_creation"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "阿根廷",
+      "summary": "阿根廷 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537397,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-17",
+          "opponent": "阿尔及利亚",
+          "scoreFor": 3,
+          "scoreAgainst": 0,
+          "expectedGoalsReference": 2.283,
+          "expectedGoalsAgainstReference": 0.267,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": 0.0111,
+            "defenseDelta": 0.0041,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.02,
+            "defenseDelta": 0.0025,
+            "labels": [
+              "second_break_attack_decrease"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 32,
+            "coolingBreakMinutes": [
+              25.0,
+              69.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760433",
+                "archived": true,
+                "espnEventId": "760433"
+              }
+            ]
+          }
+        },
+        {
+          "fixtureId": 537399,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-23",
+          "opponent": "奥地利",
+          "scoreFor": 2,
+          "scoreAgainst": 0,
+          "expectedGoalsReference": 2.1117,
+          "expectedGoalsAgainstReference": 0.4383,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": -0.0017,
+            "defenseDelta": 0.0068,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.05,
+            "defenseDelta": 0.0075,
+            "labels": [
+              "first_break_attack_increase",
+              "second_break_attack_increase",
+              "late_pressure"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 38,
+            "coolingBreakMinutes": [
+              23.0,
+              69.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760456",
+                "archived": true,
+                "espnEventId": "760456"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 2,
+        "tacticalLabels": [
+          "second_break_attack_decrease",
+          "first_break_attack_increase",
+          "second_break_attack_increase",
+          "late_pressure"
+        ],
+        "objectiveAndTacticalSeparated": true
+      }
+    },
+    {
+      "team": "韩国",
+      "summary": "韩国 本届前两轮的客观赛果、事件时间轴与补水节点状态",
+      "matches": [
+        {
+          "fixtureId": 537328,
+          "observedMatchday": 1,
+          "observedDate": "2026-06-12",
+          "opponent": "捷克",
+          "scoreFor": 2,
+          "scoreAgainst": 1,
+          "expectedGoalsReference": 1.5019,
+          "expectedGoalsAgainstReference": 1.0481,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": 0.0077,
+            "defenseDelta": 0.0007,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.0,
+            "defenseDelta": -0.0,
+            "labels": [],
+            "corroboration": "insufficient",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 34,
+            "coolingBreakMinutes": [
+              23.0,
+              70.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760414",
+                "archived": true,
+                "espnEventId": "760414"
+              }
+            ]
+          }
+        },
+        {
+          "fixtureId": 537330,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-19",
+          "opponent": "墨西哥",
+          "scoreFor": 0,
+          "scoreAgainst": 1,
+          "expectedGoalsReference": 0.9011,
+          "expectedGoalsAgainstReference": 1.6489,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": -0.014,
+            "defenseDelta": 0.0101,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.0,
+            "defenseDelta": -0.0,
+            "labels": [],
+            "corroboration": "insufficient",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 32,
+            "coolingBreakMinutes": [
+              23.0,
+              68.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760441",
+                "archived": true,
+                "espnEventId": "760441"
+              }
+            ]
+          }
+        }
+      ],
+      "evidence": {
+        "mode": "minute_by_minute_events",
+        "archivedMatches": 2,
+        "tacticalLabels": [],
+        "objectiveAndTacticalSeparated": true
+      }
+    }
+  ]
+}

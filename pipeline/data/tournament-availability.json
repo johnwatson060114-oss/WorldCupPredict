@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-06-23T16:38:49+08:00",
+  "records": [
+    {
+      "team": "南非",
+      "player": "Teboho Mokoena",
+      "target_date": "2026-06-25",
+      "target_fixture_id": 537332,
+      "status": "suspended",
+      "availability_probability": 0.0,
+      "confidence": 1.0,
+      "source_url": "https://www.espn.com/soccer/commentary/_/gameId/760438",
+      "observed_at": "2026-06-23T16:38:49+08:00",
+      "note": "本届赛事累计黄牌或红牌规则触发下一场自动停赛"
+    },
+    {
+      "team": "卡塔尔",
+      "player": "Assim Madibo",
+      "target_date": "2026-06-25",
+      "target_fixture_id": 537338,
+      "status": "suspended",
+      "availability_probability": 0.0,
+      "confidence": 1.0,
+      "source_url": "https://www.espn.com/soccer/commentary/_/gameId/760440",
+      "observed_at": "2026-06-23T16:38:49+08:00",
+      "note": "本届赛事累计黄牌或红牌规则触发下一场自动停赛"
+    },
+    {
+      "team": "卡塔尔",
+      "player": "Homam El Amin",
+      "target_date": "2026-06-25",
+      "target_fixture_id": 537338,
+      "status": "suspended",
+      "availability_probability": 0.0,
+      "confidence": 1.0,
+      "source_url": "https://www.espn.com/soccer/commentary/_/gameId/760440",
+      "observed_at": "2026-06-23T16:38:49+08:00",
+      "note": "本届赛事累计黄牌或红牌规则触发下一场自动停赛"
+    },
+    {
+      "team": "墨西哥",
+      "player": "Raúl Jiménez",
+      "target_date": "2026-06-25",
+      "target_fixture_id": 537331,
+      "status": "doubtful",
+      "availability_probability": 0.5,
+      "confidence": 0.65,
+      "source_url": "https://www.espn.com/soccer/commentary/_/gameId/760415",
+      "observed_at": "2026-06-23T16:38:49+08:00",
+      "note": "比赛中伤退或出现无法坚持的迹象；等待球队官方赛前更新"
+    },
+    {
+      "team": "土耳其",
+      "player": "Kerem Aktürkoglu",
+      "target_date": "2026-06-26",
+      "target_fixture_id": 537349,
+      "status": "doubtful",
+      "availability_probability": 0.5,
+      "confidence": 0.65,
+      "source_url": "https://www.espn.com/soccer/commentary/_/gameId/760443",
+      "observed_at": "2026-06-23T16:38:49+08:00",
+      "note": "比赛中伤退或出现无法坚持的迹象；等待球队官方赛前更新"
+    },
+    {
+      "team": "巴拉圭",
+      "player": "Isidro Pitta",
+      "target_date": "2026-06-26",
+      "target_fixture_id": 537350,
+      "status": "doubtful",
+      "availability_probability": 0.5,
+      "confidence": 0.65,
+      "source_url": "https://www.espn.com/soccer/commentary/_/gameId/760443",
+      "observed_at": "2026-06-23T16:38:49+08:00",
+      "note": "比赛中伤退或出现无法坚持的迹象；等待球队官方赛前更新"
+    },
+    {
+      "team": "巴拉圭",
+      "player": "Miguel Almirón",
+      "target_date": "2026-06-26",
+      "target_fixture_id": 537350,
+      "status": "suspended",
+      "availability_probability": 0.0,
+      "confidence": 1.0,
+      "source_url": "https://www.espn.com/soccer/commentary/_/gameId/760443",
+      "observed_at": "2026-06-23T16:38:49+08:00",
+      "note": "本届赛事累计黄牌或红牌规则触发下一场自动停赛"
+    },
+    {
+      "team": "比利时",
+      "player": "Nathan Ngoy",
+      "target_date": "2026-06-27",
+      "target_fixture_id": 537367,
+      "status": "suspended",
+      "availability_probability": 0.0,
+      "confidence": 1.0,
+      "source_url": "https://www.espn.com/soccer/commentary/_/gameId/760451",
+      "observed_at": "2026-06-23T16:38:49+08:00",
+      "note": "本届赛事累计黄牌或红牌规则触发下一场自动停赛"
+    },
+    {
+      "team": "约旦",
+      "player": "Odeh Fakhoury",
+      "target_date": "2026-06-28",
+      "target_fixture_id": 537401,
+      "status": "doubtful",
+      "availability_probability": 0.5,
+      "confidence": 0.65,
+      "source_url": "https://www.espn.com/soccer/commentary/_/gameId/760431",
+      "observed_at": "2026-06-23T16:38:49+08:00",
+      "note": "比赛中伤退或出现无法坚持的迹象；等待球队官方赛前更新"
+    },
+    {
+      "team": "阿尔及利亚",
+      "player": "Ibrahim Maza",
+      "target_date": "2026-06-28",
+      "target_fixture_id": 537402,
+      "status": "doubtful",
+      "availability_probability": 0.5,
+      "confidence": 0.65,
+      "source_url": "https://www.espn.com/soccer/commentary/_/gameId/760433",
+      "observed_at": "2026-06-23T16:38:49+08:00",
+      "note": "比赛中伤退或出现无法坚持的迹象；等待球队官方赛前更新"
+    }
+  ]
+}

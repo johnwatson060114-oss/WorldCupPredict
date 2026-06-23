@@ -1,6 +1,104 @@
 {
-  "generatedAt": "2026-06-23T15:43:27+08:00",
+  "generatedAt": "2026-06-23T16:38:50+08:00",
+  "scheduledGroupMatchdaysOneAndTwo": 48,
+  "completedGroupMatchdaysOneAndTwo": 44,
   "matches": [
+    {
+      "matchId": "537327",
+      "fixtureId": 537327,
+      "matchLabel": "墨西哥 vs 南非",
+      "group": "GROUP_A",
+      "matchday": 1,
+      "homeScore": 2,
+      "awayScore": 0,
+      "halfTimeHomeScore": 1,
+      "halfTimeAwayScore": 0,
+      "settledAt": "2026-06-11T19:00:00Z"
+    },
+    {
+      "matchId": "537328",
+      "fixtureId": 537328,
+      "matchLabel": "韩国 vs 捷克",
+      "group": "GROUP_A",
+      "matchday": 1,
+      "homeScore": 2,
+      "awayScore": 1,
+      "halfTimeHomeScore": 0,
+      "halfTimeAwayScore": 0,
+      "settledAt": "2026-06-12T02:00:00Z"
+    },
+    {
+      "matchId": "537333",
+      "fixtureId": 537333,
+      "matchLabel": "加拿大 vs 波黑",
+      "group": "GROUP_B",
+      "matchday": 1,
+      "homeScore": 1,
+      "awayScore": 1,
+      "halfTimeHomeScore": 0,
+      "halfTimeAwayScore": 1,
+      "settledAt": "2026-06-12T19:00:00Z"
+    },
+    {
+      "matchId": "537345",
+      "fixtureId": 537345,
+      "matchLabel": "美国 vs 巴拉圭",
+      "group": "GROUP_D",
+      "matchday": 1,
+      "homeScore": 4,
+      "awayScore": 1,
+      "halfTimeHomeScore": 3,
+      "halfTimeAwayScore": 0,
+      "settledAt": "2026-06-13T01:00:00Z"
+    },
+    {
+      "matchId": "537334",
+      "fixtureId": 537334,
+      "matchLabel": "卡塔尔 vs 瑞士",
+      "group": "GROUP_B",
+      "matchday": 1,
+      "homeScore": 1,
+      "awayScore": 1,
+      "halfTimeHomeScore": 0,
+      "halfTimeAwayScore": 1,
+      "settledAt": "2026-06-13T19:00:00Z"
+    },
+    {
+      "matchId": "537339",
+      "fixtureId": 537339,
+      "matchLabel": "巴西 vs 摩洛哥",
+      "group": "GROUP_C",
+      "matchday": 1,
+      "homeScore": 1,
+      "awayScore": 1,
+      "halfTimeHomeScore": 1,
+      "halfTimeAwayScore": 1,
+      "settledAt": "2026-06-13T22:00:00Z"
+    },
+    {
+      "matchId": "537340",
+      "fixtureId": 537340,
+      "matchLabel": "海地 vs 苏格兰",
+      "group": "GROUP_C",
+      "matchday": 1,
+      "homeScore": 0,
+      "awayScore": 1,
+      "halfTimeHomeScore": 0,
+      "halfTimeAwayScore": 1,
+      "settledAt": "2026-06-14T01:00:00Z"
+    },
+    {
+      "matchId": "537346",
+      "fixtureId": 537346,
+      "matchLabel": "澳大利亚 vs 土耳其",
+      "group": "GROUP_D",
+      "matchday": 1,
+      "homeScore": 2,
+      "awayScore": 0,
+      "halfTimeHomeScore": 1,
+      "halfTimeAwayScore": 0,
+      "settledAt": "2026-06-14T04:00:00Z"
+    },
     {
       "matchId": "2040170",
       "homeScore": 7,
@@ -61,7 +159,10 @@
       "closingOddsSource": "zgzcw.com",
       "closingOddsIssue": "2026-06-14",
       "closingOddsCheckedAt": "2026-06-19T10:26:32+08:00",
-      "matchLabel": "德国 vs 库拉索"
+      "matchLabel": "德国 vs 库拉索",
+      "fixtureId": 537351,
+      "group": "GROUP_E",
+      "matchday": 1
     },
     {
       "matchId": "2040171",
@@ -139,7 +240,10 @@
       "closingOddsSource": "zgzcw.com",
       "closingOddsIssue": "2026-06-14",
       "closingOddsCheckedAt": "2026-06-19T10:26:32+08:00",
-      "matchLabel": "荷兰 vs 日本"
+      "matchLabel": "荷兰 vs 日本",
+      "fixtureId": 537357,
+      "group": "GROUP_F",
+      "matchday": 1
     },
     {
       "matchId": "2040172",
@@ -217,7 +321,10 @@
       "closingOddsSource": "zgzcw.com",
       "closingOddsIssue": "2026-06-14",
       "closingOddsCheckedAt": "2026-06-19T10:26:32+08:00",
-      "matchLabel": "科特迪瓦 vs 厄瓜多尔"
+      "matchLabel": "科特迪瓦 vs 厄瓜多尔",
+      "fixtureId": 537352,
+      "group": "GROUP_E",
+      "matchday": 1
     },
     {
       "matchId": "2040173",
@@ -295,7 +402,10 @@
       "closingOddsSource": "zgzcw.com",
       "closingOddsIssue": "2026-06-14",
       "closingOddsCheckedAt": "2026-06-19T10:26:32+08:00",
-      "matchLabel": "瑞典 vs 突尼斯"
+      "matchLabel": "瑞典 vs 突尼斯",
+      "fixtureId": 537358,
+      "group": "GROUP_F",
+      "matchday": 1
     },
     {
       "matchId": "西班牙 vs 佛得角",
@@ -304,7 +414,10 @@
       "halfTimeHomeScore": 0,
       "halfTimeAwayScore": 0,
       "settledAt": "2026-06-15T16:00:00Z",
-      "matchLabel": "西班牙 vs 佛得角"
+      "matchLabel": "西班牙 vs 佛得角",
+      "fixtureId": 537369,
+      "group": "GROUP_H",
+      "matchday": 1
     },
     {
       "matchId": "比利时 vs 埃及",
@@ -313,7 +426,10 @@
       "halfTimeHomeScore": 0,
       "halfTimeAwayScore": 1,
       "settledAt": "2026-06-15T19:00:00Z",
-      "matchLabel": "比利时 vs 埃及"
+      "matchLabel": "比利时 vs 埃及",
+      "fixtureId": 537363,
+      "group": "GROUP_G",
+      "matchday": 1
     },
     {
       "matchId": "沙特 vs 乌拉圭",
@@ -322,7 +438,10 @@
       "halfTimeHomeScore": 1,
       "halfTimeAwayScore": 0,
       "settledAt": "2026-06-15T22:00:00Z",
-      "matchLabel": "沙特 vs 乌拉圭"
+      "matchLabel": "沙特 vs 乌拉圭",
+      "fixtureId": 537370,
+      "group": "GROUP_H",
+      "matchday": 1
     },
     {
       "matchId": "伊朗 vs 新西兰",
@@ -331,39 +450,10 @@
       "halfTimeHomeScore": 1,
       "halfTimeAwayScore": 1,
       "settledAt": "2026-06-16T01:00:00Z",
-      "matchLabel": "伊朗 vs 新西兰"
-    },
-    {
-      "matchId": "德国 vs 库拉索",
-      "homeScore": 7,
-      "awayScore": 1,
-      "halfTimeHomeScore": 3,
-      "halfTimeAwayScore": 1,
-      "settledAt": "2026-06-14T17:00:00Z"
-    },
-    {
-      "matchId": "荷兰 vs 日本",
-      "homeScore": 2,
-      "awayScore": 2,
-      "halfTimeHomeScore": 0,
-      "halfTimeAwayScore": 0,
-      "settledAt": "2026-06-14T20:00:00Z"
-    },
-    {
-      "matchId": "科特迪瓦 vs 厄瓜多尔",
-      "homeScore": 1,
-      "awayScore": 0,
-      "halfTimeHomeScore": 0,
-      "halfTimeAwayScore": 0,
-      "settledAt": "2026-06-14T23:00:00Z"
-    },
-    {
-      "matchId": "瑞典 vs 突尼斯",
-      "homeScore": 5,
-      "awayScore": 1,
-      "halfTimeHomeScore": 2,
-      "halfTimeAwayScore": 1,
-      "settledAt": "2026-06-15T02:00:00Z"
+      "matchLabel": "伊朗 vs 新西兰",
+      "fixtureId": 537364,
+      "group": "GROUP_G",
+      "matchday": 1
     },
     {
       "matchId": "2040178",
@@ -441,7 +531,10 @@
       "closingOddsSource": "zgzcw.com",
       "closingOddsIssue": "2026-06-16",
       "closingOddsCheckedAt": "2026-06-19T10:26:32+08:00",
-      "matchLabel": "法国 vs 塞内加尔"
+      "matchLabel": "法国 vs 塞内加尔",
+      "fixtureId": 537391,
+      "group": "GROUP_I",
+      "matchday": 1
     },
     {
       "matchId": "2040179",
@@ -514,7 +607,10 @@
       "closingOddsSource": "zgzcw.com",
       "closingOddsIssue": "2026-06-16",
       "closingOddsCheckedAt": "2026-06-19T10:26:32+08:00",
-      "matchLabel": "伊拉克 vs 挪威"
+      "matchLabel": "伊拉克 vs 挪威",
+      "fixtureId": 537392,
+      "group": "GROUP_I",
+      "matchday": 1
     },
     {
       "matchId": "2040180",
@@ -592,7 +688,10 @@
       "closingOddsSource": "zgzcw.com",
       "closingOddsIssue": "2026-06-16",
       "closingOddsCheckedAt": "2026-06-19T10:26:32+08:00",
-      "matchLabel": "阿根廷 vs 阿尔及利亚"
+      "matchLabel": "阿根廷 vs 阿尔及利亚",
+      "fixtureId": 537397,
+      "group": "GROUP_J",
+      "matchday": 1
     },
     {
       "matchId": "2040181",
@@ -660,7 +759,10 @@
       "closingOddsSource": "zgzcw.com",
       "closingOddsIssue": "2026-06-17",
       "closingOddsCheckedAt": "2026-06-19T10:26:32+08:00",
-      "matchLabel": "奥地利 vs 约旦"
+      "matchLabel": "奥地利 vs 约旦",
+      "fixtureId": 537398,
+      "group": "GROUP_J",
+      "matchday": 1
     },
     {
       "matchId": "2040182",
@@ -738,7 +840,10 @@
       "closingOddsSource": "zgzcw.com",
       "closingOddsIssue": "2026-06-17",
       "closingOddsCheckedAt": "2026-06-18T23:55:00+08:00",
-      "matchLabel": "葡萄牙 vs 民主刚果"
+      "matchLabel": "葡萄牙 vs 民主刚果",
+      "fixtureId": 537403,
+      "group": "GROUP_K",
+      "matchday": 1
     },
     {
       "matchId": "2040183",
@@ -816,7 +921,10 @@
       "closingOddsSource": "zgzcw.com",
       "closingOddsIssue": "2026-06-17",
       "closingOddsCheckedAt": "2026-06-19T10:26:32+08:00",
-      "matchLabel": "英格兰 vs 克罗地亚"
+      "matchLabel": "英格兰 vs 克罗地亚",
+      "fixtureId": 537409,
+      "group": "GROUP_L",
+      "matchday": 1
     },
     {
       "matchId": "2040184",
@@ -894,7 +1002,10 @@
       "closingOddsSource": "zgzcw.com",
       "closingOddsIssue": "2026-06-17",
       "closingOddsCheckedAt": "2026-06-19T10:26:32+08:00",
-      "matchLabel": "加纳 vs 巴拿马"
+      "matchLabel": "加纳 vs 巴拿马",
+      "fixtureId": 537410,
+      "group": "GROUP_L",
+      "matchday": 1
     },
     {
       "matchId": "2040185",
@@ -972,7 +1083,10 @@
       "closingOddsSource": "zgzcw.com",
       "closingOddsIssue": "2026-06-17",
       "closingOddsCheckedAt": "2026-06-19T10:26:32+08:00",
-      "matchLabel": "乌兹别克斯坦 vs 哥伦比亚"
+      "matchLabel": "乌兹别克斯坦 vs 哥伦比亚",
+      "fixtureId": 537404,
+      "group": "GROUP_K",
+      "matchday": 1
     },
     {
       "matchId": "2040235",
@@ -981,7 +1095,7 @@
       "awayScore": 1,
       "halfTimeHomeScore": 1,
       "halfTimeAwayScore": 0,
-      "settledAt": "2026-06-19T10:29:25+08:00",
+      "settledAt": "2026-06-18T16:00:00Z",
       "resultSource": "https://www.theguardian.com/football/live/2026/jun/18/czechia-v-south-africa-world-cup-live",
       "resultCheckedAt": "2026-06-19T10:29:25+08:00",
       "closingOdds": {
@@ -1052,7 +1166,10 @@
       },
       "closingOddsSource": "zgzcw.com",
       "closingOddsIssue": "2026-06-18",
-      "closingOddsCheckedAt": "2026-06-19T10:29:25+08:00"
+      "closingOddsCheckedAt": "2026-06-19T10:29:25+08:00",
+      "fixtureId": 537329,
+      "group": "GROUP_A",
+      "matchday": 2
     },
     {
       "matchId": "2040236",
@@ -1061,7 +1178,7 @@
       "awayScore": 1,
       "halfTimeHomeScore": 0,
       "halfTimeAwayScore": 0,
-      "settledAt": "2026-06-19T10:29:25+08:00",
+      "settledAt": "2026-06-18T19:00:00Z",
       "resultSource": "https://www.theguardian.com/football/live/2026/jun/18/switzerland-v-bosnia-and-herzegovina-world-cup-2026-live",
       "resultCheckedAt": "2026-06-19T10:29:25+08:00",
       "closingOdds": {
@@ -1132,7 +1249,10 @@
       },
       "closingOddsSource": "zgzcw.com",
       "closingOddsIssue": "2026-06-18",
-      "closingOddsCheckedAt": "2026-06-19T10:29:25+08:00"
+      "closingOddsCheckedAt": "2026-06-19T10:29:25+08:00",
+      "fixtureId": 537335,
+      "group": "GROUP_B",
+      "matchday": 2
     },
     {
       "matchId": "2040237",
@@ -1141,7 +1261,7 @@
       "awayScore": 0,
       "halfTimeHomeScore": 3,
       "halfTimeAwayScore": 0,
-      "settledAt": "2026-06-19T10:29:25+08:00",
+      "settledAt": "2026-06-18T22:00:00Z",
       "resultSource": "https://www.theguardian.com/football/live/2026/jun/18/fifa-world-cup-2026-live-canada-v-qatar-updates-can-vs-qat-group-b-match-score-latest",
       "resultCheckedAt": "2026-06-19T10:29:25+08:00",
       "closingOdds": {
@@ -1212,7 +1332,10 @@
       },
       "closingOddsSource": "zgzcw.com",
       "closingOddsIssue": "2026-06-18",
-      "closingOddsCheckedAt": "2026-06-19T10:29:25+08:00"
+      "closingOddsCheckedAt": "2026-06-19T10:29:25+08:00",
+      "fixtureId": 537336,
+      "group": "GROUP_B",
+      "matchday": 2
     },
     {
       "matchId": "2040238",
@@ -1290,7 +1413,10 @@
       },
       "closingOddsSource": "zgzcw.com",
       "closingOddsIssue": "2026-06-18",
-      "closingOddsCheckedAt": "2026-06-21T13:00:08+08:00"
+      "closingOddsCheckedAt": "2026-06-21T13:00:08+08:00",
+      "fixtureId": 537330,
+      "group": "GROUP_A",
+      "matchday": 2
     },
     {
       "matchId": "2040239",
@@ -1368,7 +1494,10 @@
       },
       "closingOddsSource": "zgzcw.com",
       "closingOddsIssue": "2026-06-19",
-      "closingOddsCheckedAt": "2026-06-21T13:00:08+08:00"
+      "closingOddsCheckedAt": "2026-06-21T13:00:08+08:00",
+      "fixtureId": 537348,
+      "group": "GROUP_D",
+      "matchday": 2
     },
     {
       "matchId": "2040240",
@@ -1446,7 +1575,10 @@
       },
       "closingOddsSource": "zgzcw.com",
       "closingOddsIssue": "2026-06-19",
-      "closingOddsCheckedAt": "2026-06-21T13:00:08+08:00"
+      "closingOddsCheckedAt": "2026-06-21T13:00:08+08:00",
+      "fixtureId": 537342,
+      "group": "GROUP_C",
+      "matchday": 2
     },
     {
       "matchId": "2040241",
@@ -1519,7 +1651,10 @@
       },
       "closingOddsSource": "zgzcw.com",
       "closingOddsIssue": "2026-06-19",
-      "closingOddsCheckedAt": "2026-06-21T13:00:08+08:00"
+      "closingOddsCheckedAt": "2026-06-21T13:00:08+08:00",
+      "fixtureId": 537341,
+      "group": "GROUP_C",
+      "matchday": 2
     },
     {
       "matchId": "2040242",
@@ -1597,16 +1732,19 @@
       },
       "closingOddsSource": "zgzcw.com",
       "closingOddsIssue": "2026-06-19",
-      "closingOddsCheckedAt": "2026-06-21T13:00:08+08:00"
+      "closingOddsCheckedAt": "2026-06-21T13:00:08+08:00",
+      "fixtureId": 537347,
+      "group": "GROUP_D",
+      "matchday": 2
     },
     {
       "matchId": "2040243",
-      "matchLabel": "荷兰 vs 瑞典",
       "homeScore": 5,
       "awayScore": 1,
       "halfTimeHomeScore": 2,
       "halfTimeAwayScore": 0,
       "settledAt": "2026-06-20T17:00:00Z",
+      "matchLabel": "荷兰 vs 瑞典",
       "closingOdds": {
         "胜平负": {
           "胜": 1.53,
@@ -1675,16 +1813,19 @@
       },
       "closingOddsSource": "zgzcw.com",
       "closingOddsIssue": "2026-06-20",
-      "closingOddsCheckedAt": "2026-06-21T13:00:08+08:00"
+      "closingOddsCheckedAt": "2026-06-21T13:00:08+08:00",
+      "fixtureId": 537359,
+      "group": "GROUP_F",
+      "matchday": 2
     },
     {
       "matchId": "2040244",
-      "matchLabel": "德国 vs 科特迪瓦",
       "homeScore": 2,
       "awayScore": 1,
       "halfTimeHomeScore": 0,
       "halfTimeAwayScore": 1,
       "settledAt": "2026-06-20T20:00:00Z",
+      "matchLabel": "德国 vs 科特迪瓦",
       "closingOdds": {
         "胜平负": {
           "胜": 1.33,
@@ -1753,16 +1894,19 @@
       },
       "closingOddsSource": "zgzcw.com",
       "closingOddsIssue": "2026-06-20",
-      "closingOddsCheckedAt": "2026-06-21T13:00:08+08:00"
+      "closingOddsCheckedAt": "2026-06-21T13:00:08+08:00",
+      "fixtureId": 537353,
+      "group": "GROUP_E",
+      "matchday": 2
     },
     {
       "matchId": "2040245",
-      "matchLabel": "厄瓜多尔 vs 库拉索",
       "homeScore": 0,
       "awayScore": 0,
       "halfTimeHomeScore": 0,
       "halfTimeAwayScore": 0,
       "settledAt": "2026-06-21T00:00:00Z",
+      "matchLabel": "厄瓜多尔 vs 库拉索",
       "closingOdds": {
         "让球胜平负": {
           "-2 胜": 1.85,
@@ -1826,52 +1970,22 @@
       },
       "closingOddsSource": "zgzcw.com",
       "closingOddsIssue": "2026-06-20",
-      "closingOddsCheckedAt": "2026-06-21T13:00:08+08:00"
+      "closingOddsCheckedAt": "2026-06-21T13:00:08+08:00",
+      "fixtureId": 537354,
+      "group": "GROUP_E",
+      "matchday": 2
     },
     {
       "matchId": "2040246",
-      "matchLabel": "突尼斯 vs 日本",
-      "homeScore": 0,
-      "awayScore": 4,
-      "halfTimeHomeScore": 0,
-      "halfTimeAwayScore": 2,
-      "settledAt": "2026-06-21T04:00:00Z"
-    },
-    {
-      "matchId": "荷兰 vs 瑞典",
-      "homeScore": 5,
-      "awayScore": 1,
-      "halfTimeHomeScore": 2,
-      "halfTimeAwayScore": 0,
-      "settledAt": "2026-06-20T17:00:00Z",
-      "matchLabel": "荷兰 vs 瑞典"
-    },
-    {
-      "matchId": "德国 vs 科特迪瓦",
-      "homeScore": 2,
-      "awayScore": 1,
-      "halfTimeHomeScore": 0,
-      "halfTimeAwayScore": 1,
-      "settledAt": "2026-06-20T20:00:00Z",
-      "matchLabel": "德国 vs 科特迪瓦"
-    },
-    {
-      "matchId": "厄瓜多尔 vs 库拉索",
-      "homeScore": 0,
-      "awayScore": 0,
-      "halfTimeHomeScore": 0,
-      "halfTimeAwayScore": 0,
-      "settledAt": "2026-06-21T00:00:00Z",
-      "matchLabel": "厄瓜多尔 vs 库拉索"
-    },
-    {
-      "matchId": "突尼斯 vs 日本",
       "homeScore": 0,
       "awayScore": 4,
       "halfTimeHomeScore": 0,
       "halfTimeAwayScore": 2,
       "settledAt": "2026-06-21T04:00:00Z",
-      "matchLabel": "突尼斯 vs 日本"
+      "matchLabel": "突尼斯 vs 日本",
+      "fixtureId": 537360,
+      "group": "GROUP_F",
+      "matchday": 2
     },
     {
       "matchId": "西班牙 vs 沙特",
@@ -1880,7 +1994,10 @@
       "halfTimeHomeScore": 3,
       "halfTimeAwayScore": 0,
       "settledAt": "2026-06-21T16:00:00Z",
-      "matchLabel": "西班牙 vs 沙特"
+      "matchLabel": "西班牙 vs 沙特",
+      "fixtureId": 537371,
+      "group": "GROUP_H",
+      "matchday": 2
     },
     {
       "matchId": "比利时 vs 伊朗",
@@ -1889,7 +2006,10 @@
       "halfTimeHomeScore": 0,
       "halfTimeAwayScore": 0,
       "settledAt": "2026-06-21T19:00:00Z",
-      "matchLabel": "比利时 vs 伊朗"
+      "matchLabel": "比利时 vs 伊朗",
+      "fixtureId": 537365,
+      "group": "GROUP_G",
+      "matchday": 2
     },
     {
       "matchId": "乌拉圭 vs 佛得角",
@@ -1898,7 +2018,10 @@
       "halfTimeHomeScore": 2,
       "halfTimeAwayScore": 1,
       "settledAt": "2026-06-21T22:00:00Z",
-      "matchLabel": "乌拉圭 vs 佛得角"
+      "matchLabel": "乌拉圭 vs 佛得角",
+      "fixtureId": 537372,
+      "group": "GROUP_H",
+      "matchday": 2
     },
     {
       "matchId": "新西兰 vs 埃及",
@@ -1907,7 +2030,10 @@
       "halfTimeHomeScore": 1,
       "halfTimeAwayScore": 0,
       "settledAt": "2026-06-22T01:00:00Z",
-      "matchLabel": "新西兰 vs 埃及"
+      "matchLabel": "新西兰 vs 埃及",
+      "fixtureId": 537366,
+      "group": "GROUP_G",
+      "matchday": 2
     },
     {
       "matchId": "2040251",
@@ -1985,7 +2111,10 @@
       },
       "closingOddsSource": "zgzcw.com",
       "closingOddsIssue": "2026-06-22",
-      "closingOddsCheckedAt": "2026-06-23T13:00:09+08:00"
+      "closingOddsCheckedAt": "2026-06-23T13:00:09+08:00",
+      "fixtureId": 537399,
+      "group": "GROUP_J",
+      "matchday": 2
     },
     {
       "matchId": "2040252",
@@ -2058,7 +2187,10 @@
       },
       "closingOddsSource": "zgzcw.com",
       "closingOddsIssue": "2026-06-22",
-      "closingOddsCheckedAt": "2026-06-23T13:00:09+08:00"
+      "closingOddsCheckedAt": "2026-06-23T13:00:09+08:00",
+      "fixtureId": 537393,
+      "group": "GROUP_I",
+      "matchday": 2
     },
     {
       "matchId": "2040253",
@@ -2136,11 +2268,14 @@
       },
       "closingOddsSource": "zgzcw.com",
       "closingOddsIssue": "2026-06-22",
-      "closingOddsCheckedAt": "2026-06-23T13:00:09+08:00"
+      "closingOddsCheckedAt": "2026-06-23T13:00:09+08:00",
+      "fixtureId": 537394,
+      "group": "GROUP_I",
+      "matchday": 2
     },
     {
       "matchId": "2040254",
-      "matchLabel": "约旦 vs 阿尔及利",
+      "matchLabel": "约旦 vs 阿尔及利亚",
       "homeScore": 1,
       "awayScore": 2,
       "halfTimeHomeScore": 1,
@@ -2214,7 +2349,10 @@
       },
       "closingOddsSource": "zgzcw.com",
       "closingOddsIssue": "2026-06-22",
-      "closingOddsCheckedAt": "2026-06-23T15:43:21+08:00"
+      "closingOddsCheckedAt": "2026-06-23T15:43:21+08:00",
+      "fixtureId": 537400,
+      "group": "GROUP_J",
+      "matchday": 2
     }
   ]
 }

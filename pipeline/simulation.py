@@ -27,6 +27,11 @@ class MatchSimulationInput:
     home_red_probability: float = 0.0
     away_red_probability: float = 0.0
     red_card_xg_penalty: float = 0.0
+    segment_weights: tuple[float, float, float, float] = (0.23, 0.22, 0.27, 0.28)
+    home_late_attack_multiplier: float = 1.0
+    away_late_attack_multiplier: float = 1.0
+    home_late_defensive_risk_multiplier: float = 1.0
+    away_late_defensive_risk_multiplier: float = 1.0
 
 
 @dataclass
@@ -234,14 +239,27 @@ def simulate_tournament(
 
             home_red_minute = randomizer.randrange(1, 91) if randomizer.random() < match.home_red_probability else None
             away_red_minute = randomizer.randrange(1, 91) if randomizer.random() < match.away_red_probability else None
-            home_first_mean = home_xg * 0.45 * _segment_multiplier(home_red_minute, 0, 45, match.red_card_xg_penalty)
-            away_first_mean = away_xg * 0.45 * _segment_multiplier(away_red_minute, 0, 45, match.red_card_xg_penalty)
-            home_second_mean = home_xg * 0.55 * _segment_multiplier(home_red_minute, 45, 90, match.red_card_xg_penalty)
-            away_second_mean = away_xg * 0.55 * _segment_multiplier(away_red_minute, 45, 90, match.red_card_xg_penalty)
-            half_home = sample_poisson(randomizer, home_first_mean)
-            half_away = sample_poisson(randomizer, away_first_mean)
-            full_home = half_home + sample_poisson(randomizer, home_second_mean)
-            full_away = half_away + sample_poisson(randomizer, away_second_mean)
+            if len(match.segment_weights) != 4 or not math.isclose(sum(match.segment_weights), 1.0, abs_tol=1e-9):
+                raise ValueError("segment_weights must contain four values summing to 1")
+            boundaries = ((0, 25), (25, 45), (45, 70), (70, 90))
+            home_segments = []
+            away_segments = []
+            for index, ((start, end), weight) in enumerate(zip(boundaries, match.segment_weights, strict=True)):
+                home_mean = home_xg * weight * _segment_multiplier(
+                    home_red_minute, start, end, match.red_card_xg_penalty
+                )
+                away_mean = away_xg * weight * _segment_multiplier(
+                    away_red_minute, start, end, match.red_card_xg_penalty
+                )
+                if index == 3:
+                    home_mean *= match.home_late_attack_multiplier * match.away_late_defensive_risk_multiplier
+                    away_mean *= match.away_late_attack_multiplier * match.home_late_defensive_risk_multiplier
+                home_segments.append(sample_poisson(randomizer, home_mean))
+                away_segments.append(sample_poisson(randomizer, away_mean))
+            half_home = home_segments[0] + home_segments[1]
+            half_away = away_segments[0] + away_segments[1]
+            full_home = sum(home_segments)
+            full_away = sum(away_segments)
             scores[match.match_id].append((full_home, full_away))
             halftime_scores[match.match_id].append((half_home, half_away))
 

@@ -73,3 +73,24 @@ def test_group_rank_probabilities_are_aggregated_across_shared_paths():
     assert set(result.group_rank_probabilities["G"]) == {"A", "B", "C"}
     for position in range(3):
         assert math.isclose(sum(values[position] for values in result.group_rank_probabilities["G"].values()), 1.0)
+
+
+def test_four_segment_late_pressure_changes_goal_distribution_without_changing_earlier_segments():
+    baseline = simulate_tournament([
+        MatchSimulationInput("m1", "A", "B", 1.4, 1.0)
+    ], paths=20_000, seed=21)
+    chase = simulate_tournament([
+        MatchSimulationInput(
+            "m1", "A", "B", 1.4, 1.0,
+            home_late_attack_multiplier=1.20,
+            home_late_defensive_risk_multiplier=1.10,
+        )
+    ], paths=20_000, seed=21)
+
+    baseline_home = sum(home for home, _ in baseline.scores_by_match["m1"]) / baseline.paths
+    chase_home = sum(home for home, _ in chase.scores_by_match["m1"]) / chase.paths
+    baseline_half = sum(home for home, _ in baseline.halftime_scores_by_match["m1"]) / baseline.paths
+    chase_half = sum(home for home, _ in chase.halftime_scores_by_match["m1"]) / chase.paths
+
+    assert chase_home > baseline_home
+    assert abs(chase_half - baseline_half) < 0.02

@@ -1,0 +1,3320 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-06-23T16:38:49+08:00",
+  "scope": {
+    "scheduledMatches": 48,
+    "completedMatches": 44,
+    "pendingMatches": 4,
+    "archivedMinuteByMinuteMatches": 44
+  },
+  "modelChanges": [
+    "matchday two receives 55% and matchday one 45% when both are available",
+    "objective result form and tactical event-timeline evidence are separated",
+    "cooling-break segments are explicit and tactical deltas are capped at 0.05 xG",
+    "injury and cumulative discipline states are auditable",
+    "FIFA Article 13 and Annex C knockout paths are implemented"
+  ],
+  "backtest": {
+    "sample": {
+      "completedSecondRoundMatches": 20,
+      "plannedSecondRoundMatches": 24,
+      "complete": false,
+      "informationCutoffPolicy": "only matchday-one evidence is used to replay matchday two"
+    },
+    "metrics": {
+      "original": {
+        "log_loss": 0.7612822905961959,
+        "rps": 0.14530909256000005,
+        "brier": 0.45359711693000004,
+        "calibration_error": 0.10166666666666667,
+        "accuracy": 0.7,
+        "drawRecall": 0.0,
+        "totalGoalsMae": 1.45
+      },
+      "objective": {
+        "log_loss": 0.7424342132717199,
+        "rps": 0.1389933043066178,
+        "brier": 0.4422172653134292,
+        "calibration_error": 0.07833333333333335,
+        "accuracy": 0.75,
+        "drawRecall": 0.0,
+        "totalGoalsMae": 1.45391
+      },
+      "tactical": {
+        "log_loss": 0.7440815676440155,
+        "rps": 0.13947432179040636,
+        "brier": 0.4436510109221894,
+        "calibration_error": 0.08166666666666669,
+        "accuracy": 0.75,
+        "drawRecall": 0.0,
+        "totalGoalsMae": 1.4312725
+      }
+    },
+    "objectiveAdmissionDecision": {
+      "status": "enabled",
+      "enabled": true,
+      "rule": "Log Loss and RPS must improve versus archived production; calibration may worsen by at most 0.005"
+    },
+    "tacticalDeltaVsObjective": {
+      "log_loss": 0.001647354372295573,
+      "rps": 0.000481017483788565,
+      "calibration_error": 0.003333333333333341
+    },
+    "admissionDecision": {
+      "status": "observation_only",
+      "enabled": false,
+      "rule": "Log Loss and RPS must both improve; calibration error may worsen by at most 0.005"
+    },
+    "matches": [
+      {
+        "targetDate": "2026-06-19",
+        "match": "捷克 vs 南非",
+        "actual": "draw",
+        "score": "1-1",
+        "original": {
+          "home": 0.65079,
+          "draw": 0.21775,
+          "away": 0.13146
+        },
+        "objective": {
+          "home": 0.6403870934760293,
+          "draw": 0.23575547382578654,
+          "away": 0.12385743269818388
+        },
+        "tactical": {
+          "home": 0.6424010073521388,
+          "draw": 0.2366619681360777,
+          "away": 0.12093702451178358
+        },
+        "totalGoals": {
+          "actual": 2,
+          "originalExpected": 2.49,
+          "objectiveExpected": 2.4937,
+          "tacticalExpected": 2.4587
+        }
+      },
+      {
+        "targetDate": "2026-06-19",
+        "match": "瑞士 vs 波黑",
+        "actual": "home",
+        "score": "4-1",
+        "original": {
+          "home": 0.70316,
+          "draw": 0.18775,
+          "away": 0.10909
+        },
+        "objective": {
+          "home": 0.6915512105939056,
+          "draw": 0.2031988494441188,
+          "away": 0.10524993996197586
+        },
+        "tactical": {
+          "home": 0.6879406511016322,
+          "draw": 0.20427978823812165,
+          "away": 0.10777956066024613
+        },
+        "totalGoals": {
+          "actual": 5,
+          "originalExpected": 2.82,
+          "objectiveExpected": 2.8041,
+          "tacticalExpected": 2.8141
+        }
+      },
+      {
+        "targetDate": "2026-06-19",
+        "match": "加拿大 vs 卡塔尔",
+        "actual": "home",
+        "score": "6-0",
+        "original": {
+          "home": 0.78053,
+          "draw": 0.15669,
+          "away": 0.06278
+        },
+        "objective": {
+          "home": 0.7634153705870467,
+          "draw": 0.1749787530737214,
+          "away": 0.06160587633923172
+        },
+        "tactical": {
+          "home": 0.7575377397794332,
+          "draw": 0.17703185425867066,
+          "away": 0.06543040596189552
+        },
+        "totalGoals": {
+          "actual": 6,
+          "originalExpected": 2.6900000000000004,
+          "objectiveExpected": 2.6793000000000005,
+          "tacticalExpected": 2.7068000000000003
+        }
+      },
+      {
+        "targetDate": "2026-06-19",
+        "match": "墨西哥 vs 韩国",
+        "actual": "home",
+        "score": "1-0",
+        "original": {
+          "home": 0.49815,
+          "draw": 0.2664,
+          "away": 0.23545
+        },
+        "objective": {
+          "home": 0.4875746229916982,
+          "draw": 0.28586885665979783,
+          "away": 0.22655652034850407
+        },
+        "tactical": {
+          "home": 0.48195598256794875,
+          "draw": 0.28952769502809944,
+          "away": 0.22851632240395184
+        },
+        "totalGoals": {
+          "actual": 1,
+          "originalExpected": 2.37,
+          "objectiveExpected": 2.3693,
+          "tacticalExpected": 2.3293
+        }
+      },
+      {
+        "targetDate": "2026-06-20",
+        "match": "美国 vs 澳大利亚",
+        "actual": "home",
+        "score": "2-0",
+        "original": {
+          "home": 0.28914,
+          "draw": 0.25892,
+          "away": 0.45194
+        },
+        "objective": {
+          "home": 0.37259745505122915,
+          "draw": 0.28420836993684256,
+          "away": 0.343194175011928
+        },
+        "tactical": {
+          "home": 0.3697123206795378,
+          "draw": 0.28410825849771565,
+          "away": 0.3461794208227466
+        },
+        "totalGoals": {
+          "actual": 2,
+          "originalExpected": 2.58,
+          "objectiveExpected": 2.5941,
+          "tacticalExpected": 2.5965999999999996
+        }
+      },
+      {
+        "targetDate": "2026-06-20",
+        "match": "苏格兰 vs 摩洛哥",
+        "actual": "away",
+        "score": "0-1",
+        "original": {
+          "home": 0.29141,
+          "draw": 0.27628,
+          "away": 0.43231
+        },
+        "objective": {
+          "home": 0.23034675770826024,
+          "draw": 0.29103581899597863,
+          "away": 0.47861742329576096
+        },
+        "tactical": {
+          "home": 0.2245934987708737,
+          "draw": 0.288858215917184,
+          "away": 0.48654828531194244
+        },
+        "totalGoals": {
+          "actual": 1,
+          "originalExpected": 2.33,
+          "objectiveExpected": 2.31595,
+          "tacticalExpected": 2.3259499999999997
+        }
+      },
+      {
+        "targetDate": "2026-06-20",
+        "match": "巴西 vs 海地",
+        "actual": "home",
+        "score": "3-0",
+        "original": {
+          "home": 0.87143,
+          "draw": 0.11104,
+          "away": 0.01753
+        },
+        "objective": {
+          "home": 0.8690189754453279,
+          "draw": 0.1155509452632278,
+          "away": 0.01543007929144448
+        },
+        "tactical": {
+          "home": 0.8537531238747277,
+          "draw": 0.1252981985677424,
+          "away": 0.02094867755752961
+        },
+        "totalGoals": {
+          "actual": 3,
+          "originalExpected": 2.62,
+          "objectiveExpected": 2.60075,
+          "tacticalExpected": 2.6132500000000003
+        }
+      },
+      {
+        "targetDate": "2026-06-20",
+        "match": "土耳其 vs 巴拉圭",
+        "actual": "away",
+        "score": "0-1",
+        "original": {
+          "home": 0.47844,
+          "draw": 0.24356,
+          "away": 0.278
+        },
+        "objective": {
+          "home": 0.47104803183942645,
+          "draw": 0.2617012149540424,
+          "away": 0.2672507532065311
+        },
+        "tactical": {
+          "home": 0.47367467522782125,
+          "draw": 0.2629908992919596,
+          "away": 0.2633344254802189
+        },
+        "totalGoals": {
+          "actual": 1,
+          "originalExpected": 2.83,
+          "objectiveExpected": 2.843,
+          "tacticalExpected": 2.8104999999999998
+        }
+      },
+      {
+        "targetDate": "2026-06-21",
+        "match": "荷兰 vs 瑞典",
+        "actual": "home",
+        "score": "5-1",
+        "original": {
+          "home": 0.64205,
+          "draw": 0.18622,
+          "away": 0.17173
+        },
+        "objective": {
+          "home": 0.6350232444878654,
+          "draw": 0.1999774831277914,
+          "away": 0.1649992723843432
+        },
+        "tactical": {
+          "home": 0.643356167910836,
+          "draw": 0.19585612192320648,
+          "away": 0.16078771016595741
+        },
+        "totalGoals": {
+          "actual": 6,
+          "originalExpected": 3.5,
+          "objectiveExpected": 3.4830500000000004,
+          "tacticalExpected": 3.53805
+        }
+      },
+      {
+        "targetDate": "2026-06-21",
+        "match": "德国 vs 科特迪瓦",
+        "actual": "home",
+        "score": "2-1",
+        "original": {
+          "home": 0.65846,
+          "draw": 0.19616,
+          "away": 0.14538
+        },
+        "objective": {
+          "home": 0.6514291224468995,
+          "draw": 0.21204505089708078,
+          "away": 0.13652582665601912
+        },
+        "tactical": {
+          "home": 0.6446481566339807,
+          "draw": 0.21518375112251517,
+          "away": 0.1401680922435045
+        },
+        "totalGoals": {
+          "actual": 3,
+          "originalExpected": 2.98,
+          "objectiveExpected": 2.971,
+          "tacticalExpected": 2.9485
+        }
+      },
+      {
+        "targetDate": "2026-06-21",
+        "match": "厄瓜多尔 vs 库拉索",
+        "actual": "draw",
+        "score": "0-0",
+        "original": {
+          "home": 0.87188,
+          "draw": 0.11152,
+          "away": 0.0166
+        },
+        "objective": {
+          "home": 0.8691847302219615,
+          "draw": 0.11629987560892135,
+          "away": 0.014515394169117086
+        },
+        "tactical": {
+          "home": 0.863938385420069,
+          "draw": 0.12016587532496449,
+          "away": 0.01589573925496628
+        },
+        "totalGoals": {
+          "actual": 0,
+          "originalExpected": 2.57,
+          "objectiveExpected": 2.5617,
+          "tacticalExpected": 2.5467
+        }
+      },
+      {
+        "targetDate": "2026-06-21",
+        "match": "突尼斯 vs 日本",
+        "actual": "away",
+        "score": "0-4",
+        "original": {
+          "home": 0.05837,
+          "draw": 0.14068,
+          "away": 0.80095
+        },
+        "objective": {
+          "home": 0.052815388531699606,
+          "draw": 0.1530194387437271,
+          "away": 0.7941651727245733
+        },
+        "tactical": {
+          "home": 0.054468211082109884,
+          "draw": 0.15137438744334827,
+          "away": 0.794157401474542
+        },
+        "totalGoals": {
+          "actual": 4,
+          "originalExpected": 2.9000000000000004,
+          "objectiveExpected": 2.89535,
+          "tacticalExpected": 2.96035
+        }
+      },
+      {
+        "targetDate": "2026-06-22",
+        "match": "西班牙 vs 沙特",
+        "actual": "home",
+        "score": "4-0",
+        "original": {
+          "home": 0.85125,
+          "draw": 0.12934,
+          "away": 0.01941
+        },
+        "objective": {
+          "home": 0.8504318218423595,
+          "draw": 0.13349292421620704,
+          "away": 0.016075253941433255
+        },
+        "tactical": {
+          "home": 0.8492462440731885,
+          "draw": 0.13172323962444205,
+          "away": 0.01903051630236977
+        },
+        "totalGoals": {
+          "actual": 4,
+          "originalExpected": 2.37,
+          "objectiveExpected": 2.3756999999999997,
+          "tacticalExpected": 2.4707
+        }
+      },
+      {
+        "targetDate": "2026-06-22",
+        "match": "比利时 vs 伊朗",
+        "actual": "draw",
+        "score": "0-0",
+        "original": {
+          "home": 0.5559,
+          "draw": 0.22679,
+          "away": 0.21731
+        },
+        "objective": {
+          "home": 0.5494658456261573,
+          "draw": 0.2446649162011177,
+          "away": 0.20586923817272482
+        },
+        "tactical": {
+          "home": 0.5570300776597745,
+          "draw": 0.24231645088456305,
+          "away": 0.2006534714556626
+        },
+        "totalGoals": {
+          "actual": 0,
+          "originalExpected": 2.89,
+          "objectiveExpected": 2.891,
+          "tacticalExpected": 2.9035
+        }
+      },
+      {
+        "targetDate": "2026-06-22",
+        "match": "乌拉圭 vs 佛得角",
+        "actual": "draw",
+        "score": "2-2",
+        "original": {
+          "home": 0.68701,
+          "draw": 0.23842,
+          "away": 0.07457
+        },
+        "objective": {
+          "home": 0.6820462866998165,
+          "draw": 0.2500299626404159,
+          "away": 0.06792375065976719
+        },
+        "tactical": {
+          "home": 0.6889974135183298,
+          "draw": 0.24241076709290263,
+          "away": 0.06859181938876739
+        },
+        "totalGoals": {
+          "actual": 4,
+          "originalExpected": 1.9000000000000001,
+          "objectiveExpected": 1.9010999999999998,
+          "tacticalExpected": 1.9710999999999999
+        }
+      },
+      {
+        "targetDate": "2026-06-22",
+        "match": "新西兰 vs 埃及",
+        "actual": "away",
+        "score": "1-3",
+        "original": {
+          "home": 0.19786,
+          "draw": 0.23978,
+          "away": 0.56236
+        },
+        "objective": {
+          "home": 0.19045399409826297,
+          "draw": 0.2601317604880599,
+          "away": 0.5494142454136764
+        },
+        "tactical": {
+          "home": 0.19490267353591897,
+          "draw": 0.262507081893347,
+          "away": 0.5425902445707343
+        },
+        "totalGoals": {
+          "actual": 4,
+          "originalExpected": 2.57,
+          "objectiveExpected": 2.5737,
+          "tacticalExpected": 2.5612
+        }
+      },
+      {
+        "targetDate": "2026-06-23",
+        "match": "阿根廷 vs 奥地利",
+        "actual": "home",
+        "score": "2-0",
+        "original": {
+          "home": 0.73615,
+          "draw": 0.17938,
+          "away": 0.08447
+        },
+        "objective": {
+          "home": 0.7276709334380578,
+          "draw": 0.19382800124451216,
+          "away": 0.07850106531742991
+        },
+        "tactical": {
+          "home": 0.7294542623573841,
+          "draw": 0.1941740993818325,
+          "away": 0.07637163826078347
+        },
+        "totalGoals": {
+          "actual": 2,
+          "originalExpected": 2.6399999999999997,
+          "objectiveExpected": 2.63155,
+          "tacticalExpected": 2.5990499999999996
+        }
+      },
+      {
+        "targetDate": "2026-06-23",
+        "match": "法国 vs 伊拉克",
+        "actual": "home",
+        "score": "3-0",
+        "original": {
+          "home": 0.89961,
+          "draw": 0.08619,
+          "away": 0.0142
+        },
+        "objective": {
+          "home": 0.8958434803111518,
+          "draw": 0.0925649148140608,
+          "away": 0.011591604874787116
+        },
+        "tactical": {
+          "home": 0.9030331041233924,
+          "draw": 0.0875039997611417,
+          "away": 0.009462896115465746
+        },
+        "totalGoals": {
+          "actual": 3,
+          "originalExpected": 2.8600000000000003,
+          "objectiveExpected": 2.84985,
+          "tacticalExpected": 2.8501
+        }
+      },
+      {
+        "targetDate": "2026-06-23",
+        "match": "挪威 vs 塞内加尔",
+        "actual": "home",
+        "score": "3-2",
+        "original": {
+          "home": 0.51593,
+          "draw": 0.23407,
+          "away": 0.25
+        },
+        "objective": {
+          "home": 0.5095924839367326,
+          "draw": 0.24820334413621134,
+          "away": 0.24220417192705604
+        },
+        "tactical": {
+          "home": 0.5246589532280533,
+          "draw": 0.24380776714592414,
+          "away": 0.23153327962602255
+        },
+        "totalGoals": {
+          "actual": 5,
+          "originalExpected": 3.0,
+          "objectiveExpected": 2.99395,
+          "tacticalExpected": 3.02895
+        }
+      },
+      {
+        "targetDate": "2026-06-23",
+        "match": "约旦 vs 阿尔及利",
+        "actual": "away",
+        "score": "1-2",
+        "original": {
+          "home": 0.32427,
+          "draw": 0.27028,
+          "away": 0.40545
+        },
+        "objective": {
+          "home": 0.3197272805030206,
+          "draw": 0.2899773326120814,
+          "away": 0.3902953868848977
+        },
+        "tactical": {
+          "home": 0.3221294570726858,
+          "draw": 0.2909805379710968,
+          "away": 0.3868900049562174
+        },
+        "totalGoals": {
+          "actual": 3,
+          "originalExpected": 2.49,
+          "objectiveExpected": 2.49425,
+          "tacticalExpected": 2.4817500000000003
+        }
+      }
+    ]
+  },
+  "squadStatus": {
+    "matches": [
+      {
+        "fixtureId": 537327,
+        "servedSuspensions": {
+          "墨西哥": [],
+          "南非": []
+        },
+        "teamConductScores": {
+          "南非": -10,
+          "墨西哥": -5
+        },
+        "suspendedNextMatch": [
+          "César Montes",
+          "Themba Zwane",
+          "Yaya Sithole"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537328,
+        "servedSuspensions": {
+          "韩国": [],
+          "捷克": []
+        },
+        "teamConductScores": {},
+        "suspendedNextMatch": [
+          "César Montes",
+          "Themba Zwane",
+          "Yaya Sithole"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537333,
+        "servedSuspensions": {
+          "加拿大": [],
+          "波黑": []
+        },
+        "teamConductScores": {
+          "加拿大": -2
+        },
+        "suspendedNextMatch": [
+          "César Montes",
+          "Themba Zwane",
+          "Yaya Sithole"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537345,
+        "servedSuspensions": {
+          "美国": [],
+          "巴拉圭": []
+        },
+        "teamConductScores": {
+          "巴拉圭": -5
+        },
+        "suspendedNextMatch": [
+          "César Montes",
+          "Themba Zwane",
+          "Yaya Sithole"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537334,
+        "servedSuspensions": {
+          "卡塔尔": [],
+          "瑞士": []
+        },
+        "teamConductScores": {
+          "卡塔尔": -2,
+          "瑞士": -1
+        },
+        "suspendedNextMatch": [
+          "César Montes",
+          "Themba Zwane",
+          "Yaya Sithole"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537339,
+        "servedSuspensions": {
+          "巴西": [],
+          "摩洛哥": []
+        },
+        "teamConductScores": {
+          "巴西": -2
+        },
+        "suspendedNextMatch": [
+          "César Montes",
+          "Themba Zwane",
+          "Yaya Sithole"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537340,
+        "servedSuspensions": {
+          "海地": [],
+          "苏格兰": []
+        },
+        "teamConductScores": {
+          "海地": -1,
+          "苏格兰": -3
+        },
+        "suspendedNextMatch": [
+          "César Montes",
+          "Themba Zwane",
+          "Yaya Sithole"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537346,
+        "servedSuspensions": {
+          "澳大利亚": [],
+          "土耳其": []
+        },
+        "teamConductScores": {
+          "土耳其": -1
+        },
+        "suspendedNextMatch": [
+          "César Montes",
+          "Themba Zwane",
+          "Yaya Sithole"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537351,
+        "servedSuspensions": {
+          "德国": [],
+          "库拉索": []
+        },
+        "teamConductScores": {},
+        "suspendedNextMatch": [
+          "César Montes",
+          "Themba Zwane",
+          "Yaya Sithole"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537357,
+        "servedSuspensions": {
+          "荷兰": [],
+          "日本": []
+        },
+        "teamConductScores": {
+          "荷兰": -3
+        },
+        "suspendedNextMatch": [
+          "César Montes",
+          "Themba Zwane",
+          "Yaya Sithole"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537352,
+        "servedSuspensions": {
+          "科特迪瓦": [],
+          "厄瓜多尔": []
+        },
+        "teamConductScores": {
+          "厄瓜多尔": -1
+        },
+        "suspendedNextMatch": [
+          "César Montes",
+          "Themba Zwane",
+          "Yaya Sithole"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537358,
+        "servedSuspensions": {
+          "瑞典": [],
+          "突尼斯": []
+        },
+        "teamConductScores": {
+          "突尼斯": -1
+        },
+        "suspendedNextMatch": [
+          "César Montes",
+          "Themba Zwane",
+          "Yaya Sithole"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537369,
+        "servedSuspensions": {
+          "西班牙": [],
+          "佛得角": []
+        },
+        "teamConductScores": {
+          "西班牙": -1
+        },
+        "suspendedNextMatch": [
+          "César Montes",
+          "Themba Zwane",
+          "Yaya Sithole"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537363,
+        "servedSuspensions": {
+          "比利时": [],
+          "埃及": []
+        },
+        "teamConductScores": {
+          "埃及": -2,
+          "比利时": -2
+        },
+        "suspendedNextMatch": [
+          "César Montes",
+          "Themba Zwane",
+          "Yaya Sithole"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537370,
+        "servedSuspensions": {
+          "沙特": [],
+          "乌拉圭": []
+        },
+        "teamConductScores": {
+          "沙特": -1
+        },
+        "suspendedNextMatch": [
+          "César Montes",
+          "Themba Zwane",
+          "Yaya Sithole"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537364,
+        "servedSuspensions": {
+          "伊朗": [],
+          "新西兰": []
+        },
+        "teamConductScores": {},
+        "suspendedNextMatch": [
+          "César Montes",
+          "Themba Zwane",
+          "Yaya Sithole"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537391,
+        "servedSuspensions": {
+          "法国": [],
+          "塞内加尔": []
+        },
+        "teamConductScores": {},
+        "suspendedNextMatch": [
+          "César Montes",
+          "Themba Zwane",
+          "Yaya Sithole"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537392,
+        "servedSuspensions": {
+          "伊拉克": [],
+          "挪威": []
+        },
+        "teamConductScores": {
+          "伊拉克": -1
+        },
+        "suspendedNextMatch": [
+          "César Montes",
+          "Themba Zwane",
+          "Yaya Sithole"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537397,
+        "servedSuspensions": {
+          "阿根廷": [],
+          "阿尔及利亚": []
+        },
+        "teamConductScores": {},
+        "suspendedNextMatch": [
+          "César Montes",
+          "Themba Zwane",
+          "Yaya Sithole"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537398,
+        "servedSuspensions": {
+          "奥地利": [],
+          "约旦": []
+        },
+        "teamConductScores": {
+          "奥地利": -1
+        },
+        "suspendedNextMatch": [
+          "César Montes",
+          "Themba Zwane",
+          "Yaya Sithole"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537403,
+        "servedSuspensions": {
+          "葡萄牙": [],
+          "民主刚果": []
+        },
+        "teamConductScores": {
+          "葡萄牙": -3,
+          "民主刚果": -1
+        },
+        "suspendedNextMatch": [
+          "César Montes",
+          "Themba Zwane",
+          "Yaya Sithole"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537409,
+        "servedSuspensions": {
+          "英格兰": [],
+          "克罗地亚": []
+        },
+        "teamConductScores": {},
+        "suspendedNextMatch": [
+          "César Montes",
+          "Themba Zwane",
+          "Yaya Sithole"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537410,
+        "servedSuspensions": {
+          "加纳": [],
+          "巴拿马": []
+        },
+        "teamConductScores": {
+          "加纳": -1,
+          "巴拿马": -2
+        },
+        "suspendedNextMatch": [
+          "César Montes",
+          "Themba Zwane",
+          "Yaya Sithole"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537404,
+        "servedSuspensions": {
+          "乌兹别克斯坦": [],
+          "哥伦比亚": []
+        },
+        "teamConductScores": {
+          "哥伦比亚": -1,
+          "乌兹别克斯坦": -1
+        },
+        "suspendedNextMatch": [
+          "César Montes",
+          "Themba Zwane",
+          "Yaya Sithole"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537329,
+        "servedSuspensions": {
+          "捷克": [],
+          "南非": [
+            "Themba Zwane",
+            "Yaya Sithole"
+          ]
+        },
+        "teamConductScores": {
+          "南非": -2,
+          "捷克": -1
+        },
+        "suspendedNextMatch": [
+          "César Montes",
+          "Teboho Mokoena"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537335,
+        "servedSuspensions": {
+          "瑞士": [],
+          "波黑": []
+        },
+        "teamConductScores": {
+          "瑞士": -1
+        },
+        "suspendedNextMatch": [
+          "César Montes",
+          "Teboho Mokoena"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537336,
+        "servedSuspensions": {
+          "加拿大": [],
+          "卡塔尔": []
+        },
+        "teamConductScores": {
+          "加拿大": -1,
+          "卡塔尔": -9
+        },
+        "suspendedNextMatch": [
+          "Assim Madibo",
+          "César Montes",
+          "Homam El Amin",
+          "Teboho Mokoena"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537330,
+        "servedSuspensions": {
+          "墨西哥": [
+            "César Montes"
+          ],
+          "韩国": []
+        },
+        "teamConductScores": {},
+        "suspendedNextMatch": [
+          "Assim Madibo",
+          "Homam El Amin",
+          "Teboho Mokoena"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537348,
+        "servedSuspensions": {
+          "美国": [],
+          "澳大利亚": []
+        },
+        "teamConductScores": {
+          "澳大利亚": -4
+        },
+        "suspendedNextMatch": [
+          "Assim Madibo",
+          "Homam El Amin",
+          "Teboho Mokoena"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537342,
+        "servedSuspensions": {
+          "苏格兰": [],
+          "摩洛哥": []
+        },
+        "teamConductScores": {
+          "摩洛哥": -1,
+          "苏格兰": -1
+        },
+        "suspendedNextMatch": [
+          "Assim Madibo",
+          "Homam El Amin",
+          "Teboho Mokoena"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537341,
+        "servedSuspensions": {
+          "巴西": [],
+          "海地": []
+        },
+        "teamConductScores": {
+          "海地": -3,
+          "巴西": -1
+        },
+        "suspendedNextMatch": [
+          "Assim Madibo",
+          "Homam El Amin",
+          "Teboho Mokoena"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537347,
+        "servedSuspensions": {
+          "土耳其": [],
+          "巴拉圭": []
+        },
+        "teamConductScores": {
+          "巴拉圭": -5,
+          "土耳其": -1
+        },
+        "suspendedNextMatch": [
+          "Assim Madibo",
+          "Homam El Amin",
+          "Miguel Almirón",
+          "Teboho Mokoena"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537359,
+        "servedSuspensions": {
+          "荷兰": [],
+          "瑞典": []
+        },
+        "teamConductScores": {
+          "瑞典": -3
+        },
+        "suspendedNextMatch": [
+          "Assim Madibo",
+          "Homam El Amin",
+          "Miguel Almirón",
+          "Teboho Mokoena"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537353,
+        "servedSuspensions": {
+          "德国": [],
+          "科特迪瓦": []
+        },
+        "teamConductScores": {},
+        "suspendedNextMatch": [
+          "Assim Madibo",
+          "Homam El Amin",
+          "Miguel Almirón",
+          "Teboho Mokoena"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537354,
+        "servedSuspensions": {
+          "厄瓜多尔": [],
+          "库拉索": []
+        },
+        "teamConductScores": {
+          "厄瓜多尔": -1,
+          "库拉索": -5
+        },
+        "suspendedNextMatch": [
+          "Assim Madibo",
+          "Homam El Amin",
+          "Miguel Almirón",
+          "Teboho Mokoena"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537360,
+        "servedSuspensions": {
+          "突尼斯": [],
+          "日本": []
+        },
+        "teamConductScores": {},
+        "suspendedNextMatch": [
+          "Assim Madibo",
+          "Homam El Amin",
+          "Miguel Almirón",
+          "Teboho Mokoena"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537371,
+        "servedSuspensions": {
+          "西班牙": [],
+          "沙特": []
+        },
+        "teamConductScores": {
+          "沙特": -2
+        },
+        "suspendedNextMatch": [
+          "Assim Madibo",
+          "Homam El Amin",
+          "Miguel Almirón",
+          "Teboho Mokoena"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537365,
+        "servedSuspensions": {
+          "比利时": [],
+          "伊朗": []
+        },
+        "teamConductScores": {
+          "比利时": -5
+        },
+        "suspendedNextMatch": [
+          "Assim Madibo",
+          "Homam El Amin",
+          "Miguel Almirón",
+          "Nathan Ngoy",
+          "Teboho Mokoena"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537372,
+        "servedSuspensions": {
+          "乌拉圭": [],
+          "佛得角": []
+        },
+        "teamConductScores": {
+          "乌拉圭": -2
+        },
+        "suspendedNextMatch": [
+          "Assim Madibo",
+          "Homam El Amin",
+          "Miguel Almirón",
+          "Nathan Ngoy",
+          "Teboho Mokoena"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537366,
+        "servedSuspensions": {
+          "新西兰": [],
+          "埃及": []
+        },
+        "teamConductScores": {
+          "埃及": -1,
+          "新西兰": -2
+        },
+        "suspendedNextMatch": [
+          "Assim Madibo",
+          "Homam El Amin",
+          "Miguel Almirón",
+          "Nathan Ngoy",
+          "Teboho Mokoena"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537399,
+        "servedSuspensions": {
+          "阿根廷": [],
+          "奥地利": []
+        },
+        "teamConductScores": {
+          "奥地利": -2,
+          "阿根廷": -2
+        },
+        "suspendedNextMatch": [
+          "Assim Madibo",
+          "Homam El Amin",
+          "Miguel Almirón",
+          "Nathan Ngoy",
+          "Teboho Mokoena"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537393,
+        "servedSuspensions": {
+          "法国": [],
+          "伊拉克": []
+        },
+        "teamConductScores": {
+          "伊拉克": -1
+        },
+        "suspendedNextMatch": [
+          "Assim Madibo",
+          "Homam El Amin",
+          "Miguel Almirón",
+          "Nathan Ngoy",
+          "Teboho Mokoena"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537394,
+        "servedSuspensions": {
+          "挪威": [],
+          "塞内加尔": []
+        },
+        "teamConductScores": {},
+        "suspendedNextMatch": [
+          "Assim Madibo",
+          "Homam El Amin",
+          "Miguel Almirón",
+          "Nathan Ngoy",
+          "Teboho Mokoena"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      },
+      {
+        "fixtureId": 537400,
+        "servedSuspensions": {
+          "约旦": [],
+          "阿尔及利亚": []
+        },
+        "teamConductScores": {
+          "阿尔及利亚": -1,
+          "约旦": -1
+        },
+        "suspendedNextMatch": [
+          "Assim Madibo",
+          "Homam El Amin",
+          "Miguel Almirón",
+          "Nathan Ngoy",
+          "Teboho Mokoena"
+        ],
+        "ruleVersion": "fifa-world-cup-2026-article-10-may-2026"
+      }
+    ],
+    "players": [
+      {
+        "player": "Abdukodir Khusanov",
+        "team": "乌兹别克斯坦",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537404"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537404"
+          }
+        ]
+      },
+      {
+        "player": "Mathías Olivera",
+        "team": "乌拉圭",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537372"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537372"
+          }
+        ]
+      },
+      {
+        "player": "Rodrigo Bentancur",
+        "team": "乌拉圭",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537372"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537372"
+          }
+        ]
+      },
+      {
+        "player": "Amir Al Ammari",
+        "team": "伊拉克",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537393"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537393"
+          }
+        ]
+      },
+      {
+        "player": "Zaid Tahseen",
+        "team": "伊拉克",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537392"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537392"
+          }
+        ]
+      },
+      {
+        "player": "Alistair Johnston",
+        "team": "加拿大",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537333"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537333"
+          }
+        ]
+      },
+      {
+        "player": "Derek Cornelius",
+        "team": "加拿大",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537336"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537336"
+          }
+        ]
+      },
+      {
+        "player": "Luc De Fougerolles",
+        "team": "加拿大",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537333"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537333"
+          }
+        ]
+      },
+      {
+        "player": "Caleb Yirenkyi",
+        "team": "加纳",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537410"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537410"
+          }
+        ]
+      },
+      {
+        "player": "Nkosinathi Sibisi",
+        "team": "南非",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537327"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537327"
+          }
+        ]
+      },
+      {
+        "player": "Teboho Mokoena",
+        "team": "南非",
+        "pendingSuspensions": 1,
+        "cautionMatchIds": [],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537327"
+          },
+          {
+            "action": "yellow",
+            "match_id": "537329"
+          },
+          {
+            "action": "yellow_threshold",
+            "match_id": "537329"
+          }
+        ]
+      },
+      {
+        "player": "Thalente Mbatha",
+        "team": "南非",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537329"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537329"
+          }
+        ]
+      },
+      {
+        "player": "Themba Zwane",
+        "team": "南非",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [],
+        "servedSuspensions": 1,
+        "auditLog": [
+          {
+            "action": "direct_red",
+            "match_id": "537327"
+          },
+          {
+            "action": "served_suspension"
+          }
+        ]
+      },
+      {
+        "player": "Yaya Sithole",
+        "team": "南非",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [],
+        "servedSuspensions": 1,
+        "auditLog": [
+          {
+            "action": "direct_red",
+            "match_id": "537327"
+          },
+          {
+            "action": "served_suspension"
+          }
+        ]
+      },
+      {
+        "player": "Ahmed Fathy",
+        "team": "卡塔尔",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537336"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537336"
+          }
+        ]
+      },
+      {
+        "player": "Assim Madibo",
+        "team": "卡塔尔",
+        "pendingSuspensions": 1,
+        "cautionMatchIds": [],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "direct_red",
+            "match_id": "537336"
+          }
+        ]
+      },
+      {
+        "player": "Homam El Amin",
+        "team": "卡塔尔",
+        "pendingSuspensions": 1,
+        "cautionMatchIds": [],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "direct_red",
+            "match_id": "537336"
+          }
+        ]
+      },
+      {
+        "player": "Jassem Gaber",
+        "team": "卡塔尔",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537334"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537334"
+          }
+        ]
+      },
+      {
+        "player": "Mahmoud Abunada",
+        "team": "卡塔尔",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537334"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537334"
+          }
+        ]
+      },
+      {
+        "player": "Jackson Porozo",
+        "team": "厄瓜多尔",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537352"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537352"
+          }
+        ]
+      },
+      {
+        "player": "Jordy Alcívar",
+        "team": "厄瓜多尔",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537354"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537354"
+          }
+        ]
+      },
+      {
+        "player": "Johan Mojica",
+        "team": "哥伦比亚",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537404"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537404"
+          }
+        ]
+      },
+      {
+        "player": "Eren Elmali",
+        "team": "土耳其",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537347"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537347"
+          }
+        ]
+      },
+      {
+        "player": "Yunus Akgün",
+        "team": "土耳其",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537346"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537346"
+          }
+        ]
+      },
+      {
+        "player": "Ahmed Fatouh",
+        "team": "埃及",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537363"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537363"
+          }
+        ]
+      },
+      {
+        "player": "Marwan Attia",
+        "team": "埃及",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537363"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537363"
+          }
+        ]
+      },
+      {
+        "player": "Mohanad Lasheen",
+        "team": "埃及",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537366"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537366"
+          }
+        ]
+      },
+      {
+        "player": "Brian Gutiérrez",
+        "team": "墨西哥",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537327"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537327"
+          }
+        ]
+      },
+      {
+        "player": "César Montes",
+        "team": "墨西哥",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [],
+        "servedSuspensions": 1,
+        "auditLog": [
+          {
+            "action": "direct_red",
+            "match_id": "537327"
+          },
+          {
+            "action": "served_suspension"
+          }
+        ]
+      },
+      {
+        "player": "Konrad Laimer",
+        "team": "奥地利",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537399"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537399"
+          }
+        ]
+      },
+      {
+        "player": "Marcel Sabitzer",
+        "team": "奥地利",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537398"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537398"
+          }
+        ]
+      },
+      {
+        "player": "Stefan Posch",
+        "team": "奥地利",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537399"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537399"
+          }
+        ]
+      },
+      {
+        "player": "Diego Gómez",
+        "team": "巴拉圭",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537345"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537345"
+          }
+        ]
+      },
+      {
+        "player": "Juan José Cáceres",
+        "team": "巴拉圭",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537345"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537345"
+          }
+        ]
+      },
+      {
+        "player": "Júnior Alonso",
+        "team": "巴拉圭",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537345"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537345"
+          }
+        ]
+      },
+      {
+        "player": "Matías Galarza",
+        "team": "巴拉圭",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537347"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537347"
+          }
+        ]
+      },
+      {
+        "player": "Miguel Almirón",
+        "team": "巴拉圭",
+        "pendingSuspensions": 1,
+        "cautionMatchIds": [
+          "537345"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537345"
+          },
+          {
+            "action": "direct_red",
+            "match_id": "537347"
+          }
+        ]
+      },
+      {
+        "player": "Álex Arce",
+        "team": "巴拉圭",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537345"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537345"
+          }
+        ]
+      },
+      {
+        "player": "Carlos Harvey",
+        "team": "巴拿马",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537410"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537410"
+          }
+        ]
+      },
+      {
+        "player": "César Blackman",
+        "team": "巴拿马",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537410"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537410"
+          }
+        ]
+      },
+      {
+        "player": "Casemiro",
+        "team": "巴西",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537339"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537339"
+          }
+        ]
+      },
+      {
+        "player": "Douglas Santos",
+        "team": "巴西",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537341"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537341"
+          }
+        ]
+      },
+      {
+        "player": "Roger Ibañez",
+        "team": "巴西",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537339"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537339"
+          }
+        ]
+      },
+      {
+        "player": "Gervane Kastaneer",
+        "team": "库拉索",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537354"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537354"
+          }
+        ]
+      },
+      {
+        "player": "Juninho Bacuna",
+        "team": "库拉索",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537354"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537354"
+          }
+        ]
+      },
+      {
+        "player": "Juriën Gaari",
+        "team": "库拉索",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537354"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537354"
+          }
+        ]
+      },
+      {
+        "player": "Leandro Bacuna",
+        "team": "库拉索",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537354"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537354"
+          }
+        ]
+      },
+      {
+        "player": "Livano Comenencia",
+        "team": "库拉索",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537354"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537354"
+          }
+        ]
+      },
+      {
+        "player": "Ladislav Krejcí",
+        "team": "捷克",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537329"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537329"
+          }
+        ]
+      },
+      {
+        "player": "Issa Diop",
+        "team": "摩洛哥",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537342"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537342"
+          }
+        ]
+      },
+      {
+        "player": "Callum McCowatt",
+        "team": "新西兰",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537366"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537366"
+          }
+        ]
+      },
+      {
+        "player": "Sarpreet Singh",
+        "team": "新西兰",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537366"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537366"
+          }
+        ]
+      },
+      {
+        "player": "Maxim De Cuyper",
+        "team": "比利时",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537363"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537363"
+          }
+        ]
+      },
+      {
+        "player": "Nathan Ngoy",
+        "team": "比利时",
+        "pendingSuspensions": 1,
+        "cautionMatchIds": [],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "direct_red",
+            "match_id": "537365"
+          }
+        ]
+      },
+      {
+        "player": "Romelu Lukaku",
+        "team": "比利时",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537365"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537365"
+          }
+        ]
+      },
+      {
+        "player": "Timothy Castagne",
+        "team": "比利时",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537363"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537363"
+          }
+        ]
+      },
+      {
+        "player": "Chancel Mbemba",
+        "team": "民主刚果",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537403"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537403"
+          }
+        ]
+      },
+      {
+        "player": "Abdulelah Al Amri",
+        "team": "沙特",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537370"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537370"
+          }
+        ]
+      },
+      {
+        "player": "Mohamed Kanno",
+        "team": "沙特",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537371"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537371"
+          }
+        ]
+      },
+      {
+        "player": "Salem Al Dawsari",
+        "team": "沙特",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537371"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537371"
+          }
+        ]
+      },
+      {
+        "player": "Carlens Arcus",
+        "team": "海地",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537341"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537341"
+          }
+        ]
+      },
+      {
+        "player": "Danley Jean Jacques",
+        "team": "海地",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537341"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537341"
+          }
+        ]
+      },
+      {
+        "player": "Frantzdy Pierrot",
+        "team": "海地",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537341"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537341"
+          }
+        ]
+      },
+      {
+        "player": "Jean-Ricner Bellegarde",
+        "team": "海地",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537340"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537340"
+          }
+        ]
+      },
+      {
+        "player": "Alessandro Circati",
+        "team": "澳大利亚",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537348"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537348"
+          }
+        ]
+      },
+      {
+        "player": "Harry Souttar",
+        "team": "澳大利亚",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537348"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537348"
+          }
+        ]
+      },
+      {
+        "player": "Jacob Italiano",
+        "team": "澳大利亚",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537348"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537348"
+          }
+        ]
+      },
+      {
+        "player": "Jordan Bos",
+        "team": "澳大利亚",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537348"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537348"
+          }
+        ]
+      },
+      {
+        "player": "Gabriel Gudmundsson",
+        "team": "瑞典",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537359"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537359"
+          }
+        ]
+      },
+      {
+        "player": "Lucas Bergvall",
+        "team": "瑞典",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537359"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537359"
+          }
+        ]
+      },
+      {
+        "player": "Yasin Ayari",
+        "team": "瑞典",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537359"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537359"
+          }
+        ]
+      },
+      {
+        "player": "Denis Zakaria",
+        "team": "瑞士",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537334"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537334"
+          }
+        ]
+      },
+      {
+        "player": "Nico Elvedi",
+        "team": "瑞士",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537335"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537335"
+          }
+        ]
+      },
+      {
+        "player": "Rani Khedira",
+        "team": "突尼斯",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537358"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537358"
+          }
+        ]
+      },
+      {
+        "player": "Husam Abu Dahab",
+        "team": "约旦",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537400"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537400"
+          }
+        ]
+      },
+      {
+        "player": "Aaron Hickey",
+        "team": "苏格兰",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537340"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537340"
+          }
+        ]
+      },
+      {
+        "player": "Andy Robertson",
+        "team": "苏格兰",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537342"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537342"
+          }
+        ]
+      },
+      {
+        "player": "Findlay Curtis",
+        "team": "苏格兰",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537340"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537340"
+          }
+        ]
+      },
+      {
+        "player": "Kenny McLean",
+        "team": "苏格兰",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537340"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537340"
+          }
+        ]
+      },
+      {
+        "player": "Crysencio Summerville",
+        "team": "荷兰",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537357"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537357"
+          }
+        ]
+      },
+      {
+        "player": "Memphis Depay",
+        "team": "荷兰",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537357"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537357"
+          }
+        ]
+      },
+      {
+        "player": "Micky van de Ven",
+        "team": "荷兰",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537357"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537357"
+          }
+        ]
+      },
+      {
+        "player": "Bernardo Silva",
+        "team": "葡萄牙",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537403"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537403"
+          }
+        ]
+      },
+      {
+        "player": "Nélson Semedo",
+        "team": "葡萄牙",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537403"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537403"
+          }
+        ]
+      },
+      {
+        "player": "Tomás Araújo",
+        "team": "葡萄牙",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537403"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537403"
+          }
+        ]
+      },
+      {
+        "player": "Pedri",
+        "team": "西班牙",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537369"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537369"
+          }
+        ]
+      },
+      {
+        "player": "Ramiz Zerrouki",
+        "team": "阿尔及利亚",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537400"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537400"
+          }
+        ]
+      },
+      {
+        "player": "Facundo Medina",
+        "team": "阿根廷",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537399"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537399"
+          }
+        ]
+      },
+      {
+        "player": "Leandro Paredes",
+        "team": "阿根廷",
+        "pendingSuspensions": 0,
+        "cautionMatchIds": [
+          "537399"
+        ],
+        "servedSuspensions": 0,
+        "auditLog": [
+          {
+            "action": "yellow",
+            "match_id": "537399"
+          }
+        ]
+      }
+    ],
+    "injuries": [
+      {
+        "team": "乌兹别克斯坦",
+        "player": "Rustam Ashurmatov",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "76'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760436",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "乌兹别克斯坦",
+        "player": "Utkir Yusupov",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "16'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760436",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "伊拉克",
+        "player": "Ali Jasim",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "69'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760430",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "伊拉克",
+        "player": "Aymen Hussein",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "90'+2'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760430",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "加拿大",
+        "player": "Ismaël Koné",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "51'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760440",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "加拿大",
+        "player": "Tani Oluwaseyi",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "49'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760416",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "加纳",
+        "player": "Benjamin Asare",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "90'+10'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760434",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "加纳",
+        "player": "Jordan Ayew",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "23'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760434",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "加纳",
+        "player": "Lawrence Ati Zigi",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "42'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760434",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "卡塔尔",
+        "player": "Boualem Khoukhi",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "22'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760440",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "卡塔尔",
+        "player": "Mahmoud Abunada",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "82'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760440",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "卡塔尔",
+        "player": "Pedro Miguel",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "30'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760420",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "厄瓜多尔",
+        "player": "Joel Ordóñez",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "83'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760423",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "厄瓜多尔",
+        "player": "Moisés Caicedo",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "20'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760423",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "土耳其",
+        "player": "Kerem Aktürkoglu",
+        "status": "doubtful",
+        "availabilityProbability": 0.5,
+        "confidence": 0.65,
+        "observedAtMinute": "39'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760443",
+        "note": "比赛中伤退或出现无法坚持的迹象；等待球队官方赛前更新"
+      },
+      {
+        "team": "土耳其",
+        "player": "Yunus Akgün",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "4'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760443",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "埃及",
+        "player": "Hamdi Fathy",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "40'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760452",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "埃及",
+        "player": "Hossam Abdelmaguid",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "90'+4'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760452",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "塞内加尔",
+        "player": "Ismaïla Sarr",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "40'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760432",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "塞内加尔",
+        "player": "Édouard Mendy",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "59'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760454",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "墨西哥",
+        "player": "Raúl Jiménez",
+        "status": "doubtful",
+        "availabilityProbability": 0.5,
+        "confidence": 0.65,
+        "observedAtMinute": "73'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760415",
+        "note": "比赛中伤退或出现无法坚持的迹象；等待球队官方赛前更新"
+      },
+      {
+        "team": "墨西哥",
+        "player": "Raúl Rangel",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "87'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760441",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "墨西哥",
+        "player": "Roberto Alvarado",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "81'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760415",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "奥地利",
+        "player": "Kevin Danso",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "62'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760456",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "奥地利",
+        "player": "Stefan Posch",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "87'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760431",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "巴拉圭",
+        "player": "Andrés Cubas",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "90'+3'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760417",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "巴拉圭",
+        "player": "Diego Gómez",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "66'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760443",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "巴拉圭",
+        "player": "Gustavo Gómez",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "45'+10'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760443",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "巴拉圭",
+        "player": "Isidro Pitta",
+        "status": "doubtful",
+        "availabilityProbability": 0.5,
+        "confidence": 0.65,
+        "observedAtMinute": "45'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760443",
+        "note": "比赛中伤退或出现无法坚持的迹象；等待球队官方赛前更新"
+      },
+      {
+        "team": "巴拉圭",
+        "player": "Matías Galarza",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "90'+1'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760443",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "巴拉圭",
+        "player": "Omar Alderete",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "17'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760417",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "巴拉圭",
+        "player": "Orlando Gill",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "59'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760443",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "巴西",
+        "player": "Raphinha",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "39'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760444",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "库拉索",
+        "player": "Juninho Bacuna",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "33'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760446",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "库拉索",
+        "player": "Jürgen Locadia",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "82'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760446",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "库拉索",
+        "player": "Sherel Floranus",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "73'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760446",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "德国",
+        "player": "Nico Schlotterbeck",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "14'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760448",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "挪威",
+        "player": "Leo Østigård",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "90'+7'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760454",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "摩洛哥",
+        "player": "Neil El Aynaoui",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "36'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760445",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "摩洛哥",
+        "player": "Yassine Bounou",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "88'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760445",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "新西兰",
+        "player": "Marko Stamenic",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "35'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760427",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "日本",
+        "player": "Takefusa Kubo",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "72'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760425",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "沙特",
+        "player": "Mohamed Kanno",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "87'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760453",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "沙特",
+        "player": "Mohammed Al Owais",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "61'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760429",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "法国",
+        "player": "Kylian Mbappé",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "90'+9'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760432",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "海地",
+        "player": "Josué Casimir",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "42'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760444",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "澳大利亚",
+        "player": "Alessandro Circati",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "54'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760442",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "澳大利亚",
+        "player": "Mathew Leckie",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "60'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760442",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "澳大利亚",
+        "player": "Paul Okon-Engstler",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "38'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760442",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "瑞典",
+        "player": "Gabriel Gudmundsson",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "64'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760424",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "瑞士",
+        "player": "Remo Freuler",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "14'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760420",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "突尼斯",
+        "player": "Omar Rekik",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "85'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760449",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "约旦",
+        "player": "Abdallah Nasib",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "78'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760431",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "约旦",
+        "player": "Odeh Fakhoury",
+        "status": "doubtful",
+        "availabilityProbability": 0.5,
+        "confidence": 0.65,
+        "observedAtMinute": "87'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760431",
+        "note": "比赛中伤退或出现无法坚持的迹象；等待球队官方赛前更新"
+      },
+      {
+        "team": "约旦",
+        "player": "Yazeed Abulaila",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "63'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760431",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "苏格兰",
+        "player": "Kieran Tierney",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "59'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760445",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "荷兰",
+        "player": "Crysencio Summerville",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "90'+4'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760447",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "西班牙",
+        "player": "Aymeric Laporte",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "65'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760428",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "西班牙",
+        "player": "Rodri",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "60'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760453",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "阿尔及利亚",
+        "player": "Ibrahim Maza",
+        "status": "doubtful",
+        "availabilityProbability": 0.5,
+        "confidence": 0.65,
+        "observedAtMinute": "78'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760433",
+        "note": "比赛中伤退或出现无法坚持的迹象；等待球队官方赛前更新"
+      },
+      {
+        "team": "阿根廷",
+        "player": "Emiliano Martínez",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "79'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760456",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "阿根廷",
+        "player": "Lautaro Martínez",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "4'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760456",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      },
+      {
+        "team": "阿根廷",
+        "player": "Rodrigo De Paul",
+        "status": "monitor",
+        "availabilityProbability": 0.85,
+        "confidence": 0.35,
+        "observedAtMinute": "21'",
+        "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760456",
+        "note": "比赛中接受治疗但继续参赛；列入观察，等待球队官方更新"
+      }
+    ]
+  },
+  "dataQuality": {
+    "settlementIdentity": "official fixture id; normalized teams and kickoff date fallback",
+    "timelineCoverage": 1.0,
+    "pendingReason": "Group K/L matchday-two fixtures have not finished at generation time"
+  }
+}

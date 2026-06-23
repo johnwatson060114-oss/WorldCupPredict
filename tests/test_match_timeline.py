@@ -1,0 +1,55 @@
+from pipeline.match_timeline import (
+    cooling_break_minutes,
+    extract_timeline,
+    match_tactical_summary,
+    minute_value,
+    tactical_direction,
+)
+
+
+def commentary(minute: str, text: str) -> dict:
+    return {"time": {"displayValue": minute}, "text": text}
+
+
+def test_timeline_extracts_event_coordinates_and_actual_breaks():
+    events = extract_timeline([
+        commentary("25'", "Delay in match for a drinks break."),
+        commentary("30'", "Attempt saved. A Player (Team A) right footed shot is saved."),
+        commentary("68'", "Delay in match for a drinks break."),
+        commentary("73'", "Delay in match because of an injury A Player (Team A)."),
+        commentary("82'", "VAR Decision: Card upgraded B Player (Team B)."),
+    ], ["Team A", "Team B"], "https://example.test/commentary")
+
+    assert cooling_break_minutes(events) == (25.0, 68.0)
+    assert [event["type"] for event in events] == [
+        "cooling_break", "chance_saved", "cooling_break", "injury", "var",
+    ]
+    assert all(event["sourceUrl"].startswith("https://") for event in events)
+
+
+def test_added_time_is_converted_to_elapsed_minute():
+    assert minute_value("45'+4'") == 49.0
+    assert minute_value("90'+7'") == 97.0
+
+
+def test_post_break_volume_creates_a_bounded_tactical_signal():
+    source = "https://example.test/commentary"
+    rows = [
+        commentary("25'", "Delay in match for a drinks break."),
+        commentary("28'", "Attempt saved. P1 (Team A) right footed shot is saved."),
+        commentary("31'", "Attempt missed. P2 (Team A) right footed shot misses."),
+        commentary("35'", "Attempt blocked. P3 (Team A) right footed shot is blocked."),
+        commentary("68'", "Delay in match for a drinks break."),
+        commentary("72'", "Attempt saved. P4 (Team A) right footed shot is saved."),
+        commentary("75'", "Attempt missed. P5 (Team A) header misses."),
+        commentary("79'", "Attempt blocked. P6 (Team A) shot is blocked."),
+        commentary("83'", "Attempt saved. P7 (Team A) shot is saved."),
+    ]
+    events = extract_timeline(rows, ["Team A", "Team B"], source)
+    summary = match_tactical_summary(events, ["Team A", "Team B"])
+    labels = summary["teams"]["Team A"]["labels"]
+    attack, defense = tactical_direction(labels * 4)
+
+    assert "second_break_attack_increase" in labels
+    assert attack == 0.05
+    assert defense == 0.0

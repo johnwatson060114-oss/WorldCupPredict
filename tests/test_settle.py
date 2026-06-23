@@ -1,6 +1,7 @@
 import json
 
 from pipeline import settle
+from pipeline.settlement_store import assert_unique_settlements, deduplicate_settlements
 
 
 def test_source_failure_preserves_existing_settlements(monkeypatch, tmp_path):
@@ -73,4 +74,41 @@ def test_football_data_settles_by_fixture_id(monkeypatch, tmp_path):
 
     payload = json.loads((tmp_path / "settlements.json").read_text(encoding="utf-8"))
     assert payload["matches"][0]["matchId"] == "lottery-1"
+    assert payload["matches"][0]["fixtureId"] == 537358
     assert payload["matches"][0]["homeScore"] == 2
+
+
+def test_settlements_deduplicate_numeric_and_label_keys_without_losing_odds():
+    records = [
+        {
+            "matchId": "2040170",
+            "fixtureId": 537351,
+            "matchLabel": "德国 vs 库拉索",
+            "homeScore": 7,
+            "awayScore": 1,
+            "settledAt": "2026-06-14T17:00:00Z",
+            "closingOdds": {"胜平负": {"胜": 1.1}},
+        },
+        {
+            "matchId": "德国 vs 库拉索",
+            "matchLabel": "德国 vs 库拉索",
+            "homeScore": 7,
+            "awayScore": 1,
+            "settledAt": "2026-06-14T17:00:00Z",
+        },
+    ]
+    fixture_index = {
+        "537351": {
+            "fixtureId": 537351,
+            "matchLabel": "德国 vs 库拉索",
+            "group": "GROUP_E",
+            "matchday": 1,
+        }
+    }
+
+    result = deduplicate_settlements(records, fixture_index)
+
+    assert len(result) == 1
+    assert result[0]["fixtureId"] == 537351
+    assert result[0]["closingOdds"]["胜平负"]["胜"] == 1.1
+    assert_unique_settlements(result)
