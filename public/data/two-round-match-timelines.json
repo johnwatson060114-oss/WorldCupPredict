@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-23T16:38:49+08:00",
+  "generatedAt": "2026-06-24T12:29:50+08:00",
   "scope": {
     "scheduledMatches": 48,
-    "completedMatches": 44,
-    "pendingMatches": 4,
-    "archivedMinuteByMinuteMatches": 44
+    "completedMatches": 48,
+    "pendingMatches": 0,
+    "archivedMinuteByMinuteMatches": 48
   },
   "sources": {
     "officialResults": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
@@ -25796,26 +25796,549 @@
       "matchday": 2,
       "group": "GROUP_K",
       "utcDate": "2026-06-23T17:00:00Z",
-      "status": "pending",
+      "status": "completed",
       "homeTeam": "葡萄牙",
       "awayTeam": "乌兹别克斯坦",
       "score": {
-        "home": null,
-        "away": null
+        "home": 5,
+        "away": 0
       },
       "halfTimeScore": {
-        "home": null,
-        "away": null
+        "home": 3,
+        "away": 0
       },
-      "events": [],
+      "events": [
+        {
+          "minute": 2.0,
+          "displayMinute": "2'",
+          "type": "chance_blocked",
+          "team": "葡萄牙",
+          "player": "Bruno Fernandes",
+          "replacedPlayer": null,
+          "summary": "Bruno Fernandes：射门被封堵",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760461"
+        },
+        {
+          "minute": 4.0,
+          "displayMinute": "4'",
+          "type": "chance_missed",
+          "team": "葡萄牙",
+          "player": "Cristiano Ronaldo",
+          "replacedPlayer": null,
+          "summary": "Cristiano Ronaldo：射门偏出",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760461"
+        },
+        {
+          "minute": 6.0,
+          "displayMinute": "6'",
+          "type": "goal",
+          "team": "葡萄牙",
+          "player": "Cristiano Ronaldo",
+          "replacedPlayer": null,
+          "summary": "Cristiano Ronaldo：进球",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760461"
+        },
+        {
+          "minute": 11.0,
+          "displayMinute": "11'",
+          "type": "chance_blocked",
+          "team": "葡萄牙",
+          "player": "João Cancelo",
+          "replacedPlayer": null,
+          "summary": "João Cancelo：射门被封堵",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760461"
+        },
+        {
+          "minute": 14.0,
+          "displayMinute": "14'",
+          "type": "yellow_card",
+          "team": "乌兹别克斯坦",
+          "player": "Odiljon Khamrobekov",
+          "replacedPlayer": null,
+          "summary": "Odiljon Khamrobekov：黄牌",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760461"
+        },
+        {
+          "minute": 17.0,
+          "displayMinute": "17'",
+          "type": "goal",
+          "team": "葡萄牙",
+          "player": "Nuno Mendes",
+          "replacedPlayer": null,
+          "summary": "Nuno Mendes：进球",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760461"
+        },
+        {
+          "minute": 19.0,
+          "displayMinute": "19'",
+          "type": "chance_saved",
+          "team": "乌兹别克斯坦",
+          "player": "Sherzod Nasrullaev",
+          "replacedPlayer": null,
+          "summary": "Sherzod Nasrullaev：射门被扑",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760461"
+        },
+        {
+          "minute": 21.0,
+          "displayMinute": "21'",
+          "type": "chance_missed",
+          "team": "葡萄牙",
+          "player": "Vitinha",
+          "replacedPlayer": null,
+          "summary": "Vitinha：射门偏出",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760461"
+        },
+        {
+          "minute": 23.0,
+          "displayMinute": "23'",
+          "type": "cooling_break",
+          "team": null,
+          "player": null,
+          "replacedPlayer": null,
+          "summary": "补水暂停",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760461"
+        },
+        {
+          "minute": 29.0,
+          "displayMinute": "29'",
+          "type": "var",
+          "team": "乌兹别克斯坦",
+          "player": "GOAL OVERTURNED BY VAR: Aziz G'aniev",
+          "replacedPlayer": null,
+          "summary": "GOAL OVERTURNED BY VAR: Aziz G'aniev：VAR复核",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760461"
+        },
+        {
+          "minute": 30.0,
+          "displayMinute": "30'",
+          "type": "var",
+          "team": null,
+          "player": null,
+          "replacedPlayer": null,
+          "summary": "未知球员：VAR复核",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760461"
+        },
+        {
+          "minute": 39.0,
+          "displayMinute": "39'",
+          "type": "goal",
+          "team": "葡萄牙",
+          "player": "Cristiano Ronaldo",
+          "replacedPlayer": null,
+          "summary": "Cristiano Ronaldo：进球",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760461"
+        },
+        {
+          "minute": 42.0,
+          "displayMinute": "42'",
+          "type": "chance_missed",
+          "team": "葡萄牙",
+          "player": "João Félix",
+          "replacedPlayer": null,
+          "summary": "João Félix：射门偏出",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760461"
+        },
+        {
+          "minute": 43.0,
+          "displayMinute": "43'",
+          "type": "chance_missed",
+          "team": "乌兹别克斯坦",
+          "player": "Otabek Shukurov",
+          "replacedPlayer": null,
+          "summary": "Otabek Shukurov：射门偏出",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760461"
+        },
+        {
+          "minute": 45.0,
+          "displayMinute": "45'",
+          "type": "substitution",
+          "team": "乌兹别克斯坦",
+          "player": "Akmal Mozgovoy",
+          "replacedPlayer": "Odiljon Khamrobekov",
+          "summary": "Akmal Mozgovoy 换下 Odiljon Khamrobekov",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760461"
+        },
+        {
+          "minute": 45.0,
+          "displayMinute": "45'",
+          "type": "substitution",
+          "team": "葡萄牙",
+          "player": "Francisco Conceição",
+          "replacedPlayer": "Pedro Neto",
+          "summary": "Francisco Conceição 换下 Pedro Neto",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760461"
+        },
+        {
+          "minute": 45.0,
+          "displayMinute": "45'",
+          "type": "substitution",
+          "team": "乌兹别克斯坦",
+          "player": "Khojiakbar Alijonov",
+          "replacedPlayer": "Sherzod Nasrullaev",
+          "summary": "Khojiakbar Alijonov 换下 Sherzod Nasrullaev",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760461"
+        },
+        {
+          "minute": 45.0,
+          "displayMinute": "45'",
+          "type": "substitution",
+          "team": "葡萄牙",
+          "player": "Nélson Semedo",
+          "replacedPlayer": "João Cancelo",
+          "summary": "Nélson Semedo 换下 João Cancelo",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760461"
+        },
+        {
+          "minute": 47.0,
+          "displayMinute": "45'+2'",
+          "type": "chance_blocked",
+          "team": "乌兹别克斯坦",
+          "player": "Odiljon Khamrobekov",
+          "replacedPlayer": null,
+          "summary": "Odiljon Khamrobekov：射门被封堵",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760461"
+        },
+        {
+          "minute": 47.0,
+          "displayMinute": "47'",
+          "type": "chance_missed",
+          "team": "葡萄牙",
+          "player": "João Félix",
+          "replacedPlayer": null,
+          "summary": "João Félix：射门偏出",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760461"
+        },
+        {
+          "minute": 51.0,
+          "displayMinute": "45'+6'",
+          "type": "chance_blocked",
+          "team": "葡萄牙",
+          "player": "Cristiano Ronaldo",
+          "replacedPlayer": null,
+          "summary": "Cristiano Ronaldo：射门被封堵",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760461"
+        },
+        {
+          "minute": 52.0,
+          "displayMinute": "52'",
+          "type": "chance_saved",
+          "team": "乌兹别克斯坦",
+          "player": "Abbosbek Fayzullaev",
+          "replacedPlayer": null,
+          "summary": "Abbosbek Fayzullaev：射门被扑",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760461"
+        },
+        {
+          "minute": 55.0,
+          "displayMinute": "55'",
+          "type": "chance_blocked",
+          "team": "乌兹别克斯坦",
+          "player": "Otabek Shukurov",
+          "replacedPlayer": null,
+          "summary": "Otabek Shukurov：射门被封堵",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760461"
+        },
+        {
+          "minute": 58.0,
+          "displayMinute": "58'",
+          "type": "chance_saved",
+          "team": "乌兹别克斯坦",
+          "player": "Cristiano Ronaldo (Portugal)",
+          "replacedPlayer": null,
+          "summary": "Cristiano Ronaldo (Portugal)：射门被扑",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760461"
+        },
+        {
+          "minute": 60.0,
+          "displayMinute": "60'",
+          "type": "chance_saved",
+          "team": "乌兹别克斯坦",
+          "player": "João Félix (Portugal)",
+          "replacedPlayer": null,
+          "summary": "João Félix (Portugal)：射门被扑",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760461"
+        },
+        {
+          "minute": 62.0,
+          "displayMinute": "62'",
+          "type": "chance_blocked",
+          "team": "乌兹别克斯坦",
+          "player": "Aziz G'aniev",
+          "replacedPlayer": null,
+          "summary": "Aziz G'aniev：射门被封堵",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760461"
+        },
+        {
+          "minute": 63.0,
+          "displayMinute": "63'",
+          "type": "substitution",
+          "team": "葡萄牙",
+          "player": "Trincão",
+          "replacedPlayer": "João Félix",
+          "summary": "Trincão 换下 João Félix",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760461"
+        },
+        {
+          "minute": 68.0,
+          "displayMinute": "68'",
+          "type": "yellow_card",
+          "team": "葡萄牙",
+          "player": "Renato Veiga",
+          "replacedPlayer": null,
+          "summary": "Renato Veiga：黄牌",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760461"
+        },
+        {
+          "minute": 69.0,
+          "displayMinute": "69'",
+          "type": "cooling_break",
+          "team": null,
+          "player": null,
+          "replacedPlayer": null,
+          "summary": "补水暂停",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760461"
+        },
+        {
+          "minute": 73.0,
+          "displayMinute": "73'",
+          "type": "chance_blocked",
+          "team": "葡萄牙",
+          "player": "Cristiano Ronaldo",
+          "replacedPlayer": null,
+          "summary": "Cristiano Ronaldo：射门被封堵",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760461"
+        },
+        {
+          "minute": 73.0,
+          "displayMinute": "73'",
+          "type": "substitution",
+          "team": "乌兹别克斯坦",
+          "player": "Igor Sergeev",
+          "replacedPlayer": "Abbosbek Fayzullaev",
+          "summary": "Igor Sergeev 换下 Abbosbek Fayzullaev",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760461"
+        },
+        {
+          "minute": 74.0,
+          "displayMinute": "74'",
+          "type": "chance_saved",
+          "team": "乌兹别克斯坦",
+          "player": "Cristiano Ronaldo (Portugal)",
+          "replacedPlayer": null,
+          "summary": "Cristiano Ronaldo (Portugal)：射门被扑",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760461"
+        },
+        {
+          "minute": 76.0,
+          "displayMinute": "76'",
+          "type": "substitution",
+          "team": "葡萄牙",
+          "player": "Bernardo Silva",
+          "replacedPlayer": "João Neves",
+          "summary": "Bernardo Silva 换下 João Neves",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760461"
+        },
+        {
+          "minute": 78.0,
+          "displayMinute": "78'",
+          "type": "chance_missed",
+          "team": "乌兹别克斯坦",
+          "player": "Eldor Shomurodov",
+          "replacedPlayer": null,
+          "summary": "Eldor Shomurodov：射门偏出",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760461"
+        },
+        {
+          "minute": 83.0,
+          "displayMinute": "83'",
+          "type": "substitution",
+          "team": "葡萄牙",
+          "player": "Rafael Leão",
+          "replacedPlayer": "Vitinha",
+          "summary": "Rafael Leão 换下 Vitinha",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760461"
+        },
+        {
+          "minute": 84.0,
+          "displayMinute": "84'",
+          "type": "chance_saved",
+          "team": "乌兹别克斯坦",
+          "player": "Bruno Fernandes (Portugal)",
+          "replacedPlayer": null,
+          "summary": "Bruno Fernandes (Portugal)：射门被扑",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760461"
+        },
+        {
+          "minute": 87.0,
+          "displayMinute": "87'",
+          "type": "goal",
+          "team": "葡萄牙",
+          "player": "Rafael Leão",
+          "replacedPlayer": null,
+          "summary": "Rafael Leão：进球",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760461"
+        },
+        {
+          "minute": 92.0,
+          "displayMinute": "90'+2'",
+          "type": "substitution",
+          "team": "乌兹别克斯坦",
+          "player": "Ruslanbek Jiyanov",
+          "replacedPlayer": "Bekhruz Karimov",
+          "summary": "Ruslanbek Jiyanov 换下 Bekhruz Karimov",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760461"
+        },
+        {
+          "minute": 92.0,
+          "displayMinute": "90'+2'",
+          "type": "substitution",
+          "team": "乌兹别克斯坦",
+          "player": "Sherzod Esanov",
+          "replacedPlayer": "Otabek Shukurov",
+          "summary": "Sherzod Esanov 换下 Otabek Shukurov",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760461"
+        },
+        {
+          "minute": 93.0,
+          "displayMinute": "90'+3'",
+          "type": "chance_missed",
+          "team": "葡萄牙",
+          "player": "Trincão",
+          "replacedPlayer": null,
+          "summary": "Trincão：射门偏出",
+          "setPiece": true,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760461"
+        }
+      ],
       "tacticalSummary": {
-        "coolingBreakMinutes": [],
-        "teams": {},
+        "coolingBreakMinutes": [
+          23.0,
+          69.0
+        ],
+        "teams": {
+          "葡萄牙": {
+            "attackingEventsBySegment": [
+              6,
+              2,
+              2,
+              3
+            ],
+            "attackingRatePer15BySegment": [
+              3.913,
+              1.364,
+              1.25,
+              2.143
+            ],
+            "setPieceAttempts": 1,
+            "postBreakSubstitutions": 1,
+            "labels": [
+              "first_break_attack_decrease"
+            ]
+          },
+          "乌兹别克斯坦": {
+            "attackingEventsBySegment": [
+              1,
+              1,
+              6,
+              3
+            ],
+            "attackingRatePer15BySegment": [
+              0.652,
+              0.682,
+              3.75,
+              2.143
+            ],
+            "setPieceAttempts": 0,
+            "postBreakSubstitutions": 1,
+            "labels": [
+              "second_break_attack_decrease"
+            ]
+          }
+        },
         "coverage": {
-          "classifiedEvents": 0,
-          "attackingEvents": 0,
+          "classifiedEvents": 40,
+          "attackingEvents": 24,
           "injuryEvents": 0,
-          "cardEvents": 0
+          "cardEvents": 2
         }
       },
       "sources": [
@@ -25826,7 +26349,7 @@
         {
           "type": "minute_by_minute",
           "url": "https://www.espn.com/soccer/commentary/_/gameId/760461",
-          "archived": false,
+          "archived": true,
           "espnEventId": "760461"
         }
       ]
@@ -25836,26 +26359,513 @@
       "matchday": 2,
       "group": "GROUP_L",
       "utcDate": "2026-06-23T20:00:00Z",
-      "status": "pending",
+      "status": "completed",
       "homeTeam": "英格兰",
       "awayTeam": "加纳",
       "score": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
       "halfTimeScore": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
-      "events": [],
+      "events": [
+        {
+          "minute": 14.0,
+          "displayMinute": "14'",
+          "type": "chance_missed",
+          "team": "英格兰",
+          "player": "Declan Rice",
+          "replacedPlayer": null,
+          "summary": "Declan Rice：射门偏出",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760458"
+        },
+        {
+          "minute": 15.0,
+          "displayMinute": "15'",
+          "type": "chance_blocked",
+          "team": "英格兰",
+          "player": "Elliot Anderson",
+          "replacedPlayer": null,
+          "summary": "Elliot Anderson：射门被封堵",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760458"
+        },
+        {
+          "minute": 16.0,
+          "displayMinute": "16'",
+          "type": "chance_blocked",
+          "team": "英格兰",
+          "player": "Declan Rice",
+          "replacedPlayer": null,
+          "summary": "Declan Rice：射门被封堵",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760458"
+        },
+        {
+          "minute": 20.0,
+          "displayMinute": "20'",
+          "type": "injury",
+          "team": "加纳",
+          "player": "Jordan Ayew",
+          "replacedPlayer": null,
+          "summary": "Jordan Ayew：伤情或治疗中断",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760458"
+        },
+        {
+          "minute": 20.0,
+          "displayMinute": "20'",
+          "type": "injury",
+          "team": "英格兰",
+          "player": "Reece James",
+          "replacedPlayer": null,
+          "summary": "Reece James：伤情或治疗中断",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760458"
+        },
+        {
+          "minute": 26.0,
+          "displayMinute": "26'",
+          "type": "cooling_break",
+          "team": null,
+          "player": null,
+          "replacedPlayer": null,
+          "summary": "补水暂停",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760458"
+        },
+        {
+          "minute": 33.0,
+          "displayMinute": "33'",
+          "type": "chance_blocked",
+          "team": "英格兰",
+          "player": "Jude Bellingham",
+          "replacedPlayer": null,
+          "summary": "Jude Bellingham：射门被封堵",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760458"
+        },
+        {
+          "minute": 37.0,
+          "displayMinute": "37'",
+          "type": "chance_missed",
+          "team": "英格兰",
+          "player": "Declan Rice",
+          "replacedPlayer": null,
+          "summary": "Declan Rice：射门偏出",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760458"
+        },
+        {
+          "minute": 41.0,
+          "displayMinute": "41'",
+          "type": "yellow_card",
+          "team": "英格兰",
+          "player": "Declan Rice",
+          "replacedPlayer": null,
+          "summary": "Declan Rice：黄牌",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760458"
+        },
+        {
+          "minute": 48.0,
+          "displayMinute": "45'+3'",
+          "type": "chance_blocked",
+          "team": "英格兰",
+          "player": "Harry Kane",
+          "replacedPlayer": null,
+          "summary": "Harry Kane：射门被封堵",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760458"
+        },
+        {
+          "minute": 50.0,
+          "displayMinute": "50'",
+          "type": "chance_blocked",
+          "team": "加纳",
+          "player": "Marvin Senaya",
+          "replacedPlayer": null,
+          "summary": "Marvin Senaya：射门被封堵",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760458"
+        },
+        {
+          "minute": 57.0,
+          "displayMinute": "57'",
+          "type": "chance_blocked",
+          "team": "英格兰",
+          "player": "Noni Madueke",
+          "replacedPlayer": null,
+          "summary": "Noni Madueke：射门被封堵",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760458"
+        },
+        {
+          "minute": 57.0,
+          "displayMinute": "57'",
+          "type": "chance_saved",
+          "team": "英格兰",
+          "player": "Anthony Gordon",
+          "replacedPlayer": null,
+          "summary": "Anthony Gordon：射门被扑",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760458"
+        },
+        {
+          "minute": 60.0,
+          "displayMinute": "60'",
+          "type": "yellow_card",
+          "team": "加纳",
+          "player": "Iñaki Williams",
+          "replacedPlayer": null,
+          "summary": "Iñaki Williams：黄牌",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760458"
+        },
+        {
+          "minute": 61.0,
+          "displayMinute": "61'",
+          "type": "chance_blocked",
+          "team": "英格兰",
+          "player": "Elliot Anderson",
+          "replacedPlayer": null,
+          "summary": "Elliot Anderson：射门被封堵",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760458"
+        },
+        {
+          "minute": 62.0,
+          "displayMinute": "62'",
+          "type": "chance_missed",
+          "team": "英格兰",
+          "player": "Elliot Anderson",
+          "replacedPlayer": null,
+          "summary": "Elliot Anderson：射门偏出",
+          "setPiece": true,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760458"
+        },
+        {
+          "minute": 63.0,
+          "displayMinute": "63'",
+          "type": "chance_missed",
+          "team": "英格兰",
+          "player": "Elliot Anderson",
+          "replacedPlayer": null,
+          "summary": "Elliot Anderson：射门偏出",
+          "setPiece": true,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760458"
+        },
+        {
+          "minute": 64.0,
+          "displayMinute": "64'",
+          "type": "chance_missed",
+          "team": "英格兰",
+          "player": "Noni Madueke",
+          "replacedPlayer": null,
+          "summary": "Noni Madueke：射门偏出",
+          "setPiece": true,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760458"
+        },
+        {
+          "minute": 65.0,
+          "displayMinute": "65'",
+          "type": "injury",
+          "team": "加纳",
+          "player": "Caleb Yirenkyi",
+          "replacedPlayer": null,
+          "summary": "Caleb Yirenkyi：伤情或治疗中断",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760458"
+        },
+        {
+          "minute": 65.0,
+          "displayMinute": "65'",
+          "type": "substitution",
+          "team": "英格兰",
+          "player": "Bukayo Saka",
+          "replacedPlayer": "Anthony Gordon",
+          "summary": "Bukayo Saka 换下 Anthony Gordon",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760458"
+        },
+        {
+          "minute": 66.0,
+          "displayMinute": "66'",
+          "type": "substitution",
+          "team": "加纳",
+          "player": "Abdul Fatawu",
+          "replacedPlayer": "Iñaki Williams",
+          "summary": "Abdul Fatawu 换下 Iñaki Williams",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760458"
+        },
+        {
+          "minute": 66.0,
+          "displayMinute": "66'",
+          "type": "substitution",
+          "team": "英格兰",
+          "player": "Nico O'Reilly",
+          "replacedPlayer": "Djed Spence",
+          "summary": "Nico O'Reilly 换下 Djed Spence",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760458"
+        },
+        {
+          "minute": 67.0,
+          "displayMinute": "67'",
+          "type": "substitution",
+          "team": "加纳",
+          "player": "Prince Adu",
+          "replacedPlayer": "Jordan Ayew",
+          "summary": "Prince Adu 换下 Jordan Ayew",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760458"
+        },
+        {
+          "minute": 69.0,
+          "displayMinute": "69'",
+          "type": "chance_saved",
+          "team": "英格兰",
+          "player": "Harry Kane",
+          "replacedPlayer": null,
+          "summary": "Harry Kane：射门被扑",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760458"
+        },
+        {
+          "minute": 70.0,
+          "displayMinute": "70'",
+          "type": "chance_missed",
+          "team": "英格兰",
+          "player": "Bukayo Saka",
+          "replacedPlayer": null,
+          "summary": "Bukayo Saka：射门偏出",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760458"
+        },
+        {
+          "minute": 70.0,
+          "displayMinute": "70'",
+          "type": "cooling_break",
+          "team": null,
+          "player": null,
+          "replacedPlayer": null,
+          "summary": "补水暂停",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760458"
+        },
+        {
+          "minute": 73.0,
+          "displayMinute": "73'",
+          "type": "substitution",
+          "team": "英格兰",
+          "player": "Morgan Rogers",
+          "replacedPlayer": "Jude Bellingham",
+          "summary": "Morgan Rogers 换下 Jude Bellingham",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760458"
+        },
+        {
+          "minute": 74.0,
+          "displayMinute": "74'",
+          "type": "substitution",
+          "team": "英格兰",
+          "player": "Eberechi Eze",
+          "replacedPlayer": "Elliot Anderson",
+          "summary": "Eberechi Eze 换下 Elliot Anderson",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760458"
+        },
+        {
+          "minute": 79.0,
+          "displayMinute": "79'",
+          "type": "chance_blocked",
+          "team": "加纳",
+          "player": "Prince Adu",
+          "replacedPlayer": null,
+          "summary": "Prince Adu：射门被封堵",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760458"
+        },
+        {
+          "minute": 83.0,
+          "displayMinute": "83'",
+          "type": "substitution",
+          "team": "英格兰",
+          "player": "Marcus Rashford",
+          "replacedPlayer": "Noni Madueke",
+          "summary": "Marcus Rashford 换下 Noni Madueke",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760458"
+        },
+        {
+          "minute": 86.0,
+          "displayMinute": "86'",
+          "type": "chance_missed",
+          "team": "英格兰",
+          "player": "Harry Kane",
+          "replacedPlayer": null,
+          "summary": "Harry Kane：射门偏出",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760458"
+        },
+        {
+          "minute": 86.0,
+          "displayMinute": "86'",
+          "type": "chance_saved",
+          "team": "英格兰",
+          "player": "Bukayo Saka",
+          "replacedPlayer": null,
+          "summary": "Bukayo Saka：射门被扑",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760458"
+        },
+        {
+          "minute": 86.0,
+          "displayMinute": "86'",
+          "type": "woodwork",
+          "team": "英格兰",
+          "player": "Nico O'Reilly",
+          "replacedPlayer": null,
+          "summary": "Nico O'Reilly：击中门框",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760458"
+        },
+        {
+          "minute": 87.0,
+          "displayMinute": "87'",
+          "type": "substitution",
+          "team": "加纳",
+          "player": "Kojo Peprah Oppong",
+          "replacedPlayer": "Marvin Senaya",
+          "summary": "Kojo Peprah Oppong 换下 Marvin Senaya",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760458"
+        },
+        {
+          "minute": 93.0,
+          "displayMinute": "90'+3'",
+          "type": "chance_missed",
+          "team": "英格兰",
+          "player": "Marc Guéhi",
+          "replacedPlayer": null,
+          "summary": "Marc Guéhi：射门偏出",
+          "setPiece": true,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760458"
+        },
+        {
+          "minute": 93.0,
+          "displayMinute": "90'+3'",
+          "type": "chance_missed",
+          "team": "英格兰",
+          "player": "Nico O'Reilly",
+          "replacedPlayer": null,
+          "summary": "Nico O'Reilly：射门偏出",
+          "setPiece": true,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760458"
+        },
+        {
+          "minute": 95.0,
+          "displayMinute": "90'+5'",
+          "type": "substitution",
+          "team": "加纳",
+          "player": "Abdul Rahman Baba",
+          "replacedPlayer": "Prince Adu",
+          "summary": "Abdul Rahman Baba 换下 Prince Adu",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760458"
+        }
+      ],
       "tacticalSummary": {
-        "coolingBreakMinutes": [],
-        "teams": {},
+        "coolingBreakMinutes": [
+          26.0,
+          70.0
+        ],
+        "teams": {
+          "英格兰": {
+            "attackingEventsBySegment": [
+              3,
+              2,
+              9,
+              5
+            ],
+            "attackingRatePer15BySegment": [
+              1.731,
+              1.579,
+              5.4,
+              3.75
+            ],
+            "setPieceAttempts": 5,
+            "postBreakSubstitutions": 2,
+            "labels": [
+              "second_break_attack_decrease",
+              "set_piece_creation",
+              "post_break_substitution_burst"
+            ]
+          },
+          "加纳": {
+            "attackingEventsBySegment": [
+              0,
+              0,
+              1,
+              1
+            ],
+            "attackingRatePer15BySegment": [
+              0.0,
+              0.0,
+              0.6,
+              0.75
+            ],
+            "setPieceAttempts": 0,
+            "postBreakSubstitutions": 0,
+            "labels": []
+          }
+        },
         "coverage": {
-          "classifiedEvents": 0,
-          "attackingEvents": 0,
-          "injuryEvents": 0,
-          "cardEvents": 0
+          "classifiedEvents": 37,
+          "attackingEvents": 21,
+          "injuryEvents": 3,
+          "cardEvents": 2
         }
       },
       "sources": [
@@ -25866,7 +26876,7 @@
         {
           "type": "minute_by_minute",
           "url": "https://www.espn.com/soccer/commentary/_/gameId/760458",
-          "archived": false,
+          "archived": true,
           "espnEventId": "760458"
         }
       ]
@@ -25876,26 +26886,396 @@
       "matchday": 2,
       "group": "GROUP_L",
       "utcDate": "2026-06-23T23:00:00Z",
-      "status": "pending",
+      "status": "completed",
       "homeTeam": "巴拿马",
       "awayTeam": "克罗地亚",
       "score": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 1
       },
       "halfTimeScore": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
-      "events": [],
+      "events": [
+        {
+          "minute": 2.0,
+          "displayMinute": "2'",
+          "type": "chance_missed",
+          "team": "克罗地亚",
+          "player": "Luka Modric",
+          "replacedPlayer": null,
+          "summary": "Luka Modric：射门偏出",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760460"
+        },
+        {
+          "minute": 4.0,
+          "displayMinute": "4'",
+          "type": "chance_blocked",
+          "team": "巴拿马",
+          "player": "Amir Murillo",
+          "replacedPlayer": null,
+          "summary": "Amir Murillo：射门被封堵",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760460"
+        },
+        {
+          "minute": 23.0,
+          "displayMinute": "23'",
+          "type": "cooling_break",
+          "team": null,
+          "player": null,
+          "replacedPlayer": null,
+          "summary": "补水暂停",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760460"
+        },
+        {
+          "minute": 45.0,
+          "displayMinute": "45'",
+          "type": "substitution",
+          "team": "克罗地亚",
+          "player": "Andrej Kramaric",
+          "replacedPlayer": "Josko Gvardiol",
+          "summary": "Andrej Kramaric 换下 Josko Gvardiol",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760460"
+        },
+        {
+          "minute": 45.0,
+          "displayMinute": "45'",
+          "type": "substitution",
+          "team": "克罗地亚",
+          "player": "Ante Budimir",
+          "replacedPlayer": "Petar Musa",
+          "summary": "Ante Budimir 换下 Petar Musa",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760460"
+        },
+        {
+          "minute": 46.0,
+          "displayMinute": "45'+1'",
+          "type": "chance_missed",
+          "team": "克罗地亚",
+          "player": "Martin Baturina",
+          "replacedPlayer": null,
+          "summary": "Martin Baturina：射门偏出",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760460"
+        },
+        {
+          "minute": 54.0,
+          "displayMinute": "54'",
+          "type": "goal",
+          "team": "克罗地亚",
+          "player": "Ante Budimir",
+          "replacedPlayer": null,
+          "summary": "Ante Budimir：进球",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760460"
+        },
+        {
+          "minute": 57.0,
+          "displayMinute": "57'",
+          "type": "chance_missed",
+          "team": "克罗地亚",
+          "player": "Marco Pasalic",
+          "replacedPlayer": null,
+          "summary": "Marco Pasalic：射门偏出",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760460"
+        },
+        {
+          "minute": 57.0,
+          "displayMinute": "57'",
+          "type": "chance_saved",
+          "team": "克罗地亚",
+          "player": "Marco Pasalic",
+          "replacedPlayer": null,
+          "summary": "Marco Pasalic：射门被扑",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760460"
+        },
+        {
+          "minute": 60.0,
+          "displayMinute": "60'",
+          "type": "chance_missed",
+          "team": "巴拿马",
+          "player": "José Fajardo",
+          "replacedPlayer": null,
+          "summary": "José Fajardo：射门偏出",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760460"
+        },
+        {
+          "minute": 61.0,
+          "displayMinute": "61'",
+          "type": "yellow_card",
+          "team": "巴拿马",
+          "player": "Yoel Bárcenas",
+          "replacedPlayer": null,
+          "summary": "Yoel Bárcenas：黄牌",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760460"
+        },
+        {
+          "minute": 68.0,
+          "displayMinute": "68'",
+          "type": "chance_missed",
+          "team": "巴拿马",
+          "player": "Carlos Harvey",
+          "replacedPlayer": null,
+          "summary": "Carlos Harvey：射门偏出",
+          "setPiece": true,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760460"
+        },
+        {
+          "minute": 68.0,
+          "displayMinute": "68'",
+          "type": "chance_saved",
+          "team": "克罗地亚",
+          "player": "Amir Murillo (Panama)",
+          "replacedPlayer": null,
+          "summary": "Amir Murillo (Panama)：射门被扑",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760460"
+        },
+        {
+          "minute": 69.0,
+          "displayMinute": "69'",
+          "type": "cooling_break",
+          "team": null,
+          "player": null,
+          "replacedPlayer": null,
+          "summary": "补水暂停",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760460"
+        },
+        {
+          "minute": 72.0,
+          "displayMinute": "72'",
+          "type": "substitution",
+          "team": "克罗地亚",
+          "player": "Luka Sucic",
+          "replacedPlayer": "Marco Pasalic",
+          "summary": "Luka Sucic 换下 Marco Pasalic",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760460"
+        },
+        {
+          "minute": 72.0,
+          "displayMinute": "72'",
+          "type": "substitution",
+          "team": "克罗地亚",
+          "player": "Petar Sucic",
+          "replacedPlayer": "Mateo Kovacic",
+          "summary": "Petar Sucic 换下 Mateo Kovacic",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760460"
+        },
+        {
+          "minute": 77.0,
+          "displayMinute": "77'",
+          "type": "substitution",
+          "team": "巴拿马",
+          "player": "Cecilio Waterman",
+          "replacedPlayer": "Jiovany Ramos",
+          "summary": "Cecilio Waterman 换下 Jiovany Ramos",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760460"
+        },
+        {
+          "minute": 78.0,
+          "displayMinute": "78'",
+          "type": "chance_missed",
+          "team": "巴拿马",
+          "player": "José Luis Rodríguez",
+          "replacedPlayer": null,
+          "summary": "José Luis Rodríguez：射门偏出",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760460"
+        },
+        {
+          "minute": 79.0,
+          "displayMinute": "79'",
+          "type": "chance_missed",
+          "team": "巴拿马",
+          "player": "Carlos Harvey",
+          "replacedPlayer": null,
+          "summary": "Carlos Harvey：射门偏出",
+          "setPiece": true,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760460"
+        },
+        {
+          "minute": 81.0,
+          "displayMinute": "81'",
+          "type": "substitution",
+          "team": "克罗地亚",
+          "player": "Mario Pasalic",
+          "replacedPlayer": "Luka Modric",
+          "summary": "Mario Pasalic 换下 Luka Modric",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760460"
+        },
+        {
+          "minute": 82.0,
+          "displayMinute": "82'",
+          "type": "chance_blocked",
+          "team": "克罗地亚",
+          "player": "Luka Sucic",
+          "replacedPlayer": null,
+          "summary": "Luka Sucic：射门被封堵",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760460"
+        },
+        {
+          "minute": 83.0,
+          "displayMinute": "83'",
+          "type": "substitution",
+          "team": "巴拿马",
+          "player": "Azarías Londoño",
+          "replacedPlayer": "José Fajardo",
+          "summary": "Azarías Londoño 换下 José Fajardo",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760460"
+        },
+        {
+          "minute": 84.0,
+          "displayMinute": "84'",
+          "type": "chance_blocked",
+          "team": "巴拿马",
+          "player": "Cecilio Waterman",
+          "replacedPlayer": null,
+          "summary": "Cecilio Waterman：射门被封堵",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760460"
+        },
+        {
+          "minute": 90.0,
+          "displayMinute": "90'",
+          "type": "substitution",
+          "team": "巴拿马",
+          "player": "Tomás Rodríguez",
+          "replacedPlayer": "Yoel Bárcenas",
+          "summary": "Tomás Rodríguez 换下 Yoel Bárcenas",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760460"
+        },
+        {
+          "minute": 90.0,
+          "displayMinute": "90'",
+          "type": "substitution",
+          "team": "巴拿马",
+          "player": "Éric Davis",
+          "replacedPlayer": "César Blackman",
+          "summary": "Éric Davis 换下 César Blackman",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760460"
+        },
+        {
+          "minute": 92.0,
+          "displayMinute": "90'+2'",
+          "type": "yellow_card",
+          "team": "克罗地亚",
+          "player": "Petar Sucic",
+          "replacedPlayer": null,
+          "summary": "Petar Sucic：黄牌",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760460"
+        },
+        {
+          "minute": 93.0,
+          "displayMinute": "90'+3'",
+          "type": "chance_missed",
+          "team": "巴拿马",
+          "player": "Amir Murillo",
+          "replacedPlayer": null,
+          "summary": "Amir Murillo：射门偏出",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760460"
+        }
+      ],
       "tacticalSummary": {
-        "coolingBreakMinutes": [],
-        "teams": {},
+        "coolingBreakMinutes": [
+          23.0,
+          69.0
+        ],
+        "teams": {
+          "巴拿马": {
+            "attackingEventsBySegment": [
+              1,
+              0,
+              2,
+              4
+            ],
+            "attackingRatePer15BySegment": [
+              0.652,
+              0.0,
+              1.25,
+              2.857
+            ],
+            "setPieceAttempts": 2,
+            "postBreakSubstitutions": 1,
+            "labels": [
+              "second_break_attack_increase",
+              "late_pressure",
+              "set_piece_creation"
+            ]
+          },
+          "克罗地亚": {
+            "attackingEventsBySegment": [
+              1,
+              0,
+              5,
+              1
+            ],
+            "attackingRatePer15BySegment": [
+              0.652,
+              0.0,
+              3.125,
+              0.714
+            ],
+            "setPieceAttempts": 0,
+            "postBreakSubstitutions": 2,
+            "labels": [
+              "second_break_attack_decrease",
+              "post_break_substitution_burst"
+            ]
+          }
+        },
         "coverage": {
-          "classifiedEvents": 0,
-          "attackingEvents": 0,
+          "classifiedEvents": 27,
+          "attackingEvents": 14,
           "injuryEvents": 0,
-          "cardEvents": 0
+          "cardEvents": 2
         }
       },
       "sources": [
@@ -25906,7 +27286,7 @@
         {
           "type": "minute_by_minute",
           "url": "https://www.espn.com/soccer/commentary/_/gameId/760460",
-          "archived": false,
+          "archived": true,
           "espnEventId": "760460"
         }
       ]
@@ -25916,26 +27296,578 @@
       "matchday": 2,
       "group": "GROUP_K",
       "utcDate": "2026-06-24T02:00:00Z",
-      "status": "pending",
+      "status": "completed",
       "homeTeam": "哥伦比亚",
       "awayTeam": "民主刚果",
       "score": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 0
       },
       "halfTimeScore": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
-      "events": [],
+      "events": [
+        {
+          "minute": 1.0,
+          "displayMinute": "1'",
+          "type": "chance_missed",
+          "team": "民主刚果",
+          "player": "Edo Kayembe",
+          "replacedPlayer": null,
+          "summary": "Edo Kayembe：射门偏出",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        },
+        {
+          "minute": 4.0,
+          "displayMinute": "4'",
+          "type": "chance_saved",
+          "team": "哥伦比亚",
+          "player": "Jhon Arias",
+          "replacedPlayer": null,
+          "summary": "Jhon Arias：射门被扑",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        },
+        {
+          "minute": 4.0,
+          "displayMinute": "4'",
+          "type": "woodwork",
+          "team": "哥伦比亚",
+          "player": "Daniel Muñoz",
+          "replacedPlayer": null,
+          "summary": "Daniel Muñoz：击中门框",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        },
+        {
+          "minute": 7.0,
+          "displayMinute": "7'",
+          "type": "injury",
+          "team": "民主刚果",
+          "player": "Lionel Mpasi",
+          "replacedPlayer": null,
+          "summary": "Lionel Mpasi：伤情或治疗中断",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        },
+        {
+          "minute": 11.0,
+          "displayMinute": "11'",
+          "type": "chance_saved",
+          "team": "哥伦比亚",
+          "player": "James Rodríguez",
+          "replacedPlayer": null,
+          "summary": "James Rodríguez：射门被扑",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        },
+        {
+          "minute": 12.0,
+          "displayMinute": "12'",
+          "type": "chance_missed",
+          "team": "哥伦比亚",
+          "player": "Jhon Lucumí",
+          "replacedPlayer": null,
+          "summary": "Jhon Lucumí：射门偏出",
+          "setPiece": true,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        },
+        {
+          "minute": 15.0,
+          "displayMinute": "15'",
+          "type": "chance_saved",
+          "team": "哥伦比亚",
+          "player": "Johan Mojica",
+          "replacedPlayer": null,
+          "summary": "Johan Mojica：射门被扑",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        },
+        {
+          "minute": 16.0,
+          "displayMinute": "16'",
+          "type": "chance_saved",
+          "team": "哥伦比亚",
+          "player": "Luis Díaz",
+          "replacedPlayer": null,
+          "summary": "Luis Díaz：射门被扑",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        },
+        {
+          "minute": 17.0,
+          "displayMinute": "17'",
+          "type": "chance_missed",
+          "team": "哥伦比亚",
+          "player": "Gustavo Puerta",
+          "replacedPlayer": null,
+          "summary": "Gustavo Puerta：射门偏出",
+          "setPiece": true,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        },
+        {
+          "minute": 19.0,
+          "displayMinute": "19'",
+          "type": "chance_saved",
+          "team": "哥伦比亚",
+          "player": "Gustavo Puerta",
+          "replacedPlayer": null,
+          "summary": "Gustavo Puerta：射门被扑",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        },
+        {
+          "minute": 24.0,
+          "displayMinute": "24'",
+          "type": "chance_blocked",
+          "team": "哥伦比亚",
+          "player": "Luis Díaz",
+          "replacedPlayer": null,
+          "summary": "Luis Díaz：射门被封堵",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        },
+        {
+          "minute": 25.0,
+          "displayMinute": "25'",
+          "type": "cooling_break",
+          "team": null,
+          "player": null,
+          "replacedPlayer": null,
+          "summary": "补水暂停",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        },
+        {
+          "minute": 31.0,
+          "displayMinute": "31'",
+          "type": "chance_blocked",
+          "team": "哥伦比亚",
+          "player": "Luis Díaz",
+          "replacedPlayer": null,
+          "summary": "Luis Díaz：射门被封堵",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        },
+        {
+          "minute": 39.0,
+          "displayMinute": "39'",
+          "type": "chance_saved",
+          "team": "哥伦比亚",
+          "player": "Davinson Sánchez",
+          "replacedPlayer": null,
+          "summary": "Davinson Sánchez：射门被扑",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        },
+        {
+          "minute": 41.0,
+          "displayMinute": "41'",
+          "type": "chance_blocked",
+          "team": "哥伦比亚",
+          "player": "Luis Suárez",
+          "replacedPlayer": null,
+          "summary": "Luis Suárez：射门被封堵",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        },
+        {
+          "minute": 45.0,
+          "displayMinute": "45'",
+          "type": "chance_blocked",
+          "team": "哥伦比亚",
+          "player": "Luis Díaz",
+          "replacedPlayer": null,
+          "summary": "Luis Díaz：射门被封堵",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        },
+        {
+          "minute": 45.0,
+          "displayMinute": "45'",
+          "type": "chance_missed",
+          "team": "民主刚果",
+          "player": "Cédric Bakambu",
+          "replacedPlayer": null,
+          "summary": "Cédric Bakambu：射门偏出",
+          "setPiece": true,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        },
+        {
+          "minute": 45.0,
+          "displayMinute": "45'",
+          "type": "substitution",
+          "team": "民主刚果",
+          "player": "Noah Sadiki",
+          "replacedPlayer": "Ngal'ayel Mukau",
+          "summary": "Noah Sadiki 换下 Ngal'ayel Mukau",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        },
+        {
+          "minute": 48.0,
+          "displayMinute": "45'+3'",
+          "type": "chance_blocked",
+          "team": "哥伦比亚",
+          "player": "Gustavo Puerta",
+          "replacedPlayer": null,
+          "summary": "Gustavo Puerta：射门被封堵",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        },
+        {
+          "minute": 50.0,
+          "displayMinute": "50'",
+          "type": "chance_missed",
+          "team": "哥伦比亚",
+          "player": "Jhon Arias",
+          "replacedPlayer": null,
+          "summary": "Jhon Arias：射门偏出",
+          "setPiece": true,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        },
+        {
+          "minute": 50.0,
+          "displayMinute": "50'",
+          "type": "chance_saved",
+          "team": "哥伦比亚",
+          "player": "Luis Díaz",
+          "replacedPlayer": null,
+          "summary": "Luis Díaz：射门被扑",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        },
+        {
+          "minute": 50.0,
+          "displayMinute": "45'+5'",
+          "type": "var",
+          "team": null,
+          "player": null,
+          "replacedPlayer": null,
+          "summary": "未知球员：VAR复核",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        },
+        {
+          "minute": 53.0,
+          "displayMinute": "53'",
+          "type": "chance_missed",
+          "team": "民主刚果",
+          "player": "Samuel Moutoussamy",
+          "replacedPlayer": null,
+          "summary": "Samuel Moutoussamy：射门偏出",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        },
+        {
+          "minute": 56.0,
+          "displayMinute": "56'",
+          "type": "yellow_card",
+          "team": "哥伦比亚",
+          "player": "Jhon Lucumí",
+          "replacedPlayer": null,
+          "summary": "Jhon Lucumí：黄牌",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        },
+        {
+          "minute": 57.0,
+          "displayMinute": "57'",
+          "type": "substitution",
+          "team": "民主刚果",
+          "player": "Simon Banza",
+          "replacedPlayer": "Cédric Bakambu",
+          "summary": "Simon Banza 换下 Cédric Bakambu",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        },
+        {
+          "minute": 58.0,
+          "displayMinute": "58'",
+          "type": "substitution",
+          "team": "哥伦比亚",
+          "player": "Jhon Córdoba",
+          "replacedPlayer": "Luis Suárez",
+          "summary": "Jhon Córdoba 换下 Luis Suárez",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        },
+        {
+          "minute": 58.0,
+          "displayMinute": "58'",
+          "type": "substitution",
+          "team": "哥伦比亚",
+          "player": "Juan Fernando Quintero",
+          "replacedPlayer": "James Rodríguez",
+          "summary": "Juan Fernando Quintero 换下 James Rodríguez",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        },
+        {
+          "minute": 68.0,
+          "displayMinute": "68'",
+          "type": "cooling_break",
+          "team": null,
+          "player": null,
+          "replacedPlayer": null,
+          "summary": "补水暂停",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        },
+        {
+          "minute": 72.0,
+          "displayMinute": "72'",
+          "type": "substitution",
+          "team": "民主刚果",
+          "player": "Charles Pickel",
+          "replacedPlayer": "Edo Kayembe",
+          "summary": "Charles Pickel 换下 Edo Kayembe",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        },
+        {
+          "minute": 72.0,
+          "displayMinute": "72'",
+          "type": "substitution",
+          "team": "民主刚果",
+          "player": "Joris Kayembe",
+          "replacedPlayer": "Arthur Masuaku",
+          "summary": "Joris Kayembe 换下 Arthur Masuaku",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        },
+        {
+          "minute": 74.0,
+          "displayMinute": "74'",
+          "type": "chance_blocked",
+          "team": "民主刚果",
+          "player": "Yoane Wissa",
+          "replacedPlayer": null,
+          "summary": "Yoane Wissa：射门被封堵",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        },
+        {
+          "minute": 76.0,
+          "displayMinute": "76'",
+          "type": "goal",
+          "team": "哥伦比亚",
+          "player": "Daniel Muñoz",
+          "replacedPlayer": null,
+          "summary": "Daniel Muñoz：进球",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        },
+        {
+          "minute": 78.0,
+          "displayMinute": "78'",
+          "type": "substitution",
+          "team": "哥伦比亚",
+          "player": "Richard Ríos",
+          "replacedPlayer": "Jhon Arias",
+          "summary": "Richard Ríos 换下 Jhon Arias",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        },
+        {
+          "minute": 82.0,
+          "displayMinute": "82'",
+          "type": "substitution",
+          "team": "民主刚果",
+          "player": "Nathanaël Mbuku",
+          "replacedPlayer": "Samuel Moutoussamy",
+          "summary": "Nathanaël Mbuku 换下 Samuel Moutoussamy",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        },
+        {
+          "minute": 86.0,
+          "displayMinute": "86'",
+          "type": "chance_blocked",
+          "team": "哥伦比亚",
+          "player": "Gustavo Puerta",
+          "replacedPlayer": null,
+          "summary": "Gustavo Puerta：射门被封堵",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        },
+        {
+          "minute": 86.0,
+          "displayMinute": "86'",
+          "type": "chance_saved",
+          "team": "哥伦比亚",
+          "player": "Gustavo Puerta",
+          "replacedPlayer": null,
+          "summary": "Gustavo Puerta：射门被扑",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        },
+        {
+          "minute": 89.0,
+          "displayMinute": "89'",
+          "type": "chance_blocked",
+          "team": "民主刚果",
+          "player": "Joris Kayembe",
+          "replacedPlayer": null,
+          "summary": "Joris Kayembe：射门被封堵",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        },
+        {
+          "minute": 91.0,
+          "displayMinute": "90'+1'",
+          "type": "chance_saved",
+          "team": "哥伦比亚",
+          "player": "Nathanaël Mbuku (Congo DR)",
+          "replacedPlayer": null,
+          "summary": "Nathanaël Mbuku (Congo DR)：射门被扑",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        },
+        {
+          "minute": 93.0,
+          "displayMinute": "90'+3'",
+          "type": "chance_missed",
+          "team": "民主刚果",
+          "player": "Charles Pickel",
+          "replacedPlayer": null,
+          "summary": "Charles Pickel：射门偏出",
+          "setPiece": true,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        },
+        {
+          "minute": 93.0,
+          "displayMinute": "90'+3'",
+          "type": "yellow_card",
+          "team": "民主刚果",
+          "player": "Charles Pickel",
+          "replacedPlayer": null,
+          "summary": "Charles Pickel：黄牌",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        },
+        {
+          "minute": 94.0,
+          "displayMinute": "90'+4'",
+          "type": "yellow_card",
+          "team": "哥伦比亚",
+          "player": "Jefferson Lerma",
+          "replacedPlayer": null,
+          "summary": "Jefferson Lerma：黄牌",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        },
+        {
+          "minute": 96.0,
+          "displayMinute": "90'+6'",
+          "type": "chance_missed",
+          "team": "哥伦比亚",
+          "player": "Juan Fernando Quintero",
+          "replacedPlayer": null,
+          "summary": "Juan Fernando Quintero：射门偏出",
+          "setPiece": false,
+          "seriousInjuryHint": false,
+          "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760459"
+        }
+      ],
       "tacticalSummary": {
-        "coolingBreakMinutes": [],
-        "teams": {},
+        "coolingBreakMinutes": [
+          25.0,
+          68.0
+        ],
+        "teams": {
+          "哥伦比亚": {
+            "attackingEventsBySegment": [
+              9,
+              4,
+              3,
+              5
+            ],
+            "attackingRatePer15BySegment": [
+              5.4,
+              3.0,
+              1.957,
+              3.409
+            ],
+            "setPieceAttempts": 3,
+            "postBreakSubstitutions": 1,
+            "labels": [
+              "first_break_attack_decrease",
+              "second_break_attack_increase",
+              "set_piece_creation"
+            ]
+          },
+          "民主刚果": {
+            "attackingEventsBySegment": [
+              1,
+              1,
+              1,
+              3
+            ],
+            "attackingRatePer15BySegment": [
+              0.6,
+              0.75,
+              0.652,
+              2.045
+            ],
+            "setPieceAttempts": 2,
+            "postBreakSubstitutions": 2,
+            "labels": [
+              "second_break_attack_increase",
+              "late_pressure",
+              "set_piece_creation",
+              "post_break_substitution_burst"
+            ]
+          }
+        },
         "coverage": {
-          "classifiedEvents": 0,
-          "attackingEvents": 0,
-          "injuryEvents": 0,
-          "cardEvents": 0
+          "classifiedEvents": 42,
+          "attackingEvents": 27,
+          "injuryEvents": 1,
+          "cardEvents": 3
         }
       },
       "sources": [
@@ -25946,7 +27878,7 @@
         {
           "type": "minute_by_minute",
           "url": "https://www.espn.com/soccer/commentary/_/gameId/760459",
-          "archived": false,
+          "archived": true,
           "espnEventId": "760459"
         }
       ]

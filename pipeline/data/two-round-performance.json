@@ -1,10 +1,10 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-06-23T16:38:49+08:00",
+  "generatedAt": "2026-06-24T12:29:50+08:00",
   "round": {
     "name": "group_matchdays_1_2",
     "scheduledMatches": 48,
-    "completedMatches": 44,
+    "completedMatches": 48,
     "teams": 48,
     "matchdayWeights": {
       "1": 0.45,
@@ -17,7 +17,7 @@
     "objectiveMultiplier": 1.5,
     "tacticalDirectionCap": 0.05,
     "combinedTeamDirectionCap": 0.18,
-    "tacticalAdmissionStatus": "observation_only"
+    "tacticalAdmissionStatus": "enabled"
   },
   "teams": [
     {
@@ -51,7 +51,7 @@
               "post_break_substitution_burst"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -73,15 +73,64 @@
               }
             ]
           }
+        },
+        {
+          "fixtureId": 537405,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-24",
+          "opponent": "葡萄牙",
+          "scoreFor": 0,
+          "scoreAgainst": 5,
+          "expectedGoalsReference": 0.5176,
+          "expectedGoalsAgainstReference": 2.0324,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": -0.008,
+            "defenseDelta": -0.046,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.02,
+            "defenseDelta": 0.0075,
+            "labels": [
+              "second_break_attack_decrease"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "enabled"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 40,
+            "coolingBreakMinutes": [
+              23.0,
+              69.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760461",
+                "archived": true,
+                "espnEventId": "760461"
+              }
+            ]
+          }
         }
       ],
       "evidence": {
         "mode": "minute_by_minute_events",
-        "archivedMatches": 1,
+        "archivedMatches": 2,
         "tacticalLabels": [
           "second_break_attack_increase",
           "late_pressure",
-          "post_break_substitution_burst"
+          "post_break_substitution_burst",
+          "second_break_attack_decrease"
         ],
         "objectiveAndTacticalSeparated": true
       }
@@ -118,7 +167,7 @@
               "set_piece_creation"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -167,7 +216,7 @@
               "second_break_attack_increase"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -237,7 +286,7 @@
               "post_break_substitution_burst"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -286,7 +335,7 @@
               "second_break_attack_increase"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -562,7 +611,7 @@
               "post_break_substitution_burst"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -584,13 +633,64 @@
               }
             ]
           }
+        },
+        {
+          "fixtureId": 537412,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-24",
+          "opponent": "巴拿马",
+          "scoreFor": 1,
+          "scoreAgainst": 0,
+          "expectedGoalsReference": 1.8521,
+          "expectedGoalsAgainstReference": 0.6979,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": -0.0132,
+            "defenseDelta": 0.0108,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.02,
+            "defenseDelta": -0.0225,
+            "labels": [
+              "second_break_attack_decrease",
+              "post_break_substitution_burst"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "enabled"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 27,
+            "coolingBreakMinutes": [
+              23.0,
+              69.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760460",
+                "archived": true,
+                "espnEventId": "760460"
+              }
+            ]
+          }
         }
       ],
       "evidence": {
         "mode": "minute_by_minute_events",
-        "archivedMatches": 1,
+        "archivedMatches": 2,
         "tacticalLabels": [
           "late_pressure",
+          "post_break_substitution_burst",
+          "second_break_attack_decrease",
           "post_break_substitution_burst"
         ],
         "objectiveAndTacticalSeparated": true
@@ -627,7 +727,7 @@
               "set_piece_creation"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -679,7 +779,7 @@
               "post_break_substitution_burst"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -749,7 +849,7 @@
               "set_piece_creation"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -771,11 +871,57 @@
               }
             ]
           }
+        },
+        {
+          "fixtureId": 537411,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-24",
+          "opponent": "英格兰",
+          "scoreFor": 0,
+          "scoreAgainst": 0,
+          "expectedGoalsReference": 0.15,
+          "expectedGoalsAgainstReference": 2.4,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": -0.0023,
+            "defenseDelta": 0.0372,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.0,
+            "defenseDelta": 0.005,
+            "labels": [],
+            "corroboration": "insufficient",
+            "admissionStatus": "observation_only"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 37,
+            "coolingBreakMinutes": [
+              26.0,
+              70.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760458",
+                "archived": true,
+                "espnEventId": "760458"
+              }
+            ]
+          }
         }
       ],
       "evidence": {
         "mode": "minute_by_minute_events",
-        "archivedMatches": 1,
+        "archivedMatches": 2,
         "tacticalLabels": [
           "second_break_attack_decrease",
           "set_piece_creation"
@@ -813,7 +959,7 @@
               "post_break_substitution_burst"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -864,7 +1010,7 @@
               "set_piece_creation"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -932,7 +1078,7 @@
               "set_piece_creation"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -980,7 +1126,7 @@
               "first_break_attack_decrease"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -1044,7 +1190,7 @@
               "first_break_attack_decrease"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -1094,7 +1240,7 @@
               "set_piece_creation"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -1160,7 +1306,7 @@
               "set_piece_creation"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -1182,13 +1328,66 @@
               }
             ]
           }
+        },
+        {
+          "fixtureId": 537406,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-24",
+          "opponent": "民主刚果",
+          "scoreFor": 1,
+          "scoreAgainst": 0,
+          "expectedGoalsReference": 2.4,
+          "expectedGoalsAgainstReference": 0.15,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": -0.0217,
+            "defenseDelta": 0.0023,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.015,
+            "defenseDelta": -0.0225,
+            "labels": [
+              "first_break_attack_decrease",
+              "second_break_attack_increase",
+              "set_piece_creation"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "enabled"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 42,
+            "coolingBreakMinutes": [
+              25.0,
+              68.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760459",
+                "archived": true,
+                "espnEventId": "760459"
+              }
+            ]
+          }
         }
       ],
       "evidence": {
         "mode": "minute_by_minute_events",
-        "archivedMatches": 1,
+        "archivedMatches": 2,
         "tacticalLabels": [
           "first_break_attack_increase",
+          "set_piece_creation",
+          "first_break_attack_decrease",
+          "second_break_attack_increase",
           "set_piece_creation"
         ],
         "objectiveAndTacticalSeparated": true
@@ -1224,7 +1423,7 @@
               "set_piece_creation"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -1273,7 +1472,7 @@
               "late_pressure"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -1339,7 +1538,7 @@
               "post_break_substitution_burst"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -1390,7 +1589,7 @@
               "post_break_substitution_burst"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -1457,7 +1656,7 @@
               "post_break_substitution_burst"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -1505,7 +1704,7 @@
               "second_break_attack_increase"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -1571,7 +1770,7 @@
               "post_break_substitution_burst"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -1621,7 +1820,7 @@
               "post_break_substitution_burst"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -1689,7 +1888,7 @@
               "first_break_attack_decrease"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -1737,7 +1936,7 @@
               "first_break_attack_decrease"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -1801,7 +2000,7 @@
               "second_break_attack_decrease"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -1910,7 +2109,7 @@
               "second_break_attack_decrease"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -1932,13 +2131,66 @@
               }
             ]
           }
+        },
+        {
+          "fixtureId": 537412,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-24",
+          "opponent": "克罗地亚",
+          "scoreFor": 0,
+          "scoreAgainst": 1,
+          "expectedGoalsReference": 0.6979,
+          "expectedGoalsAgainstReference": 1.8521,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": -0.0108,
+            "defenseDelta": 0.0132,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.045,
+            "defenseDelta": 0.01,
+            "labels": [
+              "second_break_attack_increase",
+              "late_pressure",
+              "set_piece_creation"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "enabled"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 27,
+            "coolingBreakMinutes": [
+              23.0,
+              69.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760460",
+                "archived": true,
+                "espnEventId": "760460"
+              }
+            ]
+          }
         }
       ],
       "evidence": {
         "mode": "minute_by_minute_events",
-        "archivedMatches": 1,
+        "archivedMatches": 2,
         "tacticalLabels": [
-          "second_break_attack_decrease"
+          "second_break_attack_decrease",
+          "second_break_attack_increase",
+          "late_pressure",
+          "set_piece_creation"
         ],
         "objectiveAndTacticalSeparated": true
       }
@@ -1973,7 +2225,7 @@
               "second_break_attack_decrease"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -2021,7 +2273,7 @@
               "second_break_attack_increase"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -2085,7 +2337,7 @@
               "set_piece_creation"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -2135,7 +2387,7 @@
               "post_break_substitution_burst"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -2201,7 +2453,7 @@
               "post_break_substitution_burst"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -2314,7 +2566,7 @@
               "post_break_substitution_burst"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -2362,7 +2614,7 @@
               "second_break_attack_decrease"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -2476,7 +2728,7 @@
               "set_piece_creation"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -2540,7 +2792,7 @@
               "second_break_attack_increase"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -2650,7 +2902,7 @@
               "set_piece_creation"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -2700,7 +2952,7 @@
               "post_break_substitution_burst"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -2770,7 +3022,7 @@
               "post_break_substitution_burst"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -2819,7 +3071,7 @@
               "post_break_substitution_burst"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -2888,7 +3140,7 @@
               "set_piece_creation"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -2937,7 +3189,7 @@
               "set_piece_creation"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -3004,7 +3256,7 @@
               "post_break_substitution_burst"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -3026,14 +3278,69 @@
               }
             ]
           }
+        },
+        {
+          "fixtureId": 537406,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-24",
+          "opponent": "哥伦比亚",
+          "scoreFor": 0,
+          "scoreAgainst": 1,
+          "expectedGoalsReference": 0.15,
+          "expectedGoalsAgainstReference": 2.4,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": -0.0023,
+            "defenseDelta": 0.0217,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": 0.045,
+            "defenseDelta": -0.0075,
+            "labels": [
+              "second_break_attack_increase",
+              "late_pressure",
+              "set_piece_creation",
+              "post_break_substitution_burst"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "enabled"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 42,
+            "coolingBreakMinutes": [
+              25.0,
+              68.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760459",
+                "archived": true,
+                "espnEventId": "760459"
+              }
+            ]
+          }
         }
       ],
       "evidence": {
         "mode": "minute_by_minute_events",
-        "archivedMatches": 1,
+        "archivedMatches": 2,
         "tacticalLabels": [
           "first_break_attack_decrease",
           "second_break_attack_decrease",
+          "post_break_substitution_burst",
+          "second_break_attack_increase",
+          "late_pressure",
+          "set_piece_creation",
           "post_break_substitution_burst"
         ],
         "objectiveAndTacticalSeparated": true
@@ -3069,7 +3376,7 @@
               "second_break_attack_increase"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -3117,7 +3424,7 @@
               "second_break_attack_decrease"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -3229,7 +3536,7 @@
               "set_piece_creation"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -3399,7 +3706,7 @@
               "set_piece_creation"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -3448,7 +3755,7 @@
               "set_piece_creation"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -3516,7 +3823,7 @@
               "post_break_substitution_burst"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -3565,7 +3872,7 @@
               "second_break_attack_decrease"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -3631,7 +3938,7 @@
               "second_break_attack_decrease"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -3680,7 +3987,7 @@
               "second_break_attack_decrease"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -3745,7 +4052,7 @@
               "set_piece_creation"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -3794,7 +4101,7 @@
               "post_break_substitution_burst"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -3963,7 +4270,7 @@
               "post_break_substitution_burst"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -4011,7 +4318,7 @@
               "first_break_attack_decrease"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -4075,7 +4382,7 @@
               "post_break_substitution_burst"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -4124,7 +4431,7 @@
               "post_break_substitution_burst"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -4293,7 +4600,7 @@
               "post_break_substitution_burst"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -4342,7 +4649,7 @@
               "post_break_substitution_burst"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -4409,7 +4716,7 @@
               "post_break_substitution_burst"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -4431,13 +4738,66 @@
               }
             ]
           }
+        },
+        {
+          "fixtureId": 537411,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-24",
+          "opponent": "加纳",
+          "scoreFor": 0,
+          "scoreAgainst": 0,
+          "expectedGoalsReference": 2.4,
+          "expectedGoalsAgainstReference": 0.15,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": -0.0372,
+            "defenseDelta": 0.0023,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.01,
+            "defenseDelta": -0.0,
+            "labels": [
+              "second_break_attack_decrease",
+              "set_piece_creation",
+              "post_break_substitution_burst"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "enabled"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 37,
+            "coolingBreakMinutes": [
+              26.0,
+              70.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760458",
+                "archived": true,
+                "espnEventId": "760458"
+              }
+            ]
+          }
         }
       ],
       "evidence": {
         "mode": "minute_by_minute_events",
-        "archivedMatches": 1,
+        "archivedMatches": 2,
         "tacticalLabels": [
           "first_break_attack_decrease",
+          "second_break_attack_decrease",
+          "set_piece_creation",
+          "post_break_substitution_burst",
           "second_break_attack_decrease",
           "set_piece_creation",
           "post_break_substitution_burst"
@@ -4478,7 +4838,7 @@
               "post_break_substitution_burst"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -4526,7 +4886,7 @@
               "first_break_attack_decrease"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -4595,7 +4955,7 @@
               "post_break_substitution_burst"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -4617,15 +4977,64 @@
               }
             ]
           }
+        },
+        {
+          "fixtureId": 537405,
+          "observedMatchday": 2,
+          "observedDate": "2026-06-24",
+          "opponent": "乌兹别克斯坦",
+          "scoreFor": 5,
+          "scoreAgainst": 0,
+          "expectedGoalsReference": 2.0324,
+          "expectedGoalsAgainstReference": 0.5176,
+          "evidenceConfidence": 0.62,
+          "objectiveForm": {
+            "attackDelta": 0.046,
+            "defenseDelta": 0.008,
+            "redCardAdjusted": false,
+            "finishingOutlierShrunk": false,
+            "opponentStrengthAdjusted": true,
+            "admissionStatus": "enabled"
+          },
+          "tacticalCandidate": {
+            "attackDelta": -0.015,
+            "defenseDelta": 0.01,
+            "labels": [
+              "first_break_attack_decrease"
+            ],
+            "corroboration": "minute_coordinates_plus_event_count_shift",
+            "admissionStatus": "enabled"
+          },
+          "evidence": {
+            "timelineArchived": true,
+            "eventCount": 40,
+            "coolingBreakMinutes": [
+              23.0,
+              69.0
+            ],
+            "sources": [
+              {
+                "type": "official_result",
+                "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures"
+              },
+              {
+                "type": "minute_by_minute",
+                "url": "https://www.espn.com/soccer/commentary/_/gameId/760461",
+                "archived": true,
+                "espnEventId": "760461"
+              }
+            ]
+          }
         }
       ],
       "evidence": {
         "mode": "minute_by_minute_events",
-        "archivedMatches": 1,
+        "archivedMatches": 2,
         "tacticalLabels": [
           "second_break_attack_increase",
           "late_pressure",
-          "post_break_substitution_burst"
+          "post_break_substitution_burst",
+          "first_break_attack_decrease"
         ],
         "objectiveAndTacticalSeparated": true
       }
@@ -4662,7 +5071,7 @@
               "post_break_substitution_burst"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -4711,7 +5120,7 @@
               "set_piece_creation"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -4779,7 +5188,7 @@
               "second_break_attack_decrease"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -4828,7 +5237,7 @@
               "set_piece_creation"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -4893,7 +5302,7 @@
               "second_break_attack_decrease"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
@@ -4943,7 +5352,7 @@
               "late_pressure"
             ],
             "corroboration": "minute_coordinates_plus_event_count_shift",
-            "admissionStatus": "observation_only"
+            "admissionStatus": "enabled"
           },
           "evidence": {
             "timelineArchived": true,
