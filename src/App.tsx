@@ -18,7 +18,7 @@ import { TotalGoalsPage } from './pages/TotalGoalsPage'
 import { FirstRoundPage } from './pages/FirstRoundPage'
 import { ForecastHorizon } from './components/ForecastHorizon'
 import { useForecast } from './hooks/useForecast'
-import { captureModelSnapshot, loadPersonalLedger, savePersonalLedger } from './features/personal-bets/storage'
+import { captureModelSnapshot, loadPersonalLedger, mergeInitialPersonalLedger, savePersonalLedger } from './features/personal-bets/storage'
 import type { PersonalBetLedger, StrategyHistory } from './features/personal-bets/types'
 import { appendLedgerEntry, currentBalance, emptyLedger, loadLedger, saveLedger, settleLedger } from './lib/ledger'
 import { filterCrossDayRecommendations, scalePortfolio, strategyRollingBankrolls } from './lib/portfolio'
@@ -57,19 +57,20 @@ export default function App() {
       .catch(() => undefined)
   }, [])
 
-  // Auto-load initial personal ledger on first visit
+  // Auto-load and merge seeded personal tickets without overwriting local settlements.
   useEffect(() => {
-    if (personalLedger.bets.length > 0) return
     fetch('./data/personal-ledger-initial.json', { cache: 'no-store' })
       .then((response) => response.ok ? response.json() as Promise<PersonalBetLedger> : null)
       .then((parsed) => {
         if (!parsed || !Array.isArray(parsed.bets) || !parsed.bets.length) return
-        // Merge into ledger: save to localStorage, then update state
-        savePersonalLedger(parsed)
-        setPersonalLedger(parsed)
+        setPersonalLedger((current) => {
+          const next = mergeInitialPersonalLedger(current, parsed)
+          if (next !== current) savePersonalLedger(next)
+          return next
+        })
       })
       .catch(() => undefined)
-  }, [personalLedger.bets.length])
+  }, [])
 
   useEffect(() => {
     if (!data) return

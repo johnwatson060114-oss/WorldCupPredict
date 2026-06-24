@@ -29,6 +29,21 @@ export const savePersonalLedger = (ledger: PersonalBetLedger) => {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(ledger))
 }
 
+export const mergeInitialPersonalLedger = (current: PersonalBetLedger, initial: PersonalBetLedger) => {
+  if (!Array.isArray(initial.bets) || !initial.bets.length) return current
+  const existingIds = new Set(current.bets.map((bet) => bet.id))
+  const missingBets = initial.bets.filter((bet) => !existingIds.has(bet.id))
+  const existingSnapshots = new Set(current.modelSnapshots.map((snapshot) => snapshot.targetDate))
+  const missingSnapshots = (initial.modelSnapshots ?? []).filter((snapshot) => !existingSnapshots.has(snapshot.targetDate))
+  if (!missingBets.length && !missingSnapshots.length) return current
+  return {
+    ...current,
+    initialBankroll: current.bets.length ? current.initialBankroll : initial.initialBankroll,
+    bets: [...missingBets, ...current.bets],
+    modelSnapshots: [...current.modelSnapshots, ...missingSnapshots],
+  }
+}
+
 export const upsertPersonalBet = (ledger: PersonalBetLedger, bet: PersonalBet) => {
   const exists = ledger.bets.some((item) => item.id === bet.id)
   const bets = exists

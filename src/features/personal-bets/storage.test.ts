@@ -1,5 +1,5 @@
 import { beforeAll, describe, expect, it } from 'vitest'
-import { isWinningPersonalBet, personalBalance, reopenPersonalBet, settlePersonalBetManually, settlePersonalLedger } from './storage'
+import { isWinningPersonalBet, mergeInitialPersonalLedger, personalBalance, reopenPersonalBet, settlePersonalBetManually, settlePersonalLedger } from './storage'
 import type { PersonalBetLedger, PersonalBetLeg } from './types'
 
 beforeAll(() => {
@@ -18,6 +18,55 @@ const leg = (matchId: string): PersonalBetLeg => ({
 })
 
 describe('personal ledger settlement', () => {
+  it('merges seeded tickets without overwriting local settlement edits', () => {
+    const local: PersonalBetLedger = {
+      schemaVersion: 1,
+      initialBankroll: 200,
+      modelSnapshots: [],
+      bets: [{
+        id: 'existing',
+        createdAt: 'local',
+        targetDate: '2026-06-21',
+        matchLabel: 'A vs B',
+        market: '胜平负',
+        selection: '胜',
+        odds: 2,
+        stake: 10,
+        decisionSource: 'subjective',
+        status: 'settled',
+        payout: 18,
+        legs: [leg('m1')],
+      }],
+    }
+    const seeded: PersonalBetLedger = {
+      schemaVersion: 1,
+      initialBankroll: 500,
+      modelSnapshots: [{ targetDate: '2026-06-22', generatedAt: 'seed', coverage: 1, portfolios: [] }],
+      bets: [
+        { ...local.bets[0], status: 'pending', payout: undefined },
+        {
+          id: 'new-seeded',
+          createdAt: 'seed',
+          targetDate: '2026-06-22',
+          matchLabel: 'C vs D',
+          market: '胜平负',
+          selection: '平',
+          odds: 3,
+          stake: 6,
+          decisionSource: 'subjective',
+          status: 'pending',
+          legs: [leg('m2')],
+        },
+      ],
+    }
+    const merged = mergeInitialPersonalLedger(local, seeded)
+    expect(merged.initialBankroll).toBe(200)
+    expect(merged.bets.map((bet) => bet.id)).toEqual(['new-seeded', 'existing'])
+    expect(merged.bets.find((bet) => bet.id === 'existing')?.status).toBe('settled')
+    expect(merged.bets.find((bet) => bet.id === 'existing')?.payout).toBe(18)
+    expect(merged.modelSnapshots.map((snapshot) => snapshot.targetDate)).toEqual(['2026-06-22'])
+  })
+
   it('marks only positive settled profit as a winning ticket', () => {
     expect(isWinningPersonalBet({ status: 'settled', stake: 10, payout: 18 })).toBe(true)
     expect(isWinningPersonalBet({ status: 'settled', stake: 10, payout: 10 })).toBe(false)
