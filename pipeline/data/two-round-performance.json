@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-06-24T12:29:50+08:00",
+  "generatedAt": "2026-06-24T13:07:54+08:00",
   "round": {
     "name": "group_matchdays_1_2",
     "scheduledMatches": 48,
@@ -17,7 +17,8 @@
     "objectiveMultiplier": 1.5,
     "tacticalDirectionCap": 0.05,
     "combinedTeamDirectionCap": 0.18,
-    "tacticalAdmissionStatus": "enabled"
+    "tacticalAdmissionStatus": "enabled",
+    "drawRiskLayer": "probability-only redistribution; no xG or score-matrix change"
   },
   "teams": [
     {

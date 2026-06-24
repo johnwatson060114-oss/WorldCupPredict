@@ -50,6 +50,7 @@ from .model import (
 from .lineup import apply_lineup_impacts
 from .intelligence import apply_intelligence, load_daily_intelligence
 from .current_tournament import apply_current_tournament_context
+from .draw_risk import apply_draw_risk_layer
 from .market_guard import apply_market_strength_calibration, market_conflict_decision
 from .portfolio import build_portfolios
 from .provenance import build_snapshot_manifest
@@ -531,7 +532,15 @@ def build_match(
     match_id = market.match_id if market else seed.get("sporttery_id") or f"{seed['home_team']} vs {seed['away_team']}"
     simulated = simulation.summaries.get(match_id) if simulation else None
     matrix = simulated["matrix"] if simulated else score_matrix(home_xg, away_xg)
-    outcomes = simulated["outcomes"] if simulated else outcome_probabilities(matrix)
+    raw_outcomes = simulated["outcomes"] if simulated else outcome_probabilities(matrix)
+    draw_risk_result = apply_draw_risk_layer(
+        raw_outcomes,
+        {
+            **seed,
+            "base_xg": [home_xg, away_xg],
+        },
+    )
+    outcomes = draw_risk_result.probabilities
     outcome_decision = outcome_recommendation_decision(outcomes)
     scores = top_scores(matrix)
     no_live_market = market is None
@@ -683,6 +692,7 @@ def build_match(
         }),
         "tournamentForm": seed.get("tournament_form"),
         "currentTournament": seed.get("current_tournament"),
+        "drawRisk": draw_risk_result.metadata,
         "outcomeProbabilities": {key: round(value, 5) for key, value in outcomes.items()},
         "outcomeDecision": {
             **outcome_decision,

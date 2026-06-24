@@ -16,6 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from pipeline.backtest import score_predictions
+from pipeline.draw_risk import apply_draw_risk_layer
 from pipeline.elo_ratings import allocate_total_goals_by_elo
 from pipeline.football_data import localized_team_name
 from pipeline.match_timeline import extract_timeline, match_tactical_summary, tactical_direction
@@ -370,6 +371,15 @@ def review_backtest(
             apply_market_strength_calibration(tactical_seed, odds)
             objective_home, objective_away = map(float, objective_seed["base_xg"])
             tactical_home, tactical_away = map(float, tactical_seed["base_xg"])
+            tactical_probabilities = outcome_probabilities(score_matrix(tactical_home, tactical_away))
+            draw_risk = apply_draw_risk_layer(
+                tactical_probabilities,
+                {
+                    "home_team": forecast["homeTeam"],
+                    "away_team": forecast["awayTeam"],
+                    "base_xg": [tactical_home, tactical_away],
+                },
+            )
             actual = actual_outcome(int(settlement["homeScore"]), int(settlement["awayScore"]))
             rows.append({
                 "targetDate": payload["targetDate"],
@@ -378,19 +388,22 @@ def review_backtest(
                 "score": f"{settlement['homeScore']}-{settlement['awayScore']}",
                 "original": {key: float(value) for key, value in forecast["outcomeProbabilities"].items()},
                 "objective": outcome_probabilities(score_matrix(objective_home, objective_away)),
-                "tactical": outcome_probabilities(score_matrix(tactical_home, tactical_away)),
+                "tactical": tactical_probabilities,
+                "drawRisk": draw_risk.probabilities,
+                "drawRiskLayer": draw_risk.metadata,
                 "totalGoals": {
                     "actual": int(settlement["homeScore"]) + int(settlement["awayScore"]),
                     "originalExpected": float(forecast["expectedGoals"]["home"]) + float(forecast["expectedGoals"]["away"]),
                     "objectiveExpected": objective_home + objective_away,
                     "tacticalExpected": tactical_home + tactical_away,
+                    "drawRiskExpected": tactical_home + tactical_away,
                 },
             })
     metrics = {
         model: score_predictions((row[model], row["actual"]) for row in rows)
-        for model in ("original", "objective", "tactical")
+        for model in ("original", "objective", "tactical", "drawRisk")
     }
-    for model in ("original", "objective", "tactical"):
+    for model in ("original", "objective", "tactical", "drawRisk"):
         metrics[model]["accuracy"] = (
             sum(max(row[model], key=row[model].get) == row["actual"] for row in rows) / len(rows)
             if rows else 0.0
@@ -410,6 +423,10 @@ def review_backtest(
         metric: metrics["tactical"][metric] - metrics["objective"][metric]
         for metric in ("log_loss", "rps", "calibration_error")
     }
+    draw_risk_delta = {
+        metric: metrics["drawRisk"][metric] - metrics["tactical"][metric]
+        for metric in ("log_loss", "rps", "calibration_error")
+    }
     enabled = (
         rows
         and tactical_delta["log_loss"] < 0
@@ -422,6 +439,12 @@ def review_backtest(
         and metrics["objective"]["log_loss"] < metrics["original"]["log_loss"]
         and metrics["objective"]["rps"] < metrics["original"]["rps"]
         and metrics["objective"]["calibration_error"] <= metrics["original"]["calibration_error"] + 0.005
+    )
+    draw_risk_enabled = (
+        rows
+        and draw_risk_delta["log_loss"] < 0
+        and draw_risk_delta["rps"] < 0
+        and draw_risk_delta["calibration_error"] <= 0.005
     )
     return {
         "sample": {
@@ -441,6 +464,12 @@ def review_backtest(
             "status": status,
             "enabled": enabled,
             "rule": "Log Loss and RPS must both improve; calibration error may worsen by at most 0.005",
+        },
+        "drawRiskDeltaVsTactical": draw_risk_delta,
+        "drawRiskAdmissionDecision": {
+            "status": "enabled" if draw_risk_enabled else "observation_only",
+            "enabled": draw_risk_enabled,
+            "rule": "Draw-risk layer must improve Log Loss and RPS versus tactical layer; calibration may worsen by at most 0.005",
         },
         "matches": rows,
     }, status
@@ -579,6 +608,7 @@ def main() -> None:
             "tacticalDirectionCap": 0.05,
             "combinedTeamDirectionCap": 0.18,
             "tacticalAdmissionStatus": tactical_status,
+            "drawRiskLayer": "probability-only redistribution; no xG or score-matrix change",
         },
         "teams": profiles,
     }
@@ -592,6 +622,7 @@ def main() -> None:
             "cooling-break segments are explicit and tactical deltas are capped at 0.05 xG",
             "injury and cumulative discipline states are auditable",
             "FIFA Article 13 and Annex C knockout paths are implemented",
+            "draw-risk layer redistributes at most 0.045 probability into draws when low-tempo or misallocated-upset blind spots trigger",
         ],
         "backtest": backtest,
         "squadStatus": squad_status,

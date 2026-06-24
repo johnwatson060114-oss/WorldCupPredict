@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-24T12:29:50+08:00",
+  "generatedAt": "2026-06-24T13:07:54+08:00",
   "scope": {
     "scheduledMatches": 48,
     "completedMatches": 48,
@@ -12,7 +12,8 @@
     "objective result form and tactical event-timeline evidence are separated",
     "cooling-break segments are explicit and tactical deltas are capped at 0.05 xG",
     "injury and cumulative discipline states are auditable",
-    "FIFA Article 13 and Annex C knockout paths are implemented"
+    "FIFA Article 13 and Annex C knockout paths are implemented",
+    "draw-risk layer redistributes at most 0.045 probability into draws when low-tempo or misallocated-upset blind spots trigger"
   ],
   "backtest": {
     "sample": {
@@ -48,6 +49,15 @@
         "accuracy": 0.7083333333333334,
         "drawRecall": 0.0,
         "totalGoalsMae": 1.6220770833333331
+      },
+      "drawRisk": {
+        "log_loss": 0.7573757892489111,
+        "rps": 0.14348443282652454,
+        "brier": 0.4516427666361695,
+        "calibration_error": 0.08472222222222223,
+        "accuracy": 0.7083333333333334,
+        "drawRecall": 0.0,
+        "totalGoalsMae": 1.6220770833333331
       }
     },
     "objectiveAdmissionDecision": {
@@ -64,6 +74,16 @@
       "status": "enabled",
       "enabled": true,
       "rule": "Log Loss and RPS must both improve; calibration error may worsen by at most 0.005"
+    },
+    "drawRiskDeltaVsTactical": {
+      "log_loss": -0.014366002012915158,
+      "rps": -0.0009792184523637337,
+      "calibration_error": -0.002777777777777768
+    },
+    "drawRiskAdmissionDecision": {
+      "status": "enabled",
+      "enabled": true,
+      "rule": "Draw-risk layer must improve Log Loss and RPS versus tactical layer; calibration may worsen by at most 0.005"
     },
     "matches": [
       {
@@ -86,11 +106,40 @@
           "draw": 0.2366619681360777,
           "away": 0.12093702451178358
         },
+        "drawRisk": {
+          "home": 0.6307010073521387,
+          "draw": 0.2546619681360777,
+          "away": 0.11463702451178358
+        },
+        "drawRiskLayer": {
+          "status": "enabled",
+          "applied": true,
+          "layer": "draw_risk_probability_redistribution_v1",
+          "labels": [
+            "draw_watch_band_20_25"
+          ],
+          "drawShift": 0.018,
+          "favoriteOutcome": "home",
+          "underdogOutcome": "away",
+          "motivationMultiplier": 1.0,
+          "totalExpectedGoals": 2.4587,
+          "preAdjustment": {
+            "home": 0.6424,
+            "draw": 0.23666,
+            "away": 0.12094
+          },
+          "postAdjustment": {
+            "home": 0.6307,
+            "draw": 0.25466,
+            "away": 0.11464
+          }
+        },
         "totalGoals": {
           "actual": 2,
           "originalExpected": 2.49,
           "objectiveExpected": 2.4937,
-          "tacticalExpected": 2.4587
+          "tacticalExpected": 2.4587,
+          "drawRiskExpected": 2.4587
         }
       },
       {
@@ -113,11 +162,40 @@
           "draw": 0.20427978823812165,
           "away": 0.10777956066024613
         },
+        "drawRisk": {
+          "home": 0.6762406511016322,
+          "draw": 0.22227978823812167,
+          "away": 0.10147956066024615
+        },
+        "drawRiskLayer": {
+          "status": "enabled",
+          "applied": true,
+          "layer": "draw_risk_probability_redistribution_v1",
+          "labels": [
+            "draw_watch_band_20_25"
+          ],
+          "drawShift": 0.018,
+          "favoriteOutcome": "home",
+          "underdogOutcome": "away",
+          "motivationMultiplier": 1.0,
+          "totalExpectedGoals": 2.8141,
+          "preAdjustment": {
+            "home": 0.68794,
+            "draw": 0.20428,
+            "away": 0.10778
+          },
+          "postAdjustment": {
+            "home": 0.67624,
+            "draw": 0.22228,
+            "away": 0.10148
+          }
+        },
         "totalGoals": {
           "actual": 5,
           "originalExpected": 2.82,
           "objectiveExpected": 2.8041,
-          "tacticalExpected": 2.8141
+          "tacticalExpected": 2.8141,
+          "drawRiskExpected": 2.8141
         }
       },
       {
@@ -140,11 +218,34 @@
           "draw": 0.17703185425867066,
           "away": 0.06543040596189552
         },
+        "drawRisk": {
+          "home": 0.7575377397794337,
+          "draw": 0.17703185425867077,
+          "away": 0.06543040596189556
+        },
+        "drawRiskLayer": {
+          "status": "not_triggered",
+          "applied": false,
+          "layer": "draw_risk_probability_redistribution_v1",
+          "labels": [],
+          "drawShift": 0.0,
+          "preAdjustment": {
+            "home": 0.75754,
+            "draw": 0.17703,
+            "away": 0.06543
+          },
+          "postAdjustment": {
+            "home": 0.75754,
+            "draw": 0.17703,
+            "away": 0.06543
+          }
+        },
         "totalGoals": {
           "actual": 6,
           "originalExpected": 2.6900000000000004,
           "objectiveExpected": 2.6793000000000005,
-          "tacticalExpected": 2.7068000000000003
+          "tacticalExpected": 2.7068000000000003,
+          "drawRiskExpected": 2.7068000000000003
         }
       },
       {
@@ -167,11 +268,34 @@
           "draw": 0.28952769502809944,
           "away": 0.22851632240395184
         },
+        "drawRisk": {
+          "home": 0.48195598256794875,
+          "draw": 0.28952769502809944,
+          "away": 0.22851632240395184
+        },
+        "drawRiskLayer": {
+          "status": "not_triggered",
+          "applied": false,
+          "layer": "draw_risk_probability_redistribution_v1",
+          "labels": [],
+          "drawShift": 0.0,
+          "preAdjustment": {
+            "home": 0.48196,
+            "draw": 0.28953,
+            "away": 0.22852
+          },
+          "postAdjustment": {
+            "home": 0.48196,
+            "draw": 0.28953,
+            "away": 0.22852
+          }
+        },
         "totalGoals": {
           "actual": 1,
           "originalExpected": 2.37,
           "objectiveExpected": 2.3693,
-          "tacticalExpected": 2.3293
+          "tacticalExpected": 2.3293,
+          "drawRiskExpected": 2.3293
         }
       },
       {
@@ -194,11 +318,34 @@
           "draw": 0.28410825849771565,
           "away": 0.3461794208227466
         },
+        "drawRisk": {
+          "home": 0.3697123206795378,
+          "draw": 0.28410825849771565,
+          "away": 0.3461794208227466
+        },
+        "drawRiskLayer": {
+          "status": "not_triggered",
+          "applied": false,
+          "layer": "draw_risk_probability_redistribution_v1",
+          "labels": [],
+          "drawShift": 0.0,
+          "preAdjustment": {
+            "home": 0.36971,
+            "draw": 0.28411,
+            "away": 0.34618
+          },
+          "postAdjustment": {
+            "home": 0.36971,
+            "draw": 0.28411,
+            "away": 0.34618
+          }
+        },
         "totalGoals": {
           "actual": 2,
           "originalExpected": 2.58,
           "objectiveExpected": 2.5941,
-          "tacticalExpected": 2.5965999999999996
+          "tacticalExpected": 2.5965999999999996,
+          "drawRiskExpected": 2.5965999999999996
         }
       },
       {
@@ -221,11 +368,34 @@
           "draw": 0.288858215917184,
           "away": 0.48654828531194244
         },
+        "drawRisk": {
+          "home": 0.22459349877087365,
+          "draw": 0.28885821591718397,
+          "away": 0.48654828531194233
+        },
+        "drawRiskLayer": {
+          "status": "not_triggered",
+          "applied": false,
+          "layer": "draw_risk_probability_redistribution_v1",
+          "labels": [],
+          "drawShift": 0.0,
+          "preAdjustment": {
+            "home": 0.22459,
+            "draw": 0.28886,
+            "away": 0.48655
+          },
+          "postAdjustment": {
+            "home": 0.22459,
+            "draw": 0.28886,
+            "away": 0.48655
+          }
+        },
         "totalGoals": {
           "actual": 1,
           "originalExpected": 2.33,
           "objectiveExpected": 2.31595,
-          "tacticalExpected": 2.3259499999999997
+          "tacticalExpected": 2.3259499999999997,
+          "drawRiskExpected": 2.3259499999999997
         }
       },
       {
@@ -248,11 +418,40 @@
           "draw": 0.1252981985677424,
           "away": 0.02094867755752961
         },
+        "drawRisk": {
+          "home": 0.828753123874728,
+          "draw": 0.15029819856774246,
+          "away": 0.02094867755752962
+        },
+        "drawRiskLayer": {
+          "status": "enabled",
+          "applied": true,
+          "layer": "draw_risk_probability_redistribution_v1",
+          "labels": [
+            "low_probability_strong_favorite_stall_guard"
+          ],
+          "drawShift": 0.025,
+          "favoriteOutcome": "home",
+          "underdogOutcome": "away",
+          "motivationMultiplier": 1.0,
+          "totalExpectedGoals": 2.6133,
+          "preAdjustment": {
+            "home": 0.85375,
+            "draw": 0.1253,
+            "away": 0.02095
+          },
+          "postAdjustment": {
+            "home": 0.82875,
+            "draw": 0.1503,
+            "away": 0.02095
+          }
+        },
         "totalGoals": {
           "actual": 3,
           "originalExpected": 2.62,
           "objectiveExpected": 2.60075,
-          "tacticalExpected": 2.6132500000000003
+          "tacticalExpected": 2.6132500000000003,
+          "drawRiskExpected": 2.6132500000000003
         }
       },
       {
@@ -275,11 +474,34 @@
           "draw": 0.2629908992919596,
           "away": 0.2633344254802189
         },
+        "drawRisk": {
+          "home": 0.47367467522782136,
+          "draw": 0.2629908992919597,
+          "away": 0.26333442548021896
+        },
+        "drawRiskLayer": {
+          "status": "not_triggered",
+          "applied": false,
+          "layer": "draw_risk_probability_redistribution_v1",
+          "labels": [],
+          "drawShift": 0.0,
+          "preAdjustment": {
+            "home": 0.47367,
+            "draw": 0.26299,
+            "away": 0.26333
+          },
+          "postAdjustment": {
+            "home": 0.47367,
+            "draw": 0.26299,
+            "away": 0.26333
+          }
+        },
         "totalGoals": {
           "actual": 1,
           "originalExpected": 2.83,
           "objectiveExpected": 2.843,
-          "tacticalExpected": 2.8104999999999998
+          "tacticalExpected": 2.8104999999999998,
+          "drawRiskExpected": 2.8104999999999998
         }
       },
       {
@@ -302,11 +524,34 @@
           "draw": 0.19585612192320648,
           "away": 0.16078771016595741
         },
+        "drawRisk": {
+          "home": 0.643356167910836,
+          "draw": 0.19585612192320648,
+          "away": 0.16078771016595741
+        },
+        "drawRiskLayer": {
+          "status": "not_triggered",
+          "applied": false,
+          "layer": "draw_risk_probability_redistribution_v1",
+          "labels": [],
+          "drawShift": 0.0,
+          "preAdjustment": {
+            "home": 0.64336,
+            "draw": 0.19586,
+            "away": 0.16079
+          },
+          "postAdjustment": {
+            "home": 0.64336,
+            "draw": 0.19586,
+            "away": 0.16079
+          }
+        },
         "totalGoals": {
           "actual": 6,
           "originalExpected": 3.5,
           "objectiveExpected": 3.4830500000000004,
-          "tacticalExpected": 3.53805
+          "tacticalExpected": 3.53805,
+          "drawRiskExpected": 3.53805
         }
       },
       {
@@ -329,11 +574,40 @@
           "draw": 0.21518375112251517,
           "away": 0.1401680922435045
         },
+        "drawRisk": {
+          "home": 0.6329481566339804,
+          "draw": 0.23318375112251513,
+          "away": 0.13386809224350446
+        },
+        "drawRiskLayer": {
+          "status": "enabled",
+          "applied": true,
+          "layer": "draw_risk_probability_redistribution_v1",
+          "labels": [
+            "draw_watch_band_20_25"
+          ],
+          "drawShift": 0.018,
+          "favoriteOutcome": "home",
+          "underdogOutcome": "away",
+          "motivationMultiplier": 1.0,
+          "totalExpectedGoals": 2.9485,
+          "preAdjustment": {
+            "home": 0.64465,
+            "draw": 0.21518,
+            "away": 0.14017
+          },
+          "postAdjustment": {
+            "home": 0.63295,
+            "draw": 0.23318,
+            "away": 0.13387
+          }
+        },
         "totalGoals": {
           "actual": 3,
           "originalExpected": 2.98,
           "objectiveExpected": 2.971,
-          "tacticalExpected": 2.9485
+          "tacticalExpected": 2.9485,
+          "drawRiskExpected": 2.9485
         }
       },
       {
@@ -356,11 +630,40 @@
           "draw": 0.12016587532496449,
           "away": 0.01589573925496628
         },
+        "drawRisk": {
+          "home": 0.8389383854200692,
+          "draw": 0.14516587532496453,
+          "away": 0.015895739254966283
+        },
+        "drawRiskLayer": {
+          "status": "enabled",
+          "applied": true,
+          "layer": "draw_risk_probability_redistribution_v1",
+          "labels": [
+            "low_probability_strong_favorite_stall_guard"
+          ],
+          "drawShift": 0.025,
+          "favoriteOutcome": "home",
+          "underdogOutcome": "away",
+          "motivationMultiplier": 1.0,
+          "totalExpectedGoals": 2.5467,
+          "preAdjustment": {
+            "home": 0.86394,
+            "draw": 0.12017,
+            "away": 0.0159
+          },
+          "postAdjustment": {
+            "home": 0.83894,
+            "draw": 0.14517,
+            "away": 0.0159
+          }
+        },
         "totalGoals": {
           "actual": 0,
           "originalExpected": 2.57,
           "objectiveExpected": 2.5617,
-          "tacticalExpected": 2.5467
+          "tacticalExpected": 2.5467,
+          "drawRiskExpected": 2.5467
         }
       },
       {
@@ -383,11 +686,40 @@
           "draw": 0.15137438744334827,
           "away": 0.794157401474542
         },
+        "drawRisk": {
+          "home": 0.054468211082109884,
+          "draw": 0.17637438744334827,
+          "away": 0.7691574014745419
+        },
+        "drawRiskLayer": {
+          "status": "enabled",
+          "applied": true,
+          "layer": "draw_risk_probability_redistribution_v1",
+          "labels": [
+            "low_probability_strong_favorite_stall_guard"
+          ],
+          "drawShift": 0.025,
+          "favoriteOutcome": "away",
+          "underdogOutcome": "home",
+          "motivationMultiplier": 1.0,
+          "totalExpectedGoals": 2.9604,
+          "preAdjustment": {
+            "home": 0.05447,
+            "draw": 0.15137,
+            "away": 0.79416
+          },
+          "postAdjustment": {
+            "home": 0.05447,
+            "draw": 0.17637,
+            "away": 0.76916
+          }
+        },
         "totalGoals": {
           "actual": 4,
           "originalExpected": 2.9000000000000004,
           "objectiveExpected": 2.89535,
-          "tacticalExpected": 2.96035
+          "tacticalExpected": 2.96035,
+          "drawRiskExpected": 2.96035
         }
       },
       {
@@ -410,11 +742,40 @@
           "draw": 0.13172323962444205,
           "away": 0.01903051630236977
         },
+        "drawRisk": {
+          "home": 0.8242462440731883,
+          "draw": 0.156723239624442,
+          "away": 0.019030516302369765
+        },
+        "drawRiskLayer": {
+          "status": "enabled",
+          "applied": true,
+          "layer": "draw_risk_probability_redistribution_v1",
+          "labels": [
+            "low_probability_strong_favorite_stall_guard"
+          ],
+          "drawShift": 0.025,
+          "favoriteOutcome": "home",
+          "underdogOutcome": "away",
+          "motivationMultiplier": 1.0,
+          "totalExpectedGoals": 2.4707,
+          "preAdjustment": {
+            "home": 0.84925,
+            "draw": 0.13172,
+            "away": 0.01903
+          },
+          "postAdjustment": {
+            "home": 0.82425,
+            "draw": 0.15672,
+            "away": 0.01903
+          }
+        },
         "totalGoals": {
           "actual": 4,
           "originalExpected": 2.37,
           "objectiveExpected": 2.3756999999999997,
-          "tacticalExpected": 2.4707
+          "tacticalExpected": 2.4707,
+          "drawRiskExpected": 2.4707
         }
       },
       {
@@ -437,11 +798,40 @@
           "draw": 0.24231645088456305,
           "away": 0.2006534714556626
         },
+        "drawRisk": {
+          "home": 0.5453300776597745,
+          "draw": 0.26031645088456307,
+          "away": 0.19435347145566256
+        },
+        "drawRiskLayer": {
+          "status": "enabled",
+          "applied": true,
+          "layer": "draw_risk_probability_redistribution_v1",
+          "labels": [
+            "draw_watch_band_20_25"
+          ],
+          "drawShift": 0.018,
+          "favoriteOutcome": "home",
+          "underdogOutcome": "away",
+          "motivationMultiplier": 1.0,
+          "totalExpectedGoals": 2.9035,
+          "preAdjustment": {
+            "home": 0.55703,
+            "draw": 0.24232,
+            "away": 0.20065
+          },
+          "postAdjustment": {
+            "home": 0.54533,
+            "draw": 0.26032,
+            "away": 0.19435
+          }
+        },
         "totalGoals": {
           "actual": 0,
           "originalExpected": 2.89,
           "objectiveExpected": 2.891,
-          "tacticalExpected": 2.9035
+          "tacticalExpected": 2.9035,
+          "drawRiskExpected": 2.9035
         }
       },
       {
@@ -464,11 +854,40 @@
           "draw": 0.24241076709290263,
           "away": 0.06859181938876739
         },
+        "drawRisk": {
+          "home": 0.67729741351833,
+          "draw": 0.26041076709290273,
+          "away": 0.06229181938876741
+        },
+        "drawRiskLayer": {
+          "status": "enabled",
+          "applied": true,
+          "layer": "draw_risk_probability_redistribution_v1",
+          "labels": [
+            "draw_watch_band_20_25"
+          ],
+          "drawShift": 0.018,
+          "favoriteOutcome": "home",
+          "underdogOutcome": "away",
+          "motivationMultiplier": 1.0,
+          "totalExpectedGoals": 1.9711,
+          "preAdjustment": {
+            "home": 0.689,
+            "draw": 0.24241,
+            "away": 0.06859
+          },
+          "postAdjustment": {
+            "home": 0.6773,
+            "draw": 0.26041,
+            "away": 0.06229
+          }
+        },
         "totalGoals": {
           "actual": 4,
           "originalExpected": 1.9000000000000001,
           "objectiveExpected": 1.9010999999999998,
-          "tacticalExpected": 1.9710999999999999
+          "tacticalExpected": 1.9710999999999999,
+          "drawRiskExpected": 1.9710999999999999
         }
       },
       {
@@ -491,11 +910,34 @@
           "draw": 0.262507081893347,
           "away": 0.5425902445707343
         },
+        "drawRisk": {
+          "home": 0.19490267353591892,
+          "draw": 0.2625070818933469,
+          "away": 0.5425902445707342
+        },
+        "drawRiskLayer": {
+          "status": "not_triggered",
+          "applied": false,
+          "layer": "draw_risk_probability_redistribution_v1",
+          "labels": [],
+          "drawShift": 0.0,
+          "preAdjustment": {
+            "home": 0.1949,
+            "draw": 0.26251,
+            "away": 0.54259
+          },
+          "postAdjustment": {
+            "home": 0.1949,
+            "draw": 0.26251,
+            "away": 0.54259
+          }
+        },
         "totalGoals": {
           "actual": 4,
           "originalExpected": 2.57,
           "objectiveExpected": 2.5737,
-          "tacticalExpected": 2.5612
+          "tacticalExpected": 2.5612,
+          "drawRiskExpected": 2.5612
         }
       },
       {
@@ -518,11 +960,34 @@
           "draw": 0.1941740993818325,
           "away": 0.07637163826078347
         },
+        "drawRisk": {
+          "home": 0.7294542623573841,
+          "draw": 0.1941740993818325,
+          "away": 0.07637163826078347
+        },
+        "drawRiskLayer": {
+          "status": "not_triggered",
+          "applied": false,
+          "layer": "draw_risk_probability_redistribution_v1",
+          "labels": [],
+          "drawShift": 0.0,
+          "preAdjustment": {
+            "home": 0.72945,
+            "draw": 0.19417,
+            "away": 0.07637
+          },
+          "postAdjustment": {
+            "home": 0.72945,
+            "draw": 0.19417,
+            "away": 0.07637
+          }
+        },
         "totalGoals": {
           "actual": 2,
           "originalExpected": 2.6399999999999997,
           "objectiveExpected": 2.63155,
-          "tacticalExpected": 2.5990499999999996
+          "tacticalExpected": 2.5990499999999996,
+          "drawRiskExpected": 2.5990499999999996
         }
       },
       {
@@ -545,11 +1010,40 @@
           "draw": 0.0875039997611417,
           "away": 0.009462896115465746
         },
+        "drawRisk": {
+          "home": 0.8780331041233925,
+          "draw": 0.11250399976114173,
+          "away": 0.009462896115465748
+        },
+        "drawRiskLayer": {
+          "status": "enabled",
+          "applied": true,
+          "layer": "draw_risk_probability_redistribution_v1",
+          "labels": [
+            "low_probability_strong_favorite_stall_guard"
+          ],
+          "drawShift": 0.025,
+          "favoriteOutcome": "home",
+          "underdogOutcome": "away",
+          "motivationMultiplier": 1.0,
+          "totalExpectedGoals": 2.8501,
+          "preAdjustment": {
+            "home": 0.90303,
+            "draw": 0.0875,
+            "away": 0.00946
+          },
+          "postAdjustment": {
+            "home": 0.87803,
+            "draw": 0.1125,
+            "away": 0.00946
+          }
+        },
         "totalGoals": {
           "actual": 3,
           "originalExpected": 2.8600000000000003,
           "objectiveExpected": 2.84985,
-          "tacticalExpected": 2.8501
+          "tacticalExpected": 2.8501,
+          "drawRiskExpected": 2.8501
         }
       },
       {
@@ -572,11 +1066,40 @@
           "draw": 0.24380776714592414,
           "away": 0.23153327962602255
         },
+        "drawRisk": {
+          "home": 0.5129589532280533,
+          "draw": 0.26180776714592413,
+          "away": 0.22523327962602255
+        },
+        "drawRiskLayer": {
+          "status": "enabled",
+          "applied": true,
+          "layer": "draw_risk_probability_redistribution_v1",
+          "labels": [
+            "draw_watch_band_20_25"
+          ],
+          "drawShift": 0.018,
+          "favoriteOutcome": "home",
+          "underdogOutcome": "away",
+          "motivationMultiplier": 1.0,
+          "totalExpectedGoals": 3.029,
+          "preAdjustment": {
+            "home": 0.52466,
+            "draw": 0.24381,
+            "away": 0.23153
+          },
+          "postAdjustment": {
+            "home": 0.51296,
+            "draw": 0.26181,
+            "away": 0.22523
+          }
+        },
         "totalGoals": {
           "actual": 5,
           "originalExpected": 3.0,
           "objectiveExpected": 2.99395,
-          "tacticalExpected": 3.02895
+          "tacticalExpected": 3.02895,
+          "drawRiskExpected": 3.02895
         }
       },
       {
@@ -599,11 +1122,34 @@
           "draw": 0.2909805379710968,
           "away": 0.3868900049562174
         },
+        "drawRisk": {
+          "home": 0.3221294570726858,
+          "draw": 0.2909805379710968,
+          "away": 0.3868900049562174
+        },
+        "drawRiskLayer": {
+          "status": "not_triggered",
+          "applied": false,
+          "layer": "draw_risk_probability_redistribution_v1",
+          "labels": [],
+          "drawShift": 0.0,
+          "preAdjustment": {
+            "home": 0.32213,
+            "draw": 0.29098,
+            "away": 0.38689
+          },
+          "postAdjustment": {
+            "home": 0.32213,
+            "draw": 0.29098,
+            "away": 0.38689
+          }
+        },
         "totalGoals": {
           "actual": 3,
           "originalExpected": 2.49,
           "objectiveExpected": 2.49425,
-          "tacticalExpected": 2.4817500000000003
+          "tacticalExpected": 2.4817500000000003,
+          "drawRiskExpected": 2.4817500000000003
         }
       },
       {
@@ -626,11 +1172,40 @@
           "draw": 0.2273369665412857,
           "away": 0.18340629849157242
         },
+        "drawRisk": {
+          "home": 0.577556734967142,
+          "draw": 0.24533696654128567,
+          "away": 0.17710629849157242
+        },
+        "drawRiskLayer": {
+          "status": "enabled",
+          "applied": true,
+          "layer": "draw_risk_probability_redistribution_v1",
+          "labels": [
+            "draw_watch_band_20_25"
+          ],
+          "drawShift": 0.018,
+          "favoriteOutcome": "home",
+          "underdogOutcome": "away",
+          "motivationMultiplier": 1.0,
+          "totalExpectedGoals": 3.066,
+          "preAdjustment": {
+            "home": 0.58926,
+            "draw": 0.22734,
+            "away": 0.18341
+          },
+          "postAdjustment": {
+            "home": 0.57756,
+            "draw": 0.24534,
+            "away": 0.17711
+          }
+        },
         "totalGoals": {
           "actual": 5,
           "originalExpected": 3.0,
           "objectiveExpected": 3.001,
-          "tacticalExpected": 3.066
+          "tacticalExpected": 3.066,
+          "drawRiskExpected": 3.066
         }
       },
       {
@@ -653,11 +1228,41 @@
           "draw": 0.21404764985732702,
           "away": 0.2417402212073754
         },
+        "drawRisk": {
+          "home": 0.5325121289352979,
+          "draw": 0.2500476498573269,
+          "away": 0.2174402212073753
+        },
+        "drawRiskLayer": {
+          "status": "enabled",
+          "applied": true,
+          "layer": "draw_risk_probability_redistribution_v1",
+          "labels": [
+            "draw_watch_band_20_25",
+            "misallocated_underdog_upset_to_draw"
+          ],
+          "drawShift": 0.036,
+          "favoriteOutcome": "home",
+          "underdogOutcome": "away",
+          "motivationMultiplier": 1.0,
+          "totalExpectedGoals": 3.7147,
+          "preAdjustment": {
+            "home": 0.54421,
+            "draw": 0.21405,
+            "away": 0.24174
+          },
+          "postAdjustment": {
+            "home": 0.53251,
+            "draw": 0.25005,
+            "away": 0.21744
+          }
+        },
         "totalGoals": {
           "actual": 0,
           "originalExpected": 3.76,
           "objectiveExpected": 3.7521999999999993,
-          "tacticalExpected": 3.7146999999999997
+          "tacticalExpected": 3.7146999999999997,
+          "drawRiskExpected": 3.7146999999999997
         }
       },
       {
@@ -680,11 +1285,34 @@
           "draw": 0.2385895117392396,
           "away": 0.32635619582454606
         },
+        "drawRisk": {
+          "home": 0.4350542924362143,
+          "draw": 0.2385895117392396,
+          "away": 0.32635619582454606
+        },
+        "drawRiskLayer": {
+          "status": "not_triggered",
+          "applied": false,
+          "layer": "draw_risk_probability_redistribution_v1",
+          "labels": [],
+          "drawShift": 0.0,
+          "preAdjustment": {
+            "home": 0.43505,
+            "draw": 0.23859,
+            "away": 0.32636
+          },
+          "postAdjustment": {
+            "home": 0.43505,
+            "draw": 0.23859,
+            "away": 0.32636
+          }
+        },
         "totalGoals": {
           "actual": 1,
           "originalExpected": 3.46,
           "objectiveExpected": 3.4522,
-          "tacticalExpected": 3.4297
+          "tacticalExpected": 3.4297,
+          "drawRiskExpected": 3.4297
         }
       },
       {
@@ -707,11 +1335,40 @@
           "draw": 0.20752716964654813,
           "away": 0.15481651737193056
         },
+        "drawRisk": {
+          "home": 0.6259563129815213,
+          "draw": 0.22552716964654812,
+          "away": 0.14851651737193056
+        },
+        "drawRiskLayer": {
+          "status": "enabled",
+          "applied": true,
+          "layer": "draw_risk_probability_redistribution_v1",
+          "labels": [
+            "draw_watch_band_20_25"
+          ],
+          "drawShift": 0.018,
+          "favoriteOutcome": "home",
+          "underdogOutcome": "away",
+          "motivationMultiplier": 1.0,
+          "totalExpectedGoals": 3.226,
+          "preAdjustment": {
+            "home": 0.63766,
+            "draw": 0.20753,
+            "away": 0.15482
+          },
+          "postAdjustment": {
+            "home": 0.62596,
+            "draw": 0.22553,
+            "away": 0.14852
+          }
+        },
         "totalGoals": {
           "actual": 1,
           "originalExpected": 3.2,
           "objectiveExpected": 3.2009999999999996,
-          "tacticalExpected": 3.226
+          "tacticalExpected": 3.226,
+          "drawRiskExpected": 3.226
         }
       }
     ]
