@@ -553,6 +553,7 @@ body:has(.sporttery-ledger-page) .topbar {
 .sporttery-ledger-page .personal-summary-grid {
   width: 100%;
   margin: 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   border: 1px solid #d9dbdf;
   border-radius: 5px;
   background: #fff;

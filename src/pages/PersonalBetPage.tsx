@@ -11,7 +11,6 @@ import {
   deletePersonalBet,
   exportPersonalLedger,
   isWinningPersonalBet,
-  personalBalance,
   personalBetProfit,
   reopenPersonalBet,
   savePersonalLedger,
@@ -380,7 +379,6 @@ export function PersonalBetPage({ forecast, ledger, onLedgerChange }: PersonalBe
       <div className="personal-page-title">
         <div><h1>我的投注</h1><span>个人记录 · 非官方购彩 · 票型与实际出票保持一致</span></div>
         <section className="personal-summary-grid" aria-label="投注资金摘要">
-          <div><span>当前可用</span><strong>{preciseMoney(personalBalance(ledger))}</strong></div>
           <div><span>累计投入</span><strong>{preciseMoney(summary.totalStaked)}</strong></div>
           <div><span>已实现盈亏</span><strong className={summary.realizedProfit >= 0 ? 'positive-text' : 'negative-text'}>{preciseMoney(summary.realizedProfit)}</strong></div>
           <div><span>待结算敞口</span><strong>{preciseMoney(summary.pendingExposure)}</strong></div>

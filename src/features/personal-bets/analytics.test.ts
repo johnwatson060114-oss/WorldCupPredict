@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import type { Portfolio } from '../../types'
-import { actualStrategyPerformance, buildFairComparison, projectToFinal } from './analytics'
+import { actualStrategyPerformance, buildFairComparison, personalSummary, projectToFinal } from './analytics'
 import type { PersonalBetLedger, StrategyHistory } from './types'
 
 const ledger: PersonalBetLedger = {
@@ -25,6 +25,20 @@ const history: StrategyHistory = {
 }
 
 describe('personal betting analytics', () => {
+  it('starts the personal summary from the manually provided baseline', () => {
+    const result = personalSummary({
+      schemaVersion: 1,
+      initialBankroll: 0,
+      baselineStake: 347,
+      baselineProfit: 316.6,
+      modelSnapshots: [],
+      bets: [],
+    })
+    expect(result.totalStaked).toBe(347)
+    expect(result.realizedProfit).toBe(316.6)
+    expect(result.pendingExposure).toBe(0)
+  })
+
   it('compares only the intersection of settled betting days by default', () => {
     const result = buildFairComparison(ledger, history, 'matched')
     expect(result.matchedDays).toBe(1)

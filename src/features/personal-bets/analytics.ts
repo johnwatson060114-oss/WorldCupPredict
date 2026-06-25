@@ -314,8 +314,8 @@ export const projectToFinal = (
 export const personalSummary = (ledger: PersonalBetLedger) => {
   const active = ledger.bets.filter((bet) => bet.status !== 'void')
   const settled = active.filter((bet) => bet.status === 'settled')
-  const totalStaked = active.reduce((sum, bet) => sum + bet.stake, 0)
-  const realizedProfit = settled.reduce((sum, bet) => sum + (bet.payout ?? 0) - bet.stake, 0)
+  const totalStaked = (ledger.baselineStake ?? 0) + active.reduce((sum, bet) => sum + bet.stake, 0)
+  const realizedProfit = (ledger.baselineProfit ?? 0) + settled.reduce((sum, bet) => sum + (bet.payout ?? 0) - bet.stake, 0)
   const pendingExposure = active.filter((bet) => bet.status === 'pending').reduce((sum, bet) => sum + bet.stake, 0)
   return { totalStaked, realizedProfit, pendingExposure, settledCount: settled.length }
 }

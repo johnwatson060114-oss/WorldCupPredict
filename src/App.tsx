@@ -62,7 +62,7 @@ export default function App() {
     fetch('./data/personal-ledger-initial.json', { cache: 'no-store' })
       .then((response) => response.ok ? response.json() as Promise<PersonalBetLedger> : null)
       .then((parsed) => {
-        if (!parsed || !Array.isArray(parsed.bets) || !parsed.bets.length) return
+        if (!parsed || !Array.isArray(parsed.bets)) return
         setPersonalLedger((current) => {
           const next = mergeInitialPersonalLedger(current, parsed)
           if (next !== current) savePersonalLedger(next)

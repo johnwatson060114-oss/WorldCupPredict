@@ -2,12 +2,16 @@ import type { DailyForecast, MatchSettlement, SettlementFile } from '../../types
 import type { ModelDaySnapshot, PersonalBet, PersonalBetLedger, PersonalBetLeg } from './types'
 import { groupLegsByMatch, inferPassType, payoutForWinningOdds } from './pass-types'
 
-const STORAGE_KEY = 'world-cup-predict-personal-bets-v1'
+const STORAGE_KEY = 'world-cup-predict-personal-bets-v2'
+const DEFAULT_BASELINE_STAKE = 347
+const DEFAULT_BASELINE_PROFIT = 316.6
 const standardScores = new Set(['1:0', '2:0', '2:1', '3:0', '3:1', '3:2', '4:0', '4:1', '4:2', '5:0', '5:1', '5:2', '0:0', '1:1', '2:2', '3:3', '0:1', '0:2', '1:2', '0:3', '1:3', '2:3', '0:4', '1:4', '2:4', '0:5', '1:5', '2:5'])
 
 export const emptyPersonalLedger = (): PersonalBetLedger => ({
   schemaVersion: 1,
-  initialBankroll: 200,
+  initialBankroll: 0,
+  baselineStake: DEFAULT_BASELINE_STAKE,
+  baselineProfit: DEFAULT_BASELINE_PROFIT,
   bets: [],
   modelSnapshots: [],
 })
@@ -30,15 +34,23 @@ export const savePersonalLedger = (ledger: PersonalBetLedger) => {
 }
 
 export const mergeInitialPersonalLedger = (current: PersonalBetLedger, initial: PersonalBetLedger) => {
-  if (!Array.isArray(initial.bets) || !initial.bets.length) return current
+  const baselineStake = initial.baselineStake ?? current.baselineStake
+  const baselineProfit = initial.baselineProfit ?? current.baselineProfit
   const existingIds = new Set(current.bets.map((bet) => bet.id))
-  const missingBets = initial.bets.filter((bet) => !existingIds.has(bet.id))
+  const missingBets = (initial.bets ?? []).filter((bet) => !existingIds.has(bet.id))
   const existingSnapshots = new Set(current.modelSnapshots.map((snapshot) => snapshot.targetDate))
   const missingSnapshots = (initial.modelSnapshots ?? []).filter((snapshot) => !existingSnapshots.has(snapshot.targetDate))
-  if (!missingBets.length && !missingSnapshots.length) return current
+  if (
+    !missingBets.length
+    && !missingSnapshots.length
+    && current.baselineStake === baselineStake
+    && current.baselineProfit === baselineProfit
+  ) return current
   return {
     ...current,
     initialBankroll: current.bets.length ? current.initialBankroll : initial.initialBankroll,
+    baselineStake,
+    baselineProfit,
     bets: [...missingBets, ...current.bets],
     modelSnapshots: [...current.modelSnapshots, ...missingSnapshots],
   }
@@ -208,7 +220,7 @@ export const settlePersonalLedger = (ledger: PersonalBetLedger, settlementFile: 
 export const personalBalance = (ledger: PersonalBetLedger) => {
   const settledNet = ledger.bets.reduce((sum, bet) => bet.status === 'settled' ? sum + (bet.payout ?? 0) - bet.stake : sum, 0)
   const pending = ledger.bets.reduce((sum, bet) => bet.status === 'pending' ? sum + bet.stake : sum, 0)
-  return ledger.initialBankroll + settledNet - pending
+  return ledger.initialBankroll + (ledger.baselineProfit ?? 0) + settledNet - pending
 }
 
 export const personalBetProfit = (bet: Pick<PersonalBet, 'payout' | 'stake' | 'status'>) =>

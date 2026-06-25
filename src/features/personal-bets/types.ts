@@ -57,6 +57,8 @@ export interface ModelDaySnapshot {
 export interface PersonalBetLedger {
   schemaVersion: 1
   initialBankroll: number
+  baselineStake?: number
+  baselineProfit?: number
   bets: PersonalBet[]
   modelSnapshots: ModelDaySnapshot[]
 }
