@@ -50,3 +50,22 @@ def test_must_win_context_dampens_draw_utility_shift():
 
     assert calm.metadata["drawShift"] > chase.metadata["drawShift"]
     assert "must_win_or_goal_difference_chase_present" in chase.metadata["labels"]
+
+
+def test_first_place_path_suppresses_conservation_draw_utility():
+    result = apply_draw_risk_layer(
+        {"home": 0.49, "draw": 0.24, "away": 0.27},
+        {
+            "base_xg": [1.8, 1.2],
+            "current_tournament": {
+                "homeMotivation": "secured_top_two",
+                "awayMotivation": "secured_top_two",
+                "homeScenarios": {"rotationCandidate": True, "firstPlacePathIncentive": True},
+                "awayScenarios": {"rotationCandidate": True, "firstPlacePathIncentive": True},
+            },
+        },
+    )
+
+    assert "third_round_open_game_context" in result.metadata["labels"]
+    assert "third_round_conservation_or_draw_utility" not in result.metadata["labels"]
+    assert "rotation_candidate" not in result.metadata["labels"]

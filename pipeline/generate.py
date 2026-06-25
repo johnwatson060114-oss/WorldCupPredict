@@ -521,6 +521,49 @@ def fallback_handicap(home_xg: float, away_xg: float) -> int:
     return -round(home_xg - away_xg)
 
 
+def _score_outcome(score: str) -> str:
+    home, away = (int(value) for value in str(score).replace(":", "-").split("-"))
+    return "home" if home > away else "draw" if home == away else "away"
+
+
+def _third_round_open_game_context(seed: dict[str, Any]) -> bool:
+    current = seed.get("current_tournament") or {}
+    if current.get("policy") != "matchday_three_scenarios_annex_c_v3_open_game":
+        return False
+    motivations = {str(current.get("homeMotivation") or ""), str(current.get("awayMotivation") or "")}
+    scenarios = [current.get("homeScenarios") or {}, current.get("awayScenarios") or {}]
+    return (
+        any(bool(scenario.get("firstPlacePathIncentive")) for scenario in scenarios)
+        or any(float(scenario.get("thirdScenarioShare") or 0.0) >= 0.15 for scenario in scenarios)
+        or bool(motivations & {"must_win", "goal_difference_chase", "eliminated"})
+    )
+
+
+def select_likely_score(
+    scores: list[dict[str, Any]],
+    outcome_decision: dict[str, Any],
+    seed: dict[str, Any],
+) -> tuple[str, str]:
+    top_score = str(scores[0]["score"]).replace(":", "-")
+    selection = str(outcome_decision.get("selection") or "")
+    if (
+        selection not in {"home", "away"}
+        or _score_outcome(top_score) == selection
+        or not _third_round_open_game_context(seed)
+    ):
+        return top_score, "top_score_probability"
+
+    top_probability = float(scores[0]["probability"])
+    aligned = [
+        item for item in scores
+        if _score_outcome(str(item["score"])) == selection
+        and float(item["probability"]) >= top_probability * 0.72
+    ]
+    if not aligned:
+        return top_score, "top_score_probability"
+    return str(aligned[0]["score"]).replace(":", "-"), "third_round_outcome_aligned_score"
+
+
 def build_match(
     seed: dict,
     market: SportteryMatch | None,
@@ -543,6 +586,7 @@ def build_match(
     outcomes = draw_risk_result.probabilities
     outcome_decision = outcome_recommendation_decision(outcomes)
     scores = top_scores(matrix)
+    likely_score, likely_score_source = select_likely_score(scores, outcome_decision, seed)
     no_live_market = market is None
     coverage = float(seed.get("coverage", 0.70))
     if no_live_market:
@@ -698,7 +742,8 @@ def build_match(
             **outcome_decision,
             "maxProbability": round(float(outcome_decision["maxProbability"]), 5),
         },
-        "likelyScore": str(scores[0]["score"]).replace(":", "-") ,
+        "likelyScore": likely_score,
+        "likelyScoreSource": likely_score_source,
         "scoreStars": stars,
         "scoreProbabilities": scores,
         "coverage": coverage,

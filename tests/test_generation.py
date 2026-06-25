@@ -172,6 +172,48 @@ def test_outcome_recommendation_requires_sixty_percent_confidence():
     assert recommended["status"] == "recommended"
 
 
+def test_third_round_open_game_likely_score_can_align_with_outcome():
+    scores = [
+        {"score": "1:1", "probability": 0.10},
+        {"score": "2:1", "probability": 0.08},
+        {"score": "1:0", "probability": 0.07},
+    ]
+    seed = {
+        "current_tournament": {
+            "policy": "matchday_three_scenarios_annex_c_v3_open_game",
+            "homeMotivation": "secured_top_two",
+            "awayMotivation": "secured_top_two",
+            "homeScenarios": {"firstPlacePathIncentive": True, "thirdScenarioShare": 0.0},
+            "awayScenarios": {"firstPlacePathIncentive": True, "thirdScenarioShare": 0.0},
+        }
+    }
+
+    score, source = generate.select_likely_score(
+        scores,
+        {"selection": "home", "status": "watch"},
+        seed,
+    )
+
+    assert score == "2-1"
+    assert source == "third_round_outcome_aligned_score"
+
+
+def test_regular_likely_score_keeps_top_score_probability():
+    scores = [
+        {"score": "1:1", "probability": 0.10},
+        {"score": "2:1", "probability": 0.08},
+    ]
+
+    score, source = generate.select_likely_score(
+        scores,
+        {"selection": "home", "status": "watch"},
+        {"current_tournament": {"policy": "not_third_round"}},
+    )
+
+    assert score == "1-1"
+    assert source == "top_score_probability"
+
+
 def test_simulated_handicap_gives_goals_to_the_weaker_home_team():
     assert generate.fallback_handicap(2.1, 1.0) == -1
     assert generate.fallback_handicap(0.6, 2.4) == 2

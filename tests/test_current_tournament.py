@@ -4,6 +4,7 @@ from pipeline.current_tournament import (
     best_third_snapshot,
     group_scenarios,
     late_scoreboard_pressure,
+    motivation_xg_adjustment,
     result_form_adjustment,
 )
 
@@ -101,6 +102,27 @@ def test_late_pressure_reacts_to_parallel_scoreboard_state():
     assert safe_draw["attackMultiplier"] < 1
     assert chase["attackMultiplier"] > 1
     assert chase["defensiveRiskMultiplier"] > 1
+
+
+def test_first_place_path_keeps_secured_team_attacking():
+    base_attack, base_defense = motivation_xg_adjustment(
+        "secured_top_two",
+        {"firstPlacePathIncentive": False, "thirdScenarioShare": 0.0},
+    )
+    chase_attack, chase_defense = motivation_xg_adjustment(
+        "secured_top_two",
+        {"firstPlacePathIncentive": True, "thirdScenarioShare": 0.0},
+    )
+
+    assert chase_attack > base_attack
+    assert chase_defense < base_defense
+
+
+def test_eliminated_team_opens_game_instead_of_only_sitting_deep():
+    attack, defense = motivation_xg_adjustment("eliminated")
+
+    assert attack > 0
+    assert defense < 0
 
 
 def test_best_third_snapshot_uses_cross_group_order():

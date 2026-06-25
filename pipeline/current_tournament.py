@@ -14,15 +14,17 @@ from .tournament_rules import ThirdPlaceRow, knockout_opponent_slots, rank_best_
 
 
 MOTIVATION_XG = {
-    "secured_first": (-0.045, -0.030),
-    "secured_top_two": (-0.035, -0.025),
-    "draw_advances": (-0.015, 0.015),
-    "competitive": (0.015, 0.000),
-    "must_win": (0.045, -0.020),
-    "goal_difference_chase": (0.055, -0.030),
-    "eliminated": (-0.025, -0.020),
+    "secured_first": (-0.035, -0.040),
+    "secured_top_two": (-0.015, -0.035),
+    "draw_advances": (-0.010, -0.005),
+    "competitive": (0.020, -0.005),
+    "must_win": (0.065, -0.035),
+    "goal_difference_chase": (0.075, -0.040),
+    "eliminated": (0.020, -0.060),
 }
 RESULT_FORM_MAX_XG = 0.06
+MOTIVATION_ATTACK_BOUNDS = (-0.045, 0.095)
+MOTIVATION_DEFENSE_BOUNDS = (-0.080, 0.035)
 TIMELINE_PATH = ROOT / "public" / "data" / "two-round-match-timelines.json"
 
 
@@ -101,6 +103,49 @@ def motivation_state(standing: Standing) -> str:
     if standing.points == 0:
         return "must_win"
     return "competitive"
+
+
+def _clamp(value: float, bounds: tuple[float, float]) -> float:
+    low, high = bounds
+    return max(low, min(high, value))
+
+
+def motivation_xg_adjustment(
+    state: str,
+    scenarios: dict[str, Any] | None = None,
+) -> tuple[float, float]:
+    """Return bounded attack and defensive-quality deltas for matchday three.
+
+    Positive attack raises the team's own xG. Positive defense suppresses the
+    opponent's xG; negative defense means looser defensive structure. The
+    scenario modifiers deliberately avoid blanket big-score inflation: they
+    only loosen games when a team still has a first-place path, must chase goal
+    difference/third-place security, or is already eliminated and likely to play
+    with less defensive discipline.
+    """
+
+    attack, defense = MOTIVATION_XG.get(state, (0.0, 0.0))
+    if not scenarios:
+        return attack, defense
+
+    first_place_path = bool(scenarios.get("firstPlacePathIncentive"))
+    third_share = float(scenarios.get("thirdScenarioShare") or 0.0)
+    top_two_share = float(scenarios.get("topTwoScenarioShare") or 0.0)
+
+    if first_place_path and state in {"secured_top_two", "draw_advances"}:
+        attack += 0.045
+        defense -= 0.020
+    if state in {"draw_advances", "competitive", "goal_difference_chase"} and third_share >= 0.15:
+        attack += min(0.030, 0.050 * third_share)
+        defense -= min(0.025, 0.035 * third_share)
+    if state == "draw_advances" and top_two_share <= 0.05 and third_share >= 0.25:
+        attack += 0.020
+        defense -= 0.010
+
+    return (
+        _clamp(attack, MOTIVATION_ATTACK_BOUNDS),
+        _clamp(defense, MOTIVATION_DEFENSE_BOUNDS),
+    )
 
 
 @lru_cache(maxsize=1)
@@ -304,11 +349,18 @@ def late_scoreboard_pressure(
     motivation: str,
     own_margin: int,
     parallel_result_helps: bool,
+    first_place_incentive: bool = False,
+    third_scenario_share: float = 0.0,
 ) -> dict[str, float]:
+    if first_place_incentive and motivation in {"secured_top_two", "draw_advances"}:
+        return {"attackMultiplier": 1.04, "defensiveRiskMultiplier": 1.05}
+    if motivation == "eliminated":
+        return {"attackMultiplier": 1.03, "defensiveRiskMultiplier": 1.07}
     if motivation == "goal_difference_chase" and own_margin <= 1:
-        return {"attackMultiplier": 1.15, "defensiveRiskMultiplier": 1.10}
+        risk = 1.12 if third_scenario_share >= 0.15 else 1.10
+        return {"attackMultiplier": 1.16, "defensiveRiskMultiplier": risk}
     if motivation == "must_win" and own_margin <= 0:
-        return {"attackMultiplier": 1.12, "defensiveRiskMultiplier": 1.08}
+        return {"attackMultiplier": 1.14, "defensiveRiskMultiplier": 1.10}
     if motivation == "draw_advances" and own_margin == 0 and parallel_result_helps:
         return {"attackMultiplier": 0.92, "defensiveRiskMultiplier": 0.95}
     if motivation in {"secured_first", "secured_top_two"}:
@@ -397,8 +449,20 @@ def apply_current_tournament_context(
                 str(position): knockout_opponent_slots(group, position)
                 for position in range(1, 4)
             },
-            "homeLatePressure": late_scoreboard_pressure(home_state, 0, True),
-            "awayLatePressure": late_scoreboard_pressure(away_state, 0, True),
+            "homeLatePressure": late_scoreboard_pressure(
+                home_state,
+                0,
+                True,
+                bool((home_scenarios or {}).get("firstPlacePathIncentive")),
+                float((home_scenarios or {}).get("thirdScenarioShare") or 0.0),
+            ),
+            "awayLatePressure": late_scoreboard_pressure(
+                away_state,
+                0,
+                True,
+                bool((away_scenarios or {}).get("firstPlacePathIncentive")),
+                float((away_scenarios or {}).get("thirdScenarioShare") or 0.0),
+            ),
             "tournamentGoalsPerTeamMatch": round(goal_average, 4),
             "homeResultForm": {
                 "attackDelta": round(home_result_attack, 4),
@@ -408,14 +472,14 @@ def apply_current_tournament_context(
                 "attackDelta": round(away_result_attack, 4),
                 "defenseDelta": round(away_result_defense, 4),
             },
-            "policy": "matchday_three_scenarios_annex_c_v2",
+            "policy": "matchday_three_scenarios_annex_c_v3_open_game",
             "applied": applied,
         }
         if not applied:
             continue
 
-        home_motivation_attack, home_motivation_defense = MOTIVATION_XG.get(home_state, (0.0, 0.0))
-        away_motivation_attack, away_motivation_defense = MOTIVATION_XG.get(away_state, (0.0, 0.0))
+        home_motivation_attack, home_motivation_defense = motivation_xg_adjustment(home_state, home_scenarios)
+        away_motivation_attack, away_motivation_defense = motivation_xg_adjustment(away_state, away_scenarios)
         home_attack = home_motivation_attack + home_result_attack
         home_defense = home_motivation_defense + home_result_defense
         away_attack = away_motivation_attack + away_result_attack
@@ -438,5 +502,5 @@ def apply_current_tournament_context(
                 "home": round(adjusted_home, 4),
                 "away": round(adjusted_away, 4),
             },
-            "motivationLayer": "matchday_three_bounded_v1",
+            "motivationLayer": "matchday_three_bounded_v2_open_game",
         }

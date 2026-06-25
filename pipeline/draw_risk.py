@@ -7,6 +7,7 @@ from typing import Any
 OUTCOMES = ("home", "draw", "away")
 SAFE_MOTIVATIONS = {"secured_first", "secured_top_two", "draw_advances"}
 FORCE_MOTIVATIONS = {"must_win", "goal_difference_chase"}
+OPEN_MOTIVATIONS = {"must_win", "goal_difference_chase", "eliminated"}
 MAX_DRAW_SHIFT = 0.045
 
 
@@ -42,20 +43,27 @@ def _motivation_labels(seed: dict[str, Any] | None) -> tuple[list[str], float]:
     ]
     labels: list[str] = []
     multiplier = 1.0
-    if any(state in SAFE_MOTIVATIONS for state in states):
+    scenarios = [current.get("homeScenarios") or {}, current.get("awayScenarios") or {}]
+    first_place_path = any(bool(scenario.get("firstPlacePathIncentive")) for scenario in scenarios)
+    third_chase = any(float(scenario.get("thirdScenarioShare") or 0.0) >= 0.15 for scenario in scenarios)
+    open_game_context = first_place_path or third_chase or any(state in OPEN_MOTIVATIONS for state in states)
+    if any(state in SAFE_MOTIVATIONS for state in states) and not open_game_context:
         labels.append("third_round_conservation_or_draw_utility")
     if all(state not in FORCE_MOTIVATIONS for state in states) and any(
         state == "draw_advances" for state in states
-    ):
+    ) and not open_game_context:
         labels.append("draw_advances_without_must_win_opponent")
     if any(
         bool((current.get(side) or {}).get("rotationCandidate"))
         for side in ("homeScenarios", "awayScenarios")
-    ):
+    ) and not first_place_path:
         labels.append("rotation_candidate")
     if any(state in FORCE_MOTIVATIONS for state in states):
         labels.append("must_win_or_goal_difference_chase_present")
-        multiplier = 0.65
+        multiplier = 0.55
+    if open_game_context:
+        labels.append("third_round_open_game_context")
+        multiplier = min(multiplier, 0.50)
     return labels, multiplier
 
 
