@@ -1,78 +1,78 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-25T13:01:38+08:00",
+  "generatedAt": "2026-06-25T16:27:22+08:00",
   "timezone": "Asia/Shanghai",
   "scheduledReviewStartDate": "2026-06-17",
   "productionPolicy": "current model remains primary; optimized model runs as shadow until adoption gates pass",
   "currentModel": {
     "role": "production",
     "spec": "hierarchical_poisson[half_life_days=730,rho=0,shrinkage=24,tournament_tier=1]",
-    "matches": 48,
+    "matches": 54,
     "exact_hits": 11,
-    "exact_accuracy": 0.22916666666666666,
-    "core_hits": 20,
-    "core_accuracy": 0.4166666666666667,
-    "average_log_loss": 1.966214106033256,
-    "average_rps": 0.14577337737846344,
-    "calibration_error": 0.04817708333333332,
+    "exact_accuracy": 0.2037037037037037,
+    "core_hits": 22,
+    "core_accuracy": 0.4074074074074074,
+    "average_log_loss": 1.9603077737384988,
+    "average_rps": 0.1439012583525549,
+    "calibration_error": 0.045138888888888874,
     "predicted_bucket_counts": {
       "0": 0,
       "1": 1,
-      "2": 43,
-      "3": 4,
+      "2": 48,
+      "3": 5,
       "4": 0,
       "5": 0,
       "6": 0,
       "7+": 0
     },
-    "average_bucketed_expected_total": 2.6378504313617746
+    "average_bucketed_expected_total": 2.636097671403393
   },
   "shadowModel": {
     "role": "shadow",
     "spec": "hierarchical_poisson[rho=0,shrinkage=16]",
-    "matches": 48,
+    "matches": 54,
     "exact_hits": 9,
-    "exact_accuracy": 0.1875,
-    "core_hits": 20,
-    "core_accuracy": 0.4166666666666667,
-    "average_log_loss": 1.9666857721823783,
-    "average_rps": 0.1458639066957865,
-    "calibration_error": 0.05208333333333332,
+    "exact_accuracy": 0.16666666666666666,
+    "core_hits": 22,
+    "core_accuracy": 0.4074074074074074,
+    "average_log_loss": 1.9611343492545206,
+    "average_rps": 0.14401863902029355,
+    "calibration_error": 0.04907407407407406,
     "predicted_bucket_counts": {
       "0": 0,
       "1": 3,
-      "2": 39,
-      "3": 6,
+      "2": 44,
+      "3": 7,
       "4": 0,
       "5": 0,
       "6": 0,
       "7+": 0
     },
-    "average_bucketed_expected_total": 2.6108386475966685
+    "average_bucketed_expected_total": 2.6098850786259025
   },
   "tailShadowModel": {
     "role": "shadow_only",
     "spec": "poisson_nb_mixture[dispersion=2,half_life_days=730,rho=-0.04,shrinkage=8,tail_weight=0.2]",
     "reason": "tests wider high-score tails; first round is diagnostic only",
-    "matches": 48,
+    "matches": 54,
     "exact_hits": 10,
-    "exact_accuracy": 0.20833333333333334,
-    "core_hits": 20,
-    "core_accuracy": 0.4166666666666667,
-    "average_log_loss": 1.9677786149636474,
-    "average_rps": 0.14635119904351648,
-    "calibration_error": 0.05052083333333333,
+    "exact_accuracy": 0.18518518518518517,
+    "core_hits": 22,
+    "core_accuracy": 0.4074074074074074,
+    "average_log_loss": 1.9655867552171113,
+    "average_rps": 0.14469667852122725,
+    "calibration_error": 0.04976851851851851,
     "predicted_bucket_counts": {
       "0": 0,
       "1": 6,
-      "2": 39,
+      "2": 45,
       "3": 3,
       "4": 0,
       "5": 0,
       "6": 0,
       "7+": 0
     },
-    "average_bucketed_expected_total": 2.5557623586495777
+    "average_bucketed_expected_total": 2.5564210700942094
   },
   "strengthAllocationPolicy": {
     "eloAllocationWeight": 1.0,
@@ -110,7 +110,7 @@
       "1.0": {
         "log_loss": 0.9956599332430888,
         "rps": 0.206183751889683,
-        "brier": 0.5844177652726107,
+        "brier": 0.5844177652726106,
         "calibration_error": 0.06848958333333335
       }
     },
@@ -189,7 +189,7 @@
         "window": 4,
         "matches": 32,
         "logLossDelta": 0.004852608661605862,
-        "rpsDelta": 0.0006742282970945424,
+        "rpsDelta": 0.0006742282970945701,
         "improved": false
       }
     ]
@@ -208,9 +208,9 @@
       "second_round_forward_sample": true
     },
     "deltas": {
-      "log_loss_improvement": -0.0004716661491221963,
-      "rps_improvement": -9.052931732306257e-05,
-      "calibration_delta": 0.00390625
+      "log_loss_improvement": -0.0008265755160217214,
+      "rps_improvement": -0.00011738066773864242,
+      "calibration_delta": 0.003935185185185187
     },
     "thresholds": {
       "min_matches": 24,
@@ -222,10 +222,10 @@
   "dataRefresh": {
     "status": "ok",
     "url": "https://raw.githubusercontent.com/martj42/international_results/master/results.csv",
-    "bytes": 3724303,
-    "path": "artifacts\\total-goals-backtest\\international_results.csv",
-    "refreshedAt": "2026-06-25T13:00:54+08:00"
+    "bytes": 3724291,
+    "path": "artifacts/total-goals-backtest/international_results.csv",
+    "refreshedAt": "2026-06-25T16:26:20+08:00"
   },
   "manualResultRows": 12,
-  "comparisonPath": "artifacts\\total-goals-backtest\\model_comparison_2026.csv"
+  "comparisonPath": "artifacts/total-goals-backtest/model_comparison_2026.csv"
 }
