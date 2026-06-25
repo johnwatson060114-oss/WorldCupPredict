@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-25T11:08:23+08:00",
+  "generatedAt": "2026-06-25T13:00:15+08:00",
   "matches": [
     {
       "matchId": "537327",
@@ -2399,6 +2399,66 @@
       "settledAt": "2026-06-24T02:00:00Z",
       "group": "GROUP_K",
       "matchday": 2
+    },
+    {
+      "matchId": "瑞士 vs 加拿大",
+      "fixtureId": 537337,
+      "matchLabel": "瑞士 vs 加拿大",
+      "homeScore": 2,
+      "awayScore": 1,
+      "halfTimeHomeScore": 0,
+      "halfTimeAwayScore": 0,
+      "settledAt": "2026-06-24T19:00:00Z"
+    },
+    {
+      "matchId": "波黑 vs 卡塔尔",
+      "fixtureId": 537338,
+      "matchLabel": "波黑 vs 卡塔尔",
+      "homeScore": 3,
+      "awayScore": 1,
+      "halfTimeHomeScore": 2,
+      "halfTimeAwayScore": 1,
+      "settledAt": "2026-06-24T19:00:00Z"
+    },
+    {
+      "matchId": "苏格兰 vs 巴西",
+      "fixtureId": 537343,
+      "matchLabel": "苏格兰 vs 巴西",
+      "homeScore": 0,
+      "awayScore": 3,
+      "halfTimeHomeScore": 0,
+      "halfTimeAwayScore": 2,
+      "settledAt": "2026-06-24T22:00:00Z"
+    },
+    {
+      "matchId": "摩洛哥 vs 海地",
+      "fixtureId": 537344,
+      "matchLabel": "摩洛哥 vs 海地",
+      "homeScore": 4,
+      "awayScore": 2,
+      "halfTimeHomeScore": 2,
+      "halfTimeAwayScore": 2,
+      "settledAt": "2026-06-24T22:00:00Z"
+    },
+    {
+      "matchId": "捷克 vs 墨西哥",
+      "fixtureId": 537331,
+      "matchLabel": "捷克 vs 墨西哥",
+      "homeScore": 0,
+      "awayScore": 3,
+      "halfTimeHomeScore": 0,
+      "halfTimeAwayScore": 0,
+      "settledAt": "2026-06-25T01:00:00Z"
+    },
+    {
+      "matchId": "南非 vs 韩国",
+      "fixtureId": 537332,
+      "matchLabel": "南非 vs 韩国",
+      "homeScore": 1,
+      "awayScore": 0,
+      "halfTimeHomeScore": 0,
+      "halfTimeAwayScore": 0,
+      "settledAt": "2026-06-25T01:00:00Z"
     }
   ]
 }

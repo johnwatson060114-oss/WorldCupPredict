@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-25T11:10:52+08:00",
+  "generatedAt": "2026-06-25T13:00:52+08:00",
   "finalDate": "2026-07-19",
   "days": [
     {
@@ -1144,6 +1144,150 @@
           "profit": 0,
           "roi": null,
           "status": "no-bet"
+        },
+        {
+          "key": "aggressive",
+          "name": "激进",
+          "stake": 0,
+          "payout": 0,
+          "profit": 0,
+          "roi": null,
+          "status": "no-bet"
+        }
+      ],
+      "review": {
+        "snapshotLabel": "升级前基线快照",
+        "matches": [
+          {
+            "matchId": "瑞士 vs 加拿大",
+            "label": "瑞士 vs 加拿大",
+            "predictedScore": "1-1",
+            "actualScore": "2-1",
+            "predictedOutcome": "home",
+            "predictedOutcomeSource": "outcomeDecision",
+            "actualOutcome": "home",
+            "outcomeCorrect": true,
+            "exactScore": false,
+            "goalAbsoluteError": 1,
+            "actualOutcomeProbability": 0.48487,
+            "logLoss": 0.72387,
+            "brier": 0.39825,
+            "diagnosis": "赛果方向正确，但比分尺度仍有偏差。"
+          },
+          {
+            "matchId": "波黑 vs 卡塔尔",
+            "label": "波黑 vs 卡塔尔",
+            "predictedScore": "2-1",
+            "actualScore": "3-1",
+            "predictedOutcome": "home",
+            "predictedOutcomeSource": "outcomeDecision",
+            "actualOutcome": "home",
+            "outcomeCorrect": true,
+            "exactScore": false,
+            "goalAbsoluteError": 1,
+            "actualOutcomeProbability": 0.59605,
+            "logLoss": 0.51743,
+            "brier": 0.24579,
+            "diagnosis": "赛果方向正确，但比分尺度仍有偏差。"
+          },
+          {
+            "matchId": "摩洛哥 vs 海地",
+            "label": "摩洛哥 vs 海地",
+            "predictedScore": "2-0",
+            "actualScore": "4-2",
+            "predictedOutcome": "home",
+            "predictedOutcomeSource": "outcomeDecision",
+            "actualOutcome": "home",
+            "outcomeCorrect": true,
+            "exactScore": false,
+            "goalAbsoluteError": 4,
+            "actualOutcomeProbability": 0.8102,
+            "logLoss": 0.21047,
+            "brier": 0.06417,
+            "diagnosis": "方向正确，但明显低估比赛开放度和大比分尾部。"
+          },
+          {
+            "matchId": "苏格兰 vs 巴西",
+            "label": "苏格兰 vs 巴西",
+            "predictedScore": "0-1",
+            "actualScore": "0-3",
+            "predictedOutcome": "away",
+            "predictedOutcomeSource": "outcomeDecision",
+            "actualOutcome": "away",
+            "outcomeCorrect": true,
+            "exactScore": false,
+            "goalAbsoluteError": 2,
+            "actualOutcomeProbability": 0.66189,
+            "logLoss": 0.41266,
+            "brier": 0.18678,
+            "diagnosis": "赛果方向正确，但比分尺度仍有偏差。"
+          },
+          {
+            "matchId": "捷克 vs 墨西哥",
+            "label": "捷克 vs 墨西哥",
+            "predictedScore": "0-1",
+            "actualScore": "0-3",
+            "predictedOutcome": "away",
+            "predictedOutcomeSource": "outcomeDecision",
+            "actualOutcome": "away",
+            "outcomeCorrect": true,
+            "exactScore": false,
+            "goalAbsoluteError": 2,
+            "actualOutcomeProbability": 0.63226,
+            "logLoss": 0.45845,
+            "brier": 0.21162,
+            "diagnosis": "赛果方向正确，但比分尺度仍有偏差。"
+          },
+          {
+            "matchId": "南非 vs 韩国",
+            "label": "南非 vs 韩国",
+            "predictedScore": "0-1",
+            "actualScore": "1-0",
+            "predictedOutcome": "away",
+            "predictedOutcomeSource": "outcomeDecision",
+            "actualOutcome": "home",
+            "outcomeCorrect": false,
+            "exactScore": false,
+            "goalAbsoluteError": 2,
+            "actualOutcomeProbability": 0.08964,
+            "logLoss": 2.41195,
+            "brier": 1.34634,
+            "diagnosis": "方向反转：客胜倾向未兑现，主队强度被明显低估。"
+          }
+        ],
+        "summary": {
+          "matchCount": 6,
+          "outcomeAccuracy": 0.8333,
+          "exactScoreAccuracy": 0.0,
+          "meanGoalAbsoluteError": 2.0,
+          "logLoss": 0.78914,
+          "brier": 0.40882,
+          "strategyDiagnosis": "策略结果已按真实派彩结算，继续观察多日样本后再调整资金规则。"
+        }
+      }
+    },
+    {
+      "targetDate": "2026-06-26",
+      "generatedAt": "2026-06-25T13:00:15+08:00",
+      "coverage": 0.808,
+      "strategies": [
+        {
+          "key": "conservative",
+          "name": "稳健",
+          "stake": 10,
+          "payout": null,
+          "profit": null,
+          "roi": null,
+          "status": "pending"
+        },
+        {
+          "key": "balanced",
+          "name": "均衡",
+          "stake": 16,
+          "payout": null,
+          "profit": null,
+          "roi": null,
+          "status": "pending"
         },
         {
           "key": "aggressive",
