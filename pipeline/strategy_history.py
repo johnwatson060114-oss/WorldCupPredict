@@ -69,6 +69,23 @@ def build_match_review(match: dict, result: dict) -> dict:
     }
 
 
+def settlement_lookup_keys(item: dict) -> list[str]:
+    keys = []
+    for field in ("matchId", "fixtureId", "matchLabel"):
+        value = item.get(field)
+        if value:
+            keys.append(str(value))
+    return keys
+
+
+def build_settlement_index(items: list[dict]) -> dict[str, dict]:
+    settlements = {}
+    for item in items:
+        for key in settlement_lookup_keys(item):
+            settlements[key] = item
+    return settlements
+
+
 def build_day_review(forecast: dict, settlements: dict[str, dict], strategies: list[dict]) -> dict | None:
     matches = forecast.get("matches", [])
     if not matches or any(match["id"] not in settlements for match in matches):
@@ -188,7 +205,7 @@ def build_strategy_history(history_dir: Path, settlement_path: Path) -> dict:
     settlement_payload = {"matches": []}
     if settlement_path.exists():
         settlement_payload = json.loads(settlement_path.read_text(encoding="utf-8"))
-    settlements = {item["matchId"]: item for item in settlement_payload.get("matches", [])}
+    settlements = build_settlement_index(settlement_payload.get("matches", []))
     days = []
     if history_dir.exists():
         for path in sorted(history_dir.glob("*.json")):

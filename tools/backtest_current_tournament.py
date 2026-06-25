@@ -263,6 +263,12 @@ def main() -> None:
         tail_outcome_loss -= math.log(max(1e-12, tail_outcome[actual]))
         poisson_total_loss -= math.log(max(1e-12, poisson_totals[actual_bucket]))
         tail_total_loss -= math.log(max(1e-12, tail_totals[actual_bucket]))
+    total_goals_log_loss_reduction = (poisson_total_loss - tail_total_loss) / len(rows)
+    distribution_reason = (
+        "loss improvement is small and the settled sample remains below 24 matches"
+        if len(rows) < 24
+        else "loss improvement is small; keep the heavier-tail distribution in shadow until the gain is material"
+    )
     distribution_review = {
         "sampleMatches": len(rows),
         "productionFamily": "poisson",
@@ -272,9 +278,9 @@ def main() -> None:
         "shadowAverageOutcomeLogLoss": tail_outcome_loss / len(rows),
         "productionAverageTotalGoalsLogLoss": poisson_total_loss / len(rows),
         "shadowAverageTotalGoalsLogLoss": tail_total_loss / len(rows),
-        "totalGoalsLogLossReduction": (poisson_total_loss - tail_total_loss) / len(rows),
+        "totalGoalsLogLossReduction": total_goals_log_loss_reduction,
         "decision": "keep_shadow",
-        "reason": "loss improvement is small and the settled sample remains below 24 matches",
+        "reason": distribution_reason,
     }
     report = {
         "schemaVersion": 1,
