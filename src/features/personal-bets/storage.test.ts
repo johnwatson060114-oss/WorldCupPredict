@@ -29,13 +29,13 @@ describe('personal ledger settlement', () => {
       schemaVersion: 1,
       initialBankroll: 0,
       baselineStake: 347,
-      baselineProfit: 316.6,
+      baselineProfit: 101.6,
       modelSnapshots: [],
       bets: [],
     }
     const merged = mergeInitialPersonalLedger(local, seeded)
     expect(merged.baselineStake).toBe(347)
-    expect(merged.baselineProfit).toBe(316.6)
+    expect(merged.baselineProfit).toBe(101.6)
     expect(merged.bets).toEqual([])
   })
 
