@@ -413,6 +413,33 @@ def outcome_recommendation_decision(outcomes: dict[str, float]) -> dict[str, flo
     }
 
 
+def apply_mutual_draw_outcome_guard(
+    decision: dict[str, float | str],
+    outcomes: dict[str, float],
+    seed: dict,
+) -> dict[str, float | str]:
+    current = seed.get("current_tournament") or {}
+    if not current.get("mutualDrawUtility"):
+        return decision
+    selection = str(decision.get("selection") or "")
+    if selection == "draw":
+        return decision
+    draw_probability = float(outcomes.get("draw", 0.0))
+    leader_probability = float(decision.get("maxProbability") or 0.0)
+    if draw_probability <= 0.0 or leader_probability <= 0.0:
+        return decision
+    guarded = dict(decision)
+    guarded["guard"] = "third_round_mutual_draw_utility"
+    if leader_probability - draw_probability <= 0.04:
+        guarded["selection"] = "draw"
+        guarded["maxProbability"] = draw_probability
+        guarded["status"] = "watch"
+        return guarded
+    if guarded.get("status") == "recommended" and draw_probability >= 0.18 and draw_probability >= leader_probability * 0.30:
+        guarded["status"] = "watch"
+    return guarded
+
+
 def make_quote(
     match_id: str,
     label: str,
@@ -599,7 +626,11 @@ def build_match(
         },
     )
     outcomes = draw_risk_result.probabilities
-    outcome_decision = outcome_recommendation_decision(outcomes)
+    outcome_decision = apply_mutual_draw_outcome_guard(
+        outcome_recommendation_decision(outcomes),
+        outcomes,
+        seed,
+    )
     scores = top_scores(matrix)
     likely_score, likely_score_source = select_likely_score(scores, outcome_decision, seed)
     no_live_market = market is None

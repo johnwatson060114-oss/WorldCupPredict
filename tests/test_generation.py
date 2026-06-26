@@ -172,6 +172,34 @@ def test_outcome_recommendation_requires_sixty_percent_confidence():
     assert recommended["status"] == "recommended"
 
 
+def test_mutual_draw_guard_moves_near_tie_selection_to_draw_watch():
+    decision = generate.outcome_recommendation_decision({"home": 0.345, "draw": 0.315, "away": 0.340})
+
+    guarded = generate.apply_mutual_draw_outcome_guard(
+        decision,
+        {"home": 0.345, "draw": 0.315, "away": 0.340},
+        {"current_tournament": {"mutualDrawUtility": True}},
+    )
+
+    assert guarded["selection"] == "draw"
+    assert guarded["status"] == "watch"
+    assert guarded["guard"] == "third_round_mutual_draw_utility"
+
+
+def test_mutual_draw_guard_downgrades_clear_favorite_recommendation():
+    decision = generate.outcome_recommendation_decision({"home": 0.66, "draw": 0.22, "away": 0.12})
+
+    guarded = generate.apply_mutual_draw_outcome_guard(
+        decision,
+        {"home": 0.66, "draw": 0.22, "away": 0.12},
+        {"current_tournament": {"mutualDrawUtility": True}},
+    )
+
+    assert guarded["selection"] == "home"
+    assert guarded["status"] == "watch"
+    assert guarded["guard"] == "third_round_mutual_draw_utility"
+
+
 def test_third_round_open_game_likely_score_can_align_with_outcome():
     scores = [
         {"score": "1:1", "probability": 0.10},
