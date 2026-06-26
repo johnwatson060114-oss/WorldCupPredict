@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-26T14:29:09+08:00",
+  "generatedAt": "2026-06-26T16:33:00+08:00",
   "matches": [
     {
       "matchId": "537327",
@@ -2459,6 +2459,66 @@
       "halfTimeHomeScore": 0,
       "halfTimeAwayScore": 0,
       "settledAt": "2026-06-25T01:00:00Z"
+    },
+    {
+      "matchId": "厄瓜多尔 vs 德国",
+      "fixtureId": 537355,
+      "matchLabel": "厄瓜多尔 vs 德国",
+      "homeScore": 2,
+      "awayScore": 1,
+      "halfTimeHomeScore": 1,
+      "halfTimeAwayScore": 1,
+      "settledAt": "2026-06-25T20:00:00Z"
+    },
+    {
+      "matchId": "库拉索 vs 科特迪瓦",
+      "fixtureId": 537356,
+      "matchLabel": "库拉索 vs 科特迪瓦",
+      "homeScore": 0,
+      "awayScore": 2,
+      "halfTimeHomeScore": 0,
+      "halfTimeAwayScore": 1,
+      "settledAt": "2026-06-25T20:00:00Z"
+    },
+    {
+      "matchId": "突尼斯 vs 荷兰",
+      "fixtureId": 537361,
+      "matchLabel": "突尼斯 vs 荷兰",
+      "homeScore": 1,
+      "awayScore": 3,
+      "halfTimeHomeScore": 0,
+      "halfTimeAwayScore": 2,
+      "settledAt": "2026-06-25T23:00:00Z"
+    },
+    {
+      "matchId": "日本 vs 瑞典",
+      "fixtureId": 537362,
+      "matchLabel": "日本 vs 瑞典",
+      "homeScore": 1,
+      "awayScore": 1,
+      "halfTimeHomeScore": 0,
+      "halfTimeAwayScore": 0,
+      "settledAt": "2026-06-25T23:00:00Z"
+    },
+    {
+      "matchId": "土耳其 vs 美国",
+      "fixtureId": 537349,
+      "matchLabel": "土耳其 vs 美国",
+      "homeScore": 3,
+      "awayScore": 2,
+      "halfTimeHomeScore": 2,
+      "halfTimeAwayScore": 1,
+      "settledAt": "2026-06-26T02:00:00Z"
+    },
+    {
+      "matchId": "巴拉圭 vs 澳大利亚",
+      "fixtureId": 537350,
+      "matchLabel": "巴拉圭 vs 澳大利亚",
+      "homeScore": 0,
+      "awayScore": 0,
+      "halfTimeHomeScore": 0,
+      "halfTimeAwayScore": 0,
+      "settledAt": "2026-06-26T02:00:00Z"
     }
   ]
 }

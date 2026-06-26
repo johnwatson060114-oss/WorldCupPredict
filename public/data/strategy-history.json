@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-26T14:34:44+08:00",
+  "generatedAt": "2026-06-26T16:34:22+08:00",
   "finalDate": "2026-07-19",
   "days": [
     {
@@ -1412,8 +1412,8 @@
     },
     {
       "targetDate": "2026-06-27",
-      "generatedAt": "2026-06-26T14:33:55+08:00",
-      "coverage": 0.5967,
+      "generatedAt": "2026-06-26T16:33:01+08:00",
+      "coverage": 0.7667,
       "strategies": [
         {
           "key": "conservative",
