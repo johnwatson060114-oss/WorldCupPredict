@@ -528,7 +528,12 @@ def _score_outcome(score: str) -> str:
 
 def _third_round_open_game_context(seed: dict[str, Any]) -> bool:
     current = seed.get("current_tournament") or {}
-    if current.get("policy") != "matchday_three_scenarios_annex_c_v3_open_game":
+    if current.get("policy") not in {
+        "matchday_three_scenarios_annex_c_v3_open_game",
+        "matchday_three_scenarios_annex_c_v4_draw_utility",
+    }:
+        return False
+    if current.get("mutualDrawUtility"):
         return False
     motivations = {str(current.get("homeMotivation") or ""), str(current.get("awayMotivation") or "")}
     scenarios = [current.get("homeScenarios") or {}, current.get("awayScenarios") or {}]
@@ -545,6 +550,16 @@ def select_likely_score(
     seed: dict[str, Any],
 ) -> tuple[str, str]:
     top_score = str(scores[0]["score"]).replace(":", "-")
+    current = seed.get("current_tournament") or {}
+    if current.get("mutualDrawUtility") and _score_outcome(top_score) != "draw":
+        top_probability = float(scores[0]["probability"])
+        draw_scores = [
+            item for item in scores
+            if _score_outcome(str(item["score"])) == "draw"
+            and float(item["probability"]) >= top_probability * 0.55
+        ]
+        if draw_scores:
+            return str(draw_scores[0]["score"]).replace(":", "-"), "third_round_mutual_draw_score"
     selection = str(outcome_decision.get("selection") or "")
     if (
         selection not in {"home", "away"}

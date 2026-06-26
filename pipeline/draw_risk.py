@@ -46,7 +46,13 @@ def _motivation_labels(seed: dict[str, Any] | None) -> tuple[list[str], float]:
     scenarios = [current.get("homeScenarios") or {}, current.get("awayScenarios") or {}]
     first_place_path = any(bool(scenario.get("firstPlacePathIncentive")) for scenario in scenarios)
     third_chase = any(float(scenario.get("thirdScenarioShare") or 0.0) >= 0.15 for scenario in scenarios)
-    open_game_context = first_place_path or third_chase or any(state in OPEN_MOTIVATIONS for state in states)
+    mutual_draw = bool(current.get("mutualDrawUtility"))
+    open_game_context = (
+        not mutual_draw
+        and (first_place_path or third_chase or any(state in OPEN_MOTIVATIONS for state in states))
+    )
+    if mutual_draw:
+        labels.append("third_round_mutual_draw_utility")
     if any(state in SAFE_MOTIVATIONS for state in states) and not open_game_context:
         labels.append("third_round_conservation_or_draw_utility")
     if all(state not in FORCE_MOTIVATIONS for state in states) and any(
@@ -142,6 +148,9 @@ def apply_draw_risk_layer(
 
     if motivation_labels and 0.16 <= draw_probability <= 0.27:
         add_contribution("third_round_motivation_draw_utility", 0.014, 0.70)
+
+    if "third_round_mutual_draw_utility" in motivation_labels and 0.12 <= draw_probability <= 0.30:
+        add_contribution("third_round_mutual_draw_scoreboard", 0.030, 0.60)
 
     if not contributions:
         return DrawRiskResult(

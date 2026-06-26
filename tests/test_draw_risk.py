@@ -69,3 +69,24 @@ def test_first_place_path_suppresses_conservation_draw_utility():
     assert "third_round_open_game_context" in result.metadata["labels"]
     assert "third_round_conservation_or_draw_utility" not in result.metadata["labels"]
     assert "rotation_candidate" not in result.metadata["labels"]
+
+
+def test_mutual_draw_utility_adds_draw_without_open_game_label():
+    result = apply_draw_risk_layer(
+        {"home": 0.49, "draw": 0.16, "away": 0.35},
+        {
+            "base_xg": [2.7, 1.3],
+            "current_tournament": {
+                "homeMotivation": "draw_advances",
+                "awayMotivation": "draw_advances",
+                "homeScenarios": {"firstPlacePathIncentive": True, "thirdScenarioShare": 0.33},
+                "awayScenarios": {"firstPlacePathIncentive": True, "thirdScenarioShare": 0.60},
+                "mutualDrawUtility": True,
+            },
+        },
+    )
+
+    assert "third_round_mutual_draw_utility" in result.metadata["labels"]
+    assert "third_round_mutual_draw_scoreboard" in result.metadata["labels"]
+    assert "third_round_open_game_context" not in result.metadata["labels"]
+    assert result.probabilities["draw"] > 0.16

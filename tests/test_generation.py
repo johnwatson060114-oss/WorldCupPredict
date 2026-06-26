@@ -214,6 +214,32 @@ def test_regular_likely_score_keeps_top_score_probability():
     assert source == "top_score_probability"
 
 
+def test_mutual_draw_utility_keeps_draw_likely_score():
+    scores = [
+        {"score": "2:1", "probability": 0.10},
+        {"score": "1:1", "probability": 0.07},
+    ]
+    seed = {
+        "current_tournament": {
+            "policy": "matchday_three_scenarios_annex_c_v4_draw_utility",
+            "homeMotivation": "draw_advances",
+            "awayMotivation": "draw_advances",
+            "mutualDrawUtility": True,
+            "homeScenarios": {"firstPlacePathIncentive": True, "thirdScenarioShare": 0.33},
+            "awayScenarios": {"firstPlacePathIncentive": True, "thirdScenarioShare": 0.60},
+        }
+    }
+
+    score, source = generate.select_likely_score(
+        scores,
+        {"selection": "home", "status": "watch"},
+        seed,
+    )
+
+    assert score == "1-1"
+    assert source == "third_round_mutual_draw_score"
+
+
 def test_simulated_handicap_gives_goals_to_the_weaker_home_team():
     assert generate.fallback_handicap(2.1, 1.0) == -1
     assert generate.fallback_handicap(0.6, 2.4) == 2

@@ -113,6 +113,8 @@ def _clamp(value: float, bounds: tuple[float, float]) -> float:
 def motivation_xg_adjustment(
     state: str,
     scenarios: dict[str, Any] | None = None,
+    draw_suffices: bool = False,
+    mutual_draw_utility: bool = False,
 ) -> tuple[float, float]:
     """Return bounded attack and defensive-quality deltas for matchday three.
 
@@ -132,6 +134,17 @@ def motivation_xg_adjustment(
     third_share = float(scenarios.get("thirdScenarioShare") or 0.0)
     top_two_share = float(scenarios.get("topTwoScenarioShare") or 0.0)
 
+    if draw_suffices and state == "draw_advances":
+        attack -= 0.040
+        defense += 0.025
+        if mutual_draw_utility:
+            attack -= 0.020
+            defense += 0.015
+            return (
+                _clamp(attack, MOTIVATION_ATTACK_BOUNDS),
+                _clamp(defense, MOTIVATION_DEFENSE_BOUNDS),
+            )
+
     if first_place_path and state in {"secured_top_two", "draw_advances"}:
         attack += 0.045
         defense -= 0.020
@@ -145,6 +158,29 @@ def motivation_xg_adjustment(
     return (
         _clamp(attack, MOTIVATION_ATTACK_BOUNDS),
         _clamp(defense, MOTIVATION_DEFENSE_BOUNDS),
+    )
+
+
+def draw_suffices_for_scenario(state: str, scenarios: dict[str, Any] | None) -> bool:
+    if state != "draw_advances" or not scenarios:
+        return False
+    position_range = scenarios.get("positionRange") or []
+    if len(position_range) == 2 and int(position_range[1]) <= 3:
+        return True
+    return float(scenarios.get("thirdScenarioShare") or 0.0) >= 0.35
+
+
+def mutual_draw_utility(
+    home_state: str,
+    away_state: str,
+    home_scenarios: dict[str, Any] | None,
+    away_scenarios: dict[str, Any] | None,
+) -> bool:
+    return (
+        draw_suffices_for_scenario(home_state, home_scenarios)
+        and draw_suffices_for_scenario(away_state, away_scenarios)
+        and home_state == "draw_advances"
+        and away_state == "draw_advances"
     )
 
 
@@ -351,7 +387,13 @@ def late_scoreboard_pressure(
     parallel_result_helps: bool,
     first_place_incentive: bool = False,
     third_scenario_share: float = 0.0,
+    draw_suffices: bool = False,
+    mutual_draw_utility: bool = False,
 ) -> dict[str, float]:
+    if draw_suffices and motivation == "draw_advances":
+        attack = 0.88 if mutual_draw_utility else 0.92
+        risk = 0.92 if mutual_draw_utility else 0.95
+        return {"attackMultiplier": attack, "defensiveRiskMultiplier": risk}
     if first_place_incentive and motivation in {"secured_top_two", "draw_advances"}:
         return {"attackMultiplier": 1.04, "defensiveRiskMultiplier": 1.05}
     if motivation == "eliminated":
@@ -416,6 +458,9 @@ def apply_current_tournament_context(
         away_scenarios = group_scenarios(matches, group, kickoff, str(seed["away_team"]))
         home_state = home_scenarios["state"] if home_scenarios else motivation_state(home)
         away_state = away_scenarios["state"] if away_scenarios else motivation_state(away)
+        home_draw_suffices = draw_suffices_for_scenario(home_state, home_scenarios)
+        away_draw_suffices = draw_suffices_for_scenario(away_state, away_scenarios)
+        shared_draw_utility = mutual_draw_utility(home_state, away_state, home_scenarios, away_scenarios)
         goal_average = _tournament_goal_average(matches, kickoff)
         third_snapshot = best_third_snapshot(matches, kickoff)
         home_result_attack, home_result_defense = result_form_adjustment(home, goal_average)
@@ -455,6 +500,8 @@ def apply_current_tournament_context(
                 True,
                 bool((home_scenarios or {}).get("firstPlacePathIncentive")),
                 float((home_scenarios or {}).get("thirdScenarioShare") or 0.0),
+                home_draw_suffices,
+                shared_draw_utility,
             ),
             "awayLatePressure": late_scoreboard_pressure(
                 away_state,
@@ -462,7 +509,12 @@ def apply_current_tournament_context(
                 True,
                 bool((away_scenarios or {}).get("firstPlacePathIncentive")),
                 float((away_scenarios or {}).get("thirdScenarioShare") or 0.0),
+                away_draw_suffices,
+                shared_draw_utility,
             ),
+            "homeDrawSuffices": home_draw_suffices,
+            "awayDrawSuffices": away_draw_suffices,
+            "mutualDrawUtility": shared_draw_utility,
             "tournamentGoalsPerTeamMatch": round(goal_average, 4),
             "homeResultForm": {
                 "attackDelta": round(home_result_attack, 4),
@@ -472,14 +524,24 @@ def apply_current_tournament_context(
                 "attackDelta": round(away_result_attack, 4),
                 "defenseDelta": round(away_result_defense, 4),
             },
-            "policy": "matchday_three_scenarios_annex_c_v3_open_game",
+            "policy": "matchday_three_scenarios_annex_c_v4_draw_utility",
             "applied": applied,
         }
         if not applied:
             continue
 
-        home_motivation_attack, home_motivation_defense = motivation_xg_adjustment(home_state, home_scenarios)
-        away_motivation_attack, away_motivation_defense = motivation_xg_adjustment(away_state, away_scenarios)
+        home_motivation_attack, home_motivation_defense = motivation_xg_adjustment(
+            home_state,
+            home_scenarios,
+            home_draw_suffices,
+            shared_draw_utility,
+        )
+        away_motivation_attack, away_motivation_defense = motivation_xg_adjustment(
+            away_state,
+            away_scenarios,
+            away_draw_suffices,
+            shared_draw_utility,
+        )
         home_attack = home_motivation_attack + home_result_attack
         home_defense = home_motivation_defense + home_result_defense
         away_attack = away_motivation_attack + away_result_attack
@@ -502,5 +564,5 @@ def apply_current_tournament_context(
                 "home": round(adjusted_home, 4),
                 "away": round(adjusted_away, 4),
             },
-            "motivationLayer": "matchday_three_bounded_v2_open_game",
+            "motivationLayer": "matchday_three_bounded_v3_draw_utility",
         }

@@ -2,9 +2,11 @@ from pipeline.current_tournament import (
     Standing,
     apply_current_tournament_context,
     best_third_snapshot,
+    draw_suffices_for_scenario,
     group_scenarios,
     late_scoreboard_pressure,
     motivation_xg_adjustment,
+    mutual_draw_utility,
     result_form_adjustment,
 )
 
@@ -116,6 +118,32 @@ def test_first_place_path_keeps_secured_team_attacking():
 
     assert chase_attack > base_attack
     assert chase_defense < base_defense
+
+
+def test_mutual_draw_utility_overrides_first_place_open_game_boost():
+    scenario = {
+        "state": "draw_advances",
+        "positionRange": [1, 3],
+        "thirdScenarioShare": 0.45,
+        "firstPlacePathIncentive": True,
+    }
+    open_attack, open_defense = motivation_xg_adjustment(
+        "draw_advances",
+        scenario,
+        draw_suffices=False,
+        mutual_draw_utility=False,
+    )
+    safe_attack, safe_defense = motivation_xg_adjustment(
+        "draw_advances",
+        scenario,
+        draw_suffices=True,
+        mutual_draw_utility=True,
+    )
+
+    assert draw_suffices_for_scenario("draw_advances", scenario)
+    assert mutual_draw_utility("draw_advances", "draw_advances", scenario, scenario)
+    assert safe_attack < open_attack
+    assert safe_defense > open_defense
 
 
 def test_eliminated_team_opens_game_instead_of_only_sitting_deep():
