@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-26T14:29:27+08:00",
+  "generatedAt": "2026-06-27T20:03:37+08:00",
   "scope": {
     "dates": [
       "2026-06-19",
@@ -9,9 +9,11 @@
       "2026-06-22",
       "2026-06-23",
       "2026-06-24",
-      "2026-06-25"
+      "2026-06-25",
+      "2026-06-26",
+      "2026-06-27"
     ],
-    "matches": 30,
+    "matches": 42,
     "description": "chronological archived forecasts with all currently settled matches",
     "completeDates": [
       "2026-06-19",
@@ -20,7 +22,9 @@
       "2026-06-22",
       "2026-06-23",
       "2026-06-24",
-      "2026-06-25"
+      "2026-06-25",
+      "2026-06-26",
+      "2026-06-27"
     ],
     "partialDates": [],
     "motivationLayerEvaluation": "not active before group matchday three"
@@ -34,43 +38,43 @@
     "motivationPolicy": "matchday_three_bounded_v1"
   },
   "baseline": {
-    "matches": 30,
-    "hits": 21,
-    "accuracy": 0.7,
-    "averageLogLoss": 0.7886125006700289
+    "matches": 42,
+    "hits": 27,
+    "accuracy": 0.6428571428571429,
+    "averageLogLoss": 0.803449363818998
   },
   "optimized": {
-    "matches": 30,
-    "hits": 22,
-    "accuracy": 0.7333333333333333,
-    "averageLogLoss": 0.7731956423705567
+    "matches": 42,
+    "hits": 28,
+    "accuracy": 0.6666666666666666,
+    "averageLogLoss": 0.7856932217319033
   },
   "improvement": {
     "additionalHits": 1,
-    "accuracyDelta": 0.033333333333333326,
-    "averageLogLossReduction": 0.015416858299472147
+    "accuracyDelta": 0.023809523809523725,
+    "averageLogLossReduction": 0.01775614208709475
   },
   "forecastDiagnostics": {
-    "matches": 30,
-    "likelyScoreHits": 2,
-    "totalGoalsExactHits": 3,
-    "totalGoalsCoreHits": 11,
-    "averageTotalGoalsAbsoluteError": 1.56673,
-    "averageTotalGoalsLogLoss": 2.053939593152182
+    "matches": 42,
+    "likelyScoreHits": 5,
+    "totalGoalsExactHits": 5,
+    "totalGoalsCoreHits": 16,
+    "averageTotalGoalsAbsoluteError": 1.5535238095238095,
+    "averageTotalGoalsLogLoss": 2.029165709680781
   },
   "distributionReview": {
-    "sampleMatches": 30,
+    "sampleMatches": 42,
     "productionFamily": "poisson",
     "shadowFamily": "poisson_negative_binomial_mixture",
     "shadowParameters": {
       "dispersion": 2.0,
       "tailWeight": 0.2
     },
-    "productionAverageOutcomeLogLoss": 0.7800176627171922,
-    "shadowAverageOutcomeLogLoss": 0.7826918140649336,
-    "productionAverageTotalGoalsLogLoss": 2.0495647811996047,
-    "shadowAverageTotalGoalsLogLoss": 2.039334072786847,
-    "totalGoalsLogLossReduction": 0.010230708412757632,
+    "productionAverageOutcomeLogLoss": 0.7947912359025511,
+    "shadowAverageOutcomeLogLoss": 0.7990809617243623,
+    "productionAverageTotalGoalsLogLoss": 2.029608830621015,
+    "shadowAverageTotalGoalsLogLoss": 2.0227691408055852,
+    "totalGoalsLogLossReduction": 0.006839689815429716,
     "decision": "keep_shadow",
     "reason": "loss improvement is small; keep the heavier-tail distribution in shadow until the gain is material"
   },
@@ -248,6 +252,56 @@
         "totalGoalsCoreHits": 2,
         "averageTotalGoalsAbsoluteError": 1.2607166666666667,
         "averageTotalGoalsLogLoss": 1.9715463241920457
+      }
+    },
+    "2026-06-26": {
+      "scheduledMatches": 6,
+      "settledMatches": 6,
+      "complete": true,
+      "baseline": {
+        "matches": 6,
+        "hits": 2,
+        "accuracy": 0.3333333333333333,
+        "averageLogLoss": 1.0178742357495876
+      },
+      "optimized": {
+        "matches": 6,
+        "hits": 2,
+        "accuracy": 0.3333333333333333,
+        "averageLogLoss": 0.9945257232830196
+      },
+      "forecastDiagnostics": {
+        "matches": 6,
+        "likelyScoreHits": 1,
+        "totalGoalsExactHits": 1,
+        "totalGoalsCoreHits": 3,
+        "averageTotalGoalsAbsoluteError": 1.3664333333333334,
+        "averageTotalGoalsLogLoss": 1.880417103962542
+      }
+    },
+    "2026-06-27": {
+      "scheduledMatches": 6,
+      "settledMatches": 6,
+      "complete": true,
+      "baseline": {
+        "matches": 6,
+        "hits": 4,
+        "accuracy": 0.6666666666666666,
+        "averageLogLoss": 0.663208807633254
+      },
+      "optimized": {
+        "matches": 6,
+        "hits": 4,
+        "accuracy": 0.6666666666666666,
+        "averageLogLoss": 0.6393486169875197
+      },
+      "forecastDiagnostics": {
+        "matches": 6,
+        "likelyScoreHits": 2,
+        "totalGoalsExactHits": 1,
+        "totalGoalsCoreHits": 2,
+        "averageTotalGoalsAbsoluteError": 1.6745833333333333,
+        "averageTotalGoalsLogLoss": 2.0540448980420147
       }
     }
   },
@@ -1820,6 +1874,630 @@
         "applied": false,
         "reason": "within_threshold",
         "maxGap": 0.015477
+      }
+    },
+    {
+      "targetDate": "2026-06-26",
+      "match": "厄瓜多尔 vs 德国",
+      "score": "2-1",
+      "actualOutcome": "home",
+      "baseline": {
+        "prediction": "away",
+        "hit": false,
+        "logLoss": 1.4305806828313636,
+        "probabilities": {
+          "home": 0.23917,
+          "draw": 0.25777,
+          "away": 0.50306
+        }
+      },
+      "optimized": {
+        "prediction": "away",
+        "hit": false,
+        "logLoss": 1.535265084432582,
+        "probabilities": {
+          "home": 0.215399,
+          "draw": 0.266578,
+          "away": 0.518023
+        }
+      },
+      "optimizedExpectedGoals": {
+        "home": 0.9672,
+        "away": 1.624
+      },
+      "forecastExpectedGoals": {
+        "home": 1.0,
+        "away": 1.58
+      },
+      "forecastDiagnostics": {
+        "likelyScoreHit": false,
+        "actualTotalGoals": 3,
+        "expectedTotalGoals": 2.6226,
+        "totalGoalsAbsoluteError": 0.3774,
+        "actualTotalBucket": "3",
+        "predictedTotalBucket": "2",
+        "totalGoalsExactHit": false,
+        "totalGoalsCoreInterval": "2-3",
+        "totalGoalsCoreHit": true,
+        "actualTotalProbability": 0.21931,
+        "totalGoalsLogLoss": 1.5172690249627234
+      },
+      "marketCalibration": {
+        "applied": false,
+        "reason": "within_threshold",
+        "maxGap": 0.023707
+      }
+    },
+    {
+      "targetDate": "2026-06-26",
+      "match": "库拉索 vs 科特迪瓦",
+      "score": "0-2",
+      "actualOutcome": "away",
+      "baseline": {
+        "prediction": "away",
+        "hit": true,
+        "logLoss": 0.28434099341085983,
+        "probabilities": {
+          "home": 0.07895,
+          "draw": 0.16854,
+          "away": 0.75251
+        }
+      },
+      "optimized": {
+        "prediction": "away",
+        "hit": true,
+        "logLoss": 0.27605306511045635,
+        "probabilities": {
+          "home": 0.068404,
+          "draw": 0.172823,
+          "away": 0.758773
+        }
+      },
+      "optimizedExpectedGoals": {
+        "home": 0.5529,
+        "away": 2.2708
+      },
+      "forecastExpectedGoals": {
+        "home": 0.59,
+        "away": 2.27
+      },
+      "forecastDiagnostics": {
+        "likelyScoreHit": true,
+        "actualTotalGoals": 2,
+        "expectedTotalGoals": 2.891,
+        "totalGoalsAbsoluteError": 0.891,
+        "actualTotalBucket": "2",
+        "predictedTotalBucket": "2",
+        "totalGoalsExactHit": true,
+        "totalGoalsCoreInterval": "2-3",
+        "totalGoalsCoreHit": true,
+        "actualTotalProbability": 0.22943,
+        "totalGoalsLogLoss": 1.4721573069000666
+      },
+      "marketCalibration": {
+        "applied": false,
+        "reason": "within_threshold",
+        "maxGap": 0.010442
+      }
+    },
+    {
+      "targetDate": "2026-06-26",
+      "match": "突尼斯 vs 荷兰",
+      "score": "1-3",
+      "actualOutcome": "away",
+      "baseline": {
+        "prediction": "away",
+        "hit": true,
+        "logLoss": 0.13436602654881943,
+        "probabilities": {
+          "home": 0.02835,
+          "draw": 0.09738,
+          "away": 0.87427
+        }
+      },
+      "optimized": {
+        "prediction": "away",
+        "hit": true,
+        "logLoss": 0.15647491473206243,
+        "probabilities": {
+          "home": 0.032187,
+          "draw": 0.11266,
+          "away": 0.855153
+        }
+      },
+      "optimizedExpectedGoals": {
+        "home": 0.4274,
+        "away": 2.7788
+      },
+      "forecastExpectedGoals": {
+        "home": 0.42,
+        "away": 3.01
+      },
+      "forecastDiagnostics": {
+        "likelyScoreHit": false,
+        "actualTotalGoals": 4,
+        "expectedTotalGoals": 3.4734,
+        "totalGoalsAbsoluteError": 0.5266,
+        "actualTotalBucket": "4",
+        "predictedTotalBucket": "3",
+        "totalGoalsExactHit": false,
+        "totalGoalsCoreInterval": "3-4",
+        "totalGoalsCoreHit": true,
+        "actualTotalProbability": 0.18673,
+        "totalGoalsLogLoss": 1.6780915557511484
+      },
+      "marketCalibration": {
+        "applied": false,
+        "reason": "within_threshold",
+        "maxGap": 0.019379
+      }
+    },
+    {
+      "targetDate": "2026-06-26",
+      "match": "日本 vs 瑞典",
+      "score": "1-1",
+      "actualOutcome": "draw",
+      "baseline": {
+        "prediction": "home",
+        "hit": false,
+        "logLoss": 1.8554023915340128,
+        "probabilities": {
+          "home": 0.69029,
+          "draw": 0.15639,
+          "away": 0.15332
+        }
+      },
+      "optimized": {
+        "prediction": "home",
+        "hit": false,
+        "logLoss": 1.6697337050084946,
+        "probabilities": {
+          "home": 0.652088,
+          "draw": 0.188297,
+          "away": 0.159615
+        }
+      },
+      "optimizedExpectedGoals": {
+        "home": 2.5084,
+        "away": 1.2028
+      },
+      "forecastExpectedGoals": {
+        "home": 2.77,
+        "away": 1.3
+      },
+      "forecastDiagnostics": {
+        "likelyScoreHit": false,
+        "actualTotalGoals": 2,
+        "expectedTotalGoals": 4.0617,
+        "totalGoalsAbsoluteError": 2.0617,
+        "actualTotalBucket": "2",
+        "predictedTotalBucket": "4",
+        "totalGoalsExactHit": false,
+        "totalGoalsCoreInterval": "3-4",
+        "totalGoalsCoreHit": false,
+        "actualTotalProbability": 0.13289,
+        "totalGoalsLogLoss": 2.0182335606387207
+      },
+      "marketCalibration": {
+        "applied": false,
+        "reason": "within_threshold",
+        "maxGap": 0.038588
+      }
+    },
+    {
+      "targetDate": "2026-06-26",
+      "match": "土耳其 vs 美国",
+      "score": "3-2",
+      "actualOutcome": "home",
+      "baseline": {
+        "prediction": "away",
+        "hit": false,
+        "logLoss": 1.1357847010224928,
+        "probabilities": {
+          "home": 0.32117,
+          "draw": 0.24731,
+          "away": 0.43152
+        }
+      },
+      "optimized": {
+        "prediction": "away",
+        "hit": false,
+        "logLoss": 1.101878257742355,
+        "probabilities": {
+          "home": 0.332246,
+          "draw": 0.261117,
+          "away": 0.406637
+        }
+      },
+      "optimizedExpectedGoals": {
+        "home": 1.4042,
+        "away": 1.573
+      },
+      "forecastExpectedGoals": {
+        "home": 1.38,
+        "away": 1.62
+      },
+      "forecastDiagnostics": {
+        "likelyScoreHit": false,
+        "actualTotalGoals": 5,
+        "expectedTotalGoals": 2.9782,
+        "totalGoalsAbsoluteError": 2.0218,
+        "actualTotalBucket": "5",
+        "predictedTotalBucket": "2",
+        "totalGoalsExactHit": false,
+        "totalGoalsCoreInterval": "2-3",
+        "totalGoalsCoreHit": false,
+        "actualTotalProbability": 0.10235,
+        "totalGoalsLogLoss": 2.2793569668748384
+      },
+      "marketCalibration": {
+        "applied": false,
+        "reason": "within_threshold",
+        "maxGap": 0.024893
+      }
+    },
+    {
+      "targetDate": "2026-06-26",
+      "match": "巴拉圭 vs 澳大利亚",
+      "score": "0-0",
+      "actualOutcome": "draw",
+      "baseline": {
+        "prediction": "home",
+        "hit": false,
+        "logLoss": 1.2667706191499764,
+        "probabilities": {
+          "home": 0.36316,
+          "draw": 0.28174,
+          "away": 0.3551
+        }
+      },
+      "optimized": {
+        "prediction": "away",
+        "hit": false,
+        "logLoss": 1.2277493126721668,
+        "probabilities": {
+          "home": 0.348189,
+          "draw": 0.292951,
+          "away": 0.358859
+        }
+      },
+      "optimizedExpectedGoals": {
+        "home": 1.2212,
+        "away": 1.2435
+      },
+      "forecastExpectedGoals": {
+        "home": 1.21,
+        "away": 1.2
+      },
+      "forecastDiagnostics": {
+        "likelyScoreHit": false,
+        "actualTotalGoals": 0,
+        "expectedTotalGoals": 2.3201,
+        "totalGoalsAbsoluteError": 2.3201,
+        "actualTotalBucket": "0",
+        "predictedTotalBucket": "2",
+        "totalGoalsExactHit": false,
+        "totalGoalsCoreInterval": "1-2",
+        "totalGoalsCoreHit": false,
+        "actualTotalProbability": 0.09853,
+        "totalGoalsLogLoss": 2.317394208647754
+      },
+      "marketCalibration": {
+        "applied": false,
+        "reason": "within_threshold",
+        "maxGap": 0.015376
+      }
+    },
+    {
+      "targetDate": "2026-06-27",
+      "match": "挪威 vs 法国",
+      "score": "1-4",
+      "actualOutcome": "away",
+      "baseline": {
+        "prediction": "away",
+        "hit": true,
+        "logLoss": 0.547455030588781,
+        "probabilities": {
+          "home": 0.20894,
+          "draw": 0.21264,
+          "away": 0.57842
+        }
+      },
+      "optimized": {
+        "prediction": "away",
+        "hit": true,
+        "logLoss": 0.5556815670684968,
+        "probabilities": {
+          "home": 0.203863,
+          "draw": 0.222456,
+          "away": 0.573681
+        }
+      },
+      "optimizedExpectedGoals": {
+        "home": 1.1962,
+        "away": 2.1
+      },
+      "forecastExpectedGoals": {
+        "home": 1.32,
+        "away": 2.22
+      },
+      "forecastDiagnostics": {
+        "likelyScoreHit": false,
+        "actualTotalGoals": 5,
+        "expectedTotalGoals": 3.5697,
+        "totalGoalsAbsoluteError": 1.4303,
+        "actualTotalBucket": "5",
+        "predictedTotalBucket": "3",
+        "totalGoalsExactHit": false,
+        "totalGoalsCoreInterval": "3-4",
+        "totalGoalsCoreHit": false,
+        "actualTotalProbability": 0.13723,
+        "totalGoalsLogLoss": 1.9860969287005954
+      },
+      "marketCalibration": {
+        "applied": false,
+        "reason": "within_threshold",
+        "maxGap": 0.010023
+      }
+    },
+    {
+      "targetDate": "2026-06-27",
+      "match": "塞内加尔 vs 伊拉克",
+      "score": "5-0",
+      "actualOutcome": "home",
+      "baseline": {
+        "prediction": "home",
+        "hit": true,
+        "logLoss": 0.391236812097533,
+        "probabilities": {
+          "home": 0.67622,
+          "draw": 0.20312,
+          "away": 0.12066
+        }
+      },
+      "optimized": {
+        "prediction": "home",
+        "hit": true,
+        "logLoss": 0.38404509237301565,
+        "probabilities": {
+          "home": 0.681101,
+          "draw": 0.216147,
+          "away": 0.102752
+        }
+      },
+      "optimizedExpectedGoals": {
+        "home": 1.9518,
+        "away": 0.6271
+      },
+      "forecastExpectedGoals": {
+        "home": 2.05,
+        "away": 0.72
+      },
+      "forecastDiagnostics": {
+        "likelyScoreHit": false,
+        "actualTotalGoals": 5,
+        "expectedTotalGoals": 2.7847,
+        "totalGoalsAbsoluteError": 2.2153,
+        "actualTotalBucket": "5",
+        "predictedTotalBucket": "2",
+        "totalGoalsExactHit": false,
+        "totalGoalsCoreInterval": "2-3",
+        "totalGoalsCoreHit": false,
+        "actualTotalProbability": 0.08563,
+        "totalGoalsLogLoss": 2.4577195899440363
+      },
+      "marketCalibration": {
+        "applied": false,
+        "reason": "within_threshold",
+        "maxGap": 0.017947
+      }
+    },
+    {
+      "targetDate": "2026-06-27",
+      "match": "乌拉圭 vs 西班牙",
+      "score": "0-1",
+      "actualOutcome": "away",
+      "baseline": {
+        "prediction": "away",
+        "hit": true,
+        "logLoss": 0.3071639511932785,
+        "probabilities": {
+          "home": 0.03836,
+          "draw": 0.22611,
+          "away": 0.73553
+        }
+      },
+      "optimized": {
+        "prediction": "away",
+        "hit": true,
+        "logLoss": 0.30302137584530614,
+        "probabilities": {
+          "home": 0.06485,
+          "draw": 0.196567,
+          "away": 0.738583
+        }
+      },
+      "optimizedExpectedGoals": {
+        "home": 0.4358,
+        "away": 1.9831
+      },
+      "forecastExpectedGoals": {
+        "home": 0.34,
+        "away": 2.02
+      },
+      "forecastDiagnostics": {
+        "likelyScoreHit": true,
+        "actualTotalGoals": 1,
+        "expectedTotalGoals": 2.2294,
+        "totalGoalsAbsoluteError": 1.2294,
+        "actualTotalBucket": "1",
+        "predictedTotalBucket": "2",
+        "totalGoalsExactHit": false,
+        "totalGoalsCoreInterval": "1-2",
+        "totalGoalsCoreHit": true,
+        "actualTotalProbability": 0.24248,
+        "totalGoalsLogLoss": 1.4168360462325893
+      },
+      "marketCalibration": {
+        "applied": false,
+        "reason": "within_threshold",
+        "maxGap": 0.029385
+      }
+    },
+    {
+      "targetDate": "2026-06-27",
+      "match": "佛得角 vs 沙特",
+      "score": "0-0",
+      "actualOutcome": "draw",
+      "baseline": {
+        "prediction": "home",
+        "hit": false,
+        "logLoss": 1.3087409029048247,
+        "probabilities": {
+          "home": 0.43097,
+          "draw": 0.27016,
+          "away": 0.29887
+        }
+      },
+      "optimized": {
+        "prediction": "home",
+        "hit": false,
+        "logLoss": 1.1348071179338266,
+        "probabilities": {
+          "home": 0.390364,
+          "draw": 0.321484,
+          "away": 0.288152
+        }
+      },
+      "optimizedExpectedGoals": {
+        "home": 1.1346,
+        "away": 0.9363
+      },
+      "forecastExpectedGoals": {
+        "home": 1.31,
+        "away": 1.02
+      },
+      "forecastDiagnostics": {
+        "likelyScoreHit": false,
+        "actualTotalGoals": 0,
+        "expectedTotalGoals": 2.4439,
+        "totalGoalsAbsoluteError": 2.4439,
+        "actualTotalBucket": "0",
+        "predictedTotalBucket": "2",
+        "totalGoalsExactHit": false,
+        "totalGoalsCoreInterval": "2-3",
+        "totalGoalsCoreHit": false,
+        "actualTotalProbability": 0.08682,
+        "totalGoalsLogLoss": 2.4439182691106898
+      },
+      "marketCalibration": {
+        "applied": false,
+        "reason": "within_threshold",
+        "maxGap": 0.051803
+      }
+    },
+    {
+      "targetDate": "2026-06-27",
+      "match": "新西兰 vs 比利时",
+      "score": "1-5",
+      "actualOutcome": "away",
+      "baseline": {
+        "prediction": "away",
+        "hit": true,
+        "logLoss": 0.24852546391725933,
+        "probabilities": {
+          "home": 0.07138,
+          "draw": 0.14867,
+          "away": 0.77995
+        }
+      },
+      "optimized": {
+        "prediction": "away",
+        "hit": true,
+        "logLoss": 0.2544172194891452,
+        "probabilities": {
+          "home": 0.06508,
+          "draw": 0.159551,
+          "away": 0.775368
+        }
+      },
+      "optimizedExpectedGoals": {
+        "home": 0.5853,
+        "away": 2.4246
+      },
+      "forecastExpectedGoals": {
+        "home": 0.64,
+        "away": 2.53
+      },
+      "forecastDiagnostics": {
+        "likelyScoreHit": false,
+        "actualTotalGoals": 6,
+        "expectedTotalGoals": 3.2849,
+        "totalGoalsAbsoluteError": 2.7151,
+        "actualTotalBucket": "6",
+        "predictedTotalBucket": "3",
+        "totalGoalsExactHit": false,
+        "totalGoalsCoreInterval": "2-3",
+        "totalGoalsCoreHit": false,
+        "actualTotalProbability": 0.06673,
+        "totalGoalsLogLoss": 2.707100652066622
+      },
+      "marketCalibration": {
+        "applied": false,
+        "reason": "within_threshold",
+        "maxGap": 0.010874
+      }
+    },
+    {
+      "targetDate": "2026-06-27",
+      "match": "埃及 vs 伊朗",
+      "score": "1-1",
+      "actualOutcome": "draw",
+      "baseline": {
+        "prediction": "away",
+        "hit": false,
+        "logLoss": 1.176130685097847,
+        "probabilities": {
+          "home": 0.31821,
+          "draw": 0.30847,
+          "away": 0.37332
+        }
+      },
+      "optimized": {
+        "prediction": "away",
+        "hit": false,
+        "logLoss": 1.2041193292153278,
+        "probabilities": {
+          "home": 0.324929,
+          "draw": 0.299956,
+          "away": 0.375115
+        }
+      },
+      "optimizedExpectedGoals": {
+        "home": 1.1283,
+        "away": 1.2311
+      },
+      "forecastExpectedGoals": {
+        "home": 1.01,
+        "away": 1.12
+      },
+      "forecastDiagnostics": {
+        "likelyScoreHit": true,
+        "actualTotalGoals": 2,
+        "expectedTotalGoals": 2.0135,
+        "totalGoalsAbsoluteError": 0.0135,
+        "actualTotalBucket": "2",
+        "predictedTotalBucket": "2",
+        "totalGoalsExactHit": true,
+        "totalGoalsCoreInterval": "1-2",
+        "totalGoalsCoreHit": true,
+        "actualTotalProbability": 0.26912,
+        "totalGoalsLogLoss": 1.3125979021975538
+      },
+      "marketCalibration": {
+        "applied": false,
+        "reason": "within_threshold",
+        "maxGap": 0.008446
       }
     }
   ]

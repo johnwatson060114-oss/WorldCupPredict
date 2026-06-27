@@ -440,6 +440,26 @@ def apply_mutual_draw_outcome_guard(
     return guarded
 
 
+def align_mutual_draw_decision_with_score(
+    decision: dict[str, float | str],
+    outcomes: dict[str, float],
+    seed: dict,
+    likely_score: str,
+) -> dict[str, float | str]:
+    current = seed.get("current_tournament") or {}
+    if not current.get("mutualDrawUtility") or _score_outcome(likely_score) != "draw":
+        return decision
+    if decision.get("selection") == "draw":
+        return decision
+    return {
+        **decision,
+        "selection": "draw",
+        "maxProbability": float(outcomes.get("draw", 0.0)),
+        "status": "watch",
+        "guard": "third_round_mutual_draw_likely_score",
+    }
+
+
 def make_quote(
     match_id: str,
     label: str,
@@ -633,6 +653,12 @@ def build_match(
     )
     scores = top_scores(matrix)
     likely_score, likely_score_source = select_likely_score(scores, outcome_decision, seed)
+    outcome_decision = align_mutual_draw_decision_with_score(
+        outcome_decision,
+        outcomes,
+        seed,
+        likely_score,
+    )
     no_live_market = market is None
     coverage = float(seed.get("coverage", 0.70))
     if no_live_market:

@@ -19,12 +19,16 @@ OUTPUT = ROOT / "public" / "data" / "settlements.json"
 
 def main() -> None:
     source_payload = json.loads(SOURCE.read_text(encoding="utf-8"))
-    fixtures = source_payload.get("value", source_payload).get("matches", [])[:48]
+    fixtures = [
+        fixture
+        for fixture in source_payload.get("value", source_payload).get("matches", [])
+        if fixture.get("stage") == "GROUP_STAGE"
+    ]
     existing_payload = json.loads(OUTPUT.read_text(encoding="utf-8")) if OUTPUT.exists() else {"matches": []}
     existing = deduplicate_settlements(existing_payload.get("matches", []))
     existing_by_label = {normalized_match_label(item): item for item in existing}
     repaired = []
-    for index, fixture in enumerate(fixtures, start=1):
+    for fixture in fixtures:
         score = fixture.get("score", {}).get("fullTime", {})
         if fixture.get("status") != "FINISHED" or score.get("home") is None or score.get("away") is None:
             continue
@@ -38,7 +42,7 @@ def main() -> None:
             "fixtureId": fixture["id"],
             "matchLabel": label,
             "group": fixture.get("group"),
-            "matchday": 1 if index <= 24 else 2,
+            "matchday": fixture.get("matchday"),
             "homeScore": score["home"],
             "awayScore": score["away"],
             "halfTimeHomeScore": (fixture.get("score", {}).get("halfTime") or {}).get("home"),

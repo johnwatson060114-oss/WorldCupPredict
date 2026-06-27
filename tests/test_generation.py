@@ -200,6 +200,22 @@ def test_mutual_draw_guard_downgrades_clear_favorite_recommendation():
     assert guarded["guard"] == "third_round_mutual_draw_utility"
 
 
+def test_mutual_draw_likely_score_aligns_outcome_to_draw_watch():
+    decision = {"threshold": 0.60, "maxProbability": 0.66, "selection": "home", "status": "watch"}
+
+    guarded = generate.align_mutual_draw_decision_with_score(
+        decision,
+        {"home": 0.66, "draw": 0.22, "away": 0.12},
+        {"current_tournament": {"mutualDrawUtility": True}},
+        "1-1",
+    )
+
+    assert guarded["selection"] == "draw"
+    assert guarded["maxProbability"] == 0.22
+    assert guarded["status"] == "watch"
+    assert guarded["guard"] == "third_round_mutual_draw_likely_score"
+
+
 def test_third_round_open_game_likely_score_can_align_with_outcome():
     scores = [
         {"score": "1:1", "probability": 0.10},
