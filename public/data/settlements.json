@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-26T16:33:00+08:00",
+  "generatedAt": "2026-06-27T15:52:36+08:00",
   "matches": [
     {
       "matchId": "537327",
@@ -2519,6 +2519,66 @@
       "halfTimeHomeScore": 0,
       "halfTimeAwayScore": 0,
       "settledAt": "2026-06-26T02:00:00Z"
+    },
+    {
+      "matchId": "挪威 vs 法国",
+      "fixtureId": 537395,
+      "matchLabel": "挪威 vs 法国",
+      "homeScore": 1,
+      "awayScore": 4,
+      "halfTimeHomeScore": 1,
+      "halfTimeAwayScore": 3,
+      "settledAt": "2026-06-26T19:00:00Z"
+    },
+    {
+      "matchId": "塞内加尔 vs 伊拉克",
+      "fixtureId": 537396,
+      "matchLabel": "塞内加尔 vs 伊拉克",
+      "homeScore": 5,
+      "awayScore": 0,
+      "halfTimeHomeScore": 1,
+      "halfTimeAwayScore": 0,
+      "settledAt": "2026-06-26T19:00:00Z"
+    },
+    {
+      "matchId": "乌拉圭 vs 西班牙",
+      "fixtureId": 537373,
+      "matchLabel": "乌拉圭 vs 西班牙",
+      "homeScore": 0,
+      "awayScore": 1,
+      "halfTimeHomeScore": 0,
+      "halfTimeAwayScore": 1,
+      "settledAt": "2026-06-27T00:00:00Z"
+    },
+    {
+      "matchId": "佛得角 vs 沙特",
+      "fixtureId": 537374,
+      "matchLabel": "佛得角 vs 沙特",
+      "homeScore": 0,
+      "awayScore": 0,
+      "halfTimeHomeScore": 0,
+      "halfTimeAwayScore": 0,
+      "settledAt": "2026-06-27T00:00:00Z"
+    },
+    {
+      "matchId": "新西兰 vs 比利时",
+      "fixtureId": 537367,
+      "matchLabel": "新西兰 vs 比利时",
+      "homeScore": 1,
+      "awayScore": 5,
+      "halfTimeHomeScore": 0,
+      "halfTimeAwayScore": 1,
+      "settledAt": "2026-06-27T03:00:00Z"
+    },
+    {
+      "matchId": "埃及 vs 伊朗",
+      "fixtureId": 537368,
+      "matchLabel": "埃及 vs 伊朗",
+      "homeScore": 1,
+      "awayScore": 1,
+      "halfTimeHomeScore": 1,
+      "halfTimeAwayScore": 1,
+      "settledAt": "2026-06-27T03:00:00Z"
     }
   ]
 }
