@@ -3257,10 +3257,10 @@
       },
       "outcomeDecision": {
         "threshold": 0.6,
-        "maxProbability": 0.41308,
-        "selection": "away",
+        "maxProbability": 0.3472,
+        "selection": "draw",
         "status": "watch",
-        "guard": "third_round_mutual_draw_utility"
+        "guard": "third_round_mutual_draw_likely_score"
       },
       "likelyScore": "0-0",
       "likelyScoreSource": "top_score_probability",
@@ -15137,10 +15137,10 @@
       },
       "outcomeDecision": {
         "threshold": 0.6,
-        "maxProbability": 0.41283,
-        "selection": "away",
+        "maxProbability": 0.30066,
+        "selection": "draw",
         "status": "watch",
-        "guard": "third_round_mutual_draw_utility"
+        "guard": "third_round_mutual_draw_likely_score"
       },
       "likelyScore": "1-1",
       "likelyScoreSource": "top_score_probability",
