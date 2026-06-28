@@ -116,7 +116,14 @@ export interface MatchForecast {
   expectedGoals: { home: number; away: number }
   modelDecomposition?: {
     longTermExpectedGoals?: { home: number; away: number }
+    objectiveFormNet?: { home: number; away: number }
+    tacticalNet?: { home: number; away: number }
+    groupStageFormNet?: { home: number; away: number }
     tournamentFormNet?: { home: number; away: number }
+    preMotivationExpectedGoals?: { home: number; away: number }
+    motivationNet?: { home: number; away: number }
+    preKnockoutExpectedGoals?: { home: number; away: number }
+    knockoutNet?: { home: number; away: number }
     adjustedExpectedGoals?: { home: number; away: number }
     totalGoalsProvider?: string
     strengthAllocator?: string
@@ -125,13 +132,31 @@ export interface MatchForecast {
     allocationValidationSet?: string
     estimatedTotalGoals?: number
     formLayer?: string
+    motivationLayer?: string
+    knockoutLayer?: string
   }
   tournamentForm?: {
     sourceRound: string
-    commentaryMode: 'text_only'
+    commentaryMode: 'text_only' | 'event_timeline' | 'minute_by_minute_events'
     applied: boolean
     home: TournamentFormSide
     away: TournamentFormSide
+  } | null
+  groupStageForm?: {
+    sourceRound: string
+    commentaryMode: 'minute_by_minute_events'
+    applied: boolean
+    home: TournamentFormSide
+    away: TournamentFormSide
+  } | null
+  knockoutContext?: {
+    policy: string
+    favoriteSide: 'home' | 'away' | null
+    xgNet: { home: number; away: number }
+    adjustedExpectedGoals: { home: number; away: number }
+    homeLatePressure: { attackMultiplier: number; defensiveRiskMultiplier: number }
+    awayLatePressure: { attackMultiplier: number; defensiveRiskMultiplier: number }
+    applied: boolean
   } | null
   outcomeProbabilities: { home: number; draw: number; away: number }
   outcomeDecision?: {
@@ -158,11 +183,20 @@ export interface TournamentFormSide {
   team: string
   attackDelta: number
   defenseDelta: number
+  objectiveAttackDelta?: number
+  objectiveDefenseDelta?: number
+  tacticalAttackDelta?: number
+  tacticalDefenseDelta?: number
   decay: number
-  observedMatchday: number
+  observedMatchday?: number
+  observedMatchdays?: number[]
   targetMatchday: number
   confidence: number
-  admissionStatus: string
+  coverage?: number
+  admissionStatus?: string
+  objectiveAdmissionStatus?: string
+  tacticalAdmissionStatus?: string
+  credibilityLabels?: string[]
   summary: string
 }
 

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-27T15:52:36+08:00",
+  "generatedAt": "2026-06-28T13:00:34+08:00",
   "matches": [
     {
       "matchId": "537327",
@@ -2579,6 +2579,66 @@
       "halfTimeHomeScore": 1,
       "halfTimeAwayScore": 1,
       "settledAt": "2026-06-27T03:00:00Z"
+    },
+    {
+      "matchId": "巴拿马 vs 英格兰",
+      "fixtureId": 537413,
+      "matchLabel": "巴拿马 vs 英格兰",
+      "homeScore": 0,
+      "awayScore": 2,
+      "halfTimeHomeScore": 0,
+      "halfTimeAwayScore": 0,
+      "settledAt": "2026-06-27T21:00:00Z"
+    },
+    {
+      "matchId": "克罗地亚 vs 加纳",
+      "fixtureId": 537414,
+      "matchLabel": "克罗地亚 vs 加纳",
+      "homeScore": 2,
+      "awayScore": 1,
+      "halfTimeHomeScore": 1,
+      "halfTimeAwayScore": 0,
+      "settledAt": "2026-06-27T21:00:00Z"
+    },
+    {
+      "matchId": "哥伦比亚 vs 葡萄牙",
+      "fixtureId": 537407,
+      "matchLabel": "哥伦比亚 vs 葡萄牙",
+      "homeScore": 0,
+      "awayScore": 0,
+      "halfTimeHomeScore": 0,
+      "halfTimeAwayScore": 0,
+      "settledAt": "2026-06-27T23:30:00Z"
+    },
+    {
+      "matchId": "民主刚果 vs 乌兹别克斯坦",
+      "fixtureId": 537408,
+      "matchLabel": "民主刚果 vs 乌兹别克斯坦",
+      "homeScore": 3,
+      "awayScore": 1,
+      "halfTimeHomeScore": 0,
+      "halfTimeAwayScore": 1,
+      "settledAt": "2026-06-27T23:30:00Z"
+    },
+    {
+      "matchId": "约旦 vs 阿根廷",
+      "fixtureId": 537401,
+      "matchLabel": "约旦 vs 阿根廷",
+      "homeScore": 1,
+      "awayScore": 3,
+      "halfTimeHomeScore": 0,
+      "halfTimeAwayScore": 2,
+      "settledAt": "2026-06-28T02:00:00Z"
+    },
+    {
+      "matchId": "阿尔及利亚 vs 奥地利",
+      "fixtureId": 537402,
+      "matchLabel": "阿尔及利亚 vs 奥地利",
+      "homeScore": 3,
+      "awayScore": 3,
+      "halfTimeHomeScore": 1,
+      "halfTimeAwayScore": 1,
+      "settledAt": "2026-06-28T02:00:00Z"
     }
   ]
 }

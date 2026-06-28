@@ -53,3 +53,13 @@ def test_post_break_volume_creates_a_bounded_tactical_signal():
     assert "second_break_attack_increase" in labels
     assert attack == 0.05
     assert defense == 0.0
+
+
+def test_distortion_events_are_classified_for_credibility_gates():
+    events = extract_timeline([
+        commentary("12'", "Goal! Team A 1, Team B 0. Player One (Team A) converts the penalty."),
+        commentary("31'", "Own Goal by Player Two, Team B. Team A 2, Team B 0."),
+        commentary("55'", "Goalkeeping error by Player Three (Team B)."),
+    ], ["Team A", "Team B"], "https://example.test/commentary")
+
+    assert [event["type"] for event in events] == ["penalty_goal", "own_goal", "keeper_error"]

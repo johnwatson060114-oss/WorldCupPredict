@@ -13,6 +13,10 @@ EVENT_PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
     ("second_yellow", re.compile(r"\bsecond yellow card\b", re.I)),
     ("red_card", re.compile(r"\bshown the red card\b|\bcard upgraded\b", re.I)),
     ("yellow_card", re.compile(r"\bshown the yellow card\b", re.I)),
+    ("penalty_goal", re.compile(r"\bconverts the penalty\b|\bpenalty[ -]shootout\b", re.I)),
+    ("penalty_event", re.compile(r"\bpenalty (?:conceded|won|awarded|saved|missed)\b", re.I)),
+    ("own_goal", re.compile(r"\bown goal\b", re.I)),
+    ("keeper_error", re.compile(r"\bgoalkeeping error\b|\bkeeper error\b|\berror by the goalkeeper\b", re.I)),
     ("goal", re.compile(r"^Goal!", re.I)),
     ("chance_saved", re.compile(r"^Attempt saved\.", re.I)),
     ("chance_missed", re.compile(r"^Attempt missed\.", re.I)),
@@ -20,8 +24,18 @@ EVENT_PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
     ("woodwork", re.compile(r"\bhits? the (left |right )?(post|bar|crossbar)\b", re.I)),
 )
 
-ATTACKING_EVENT_TYPES = {"goal", "chance_saved", "chance_missed", "chance_blocked", "woodwork"}
+ATTACKING_EVENT_TYPES = {
+    "goal",
+    "penalty_goal",
+    "penalty_event",
+    "own_goal",
+    "chance_saved",
+    "chance_missed",
+    "chance_blocked",
+    "woodwork",
+}
 CARD_EVENT_TYPES = {"yellow_card", "second_yellow", "red_card"}
+DISTORTION_EVENT_TYPES = {"penalty_goal", "penalty_event", "own_goal", "keeper_error"}
 
 
 def minute_value(display_value: str) -> float:
@@ -132,7 +146,11 @@ def extract_timeline(
             "team": team,
             "player": player,
             "replacedPlayer": outgoing,
-            "summary": _short_summary(event_type, player, outgoing),
+            "summary": (
+                f"{player or 'unknown'}: {event_type}"
+                if event_type in DISTORTION_EVENT_TYPES
+                else _short_summary(event_type, player, outgoing)
+            ),
             "setPiece": (
                 "following a corner" in text.lower()
                 or "following a set piece" in text.lower()

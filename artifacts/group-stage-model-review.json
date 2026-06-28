@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-06-28T13:34:06+08:00",
+  "scope": {
+    "scheduledGroupMatches": 72,
+    "completedGroupMatches": 72,
+    "archivedMinuteByMinuteMatches": 72,
+    "teams": 48
+  },
+  "method": {
+    "policy": "group_stage_commentary_gated_v1",
+    "predictionTarget": "90_minutes",
+    "scoreResidualsDirectlyAdjustStrength": false,
+    "objectiveAdmissionRule": "result direction must be supported by sustained pressure in commentary events",
+    "distortionLabels": [
+      "red_card_distorted",
+      "penalty_own_goal_or_keeper_error_distorted",
+      "finishing_variance",
+      "score_outpaced_event_pressure",
+      "third_round_context_reviewed"
+    ],
+    "matchdayWeights": {
+      "1": 0.25,
+      "2": 0.35,
+      "3": 0.4
+    },
+    "objectiveMultiplier": 1.5,
+    "tacticalDirectionCap": 0.05,
+    "combinedTeamDirectionCap": 0.18
+  },
+  "admissionSummary": {
+    "teamMatchProfiles": 144,
+    "objectiveEnabled": 54,
+    "tacticalEnabled": 99,
+    "coverage": 1.0,
+    "credibilityLabelCounts": {
+      "commentary_supported": 26,
+      "finishing_variance": 16,
+      "low_event_conversion": 8,
+      "penalty_own_goal_or_keeper_error_distorted": 42,
+      "red_card_distorted": 14,
+      "score_outpaced_event_pressure": 23,
+      "sustained_pressure": 60,
+      "third_round_context_reviewed": 48
+    }
+  },
+  "sources": {
+    "officialResults": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+    "minuteByMinuteProvider": "ESPN match commentary",
+    "copyrightPolicy": "structured event coordinates and short factual summaries only"
+  }
+}

@@ -34,6 +34,8 @@ from .football_data import (
     team_flag,
 )
 from .factor_gate import apply_factor_admissions, load_factor_admissions
+from .group_stage_form import apply_group_stage_form, load_group_stage_profiles
+from .knockout_context import apply_knockout_context
 from .model import (
     adjust_xg,
     estimate_from_recent_results,
@@ -125,8 +127,11 @@ def local_snapshot_paths() -> list[Path]:
         ROOT / "pipeline" / "data" / "demo_matches.json",
         ROOT / "pipeline" / "data" / "fifa-2026-discipline.json",
         ROOT / "pipeline" / "data" / "factor-admissions.json",
+        ROOT / "pipeline" / "data" / "group-stage-performance.json",
         ROOT / "pipeline" / "data" / "two-round-performance.json",
         ROOT / "pipeline" / "data" / "tournament-availability.json",
+        ROOT / "public" / "data" / "group-stage-match-timelines.json",
+        ROOT / "public" / "data" / "group-stage-model-review.json",
         ROOT / "public" / "data" / "two-round-match-timelines.json",
         ROOT / "pipeline" / "data" / "fifa-2026-annex-c.json",
         ROOT / "pipeline" / "data" / "model-policy.json",
@@ -331,6 +336,8 @@ def football_data_seeds(client: FootballDataClient, target_date: str, all_matche
             "home_flag": team_flag(home),
             "away_flag": team_flag(away),
             "venue": venue_name,
+            "stage": fixture.get("stage"),
+            "group": fixture.get("group"),
             "base_xg": [home_xg, away_xg],
             "model_decomposition": {
                 "totalGoalsProvider": "hierarchical_goal_model" if ratings_complete and gm is not None else "elo_fallback",
@@ -807,7 +814,9 @@ def build_match(
             "adjustedExpectedGoals": {"home": round(home_xg, 4), "away": round(away_xg, 4)},
         }),
         "tournamentForm": seed.get("tournament_form"),
+        "groupStageForm": seed.get("group_stage_form"),
         "currentTournament": seed.get("current_tournament"),
+        "knockoutContext": seed.get("knockout_context"),
         "drawRisk": draw_risk_result.metadata,
         "outcomeProbabilities": {key: round(value, 5) for key, value in outcomes.items()},
         "outcomeDecision": {
@@ -1104,6 +1113,7 @@ def main() -> None:
 
     availability_records = load_availability()
     factor_admissions = load_factor_admissions()
+    group_stage_profiles = load_group_stage_profiles()
     two_round_profiles = load_two_round_profiles()
 
     def prepare_seeds(batch: list[dict], batch_date: str) -> None:
@@ -1111,8 +1121,12 @@ def main() -> None:
         apply_intelligence(batch, load_daily_intelligence(batch_date, generated_at))
         apply_lineup_impacts(batch)
         apply_factor_admissions(batch, factor_admissions)
-        apply_two_round_form(batch, batch_date, two_round_profiles)
+        if group_stage_profiles:
+            apply_group_stage_form(batch, batch_date, group_stage_profiles)
+        else:
+            apply_two_round_form(batch, batch_date, two_round_profiles)
         apply_current_tournament_context(batch, all_football_matches)
+        apply_knockout_context(batch, batch_date, all_football_matches)
 
     prepare_seeds(seeds, target_date)
 
@@ -1137,6 +1151,12 @@ def main() -> None:
 
     simulation_inputs = []
     simulation_seeds = seeds + future_parlay_seeds
+
+    def late_multiplier(seed: dict[str, Any], side: str, field: str) -> float:
+        current = (seed.get("current_tournament") or {}).get(f"{side}LatePressure", {})
+        knockout = (seed.get("knockout_context") or {}).get(f"{side}LatePressure", {})
+        return float(current.get(field, 1.0)) * float(knockout.get(field, 1.0))
+
     for seed in simulation_seeds:
         market = match_seed_to_market(seed, all_markets)
         if market is not None:
@@ -1154,18 +1174,10 @@ def main() -> None:
             group=seed.get("group"),
             stage_complete=bool(seed.get("stage_complete", False)),
             parameter_samples=tuple(tuple(sample) for sample in seed.get("parameter_samples", [])),
-            home_late_attack_multiplier=float(
-                (seed.get("current_tournament") or {}).get("homeLatePressure", {}).get("attackMultiplier", 1.0)
-            ),
-            away_late_attack_multiplier=float(
-                (seed.get("current_tournament") or {}).get("awayLatePressure", {}).get("attackMultiplier", 1.0)
-            ),
-            home_late_defensive_risk_multiplier=float(
-                (seed.get("current_tournament") or {}).get("homeLatePressure", {}).get("defensiveRiskMultiplier", 1.0)
-            ),
-            away_late_defensive_risk_multiplier=float(
-                (seed.get("current_tournament") or {}).get("awayLatePressure", {}).get("defensiveRiskMultiplier", 1.0)
-            ),
+            home_late_attack_multiplier=late_multiplier(seed, "home", "attackMultiplier"),
+            away_late_attack_multiplier=late_multiplier(seed, "away", "attackMultiplier"),
+            home_late_defensive_risk_multiplier=late_multiplier(seed, "home", "defensiveRiskMultiplier"),
+            away_late_defensive_risk_multiplier=late_multiplier(seed, "away", "defensiveRiskMultiplier"),
         ))
     simulation = simulate_tournament(
         simulation_inputs,
