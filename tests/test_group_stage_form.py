@@ -6,6 +6,7 @@ from pipeline.group_stage_form import (
     MAX_TEAM_DIRECTION_XG,
     apply_group_stage_form,
     load_group_stage_profiles,
+    resolve_group_stage_profile,
     team_group_stage_adjustment,
 )
 
@@ -88,3 +89,9 @@ def test_group_stage_evidence_cannot_smuggle_direct_xg(tmp_path):
 
     with pytest.raises(ValueError, match="group-stage evidence"):
         load_group_stage_profiles(path)
+
+
+def test_group_stage_profile_alias_matches_short_team_name():
+    profiles = {"\u963f\u5c14\u53ca\u5229\u4e9a": {"team": "\u963f\u5c14\u53ca\u5229\u4e9a"}}
+
+    assert resolve_group_stage_profile(profiles, "\u963f\u5c14\u53ca\u5229") == profiles["\u963f\u5c14\u53ca\u5229\u4e9a"]

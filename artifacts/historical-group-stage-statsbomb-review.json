@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-06-29T14:00:37+08:00",
+  "scope": {
+    "competition": "FIFA World Cup",
+    "years": [
+      2018,
+      2022
+    ],
+    "groupStageMatches": 96,
+    "teamProfiles": 64,
+    "teamMatchProfiles": 192,
+    "archivedEventMatches": 96
+  },
+  "method": {
+    "policy": "historical_statsbomb_group_stage_xg_v1",
+    "predictionTarget": "90_minutes",
+    "objectiveAdmissionRule": "non-penalty StatsBomb xG must support the direction; score residuals alone never enter",
+    "distortionLabels": [
+      "red_card_distorted",
+      "penalty_distorted",
+      "own_goal_distorted",
+      "finishing_variance",
+      "score_outpaced_event_quality",
+      "result_against_event_quality",
+      "third_round_context_reviewed"
+    ],
+    "objectiveReliability": 0.055
+  },
+  "admissionSummary": {
+    "objectiveEnabled": 166,
+    "tacticalEnabled": 0,
+    "credibilityLabelCounts": {
+      "event_quality_supported": 35,
+      "finishing_variance": 3,
+      "non_penalty_xg_above_reference": 37,
+      "own_goal_distorted": 22,
+      "penalty_distorted": 68,
+      "red_card_distorted": 10,
+      "result_against_event_quality": 15,
+      "score_outpaced_event_quality": 14,
+      "sustained_shot_pressure": 53,
+      "third_round_context_reviewed": 64,
+      "xg_quality_edge": 60
+    }
+  },
+  "sources": {
+    "eventProvider": "StatsBomb Open Data",
+    "eventRepository": "https://github.com/statsbomb/open-data",
+    "license": "https://github.com/statsbomb/open-data/blob/master/LICENSE.pdf"
+  }
+}

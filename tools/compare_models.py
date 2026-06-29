@@ -25,6 +25,8 @@ BEIJING = ZoneInfo("Asia/Shanghai")
 OUT_HISTORICAL = ROOT / "artifacts" / "model-comparison-2018-2022.json"
 OUT_2026 = ROOT / "artifacts" / "model-comparison-2026-group-stage.json"
 OUTCOME_LABELS = {"鑳?": "home", "骞?": "draw", "璐?": "away"}
+OUTCOME_LABELS = {"\u80dc": "home", "\u5e73": "draw", "\u8d1f": "away"}
+HISTORICAL_GROUP_PROFILE_PATH = ROOT / "pipeline" / "data" / "historical-group-stage-performance-statsbomb.json"
 GOAL_ORDER = ["0", "1", "2", "3", "4", "5", "6", "7+"]
 MODELS = ("current_production", "candidate_knockout_ready", "no_tournament_form")
 
@@ -123,8 +125,24 @@ def summary_table(rows: list[dict[str, Any]]) -> dict[str, Any]:
     }
 
 
+def load_historical_group_stage_profiles(
+    path: Path = HISTORICAL_GROUP_PROFILE_PATH,
+) -> dict[str, dict[str, dict[str, Any]]]:
+    if not path.exists():
+        return {}
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    by_year: dict[str, dict[str, dict[str, Any]]] = defaultdict(dict)
+    for profile in payload.get("teams", []):
+        year = str(profile.get("year") or profile.get("sourceYear") or "")
+        team = str(profile.get("team") or "").strip()
+        if year and team:
+            by_year[year][team] = profile
+    return dict(by_year)
+
+
 def chronological_elo_backtest_rows(matches: Iterable[dict[str, Any]]) -> list[dict[str, Any]]:
     ordered = sorted(matches, key=lambda item: item["kickoff_utc"])
+    historical_group_profiles = load_historical_group_stage_profiles()
     world_cup_by_year: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for match in ordered:
         year = str(match["date"])[:4]
@@ -157,6 +175,19 @@ def chronological_elo_backtest_rows(matches: Iterable[dict[str, Any]]) -> list[d
             elo_home, elo_away = allocate_total_goals_by_elo(total, round(home_rating), round(away_rating))
             current_xg = (elo_home, elo_away)
             candidate_xg = current_xg
+            year_profiles = historical_group_profiles.get(year, {})
+            if year_profiles:
+                seed = {
+                    "home_team": match["home_team"],
+                    "away_team": match["away_team"],
+                    "base_xg": [candidate_xg[0], candidate_xg[1]],
+                    "model_decomposition": {},
+                    "coverage": 0.95,
+                    "stage": "GROUP_STAGE" if stage == "group" else "KNOCKOUT",
+                    "group": "HISTORICAL_GROUP_STAGE_ARCHIVE",
+                }
+                apply_group_stage_form([seed], str(match["date"]), year_profiles)
+                candidate_xg = (float(seed["base_xg"][0]), float(seed["base_xg"][1]))
             if stage == "knockout":
                 adjusted = knockout_adjust_xg(*candidate_xg)
                 candidate_xg = (adjusted.home_xg, adjusted.away_xg)
@@ -325,8 +356,8 @@ def adoption_decision(historical_summary: dict[str, Any]) -> dict[str, Any]:
             "and the other metric cannot worsen by more than 0.010."
         ),
         "note": (
-            "2018/2022 have no reproducible minute-by-minute commentary archive here, "
-            "so the group-stage form layer is disabled for historical validation."
+            "2018/2022 replay a reproducible StatsBomb Open Data event-xG group-stage layer; "
+            "only matches before the forecast date are visible, and penalties, red cards and own goals reduce credibility."
         ),
     }
 
@@ -365,7 +396,7 @@ def main() -> None:
         },
         "models": {
             "current_production": "hierarchical_poisson + chronological Elo allocation; market calibration unavailable historically",
-            "candidate_knockout_ready": "current_production + conservative knockout 90-minute context; group-stage form disabled historically",
+            "candidate_knockout_ready": "current_production + StatsBomb event-gated group-stage state when available + conservative knockout 90-minute context",
             "no_tournament_form": "hierarchical_poisson long-term goal model without tournament-state or Elo allocation",
         },
         "metrics": historical_summary,

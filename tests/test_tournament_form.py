@@ -9,6 +9,7 @@ from pipeline.tournament_form import (
     form_decay,
     load_first_round_profiles,
     team_form_adjustment,
+    tournament_matchday_index,
 )
 
 
@@ -36,6 +37,13 @@ def test_team_form_caps_each_direction_and_decays_after_two_matchdays():
     assert form_decay(1, 3) == 1.0
     assert 0 < later.attack_delta < early.attack_delta
     assert CURRENT_TOURNAMENT_FORM_MULTIPLIER > 1
+
+
+def test_tournament_matchday_index_supports_historical_world_cups():
+    assert tournament_matchday_index("2018-06-19") == 1
+    assert tournament_matchday_index("2018-06-30") == 4
+    assert tournament_matchday_index("2022-12-03") == 4
+    assert tournament_matchday_index("2026-06-29") == 4
 
 
 def test_form_layer_adjusts_xg_without_mutating_long_term_baseline():

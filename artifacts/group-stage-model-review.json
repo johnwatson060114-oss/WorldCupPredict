@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-28T13:34:06+08:00",
+  "generatedAt": "2026-06-29T13:09:36+08:00",
   "scope": {
     "scheduledGroupMatches": 72,
     "completedGroupMatches": 72,
@@ -11,12 +11,14 @@
     "policy": "group_stage_commentary_gated_v1",
     "predictionTarget": "90_minutes",
     "scoreResidualsDirectlyAdjustStrength": false,
-    "objectiveAdmissionRule": "result direction must be supported by sustained pressure in commentary events",
+    "objectiveAdmissionRule": "event-quality pseudo-xG must support the direction; the score alone is never sufficient",
+    "pseudoXgPolicy": "shot-like commentary events are converted to conservative pseudo-xG; penalties, own goals and keeper errors are distortion evidence only",
     "distortionLabels": [
       "red_card_distorted",
       "penalty_own_goal_or_keeper_error_distorted",
       "finishing_variance",
       "score_outpaced_event_pressure",
+      "result_against_event_quality",
       "third_round_context_reviewed"
     ],
     "matchdayWeights": {
@@ -30,15 +32,17 @@
   },
   "admissionSummary": {
     "teamMatchProfiles": 144,
-    "objectiveEnabled": 54,
-    "tacticalEnabled": 99,
+    "objectiveEnabled": 97,
+    "tacticalEnabled": 97,
     "coverage": 1.0,
     "credibilityLabelCounts": {
-      "commentary_supported": 26,
+      "commentary_supported": 21,
       "finishing_variance": 16,
       "low_event_conversion": 8,
       "penalty_own_goal_or_keeper_error_distorted": 42,
+      "pseudo_xg_pressure_edge": 63,
       "red_card_distorted": 14,
+      "result_against_event_quality": 14,
       "score_outpaced_event_pressure": 23,
       "sustained_pressure": 60,
       "third_round_context_reviewed": 48

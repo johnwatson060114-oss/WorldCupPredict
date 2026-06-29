@@ -15,6 +15,36 @@ MAX_TEAM_DIRECTION_XG = 0.18
 CURRENT_TOURNAMENT_FORM_MULTIPLIER = 1.5
 DECAY_START_MATCHDAYS = 2
 DECAY_HALF_LIFE_MATCHDAYS = 2.0
+TOURNAMENT_BOUNDARIES_BY_YEAR = {
+    2018: (
+        date(2018, 6, 19),
+        date(2018, 6, 24),
+        date(2018, 6, 28),
+        date(2018, 7, 3),
+        date(2018, 7, 7),
+        date(2018, 7, 11),
+        date(2018, 7, 15),
+    ),
+    2022: (
+        date(2022, 11, 24),
+        date(2022, 11, 28),
+        date(2022, 12, 2),
+        date(2022, 12, 6),
+        date(2022, 12, 10),
+        date(2022, 12, 14),
+        date(2022, 12, 18),
+    ),
+    2026: (
+        date(2026, 6, 17),
+        date(2026, 6, 23),
+        date(2026, 6, 27),
+        date(2026, 7, 3),
+        date(2026, 7, 7),
+        date(2026, 7, 11),
+        date(2026, 7, 15),
+        date(2026, 7, 19),
+    ),
+}
 
 FORBIDDEN_COMMENTARY_KEYS = {
     "xg_adjustment",
@@ -61,24 +91,14 @@ def _contains_forbidden_commentary_key(value: Any) -> bool:
 
 
 def tournament_matchday_index(target_date: str) -> int:
-    """Map the 2026 tournament calendar to a coarse team matchday index.
+    """Map World Cup calendar dates to a coarse team matchday index.
 
-    Group matchday one ended on June 17, matchday two on June 23, and
-    matchday three on June 27. Knockout rounds continue the index so a
-    first-round signal starts fading after two subsequent team matchdays.
+    Knockout rounds continue the index so a group-stage signal starts fading
+    only after two subsequent team matchdays.
     """
 
     current = date.fromisoformat(target_date)
-    boundaries = (
-        date(2026, 6, 17),
-        date(2026, 6, 23),
-        date(2026, 6, 27),
-        date(2026, 7, 3),
-        date(2026, 7, 7),
-        date(2026, 7, 11),
-        date(2026, 7, 15),
-        date(2026, 7, 19),
-    )
+    boundaries = TOURNAMENT_BOUNDARIES_BY_YEAR.get(current.year, TOURNAMENT_BOUNDARIES_BY_YEAR[2026])
     for index, boundary in enumerate(boundaries, start=1):
         if current <= boundary:
             return index

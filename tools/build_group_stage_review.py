@@ -40,6 +40,19 @@ ESPN_SUMMARY_URL = "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.wo
 USER_AGENT = "WorldCupPredict/0.1 (group-stage event-gated importer)"
 OBJECTIVE_MULTIPLIER = 1.5
 PRESSURE_EVENT_TYPES = ATTACKING_EVENT_TYPES - DISTORTION_EVENT_TYPES
+PSEUDO_XG_WEIGHTS = {
+    "goal": 0.10,
+    "chance_saved": 0.11,
+    "chance_missed": 0.06,
+    "chance_blocked": 0.04,
+    "woodwork": 0.18,
+    # These events explain the score but should not be treated as proof of
+    # open-play attacking strength.
+    "penalty_goal": 0.0,
+    "penalty_event": 0.0,
+    "own_goal": 0.0,
+    "keeper_error": 0.0,
+}
 
 
 def clamp(value: float, low: float, high: float) -> float:
@@ -226,6 +239,14 @@ def _team_event_count(match: dict[str, Any], team: str, event_types: set[str]) -
     )
 
 
+def _team_pseudo_xg(match: dict[str, Any], team: str) -> float:
+    return sum(
+        PSEUDO_XG_WEIGHTS.get(str(event.get("type")), 0.0)
+        for event in match.get("events", [])
+        if event.get("team") == team
+    )
+
+
 def credibility_gate(
     match: dict[str, Any],
     team: str,
@@ -233,6 +254,8 @@ def credibility_gate(
     goals_for: int,
     goals_against: int,
     expected_for: float,
+    pseudo_xg_for: float,
+    pseudo_xg_against: float,
 ) -> tuple[float, list[str]]:
     events = match.get("events", [])
     if not events:
@@ -256,6 +279,11 @@ def credibility_gate(
     if goals_for > expected_for + 0.75 and team_pressure <= opponent_pressure:
         weight *= 0.55
         labels.append("score_outpaced_event_pressure")
+    if goals_for > goals_against and pseudo_xg_for + 0.10 < pseudo_xg_against:
+        weight *= 0.60
+        labels.append("result_against_event_quality")
+    if pseudo_xg_for - pseudo_xg_against >= 0.25:
+        labels.append("pseudo_xg_pressure_edge")
     if match.get("matchday") == 3:
         weight *= 0.75
         labels.append("third_round_context_reviewed")
@@ -284,6 +312,8 @@ def team_match_profile(
     expected_for, expected_against = (
         (expected_home, expected_away) if home_side else (expected_away, expected_home)
     )
+    pseudo_xg_for = _team_pseudo_xg(match, team)
+    pseudo_xg_against = _team_pseudo_xg(match, opponent)
     credibility_weight, credibility_labels = credibility_gate(
         match,
         team,
@@ -291,11 +321,17 @@ def team_match_profile(
         goals_for,
         goals_against,
         expected_for,
+        pseudo_xg_for,
+        pseudo_xg_against,
     )
-    objective_enabled = credibility_weight >= 0.25 and "sustained_pressure" in credibility_labels
-    objective_reliability = 0.025 * credibility_weight
-    attack_delta = clamp((goals_for - expected_for) * objective_reliability, -0.08, 0.08)
-    defense_delta = clamp((expected_against - goals_against) * objective_reliability, -0.08, 0.08)
+    objective_enabled = credibility_weight >= 0.25 and (
+        "pseudo_xg_pressure_edge" in credibility_labels
+        or pseudo_xg_for >= expected_for + 0.15
+        or pseudo_xg_against <= expected_against - 0.15
+    )
+    objective_reliability = 0.055 * credibility_weight
+    attack_delta = clamp((pseudo_xg_for - expected_for) * objective_reliability, -0.08, 0.08)
+    defense_delta = clamp((expected_against - pseudo_xg_against) * objective_reliability, -0.08, 0.08)
     labels = list(match["tacticalSummary"].get("teams", {}).get(team, {}).get("labels", []))
     opponent_labels = list(match["tacticalSummary"].get("teams", {}).get(opponent, {}).get("labels", []))
     tactical_attack, _ = tactical_direction(labels)
@@ -312,6 +348,9 @@ def team_match_profile(
         "scoreAgainst": goals_against,
         "expectedGoalsReference": round(expected_for, 4),
         "expectedGoalsAgainstReference": round(expected_against, 4),
+        "pseudoXgFor": round(pseudo_xg_for, 4),
+        "pseudoXgAgainst": round(pseudo_xg_against, 4),
+        "pseudoXgEdge": round(pseudo_xg_for - pseudo_xg_against, 4),
         "credibilityWeight": credibility_weight,
         "credibilityLabels": credibility_labels,
         "evidenceConfidence": min(1.0, credibility_weight + 0.10 if match["events"] else 0.0),
@@ -323,7 +362,7 @@ def team_match_profile(
             "opponentStrengthAdjusted": True,
             "admissionStatus": "enabled" if objective_enabled else "observation_only",
             "admissionReason": (
-                "event_distribution_supports_result_direction"
+                "pseudo_xg_event_quality_supports_direction"
                 if objective_enabled else "score_result_not_sufficient_without_event_support"
             ),
         },
@@ -339,6 +378,7 @@ def team_match_profile(
             "eventCount": len(match["events"]),
             "teamPressureEvents": _team_event_count(match, team, PRESSURE_EVENT_TYPES),
             "opponentPressureEvents": _team_event_count(match, opponent, PRESSURE_EVENT_TYPES),
+            "pseudoXgWeights": PSEUDO_XG_WEIGHTS,
             "coolingBreakMinutes": match["tacticalSummary"].get("coolingBreakMinutes", []),
             "sources": match["sources"],
         },
@@ -407,12 +447,14 @@ def review_payload(matches: list[dict[str, Any]], profiles: list[dict[str, Any]]
             "policy": "group_stage_commentary_gated_v1",
             "predictionTarget": "90_minutes",
             "scoreResidualsDirectlyAdjustStrength": False,
-            "objectiveAdmissionRule": "result direction must be supported by sustained pressure in commentary events",
+            "objectiveAdmissionRule": "event-quality pseudo-xG must support the direction; the score alone is never sufficient",
+            "pseudoXgPolicy": "shot-like commentary events are converted to conservative pseudo-xG; penalties, own goals and keeper errors are distortion evidence only",
             "distortionLabels": [
                 "red_card_distorted",
                 "penalty_own_goal_or_keeper_error_distorted",
                 "finishing_variance",
                 "score_outpaced_event_pressure",
+                "result_against_event_quality",
                 "third_round_context_reviewed",
             ],
             "matchdayWeights": {"1": 0.25, "2": 0.35, "3": 0.40},

@@ -17,6 +17,9 @@ MAX_TACTICAL_DIRECTION_XG = 0.05
 MAX_TEAM_DIRECTION_XG = 0.18
 OBJECTIVE_MULTIPLIER = 1.5
 FORBIDDEN_EVIDENCE_KEYS = {"xg_adjustment", "probability_delta", "home_probability", "away_probability"}
+TEAM_PROFILE_ALIASES = {
+    "\u963f\u5c14\u53ca\u5229": "\u963f\u5c14\u53ca\u5229\u4e9a",
+}
 
 
 def _contains_forbidden_key(value: Any) -> bool:
@@ -93,6 +96,13 @@ def load_group_stage_profiles(path: Path = DEFAULT_PROFILE_PATH) -> dict[str, di
             raise ValueError("group-stage team profile is missing team")
         profiles[team] = profile
     return profiles
+
+
+def resolve_group_stage_profile(
+    profiles: dict[str, dict[str, Any]],
+    team: str,
+) -> dict[str, Any] | None:
+    return profiles.get(team) or profiles.get(TEAM_PROFILE_ALIASES.get(team, ""))
 
 
 def team_group_stage_adjustment(
@@ -219,8 +229,8 @@ def apply_group_stage_form(
     for seed in seeds:
         home_team = str(seed["home_team"])
         away_team = str(seed["away_team"])
-        home = team_group_stage_adjustment(home_team, profiles.get(home_team), target_date)
-        away = team_group_stage_adjustment(away_team, profiles.get(away_team), target_date)
+        home = team_group_stage_adjustment(home_team, resolve_group_stage_profile(profiles, home_team), target_date)
+        away = team_group_stage_adjustment(away_team, resolve_group_stage_profile(profiles, away_team), target_date)
         base_home, base_away = map(float, seed["base_xg"])
         objective_home = home.objective_attack - away.objective_defense
         objective_away = away.objective_attack - home.objective_defense

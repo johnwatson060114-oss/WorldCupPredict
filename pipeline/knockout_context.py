@@ -78,17 +78,14 @@ def knockout_adjust_xg(home_xg: float, away_xg: float) -> KnockoutAdjustment:
     total = home_xg + away_xg
 
     if favorite_probability < 0.52:
-        home_net = -0.015
-        away_net = -0.015
-        policy = "knockout_tension_close_game_v1"
+        home_net = -0.010
+        away_net = -0.010
+        policy = "knockout_tension_close_game_v2"
         home_attack = away_attack = 0.995
         home_risk = away_risk = 1.01
     else:
-        favorite_net = -0.015
-        underdog_net = 0.030
-        if total >= 3.10:
-            favorite_net -= 0.010
-            underdog_net -= 0.010
+        favorite_net = 0.0
+        underdog_net = 0.0
         if favorite_side == "home":
             home_net, away_net = favorite_net, underdog_net
             home_attack, away_attack = 0.985, 1.060

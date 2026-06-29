@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-28T13:36:46+08:00",
+  "generatedAt": "2026-06-29T14:01:02+08:00",
   "scope": {
     "tournament": "FIFA World Cup 2026",
-    "matches": 64,
+    "matches": 65,
     "predictionTarget": "90_minutes",
     "policy": "rolling archived forecasts joined to settled local results",
-    "historicalAdoptionDecision": "current_production"
+    "historicalAdoptionDecision": "candidate_knockout_ready"
   },
   "models": {
     "current_production": "archived public/data/history outcomeProbabilities",
@@ -16,73 +16,73 @@
   "metrics": {
     "overall": {
       "current_production": {
-        "matches": 64,
-        "hits": 37,
-        "accuracy": 0.578125,
-        "logLoss": 0.8753098449509865,
-        "rps": 0.1611349452398437,
-        "brier": 0.5176293710171876,
-        "calibrationError": 0.09427083333333335,
-        "totalGoalsExactBucketAccuracy": 0.140625,
-        "totalGoalsAdjacentCoreAccuracy": 0.28125
+        "matches": 65,
+        "hits": 38,
+        "accuracy": 0.5846153846153846,
+        "logLoss": 0.8704804608514163,
+        "rps": 0.16029591927999998,
+        "brier": 0.5139884303030771,
+        "calibrationError": 0.09256410256410257,
+        "totalGoalsExactBucketAccuracy": 0.13846153846153847,
+        "totalGoalsAdjacentCoreAccuracy": 0.27692307692307694
       },
       "candidate_knockout_ready": {
-        "matches": 64,
-        "hits": 36,
-        "accuracy": 0.5625,
-        "logLoss": 0.8715993810985044,
-        "rps": 0.1614283477776402,
-        "brier": 0.5171633604630322,
-        "calibrationError": 0.08750000000000002,
-        "totalGoalsExactBucketAccuracy": 0.140625,
-        "totalGoalsAdjacentCoreAccuracy": 0.28125
+        "matches": 65,
+        "hits": 39,
+        "accuracy": 0.6,
+        "logLoss": 0.8546233343969935,
+        "rps": 0.1566721704185798,
+        "brier": 0.5073306937332739,
+        "calibrationError": 0.07205128205128206,
+        "totalGoalsExactBucketAccuracy": 0.12307692307692308,
+        "totalGoalsAdjacentCoreAccuracy": 0.3076923076923077
       },
       "no_tournament_form": {
-        "matches": 64,
-        "hits": 36,
-        "accuracy": 0.5625,
-        "logLoss": 0.8705187941449354,
-        "rps": 0.1610129887445446,
-        "brier": 0.5163070517296211,
-        "calibrationError": 0.08541666666666667,
-        "totalGoalsExactBucketAccuracy": 0.140625,
-        "totalGoalsAdjacentCoreAccuracy": 0.265625
+        "matches": 65,
+        "hits": 37,
+        "accuracy": 0.5692307692307692,
+        "logLoss": 0.8648516762247879,
+        "rps": 0.15989590305231363,
+        "brier": 0.5120455591277349,
+        "calibrationError": 0.08282051282051284,
+        "totalGoalsExactBucketAccuracy": 0.13846153846153847,
+        "totalGoalsAdjacentCoreAccuracy": 0.26153846153846155
       }
     },
     "byYear": {
       "2026": {
         "current_production": {
-          "matches": 64,
-          "hits": 37,
-          "accuracy": 0.578125,
-          "logLoss": 0.8753098449509865,
-          "rps": 0.1611349452398437,
-          "brier": 0.5176293710171876,
-          "calibrationError": 0.09427083333333335,
-          "totalGoalsExactBucketAccuracy": 0.140625,
-          "totalGoalsAdjacentCoreAccuracy": 0.28125
+          "matches": 65,
+          "hits": 38,
+          "accuracy": 0.5846153846153846,
+          "logLoss": 0.8704804608514163,
+          "rps": 0.16029591927999998,
+          "brier": 0.5139884303030771,
+          "calibrationError": 0.09256410256410257,
+          "totalGoalsExactBucketAccuracy": 0.13846153846153847,
+          "totalGoalsAdjacentCoreAccuracy": 0.27692307692307694
         },
         "candidate_knockout_ready": {
-          "matches": 64,
-          "hits": 36,
-          "accuracy": 0.5625,
-          "logLoss": 0.8715993810985044,
-          "rps": 0.1614283477776402,
-          "brier": 0.5171633604630322,
-          "calibrationError": 0.08750000000000002,
-          "totalGoalsExactBucketAccuracy": 0.140625,
-          "totalGoalsAdjacentCoreAccuracy": 0.28125
+          "matches": 65,
+          "hits": 39,
+          "accuracy": 0.6,
+          "logLoss": 0.8546233343969935,
+          "rps": 0.1566721704185798,
+          "brier": 0.5073306937332739,
+          "calibrationError": 0.07205128205128206,
+          "totalGoalsExactBucketAccuracy": 0.12307692307692308,
+          "totalGoalsAdjacentCoreAccuracy": 0.3076923076923077
         },
         "no_tournament_form": {
-          "matches": 64,
-          "hits": 36,
-          "accuracy": 0.5625,
-          "logLoss": 0.8705187941449354,
-          "rps": 0.1610129887445446,
-          "brier": 0.5163070517296211,
-          "calibrationError": 0.08541666666666667,
-          "totalGoalsExactBucketAccuracy": 0.140625,
-          "totalGoalsAdjacentCoreAccuracy": 0.265625
+          "matches": 65,
+          "hits": 37,
+          "accuracy": 0.5692307692307692,
+          "logLoss": 0.8648516762247879,
+          "rps": 0.15989590305231363,
+          "brier": 0.5120455591277349,
+          "calibrationError": 0.08282051282051284,
+          "totalGoalsExactBucketAccuracy": 0.13846153846153847,
+          "totalGoalsAdjacentCoreAccuracy": 0.26153846153846155
         }
       }
     },
@@ -101,14 +101,14 @@
         },
         "candidate_knockout_ready": {
           "matches": 64,
-          "hits": 36,
-          "accuracy": 0.5625,
-          "logLoss": 0.8715993810985044,
-          "rps": 0.1614283477776402,
-          "brier": 0.5171633604630322,
-          "calibrationError": 0.08750000000000002,
-          "totalGoalsExactBucketAccuracy": 0.140625,
-          "totalGoalsAdjacentCoreAccuracy": 0.28125
+          "hits": 38,
+          "accuracy": 0.59375,
+          "logLoss": 0.8596107845220217,
+          "rps": 0.15759557080109593,
+          "brier": 0.5111357363065893,
+          "calibrationError": 0.07291666666666666,
+          "totalGoalsExactBucketAccuracy": 0.125,
+          "totalGoalsAdjacentCoreAccuracy": 0.296875
         },
         "no_tournament_form": {
           "matches": 64,
@@ -120,6 +120,41 @@
           "calibrationError": 0.08541666666666667,
           "totalGoalsExactBucketAccuracy": 0.140625,
           "totalGoalsAdjacentCoreAccuracy": 0.265625
+        }
+      },
+      "knockout": {
+        "current_production": {
+          "matches": 1,
+          "hits": 1,
+          "accuracy": 1.0,
+          "logLoss": 0.5613998784789246,
+          "rps": 0.10659825785000002,
+          "brier": 0.28096822460000004,
+          "calibrationError": 0.2833333333333333,
+          "totalGoalsExactBucketAccuracy": 0.0,
+          "totalGoalsAdjacentCoreAccuracy": 0.0
+        },
+        "candidate_knockout_ready": {
+          "matches": 1,
+          "hits": 1,
+          "accuracy": 1.0,
+          "logLoss": 0.5354265263951826,
+          "rps": 0.09757454593754826,
+          "brier": 0.2638079690410886,
+          "calibrationError": 0.2833333333333333,
+          "totalGoalsExactBucketAccuracy": 0.0,
+          "totalGoalsAdjacentCoreAccuracy": 1.0
+        },
+        "no_tournament_form": {
+          "matches": 1,
+          "hits": 1,
+          "accuracy": 1.0,
+          "logLoss": 0.5021561293353446,
+          "rps": 0.08840241874953306,
+          "brier": 0.23931003260701825,
+          "calibrationError": 0.25,
+          "totalGoalsExactBucketAccuracy": 0.0,
+          "totalGoalsAdjacentCoreAccuracy": 0.0
         }
       }
     },
@@ -138,12 +173,12 @@
         },
         "candidate_knockout_ready": {
           "matches": 18,
-          "hits": 4,
-          "accuracy": 0.2222222222222222,
-          "logLoss": 1.1088918889498085,
-          "rps": 0.22669625406670507,
-          "brier": 0.6736523873401592,
-          "calibrationError": 0.09074074074074073,
+          "hits": 6,
+          "accuracy": 0.3333333333333333,
+          "logLoss": 1.0696259773135266,
+          "rps": 0.21315978820257003,
+          "brier": 0.6471620944155044,
+          "calibrationError": 0.07222222222222222,
           "totalGoalsExactBucketAccuracy": 0.16666666666666666,
           "totalGoalsAdjacentCoreAccuracy": 0.2777777777777778
         },
@@ -161,37 +196,37 @@
       },
       "strong_favorite": {
         "current_production": {
-          "matches": 46,
-          "hits": 32,
-          "accuracy": 0.6956521739130435,
-          "logLoss": 0.7892945051372088,
-          "rps": 0.13658323238804349,
-          "brier": 0.4598546080630436,
-          "calibrationError": 0.09999999999999998,
-          "totalGoalsExactBucketAccuracy": 0.13043478260869565,
-          "totalGoalsAdjacentCoreAccuracy": 0.2826086956521739
+          "matches": 47,
+          "hits": 33,
+          "accuracy": 0.7021276595744681,
+          "logLoss": 0.7844456832934156,
+          "rps": 0.13594525420638298,
+          "brier": 0.45604851479787245,
+          "calibrationError": 0.0975177304964539,
+          "totalGoalsExactBucketAccuracy": 0.1276595744680851,
+          "totalGoalsAdjacentCoreAccuracy": 0.2765957446808511
         },
         "candidate_knockout_ready": {
-          "matches": 46,
-          "hits": 32,
-          "accuracy": 0.6956521739130435,
-          "logLoss": 0.7787457910697334,
-          "rps": 0.13588873227322357,
-          "brier": 0.45592852385893917,
-          "calibrationError": 0.08623188405797101,
-          "totalGoalsExactBucketAccuracy": 0.13043478260869565,
-          "totalGoalsAdjacentCoreAccuracy": 0.2826086956521739
+          "matches": 47,
+          "hits": 33,
+          "accuracy": 0.7021276595744681,
+          "logLoss": 0.7722818966842786,
+          "rps": 0.1350386146715197,
+          "brier": 0.4537782424081644,
+          "calibrationError": 0.08404255319148937,
+          "totalGoalsExactBucketAccuracy": 0.10638297872340426,
+          "totalGoalsAdjacentCoreAccuracy": 0.3191489361702128
         },
         "no_tournament_form": {
-          "matches": 46,
-          "hits": 32,
-          "accuracy": 0.6956521739130435,
-          "logLoss": 0.7782646016501293,
-          "rps": 0.1355683517145763,
-          "brier": 0.4552930589223273,
-          "calibrationError": 0.09565217391304345,
-          "totalGoalsExactBucketAccuracy": 0.13043478260869565,
-          "totalGoalsAdjacentCoreAccuracy": 0.2826086956521739
+          "matches": 47,
+          "hits": 33,
+          "accuracy": 0.7021276595744681,
+          "logLoss": 0.7723899533030063,
+          "rps": 0.13456482122595834,
+          "brier": 0.45069767538370376,
+          "calibrationError": 0.0918439716312057,
+          "totalGoalsExactBucketAccuracy": 0.1276595744680851,
+          "totalGoalsAdjacentCoreAccuracy": 0.2765957446808511
         }
       }
     }
@@ -372,13 +407,13 @@
           "prediction": "away",
           "hit": false,
           "probabilities": {
-            "home": 0.09222467,
-            "draw": 0.21053582,
-            "away": 0.69723951
+            "home": 0.14959866,
+            "draw": 0.24523974,
+            "away": 0.6051616
           },
           "xg": {
-            "home": 0.58,
-            "away": 1.97
+            "home": 0.7716,
+            "away": 1.7784
           },
           "totalGoals": {
             "actualBucket": "1",
@@ -1082,13 +1117,13 @@
           "prediction": "home",
           "hit": false,
           "probabilities": {
-            "home": 0.43005818,
-            "draw": 0.29552156,
-            "away": 0.27442026
+            "home": 0.53381029,
+            "draw": 0.2760941,
+            "away": 0.19009561
           },
           "xg": {
-            "home": 1.34,
-            "away": 1.02
+            "home": 1.54,
+            "away": 0.82
           },
           "totalGoals": {
             "actualBucket": "2",
@@ -1292,16 +1327,16 @@
           }
         },
         "candidate_knockout_ready": {
-          "prediction": "home",
-          "hit": false,
+          "prediction": "away",
+          "hit": true,
           "probabilities": {
-            "home": 0.35396367,
-            "draw": 0.3018804,
-            "away": 0.34415593
+            "home": 0.25996824,
+            "draw": 0.29492475,
+            "away": 0.44510701
           },
           "xg": {
-            "home": 1.18,
-            "away": 1.16
+            "home": 0.98,
+            "away": 1.36
           },
           "totalGoals": {
             "actualBucket": "4",
@@ -1366,19 +1401,19 @@
           "prediction": "home",
           "hit": false,
           "probabilities": {
-            "home": 0.63981021,
-            "draw": 0.23715564,
-            "away": 0.12303414
+            "home": 0.66145104,
+            "draw": 0.23523477,
+            "away": 0.10331419
           },
           "xg": {
-            "home": 1.8049,
-            "away": 0.6637
+            "home": 1.7743,
+            "away": 0.5596
           },
           "totalGoals": {
             "actualBucket": "2",
             "predictedBucket": "2",
             "exactHit": true,
-            "adjacentCore": "2-3",
+            "adjacentCore": "1-2",
             "adjacentCoreHit": true
           }
         },
@@ -1437,13 +1472,13 @@
           "prediction": "home",
           "hit": true,
           "probabilities": {
-            "home": 0.70032063,
-            "draw": 0.1990366,
-            "away": 0.10064276
+            "home": 0.69996442,
+            "draw": 0.20316527,
+            "away": 0.09687031
           },
           "xg": {
-            "home": 2.1311,
-            "away": 0.6897
+            "home": 2.0675,
+            "away": 0.643
           },
           "totalGoals": {
             "actualBucket": "5",
@@ -1508,13 +1543,13 @@
           "prediction": "home",
           "hit": true,
           "probabilities": {
-            "home": 0.77356498,
-            "draw": 0.16936425,
-            "away": 0.05707076
+            "home": 0.77905339,
+            "draw": 0.16913605,
+            "away": 0.05181057
           },
           "xg": {
-            "home": 2.2286,
-            "away": 0.4652
+            "home": 2.1896,
+            "away": 0.4185
           },
           "totalGoals": {
             "actualBucket": "6",
@@ -1579,13 +1614,13 @@
           "prediction": "home",
           "hit": true,
           "probabilities": {
-            "home": 0.4854754,
-            "draw": 0.28943751,
-            "away": 0.22508709
+            "home": 0.47623901,
+            "draw": 0.2924766,
+            "away": 0.23128439
           },
           "xg": {
-            "home": 1.4282,
-            "away": 0.8921
+            "home": 1.4013,
+            "away": 0.8997
           },
           "totalGoals": {
             "actualBucket": "1",
@@ -1650,13 +1685,13 @@
           "prediction": "away",
           "hit": false,
           "probabilities": {
-            "home": 0.26947203,
-            "draw": 0.27950383,
-            "away": 0.45102414
+            "home": 0.35321412,
+            "draw": 0.28566523,
+            "away": 0.36112065
           },
           "xg": {
-            "home": 1.091,
-            "away": 1.479
+            "home": 1.2786,
+            "away": 1.2954
           },
           "totalGoals": {
             "actualBucket": "2",
@@ -1721,20 +1756,20 @@
           "prediction": "away",
           "hit": true,
           "probabilities": {
-            "home": 0.27020009,
-            "draw": 0.2950382,
-            "away": 0.43476171
+            "home": 0.25019714,
+            "draw": 0.29450688,
+            "away": 0.45529598
           },
           "xg": {
-            "home": 1.0101,
-            "away": 1.3486
+            "home": 0.9517,
+            "away": 1.3721
           },
           "totalGoals": {
             "actualBucket": "1",
             "predictedBucket": "2",
             "exactHit": false,
-            "adjacentCore": "2-3",
-            "adjacentCoreHit": false
+            "adjacentCore": "1-2",
+            "adjacentCoreHit": true
           }
         },
         "no_tournament_form": {
@@ -1792,13 +1827,13 @@
           "prediction": "home",
           "hit": true,
           "probabilities": {
-            "home": 0.85542888,
-            "draw": 0.12310921,
-            "away": 0.02146191
+            "home": 0.84633908,
+            "draw": 0.13026941,
+            "away": 0.02339151
           },
           "xg": {
-            "home": 2.4223,
-            "away": 0.2397
+            "home": 2.358,
+            "away": 0.245
           },
           "totalGoals": {
             "actualBucket": "3",
@@ -1863,13 +1898,13 @@
           "prediction": "home",
           "hit": false,
           "probabilities": {
-            "home": 0.46469337,
-            "draw": 0.26535523,
-            "away": 0.2699514
+            "home": 0.46239173,
+            "draw": 0.27023618,
+            "away": 0.26737209
           },
           "xg": {
-            "home": 1.6108,
-            "away": 1.1788
+            "home": 1.5658,
+            "away": 1.1391
           },
           "totalGoals": {
             "actualBucket": "1",
@@ -1934,13 +1969,13 @@
           "prediction": "home",
           "hit": true,
           "probabilities": {
-            "home": 0.64624122,
-            "draw": 0.19608579,
-            "away": 0.15767299
+            "home": 0.66446407,
+            "draw": 0.19530296,
+            "away": 0.14023297
           },
           "xg": {
-            "home": 2.3803,
-            "away": 1.1214
+            "home": 2.3356,
+            "away": 1.0024
           },
           "totalGoals": {
             "actualBucket": "6",
@@ -2005,13 +2040,13 @@
           "prediction": "home",
           "hit": true,
           "probabilities": {
-            "home": 0.64782924,
-            "draw": 0.2153707,
-            "away": 0.13680006
+            "home": 0.65274333,
+            "draw": 0.21535396,
+            "away": 0.13190271
           },
           "xg": {
-            "home": 2.0653,
-            "away": 0.8496
+            "home": 2.052,
+            "away": 0.8185
           },
           "totalGoals": {
             "actualBucket": "3",
@@ -2076,13 +2111,13 @@
           "prediction": "home",
           "hit": false,
           "probabilities": {
-            "home": 0.85975324,
-            "draw": 0.12542287,
-            "away": 0.01482389
+            "home": 0.86462149,
+            "draw": 0.12156307,
+            "away": 0.01381544
           },
           "xg": {
-            "home": 2.2896,
-            "away": 0.1557
+            "home": 2.3184,
+            "away": 0.15
           },
           "totalGoals": {
             "actualBucket": "0",
@@ -2147,13 +2182,13 @@
           "prediction": "away",
           "hit": true,
           "probabilities": {
-            "home": 0.05555442,
-            "draw": 0.15745885,
-            "away": 0.78698673
+            "home": 0.05435339,
+            "draw": 0.16069027,
+            "away": 0.78495634
           },
           "xg": {
-            "home": 0.4996,
-            "away": 2.3688
+            "home": 0.474,
+            "away": 2.3148
           },
           "totalGoals": {
             "actualBucket": "4",
@@ -2218,13 +2253,13 @@
           "prediction": "home",
           "hit": true,
           "probabilities": {
-            "home": 0.85326957,
-            "draw": 0.12915453,
-            "away": 0.0175759
+            "home": 0.83706577,
+            "draw": 0.13853818,
+            "away": 0.02439605
           },
           "xg": {
-            "home": 2.2875,
-            "away": 0.1807
+            "home": 2.2707,
+            "away": 0.2368
           },
           "totalGoals": {
             "actualBucket": "4",
@@ -2289,13 +2324,13 @@
           "prediction": "home",
           "hit": false,
           "probabilities": {
-            "home": 0.55185563,
-            "draw": 0.24477786,
-            "away": 0.20336651
+            "home": 0.55367531,
+            "draw": 0.24497274,
+            "away": 0.20135196
           },
           "xg": {
-            "home": 1.8368,
-            "away": 1.0393
+            "home": 1.8337,
+            "away": 1.0286
           },
           "totalGoals": {
             "actualBucket": "0",
@@ -2360,13 +2395,13 @@
           "prediction": "home",
           "hit": false,
           "probabilities": {
-            "home": 0.70409384,
-            "draw": 0.23219466,
-            "away": 0.0637115
+            "home": 0.70185667,
+            "draw": 0.23513242,
+            "away": 0.06301091
           },
           "xg": {
-            "home": 1.6798,
-            "away": 0.3408
+            "home": 1.6567,
+            "away": 0.3312
           },
           "totalGoals": {
             "actualBucket": "4",
@@ -2431,13 +2466,13 @@
           "prediction": "away",
           "hit": true,
           "probabilities": {
-            "home": 0.20119984,
-            "draw": 0.26301387,
-            "away": 0.53578629
+            "home": 0.21853907,
+            "draw": 0.27777046,
+            "away": 0.50369047
           },
           "xg": {
-            "home": 0.9272,
-            "away": 1.6555
+            "home": 0.9228,
+            "away": 1.5252
           },
           "totalGoals": {
             "actualBucket": "4",
@@ -2502,13 +2537,13 @@
           "prediction": "home",
           "hit": true,
           "probabilities": {
-            "home": 0.73345185,
-            "draw": 0.19257226,
-            "away": 0.07397589
+            "home": 0.72116907,
+            "draw": 0.20435096,
+            "away": 0.07447997
           },
           "xg": {
-            "home": 2.0736,
-            "away": 0.5178
+            "home": 1.9552,
+            "away": 0.4801
           },
           "totalGoals": {
             "actualBucket": "2",
@@ -2573,12 +2608,12 @@
           "prediction": "home",
           "hit": true,
           "probabilities": {
-            "home": 0.89726617,
-            "draw": 0.09263155,
-            "away": 0.01010228
+            "home": 0.89288777,
+            "draw": 0.09652098,
+            "away": 0.01059125
           },
           "xg": {
-            "home": 2.6341,
+            "home": 2.5864,
             "away": 0.15
           },
           "totalGoals": {
@@ -2644,13 +2679,13 @@
           "prediction": "home",
           "hit": true,
           "probabilities": {
-            "home": 0.51793546,
-            "draw": 0.24726466,
-            "away": 0.23479988
+            "home": 0.48088555,
+            "draw": 0.2587282,
+            "away": 0.26038625
           },
           "xg": {
-            "home": 1.8167,
-            "away": 1.164
+            "home": 1.685,
+            "away": 1.1883
           },
           "totalGoals": {
             "actualBucket": "5",
@@ -2712,23 +2747,23 @@
           }
         },
         "candidate_knockout_ready": {
-          "prediction": "home",
-          "hit": false,
+          "prediction": "away",
+          "hit": true,
           "probabilities": {
-            "home": 0.41879889,
-            "draw": 0.29055903,
-            "away": 0.29064208
+            "home": 0.30016064,
+            "draw": 0.30157974,
+            "away": 0.39825962
           },
           "xg": {
-            "home": 1.36,
-            "away": 1.0925
+            "home": 1.0593,
+            "away": 1.2589
           },
           "totalGoals": {
             "actualBucket": "3",
             "predictedBucket": "2",
             "exactHit": false,
-            "adjacentCore": "2-3",
-            "adjacentCoreHit": true
+            "adjacentCore": "1-2",
+            "adjacentCoreHit": false
           }
         },
         "no_tournament_form": {
@@ -2786,13 +2821,13 @@
           "prediction": "home",
           "hit": true,
           "probabilities": {
-            "home": 0.59947941,
-            "draw": 0.22537593,
-            "away": 0.17514466
+            "home": 0.57467516,
+            "draw": 0.23404173,
+            "away": 0.19128311
           },
           "xg": {
-            "home": 2.0275,
-            "away": 1.0175
+            "home": 1.9465,
+            "away": 1.0478
           },
           "totalGoals": {
             "actualBucket": "5",
@@ -2857,13 +2892,13 @@
           "prediction": "home",
           "hit": false,
           "probabilities": {
-            "home": 0.55595314,
-            "draw": 0.21197908,
-            "away": 0.23206778
+            "home": 0.55652996,
+            "draw": 0.21342526,
+            "away": 0.23004478
           },
           "xg": {
-            "home": 2.27,
-            "away": 1.44
+            "home": 2.247,
+            "away": 1.4151
           },
           "totalGoals": {
             "actualBucket": "0",
@@ -2928,13 +2963,13 @@
           "prediction": "home",
           "hit": false,
           "probabilities": {
-            "home": 0.43575418,
-            "draw": 0.24146891,
-            "away": 0.3227769
+            "home": 0.44544307,
+            "draw": 0.24214455,
+            "away": 0.31241238
           },
           "xg": {
-            "home": 1.8153,
-            "away": 1.5443
+            "home": 1.8216,
+            "away": 1.5036
           },
           "totalGoals": {
             "actualBucket": "1",
@@ -2999,13 +3034,13 @@
           "prediction": "home",
           "hit": true,
           "probabilities": {
-            "home": 0.64692995,
-            "draw": 0.20390108,
-            "away": 0.14916897
+            "home": 0.63235711,
+            "draw": 0.21188272,
+            "away": 0.15576017
           },
           "xg": {
-            "home": 2.2441,
-            "away": 1.0032
+            "home": 2.1564,
+            "away": 0.9913
           },
           "totalGoals": {
             "actualBucket": "1",
@@ -3070,13 +3105,13 @@
           "prediction": "home",
           "hit": true,
           "probabilities": {
-            "home": 0.52431062,
-            "draw": 0.24931829,
-            "away": 0.22637108
+            "home": 0.52634808,
+            "draw": 0.25336226,
+            "away": 0.22028966
           },
           "xg": {
-            "home": 1.7946,
-            "away": 1.1141
+            "home": 1.752,
+            "away": 1.0625
           },
           "totalGoals": {
             "actualBucket": "3",
@@ -3141,13 +3176,13 @@
           "prediction": "home",
           "hit": true,
           "probabilities": {
-            "home": 0.60139134,
-            "draw": 0.22535719,
-            "away": 0.17325147
+            "home": 0.6103268,
+            "draw": 0.22680973,
+            "away": 0.16286347
           },
           "xg": {
-            "home": 2.0248,
-            "away": 1.007
+            "home": 1.9908,
+            "away": 0.9393
           },
           "totalGoals": {
             "actualBucket": "4",
@@ -3212,19 +3247,19 @@
           "prediction": "home",
           "hit": true,
           "probabilities": {
-            "home": 0.80028309,
-            "draw": 0.16071961,
-            "away": 0.03899731
+            "home": 0.79074238,
+            "draw": 0.17005591,
+            "away": 0.03920171
           },
           "xg": {
-            "home": 2.1752,
-            "away": 0.3271
+            "home": 2.078,
+            "away": 0.305
           },
           "totalGoals": {
             "actualBucket": "6",
             "predictedBucket": "2",
             "exactHit": false,
-            "adjacentCore": "2-3",
+            "adjacentCore": "1-2",
             "adjacentCoreHit": false
           }
         },
@@ -3283,20 +3318,20 @@
           "prediction": "away",
           "hit": true,
           "probabilities": {
-            "home": 0.10447653,
-            "draw": 0.22874456,
-            "away": 0.66677891
+            "home": 0.11494798,
+            "draw": 0.25203248,
+            "away": 0.63301954
           },
           "xg": {
-            "home": 0.589,
-            "away": 1.8354
+            "home": 0.5676,
+            "away": 1.661
           },
           "totalGoals": {
             "actualBucket": "3",
             "predictedBucket": "2",
             "exactHit": false,
-            "adjacentCore": "2-3",
-            "adjacentCoreHit": true
+            "adjacentCore": "1-2",
+            "adjacentCoreHit": false
           }
         },
         "no_tournament_form": {
@@ -3354,13 +3389,13 @@
           "prediction": "away",
           "hit": true,
           "probabilities": {
-            "home": 0.11095287,
-            "draw": 0.24203836,
-            "away": 0.64700877
+            "home": 0.11935805,
+            "draw": 0.26200993,
+            "away": 0.61863202
           },
           "xg": {
-            "home": 0.5792,
-            "away": 1.7347
+            "home": 0.5586,
+            "away": 1.5915
           },
           "totalGoals": {
             "actualBucket": "3",
@@ -3425,20 +3460,20 @@
           "prediction": "away",
           "hit": false,
           "probabilities": {
-            "home": 0.09285852,
-            "draw": 0.21999645,
-            "away": 0.68714502
+            "home": 0.08685461,
+            "draw": 0.2253625,
+            "away": 0.68778289
           },
           "xg": {
-            "home": 0.5492,
-            "away": 1.8799
+            "home": 0.4944,
+            "away": 1.8111
           },
           "totalGoals": {
             "actualBucket": "1",
             "predictedBucket": "2",
             "exactHit": false,
-            "adjacentCore": "2-3",
-            "adjacentCoreHit": false
+            "adjacentCore": "1-2",
+            "adjacentCoreHit": true
           }
         },
         "no_tournament_form": {
@@ -3496,13 +3531,13 @@
           "prediction": "away",
           "hit": false,
           "probabilities": {
-            "home": 0.2165409,
-            "draw": 0.27745468,
-            "away": 0.50600442
+            "home": 0.22568256,
+            "draw": 0.28308745,
+            "away": 0.49122999
           },
           "xg": {
-            "home": 0.9169,
-            "away": 1.5284
+            "home": 0.9235,
+            "away": 1.4787
           },
           "totalGoals": {
             "actualBucket": "3",
@@ -3567,13 +3602,13 @@
           "prediction": "away",
           "hit": true,
           "probabilities": {
-            "home": 0.07192098,
-            "draw": 0.18313207,
-            "away": 0.74494695
+            "home": 0.07159284,
+            "draw": 0.18528242,
+            "away": 0.74312474
           },
           "xg": {
-            "home": 0.5387,
-            "away": 2.1681
+            "home": 0.5273,
+            "away": 2.1411
           },
           "totalGoals": {
             "actualBucket": "2",
@@ -3638,17 +3673,17 @@
           "prediction": "away",
           "hit": true,
           "probabilities": {
-            "home": 0.03099246,
-            "draw": 0.1121553,
-            "away": 0.85685224
+            "home": 0.03176648,
+            "draw": 0.12162644,
+            "away": 0.84660708
           },
           "xg": {
-            "home": 0.4119,
-            "away": 2.7656
+            "home": 0.3792,
+            "away": 2.6129
           },
           "totalGoals": {
             "actualBucket": "4",
-            "predictedBucket": "3",
+            "predictedBucket": "2",
             "exactHit": false,
             "adjacentCore": "2-3",
             "adjacentCoreHit": false
@@ -3709,20 +3744,20 @@
           "prediction": "home",
           "hit": false,
           "probabilities": {
-            "home": 0.66688369,
-            "draw": 0.1841385,
-            "away": 0.14897781
+            "home": 0.65683567,
+            "draw": 0.19321545,
+            "away": 0.14994888
           },
           "xg": {
-            "home": 2.5393,
-            "away": 1.1592
+            "home": 2.3992,
+            "away": 1.0892
           },
           "totalGoals": {
             "actualBucket": "2",
             "predictedBucket": "3",
             "exactHit": false,
-            "adjacentCore": "3-4",
-            "adjacentCoreHit": false
+            "adjacentCore": "2-3",
+            "adjacentCoreHit": true
           }
         },
         "no_tournament_form": {
@@ -3780,13 +3815,13 @@
           "prediction": "away",
           "hit": false,
           "probabilities": {
-            "home": 0.34592968,
-            "draw": 0.26439068,
-            "away": 0.38967964
+            "home": 0.35782841,
+            "draw": 0.26398047,
+            "away": 0.37819112
           },
           "xg": {
-            "home": 1.4148,
-            "away": 1.5133
+            "home": 1.4474,
+            "away": 1.4933
           },
           "totalGoals": {
             "actualBucket": "5",
@@ -3851,19 +3886,19 @@
           "prediction": "home",
           "hit": false,
           "probabilities": {
-            "home": 0.36509059,
-            "draw": 0.29724689,
-            "away": 0.33766252
+            "home": 0.36520748,
+            "draw": 0.30697704,
+            "away": 0.32781547
           },
           "xg": {
-            "home": 1.2292,
-            "away": 1.1726
+            "home": 1.1723,
+            "away": 1.097
           },
           "totalGoals": {
             "actualBucket": "0",
             "predictedBucket": "2",
             "exactHit": false,
-            "adjacentCore": "2-3",
+            "adjacentCore": "1-2",
             "adjacentCoreHit": false
           }
         },
@@ -3922,13 +3957,13 @@
           "prediction": "away",
           "hit": true,
           "probabilities": {
-            "home": 0.20313159,
-            "draw": 0.22619361,
-            "away": 0.5706748
+            "home": 0.21797952,
+            "draw": 0.23395535,
+            "away": 0.54806513
           },
           "xg": {
-            "home": 1.1639,
-            "away": 2.0516
+            "home": 1.1816,
+            "away": 1.9666
           },
           "totalGoals": {
             "actualBucket": "5",
@@ -3993,13 +4028,13 @@
           "prediction": "home",
           "hit": true,
           "probabilities": {
-            "home": 0.67455788,
-            "draw": 0.2194336,
-            "away": 0.10600852
+            "home": 0.69082322,
+            "draw": 0.21931169,
+            "away": 0.08986509
           },
           "xg": {
-            "home": 1.9295,
-            "away": 0.6344
+            "home": 1.8758,
+            "away": 0.5326
           },
           "totalGoals": {
             "actualBucket": "5",
@@ -4064,13 +4099,13 @@
           "prediction": "away",
           "hit": true,
           "probabilities": {
-            "home": 0.06781739,
-            "draw": 0.18877201,
-            "away": 0.7434106
+            "home": 0.0629405,
+            "draw": 0.19317428,
+            "away": 0.74388521
           },
           "xg": {
-            "home": 0.4841,
-            "away": 2.0799
+            "home": 0.432,
+            "away": 2.0061
           },
           "totalGoals": {
             "actualBucket": "1",
@@ -4135,13 +4170,13 @@
           "prediction": "home",
           "hit": false,
           "probabilities": {
-            "home": 0.38783019,
-            "draw": 0.3139725,
-            "away": 0.2981973
+            "home": 0.36502511,
+            "draw": 0.31934254,
+            "away": 0.31563235
           },
           "xg": {
-            "home": 1.171,
-            "away": 0.9939
+            "home": 1.1058,
+            "away": 1.0093
           },
           "totalGoals": {
             "actualBucket": "0",
@@ -4206,13 +4241,13 @@
           "prediction": "away",
           "hit": true,
           "probabilities": {
-            "home": 0.06438041,
-            "draw": 0.15875266,
-            "away": 0.77686693
+            "home": 0.06741348,
+            "draw": 0.16618248,
+            "away": 0.76640404
           },
           "xg": {
-            "home": 0.5823,
-            "away": 2.4301
+            "home": 0.5748,
+            "away": 2.3509
           },
           "totalGoals": {
             "actualBucket": "6",
@@ -4277,13 +4312,13 @@
           "prediction": "away",
           "hit": false,
           "probabilities": {
-            "home": 0.30444953,
-            "draw": 0.30168291,
-            "away": 0.39386756
+            "home": 0.30481074,
+            "draw": 0.30333111,
+            "away": 0.39185814
           },
           "xg": {
-            "home": 1.0696,
-            "away": 1.2516
+            "home": 1.062,
+            "away": 1.2384
           },
           "totalGoals": {
             "actualBucket": "2",
@@ -4348,18 +4383,18 @@
           "prediction": "away",
           "hit": true,
           "probabilities": {
-            "home": 0.11646245,
-            "draw": 0.29110424,
-            "away": 0.59243332
+            "home": 0.1296212,
+            "draw": 0.30475314,
+            "away": 0.56562566
           },
           "xg": {
-            "home": 0.4708,
-            "away": 1.3924
+            "home": 0.4921,
+            "away": 1.3207
           },
           "totalGoals": {
             "actualBucket": "2",
-            "predictedBucket": "2",
-            "exactHit": true,
+            "predictedBucket": "1",
+            "exactHit": false,
             "adjacentCore": "1-2",
             "adjacentCoreHit": true
           }
@@ -4419,13 +4454,13 @@
           "prediction": "away",
           "hit": false,
           "probabilities": {
-            "home": 0.26825547,
-            "draw": 0.32885164,
-            "away": 0.40289289
+            "home": 0.22585346,
+            "draw": 0.34056469,
+            "away": 0.43358185
           },
           "xg": {
-            "home": 0.8578,
-            "away": 1.1142
+            "home": 0.7084,
+            "away": 1.0913
           },
           "totalGoals": {
             "actualBucket": "3",
@@ -4490,13 +4525,13 @@
           "prediction": "away",
           "hit": false,
           "probabilities": {
-            "home": 0.25390596,
-            "draw": 0.23406665,
-            "away": 0.51202739
+            "home": 0.24725969,
+            "draw": 0.23376329,
+            "away": 0.51897701
           },
           "xg": {
-            "home": 1.3466,
-            "away": 1.9694
+            "home": 1.3197,
+            "away": 1.9742
           },
           "totalGoals": {
             "actualBucket": "0",
@@ -4561,13 +4596,13 @@
           "prediction": "home",
           "hit": true,
           "probabilities": {
-            "home": 0.70197369,
-            "draw": 0.19490859,
-            "away": 0.10311772
+            "home": 0.69696608,
+            "draw": 0.19965507,
+            "away": 0.10337884
           },
           "xg": {
-            "home": 2.1921,
-            "away": 0.7292
+            "home": 2.1356,
+            "away": 0.7065
           },
           "totalGoals": {
             "actualBucket": "4",
@@ -4632,17 +4667,17 @@
           "prediction": "away",
           "hit": true,
           "probabilities": {
-            "home": 0.0651212,
-            "draw": 0.15578359,
-            "away": 0.77909521
+            "home": 0.07204557,
+            "draw": 0.16762937,
+            "away": 0.76032505
           },
           "xg": {
-            "home": 0.6056,
-            "away": 2.4806
+            "home": 0.6112,
+            "away": 2.3667
           },
           "totalGoals": {
             "actualBucket": "4",
-            "predictedBucket": "3",
+            "predictedBucket": "2",
             "exactHit": false,
             "adjacentCore": "2-3",
             "adjacentCoreHit": false
@@ -4703,13 +4738,13 @@
           "prediction": "away",
           "hit": false,
           "probabilities": {
-            "home": 0.31246742,
-            "draw": 0.25752147,
-            "away": 0.4300111
+            "home": 0.31782128,
+            "draw": 0.26559257,
+            "away": 0.41658614
           },
           "xg": {
-            "home": 1.3745,
-            "away": 1.6432
+            "home": 1.3294,
+            "away": 1.5503
           },
           "totalGoals": {
             "actualBucket": "6",
@@ -4733,6 +4768,77 @@
           },
           "totalGoals": {
             "actualBucket": "6",
+            "predictedBucket": "2",
+            "exactHit": false,
+            "adjacentCore": "2-3",
+            "adjacentCoreHit": false
+          }
+        }
+      }
+    },
+    {
+      "date": "2026-06-29",
+      "year": "2026",
+      "stage": "knockout",
+      "strengthTier": "strong_favorite",
+      "match": "南非 vs 加拿大",
+      "score": "0-1",
+      "actual": "away",
+      "models": {
+        "current_production": {
+          "prediction": "away",
+          "hit": true,
+          "probabilities": {
+            "home": 0.16926,
+            "draw": 0.26033,
+            "away": 0.57041
+          },
+          "xg": {
+            "home": 0.78,
+            "away": 1.66
+          },
+          "totalGoals": {
+            "actualBucket": "1",
+            "predictedBucket": "2",
+            "exactHit": false,
+            "adjacentCore": "2-3",
+            "adjacentCoreHit": false
+          }
+        },
+        "candidate_knockout_ready": {
+          "prediction": "away",
+          "hit": true,
+          "probabilities": {
+            "home": 0.15255207,
+            "draw": 0.26202839,
+            "away": 0.58541954
+          },
+          "xg": {
+            "home": 0.7154,
+            "away": 1.6337
+          },
+          "totalGoals": {
+            "actualBucket": "1",
+            "predictedBucket": "2",
+            "exactHit": false,
+            "adjacentCore": "1-2",
+            "adjacentCoreHit": true
+          }
+        },
+        "no_tournament_form": {
+          "prediction": "away",
+          "hit": true,
+          "probabilities": {
+            "home": 0.1447653,
+            "draw": 0.25001039,
+            "away": 0.60522431
+          },
+          "xg": {
+            "home": 0.7263,
+            "away": 1.7276
+          },
+          "totalGoals": {
+            "actualBucket": "1",
             "predictedBucket": "2",
             "exactHit": false,
             "adjacentCore": "2-3",
