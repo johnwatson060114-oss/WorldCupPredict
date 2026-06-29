@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-28T16:25:33+08:00",
+  "generatedAt": "2026-06-29T17:52:52+08:00",
   "matches": [
     {
       "matchId": "537327",
@@ -2639,6 +2639,16 @@
       "halfTimeHomeScore": 1,
       "halfTimeAwayScore": 1,
       "settledAt": "2026-06-28T02:00:00Z"
+    },
+    {
+      "matchId": "南非 vs 加拿大",
+      "fixtureId": 537417,
+      "matchLabel": "南非 vs 加拿大",
+      "homeScore": 0,
+      "awayScore": 1,
+      "halfTimeHomeScore": 0,
+      "halfTimeAwayScore": 0,
+      "settledAt": "2026-06-28T19:00:00Z"
     }
   ]
 }
