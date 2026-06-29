@@ -57,6 +57,7 @@ from .market_guard import apply_market_strength_calibration, market_conflict_dec
 from .portfolio import build_portfolios
 from .provenance import build_snapshot_manifest
 from .simulation import MatchSimulationInput, TournamentSimulation, simulate_tournament
+from .score_calibration import apply_score_matrix_calibration
 from .sporttery import SportteryMatch, fetch_sporttery, filter_by_beijing_date, load_fixture
 from .two_round_form import apply_two_round_form, load_two_round_profiles
 from .weather import OpenMeteoClient
@@ -645,6 +646,16 @@ def build_match(
     simulated = simulation.summaries.get(match_id) if simulation else None
     matrix = simulated["matrix"] if simulated else score_matrix(home_xg, away_xg)
     raw_outcomes = simulated["outcomes"] if simulated else outcome_probabilities(matrix)
+    score_calibration = apply_score_matrix_calibration(
+        matrix,
+        {
+            **seed,
+            "base_xg": [home_xg, away_xg],
+        },
+        home_xg,
+        away_xg,
+    )
+    calibrated_score_matrix = score_calibration.matrix
     draw_risk_result = apply_draw_risk_layer(
         raw_outcomes,
         {
@@ -658,7 +669,7 @@ def build_match(
         outcomes,
         seed,
     )
-    scores = top_scores(matrix)
+    scores = top_scores(calibrated_score_matrix)
     likely_score, likely_score_source = select_likely_score(scores, outcome_decision, seed)
     outcome_decision = align_mutual_draw_decision_with_score(
         outcome_decision,
@@ -737,7 +748,7 @@ def build_match(
     else:
         # Degraded mode: generate simulated odds for every standard score
         for sel in ALL_STANDARD_SCORES:
-            prob = score_selection_probability(sel, matrix, set())
+            prob = score_selection_probability(sel, calibrated_score_matrix, set())
             if prob > 0.0001:
                 sampled = _sample_odds(prob)
                 if sampled:
@@ -747,13 +758,13 @@ def build_match(
     score_market = normalized_market_probabilities(score_odds) if score_odds else {}
     score_selections = list(score_odds) if score_odds else ALL_STANDARD_SCORES[:8]
     score_model = {
-        selection: score_selection_probability(selection, matrix, {sel for sel in score_odds if ":" in sel})
+        selection: score_selection_probability(selection, calibrated_score_matrix, {sel for sel in score_odds if ":" in sel})
         for selection in score_selections
     }
     score_conflict = market_conflict_decision(score_model, score_market)
     for selection in score_selections:
         odds = score_odds.get(selection)
-        probability = score_selection_probability(selection, matrix, offered_scores)
+        probability = score_selection_probability(selection, calibrated_score_matrix, offered_scores)
         quotes.append(make_quote(
             match_id, label, "比分", selection, odds, probability, score_market.get(selection),
             coverage, False, generated_at, stars=stars, excluded_scores=sorted(offered_scores),
@@ -762,7 +773,7 @@ def build_match(
             metadata=quote_metadata,
         ))
 
-    total_goal_model = total_goals_probabilities(matrix)
+    total_goal_model = total_goals_probabilities(calibrated_score_matrix)
     if market:
         total_goal_odds = market.total_goals
     else:
@@ -817,6 +828,7 @@ def build_match(
         "groupStageForm": seed.get("group_stage_form"),
         "currentTournament": seed.get("current_tournament"),
         "knockoutContext": seed.get("knockout_context"),
+        "scoreCalibration": score_calibration.metadata,
         "drawRisk": draw_risk_result.metadata,
         "outcomeProbabilities": {key: round(value, 5) for key, value in outcomes.items()},
         "outcomeDecision": {

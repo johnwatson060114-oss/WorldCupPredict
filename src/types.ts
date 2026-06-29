@@ -158,6 +158,19 @@ export interface MatchForecast {
     awayLatePressure: { attackMultiplier: number; defensiveRiskMultiplier: number }
     applied: boolean
   } | null
+  scoreCalibration?: {
+    applied: boolean
+    reason?: string
+    policy?: string
+    profile?: string
+    sourceKnockoutPolicy?: string
+    favoriteSide?: 'home' | 'away' | null
+    totalGoalWeights?: Record<string, number>
+    expectedTotalGoalsBefore?: number
+    expectedTotalGoalsAfter?: number
+    outcomePreserved?: boolean
+    maxCellDelta?: number
+  }
   outcomeProbabilities: { home: number; draw: number; away: number }
   outcomeDecision?: {
     threshold: number
