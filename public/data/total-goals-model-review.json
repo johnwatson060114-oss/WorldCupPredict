@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-29T17:54:41+08:00",
+  "generatedAt": "2026-06-30T13:02:48+08:00",
   "timezone": "Asia/Shanghai",
   "scheduledReviewStartDate": "2026-06-17",
   "productionPolicy": "current model remains primary; optimized model runs as shadow until adoption gates pass",
@@ -13,7 +13,7 @@
     "core_hits": 27,
     "core_accuracy": 0.3698630136986301,
     "average_log_loss": 1.9774811770102856,
-    "average_rps": 0.14660486404958903,
+    "average_rps": 0.14660486404958906,
     "calibration_error": 0.04811643835616439,
     "predicted_bucket_counts": {
       "0": 0,
@@ -59,7 +59,7 @@
     "exact_accuracy": 0.1780821917808219,
     "core_hits": 27,
     "core_accuracy": 0.3698630136986301,
-    "average_log_loss": 1.9753135249506975,
+    "average_log_loss": 1.975313524950698,
     "average_rps": 0.14668113147855694,
     "calibration_error": 0.05136986301369863,
     "predicted_bucket_counts": {
@@ -110,7 +110,7 @@
       "1.0": {
         "log_loss": 0.9956599332430888,
         "rps": 0.206183751889683,
-        "brier": 0.5844177652726106,
+        "brier": 0.5844177652726107,
         "calibration_error": 0.06848958333333335
       }
     },
@@ -189,7 +189,7 @@
         "window": 4,
         "matches": 32,
         "logLossDelta": 0.004852608661605862,
-        "rpsDelta": 0.0006742282970945701,
+        "rpsDelta": 0.0006742282970945424,
         "improved": false
       }
     ]
@@ -209,7 +209,7 @@
     },
     "deltas": {
       "log_loss_improvement": 0.0013980822935417692,
-      "rps_improvement": 0.00011960528481635979,
+      "rps_improvement": 0.00011960528481638755,
       "calibration_delta": 0.0017123287671232876
     },
     "thresholds": {
@@ -223,9 +223,9 @@
     "status": "ok",
     "url": "https://raw.githubusercontent.com/martj42/international_results/master/results.csv",
     "bytes": 3725503,
-    "path": "artifacts/total-goals-backtest/international_results.csv",
-    "refreshedAt": "2026-06-29T17:53:31+08:00"
+    "path": "artifacts\\total-goals-backtest\\international_results.csv",
+    "refreshedAt": "2026-06-30T13:01:07+08:00"
   },
   "manualResultRows": 12,
-  "comparisonPath": "artifacts/total-goals-backtest/model_comparison_2026.csv"
+  "comparisonPath": "artifacts\\total-goals-backtest\\model_comparison_2026.csv"
 }
