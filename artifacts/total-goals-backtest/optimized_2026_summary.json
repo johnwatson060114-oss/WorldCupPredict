@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-06-29T13:01:35+08:00",
+  "generatedAt": "2026-06-30T13:02:48+08:00",
   "timezone": "Asia/Shanghai",
   "data_refresh": {
     "status": "ok",
     "url": "https://raw.githubusercontent.com/martj42/international_results/master/results.csv",
-    "bytes": 3725505,
+    "bytes": 3725503,
     "path": "artifacts\\total-goals-backtest\\international_results.csv",
-    "refreshedAt": "2026-06-29T13:00:45+08:00"
+    "refreshedAt": "2026-06-30T13:01:07+08:00"
   },
   "optimization": {
     "validation_set": "FIFA World Cup 2018 and 2022",
@@ -64,67 +64,67 @@
     }
   },
   "current_model_2026": {
-    "matches": 72,
+    "matches": 73,
     "exact_hits": 14,
-    "exact_accuracy": 0.19444444444444445,
+    "exact_accuracy": 0.1917808219178082,
     "core_hits": 27,
-    "core_accuracy": 0.375,
-    "average_log_loss": 1.9833400397530834,
-    "average_rps": 0.14712339791591222,
-    "calibration_error": 0.04965277777777778,
+    "core_accuracy": 0.3698630136986301,
+    "average_log_loss": 1.9774811770102856,
+    "average_rps": 0.14660486404958906,
+    "calibration_error": 0.04811643835616439,
     "predicted_bucket_counts": {
       "0": 0,
       "1": 1,
-      "2": 62,
+      "2": 63,
       "3": 9,
       "4": 0,
       "5": 0,
       "6": 0,
       "7+": 0
     },
-    "average_bucketed_expected_total": 2.6516202921764647
+    "average_bucketed_expected_total": 2.648828498524981
   },
   "optimized_model_2026": {
-    "matches": 72,
+    "matches": 73,
     "exact_hits": 12,
-    "exact_accuracy": 0.16666666666666666,
-    "core_hits": 28,
-    "core_accuracy": 0.3888888888888889,
-    "average_log_loss": 1.982338394954252,
-    "average_rps": 0.14706648052122942,
-    "calibration_error": 0.051388888888888894,
+    "exact_accuracy": 0.1643835616438356,
+    "core_hits": 29,
+    "core_accuracy": 0.3972602739726027,
+    "average_log_loss": 1.9760830947167438,
+    "average_rps": 0.14648525876477267,
+    "calibration_error": 0.049828767123287675,
     "predicted_bucket_counts": {
       "0": 0,
       "1": 3,
-      "2": 57,
+      "2": 58,
       "3": 12,
       "4": 0,
       "5": 0,
       "6": 0,
       "7+": 0
     },
-    "average_bucketed_expected_total": 2.628025849838391
+    "average_bucketed_expected_total": 2.62486831910653
   },
   "tail_shadow_model_2026": {
-    "matches": 72,
+    "matches": 73,
     "exact_hits": 13,
-    "exact_accuracy": 0.18055555555555555,
-    "core_hits": 26,
-    "core_accuracy": 0.3611111111111111,
-    "average_log_loss": 1.981712176301671,
-    "average_rps": 0.14737162112834062,
-    "calibration_error": 0.053298611111111116,
+    "exact_accuracy": 0.1780821917808219,
+    "core_hits": 27,
+    "core_accuracy": 0.3698630136986301,
+    "average_log_loss": 1.975313524950698,
+    "average_rps": 0.14668113147855694,
+    "calibration_error": 0.05136986301369863,
     "predicted_bucket_counts": {
       "0": 0,
       "1": 7,
-      "2": 59,
+      "2": 60,
       "3": 6,
       "4": 0,
       "5": 0,
       "6": 0,
       "7+": 0
     },
-    "average_bucketed_expected_total": 2.5777849401362434
+    "average_bucketed_expected_total": 2.5742730908085654
   },
   "validation_2018_2022": {
     "current": {
@@ -215,9 +215,9 @@
       "second_round_forward_sample": true
     },
     "deltas": {
-      "log_loss_improvement": 0.0010016447988314692,
-      "rps_improvement": 5.691739468280388e-05,
-      "calibration_delta": 0.0017361111111111119
+      "log_loss_improvement": 0.0013980822935417692,
+      "rps_improvement": 0.00011960528481638755,
+      "calibration_delta": 0.0017123287671232876
     },
     "thresholds": {
       "min_matches": 24,
@@ -1306,6 +1306,21 @@
       "core_hit": true,
       "bucketed_expected_total": 2.509453666020013,
       "probabilities": "{\"0\": 0.080829, \"1\": 0.203319, \"2\": 0.255716, \"3\": 0.214411, \"4\": 0.134833, \"5\": 0.067832, \"6\": 0.028438, \"7+\": 0.014621}"
+    },
+    {
+      "date": "2026-06-28",
+      "match": "South Africa vs Canada",
+      "score": "0-1",
+      "actual_total_goals": 1,
+      "actual_bucket": "1",
+      "predicted_bucket": "2",
+      "predicted_probability": 0.2588492574870763,
+      "exact_hit": false,
+      "core_interval": "2-3",
+      "core_probability": 0.47049512085917083,
+      "core_hit": false,
+      "bucketed_expected_total": 2.447819355618139,
+      "probabilities": "{\"0\": 0.086042, \"1\": 0.211054, \"2\": 0.258849, \"3\": 0.211646, \"4\": 0.129788, \"5\": 0.063672, \"6\": 0.02603, \"7+\": 0.012919}"
     }
   ],
   "optimized_predictions_2026": [
@@ -2388,6 +2403,21 @@
       "core_hit": true,
       "bucketed_expected_total": 2.4631966607615268,
       "probabilities": "{\"0\": 0.084711, \"1\": 0.20911, \"2\": 0.258095, \"3\": 0.21237, \"4\": 0.131059, \"5\": 0.064704, \"6\": 0.02662, \"7+\": 0.01333}"
+    },
+    {
+      "date": "2026-06-28",
+      "match": "South Africa vs Canada",
+      "score": "0-1",
+      "actual_total_goals": 1,
+      "actual_bucket": "1",
+      "predicted_bucket": "2",
+      "predicted_probability": 0.26118024856826627,
+      "exact_hit": false,
+      "core_interval": "1-2",
+      "core_probability": 0.4786487026632683,
+      "core_hit": true,
+      "bucketed_expected_total": 2.397526106412533,
+      "probabilities": "{\"0\": 0.090536, \"1\": 0.217468, \"2\": 0.26118, \"3\": 0.209119, \"4\": 0.125576, \"5\": 0.060327, \"6\": 0.024151, \"7+\": 0.011642}"
     }
   ],
   "comparison_2026": [
@@ -3614,6 +3644,23 @@
       "candidate_core_interval": "2-3",
       "candidate_core_hit": true,
       "candidate_log_loss": 1.5494260413785443
+    },
+    {
+      "date": "2026-06-28",
+      "match": "South Africa vs Canada",
+      "score": "0-1",
+      "actual_total_goals": 1,
+      "actual_bucket": "1",
+      "current_predicted_bucket": "2",
+      "current_exact_hit": false,
+      "current_core_interval": "2-3",
+      "current_core_hit": false,
+      "current_log_loss": 1.5556430595288544,
+      "candidate_predicted_bucket": "2",
+      "candidate_exact_hit": false,
+      "candidate_core_interval": "1-2",
+      "candidate_core_hit": true,
+      "candidate_log_loss": 1.5257014776161884
     }
   ]
 }

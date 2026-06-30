@@ -78,6 +78,55 @@ def test_football_data_settles_by_fixture_id(monkeypatch, tmp_path):
     assert payload["matches"][0]["homeScore"] == 2
 
 
+def test_api_football_penalty_result_uses_90_minute_score(monkeypatch, tmp_path):
+    history_dir = tmp_path / "history"
+    history_dir.mkdir()
+    (history_dir / "2026-06-30.json").write_text(json.dumps({
+        "targetDate": "2026-06-30",
+        "matches": [{
+            "id": "2040344",
+            "apiFixtureId": 537415,
+            "homeTeam": "Germany",
+            "awayTeam": "Paraguay",
+        }],
+    }), encoding="utf-8")
+
+    class DisabledFootballDataClient:
+        enabled = False
+
+    class ApiPenaltyResultClient:
+        enabled = True
+
+        def world_cup_fixtures(self, _target_date):
+            return [{
+                "fixture": {
+                    "id": 537415,
+                    "date": "2026-06-29T20:30:00Z",
+                    "status": {"short": "PEN"},
+                },
+                "teams": {
+                    "home": {"name": "Germany"},
+                    "away": {"name": "Paraguay"},
+                },
+                "goals": {"home": 4, "away": 5},
+                "score": {
+                    "halftime": {"home": 0, "away": 1},
+                    "fulltime": {"home": 1, "away": 1},
+                    "penalty": {"home": 3, "away": 4},
+                },
+            }]
+
+    monkeypatch.setattr(settle, "OUTPUT_DIR", tmp_path)
+    monkeypatch.setattr(settle, "FootballDataClient", DisabledFootballDataClient)
+    monkeypatch.setattr(settle, "ApiFootballClient", ApiPenaltyResultClient)
+
+    settle.main()
+
+    payload = json.loads((tmp_path / "settlements.json").read_text(encoding="utf-8"))
+    assert payload["matches"][0]["homeScore"] == 1
+    assert payload["matches"][0]["awayScore"] == 1
+
+
 def test_settlements_deduplicate_numeric_and_label_keys_without_losing_odds():
     records = [
         {

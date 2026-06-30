@@ -16,6 +16,16 @@ def team_key(name: str) -> str:
     return name.replace(" ", "").replace("阿尔及利亚", "阿尔及利").lower()
 
 
+def football_data_90_minute_score(fixture: dict) -> dict:
+    score = fixture.get("score", {})
+    return score.get("regularTime") or score.get("fullTime", {}) or {}
+
+
+def api_football_90_minute_score(fixture: dict) -> dict:
+    score = fixture.get("score", {})
+    return score.get("fulltime") or fixture.get("goals", {}) or {}
+
+
 def main() -> None:
     history_dir = OUTPUT_DIR / "history"
     output = OUTPUT_DIR / "settlements.json"
@@ -66,7 +76,7 @@ def main() -> None:
                     away = localized_team_name(fixture["awayTeam"])
                     status = fixture.get("status")
                     fixture_id = fixture.get("id")
-                    score = fixture.get("score", {}).get("fullTime", {})
+                    score = football_data_90_minute_score(fixture)
                     half_time = fixture.get("score", {}).get("halfTime", {}) or {}
                     settled_at = fixture.get("utcDate")
                     final_statuses = {"FINISHED"}
@@ -75,7 +85,7 @@ def main() -> None:
                     away = fixture["teams"]["away"]["name"]
                     status = fixture["fixture"]["status"]["short"]
                     fixture_id = fixture["fixture"].get("id")
-                    score = fixture["goals"]
+                    score = api_football_90_minute_score(fixture)
                     half_time = fixture.get("score", {}).get("halftime", {}) or {}
                     settled_at = fixture["fixture"]["date"]
                     final_statuses = {"FT", "AET", "PEN"}
