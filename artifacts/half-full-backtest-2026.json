@@ -1,0 +1,3075 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-01T17:12:06+08:00",
+  "scope": {
+    "tournament": "FIFA World Cup 2026",
+    "market": "半全场",
+    "policy": "latest archived pre-kickoff forecast with half-time/full-time quotes, joined to local settlements by match id; settlements missing halftime scores are excluded",
+    "settlementCount": 79,
+    "forecastsWithHalfFullMarket": 56,
+    "excludedMissingHalftime": 0,
+    "evaluatedMatches": 56
+  },
+  "metricDefinitions": {
+    "accuracy": "top probability half-time/full-time selection equals the realized selection",
+    "top3Accuracy": "realized selection appears in the three highest model probabilities",
+    "averageLogLoss": "negative log probability assigned to the realized selection",
+    "averageBrier": "sum of squared probability errors across the nine selections",
+    "inSampleMostCommonAccuracy": "accuracy from always picking the most frequent realized class in this same sample"
+  },
+  "metrics": {
+    "allMatchedSettled": {
+      "matches": 56,
+      "hits": 19,
+      "accuracy": 0.3392857142857143,
+      "top3Hits": 41,
+      "top3Accuracy": 0.7321428571428571,
+      "averageLogLoss": 1.7640939041026926,
+      "averageBrier": 0.7521829744035714,
+      "averageActualProbability": 0.25335339285714287,
+      "inSampleMostCommonActual": "胜胜",
+      "inSampleMostCommonAccuracy": 0.23214285714285715,
+      "uniformNineWayLogLoss": 2.1972245773362196,
+      "actualDistribution": {
+        "平平": 11,
+        "平胜": 9,
+        "平负": 3,
+        "胜平": 3,
+        "胜胜": 13,
+        "胜负": 2,
+        "负平": 2,
+        "负胜": 2,
+        "负负": 11
+      },
+      "predictionDistribution": {
+        "平平": 1,
+        "胜胜": 32,
+        "负负": 23
+      }
+    },
+    "byStage": {
+      "group": {
+        "matches": 52,
+        "hits": 19,
+        "accuracy": 0.36538461538461536,
+        "top3Hits": 39,
+        "top3Accuracy": 0.75,
+        "averageLogLoss": 1.700071317927054,
+        "averageBrier": 0.7339204836038462,
+        "averageActualProbability": 0.2647605769230769,
+        "inSampleMostCommonActual": "胜胜",
+        "inSampleMostCommonAccuracy": 0.25,
+        "uniformNineWayLogLoss": 2.1972245773362196,
+        "actualDistribution": {
+          "平平": 10,
+          "平胜": 9,
+          "平负": 2,
+          "胜平": 3,
+          "胜胜": 13,
+          "胜负": 2,
+          "负平": 1,
+          "负胜": 1,
+          "负负": 11
+        },
+        "predictionDistribution": {
+          "平平": 1,
+          "胜胜": 29,
+          "负负": 22
+        }
+      },
+      "knockout": {
+        "matches": 4,
+        "hits": 0,
+        "accuracy": 0.0,
+        "top3Hits": 2,
+        "top3Accuracy": 0.5,
+        "averageLogLoss": 2.5963875243859955,
+        "averageBrier": 0.9895953548,
+        "averageActualProbability": 0.10506,
+        "inSampleMostCommonActual": "平负",
+        "inSampleMostCommonAccuracy": 0.25,
+        "uniformNineWayLogLoss": 2.1972245773362196,
+        "actualDistribution": {
+          "平平": 1,
+          "平负": 1,
+          "负平": 1,
+          "负胜": 1
+        },
+        "predictionDistribution": {
+          "胜胜": 3,
+          "负负": 1
+        }
+      }
+    }
+  },
+  "matches": [
+    {
+      "matchId": "西班牙 vs 佛得角",
+      "homeTeam": "西班牙",
+      "awayTeam": "佛得角",
+      "kickoff": "2026-06-16T00:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-16.json",
+      "historyGeneratedAt": "2026-06-15T22:13:32+08:00",
+      "actual": "平平",
+      "predicted": "胜胜",
+      "hit": false,
+      "top3Hit": true,
+      "actualProbability": 0.09316,
+      "logLoss": 2.3734368339659966,
+      "brier": 1.2734584776,
+      "topSelections": [
+        {
+          "selection": "胜胜",
+          "probability": 0.62663
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.24111
+        },
+        {
+          "selection": "平平",
+          "probability": 0.09316
+        },
+        {
+          "selection": "负平",
+          "probability": 0.00814
+        },
+        {
+          "selection": "负胜",
+          "probability": 0.008
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.62663,
+        "胜平": 0.00792,
+        "胜负": 0.0004,
+        "平胜": 0.24111,
+        "平平": 0.09316,
+        "平负": 0.00763,
+        "负胜": 0.008,
+        "负平": 0.00814,
+        "负负": 0.00701
+      },
+      "score": {
+        "halftime": "0:0",
+        "fulltime": "0:0"
+      }
+    },
+    {
+      "matchId": "比利时 vs 埃及",
+      "homeTeam": "比利时",
+      "awayTeam": "埃及",
+      "kickoff": "2026-06-16T03:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-16.json",
+      "historyGeneratedAt": "2026-06-15T22:13:32+08:00",
+      "actual": "负平",
+      "predicted": "胜胜",
+      "hit": false,
+      "top3Hit": false,
+      "actualProbability": 0.03703,
+      "logLoss": 3.296026884056616,
+      "brier": 1.1755600062,
+      "topSelections": [
+        {
+          "selection": "胜胜",
+          "probability": 0.41808
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.20845
+        },
+        {
+          "selection": "平平",
+          "probability": 0.14097
+        },
+        {
+          "selection": "负负",
+          "probability": 0.07076
+        },
+        {
+          "selection": "平负",
+          "probability": 0.05551
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.41808,
+        "胜平": 0.03743,
+        "胜负": 0.00752,
+        "平胜": 0.20845,
+        "平平": 0.14097,
+        "平负": 0.05551,
+        "负胜": 0.02425,
+        "负平": 0.03703,
+        "负负": 0.07076
+      },
+      "score": {
+        "halftime": "0:1",
+        "fulltime": "1:1"
+      }
+    },
+    {
+      "matchId": "沙特 vs 乌拉圭",
+      "homeTeam": "沙特",
+      "awayTeam": "乌拉圭",
+      "kickoff": "2026-06-16T06:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-16.json",
+      "historyGeneratedAt": "2026-06-15T22:13:32+08:00",
+      "actual": "胜平",
+      "predicted": "负负",
+      "hit": false,
+      "top3Hit": false,
+      "actualProbability": 0.0219,
+      "logLoss": 3.8212686421596818,
+      "brier": 1.3061541012,
+      "topSelections": [
+        {
+          "selection": "负负",
+          "probability": 0.52805
+        },
+        {
+          "selection": "平负",
+          "probability": 0.23212
+        },
+        {
+          "selection": "平平",
+          "probability": 0.12009
+        },
+        {
+          "selection": "胜胜",
+          "probability": 0.02916
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.0256
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.02916,
+        "胜平": 0.0219,
+        "胜负": 0.01878,
+        "平胜": 0.0256,
+        "平平": 0.12009,
+        "平负": 0.23212,
+        "负胜": 0.00259,
+        "负平": 0.02171,
+        "负负": 0.52805
+      },
+      "score": {
+        "halftime": "1:0",
+        "fulltime": "1:1"
+      }
+    },
+    {
+      "matchId": "伊朗 vs 新西兰",
+      "homeTeam": "伊朗",
+      "awayTeam": "新西兰",
+      "kickoff": "2026-06-16T09:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-16.json",
+      "historyGeneratedAt": "2026-06-15T22:13:32+08:00",
+      "actual": "平平",
+      "predicted": "胜胜",
+      "hit": false,
+      "top3Hit": true,
+      "actualProbability": 0.14174,
+      "logLoss": 1.953760885600027,
+      "brier": 0.9754374148,
+      "topSelections": [
+        {
+          "selection": "胜胜",
+          "probability": 0.43035
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.20853
+        },
+        {
+          "selection": "平平",
+          "probability": 0.14174
+        },
+        {
+          "selection": "负负",
+          "probability": 0.06577
+        },
+        {
+          "selection": "平负",
+          "probability": 0.05183
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.43035,
+        "胜平": 0.03502,
+        "胜负": 0.00688,
+        "平胜": 0.20853,
+        "平平": 0.14174,
+        "平负": 0.05183,
+        "负胜": 0.02434,
+        "负平": 0.03554,
+        "负负": 0.06577
+      },
+      "score": {
+        "halftime": "1:1",
+        "fulltime": "2:2"
+      }
+    },
+    {
+      "matchId": "2040178",
+      "homeTeam": "法国",
+      "awayTeam": "塞内加尔",
+      "kickoff": "2026-06-17T03:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-17.json",
+      "historyGeneratedAt": "2026-06-16T23:17:57+08:00",
+      "actual": "平胜",
+      "predicted": "胜胜",
+      "hit": false,
+      "top3Hit": true,
+      "actualProbability": 0.20892,
+      "logLoss": 1.565803875414039,
+      "brier": 0.8373704144,
+      "topSelections": [
+        {
+          "selection": "胜胜",
+          "probability": 0.42569
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.20892
+        },
+        {
+          "selection": "平平",
+          "probability": 0.13984
+        },
+        {
+          "selection": "负负",
+          "probability": 0.06772
+        },
+        {
+          "selection": "平负",
+          "probability": 0.05449
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.42569,
+        "胜平": 0.03641,
+        "胜负": 0.00707,
+        "平胜": 0.20892,
+        "平平": 0.13984,
+        "平负": 0.05449,
+        "负胜": 0.02388,
+        "负平": 0.03598,
+        "负负": 0.06772
+      },
+      "score": {
+        "halftime": "0:0",
+        "fulltime": "3:1"
+      }
+    },
+    {
+      "matchId": "2040179",
+      "homeTeam": "伊拉克",
+      "awayTeam": "挪威",
+      "kickoff": "2026-06-17T06:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-17.json",
+      "historyGeneratedAt": "2026-06-16T23:17:57+08:00",
+      "actual": "负负",
+      "predicted": "负负",
+      "hit": true,
+      "top3Hit": true,
+      "actualProbability": 0.52212,
+      "logLoss": 0.6498578324615479,
+      "brier": 0.29887791599999997,
+      "topSelections": [
+        {
+          "selection": "负负",
+          "probability": 0.52212
+        },
+        {
+          "selection": "平负",
+          "probability": 0.23019
+        },
+        {
+          "selection": "平平",
+          "probability": 0.11956
+        },
+        {
+          "selection": "胜胜",
+          "probability": 0.03126
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.02802
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.03126,
+        "胜平": 0.02285,
+        "胜负": 0.01937,
+        "平胜": 0.02802,
+        "平平": 0.11956,
+        "平负": 0.23019,
+        "负胜": 0.00301,
+        "负平": 0.02362,
+        "负负": 0.52212
+      },
+      "score": {
+        "halftime": "1:2",
+        "fulltime": "1:4"
+      }
+    },
+    {
+      "matchId": "2040180",
+      "homeTeam": "阿根廷",
+      "awayTeam": "阿尔及利亚",
+      "kickoff": "2026-06-17T09:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-17.json",
+      "historyGeneratedAt": "2026-06-16T23:17:57+08:00",
+      "actual": "胜胜",
+      "predicted": "胜胜",
+      "hit": true,
+      "top3Hit": true,
+      "actualProbability": 0.55102,
+      "logLoss": 0.5959841728473128,
+      "brier": 0.27098216320000007,
+      "topSelections": [
+        {
+          "selection": "胜胜",
+          "probability": 0.55102
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.23383
+        },
+        {
+          "selection": "平平",
+          "probability": 0.11256
+        },
+        {
+          "selection": "负负",
+          "probability": 0.02385
+        },
+        {
+          "selection": "平负",
+          "probability": 0.02158
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.55102,
+        "胜平": 0.01884,
+        "胜负": 0.00209,
+        "平胜": 0.23383,
+        "平平": 0.11256,
+        "平负": 0.02158,
+        "负胜": 0.01694,
+        "负平": 0.01929,
+        "负负": 0.02385
+      },
+      "score": {
+        "halftime": "1:0",
+        "fulltime": "3:0"
+      }
+    },
+    {
+      "matchId": "2040181",
+      "homeTeam": "奥地利",
+      "awayTeam": "约旦",
+      "kickoff": "2026-06-17T12:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-17.json",
+      "historyGeneratedAt": "2026-06-16T23:17:57+08:00",
+      "actual": "胜胜",
+      "predicted": "胜胜",
+      "hit": true,
+      "top3Hit": true,
+      "actualProbability": 0.36878,
+      "logLoss": 0.9975550187051184,
+      "brier": 0.4766165578,
+      "topSelections": [
+        {
+          "selection": "胜胜",
+          "probability": 0.36878
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.19094
+        },
+        {
+          "selection": "平平",
+          "probability": 0.15179
+        },
+        {
+          "selection": "负负",
+          "probability": 0.09586
+        },
+        {
+          "selection": "平负",
+          "probability": 0.07083
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.36878,
+        "胜平": 0.04319,
+        "胜负": 0.00995,
+        "平胜": 0.19094,
+        "平平": 0.15179,
+        "平负": 0.07083,
+        "负胜": 0.02561,
+        "负平": 0.04305,
+        "负负": 0.09586
+      },
+      "score": {
+        "halftime": "1:0",
+        "fulltime": "3:1"
+      }
+    },
+    {
+      "matchId": "2040182",
+      "homeTeam": "葡萄牙",
+      "awayTeam": "民主刚果",
+      "kickoff": "2026-06-18T01:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-18.json",
+      "historyGeneratedAt": "2026-06-17T17:51:57+08:00",
+      "actual": "平平",
+      "predicted": "胜胜",
+      "hit": false,
+      "top3Hit": true,
+      "actualProbability": 0.17785,
+      "logLoss": 1.7268147805876728,
+      "brier": 0.8130863813999999,
+      "topSelections": [
+        {
+          "selection": "胜胜",
+          "probability": 0.2632
+        },
+        {
+          "selection": "平平",
+          "probability": 0.17785
+        },
+        {
+          "selection": "负负",
+          "probability": 0.15891
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.15859
+        },
+        {
+          "selection": "平负",
+          "probability": 0.11071
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.2632,
+        "胜平": 0.04793,
+        "胜负": 0.01482,
+        "平胜": 0.15859,
+        "平平": 0.17785,
+        "平负": 0.11071,
+        "负胜": 0.01997,
+        "负平": 0.04802,
+        "负负": 0.15891
+      },
+      "score": {
+        "halftime": "1:1",
+        "fulltime": "1:1"
+      }
+    },
+    {
+      "matchId": "2040183",
+      "homeTeam": "英格兰",
+      "awayTeam": "克罗地亚",
+      "kickoff": "2026-06-18T04:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-18.json",
+      "historyGeneratedAt": "2026-06-17T17:51:57+08:00",
+      "actual": "平胜",
+      "predicted": "胜胜",
+      "hit": false,
+      "top3Hit": true,
+      "actualProbability": 0.16717,
+      "logLoss": 1.7887440202675975,
+      "brier": 0.8434149315999999,
+      "topSelections": [
+        {
+          "selection": "胜胜",
+          "probability": 0.3017
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.16717
+        },
+        {
+          "selection": "平平",
+          "probability": 0.15461
+        },
+        {
+          "selection": "负负",
+          "probability": 0.14128
+        },
+        {
+          "selection": "平负",
+          "probability": 0.09564
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.3017,
+        "胜平": 0.04968,
+        "胜负": 0.01515,
+        "平胜": 0.16717,
+        "平平": 0.15461,
+        "平负": 0.09564,
+        "负胜": 0.02551,
+        "负平": 0.04926,
+        "负负": 0.14128
+      },
+      "score": {
+        "halftime": "2:2",
+        "fulltime": "4:2"
+      }
+    },
+    {
+      "matchId": "2040184",
+      "homeTeam": "加纳",
+      "awayTeam": "巴拿马",
+      "kickoff": "2026-06-18T07:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-18.json",
+      "historyGeneratedAt": "2026-06-17T17:51:57+08:00",
+      "actual": "平胜",
+      "predicted": "负负",
+      "hit": false,
+      "top3Hit": false,
+      "actualProbability": 0.11817,
+      "logLoss": 2.135631013331213,
+      "brier": 0.9249911232,
+      "topSelections": [
+        {
+          "selection": "负负",
+          "probability": 0.2489
+        },
+        {
+          "selection": "胜胜",
+          "probability": 0.19299
+        },
+        {
+          "selection": "平平",
+          "probability": 0.14674
+        },
+        {
+          "selection": "平负",
+          "probability": 0.14155
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.11817
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.19299,
+        "胜平": 0.05268,
+        "胜负": 0.02512,
+        "平胜": 0.11817,
+        "平平": 0.14674,
+        "平负": 0.14155,
+        "负胜": 0.02162,
+        "负平": 0.05223,
+        "负负": 0.2489
+      },
+      "score": {
+        "halftime": "0:0",
+        "fulltime": "1:0"
+      }
+    },
+    {
+      "matchId": "2040185",
+      "homeTeam": "乌兹别克斯坦",
+      "awayTeam": "哥伦比亚",
+      "kickoff": "2026-06-18T10:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-18.json",
+      "historyGeneratedAt": "2026-06-17T17:51:57+08:00",
+      "actual": "负负",
+      "predicted": "胜胜",
+      "hit": false,
+      "top3Hit": true,
+      "actualProbability": 0.20303,
+      "logLoss": 1.5944015276079873,
+      "brier": 0.7544862033999999,
+      "topSelections": [
+        {
+          "selection": "胜胜",
+          "probability": 0.21055
+        },
+        {
+          "selection": "负负",
+          "probability": 0.20303
+        },
+        {
+          "selection": "平平",
+          "probability": 0.18161
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.13816
+        },
+        {
+          "selection": "平负",
+          "probability": 0.13194
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.21055,
+        "胜平": 0.04964,
+        "胜负": 0.01831,
+        "平胜": 0.13816,
+        "平平": 0.18161,
+        "平负": 0.13194,
+        "负胜": 0.01777,
+        "负平": 0.04899,
+        "负负": 0.20303
+      },
+      "score": {
+        "halftime": "0:1",
+        "fulltime": "1:3"
+      }
+    },
+    {
+      "matchId": "2040235",
+      "homeTeam": "捷克",
+      "awayTeam": "南非",
+      "kickoff": "2026-06-19T00:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-19.json",
+      "historyGeneratedAt": "2026-06-18T13:00:00+08:00",
+      "actual": "胜平",
+      "predicted": "胜胜",
+      "hit": false,
+      "top3Hit": false,
+      "actualProbability": 0.03612,
+      "logLoss": 3.3209085504333524,
+      "brier": 1.179301972,
+      "topSelections": [
+        {
+          "selection": "胜胜",
+          "probability": 0.41964
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.2075
+        },
+        {
+          "selection": "平平",
+          "probability": 0.1462
+        },
+        {
+          "selection": "负负",
+          "probability": 0.06873
+        },
+        {
+          "selection": "平负",
+          "probability": 0.05589
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.41964,
+        "胜平": 0.03612,
+        "胜负": 0.00684,
+        "平胜": 0.2075,
+        "平平": 0.1462,
+        "平负": 0.05589,
+        "负胜": 0.02365,
+        "负平": 0.03543,
+        "负负": 0.06873
+      },
+      "score": {
+        "halftime": "1:0",
+        "fulltime": "1:1"
+      }
+    },
+    {
+      "matchId": "2040236",
+      "homeTeam": "瑞士",
+      "awayTeam": "波黑",
+      "kickoff": "2026-06-19T03:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-19.json",
+      "historyGeneratedAt": "2026-06-18T13:00:00+08:00",
+      "actual": "平胜",
+      "predicted": "胜胜",
+      "hit": false,
+      "top3Hit": true,
+      "actualProbability": 0.20586,
+      "logLoss": 1.5805589528837238,
+      "brier": 0.8749588798,
+      "topSelections": [
+        {
+          "selection": "胜胜",
+          "probability": 0.47078
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.20586
+        },
+        {
+          "selection": "平平",
+          "probability": 0.1194
+        },
+        {
+          "selection": "负负",
+          "probability": 0.05757
+        },
+        {
+          "selection": "平负",
+          "probability": 0.04486
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.47078,
+        "胜平": 0.03442,
+        "胜负": 0.00666,
+        "平胜": 0.20586,
+        "平平": 0.1194,
+        "平负": 0.04486,
+        "负胜": 0.02652,
+        "负平": 0.03393,
+        "负负": 0.05757
+      },
+      "score": {
+        "halftime": "0:0",
+        "fulltime": "4:1"
+      }
+    },
+    {
+      "matchId": "2040237",
+      "homeTeam": "加拿大",
+      "awayTeam": "卡塔尔",
+      "kickoff": "2026-06-19T06:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-19.json",
+      "historyGeneratedAt": "2026-06-18T13:00:00+08:00",
+      "actual": "胜胜",
+      "predicted": "胜胜",
+      "hit": true,
+      "top3Hit": true,
+      "actualProbability": 0.53309,
+      "logLoss": 0.6290650135360746,
+      "brier": 0.28425987720000007,
+      "topSelections": [
+        {
+          "selection": "胜胜",
+          "probability": 0.53309
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.22581
+        },
+        {
+          "selection": "平平",
+          "probability": 0.10895
+        },
+        {
+          "selection": "负负",
+          "probability": 0.03131
+        },
+        {
+          "selection": "平负",
+          "probability": 0.02822
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.53309,
+        "胜平": 0.02379,
+        "胜负": 0.00325,
+        "平胜": 0.22581,
+        "平平": 0.10895,
+        "平负": 0.02822,
+        "负胜": 0.02163,
+        "负平": 0.02395,
+        "负负": 0.03131
+      },
+      "score": {
+        "halftime": "3:0",
+        "fulltime": "6:0"
+      }
+    },
+    {
+      "matchId": "2040238",
+      "homeTeam": "墨西哥",
+      "awayTeam": "韩国",
+      "kickoff": "2026-06-19T09:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-19.json",
+      "historyGeneratedAt": "2026-06-18T13:00:00+08:00",
+      "actual": "平胜",
+      "predicted": "胜胜",
+      "hit": false,
+      "top3Hit": true,
+      "actualProbability": 0.17427,
+      "logLoss": 1.7471494583095861,
+      "brier": 0.8328664174,
+      "topSelections": [
+        {
+          "selection": "胜胜",
+          "probability": 0.30077
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.17427
+        },
+        {
+          "selection": "平平",
+          "probability": 0.17391
+        },
+        {
+          "selection": "负负",
+          "probability": 0.12824
+        },
+        {
+          "selection": "平负",
+          "probability": 0.09438
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.30077,
+        "胜平": 0.04598,
+        "胜负": 0.01283,
+        "平胜": 0.17427,
+        "平平": 0.17391,
+        "平负": 0.09438,
+        "负胜": 0.02311,
+        "负平": 0.04651,
+        "负负": 0.12824
+      },
+      "score": {
+        "halftime": "0:0",
+        "fulltime": "1:0"
+      }
+    },
+    {
+      "matchId": "2040239",
+      "homeTeam": "美国",
+      "awayTeam": "澳大利亚",
+      "kickoff": "2026-06-20T03:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-20.json",
+      "historyGeneratedAt": "2026-06-19T18:21:28+08:00",
+      "actual": "胜胜",
+      "predicted": "负负",
+      "hit": false,
+      "top3Hit": true,
+      "actualProbability": 0.16514,
+      "logLoss": 1.8009616799928545,
+      "brier": 0.8375131997999999,
+      "topSelections": [
+        {
+          "selection": "负负",
+          "probability": 0.27011
+        },
+        {
+          "selection": "胜胜",
+          "probability": 0.16514
+        },
+        {
+          "selection": "平平",
+          "probability": 0.15956
+        },
+        {
+          "selection": "平负",
+          "probability": 0.15781
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.10671
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.16514,
+        "胜平": 0.04953,
+        "胜负": 0.02402,
+        "平胜": 0.10671,
+        "平平": 0.15956,
+        "平负": 0.15781,
+        "负胜": 0.01729,
+        "负平": 0.04983,
+        "负负": 0.27011
+      },
+      "score": {
+        "halftime": "2:0",
+        "fulltime": "2:0"
+      }
+    },
+    {
+      "matchId": "2040240",
+      "homeTeam": "苏格兰",
+      "awayTeam": "摩洛哥",
+      "kickoff": "2026-06-20T06:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-20.json",
+      "historyGeneratedAt": "2026-06-19T18:21:28+08:00",
+      "actual": "负负",
+      "predicted": "负负",
+      "hit": true,
+      "top3Hit": true,
+      "actualProbability": 0.25318,
+      "logLoss": 1.3736545807734548,
+      "brier": 0.6599448322000001,
+      "topSelections": [
+        {
+          "selection": "负负",
+          "probability": 0.25318
+        },
+        {
+          "selection": "平平",
+          "probability": 0.18066
+        },
+        {
+          "selection": "胜胜",
+          "probability": 0.163
+        },
+        {
+          "selection": "平负",
+          "probability": 0.15804
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.11299
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.163,
+        "胜平": 0.04754,
+        "胜负": 0.02109,
+        "平胜": 0.11299,
+        "平平": 0.18066,
+        "平负": 0.15804,
+        "负胜": 0.01542,
+        "负平": 0.04808,
+        "负负": 0.25318
+      },
+      "score": {
+        "halftime": "0:1",
+        "fulltime": "0:1"
+      }
+    },
+    {
+      "matchId": "2040241",
+      "homeTeam": "巴西",
+      "awayTeam": "海地",
+      "kickoff": "2026-06-20T08:30:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-20.json",
+      "historyGeneratedAt": "2026-06-19T18:21:28+08:00",
+      "actual": "胜胜",
+      "predicted": "胜胜",
+      "hit": true,
+      "top3Hit": true,
+      "actualProbability": 0.62522,
+      "logLoss": 0.4696516911832013,
+      "brier": 0.2050604672,
+      "topSelections": [
+        {
+          "selection": "胜胜",
+          "probability": 0.62522
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.23616
+        },
+        {
+          "selection": "平平",
+          "probability": 0.09161
+        },
+        {
+          "selection": "负胜",
+          "probability": 0.01005
+        },
+        {
+          "selection": "负平",
+          "probability": 0.00974
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.62522,
+        "胜平": 0.00969,
+        "胜负": 0.00042,
+        "平胜": 0.23616,
+        "平平": 0.09161,
+        "平负": 0.00884,
+        "负胜": 0.01005,
+        "负平": 0.00974,
+        "负负": 0.00827
+      },
+      "score": {
+        "halftime": "3:0",
+        "fulltime": "3:0"
+      }
+    },
+    {
+      "matchId": "2040242",
+      "homeTeam": "土耳其",
+      "awayTeam": "巴拉圭",
+      "kickoff": "2026-06-20T11:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-20.json",
+      "historyGeneratedAt": "2026-06-19T18:21:28+08:00",
+      "actual": "负负",
+      "predicted": "胜胜",
+      "hit": false,
+      "top3Hit": true,
+      "actualProbability": 0.15976,
+      "logLoss": 1.8340825898745772,
+      "brier": 0.8529720379999999,
+      "topSelections": [
+        {
+          "selection": "胜胜",
+          "probability": 0.29206
+        },
+        {
+          "selection": "负负",
+          "probability": 0.15976
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.15824
+        },
+        {
+          "selection": "平平",
+          "probability": 0.1426
+        },
+        {
+          "selection": "平负",
+          "probability": 0.10045
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.29206,
+        "胜平": 0.05067,
+        "胜负": 0.01779,
+        "平胜": 0.15824,
+        "平平": 0.1426,
+        "平负": 0.10045,
+        "负胜": 0.02814,
+        "负平": 0.05029,
+        "负负": 0.15976
+      },
+      "score": {
+        "halftime": "0:1",
+        "fulltime": "0:1"
+      }
+    },
+    {
+      "matchId": "西班牙 vs 沙特",
+      "homeTeam": "西班牙",
+      "awayTeam": "沙特",
+      "kickoff": "2026-06-22T00:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-22.json",
+      "historyGeneratedAt": "2026-06-21T16:59:27+08:00",
+      "actual": "胜胜",
+      "predicted": "胜胜",
+      "hit": true,
+      "top3Hit": true,
+      "actualProbability": 0.59683,
+      "logLoss": 0.5161229632594697,
+      "brier": 0.23552423900000002,
+      "topSelections": [
+        {
+          "selection": "胜胜",
+          "probability": 0.59683
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.24581
+        },
+        {
+          "selection": "平平",
+          "probability": 0.11007
+        },
+        {
+          "selection": "平负",
+          "probability": 0.00974
+        },
+        {
+          "selection": "负平",
+          "probability": 0.00965
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.59683,
+        "胜平": 0.00962,
+        "胜负": 0.00043,
+        "平胜": 0.24581,
+        "平平": 0.11007,
+        "平负": 0.00974,
+        "负胜": 0.00861,
+        "负平": 0.00965,
+        "负负": 0.00924
+      },
+      "score": {
+        "halftime": "3:0",
+        "fulltime": "4:0"
+      }
+    },
+    {
+      "matchId": "比利时 vs 伊朗",
+      "homeTeam": "比利时",
+      "awayTeam": "伊朗",
+      "kickoff": "2026-06-22T03:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-22.json",
+      "historyGeneratedAt": "2026-06-21T16:59:27+08:00",
+      "actual": "平平",
+      "predicted": "胜胜",
+      "hit": false,
+      "top3Hit": true,
+      "actualProbability": 0.13298,
+      "logLoss": 2.0175565380078284,
+      "brier": 0.9327164504000001,
+      "topSelections": [
+        {
+          "selection": "胜胜",
+          "probability": 0.35101
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.17603
+        },
+        {
+          "selection": "平平",
+          "probability": 0.13298
+        },
+        {
+          "selection": "负负",
+          "probability": 0.1222
+        },
+        {
+          "selection": "平负",
+          "probability": 0.08003
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.35101,
+        "胜平": 0.04711,
+        "胜负": 0.01508,
+        "平胜": 0.17603,
+        "平平": 0.13298,
+        "平负": 0.08003,
+        "负胜": 0.02886,
+        "负平": 0.0467,
+        "负负": 0.1222
+      },
+      "score": {
+        "halftime": "0:0",
+        "fulltime": "0:0"
+      }
+    },
+    {
+      "matchId": "乌拉圭 vs 佛得角",
+      "homeTeam": "乌拉圭",
+      "awayTeam": "佛得角",
+      "kickoff": "2026-06-22T06:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-22.json",
+      "historyGeneratedAt": "2026-06-21T16:59:27+08:00",
+      "actual": "胜平",
+      "predicted": "胜胜",
+      "hit": false,
+      "top3Hit": false,
+      "actualProbability": 0.02205,
+      "logLoss": 3.814442677089282,
+      "brier": 1.2427131672,
+      "topSelections": [
+        {
+          "selection": "胜胜",
+          "probability": 0.43251
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.24155
+        },
+        {
+          "selection": "平平",
+          "probability": 0.19401
+        },
+        {
+          "selection": "负负",
+          "probability": 0.03631
+        },
+        {
+          "selection": "平负",
+          "probability": 0.03583
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.43251,
+        "胜平": 0.02205,
+        "胜负": 0.00243,
+        "平胜": 0.24155,
+        "平平": 0.19401,
+        "平负": 0.03583,
+        "负胜": 0.01295,
+        "负平": 0.02236,
+        "负负": 0.03631
+      },
+      "score": {
+        "halftime": "2:1",
+        "fulltime": "2:2"
+      }
+    },
+    {
+      "matchId": "新西兰 vs 埃及",
+      "homeTeam": "新西兰",
+      "awayTeam": "埃及",
+      "kickoff": "2026-06-22T09:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-22.json",
+      "historyGeneratedAt": "2026-06-21T16:59:27+08:00",
+      "actual": "胜负",
+      "predicted": "负负",
+      "hit": false,
+      "top3Hit": false,
+      "actualProbability": 0.02704,
+      "logLoss": 3.6104380278073736,
+      "brier": 1.1478656056,
+      "topSelections": [
+        {
+          "selection": "负负",
+          "probability": 0.34943
+        },
+        {
+          "selection": "平负",
+          "probability": 0.18589
+        },
+        {
+          "selection": "平平",
+          "probability": 0.15069
+        },
+        {
+          "selection": "胜胜",
+          "probability": 0.10722
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.07906
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.10722,
+        "胜平": 0.04373,
+        "胜负": 0.02704,
+        "平胜": 0.07906,
+        "平平": 0.15069,
+        "平负": 0.18589,
+        "负胜": 0.01158,
+        "负平": 0.04536,
+        "负负": 0.34943
+      },
+      "score": {
+        "halftime": "1:0",
+        "fulltime": "1:3"
+      }
+    },
+    {
+      "matchId": "2040251",
+      "homeTeam": "阿根廷",
+      "awayTeam": "奥地利",
+      "kickoff": "2026-06-23T01:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-23.json",
+      "historyGeneratedAt": "2026-06-22T19:31:41+08:00",
+      "actual": "胜胜",
+      "predicted": "胜胜",
+      "hit": true,
+      "top3Hit": true,
+      "actualProbability": 0.49192,
+      "logLoss": 0.7094391773369227,
+      "brier": 0.32757024319999994,
+      "topSelections": [
+        {
+          "selection": "胜胜",
+          "probability": 0.49192
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.2217
+        },
+        {
+          "selection": "平平",
+          "probability": 0.12195
+        },
+        {
+          "selection": "负负",
+          "probability": 0.0426
+        },
+        {
+          "selection": "平负",
+          "probability": 0.03758
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.49192,
+        "胜平": 0.02845,
+        "胜负": 0.00429,
+        "平胜": 0.2217,
+        "平平": 0.12195,
+        "平负": 0.03758,
+        "负胜": 0.02253,
+        "负平": 0.02898,
+        "负负": 0.0426
+      },
+      "score": {
+        "halftime": "1:0",
+        "fulltime": "2:0"
+      }
+    },
+    {
+      "matchId": "2040252",
+      "homeTeam": "法国",
+      "awayTeam": "伊拉克",
+      "kickoff": "2026-06-23T05:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-23.json",
+      "historyGeneratedAt": "2026-06-22T19:31:41+08:00",
+      "actual": "胜胜",
+      "predicted": "胜胜",
+      "hit": true,
+      "top3Hit": true,
+      "actualProbability": 0.66823,
+      "logLoss": 0.4031228533298055,
+      "brier": 0.164839422,
+      "topSelections": [
+        {
+          "selection": "胜胜",
+          "probability": 0.66823
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.22222
+        },
+        {
+          "selection": "平平",
+          "probability": 0.07139
+        },
+        {
+          "selection": "负胜",
+          "probability": 0.00916
+        },
+        {
+          "selection": "负平",
+          "probability": 0.00756
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.66823,
+        "胜平": 0.00724,
+        "胜负": 0.00033,
+        "平胜": 0.22222,
+        "平平": 0.07139,
+        "平负": 0.0071,
+        "负胜": 0.00916,
+        "负平": 0.00756,
+        "负负": 0.00677
+      },
+      "score": {
+        "halftime": "1:0",
+        "fulltime": "3:0"
+      }
+    },
+    {
+      "matchId": "2040253",
+      "homeTeam": "挪威",
+      "awayTeam": "塞内加尔",
+      "kickoff": "2026-06-23T08:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-23.json",
+      "historyGeneratedAt": "2026-06-22T19:31:41+08:00",
+      "actual": "胜胜",
+      "predicted": "胜胜",
+      "hit": true,
+      "top3Hit": true,
+      "actualProbability": 0.32287,
+      "logLoss": 1.1305055135551842,
+      "brier": 0.5377375464,
+      "topSelections": [
+        {
+          "selection": "胜胜",
+          "probability": 0.32287
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.16326
+        },
+        {
+          "selection": "负负",
+          "probability": 0.14295
+        },
+        {
+          "selection": "平平",
+          "probability": 0.13399
+        },
+        {
+          "selection": "平负",
+          "probability": 0.08933
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.32287,
+        "胜平": 0.05066,
+        "胜负": 0.01772,
+        "平胜": 0.16326,
+        "平平": 0.13399,
+        "平负": 0.08933,
+        "负胜": 0.0298,
+        "负平": 0.04942,
+        "负负": 0.14295
+      },
+      "score": {
+        "halftime": "1:0",
+        "fulltime": "3:2"
+      }
+    },
+    {
+      "matchId": "2040254",
+      "homeTeam": "约旦",
+      "awayTeam": "阿尔及利",
+      "kickoff": "2026-06-23T11:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-23.json",
+      "historyGeneratedAt": "2026-06-22T19:31:41+08:00",
+      "actual": "胜负",
+      "predicted": "负负",
+      "hit": false,
+      "top3Hit": false,
+      "actualProbability": 0.0214,
+      "logLoss": 3.844364356954331,
+      "brier": 1.1184494556,
+      "topSelections": [
+        {
+          "selection": "负负",
+          "probability": 0.23681
+        },
+        {
+          "selection": "胜胜",
+          "probability": 0.1849
+        },
+        {
+          "selection": "平平",
+          "probability": 0.16943
+        },
+        {
+          "selection": "平负",
+          "probability": 0.14724
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.12136
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.1849,
+        "胜平": 0.04998,
+        "胜负": 0.0214,
+        "平胜": 0.12136,
+        "平平": 0.16943,
+        "平负": 0.14724,
+        "负胜": 0.01801,
+        "负平": 0.05087,
+        "负负": 0.23681
+      },
+      "score": {
+        "halftime": "1:0",
+        "fulltime": "1:2"
+      }
+    },
+    {
+      "matchId": "瑞士 vs 加拿大",
+      "homeTeam": "瑞士",
+      "awayTeam": "加拿大",
+      "kickoff": "2026-06-25T03:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-25.json",
+      "historyGeneratedAt": "2026-06-24T16:25:31+08:00",
+      "actual": "平胜",
+      "predicted": "胜胜",
+      "hit": false,
+      "top3Hit": true,
+      "actualProbability": 0.16036,
+      "logLoss": 1.830333991207831,
+      "brier": 0.8607458019999998,
+      "topSelections": [
+        {
+          "selection": "胜胜",
+          "probability": 0.31758
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.16036
+        },
+        {
+          "selection": "负负",
+          "probability": 0.14833
+        },
+        {
+          "selection": "平平",
+          "probability": 0.13532
+        },
+        {
+          "selection": "平负",
+          "probability": 0.09162
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.31758,
+        "胜平": 0.05052,
+        "胜负": 0.01773,
+        "平胜": 0.16036,
+        "平平": 0.13532,
+        "平负": 0.09162,
+        "负胜": 0.02843,
+        "负平": 0.05011,
+        "负负": 0.14833
+      },
+      "score": {
+        "halftime": "0:0",
+        "fulltime": "2:1"
+      }
+    },
+    {
+      "matchId": "波黑 vs 卡塔尔",
+      "homeTeam": "波黑",
+      "awayTeam": "卡塔尔",
+      "kickoff": "2026-06-25T03:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-25.json",
+      "historyGeneratedAt": "2026-06-24T16:25:31+08:00",
+      "actual": "胜胜",
+      "predicted": "胜胜",
+      "hit": true,
+      "top3Hit": true,
+      "actualProbability": 0.39636,
+      "logLoss": 0.9254323897914385,
+      "brier": 0.43071899179999995,
+      "topSelections": [
+        {
+          "selection": "胜胜",
+          "probability": 0.39636
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.18137
+        },
+        {
+          "selection": "平平",
+          "probability": 0.11426
+        },
+        {
+          "selection": "负负",
+          "probability": 0.1011
+        },
+        {
+          "selection": "平负",
+          "probability": 0.06984
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.39636,
+        "胜平": 0.0465,
+        "胜负": 0.01526,
+        "平胜": 0.18137,
+        "平平": 0.11426,
+        "平负": 0.06984,
+        "负胜": 0.03229,
+        "负平": 0.04302,
+        "负负": 0.1011
+      },
+      "score": {
+        "halftime": "2:1",
+        "fulltime": "3:1"
+      }
+    },
+    {
+      "matchId": "摩洛哥 vs 海地",
+      "homeTeam": "摩洛哥",
+      "awayTeam": "海地",
+      "kickoff": "2026-06-25T06:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-25.json",
+      "historyGeneratedAt": "2026-06-24T16:25:31+08:00",
+      "actual": "平胜",
+      "predicted": "胜胜",
+      "hit": false,
+      "top3Hit": true,
+      "actualProbability": 0.24086,
+      "logLoss": 1.4235394271498032,
+      "brier": 0.933811448,
+      "topSelections": [
+        {
+          "selection": "胜胜",
+          "probability": 0.58543
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.24086
+        },
+        {
+          "selection": "平平",
+          "probability": 0.11917
+        },
+        {
+          "selection": "平负",
+          "probability": 0.01166
+        },
+        {
+          "selection": "负负",
+          "probability": 0.01151
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.58543,
+        "胜平": 0.01064,
+        "胜负": 0.00056,
+        "平胜": 0.24086,
+        "平平": 0.11917,
+        "平负": 0.01166,
+        "负胜": 0.00891,
+        "负平": 0.01126,
+        "负负": 0.01151
+      },
+      "score": {
+        "halftime": "2:2",
+        "fulltime": "4:2"
+      }
+    },
+    {
+      "matchId": "苏格兰 vs 巴西",
+      "homeTeam": "苏格兰",
+      "awayTeam": "巴西",
+      "kickoff": "2026-06-25T06:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-25.json",
+      "historyGeneratedAt": "2026-06-24T16:25:31+08:00",
+      "actual": "负负",
+      "predicted": "负负",
+      "hit": true,
+      "top3Hit": true,
+      "actualProbability": 0.4444,
+      "logLoss": 0.8110302212166621,
+      "brier": 0.39257518319999996,
+      "topSelections": [
+        {
+          "selection": "负负",
+          "probability": 0.4444
+        },
+        {
+          "selection": "平负",
+          "probability": 0.22272
+        },
+        {
+          "selection": "平平",
+          "probability": 0.16873
+        },
+        {
+          "selection": "胜胜",
+          "probability": 0.04807
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.04083
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.04807,
+        "胜平": 0.02832,
+        "胜负": 0.01627,
+        "平胜": 0.04083,
+        "平平": 0.16873,
+        "平负": 0.22272,
+        "负胜": 0.00318,
+        "负平": 0.02748,
+        "负负": 0.4444
+      },
+      "score": {
+        "halftime": "0:2",
+        "fulltime": "0:3"
+      }
+    },
+    {
+      "matchId": "捷克 vs 墨西哥",
+      "homeTeam": "捷克",
+      "awayTeam": "墨西哥",
+      "kickoff": "2026-06-25T09:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-25.json",
+      "historyGeneratedAt": "2026-06-24T16:25:31+08:00",
+      "actual": "平负",
+      "predicted": "负负",
+      "hit": false,
+      "top3Hit": true,
+      "actualProbability": 0.21437,
+      "logLoss": 1.5400517849490927,
+      "brier": 0.8213093406,
+      "topSelections": [
+        {
+          "selection": "负负",
+          "probability": 0.41037
+        },
+        {
+          "selection": "平负",
+          "probability": 0.21437
+        },
+        {
+          "selection": "平平",
+          "probability": 0.16048
+        },
+        {
+          "selection": "胜胜",
+          "probability": 0.06302
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.05571
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.06302,
+        "胜平": 0.03458,
+        "胜负": 0.02149,
+        "平胜": 0.05571,
+        "平平": 0.16048,
+        "平负": 0.21437,
+        "负胜": 0.00575,
+        "负平": 0.03423,
+        "负负": 0.41037
+      },
+      "score": {
+        "halftime": "0:0",
+        "fulltime": "0:3"
+      }
+    },
+    {
+      "matchId": "南非 vs 韩国",
+      "homeTeam": "南非",
+      "awayTeam": "韩国",
+      "kickoff": "2026-06-25T09:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-25.json",
+      "historyGeneratedAt": "2026-06-24T16:25:31+08:00",
+      "actual": "平胜",
+      "predicted": "负负",
+      "hit": false,
+      "top3Hit": false,
+      "actualProbability": 0.0426,
+      "logLoss": 3.1559010257068123,
+      "brier": 1.1984558518000001,
+      "topSelections": [
+        {
+          "selection": "负负",
+          "probability": 0.45495
+        },
+        {
+          "selection": "平负",
+          "probability": 0.22133
+        },
+        {
+          "selection": "平平",
+          "probability": 0.14548
+        },
+        {
+          "selection": "胜胜",
+          "probability": 0.04875
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.0426
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.04875,
+        "胜平": 0.03087,
+        "胜负": 0.02004,
+        "平胜": 0.0426,
+        "平平": 0.14548,
+        "平负": 0.22133,
+        "负胜": 0.00511,
+        "负平": 0.03087,
+        "负负": 0.45495
+      },
+      "score": {
+        "halftime": "0:0",
+        "fulltime": "1:0"
+      }
+    },
+    {
+      "matchId": "厄瓜多尔 vs 德国",
+      "homeTeam": "厄瓜多尔",
+      "awayTeam": "德国",
+      "kickoff": "2026-06-26T04:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-26.json",
+      "historyGeneratedAt": "2026-06-25T16:25:56+08:00",
+      "actual": "平胜",
+      "predicted": "负负",
+      "hit": false,
+      "top3Hit": false,
+      "actualProbability": 0.09543,
+      "logLoss": 2.3493622845529747,
+      "brier": 0.9905905588,
+      "topSelections": [
+        {
+          "selection": "负负",
+          "probability": 0.31021
+        },
+        {
+          "selection": "平负",
+          "probability": 0.17194
+        },
+        {
+          "selection": "平平",
+          "probability": 0.15515
+        },
+        {
+          "selection": "胜胜",
+          "probability": 0.13039
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.09543
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.13039,
+        "胜平": 0.04729,
+        "胜负": 0.02581,
+        "平胜": 0.09543,
+        "平平": 0.15515,
+        "平负": 0.17194,
+        "负胜": 0.01545,
+        "负平": 0.04833,
+        "负负": 0.31021
+      },
+      "score": {
+        "halftime": "1:1",
+        "fulltime": "2:1"
+      }
+    },
+    {
+      "matchId": "库拉索 vs 科特迪瓦",
+      "homeTeam": "库拉索",
+      "awayTeam": "科特迪瓦",
+      "kickoff": "2026-06-26T04:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-26.json",
+      "historyGeneratedAt": "2026-06-25T16:25:56+08:00",
+      "actual": "负负",
+      "predicted": "负负",
+      "hit": true,
+      "top3Hit": true,
+      "actualProbability": 0.51855,
+      "logLoss": 0.6567188239463939,
+      "brier": 0.293404384,
+      "topSelections": [
+        {
+          "selection": "负负",
+          "probability": 0.51855
+        },
+        {
+          "selection": "平负",
+          "probability": 0.21293
+        },
+        {
+          "selection": "平平",
+          "probability": 0.10524
+        },
+        {
+          "selection": "胜胜",
+          "probability": 0.04112
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.03497
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.04112,
+        "胜平": 0.02834,
+        "胜负": 0.02593,
+        "平胜": 0.03497,
+        "平平": 0.10524,
+        "平负": 0.21293,
+        "负胜": 0.00496,
+        "负平": 0.02796,
+        "负负": 0.51855
+      },
+      "score": {
+        "halftime": "0:1",
+        "fulltime": "0:2"
+      }
+    },
+    {
+      "matchId": "突尼斯 vs 荷兰",
+      "homeTeam": "突尼斯",
+      "awayTeam": "荷兰",
+      "kickoff": "2026-06-26T07:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-26.json",
+      "historyGeneratedAt": "2026-06-25T16:25:56+08:00",
+      "actual": "负负",
+      "predicted": "负负",
+      "hit": true,
+      "top3Hit": true,
+      "actualProbability": 0.65911,
+      "logLoss": 0.4168648388340383,
+      "brier": 0.16287495940000002,
+      "topSelections": [
+        {
+          "selection": "负负",
+          "probability": 0.65911
+        },
+        {
+          "selection": "平负",
+          "probability": 0.20557
+        },
+        {
+          "selection": "平平",
+          "probability": 0.05617
+        },
+        {
+          "selection": "胜负",
+          "probability": 0.02209
+        },
+        {
+          "selection": "负平",
+          "probability": 0.01439
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.01372,
+        "胜平": 0.01432,
+        "胜负": 0.02209,
+        "平胜": 0.01277,
+        "平平": 0.05617,
+        "平负": 0.20557,
+        "负胜": 0.00186,
+        "负平": 0.01439,
+        "负负": 0.65911
+      },
+      "score": {
+        "halftime": "0:2",
+        "fulltime": "1:3"
+      }
+    },
+    {
+      "matchId": "日本 vs 瑞典",
+      "homeTeam": "日本",
+      "awayTeam": "瑞典",
+      "kickoff": "2026-06-26T07:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-26.json",
+      "historyGeneratedAt": "2026-06-25T16:25:56+08:00",
+      "actual": "平平",
+      "predicted": "胜胜",
+      "hit": false,
+      "top3Hit": false,
+      "actualProbability": 0.07389,
+      "logLoss": 2.605177778181581,
+      "brier": 1.1241240153999998,
+      "topSelections": [
+        {
+          "selection": "胜胜",
+          "probability": 0.46922
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.17489
+        },
+        {
+          "selection": "负负",
+          "probability": 0.08438
+        },
+        {
+          "selection": "平平",
+          "probability": 0.07389
+        },
+        {
+          "selection": "平负",
+          "probability": 0.05261
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.46922,
+        "胜平": 0.04095,
+        "胜负": 0.01633,
+        "平胜": 0.17489,
+        "平平": 0.07389,
+        "平负": 0.05261,
+        "负胜": 0.04618,
+        "负平": 0.04155,
+        "负负": 0.08438
+      },
+      "score": {
+        "halftime": "0:0",
+        "fulltime": "1:1"
+      }
+    },
+    {
+      "matchId": "土耳其 vs 美国",
+      "homeTeam": "土耳其",
+      "awayTeam": "美国",
+      "kickoff": "2026-06-26T10:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-26.json",
+      "historyGeneratedAt": "2026-06-25T16:25:56+08:00",
+      "actual": "胜胜",
+      "predicted": "负负",
+      "hit": false,
+      "top3Hit": true,
+      "actualProbability": 0.18883,
+      "logLoss": 1.6669081395886505,
+      "brier": 0.7862188635999999,
+      "topSelections": [
+        {
+          "selection": "负负",
+          "probability": 0.26448
+        },
+        {
+          "selection": "胜胜",
+          "probability": 0.18883
+        },
+        {
+          "selection": "平负",
+          "probability": 0.14362
+        },
+        {
+          "selection": "平平",
+          "probability": 0.13506
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.11209
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.18883,
+        "胜平": 0.05252,
+        "胜负": 0.02832,
+        "平胜": 0.11209,
+        "平平": 0.13506,
+        "平负": 0.14362,
+        "负胜": 0.02235,
+        "负平": 0.05273,
+        "负负": 0.26448
+      },
+      "score": {
+        "halftime": "2:1",
+        "fulltime": "3:2"
+      }
+    },
+    {
+      "matchId": "巴拉圭 vs 澳大利亚",
+      "homeTeam": "巴拉圭",
+      "awayTeam": "澳大利亚",
+      "kickoff": "2026-06-26T10:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-26.json",
+      "historyGeneratedAt": "2026-06-25T16:25:56+08:00",
+      "actual": "平平",
+      "predicted": "胜胜",
+      "hit": false,
+      "top3Hit": true,
+      "actualProbability": 0.18361,
+      "logLoss": 1.6949413360480414,
+      "brier": 0.7956608377999999,
+      "topSelections": [
+        {
+          "selection": "胜胜",
+          "probability": 0.21367
+        },
+        {
+          "selection": "负负",
+          "probability": 0.20977
+        },
+        {
+          "selection": "平平",
+          "probability": 0.18361
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.13263
+        },
+        {
+          "selection": "平负",
+          "probability": 0.12861
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.21367,
+        "胜平": 0.04925,
+        "胜负": 0.01672,
+        "平胜": 0.13263,
+        "平平": 0.18361,
+        "平负": 0.12861,
+        "负胜": 0.01686,
+        "负平": 0.04888,
+        "负负": 0.20977
+      },
+      "score": {
+        "halftime": "0:0",
+        "fulltime": "0:0"
+      }
+    },
+    {
+      "matchId": "挪威 vs 法国",
+      "homeTeam": "挪威",
+      "awayTeam": "法国",
+      "kickoff": "2026-06-27T03:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-27.json",
+      "historyGeneratedAt": "2026-06-26T16:33:01+08:00",
+      "actual": "负负",
+      "predicted": "负负",
+      "hit": true,
+      "top3Hit": true,
+      "actualProbability": 0.37465,
+      "logLoss": 0.9817630221718173,
+      "brier": 0.45761803680000007,
+      "topSelections": [
+        {
+          "selection": "负负",
+          "probability": 0.37465
+        },
+        {
+          "selection": "平负",
+          "probability": 0.16929
+        },
+        {
+          "selection": "胜胜",
+          "probability": 0.12524
+        },
+        {
+          "selection": "平平",
+          "probability": 0.09913
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.07556
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.12524,
+        "胜平": 0.04851,
+        "胜负": 0.03938,
+        "平胜": 0.07556,
+        "平平": 0.09913,
+        "平负": 0.16929,
+        "负胜": 0.01924,
+        "负平": 0.049,
+        "负负": 0.37465
+      },
+      "score": {
+        "halftime": "1:3",
+        "fulltime": "1:4"
+      }
+    },
+    {
+      "matchId": "塞内加尔 vs 伊拉克",
+      "homeTeam": "塞内加尔",
+      "awayTeam": "伊拉克",
+      "kickoff": "2026-06-27T03:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-27.json",
+      "historyGeneratedAt": "2026-06-26T16:33:01+08:00",
+      "actual": "胜胜",
+      "predicted": "胜胜",
+      "hit": true,
+      "top3Hit": true,
+      "actualProbability": 0.44782,
+      "logLoss": 0.8033639130189446,
+      "brier": 0.37249770420000006,
+      "topSelections": [
+        {
+          "selection": "胜胜",
+          "probability": 0.44782
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.20496
+        },
+        {
+          "selection": "平平",
+          "probability": 0.12421
+        },
+        {
+          "selection": "负负",
+          "probability": 0.06358
+        },
+        {
+          "selection": "平负",
+          "probability": 0.05166
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.44782,
+        "胜平": 0.03691,
+        "胜负": 0.00752,
+        "平胜": 0.20496,
+        "平平": 0.12421,
+        "平负": 0.05166,
+        "负胜": 0.02834,
+        "负平": 0.035,
+        "负负": 0.06358
+      },
+      "score": {
+        "halftime": "1:0",
+        "fulltime": "5:0"
+      }
+    },
+    {
+      "matchId": "乌拉圭 vs 西班牙",
+      "homeTeam": "乌拉圭",
+      "awayTeam": "西班牙",
+      "kickoff": "2026-06-27T08:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-27.json",
+      "historyGeneratedAt": "2026-06-26T16:33:01+08:00",
+      "actual": "负负",
+      "predicted": "负负",
+      "hit": true,
+      "top3Hit": true,
+      "actualProbability": 0.52292,
+      "logLoss": 0.6483267902884776,
+      "brier": 0.30149095039999996,
+      "topSelections": [
+        {
+          "selection": "负负",
+          "probability": 0.52292
+        },
+        {
+          "selection": "平负",
+          "probability": 0.22679
+        },
+        {
+          "selection": "平平",
+          "probability": 0.14155
+        },
+        {
+          "selection": "胜胜",
+          "probability": 0.02759
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.02537
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.02759,
+        "胜平": 0.02012,
+        "胜负": 0.01362,
+        "平胜": 0.02537,
+        "平平": 0.14155,
+        "平负": 0.22679,
+        "负胜": 0.0016,
+        "负平": 0.02044,
+        "负负": 0.52292
+      },
+      "score": {
+        "halftime": "0:1",
+        "fulltime": "0:1"
+      }
+    },
+    {
+      "matchId": "佛得角 vs 沙特",
+      "homeTeam": "佛得角",
+      "awayTeam": "沙特",
+      "kickoff": "2026-06-27T08:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-27.json",
+      "historyGeneratedAt": "2026-06-26T16:33:01+08:00",
+      "actual": "平平",
+      "predicted": "胜胜",
+      "hit": false,
+      "top3Hit": true,
+      "actualProbability": 0.17313,
+      "logLoss": 1.7537125215911522,
+      "brier": 0.816928271,
+      "topSelections": [
+        {
+          "selection": "胜胜",
+          "probability": 0.24841
+        },
+        {
+          "selection": "平平",
+          "probability": 0.17313
+        },
+        {
+          "selection": "负负",
+          "probability": 0.16178
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.16007
+        },
+        {
+          "selection": "平负",
+          "probability": 0.11905
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.24841,
+        "胜平": 0.04842,
+        "胜负": 0.01804,
+        "平胜": 0.16007,
+        "平平": 0.17313,
+        "平负": 0.11905,
+        "负胜": 0.02249,
+        "负平": 0.04861,
+        "负负": 0.16178
+      },
+      "score": {
+        "halftime": "0:0",
+        "fulltime": "0:0"
+      }
+    },
+    {
+      "matchId": "新西兰 vs 比利时",
+      "homeTeam": "新西兰",
+      "awayTeam": "比利时",
+      "kickoff": "2026-06-27T11:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-27.json",
+      "historyGeneratedAt": "2026-06-26T16:33:01+08:00",
+      "actual": "负负",
+      "predicted": "负负",
+      "hit": true,
+      "top3Hit": true,
+      "actualProbability": 0.54767,
+      "logLoss": 0.6020823632042337,
+      "brier": 0.2621589112,
+      "topSelections": [
+        {
+          "selection": "负负",
+          "probability": 0.54767
+        },
+        {
+          "selection": "平负",
+          "probability": 0.21508
+        },
+        {
+          "selection": "平平",
+          "probability": 0.08208
+        },
+        {
+          "selection": "胜胜",
+          "probability": 0.03563
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.03025
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.03563,
+        "胜平": 0.02674,
+        "胜负": 0.0297,
+        "平胜": 0.03025,
+        "平平": 0.08208,
+        "平负": 0.21508,
+        "负胜": 0.0055,
+        "负平": 0.02735,
+        "负负": 0.54767
+      },
+      "score": {
+        "halftime": "0:1",
+        "fulltime": "1:5"
+      }
+    },
+    {
+      "matchId": "埃及 vs 伊朗",
+      "homeTeam": "埃及",
+      "awayTeam": "伊朗",
+      "kickoff": "2026-06-27T11:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-27.json",
+      "historyGeneratedAt": "2026-06-26T16:33:01+08:00",
+      "actual": "平平",
+      "predicted": "负负",
+      "hit": false,
+      "top3Hit": true,
+      "actualProbability": 0.21667,
+      "logLoss": 1.5293798202635214,
+      "brier": 0.7344895758,
+      "topSelections": [
+        {
+          "selection": "负负",
+          "probability": 0.22011
+        },
+        {
+          "selection": "平平",
+          "probability": 0.21667
+        },
+        {
+          "selection": "胜胜",
+          "probability": 0.18406
+        },
+        {
+          "selection": "平负",
+          "probability": 0.13907
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.12095
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.18406,
+        "胜平": 0.04601,
+        "胜负": 0.01414,
+        "平胜": 0.12095,
+        "平平": 0.21667,
+        "平负": 0.13907,
+        "负胜": 0.0132,
+        "负平": 0.04579,
+        "负负": 0.22011
+      },
+      "score": {
+        "halftime": "1:1",
+        "fulltime": "1:1"
+      }
+    },
+    {
+      "matchId": "巴拿马 vs 英格兰",
+      "homeTeam": "巴拿马",
+      "awayTeam": "英格兰",
+      "kickoff": "2026-06-28T05:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-28.json",
+      "historyGeneratedAt": "2026-06-27T15:52:36+08:00",
+      "actual": "平负",
+      "predicted": "负负",
+      "hit": false,
+      "top3Hit": true,
+      "actualProbability": 0.22604,
+      "logLoss": 1.4870433042204945,
+      "brier": 0.7998151278000001,
+      "topSelections": [
+        {
+          "selection": "负负",
+          "probability": 0.38976
+        },
+        {
+          "selection": "平负",
+          "probability": 0.22604
+        },
+        {
+          "selection": "平平",
+          "probability": 0.20384
+        },
+        {
+          "selection": "胜胜",
+          "probability": 0.05441
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.04986
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.05441,
+        "胜平": 0.02868,
+        "胜负": 0.01502,
+        "平胜": 0.04986,
+        "平平": 0.20384,
+        "平负": 0.22604,
+        "负胜": 0.00358,
+        "负平": 0.02881,
+        "负负": 0.38976
+      },
+      "score": {
+        "halftime": "0:0",
+        "fulltime": "0:2"
+      }
+    },
+    {
+      "matchId": "克罗地亚 vs 加纳",
+      "homeTeam": "克罗地亚",
+      "awayTeam": "加纳",
+      "kickoff": "2026-06-28T05:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-28.json",
+      "historyGeneratedAt": "2026-06-27T15:52:36+08:00",
+      "actual": "胜胜",
+      "predicted": "平平",
+      "hit": false,
+      "top3Hit": false,
+      "actualProbability": 0.13133,
+      "logLoss": 2.0300420393850684,
+      "brier": 0.9260949894000001,
+      "topSelections": [
+        {
+          "selection": "平平",
+          "probability": 0.27154
+        },
+        {
+          "selection": "负负",
+          "probability": 0.24258
+        },
+        {
+          "selection": "平负",
+          "probability": 0.15991
+        },
+        {
+          "selection": "胜胜",
+          "probability": 0.13133
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.10167
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.13133,
+        "胜平": 0.03849,
+        "胜负": 0.01059,
+        "平胜": 0.10167,
+        "平平": 0.27154,
+        "平负": 0.15991,
+        "负胜": 0.00672,
+        "负平": 0.03717,
+        "负负": 0.24258
+      },
+      "score": {
+        "halftime": "1:0",
+        "fulltime": "2:1"
+      }
+    },
+    {
+      "matchId": "哥伦比亚 vs 葡萄牙",
+      "homeTeam": "哥伦比亚",
+      "awayTeam": "葡萄牙",
+      "kickoff": "2026-06-28T07:30:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-28.json",
+      "historyGeneratedAt": "2026-06-27T15:52:36+08:00",
+      "actual": "平平",
+      "predicted": "负负",
+      "hit": false,
+      "top3Hit": false,
+      "actualProbability": 0.11104,
+      "logLoss": 2.197864782223643,
+      "brier": 0.9671891584,
+      "topSelections": [
+        {
+          "selection": "负负",
+          "probability": 0.34077
+        },
+        {
+          "selection": "平负",
+          "probability": 0.15733
+        },
+        {
+          "selection": "胜胜",
+          "probability": 0.147
+        },
+        {
+          "selection": "平平",
+          "probability": 0.11104
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.08746
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.147,
+        "胜平": 0.05093,
+        "胜负": 0.03444,
+        "平胜": 0.08746,
+        "平平": 0.11104,
+        "平负": 0.15733,
+        "负胜": 0.01968,
+        "负平": 0.05135,
+        "负负": 0.34077
+      },
+      "score": {
+        "halftime": "0:0",
+        "fulltime": "0:0"
+      }
+    },
+    {
+      "matchId": "民主刚果 vs 乌兹别克斯坦",
+      "homeTeam": "民主刚果",
+      "awayTeam": "乌兹别克斯坦",
+      "kickoff": "2026-06-28T07:30:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-28.json",
+      "historyGeneratedAt": "2026-06-27T15:52:36+08:00",
+      "actual": "负胜",
+      "predicted": "胜胜",
+      "hit": false,
+      "top3Hit": false,
+      "actualProbability": 0.02877,
+      "logLoss": 3.5484221014186805,
+      "brier": 1.2475825546000001,
+      "topSelections": [
+        {
+          "selection": "胜胜",
+          "probability": 0.49446
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.20475
+        },
+        {
+          "selection": "平平",
+          "probability": 0.10589
+        },
+        {
+          "selection": "负负",
+          "probability": 0.05248
+        },
+        {
+          "selection": "平负",
+          "probability": 0.04229
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.49446,
+        "胜平": 0.0328,
+        "胜负": 0.00689,
+        "平胜": 0.20475,
+        "平平": 0.10589,
+        "平负": 0.04229,
+        "负胜": 0.02877,
+        "负平": 0.03167,
+        "负负": 0.05248
+      },
+      "score": {
+        "halftime": "0:1",
+        "fulltime": "3:1"
+      }
+    },
+    {
+      "matchId": "约旦 vs 阿根廷",
+      "homeTeam": "约旦",
+      "awayTeam": "阿根廷",
+      "kickoff": "2026-06-28T10:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-28.json",
+      "historyGeneratedAt": "2026-06-27T15:52:36+08:00",
+      "actual": "负负",
+      "predicted": "负负",
+      "hit": true,
+      "top3Hit": true,
+      "actualProbability": 0.57001,
+      "logLoss": 0.5621013744477837,
+      "brier": 0.2395737794,
+      "topSelections": [
+        {
+          "selection": "负负",
+          "probability": 0.57001
+        },
+        {
+          "selection": "平负",
+          "probability": 0.21035
+        },
+        {
+          "selection": "平平",
+          "probability": 0.08281
+        },
+        {
+          "selection": "胜胜",
+          "probability": 0.03144
+        },
+        {
+          "selection": "胜负",
+          "probability": 0.02641
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.03144,
+        "胜平": 0.02553,
+        "胜负": 0.02641,
+        "平胜": 0.02542,
+        "平平": 0.08281,
+        "平负": 0.21035,
+        "负胜": 0.00399,
+        "负平": 0.02404,
+        "负负": 0.57001
+      },
+      "score": {
+        "halftime": "0:2",
+        "fulltime": "1:3"
+      }
+    },
+    {
+      "matchId": "阿尔及利亚 vs 奥地利",
+      "homeTeam": "阿尔及利亚",
+      "awayTeam": "奥地利",
+      "kickoff": "2026-06-28T10:00:00+08:00",
+      "stage": "group",
+      "historyPath": "public/data/history/2026-06-28.json",
+      "historyGeneratedAt": "2026-06-27T15:52:36+08:00",
+      "actual": "平平",
+      "predicted": "负负",
+      "hit": false,
+      "top3Hit": true,
+      "actualProbability": 0.15228,
+      "logLoss": 1.8820343474678405,
+      "brier": 0.8632063482000001,
+      "topSelections": [
+        {
+          "selection": "负负",
+          "probability": 0.27195
+        },
+        {
+          "selection": "胜胜",
+          "probability": 0.17982
+        },
+        {
+          "selection": "平平",
+          "probability": 0.15228
+        },
+        {
+          "selection": "平负",
+          "probability": 0.1447
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.10488
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.17982,
+        "胜平": 0.05252,
+        "胜负": 0.02398,
+        "平胜": 0.10488,
+        "平平": 0.15228,
+        "平负": 0.1447,
+        "负胜": 0.01801,
+        "负平": 0.05186,
+        "负负": 0.27195
+      },
+      "score": {
+        "halftime": "1:1",
+        "fulltime": "3:3"
+      }
+    },
+    {
+      "matchId": "南非 vs 加拿大",
+      "homeTeam": "南非",
+      "awayTeam": "加拿大",
+      "kickoff": "2026-06-29T03:00:00+08:00",
+      "stage": "knockout",
+      "historyPath": "public/data/history/2026-06-29.json",
+      "historyGeneratedAt": "2026-06-28T16:25:34+08:00",
+      "actual": "平负",
+      "predicted": "负负",
+      "hit": false,
+      "top3Hit": true,
+      "actualProbability": 0.19716,
+      "logLoss": 1.62373969714496,
+      "brier": 0.8203623156000001,
+      "topSelections": [
+        {
+          "selection": "负负",
+          "probability": 0.36681
+        },
+        {
+          "selection": "平负",
+          "probability": 0.19716
+        },
+        {
+          "selection": "平平",
+          "probability": 0.15256
+        },
+        {
+          "selection": "胜胜",
+          "probability": 0.09326
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.07097
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.09326,
+        "胜平": 0.04195,
+        "胜负": 0.0256,
+        "平胜": 0.07097,
+        "平平": 0.15256,
+        "平负": 0.19716,
+        "负胜": 0.01002,
+        "负平": 0.04167,
+        "负负": 0.36681
+      },
+      "score": {
+        "halftime": "0:0",
+        "fulltime": "0:1"
+      }
+    },
+    {
+      "matchId": "2040337",
+      "homeTeam": "巴西",
+      "awayTeam": "日本",
+      "kickoff": "2026-06-30T01:00:00+08:00",
+      "stage": "knockout",
+      "historyPath": "public/data/history/2026-06-30.json",
+      "historyGeneratedAt": "2026-06-29T19:40:31+08:00",
+      "actual": "负胜",
+      "predicted": "胜胜",
+      "hit": false,
+      "top3Hit": false,
+      "actualProbability": 0.02313,
+      "logLoss": 3.766624802738789,
+      "brier": 1.1386342476,
+      "topSelections": [
+        {
+          "selection": "胜胜",
+          "probability": 0.30869
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.17857
+        },
+        {
+          "selection": "平平",
+          "probability": 0.17106
+        },
+        {
+          "selection": "负负",
+          "probability": 0.1239
+        },
+        {
+          "selection": "平负",
+          "probability": 0.09058
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.30869,
+        "胜平": 0.0462,
+        "胜负": 0.01226,
+        "平胜": 0.17857,
+        "平平": 0.17106,
+        "平负": 0.09058,
+        "负胜": 0.02313,
+        "负平": 0.04561,
+        "负负": 0.1239
+      },
+      "score": {
+        "halftime": "0:1",
+        "fulltime": "2:1"
+      }
+    },
+    {
+      "matchId": "2040344",
+      "homeTeam": "德国",
+      "awayTeam": "巴拉圭",
+      "kickoff": "2026-06-30T04:30:00+08:00",
+      "stage": "knockout",
+      "historyPath": "public/data/history/2026-06-30.json",
+      "historyGeneratedAt": "2026-06-29T19:40:31+08:00",
+      "actual": "负平",
+      "predicted": "胜胜",
+      "hit": false,
+      "top3Hit": false,
+      "actualProbability": 0.04319,
+      "logLoss": 3.142146292009527,
+      "brier": 1.1312298786000001,
+      "topSelections": [
+        {
+          "selection": "胜胜",
+          "probability": 0.37912
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.19178
+        },
+        {
+          "selection": "平平",
+          "probability": 0.13406
+        },
+        {
+          "selection": "负负",
+          "probability": 0.09702
+        },
+        {
+          "selection": "平负",
+          "probability": 0.07056
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.37912,
+        "胜平": 0.04352,
+        "胜负": 0.01186,
+        "平胜": 0.19178,
+        "平平": 0.13406,
+        "平负": 0.07056,
+        "负胜": 0.02889,
+        "负平": 0.04319,
+        "负负": 0.09702
+      },
+      "score": {
+        "halftime": "0:1",
+        "fulltime": "1:1"
+      }
+    },
+    {
+      "matchId": "2040338",
+      "homeTeam": "荷兰",
+      "awayTeam": "摩洛哥",
+      "kickoff": "2026-06-30T09:00:00+08:00",
+      "stage": "knockout",
+      "historyPath": "public/data/history/2026-06-30.json",
+      "historyGeneratedAt": "2026-06-29T19:40:31+08:00",
+      "actual": "平平",
+      "predicted": "胜胜",
+      "hit": false,
+      "top3Hit": true,
+      "actualProbability": 0.15676,
+      "logLoss": 1.8530393056507062,
+      "brier": 0.8681549774,
+      "topSelections": [
+        {
+          "selection": "胜胜",
+          "probability": 0.30864
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.17218
+        },
+        {
+          "selection": "平平",
+          "probability": 0.15676
+        },
+        {
+          "selection": "负负",
+          "probability": 0.1354
+        },
+        {
+          "selection": "平负",
+          "probability": 0.09214
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.30864,
+        "胜平": 0.04653,
+        "胜负": 0.0144,
+        "平胜": 0.17218,
+        "平平": 0.15676,
+        "平负": 0.09214,
+        "负胜": 0.02542,
+        "负平": 0.04853,
+        "负负": 0.1354
+      },
+      "score": {
+        "halftime": "0:0",
+        "fulltime": "1:1"
+      }
+    }
+  ]
+}
