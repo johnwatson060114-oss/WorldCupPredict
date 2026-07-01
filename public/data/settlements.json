@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-01T12:00:00+08:00",
+  "generatedAt": "2026-07-01T16:52:15+08:00",
   "matches": [
     {
       "matchId": "537327",
@@ -99,6 +99,8 @@
     },
     {
       "matchId": "2040170",
+      "fixtureId": 537351,
+      "matchLabel": "德国 vs 库拉索",
       "homeScore": 7,
       "awayScore": 1,
       "halfTimeHomeScore": 3,
@@ -157,13 +159,13 @@
       "closingOddsSource": "zgzcw.com",
       "closingOddsIssue": "2026-06-14",
       "closingOddsCheckedAt": "2026-06-19T10:26:32+08:00",
-      "matchLabel": "德国 vs 库拉索",
-      "fixtureId": 537351,
       "group": "GROUP_E",
       "matchday": 1
     },
     {
       "matchId": "2040171",
+      "fixtureId": 537357,
+      "matchLabel": "荷兰 vs 日本",
       "homeScore": 2,
       "awayScore": 2,
       "halfTimeHomeScore": 0,
@@ -238,13 +240,13 @@
       "closingOddsSource": "zgzcw.com",
       "closingOddsIssue": "2026-06-14",
       "closingOddsCheckedAt": "2026-06-19T10:26:32+08:00",
-      "matchLabel": "荷兰 vs 日本",
-      "fixtureId": 537357,
       "group": "GROUP_F",
       "matchday": 1
     },
     {
       "matchId": "2040172",
+      "fixtureId": 537352,
+      "matchLabel": "科特迪瓦 vs 厄瓜多尔",
       "homeScore": 1,
       "awayScore": 0,
       "halfTimeHomeScore": 0,
@@ -319,13 +321,13 @@
       "closingOddsSource": "zgzcw.com",
       "closingOddsIssue": "2026-06-14",
       "closingOddsCheckedAt": "2026-06-19T10:26:32+08:00",
-      "matchLabel": "科特迪瓦 vs 厄瓜多尔",
-      "fixtureId": 537352,
       "group": "GROUP_E",
       "matchday": 1
     },
     {
       "matchId": "2040173",
+      "fixtureId": 537358,
+      "matchLabel": "瑞典 vs 突尼斯",
       "homeScore": 5,
       "awayScore": 1,
       "halfTimeHomeScore": 2,
@@ -400,8 +402,6 @@
       "closingOddsSource": "zgzcw.com",
       "closingOddsIssue": "2026-06-14",
       "closingOddsCheckedAt": "2026-06-19T10:26:32+08:00",
-      "matchLabel": "瑞典 vs 突尼斯",
-      "fixtureId": 537358,
       "group": "GROUP_F",
       "matchday": 1
     },
