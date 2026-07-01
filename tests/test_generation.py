@@ -74,6 +74,8 @@ def test_offline_generation(tmp_path):
     assert payload["simulationQuality"]["actualPaths"] == 100000
     assert payload["simulationQuality"]["seed"] == 20260615
     assert all(match["simulation"]["actualPaths"] == 100000 for match in payload["matches"])
+    assert all(match["halfFullSignal"]["policy"] == "half_full_specialist_v1" for match in payload["matches"])
+    assert all(abs(sum(match["halfFullSignal"]["outcomeSignal"].values()) - 1) < 0.0001 for match in payload["matches"])
     assert len(payload["dataSnapshot"]["id"]) == 64
     assert payload["dataSnapshot"]["files"]
     assert len(payload["matches"]) == 4
@@ -136,6 +138,11 @@ def test_spain_cape_verde_uses_elo_gap_instead_of_neutral_fallback(monkeypatch):
     assert seed["coverage"] == 0.8
     assert len(seed["missing_data"]) == 1
     assert seed["factors"][0]["admissionStatus"] == "core"
+
+
+def test_half_full_assist_weight_is_conservative_for_knockout():
+    assert generate.half_full_assist_weight({}) == 0.20
+    assert generate.half_full_assist_weight({"knockout_context": {"applied": True}}) == 0.05
 
 
 def test_sporttery_seed_uses_model_policy_for_strength_allocation(monkeypatch):

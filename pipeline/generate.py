@@ -35,6 +35,7 @@ from .football_data import (
 )
 from .factor_gate import apply_factor_admissions, load_factor_admissions
 from .group_stage_form import apply_group_stage_form, load_group_stage_profiles
+from .half_full_specialist import build_half_full_signal
 from .knockout_context import apply_knockout_context
 from .model import (
     adjust_xg,
@@ -379,6 +380,12 @@ def _market_date_matches_seed(seed: dict, market: SportteryMatch) -> bool:
     return market.kickoff_text.startswith(seed_prefix)
 
 
+def half_full_assist_weight(seed: dict[str, Any]) -> float:
+    if seed.get("knockout_context"):
+        return 0.05
+    return 0.20
+
+
 def match_seed_to_market(seed: dict, markets: list[SportteryMatch]) -> SportteryMatch | None:
     home_key, away_key = team_key(seed["home_team"]), team_key(seed["away_team"])
     for market in markets:
@@ -664,6 +671,13 @@ def build_match(
         },
     )
     outcomes = draw_risk_result.probabilities
+    half_full_model = simulated["halfFull"] if simulated else half_full_probabilities(home_xg, away_xg)
+    half_full_signal = build_half_full_signal(
+        half_full_model,
+        outcomes,
+        weight=half_full_assist_weight(seed),
+    )
+    outcomes = half_full_signal.assisted_outcomes
     outcome_decision = apply_mutual_draw_outcome_guard(
         outcome_recommendation_decision(outcomes),
         outcomes,
@@ -789,7 +803,6 @@ def build_match(
             metadata=quote_metadata,
         ))
 
-    half_full_model = simulated["halfFull"] if simulated else half_full_probabilities(home_xg, away_xg)
     if market:
         half_full_odds = market.half_full
     else:
@@ -830,6 +843,23 @@ def build_match(
         "knockoutContext": seed.get("knockout_context"),
         "scoreCalibration": score_calibration.metadata,
         "drawRisk": draw_risk_result.metadata,
+        "halfFullSignal": {
+            **half_full_signal.metadata,
+            "topHalfFullProbability": round(float(half_full_signal.metadata["topHalfFullProbability"]), 5),
+            "outcomeSignal": {
+                key: round(value, 5)
+                for key, value in half_full_signal.outcome_signal.items()
+            },
+            "assistedOutcomeProbabilities": {
+                key: round(value, 5)
+                for key, value in half_full_signal.assisted_outcomes.items()
+            },
+            "outcomeDelta": {
+                key: round(float(value), 5)
+                for key, value in half_full_signal.metadata["outcomeDelta"].items()
+            },
+            "maxOutcomeDelta": round(float(half_full_signal.metadata["maxOutcomeDelta"]), 5),
+        },
         "outcomeProbabilities": {key: round(value, 5) for key, value in outcomes.items()},
         "outcomeDecision": {
             **outcome_decision,

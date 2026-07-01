@@ -172,6 +172,19 @@ export interface MatchForecast {
     maxCellDelta?: number
   }
   outcomeProbabilities: { home: number; draw: number; away: number }
+  halfFullSignal?: {
+    applied: boolean
+    policy: string
+    role: string
+    assistWeight: number
+    topHalfFullSelection: string
+    topHalfFullProbability: number
+    outcomeSignal: { home: number; draw: number; away: number }
+    assistedOutcomeProbabilities: { home: number; draw: number; away: number }
+    outcomeDelta: { home: number; draw: number; away: number }
+    maxOutcomeDelta: number
+    note?: string
+  }
   outcomeDecision?: {
     threshold: number
     maxProbability: number

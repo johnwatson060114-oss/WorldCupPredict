@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-01T17:12:06+08:00",
+  "generatedAt": "2026-07-01T18:07:20+08:00",
   "scope": {
     "tournament": "FIFA World Cup 2026",
     "market": "半全场",
@@ -15,7 +15,8 @@
     "top3Accuracy": "realized selection appears in the three highest model probabilities",
     "averageLogLoss": "negative log probability assigned to the realized selection",
     "averageBrier": "sum of squared probability errors across the nine selections",
-    "inSampleMostCommonAccuracy": "accuracy from always picking the most frequent realized class in this same sample"
+    "inSampleMostCommonAccuracy": "accuracy from always picking the most frequent realized class in this same sample",
+    "outcomeAssistance": "W/D/L metrics before and after adding the half-full specialist signal"
   },
   "metrics": {
     "allMatchedSettled": {
@@ -100,6 +101,91 @@
           "负负": 1
         }
       }
+    },
+    "outcomeAssistance": {
+      "allMatchedSettled": {
+        "assistPolicy": {
+          "groupWeight": 0.2,
+          "knockoutWeight": 0.05
+        },
+        "base": {
+          "matches": 56,
+          "hits": 32,
+          "accuracy": 0.5714285714285714,
+          "averageLogLoss": 0.8673778743464144,
+          "averageActualProbability": 0.4862203571428571
+        },
+        "halfFullSignal": {
+          "matches": 56,
+          "hits": 32,
+          "accuracy": 0.5714285714285714,
+          "averageLogLoss": 0.866815804473241,
+          "averageActualProbability": 0.4883892857142857
+        },
+        "assisted": {
+          "matches": 56,
+          "hits": 32,
+          "accuracy": 0.5714285714285714,
+          "averageLogLoss": 0.8670363961865195,
+          "averageActualProbability": 0.48667101785714284
+        }
+      },
+      "byStage": {
+        "group": {
+          "assistPolicy": {
+            "groupWeight": 0.2,
+            "knockoutWeight": 0.05
+          },
+          "base": {
+            "matches": 52,
+            "hits": 30,
+            "accuracy": 0.5769230769230769,
+            "averageLogLoss": 0.8565553693994802,
+            "averageActualProbability": 0.49325942307692305
+          },
+          "halfFullSignal": {
+            "matches": 52,
+            "hits": 30,
+            "accuracy": 0.5769230769230769,
+            "averageLogLoss": 0.8548282406488847,
+            "averageActualProbability": 0.49571634615384613
+          },
+          "assisted": {
+            "matches": 52,
+            "hits": 30,
+            "accuracy": 0.5769230769230769,
+            "averageLogLoss": 0.8561344580506086,
+            "averageActualProbability": 0.4937508076923077
+          }
+        },
+        "knockout": {
+          "assistPolicy": {
+            "groupWeight": 0.2,
+            "knockoutWeight": 0.05
+          },
+          "base": {
+            "matches": 4,
+            "hits": 2,
+            "accuracy": 0.5,
+            "averageLogLoss": 1.0080704386565589,
+            "averageActualProbability": 0.3947125
+          },
+          "halfFullSignal": {
+            "matches": 4,
+            "hits": 2,
+            "accuracy": 0.5,
+            "averageLogLoss": 1.0226541341898727,
+            "averageActualProbability": 0.39313750000000003
+          },
+          "assisted": {
+            "matches": 4,
+            "hits": 2,
+            "accuracy": 0.5,
+            "averageLogLoss": 1.0087615919533606,
+            "averageActualProbability": 0.39463375
+          }
+        }
+      }
     }
   },
   "matches": [
@@ -150,6 +236,43 @@
         "负胜": 0.008,
         "负平": 0.00814,
         "负负": 0.00701
+      },
+      "outcomeAssistance": {
+        "actual": "draw",
+        "base": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.10922,
+          "logLoss": 2.2143910822581296,
+          "probabilities": {
+            "home": 0.87574,
+            "draw": 0.10922,
+            "away": 0.01504
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.10922,
+          "logLoss": 2.2143910822581296,
+          "probabilities": {
+            "home": 0.87574,
+            "draw": 0.10922,
+            "away": 0.01504
+          }
+        },
+        "assisted": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.10922000000000001,
+          "logLoss": 2.214391082258129,
+          "probabilities": {
+            "home": 0.87574,
+            "draw": 0.10922,
+            "away": 0.01504
+          }
+        },
+        "assistWeight": 0.2
       },
       "score": {
         "halftime": "0:0",
@@ -204,6 +327,43 @@
         "负平": 0.03703,
         "负负": 0.07076
       },
+      "outcomeAssistance": {
+        "actual": "draw",
+        "base": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.21543,
+          "logLoss": 1.5351192481918012,
+          "probabilities": {
+            "home": 0.65078,
+            "draw": 0.21543,
+            "away": 0.13379
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.21543,
+          "logLoss": 1.5351192481918012,
+          "probabilities": {
+            "home": 0.65078,
+            "draw": 0.21543,
+            "away": 0.13379
+          }
+        },
+        "assisted": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.21543000000000004,
+          "logLoss": 1.535119248191801,
+          "probabilities": {
+            "home": 0.65078,
+            "draw": 0.21543,
+            "away": 0.13379
+          }
+        },
+        "assistWeight": 0.2
+      },
       "score": {
         "halftime": "0:1",
         "fulltime": "1:1"
@@ -256,6 +416,43 @@
         "负胜": 0.00259,
         "负平": 0.02171,
         "负负": 0.52805
+      },
+      "outcomeAssistance": {
+        "actual": "draw",
+        "base": {
+          "predicted": "away",
+          "hit": false,
+          "actualProbability": 0.1637,
+          "logLoss": 1.8097197946050478,
+          "probabilities": {
+            "home": 0.05735,
+            "draw": 0.1637,
+            "away": 0.77895
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "away",
+          "hit": false,
+          "actualProbability": 0.1637,
+          "logLoss": 1.8097197946050478,
+          "probabilities": {
+            "home": 0.05735,
+            "draw": 0.1637,
+            "away": 0.77895
+          }
+        },
+        "assisted": {
+          "predicted": "away",
+          "hit": false,
+          "actualProbability": 0.1637,
+          "logLoss": 1.8097197946050478,
+          "probabilities": {
+            "home": 0.05735,
+            "draw": 0.1637,
+            "away": 0.77895
+          }
+        },
+        "assistWeight": 0.2
       },
       "score": {
         "halftime": "1:0",
@@ -310,6 +507,43 @@
         "负平": 0.03554,
         "负负": 0.06577
       },
+      "outcomeAssistance": {
+        "actual": "draw",
+        "base": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.2123,
+          "logLoss": 1.5497549102729267,
+          "probabilities": {
+            "home": 0.66322,
+            "draw": 0.2123,
+            "away": 0.12448
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.2123,
+          "logLoss": 1.5497549102729267,
+          "probabilities": {
+            "home": 0.66322,
+            "draw": 0.2123,
+            "away": 0.12448
+          }
+        },
+        "assisted": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.2123,
+          "logLoss": 1.5497549102729267,
+          "probabilities": {
+            "home": 0.66322,
+            "draw": 0.2123,
+            "away": 0.12448
+          }
+        },
+        "assistWeight": 0.2
+      },
       "score": {
         "halftime": "1:1",
         "fulltime": "2:2"
@@ -362,6 +596,43 @@
         "负胜": 0.02388,
         "负平": 0.03598,
         "负负": 0.06772
+      },
+      "outcomeAssistance": {
+        "actual": "home",
+        "base": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.65849,
+          "logLoss": 0.41780594394296366,
+          "probabilities": {
+            "home": 0.65849,
+            "draw": 0.21223,
+            "away": 0.12928
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.65849,
+          "logLoss": 0.41780594394296366,
+          "probabilities": {
+            "home": 0.65849,
+            "draw": 0.21223,
+            "away": 0.12928
+          }
+        },
+        "assisted": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.65849,
+          "logLoss": 0.41780594394296366,
+          "probabilities": {
+            "home": 0.65849,
+            "draw": 0.21223,
+            "away": 0.12928
+          }
+        },
+        "assistWeight": 0.2
       },
       "score": {
         "halftime": "0:0",
@@ -416,6 +687,43 @@
         "负平": 0.02362,
         "负负": 0.52212
       },
+      "outcomeAssistance": {
+        "actual": "away",
+        "base": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.77168,
+          "logLoss": 0.25918532266147526,
+          "probabilities": {
+            "home": 0.06229,
+            "draw": 0.16603,
+            "away": 0.77168
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.77168,
+          "logLoss": 0.25918532266147526,
+          "probabilities": {
+            "home": 0.06229,
+            "draw": 0.16603,
+            "away": 0.77168
+          }
+        },
+        "assisted": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.7716800000000001,
+          "logLoss": 0.25918532266147515,
+          "probabilities": {
+            "home": 0.06229,
+            "draw": 0.16603,
+            "away": 0.77168
+          }
+        },
+        "assistWeight": 0.2
+      },
       "score": {
         "halftime": "1:2",
         "fulltime": "1:4"
@@ -468,6 +776,43 @@
         "负胜": 0.01694,
         "负平": 0.01929,
         "负负": 0.02385
+      },
+      "outcomeAssistance": {
+        "actual": "home",
+        "base": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.80179,
+          "logLoss": 0.22090855078964491,
+          "probabilities": {
+            "home": 0.80179,
+            "draw": 0.15069,
+            "away": 0.04752
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.8017899999999999,
+          "logLoss": 0.22090855078964505,
+          "probabilities": {
+            "home": 0.80179,
+            "draw": 0.15069,
+            "away": 0.04752
+          }
+        },
+        "assisted": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.80179,
+          "logLoss": 0.22090855078964491,
+          "probabilities": {
+            "home": 0.80179,
+            "draw": 0.15069,
+            "away": 0.04752
+          }
+        },
+        "assistWeight": 0.2
       },
       "score": {
         "halftime": "1:0",
@@ -522,6 +867,43 @@
         "负平": 0.04305,
         "负负": 0.09586
       },
+      "outcomeAssistance": {
+        "actual": "home",
+        "base": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.58533,
+          "logLoss": 0.53557948823222,
+          "probabilities": {
+            "home": 0.58533,
+            "draw": 0.23803,
+            "away": 0.17664
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.58533,
+          "logLoss": 0.53557948823222,
+          "probabilities": {
+            "home": 0.58533,
+            "draw": 0.23803,
+            "away": 0.17664
+          }
+        },
+        "assisted": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.58533,
+          "logLoss": 0.53557948823222,
+          "probabilities": {
+            "home": 0.58533,
+            "draw": 0.23803,
+            "away": 0.17664
+          }
+        },
+        "assistWeight": 0.2
+      },
       "score": {
         "halftime": "1:0",
         "fulltime": "3:1"
@@ -574,6 +956,43 @@
         "负胜": 0.01997,
         "负平": 0.04802,
         "负负": 0.15891
+      },
+      "outcomeAssistance": {
+        "actual": "draw",
+        "base": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.2738,
+          "logLoss": 1.2953573661277886,
+          "probabilities": {
+            "home": 0.44176,
+            "draw": 0.2738,
+            "away": 0.28444
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.2738,
+          "logLoss": 1.2953573661277886,
+          "probabilities": {
+            "home": 0.44176,
+            "draw": 0.2738,
+            "away": 0.28444
+          }
+        },
+        "assisted": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.27380000000000004,
+          "logLoss": 1.2953573661277884,
+          "probabilities": {
+            "home": 0.44176,
+            "draw": 0.2738,
+            "away": 0.28444
+          }
+        },
+        "assistWeight": 0.2
       },
       "score": {
         "halftime": "1:1",
@@ -628,6 +1047,43 @@
         "负平": 0.04926,
         "负负": 0.14128
       },
+      "outcomeAssistance": {
+        "actual": "home",
+        "base": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.49438,
+          "logLoss": 0.7044508267313374,
+          "probabilities": {
+            "home": 0.49438,
+            "draw": 0.25355,
+            "away": 0.25207
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.49438,
+          "logLoss": 0.7044508267313374,
+          "probabilities": {
+            "home": 0.49438,
+            "draw": 0.25355,
+            "away": 0.25207
+          }
+        },
+        "assisted": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.49438000000000004,
+          "logLoss": 0.7044508267313373,
+          "probabilities": {
+            "home": 0.49438,
+            "draw": 0.25355,
+            "away": 0.25207
+          }
+        },
+        "assistWeight": 0.2
+      },
       "score": {
         "halftime": "2:2",
         "fulltime": "4:2"
@@ -680,6 +1136,43 @@
         "负胜": 0.02162,
         "负平": 0.05223,
         "负负": 0.2489
+      },
+      "outcomeAssistance": {
+        "actual": "home",
+        "base": {
+          "predicted": "away",
+          "hit": false,
+          "actualProbability": 0.33278,
+          "logLoss": 1.1002736679947758,
+          "probabilities": {
+            "home": 0.33278,
+            "draw": 0.25165,
+            "away": 0.41557
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "away",
+          "hit": false,
+          "actualProbability": 0.33277999999999996,
+          "logLoss": 1.100273667994776,
+          "probabilities": {
+            "home": 0.33278,
+            "draw": 0.25165,
+            "away": 0.41557
+          }
+        },
+        "assisted": {
+          "predicted": "away",
+          "hit": false,
+          "actualProbability": 0.33278,
+          "logLoss": 1.1002736679947758,
+          "probabilities": {
+            "home": 0.33278,
+            "draw": 0.25165,
+            "away": 0.41557
+          }
+        },
+        "assistWeight": 0.2
       },
       "score": {
         "halftime": "0:0",
@@ -734,6 +1227,43 @@
         "负平": 0.04899,
         "负负": 0.20303
       },
+      "outcomeAssistance": {
+        "actual": "away",
+        "base": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.35328,
+          "logLoss": 1.0404943353334613,
+          "probabilities": {
+            "home": 0.36648,
+            "draw": 0.28024,
+            "away": 0.35328
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.35328,
+          "logLoss": 1.0404943353334613,
+          "probabilities": {
+            "home": 0.36648,
+            "draw": 0.28024,
+            "away": 0.35328
+          }
+        },
+        "assisted": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.35328,
+          "logLoss": 1.0404943353334613,
+          "probabilities": {
+            "home": 0.36648,
+            "draw": 0.28024,
+            "away": 0.35328
+          }
+        },
+        "assistWeight": 0.2
+      },
       "score": {
         "halftime": "0:1",
         "fulltime": "1:3"
@@ -786,6 +1316,43 @@
         "负胜": 0.02365,
         "负平": 0.03543,
         "负负": 0.06873
+      },
+      "outcomeAssistance": {
+        "actual": "draw",
+        "base": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.21775,
+          "logLoss": 1.524407663249525,
+          "probabilities": {
+            "home": 0.65079,
+            "draw": 0.21775,
+            "away": 0.13146
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.21775,
+          "logLoss": 1.524407663249525,
+          "probabilities": {
+            "home": 0.65079,
+            "draw": 0.21775,
+            "away": 0.13146
+          }
+        },
+        "assisted": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.21775000000000003,
+          "logLoss": 1.5244076632495247,
+          "probabilities": {
+            "home": 0.65079,
+            "draw": 0.21775,
+            "away": 0.13146
+          }
+        },
+        "assistWeight": 0.2
       },
       "score": {
         "halftime": "1:0",
@@ -840,6 +1407,43 @@
         "负平": 0.03393,
         "负负": 0.05757
       },
+      "outcomeAssistance": {
+        "actual": "home",
+        "base": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.70316,
+          "logLoss": 0.3521708170504468,
+          "probabilities": {
+            "home": 0.70316,
+            "draw": 0.18775,
+            "away": 0.10909
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.7031599999999999,
+          "logLoss": 0.35217081705044695,
+          "probabilities": {
+            "home": 0.70316,
+            "draw": 0.18775,
+            "away": 0.10909
+          }
+        },
+        "assisted": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.70316,
+          "logLoss": 0.3521708170504468,
+          "probabilities": {
+            "home": 0.70316,
+            "draw": 0.18775,
+            "away": 0.10909
+          }
+        },
+        "assistWeight": 0.2
+      },
       "score": {
         "halftime": "0:0",
         "fulltime": "4:1"
@@ -892,6 +1496,43 @@
         "负胜": 0.02163,
         "负平": 0.02395,
         "负负": 0.03131
+      },
+      "outcomeAssistance": {
+        "actual": "home",
+        "base": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.78053,
+          "logLoss": 0.2477821028659056,
+          "probabilities": {
+            "home": 0.78053,
+            "draw": 0.15669,
+            "away": 0.06278
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.78053,
+          "logLoss": 0.2477821028659056,
+          "probabilities": {
+            "home": 0.78053,
+            "draw": 0.15669,
+            "away": 0.06278
+          }
+        },
+        "assisted": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.78053,
+          "logLoss": 0.2477821028659056,
+          "probabilities": {
+            "home": 0.78053,
+            "draw": 0.15669,
+            "away": 0.06278
+          }
+        },
+        "assistWeight": 0.2
       },
       "score": {
         "halftime": "3:0",
@@ -946,6 +1587,43 @@
         "负平": 0.04651,
         "负负": 0.12824
       },
+      "outcomeAssistance": {
+        "actual": "home",
+        "base": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.49815,
+          "logLoss": 0.6968540424912718,
+          "probabilities": {
+            "home": 0.49815,
+            "draw": 0.2664,
+            "away": 0.23545
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.49815000000000004,
+          "logLoss": 0.6968540424912717,
+          "probabilities": {
+            "home": 0.49815,
+            "draw": 0.2664,
+            "away": 0.23545
+          }
+        },
+        "assisted": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.49815,
+          "logLoss": 0.6968540424912718,
+          "probabilities": {
+            "home": 0.49815,
+            "draw": 0.2664,
+            "away": 0.23545
+          }
+        },
+        "assistWeight": 0.2
+      },
       "score": {
         "halftime": "0:0",
         "fulltime": "1:0"
@@ -998,6 +1676,43 @@
         "负胜": 0.01729,
         "负平": 0.04983,
         "负负": 0.27011
+      },
+      "outcomeAssistance": {
+        "actual": "home",
+        "base": {
+          "predicted": "away",
+          "hit": false,
+          "actualProbability": 0.28914,
+          "logLoss": 1.2408442791018406,
+          "probabilities": {
+            "home": 0.28914,
+            "draw": 0.25892,
+            "away": 0.45194
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "away",
+          "hit": false,
+          "actualProbability": 0.28914000000000006,
+          "logLoss": 1.2408442791018404,
+          "probabilities": {
+            "home": 0.28914,
+            "draw": 0.25892,
+            "away": 0.45194
+          }
+        },
+        "assisted": {
+          "predicted": "away",
+          "hit": false,
+          "actualProbability": 0.28914000000000006,
+          "logLoss": 1.2408442791018404,
+          "probabilities": {
+            "home": 0.28914,
+            "draw": 0.25892,
+            "away": 0.45194
+          }
+        },
+        "assistWeight": 0.2
       },
       "score": {
         "halftime": "2:0",
@@ -1052,6 +1767,43 @@
         "负平": 0.04808,
         "负负": 0.25318
       },
+      "outcomeAssistance": {
+        "actual": "away",
+        "base": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.43231,
+          "logLoss": 0.8386123554918926,
+          "probabilities": {
+            "home": 0.29141,
+            "draw": 0.27628,
+            "away": 0.43231
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.43231,
+          "logLoss": 0.8386123554918926,
+          "probabilities": {
+            "home": 0.29141,
+            "draw": 0.27628,
+            "away": 0.43231
+          }
+        },
+        "assisted": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.4323100000000001,
+          "logLoss": 0.8386123554918925,
+          "probabilities": {
+            "home": 0.29141,
+            "draw": 0.27628,
+            "away": 0.43231
+          }
+        },
+        "assistWeight": 0.2
+      },
       "score": {
         "halftime": "0:1",
         "fulltime": "0:1"
@@ -1104,6 +1856,43 @@
         "负胜": 0.01005,
         "负平": 0.00974,
         "负负": 0.00827
+      },
+      "outcomeAssistance": {
+        "actual": "home",
+        "base": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.87143,
+          "logLoss": 0.13761973853312912,
+          "probabilities": {
+            "home": 0.87143,
+            "draw": 0.11104,
+            "away": 0.01753
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.87143,
+          "logLoss": 0.13761973853312912,
+          "probabilities": {
+            "home": 0.87143,
+            "draw": 0.11104,
+            "away": 0.01753
+          }
+        },
+        "assisted": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.8714300000000001,
+          "logLoss": 0.137619738533129,
+          "probabilities": {
+            "home": 0.87143,
+            "draw": 0.11104,
+            "away": 0.01753
+          }
+        },
+        "assistWeight": 0.2
       },
       "score": {
         "halftime": "3:0",
@@ -1158,6 +1947,43 @@
         "负平": 0.05029,
         "负负": 0.15976
       },
+      "outcomeAssistance": {
+        "actual": "away",
+        "base": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.278,
+          "logLoss": 1.2801341652915,
+          "probabilities": {
+            "home": 0.47844,
+            "draw": 0.24356,
+            "away": 0.278
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.278,
+          "logLoss": 1.2801341652915,
+          "probabilities": {
+            "home": 0.47844,
+            "draw": 0.24356,
+            "away": 0.278
+          }
+        },
+        "assisted": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.278,
+          "logLoss": 1.2801341652915,
+          "probabilities": {
+            "home": 0.47844,
+            "draw": 0.24356,
+            "away": 0.278
+          }
+        },
+        "assistWeight": 0.2
+      },
       "score": {
         "halftime": "0:1",
         "fulltime": "0:1"
@@ -1210,6 +2036,43 @@
         "负胜": 0.00861,
         "负平": 0.00965,
         "负负": 0.00924
+      },
+      "outcomeAssistance": {
+        "actual": "home",
+        "base": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.85125,
+          "logLoss": 0.16104942151841498,
+          "probabilities": {
+            "home": 0.85125,
+            "draw": 0.12934,
+            "away": 0.01941
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.85125,
+          "logLoss": 0.16104942151841498,
+          "probabilities": {
+            "home": 0.85125,
+            "draw": 0.12934,
+            "away": 0.01941
+          }
+        },
+        "assisted": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.8512500000000001,
+          "logLoss": 0.16104942151841486,
+          "probabilities": {
+            "home": 0.85125,
+            "draw": 0.12934,
+            "away": 0.01941
+          }
+        },
+        "assistWeight": 0.2
       },
       "score": {
         "halftime": "3:0",
@@ -1264,6 +2127,43 @@
         "负平": 0.0467,
         "负负": 0.1222
       },
+      "outcomeAssistance": {
+        "actual": "draw",
+        "base": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.22679,
+          "logLoss": 1.4837307998113665,
+          "probabilities": {
+            "home": 0.5559,
+            "draw": 0.22679,
+            "away": 0.21731
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.22678999999999996,
+          "logLoss": 1.4837307998113667,
+          "probabilities": {
+            "home": 0.5559,
+            "draw": 0.22679,
+            "away": 0.21731
+          }
+        },
+        "assisted": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.22679,
+          "logLoss": 1.4837307998113665,
+          "probabilities": {
+            "home": 0.5559,
+            "draw": 0.22679,
+            "away": 0.21731
+          }
+        },
+        "assistWeight": 0.2
+      },
       "score": {
         "halftime": "0:0",
         "fulltime": "0:0"
@@ -1316,6 +2216,43 @@
         "负胜": 0.01295,
         "负平": 0.02236,
         "负负": 0.03631
+      },
+      "outcomeAssistance": {
+        "actual": "draw",
+        "base": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.23842,
+          "logLoss": 1.4337214546922816,
+          "probabilities": {
+            "home": 0.68701,
+            "draw": 0.23842,
+            "away": 0.07457
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.23841999999999997,
+          "logLoss": 1.4337214546922816,
+          "probabilities": {
+            "home": 0.68701,
+            "draw": 0.23842,
+            "away": 0.07457
+          }
+        },
+        "assisted": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.23842000000000002,
+          "logLoss": 1.4337214546922814,
+          "probabilities": {
+            "home": 0.68701,
+            "draw": 0.23842,
+            "away": 0.07457
+          }
+        },
+        "assistWeight": 0.2
       },
       "score": {
         "halftime": "2:1",
@@ -1370,6 +2307,43 @@
         "负平": 0.04536,
         "负负": 0.34943
       },
+      "outcomeAssistance": {
+        "actual": "away",
+        "base": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.56236,
+          "logLoss": 0.5756130647704305,
+          "probabilities": {
+            "home": 0.19786,
+            "draw": 0.23978,
+            "away": 0.56236
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.56236,
+          "logLoss": 0.5756130647704305,
+          "probabilities": {
+            "home": 0.19786,
+            "draw": 0.23978,
+            "away": 0.56236
+          }
+        },
+        "assisted": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.56236,
+          "logLoss": 0.5756130647704305,
+          "probabilities": {
+            "home": 0.19786,
+            "draw": 0.23978,
+            "away": 0.56236
+          }
+        },
+        "assistWeight": 0.2
+      },
       "score": {
         "halftime": "1:0",
         "fulltime": "1:3"
@@ -1422,6 +2396,43 @@
         "负胜": 0.02253,
         "负平": 0.02898,
         "负负": 0.0426
+      },
+      "outcomeAssistance": {
+        "actual": "home",
+        "base": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.73615,
+          "logLoss": 0.3063213766707195,
+          "probabilities": {
+            "home": 0.73615,
+            "draw": 0.17938,
+            "away": 0.08447
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.7361500000000001,
+          "logLoss": 0.3063213766707194,
+          "probabilities": {
+            "home": 0.73615,
+            "draw": 0.17938,
+            "away": 0.08447
+          }
+        },
+        "assisted": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.7361500000000001,
+          "logLoss": 0.3063213766707194,
+          "probabilities": {
+            "home": 0.73615,
+            "draw": 0.17938,
+            "away": 0.08447
+          }
+        },
+        "assistWeight": 0.2
       },
       "score": {
         "halftime": "1:0",
@@ -1476,6 +2487,43 @@
         "负平": 0.00756,
         "负负": 0.00677
       },
+      "outcomeAssistance": {
+        "actual": "home",
+        "base": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.89961,
+          "logLoss": 0.10579394290718078,
+          "probabilities": {
+            "home": 0.89961,
+            "draw": 0.08619,
+            "away": 0.0142
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.8996099999999999,
+          "logLoss": 0.1057939429071809,
+          "probabilities": {
+            "home": 0.89961,
+            "draw": 0.08619,
+            "away": 0.0142
+          }
+        },
+        "assisted": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.8996100000000001,
+          "logLoss": 0.10579394290718065,
+          "probabilities": {
+            "home": 0.89961,
+            "draw": 0.08619,
+            "away": 0.0142
+          }
+        },
+        "assistWeight": 0.2
+      },
       "score": {
         "halftime": "1:0",
         "fulltime": "3:0"
@@ -1528,6 +2576,43 @@
         "负胜": 0.0298,
         "负平": 0.04942,
         "负负": 0.14295
+      },
+      "outcomeAssistance": {
+        "actual": "home",
+        "base": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.51593,
+          "logLoss": 0.6617841816178058,
+          "probabilities": {
+            "home": 0.51593,
+            "draw": 0.23407,
+            "away": 0.25
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.51593,
+          "logLoss": 0.6617841816178058,
+          "probabilities": {
+            "home": 0.51593,
+            "draw": 0.23407,
+            "away": 0.25
+          }
+        },
+        "assisted": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.51593,
+          "logLoss": 0.6617841816178058,
+          "probabilities": {
+            "home": 0.51593,
+            "draw": 0.23407,
+            "away": 0.25
+          }
+        },
+        "assistWeight": 0.2
       },
       "score": {
         "halftime": "1:0",
@@ -1582,6 +2667,43 @@
         "负平": 0.05087,
         "负负": 0.23681
       },
+      "outcomeAssistance": {
+        "actual": "away",
+        "base": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.40545,
+          "logLoss": 0.9027577175915708,
+          "probabilities": {
+            "home": 0.32427,
+            "draw": 0.27028,
+            "away": 0.40545
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.40545,
+          "logLoss": 0.9027577175915708,
+          "probabilities": {
+            "home": 0.32427,
+            "draw": 0.27028,
+            "away": 0.40545
+          }
+        },
+        "assisted": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.40545,
+          "logLoss": 0.9027577175915708,
+          "probabilities": {
+            "home": 0.32427,
+            "draw": 0.27028,
+            "away": 0.40545
+          }
+        },
+        "assistWeight": 0.2
+      },
       "score": {
         "halftime": "1:0",
         "fulltime": "1:2"
@@ -1634,6 +2756,43 @@
         "负胜": 0.02843,
         "负平": 0.05011,
         "负负": 0.14833
+      },
+      "outcomeAssistance": {
+        "actual": "home",
+        "base": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.48487,
+          "logLoss": 0.7238744652112401,
+          "probabilities": {
+            "home": 0.48487,
+            "draw": 0.26795,
+            "away": 0.24718
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.50637,
+          "logLoss": 0.6804876516131909,
+          "probabilities": {
+            "home": 0.50637,
+            "draw": 0.23595,
+            "away": 0.25768
+          }
+        },
+        "assisted": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.48917,
+          "logLoss": 0.7150452016611615,
+          "probabilities": {
+            "home": 0.48917,
+            "draw": 0.26155,
+            "away": 0.24928
+          }
+        },
+        "assistWeight": 0.2
       },
       "score": {
         "halftime": "0:0",
@@ -1688,6 +2847,43 @@
         "负平": 0.04302,
         "负负": 0.1011
       },
+      "outcomeAssistance": {
+        "actual": "home",
+        "base": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.59605,
+          "logLoss": 0.5174307228181265,
+          "probabilities": {
+            "home": 0.59605,
+            "draw": 0.22458,
+            "away": 0.17938
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.61002,
+          "logLoss": 0.4942635354670124,
+          "probabilities": {
+            "home": 0.61002,
+            "draw": 0.20378,
+            "away": 0.1862
+          }
+        },
+        "assisted": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.5988439999999999,
+          "logLoss": 0.5127541488422872,
+          "probabilities": {
+            "home": 0.598844,
+            "draw": 0.22042,
+            "away": 0.180744
+          }
+        },
+        "assistWeight": 0.2
+      },
       "score": {
         "halftime": "2:1",
         "fulltime": "3:1"
@@ -1740,6 +2936,43 @@
         "负胜": 0.00891,
         "负平": 0.01126,
         "负负": 0.01151
+      },
+      "outcomeAssistance": {
+        "actual": "home",
+        "base": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.8102,
+          "logLoss": 0.21047414821354682,
+          "probabilities": {
+            "home": 0.8102,
+            "draw": 0.16607,
+            "away": 0.02373
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.8351999999999999,
+          "logLoss": 0.18008406185376286,
+          "probabilities": {
+            "home": 0.8352,
+            "draw": 0.14107,
+            "away": 0.02373
+          }
+        },
+        "assisted": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.8152,
+          "logLoss": 0.20432179707362194,
+          "probabilities": {
+            "home": 0.8152,
+            "draw": 0.16107,
+            "away": 0.02373
+          }
+        },
+        "assistWeight": 0.2
       },
       "score": {
         "halftime": "2:2",
@@ -1794,6 +3027,43 @@
         "负平": 0.02748,
         "负负": 0.4444
       },
+      "outcomeAssistance": {
+        "actual": "away",
+        "base": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.66189,
+          "logLoss": 0.4126558999937472,
+          "probabilities": {
+            "home": 0.08158,
+            "draw": 0.25653,
+            "away": 0.66189
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.68339,
+          "logLoss": 0.38068957212676396,
+          "probabilities": {
+            "home": 0.09208,
+            "draw": 0.22453,
+            "away": 0.68339
+          }
+        },
+        "assisted": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.6661900000000001,
+          "logLoss": 0.4061803638425716,
+          "probabilities": {
+            "home": 0.08368,
+            "draw": 0.25013,
+            "away": 0.66619
+          }
+        },
+        "assistWeight": 0.2
+      },
       "score": {
         "halftime": "0:2",
         "fulltime": "0:3"
@@ -1846,6 +3116,43 @@
         "负胜": 0.00575,
         "负平": 0.03423,
         "负负": 0.41037
+      },
+      "outcomeAssistance": {
+        "actual": "away",
+        "base": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.63226,
+          "logLoss": 0.4584545770288704,
+          "probabilities": {
+            "home": 0.11765,
+            "draw": 0.25009,
+            "away": 0.63226
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.6462300000000001,
+          "logLoss": 0.43659980141401894,
+          "probabilities": {
+            "home": 0.12448,
+            "draw": 0.22929,
+            "away": 0.64623
+          }
+        },
+        "assisted": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.635054,
+          "logLoss": 0.4540452443350089,
+          "probabilities": {
+            "home": 0.119016,
+            "draw": 0.24593,
+            "away": 0.635054
+          }
+        },
+        "assistWeight": 0.2
       },
       "score": {
         "halftime": "0:0",
@@ -1900,6 +3207,43 @@
         "负平": 0.03087,
         "负负": 0.45495
       },
+      "outcomeAssistance": {
+        "actual": "home",
+        "base": {
+          "predicted": "away",
+          "hit": false,
+          "actualProbability": 0.08964,
+          "logLoss": 2.411953630049411,
+          "probabilities": {
+            "home": 0.08964,
+            "draw": 0.22802,
+            "away": 0.68234
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "away",
+          "hit": false,
+          "actualProbability": 0.09646,
+          "logLoss": 2.338626864341311,
+          "probabilities": {
+            "home": 0.09646,
+            "draw": 0.20722,
+            "away": 0.69632
+          }
+        },
+        "assisted": {
+          "predicted": "away",
+          "hit": false,
+          "actualProbability": 0.091004,
+          "logLoss": 2.3968518173873696,
+          "probabilities": {
+            "home": 0.091004,
+            "draw": 0.22386,
+            "away": 0.685136
+          }
+        },
+        "assistWeight": 0.2
+      },
       "score": {
         "halftime": "0:0",
         "fulltime": "1:0"
@@ -1952,6 +3296,43 @@
         "负胜": 0.01545,
         "负平": 0.04833,
         "负负": 0.31021
+      },
+      "outcomeAssistance": {
+        "actual": "home",
+        "base": {
+          "predicted": "away",
+          "hit": false,
+          "actualProbability": 0.23917,
+          "logLoss": 1.4305806828313636,
+          "probabilities": {
+            "home": 0.23917,
+            "draw": 0.25777,
+            "away": 0.50306
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "away",
+          "hit": false,
+          "actualProbability": 0.24127,
+          "logLoss": 1.4218386406447816,
+          "probabilities": {
+            "home": 0.24127,
+            "draw": 0.25077,
+            "away": 0.50796
+          }
+        },
+        "assisted": {
+          "predicted": "away",
+          "hit": false,
+          "actualProbability": 0.23959000000000003,
+          "logLoss": 1.4288261498388684,
+          "probabilities": {
+            "home": 0.23959,
+            "draw": 0.25637,
+            "away": 0.50404
+          }
+        },
+        "assistWeight": 0.2
       },
       "score": {
         "halftime": "1:1",
@@ -2006,6 +3387,43 @@
         "负平": 0.02796,
         "负负": 0.51855
       },
+      "outcomeAssistance": {
+        "actual": "away",
+        "base": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.75251,
+          "logLoss": 0.28434099341085983,
+          "probabilities": {
+            "home": 0.07895,
+            "draw": 0.16854,
+            "away": 0.75251
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.7574099999999999,
+          "logLoss": 0.2778505605384917,
+          "probabilities": {
+            "home": 0.08105,
+            "draw": 0.16154,
+            "away": 0.75741
+          }
+        },
+        "assisted": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.7534900000000001,
+          "logLoss": 0.28303953240378527,
+          "probabilities": {
+            "home": 0.07937,
+            "draw": 0.16714,
+            "away": 0.75349
+          }
+        },
+        "assistWeight": 0.2
+      },
       "score": {
         "halftime": "0:1",
         "fulltime": "0:2"
@@ -2058,6 +3476,43 @@
         "负胜": 0.00186,
         "负平": 0.01439,
         "负负": 0.65911
+      },
+      "outcomeAssistance": {
+        "actual": "away",
+        "base": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.87427,
+          "logLoss": 0.13436602654881943,
+          "probabilities": {
+            "home": 0.02835,
+            "draw": 0.09738,
+            "away": 0.87427
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.88677,
+          "logLoss": 0.12016963131153453,
+          "probabilities": {
+            "home": 0.02835,
+            "draw": 0.08488,
+            "away": 0.88677
+          }
+        },
+        "assisted": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.87677,
+          "logLoss": 0.13151057870221075,
+          "probabilities": {
+            "home": 0.02835,
+            "draw": 0.09488,
+            "away": 0.87677
+          }
+        },
+        "assistWeight": 0.2
       },
       "score": {
         "halftime": "0:2",
@@ -2112,6 +3567,43 @@
         "负平": 0.04155,
         "负负": 0.08438
       },
+      "outcomeAssistance": {
+        "actual": "draw",
+        "base": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.15639,
+          "logLoss": 1.8554023915340128,
+          "probabilities": {
+            "home": 0.69029,
+            "draw": 0.15639,
+            "away": 0.15332
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.15639,
+          "logLoss": 1.8554023915340128,
+          "probabilities": {
+            "home": 0.69029,
+            "draw": 0.15639,
+            "away": 0.15332
+          }
+        },
+        "assisted": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.15639,
+          "logLoss": 1.8554023915340128,
+          "probabilities": {
+            "home": 0.69029,
+            "draw": 0.15639,
+            "away": 0.15332
+          }
+        },
+        "assistWeight": 0.2
+      },
       "score": {
         "halftime": "0:0",
         "fulltime": "1:1"
@@ -2164,6 +3656,43 @@
         "负胜": 0.02235,
         "负平": 0.05273,
         "负负": 0.26448
+      },
+      "outcomeAssistance": {
+        "actual": "home",
+        "base": {
+          "predicted": "away",
+          "hit": false,
+          "actualProbability": 0.32117,
+          "logLoss": 1.1357847010224928,
+          "probabilities": {
+            "home": 0.32117,
+            "draw": 0.24731,
+            "away": 0.43152
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "away",
+          "hit": false,
+          "actualProbability": 0.32326999999999995,
+          "logLoss": 1.1292673916277438,
+          "probabilities": {
+            "home": 0.32327,
+            "draw": 0.24031,
+            "away": 0.43642
+          }
+        },
+        "assisted": {
+          "predicted": "away",
+          "hit": false,
+          "actualProbability": 0.32159,
+          "logLoss": 1.1344778366881338,
+          "probabilities": {
+            "home": 0.32159,
+            "draw": 0.24591,
+            "away": 0.4325
+          }
+        },
+        "assistWeight": 0.2
       },
       "score": {
         "halftime": "2:1",
@@ -2218,6 +3747,43 @@
         "负平": 0.04888,
         "负负": 0.20977
       },
+      "outcomeAssistance": {
+        "actual": "draw",
+        "base": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.28174,
+          "logLoss": 1.2667706191499764,
+          "probabilities": {
+            "home": 0.36316,
+            "draw": 0.28174,
+            "away": 0.3551
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.28174,
+          "logLoss": 1.2667706191499764,
+          "probabilities": {
+            "home": 0.36316,
+            "draw": 0.28174,
+            "away": 0.3551
+          }
+        },
+        "assisted": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.28174,
+          "logLoss": 1.2667706191499764,
+          "probabilities": {
+            "home": 0.36316,
+            "draw": 0.28174,
+            "away": 0.3551
+          }
+        },
+        "assistWeight": 0.2
+      },
       "score": {
         "halftime": "0:0",
         "fulltime": "0:0"
@@ -2270,6 +3836,43 @@
         "负胜": 0.01924,
         "负平": 0.049,
         "负负": 0.37465
+      },
+      "outcomeAssistance": {
+        "actual": "away",
+        "base": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.57842,
+          "logLoss": 0.547455030588781,
+          "probabilities": {
+            "home": 0.20894,
+            "draw": 0.21264,
+            "away": 0.57842
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.58332,
+          "logLoss": 0.5390193581367727,
+          "probabilities": {
+            "home": 0.22004,
+            "draw": 0.19664,
+            "away": 0.58332
+          }
+        },
+        "assisted": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.5794,
+          "logLoss": 0.5457621936468869,
+          "probabilities": {
+            "home": 0.21116,
+            "draw": 0.20944,
+            "away": 0.5794
+          }
+        },
+        "assistWeight": 0.2
       },
       "score": {
         "halftime": "1:3",
@@ -2324,6 +3927,43 @@
         "负平": 0.035,
         "负负": 0.06358
       },
+      "outcomeAssistance": {
+        "actual": "home",
+        "base": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.67622,
+          "logLoss": 0.391236812097533,
+          "probabilities": {
+            "home": 0.67622,
+            "draw": 0.20312,
+            "away": 0.12066
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.6811200000000001,
+          "logLoss": 0.38401677690229474,
+          "probabilities": {
+            "home": 0.68112,
+            "draw": 0.19612,
+            "away": 0.12276
+          }
+        },
+        "assisted": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.6772,
+          "logLoss": 0.3897886287231568,
+          "probabilities": {
+            "home": 0.6772,
+            "draw": 0.20172,
+            "away": 0.12108
+          }
+        },
+        "assistWeight": 0.2
+      },
       "score": {
         "halftime": "1:0",
         "fulltime": "5:0"
@@ -2376,6 +4016,43 @@
         "负胜": 0.0016,
         "负平": 0.02044,
         "负负": 0.52292
+      },
+      "outcomeAssistance": {
+        "actual": "away",
+        "base": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.73553,
+          "logLoss": 0.3071639511932785,
+          "probabilities": {
+            "home": 0.03836,
+            "draw": 0.22611,
+            "away": 0.73553
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.7633300000000001,
+          "logLoss": 0.27006483792372293,
+          "probabilities": {
+            "home": 0.05456,
+            "draw": 0.18211,
+            "away": 0.76333
+          }
+        },
+        "assisted": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.74109,
+          "logLoss": 0.29963320357153533,
+          "probabilities": {
+            "home": 0.0416,
+            "draw": 0.21731,
+            "away": 0.74109
+          }
+        },
+        "assistWeight": 0.2
       },
       "score": {
         "halftime": "0:1",
@@ -2430,6 +4107,43 @@
         "负平": 0.04861,
         "负负": 0.16178
       },
+      "outcomeAssistance": {
+        "actual": "draw",
+        "base": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.27016,
+          "logLoss": 1.3087409029048247,
+          "probabilities": {
+            "home": 0.43097,
+            "draw": 0.27016,
+            "away": 0.29887
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.27016,
+          "logLoss": 1.3087409029048247,
+          "probabilities": {
+            "home": 0.43097,
+            "draw": 0.27016,
+            "away": 0.29887
+          }
+        },
+        "assisted": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.27016,
+          "logLoss": 1.3087409029048247,
+          "probabilities": {
+            "home": 0.43097,
+            "draw": 0.27016,
+            "away": 0.29887
+          }
+        },
+        "assistWeight": 0.2
+      },
       "score": {
         "halftime": "0:0",
         "fulltime": "0:0"
@@ -2482,6 +4196,43 @@
         "负胜": 0.0055,
         "负平": 0.02735,
         "负负": 0.54767
+      },
+      "outcomeAssistance": {
+        "actual": "away",
+        "base": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.77995,
+          "logLoss": 0.24852546391725933,
+          "probabilities": {
+            "home": 0.07138,
+            "draw": 0.14867,
+            "away": 0.77995
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.79245,
+          "logLoss": 0.23262586670370253,
+          "probabilities": {
+            "home": 0.07138,
+            "draw": 0.13617,
+            "away": 0.79245
+          }
+        },
+        "assisted": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.7824500000000001,
+          "logLoss": 0.245325256372956,
+          "probabilities": {
+            "home": 0.07138,
+            "draw": 0.14617,
+            "away": 0.78245
+          }
+        },
+        "assistWeight": 0.2
       },
       "score": {
         "halftime": "0:1",
@@ -2536,6 +4287,43 @@
         "负平": 0.04579,
         "负负": 0.22011
       },
+      "outcomeAssistance": {
+        "actual": "draw",
+        "base": {
+          "predicted": "away",
+          "hit": false,
+          "actualProbability": 0.30847,
+          "logLoss": 1.176130685097847,
+          "probabilities": {
+            "home": 0.31821,
+            "draw": 0.30847,
+            "away": 0.37332
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "away",
+          "hit": false,
+          "actualProbability": 0.30847,
+          "logLoss": 1.176130685097847,
+          "probabilities": {
+            "home": 0.31821,
+            "draw": 0.30847,
+            "away": 0.37332
+          }
+        },
+        "assisted": {
+          "predicted": "away",
+          "hit": false,
+          "actualProbability": 0.30847,
+          "logLoss": 1.176130685097847,
+          "probabilities": {
+            "home": 0.31821,
+            "draw": 0.30847,
+            "away": 0.37332
+          }
+        },
+        "assistWeight": 0.2
+      },
       "score": {
         "halftime": "1:1",
         "fulltime": "1:1"
@@ -2588,6 +4376,43 @@
         "负胜": 0.00358,
         "负平": 0.02881,
         "负负": 0.38976
+      },
+      "outcomeAssistance": {
+        "actual": "away",
+        "base": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.62592,
+          "logLoss": 0.46853271157573917,
+          "probabilities": {
+            "home": 0.10575,
+            "draw": 0.26833,
+            "away": 0.62592
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.6308199999999999,
+          "logLoss": 0.4607347186254209,
+          "probabilities": {
+            "home": 0.10785,
+            "draw": 0.26133,
+            "away": 0.63082
+          }
+        },
+        "assisted": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.6269,
+          "logLoss": 0.4669682407022142,
+          "probabilities": {
+            "home": 0.10617,
+            "draw": 0.26693,
+            "away": 0.6269
+          }
+        },
+        "assistWeight": 0.2
       },
       "score": {
         "halftime": "0:0",
@@ -2642,6 +4467,43 @@
         "负平": 0.03717,
         "负负": 0.24258
       },
+      "outcomeAssistance": {
+        "actual": "home",
+        "base": {
+          "predicted": "away",
+          "hit": false,
+          "actualProbability": 0.23972,
+          "logLoss": 1.4282837033921525,
+          "probabilities": {
+            "home": 0.23972,
+            "draw": 0.3472,
+            "away": 0.41308
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "away",
+          "hit": false,
+          "actualProbability": 0.23972,
+          "logLoss": 1.4282837033921525,
+          "probabilities": {
+            "home": 0.23972,
+            "draw": 0.3472,
+            "away": 0.41308
+          }
+        },
+        "assisted": {
+          "predicted": "away",
+          "hit": false,
+          "actualProbability": 0.23972,
+          "logLoss": 1.4282837033921525,
+          "probabilities": {
+            "home": 0.23972,
+            "draw": 0.3472,
+            "away": 0.41308
+          }
+        },
+        "assistWeight": 0.2
+      },
       "score": {
         "halftime": "1:0",
         "fulltime": "2:1"
@@ -2694,6 +4556,43 @@
         "负胜": 0.01968,
         "负平": 0.05135,
         "负负": 0.34077
+      },
+      "outcomeAssistance": {
+        "actual": "draw",
+        "base": {
+          "predicted": "away",
+          "hit": false,
+          "actualProbability": 0.23832,
+          "logLoss": 1.4341409705771102,
+          "probabilities": {
+            "home": 0.23989,
+            "draw": 0.23832,
+            "away": 0.52179
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "away",
+          "hit": false,
+          "actualProbability": 0.21332,
+          "logLoss": 1.5449618932497355,
+          "probabilities": {
+            "home": 0.25414,
+            "draw": 0.21332,
+            "away": 0.53254
+          }
+        },
+        "assisted": {
+          "predicted": "away",
+          "hit": false,
+          "actualProbability": 0.23332000000000003,
+          "logLoss": 1.4553443770967,
+          "probabilities": {
+            "home": 0.24274,
+            "draw": 0.23332,
+            "away": 0.52394
+          }
+        },
+        "assistWeight": 0.2
       },
       "score": {
         "halftime": "0:0",
@@ -2748,6 +4647,43 @@
         "负平": 0.03167,
         "负负": 0.05248
       },
+      "outcomeAssistance": {
+        "actual": "home",
+        "base": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.72308,
+          "logLoss": 0.3242354128754835,
+          "probabilities": {
+            "home": 0.72308,
+            "draw": 0.17736,
+            "away": 0.09956
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.72798,
+          "logLoss": 0.31748170369030043,
+          "probabilities": {
+            "home": 0.72798,
+            "draw": 0.17036,
+            "away": 0.10166
+          }
+        },
+        "assisted": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.7240599999999999,
+          "logLoss": 0.3228810171020154,
+          "probabilities": {
+            "home": 0.72406,
+            "draw": 0.17596,
+            "away": 0.09998
+          }
+        },
+        "assistWeight": 0.2
+      },
       "score": {
         "halftime": "0:1",
         "fulltime": "3:1"
@@ -2800,6 +4736,43 @@
         "负胜": 0.00399,
         "负平": 0.02404,
         "负负": 0.57001
+      },
+      "outcomeAssistance": {
+        "actual": "away",
+        "base": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.79427,
+          "logLoss": 0.23033182516119347,
+          "probabilities": {
+            "home": 0.06085,
+            "draw": 0.14488,
+            "away": 0.79427
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.80677,
+          "logLoss": 0.21471665752995947,
+          "probabilities": {
+            "home": 0.06085,
+            "draw": 0.13238,
+            "away": 0.80677
+          }
+        },
+        "assisted": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.7967700000000001,
+          "logLoss": 0.22718922402295982,
+          "probabilities": {
+            "home": 0.06085,
+            "draw": 0.14238,
+            "away": 0.79677
+          }
+        },
+        "assistWeight": 0.2
       },
       "score": {
         "halftime": "0:2",
@@ -2854,6 +4827,43 @@
         "负平": 0.05186,
         "负负": 0.27195
       },
+      "outcomeAssistance": {
+        "actual": "draw",
+        "base": {
+          "predicted": "away",
+          "hit": false,
+          "actualProbability": 0.30066,
+          "logLoss": 1.2017752207824488,
+          "probabilities": {
+            "home": 0.28651,
+            "draw": 0.30066,
+            "away": 0.41283
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "away",
+          "hit": false,
+          "actualProbability": 0.25666,
+          "logLoss": 1.360003027165822,
+          "probabilities": {
+            "home": 0.30271,
+            "draw": 0.25666,
+            "away": 0.44063
+          }
+        },
+        "assisted": {
+          "predicted": "away",
+          "hit": false,
+          "actualProbability": 0.29186,
+          "logLoss": 1.2314810437425374,
+          "probabilities": {
+            "home": 0.28975,
+            "draw": 0.29186,
+            "away": 0.41839
+          }
+        },
+        "assistWeight": 0.2
+      },
       "score": {
         "halftime": "1:1",
         "fulltime": "3:3"
@@ -2906,6 +4916,43 @@
         "负胜": 0.01002,
         "负平": 0.04167,
         "负负": 0.36681
+      },
+      "outcomeAssistance": {
+        "actual": "away",
+        "base": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.57787,
+          "logLoss": 0.5484063491014025,
+          "probabilities": {
+            "home": 0.16795,
+            "draw": 0.25418,
+            "away": 0.57787
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.58957,
+          "logLoss": 0.5283618213554077,
+          "probabilities": {
+            "home": 0.17425,
+            "draw": 0.23618,
+            "away": 0.58957
+          }
+        },
+        "assisted": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.5784549999999999,
+          "logLoss": 0.5473945227551593,
+          "probabilities": {
+            "home": 0.168265,
+            "draw": 0.25328,
+            "away": 0.578455
+          }
+        },
+        "assistWeight": 0.05
       },
       "score": {
         "halftime": "0:0",
@@ -2960,6 +5007,43 @@
         "负平": 0.04561,
         "负负": 0.1239
       },
+      "outcomeAssistance": {
+        "actual": "home",
+        "base": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.51039,
+          "logLoss": 0.672580139619981,
+          "probabilities": {
+            "home": 0.51039,
+            "draw": 0.26287,
+            "away": 0.22674
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.51039,
+          "logLoss": 0.672580139619981,
+          "probabilities": {
+            "home": 0.51039,
+            "draw": 0.26287,
+            "away": 0.22674
+          }
+        },
+        "assisted": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.51039,
+          "logLoss": 0.672580139619981,
+          "probabilities": {
+            "home": 0.51039,
+            "draw": 0.26287,
+            "away": 0.22674
+          }
+        },
+        "assistWeight": 0.05
+      },
       "score": {
         "halftime": "0:1",
         "fulltime": "2:1"
@@ -3013,6 +5097,43 @@
         "负平": 0.04319,
         "负负": 0.09702
       },
+      "outcomeAssistance": {
+        "actual": "draw",
+        "base": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.23877,
+          "logLoss": 1.4322545334962693,
+          "probabilities": {
+            "home": 0.58809,
+            "draw": 0.23877,
+            "away": 0.17314
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.22077000000000002,
+          "logLoss": 1.5106338433755195,
+          "probabilities": {
+            "home": 0.59979,
+            "draw": 0.22077,
+            "away": 0.17944
+          }
+        },
+        "assisted": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.23787,
+          "logLoss": 1.4360309730297198,
+          "probabilities": {
+            "home": 0.588675,
+            "draw": 0.23787,
+            "away": 0.173455
+          }
+        },
+        "assistWeight": 0.05
+      },
       "score": {
         "halftime": "0:1",
         "fulltime": "1:1"
@@ -3065,6 +5186,43 @@
         "负胜": 0.02542,
         "负平": 0.04853,
         "负负": 0.1354
+      },
+      "outcomeAssistance": {
+        "actual": "draw",
+        "base": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.25182,
+          "logLoss": 1.3790407324085825,
+          "probabilities": {
+            "home": 0.50624,
+            "draw": 0.25182,
+            "away": 0.24194
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.25182000000000004,
+          "logLoss": 1.3790407324085823,
+          "probabilities": {
+            "home": 0.50624,
+            "draw": 0.25182,
+            "away": 0.24194
+          }
+        },
+        "assisted": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.25182,
+          "logLoss": 1.3790407324085825,
+          "probabilities": {
+            "home": 0.50624,
+            "draw": 0.25182,
+            "away": 0.24194
+          }
+        },
+        "assistWeight": 0.05
       },
       "score": {
         "halftime": "0:0",

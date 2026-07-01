@@ -54,6 +54,7 @@ def test_evaluate_row_computes_top1_and_top3_hits():
             "id": "m1",
             "homeTeam": "Home",
             "awayTeam": "Away",
+            "outcomeProbabilities": {"home": 0.45, "draw": 0.30, "away": 0.25},
             "quotes": [
                 {"market": "\u534a\u5168\u573a", "selection": "\u80dc\u80dc", "modelProbability": 0.5},
                 {"market": "\u534a\u5168\u573a", "selection": "\u5e73\u80dc", "modelProbability": 0.3},

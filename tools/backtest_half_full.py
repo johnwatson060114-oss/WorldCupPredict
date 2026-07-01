@@ -31,6 +31,9 @@ SELECTIONS = [
     "\u8d1f\u5e73",
     "\u8d1f\u8d1f",
 ]
+OUTCOME_KEYS = ("home", "draw", "away")
+GROUP_OUTCOME_ASSIST_WEIGHT = 0.20
+KNOCKOUT_OUTCOME_ASSIST_WEIGHT = 0.05
 
 
 def parse_args() -> argparse.Namespace:
@@ -128,7 +131,7 @@ def archived_forecasts(
                 generated_at and previous_generated and generated_at > previous_generated
             ):
                 forecasts[match_id] = {
-                    "historyPath": str(path.relative_to(ROOT)).replace("\\", "/"),
+                    "historyPath": str(path.resolve().relative_to(ROOT)).replace("\\", "/"),
                     "historyGeneratedAt": payload.get("generatedAt"),
                     "match": match,
                 }
@@ -137,6 +140,51 @@ def archived_forecasts(
 
 def multiclass_brier(probabilities: dict[str, float], actual: str) -> float:
     return sum((probabilities.get(selection, 0.0) - (1.0 if selection == actual else 0.0)) ** 2 for selection in SELECTIONS)
+
+
+def actual_outcome(settlement: dict[str, Any]) -> str:
+    home_score = int(settlement["homeScore"])
+    away_score = int(settlement["awayScore"])
+    if home_score > away_score:
+        return "home"
+    if home_score < away_score:
+        return "away"
+    return "draw"
+
+
+def half_full_to_outcomes(probabilities: dict[str, float]) -> dict[str, float]:
+    outcomes = {key: 0.0 for key in OUTCOME_KEYS}
+    for selection, probability in probabilities.items():
+        full_label = selection[1]
+        outcomes[{"\u80dc": "home", "\u5e73": "draw", "\u8d1f": "away"}[full_label]] += probability
+    return outcomes
+
+
+def blend_outcomes(
+    base: dict[str, float],
+    auxiliary: dict[str, float],
+    weight: float,
+) -> dict[str, float]:
+    return {
+        key: (1 - weight) * base[key] + weight * auxiliary[key]
+        for key in OUTCOME_KEYS
+    }
+
+
+def assist_weight_for_stage(stage: str) -> float:
+    return KNOCKOUT_OUTCOME_ASSIST_WEIGHT if stage == "knockout" else GROUP_OUTCOME_ASSIST_WEIGHT
+
+
+def outcome_metric(probabilities: dict[str, float], actual: str) -> dict[str, Any]:
+    predicted = max(OUTCOME_KEYS, key=lambda key: probabilities.get(key, 0.0))
+    actual_probability = max(probabilities.get(actual, 0.0), 1e-12)
+    return {
+        "predicted": predicted,
+        "hit": predicted == actual,
+        "actualProbability": actual_probability,
+        "logLoss": -math.log(actual_probability),
+        "probabilities": {key: round(probabilities.get(key, 0.0), 6) for key in OUTCOME_KEYS},
+    }
 
 
 def evaluate_row(
@@ -163,12 +211,21 @@ def evaluate_row(
     )
     predicted = str(ranked[0]["selection"])
     actual_probability = max(probabilities.get(actual, 0.0), 1e-12)
+    base_outcomes = {
+        key: float(forecast["match"]["outcomeProbabilities"][key])
+        for key in OUTCOME_KEYS
+    }
+    half_full_outcomes = half_full_to_outcomes(probabilities)
+    stage = "knockout" if match.get("knockoutContext") else "group"
+    assist_weight = assist_weight_for_stage(stage)
+    assisted_outcomes = blend_outcomes(base_outcomes, half_full_outcomes, assist_weight)
+    actual_wdl = actual_outcome(settlement)
     return {
         "matchId": match_id,
         "homeTeam": match.get("homeTeam"),
         "awayTeam": match.get("awayTeam"),
         "kickoff": match.get("kickoff"),
-        "stage": "knockout" if match.get("knockoutContext") else "group",
+        "stage": stage,
         "historyPath": forecast["historyPath"],
         "historyGeneratedAt": forecast["historyGeneratedAt"],
         "actual": actual,
@@ -180,6 +237,13 @@ def evaluate_row(
         "brier": multiclass_brier(probabilities, actual),
         "topSelections": ranked[:5],
         "probabilities": {selection: round(probabilities.get(selection, 0.0), 6) for selection in SELECTIONS},
+        "outcomeAssistance": {
+            "actual": actual_wdl,
+            "base": outcome_metric(base_outcomes, actual_wdl),
+            "halfFullSignal": outcome_metric(half_full_outcomes, actual_wdl),
+            "assisted": outcome_metric(assisted_outcomes, actual_wdl),
+            "assistWeight": assist_weight,
+        },
         "score": {
             "halftime": f"{settlement['halfTimeHomeScore']}:{settlement['halfTimeAwayScore']}",
             "fulltime": f"{settlement['homeScore']}:{settlement['awayScore']}",
@@ -219,6 +283,42 @@ def summarize_by_stage(rows: list[dict[str, Any]]) -> dict[str, Any]:
     for row in rows:
         grouped[str(row["stage"])].append(row)
     return {stage: summarize(stage_rows) for stage, stage_rows in sorted(grouped.items())}
+
+
+def summarize_outcomes(rows: list[dict[str, Any]], key: str) -> dict[str, Any]:
+    if not rows:
+        return {"matches": 0}
+
+    values = [row["outcomeAssistance"][key] for row in rows]
+    hits = sum(1 for value in values if value["hit"])
+    return {
+        "matches": len(values),
+        "hits": hits,
+        "accuracy": hits / len(values),
+        "averageLogLoss": sum(float(value["logLoss"]) for value in values) / len(values),
+        "averageActualProbability": (
+            sum(float(value["actualProbability"]) for value in values) / len(values)
+        ),
+    }
+
+
+def outcome_assistance_summary(rows: list[dict[str, Any]]) -> dict[str, Any]:
+    return {
+        "assistPolicy": {
+            "groupWeight": GROUP_OUTCOME_ASSIST_WEIGHT,
+            "knockoutWeight": KNOCKOUT_OUTCOME_ASSIST_WEIGHT,
+        },
+        "base": summarize_outcomes(rows, "base"),
+        "halfFullSignal": summarize_outcomes(rows, "halfFullSignal"),
+        "assisted": summarize_outcomes(rows, "assisted"),
+    }
+
+
+def outcome_assistance_by_stage(rows: list[dict[str, Any]]) -> dict[str, Any]:
+    grouped: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for row in rows:
+        grouped[str(row["stage"])].append(row)
+    return {stage: outcome_assistance_summary(stage_rows) for stage, stage_rows in sorted(grouped.items())}
 
 
 def build_report(
@@ -262,10 +362,15 @@ def build_report(
             "averageLogLoss": "negative log probability assigned to the realized selection",
             "averageBrier": "sum of squared probability errors across the nine selections",
             "inSampleMostCommonAccuracy": "accuracy from always picking the most frequent realized class in this same sample",
+            "outcomeAssistance": "W/D/L metrics before and after adding the half-full specialist signal",
         },
         "metrics": {
             "allMatchedSettled": summarize(rows),
             "byStage": summarize_by_stage(rows),
+            "outcomeAssistance": {
+                "allMatchedSettled": outcome_assistance_summary(rows),
+                "byStage": outcome_assistance_by_stage(rows),
+            },
         },
         "matches": rows,
     }
