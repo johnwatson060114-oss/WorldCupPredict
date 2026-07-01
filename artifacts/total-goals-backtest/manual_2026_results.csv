@@ -11,3 +11,6 @@ date,home_team,away_team,home_score,away_score,source,neutral
 2026-06-18,Switzerland,Bosnia and Herzegovina,4,1,settlement-confirmed,TRUE
 2026-06-18,Canada,Qatar,6,0,settlement-confirmed,FALSE
 2026-06-18,Mexico,South Korea,1,0,score-confirmed,FALSE
+2026-06-30,Ivory Coast,Norway,1,2,guardian-90min-confirmed,TRUE
+2026-06-30,France,Sweden,3,0,guardian-90min-confirmed,TRUE
+2026-07-01,Mexico,Ecuador,2,0,guardian-90min-confirmed,FALSE

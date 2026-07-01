@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-30T13:25:54+08:00",
+  "generatedAt": "2026-07-01T12:07:36+08:00",
   "scope": {
     "tournament": "FIFA World Cup 2026",
-    "matches": 68,
+    "matches": 71,
     "predictionTarget": "90_minutes",
     "policy": "rolling archived forecasts joined to settled local results",
     "historicalAdoptionDecision": "candidate_knockout_ready"
@@ -16,73 +16,73 @@
   "metrics": {
     "overall": {
       "current_production": {
-        "matches": 68,
-        "hits": 39,
-        "accuracy": 0.5735294117647058,
-        "logLoss": 0.8831192916395496,
-        "rps": 0.1603929714610294,
-        "brier": 0.5233735795250002,
-        "calibrationError": 0.09460784313725491,
-        "totalGoalsExactBucketAccuracy": 0.16176470588235295,
-        "totalGoalsAdjacentCoreAccuracy": 0.3088235294117647
+        "matches": 71,
+        "hits": 41,
+        "accuracy": 0.5774647887323944,
+        "logLoss": 0.8700736420411586,
+        "rps": 0.1587450477507042,
+        "brier": 0.513939998361972,
+        "calibrationError": 0.0875586854460094,
+        "totalGoalsExactBucketAccuracy": 0.16901408450704225,
+        "totalGoalsAdjacentCoreAccuracy": 0.3380281690140845
       },
       "candidate_knockout_ready": {
-        "matches": 68,
-        "hits": 40,
-        "accuracy": 0.5882352941176471,
-        "logLoss": 0.8672693414431165,
-        "rps": 0.15694005622907703,
-        "brier": 0.5167608317520811,
-        "calibrationError": 0.07647058823529412,
-        "totalGoalsExactBucketAccuracy": 0.14705882352941177,
-        "totalGoalsAdjacentCoreAccuracy": 0.3235294117647059
+        "matches": 71,
+        "hits": 42,
+        "accuracy": 0.5915492957746479,
+        "logLoss": 0.855701728410927,
+        "rps": 0.15554298282064738,
+        "brier": 0.5081769007340554,
+        "calibrationError": 0.07159624413145539,
+        "totalGoalsExactBucketAccuracy": 0.15492957746478872,
+        "totalGoalsAdjacentCoreAccuracy": 0.352112676056338
       },
       "no_tournament_form": {
-        "matches": 68,
-        "hits": 38,
-        "accuracy": 0.5588235294117647,
-        "logLoss": 0.8768031040374227,
-        "rps": 0.15968933666656107,
-        "brier": 0.520467894328704,
-        "calibrationError": 0.08970588235294118,
-        "totalGoalsExactBucketAccuracy": 0.16176470588235295,
-        "totalGoalsAdjacentCoreAccuracy": 0.29411764705882354
+        "matches": 71,
+        "hits": 40,
+        "accuracy": 0.5633802816901409,
+        "logLoss": 0.8640320980116328,
+        "rps": 0.1580560197197177,
+        "brier": 0.5112759929907681,
+        "calibrationError": 0.08474178403755864,
+        "totalGoalsExactBucketAccuracy": 0.18309859154929578,
+        "totalGoalsAdjacentCoreAccuracy": 0.323943661971831
       }
     },
     "byYear": {
       "2026": {
         "current_production": {
-          "matches": 68,
-          "hits": 39,
-          "accuracy": 0.5735294117647058,
-          "logLoss": 0.8831192916395496,
-          "rps": 0.1603929714610294,
-          "brier": 0.5233735795250002,
-          "calibrationError": 0.09460784313725491,
-          "totalGoalsExactBucketAccuracy": 0.16176470588235295,
-          "totalGoalsAdjacentCoreAccuracy": 0.3088235294117647
+          "matches": 71,
+          "hits": 41,
+          "accuracy": 0.5774647887323944,
+          "logLoss": 0.8700736420411586,
+          "rps": 0.1587450477507042,
+          "brier": 0.513939998361972,
+          "calibrationError": 0.0875586854460094,
+          "totalGoalsExactBucketAccuracy": 0.16901408450704225,
+          "totalGoalsAdjacentCoreAccuracy": 0.3380281690140845
         },
         "candidate_knockout_ready": {
-          "matches": 68,
-          "hits": 40,
-          "accuracy": 0.5882352941176471,
-          "logLoss": 0.8672693414431165,
-          "rps": 0.15694005622907703,
-          "brier": 0.5167608317520811,
-          "calibrationError": 0.07647058823529412,
-          "totalGoalsExactBucketAccuracy": 0.14705882352941177,
-          "totalGoalsAdjacentCoreAccuracy": 0.3235294117647059
+          "matches": 71,
+          "hits": 42,
+          "accuracy": 0.5915492957746479,
+          "logLoss": 0.855701728410927,
+          "rps": 0.15554298282064738,
+          "brier": 0.5081769007340554,
+          "calibrationError": 0.07159624413145539,
+          "totalGoalsExactBucketAccuracy": 0.15492957746478872,
+          "totalGoalsAdjacentCoreAccuracy": 0.352112676056338
         },
         "no_tournament_form": {
-          "matches": 68,
-          "hits": 38,
-          "accuracy": 0.5588235294117647,
-          "logLoss": 0.8768031040374227,
-          "rps": 0.15968933666656107,
-          "brier": 0.520467894328704,
-          "calibrationError": 0.08970588235294118,
-          "totalGoalsExactBucketAccuracy": 0.16176470588235295,
-          "totalGoalsAdjacentCoreAccuracy": 0.29411764705882354
+          "matches": 71,
+          "hits": 40,
+          "accuracy": 0.5633802816901409,
+          "logLoss": 0.8640320980116328,
+          "rps": 0.1580560197197177,
+          "brier": 0.5112759929907681,
+          "calibrationError": 0.08474178403755864,
+          "totalGoalsExactBucketAccuracy": 0.18309859154929578,
+          "totalGoalsAdjacentCoreAccuracy": 0.323943661971831
         }
       }
     },
@@ -124,109 +124,109 @@
       },
       "knockout": {
         "current_production": {
-          "matches": 4,
-          "hits": 2,
-          "accuracy": 0.5,
-          "logLoss": 1.0080704386565589,
-          "rps": 0.148521391,
-          "brier": 0.6152809156500001,
-          "calibrationError": 0.24166666666666667,
-          "totalGoalsExactBucketAccuracy": 0.5,
-          "totalGoalsAdjacentCoreAccuracy": 0.75
+          "matches": 7,
+          "hits": 4,
+          "accuracy": 0.5714285714285714,
+          "logLoss": 0.8221997868655887,
+          "rps": 0.13689455642142856,
+          "brier": 0.4802085912285715,
+          "calibrationError": 0.25,
+          "totalGoalsExactBucketAccuracy": 0.42857142857142855,
+          "totalGoalsAdjacentCoreAccuracy": 0.8571428571428571
         },
         "candidate_knockout_ready": {
-          "matches": 4,
-          "hits": 2,
-          "accuracy": 0.5,
-          "logLoss": 0.9898062521806328,
-          "rps": 0.14645182307677473,
-          "brier": 0.6067623588799496,
-          "calibrationError": 0.2333333333333333,
-          "totalGoalsExactBucketAccuracy": 0.5,
-          "totalGoalsAdjacentCoreAccuracy": 0.75
+          "matches": 7,
+          "hits": 4,
+          "accuracy": 0.5714285714285714,
+          "logLoss": 0.8199617868237742,
+          "rps": 0.13677646414226058,
+          "brier": 0.4811246897851751,
+          "calibrationError": 0.2261904761904762,
+          "totalGoalsExactBucketAccuracy": 0.42857142857142855,
+          "totalGoalsAdjacentCoreAccuracy": 0.8571428571428571
         },
         "no_tournament_form": {
-          "matches": 4,
-          "hits": 2,
-          "accuracy": 0.5,
-          "logLoss": 0.97735206231722,
-          "rps": 0.13851090341882455,
-          "brier": 0.587041375914031,
-          "calibrationError": 0.24166666666666667,
-          "totalGoalsExactBucketAccuracy": 0.5,
-          "totalGoalsAdjacentCoreAccuracy": 0.75
+          "matches": 7,
+          "hits": 4,
+          "accuracy": 0.5714285714285714,
+          "logLoss": 0.8047251619357233,
+          "rps": 0.13102087434987172,
+          "brier": 0.46527774166411145,
+          "calibrationError": 0.23095238095238096,
+          "totalGoalsExactBucketAccuracy": 0.5714285714285714,
+          "totalGoalsAdjacentCoreAccuracy": 0.8571428571428571
         }
       }
     },
     "byStrengthTier": {
       "balanced_or_close": {
         "current_production": {
-          "matches": 18,
+          "matches": 19,
           "hits": 5,
-          "accuracy": 0.2777777777777778,
-          "logLoss": 1.0951268244750856,
-          "rps": 0.22387821141666675,
-          "brier": 0.6652759874555557,
-          "calibrationError": 0.1,
-          "totalGoalsExactBucketAccuracy": 0.16666666666666666,
-          "totalGoalsAdjacentCoreAccuracy": 0.2777777777777778
+          "accuracy": 0.2631578947368421,
+          "logLoss": 1.0955132926077347,
+          "rps": 0.2265817966736843,
+          "brier": 0.6654970547578949,
+          "calibrationError": 0.09035087719298247,
+          "totalGoalsExactBucketAccuracy": 0.15789473684210525,
+          "totalGoalsAdjacentCoreAccuracy": 0.3157894736842105
         },
         "candidate_knockout_ready": {
-          "matches": 18,
+          "matches": 19,
           "hits": 6,
-          "accuracy": 0.3333333333333333,
-          "logLoss": 1.0696259773135266,
-          "rps": 0.21315978820257003,
-          "brier": 0.6471620944155044,
-          "calibrationError": 0.07222222222222222,
-          "totalGoalsExactBucketAccuracy": 0.16666666666666666,
-          "totalGoalsAdjacentCoreAccuracy": 0.2777777777777778
+          "accuracy": 0.3157894736842105,
+          "logLoss": 1.0731337926215603,
+          "rps": 0.21664774646161855,
+          "brier": 0.6495725944923706,
+          "calibrationError": 0.07982456140350877,
+          "totalGoalsExactBucketAccuracy": 0.15789473684210525,
+          "totalGoalsAdjacentCoreAccuracy": 0.3157894736842105
         },
         "no_tournament_form": {
-          "matches": 18,
+          "matches": 19,
           "hits": 4,
-          "accuracy": 0.2222222222222222,
-          "logLoss": 1.1062795082983288,
-          "rps": 0.2260381722655747,
-          "brier": 0.6722317000149274,
-          "calibrationError": 0.07962962962962962,
-          "totalGoalsExactBucketAccuracy": 0.16666666666666666,
-          "totalGoalsAdjacentCoreAccuracy": 0.2222222222222222
+          "accuracy": 0.21052631578947367,
+          "logLoss": 1.1048110351791025,
+          "rps": 0.22815111953156245,
+          "brier": 0.6712614613614216,
+          "calibrationError": 0.07105263157894737,
+          "totalGoalsExactBucketAccuracy": 0.21052631578947367,
+          "totalGoalsAdjacentCoreAccuracy": 0.2631578947368421
         }
       },
       "strong_favorite": {
         "current_production": {
-          "matches": 50,
-          "hits": 34,
-          "accuracy": 0.68,
-          "logLoss": 0.806796579818757,
-          "rps": 0.13753828507700003,
-          "brier": 0.47228871267000017,
-          "calibrationError": 0.1,
-          "totalGoalsExactBucketAccuracy": 0.16,
-          "totalGoalsAdjacentCoreAccuracy": 0.32
+          "matches": 52,
+          "hits": 36,
+          "accuracy": 0.6923076923076923,
+          "logLoss": 0.7877014620264483,
+          "rps": 0.13395854333653848,
+          "brier": 0.4585633816019232,
+          "calibrationError": 0.09358974358974359,
+          "totalGoalsExactBucketAccuracy": 0.17307692307692307,
+          "totalGoalsAdjacentCoreAccuracy": 0.34615384615384615
         },
         "candidate_knockout_ready": {
-          "matches": 50,
-          "hits": 34,
-          "accuracy": 0.68,
-          "logLoss": 0.7944209525297689,
-          "rps": 0.13670095271861954,
-          "brier": 0.4698163771932487,
-          "calibrationError": 0.088,
-          "totalGoalsExactBucketAccuracy": 0.14,
-          "totalGoalsAdjacentCoreAccuracy": 0.34
+          "matches": 52,
+          "hits": 36,
+          "accuracy": 0.6923076923076923,
+          "logLoss": 0.7762553972570416,
+          "rps": 0.13321624225952328,
+          "brier": 0.45651308955313274,
+          "calibrationError": 0.0782051282051282,
+          "totalGoalsExactBucketAccuracy": 0.15384615384615385,
+          "totalGoalsAdjacentCoreAccuracy": 0.36538461538461536
         },
         "no_tournament_form": {
-          "matches": 50,
-          "hits": 34,
-          "accuracy": 0.68,
-          "logLoss": 0.7941915985034966,
-          "rps": 0.13580375585091614,
-          "brier": 0.4658329242816637,
-          "calibrationError": 0.10066666666666667,
-          "totalGoalsExactBucketAccuracy": 0.16,
-          "totalGoalsAdjacentCoreAccuracy": 0.32
+          "matches": 52,
+          "hits": 36,
+          "accuracy": 0.6923076923076923,
+          "logLoss": 0.7760551786619806,
+          "rps": 0.13244434863462057,
+          "brier": 0.45281976416302927,
+          "calibrationError": 0.0967948717948718,
+          "totalGoalsExactBucketAccuracy": 0.17307692307692307,
+          "totalGoalsAdjacentCoreAccuracy": 0.34615384615384615
         }
       }
     }
@@ -5055,6 +5055,219 @@
             "predictedBucket": "2",
             "exactHit": true,
             "adjacentCore": "2-3",
+            "adjacentCoreHit": true
+          }
+        }
+      }
+    },
+    {
+      "date": "2026-07-01",
+      "year": "2026",
+      "stage": "knockout",
+      "strengthTier": "strong_favorite",
+      "match": "科特迪瓦 vs 挪威",
+      "score": "1-2",
+      "actual": "away",
+      "models": {
+        "current_production": {
+          "prediction": "away",
+          "hit": true,
+          "probabilities": {
+            "home": 0.15172,
+            "draw": 0.19596,
+            "away": 0.65232
+          },
+          "xg": {
+            "home": 0.89,
+            "away": 2.09
+          },
+          "totalGoals": {
+            "actualBucket": "3",
+            "predictedBucket": "2",
+            "exactHit": false,
+            "adjacentCore": "2-3",
+            "adjacentCoreHit": true
+          }
+        },
+        "candidate_knockout_ready": {
+          "prediction": "away",
+          "hit": true,
+          "probabilities": {
+            "home": 0.14300648,
+            "draw": 0.215066,
+            "away": 0.64192752
+          },
+          "xg": {
+            "home": 0.8906,
+            "away": 2.0853
+          },
+          "totalGoals": {
+            "actualBucket": "3",
+            "predictedBucket": "2",
+            "exactHit": false,
+            "adjacentCore": "2-3",
+            "adjacentCoreHit": true
+          }
+        },
+        "no_tournament_form": {
+          "prediction": "away",
+          "hit": true,
+          "probabilities": {
+            "home": 0.15858342,
+            "draw": 0.21784631,
+            "away": 0.62357027
+          },
+          "xg": {
+            "home": 0.9697,
+            "away": 2.0882
+          },
+          "totalGoals": {
+            "actualBucket": "3",
+            "predictedBucket": "2",
+            "exactHit": false,
+            "adjacentCore": "2-3",
+            "adjacentCoreHit": true
+          }
+        }
+      }
+    },
+    {
+      "date": "2026-07-01",
+      "year": "2026",
+      "stage": "knockout",
+      "strengthTier": "strong_favorite",
+      "match": "法国 vs 瑞典",
+      "score": "3-0",
+      "actual": "home",
+      "models": {
+        "current_production": {
+          "prediction": "home",
+          "hit": true,
+          "probabilities": {
+            "home": 0.82413,
+            "draw": 0.12083,
+            "away": 0.05504
+          },
+          "xg": {
+            "home": 2.73,
+            "away": 0.58
+          },
+          "totalGoals": {
+            "actualBucket": "3",
+            "predictedBucket": "3",
+            "exactHit": true,
+            "adjacentCore": "2-3",
+            "adjacentCoreHit": true
+          }
+        },
+        "candidate_knockout_ready": {
+          "prediction": "home",
+          "hit": true,
+          "probabilities": {
+            "home": 0.81795075,
+            "draw": 0.131204,
+            "away": 0.05084525
+          },
+          "xg": {
+            "home": 2.7301,
+            "away": 0.5831
+          },
+          "totalGoals": {
+            "actualBucket": "3",
+            "predictedBucket": "3",
+            "exactHit": true,
+            "adjacentCore": "2-3",
+            "adjacentCoreHit": true
+          }
+        },
+        "no_tournament_form": {
+          "prediction": "home",
+          "hit": true,
+          "probabilities": {
+            "home": 0.84114136,
+            "draw": 0.11699502,
+            "away": 0.04186362
+          },
+          "xg": {
+            "home": 2.8674,
+            "away": 0.5481
+          },
+          "totalGoals": {
+            "actualBucket": "3",
+            "predictedBucket": "3",
+            "exactHit": true,
+            "adjacentCore": "2-3",
+            "adjacentCoreHit": true
+          }
+        }
+      }
+    },
+    {
+      "date": "2026-07-01",
+      "year": "2026",
+      "stage": "knockout",
+      "strengthTier": "balanced_or_close",
+      "match": "墨西哥 vs 厄瓜多尔",
+      "score": "2-0",
+      "actual": "home",
+      "models": {
+        "current_production": {
+          "prediction": "draw",
+          "hit": false,
+          "probabilities": {
+            "home": 0.33205,
+            "draw": 0.34494,
+            "away": 0.32301
+          },
+          "xg": {
+            "home": 0.84,
+            "away": 0.82
+          },
+          "totalGoals": {
+            "actualBucket": "2",
+            "predictedBucket": "1",
+            "exactHit": false,
+            "adjacentCore": "1-2",
+            "adjacentCoreHit": true
+          }
+        },
+        "candidate_knockout_ready": {
+          "prediction": "draw",
+          "hit": false,
+          "probabilities": {
+            "home": 0.32101274,
+            "draw": 0.36619613,
+            "away": 0.31279113
+          },
+          "xg": {
+            "home": 0.8382,
+            "away": 0.8237
+          },
+          "totalGoals": {
+            "actualBucket": "2",
+            "predictedBucket": "1",
+            "exactHit": false,
+            "adjacentCore": "1-2",
+            "adjacentCoreHit": true
+          }
+        },
+        "no_tournament_form": {
+          "prediction": "draw",
+          "hit": false,
+          "probabilities": {
+            "home": 0.34014662,
+            "draw": 0.34846639,
+            "away": 0.31138699
+          },
+          "xg": {
+            "home": 0.934,
+            "away": 0.8812
+          },
+          "totalGoals": {
+            "actualBucket": "2",
+            "predictedBucket": "2",
+            "exactHit": true,
+            "adjacentCore": "1-2",
             "adjacentCoreHit": true
           }
         }

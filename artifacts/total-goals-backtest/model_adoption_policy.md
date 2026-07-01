@@ -6,6 +6,15 @@
 - The optimized candidate selected from 2018 and 2022 World Cup validation runs in shadow mode.
 - Daily reports should show both model lines: exact total-goals bucket accuracy, strongest adjacent two-bucket accuracy, average log loss, and prediction distribution.
 - Do not switch models because of one matchday or a small-sample swing.
+- For knockout-stage tuning, total-goals buckets and exact-score matrix quality are the primary adjustment targets. Win/draw/loss remains an auxiliary sanity check because its market odds are often too short to carry the recommendation layer.
+
+## Score Matrix Backtest
+
+Run this after new 2026 World Cup settlements are added:
+
+`python tools/backtest_score_matrix.py`
+
+The script writes `artifacts/score-matrix-backtest-2026.json` and compares the base full score matrix with the knockout-calibrated score matrix. Use it to judge exact-score top-k accuracy, total-goals bucket accuracy, total-goals log loss, and total-goals RPS before changing score-calibration weights.
 
 ## Switch Gates
 

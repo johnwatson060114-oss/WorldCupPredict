@@ -1,0 +1,1437 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-01T12:30:08+08:00",
+  "scope": {
+    "tournament": "FIFA World Cup 2026",
+    "predictionTarget": "90_minutes",
+    "policy": "archived forecasts joined to local settlements by match id; full score matrix reconstructed from archived adjustedExpectedGoals; knockout score calibration applied from archived knockoutContext",
+    "matchedSettledMatches": 63,
+    "settlementCount": 79
+  },
+  "metricDefinitions": {
+    "totalExactAccuracy": "predicted total-goals bucket with highest probability equals actual total-goals bucket",
+    "totalAdjacentCoreAccuracy": "predicted total-goals bucket is within one bucket of the actual bucket",
+    "scoreTopKAccuracy": "actual exact score appears in the top K score probabilities from the reconstructed full matrix",
+    "logLoss": "negative log probability assigned to the realized bucket or exact score",
+    "rps": "ranked probability score over ordered total-goals buckets 0,1,2,3,4,5,6,7+"
+  },
+  "metrics": {
+    "allMatchedSettled": {
+      "base": {
+        "matches": 63,
+        "totalExactHits": 12,
+        "totalExactAccuracy": 0.19047619047619047,
+        "totalAdjacentCoreHits": 34,
+        "totalAdjacentCoreAccuracy": 0.5396825396825397,
+        "averageTotalLogLoss": 1.9859079744720967,
+        "averageTotalRps": 0.14578383413864618,
+        "scoreTop1Hits": 7,
+        "scoreTop1Accuracy": 0.1111111111111111,
+        "scoreTop3Hits": 21,
+        "scoreTop3Accuracy": 0.3333333333333333,
+        "scoreTop5Hits": 32,
+        "scoreTop5Accuracy": 0.5079365079365079,
+        "averageScoreLogLoss": 2.9031716832283982
+      },
+      "calibrated": {
+        "matches": 63,
+        "totalExactHits": 12,
+        "totalExactAccuracy": 0.19047619047619047,
+        "totalAdjacentCoreHits": 34,
+        "totalAdjacentCoreAccuracy": 0.5396825396825397,
+        "averageTotalLogLoss": 1.9881642220325288,
+        "averageTotalRps": 0.14611909932871642,
+        "scoreTop1Hits": 6,
+        "scoreTop1Accuracy": 0.09523809523809523,
+        "scoreTop3Hits": 22,
+        "scoreTop3Accuracy": 0.3492063492063492,
+        "scoreTop5Hits": 32,
+        "scoreTop5Accuracy": 0.5079365079365079,
+        "averageScoreLogLoss": 2.9055401514325916
+      }
+    },
+    "knockout": {
+      "base": {
+        "matches": 7,
+        "totalExactHits": 3,
+        "totalExactAccuracy": 0.42857142857142855,
+        "totalAdjacentCoreHits": 7,
+        "totalAdjacentCoreAccuracy": 1.0,
+        "averageTotalLogLoss": 1.4688425955513789,
+        "averageTotalRps": 0.06673460926231771,
+        "scoreTop1Hits": 3,
+        "scoreTop1Accuracy": 0.42857142857142855,
+        "scoreTop3Hits": 4,
+        "scoreTop3Accuracy": 0.5714285714285714,
+        "scoreTop5Hits": 7,
+        "scoreTop5Accuracy": 1.0,
+        "averageScoreLogLoss": 2.251455833991201
+      },
+      "calibrated": {
+        "matches": 7,
+        "totalExactHits": 3,
+        "totalExactAccuracy": 0.42857142857142855,
+        "totalAdjacentCoreHits": 7,
+        "totalAdjacentCoreAccuracy": 1.0,
+        "averageTotalLogLoss": 1.489148823595269,
+        "averageTotalRps": 0.06975199597295,
+        "scoreTop1Hits": 2,
+        "scoreTop1Accuracy": 0.2857142857142857,
+        "scoreTop3Hits": 5,
+        "scoreTop3Accuracy": 0.7142857142857143,
+        "scoreTop5Hits": 7,
+        "scoreTop5Accuracy": 1.0,
+        "averageScoreLogLoss": 2.2727720478289397
+      }
+    },
+    "latestCompleted": {
+      "base": {
+        "matches": 3,
+        "totalExactHits": 1,
+        "totalExactAccuracy": 0.3333333333333333,
+        "totalAdjacentCoreHits": 3,
+        "totalAdjacentCoreAccuracy": 1.0,
+        "averageTotalLogLoss": 1.4356728191124437,
+        "averageTotalRps": 0.054222447274102165,
+        "scoreTop1Hits": 0,
+        "scoreTop1Accuracy": 0.0,
+        "scoreTop3Hits": 1,
+        "scoreTop3Accuracy": 0.3333333333333333,
+        "scoreTop5Hits": 3,
+        "scoreTop5Accuracy": 1.0,
+        "averageScoreLogLoss": 2.371608809118158
+      },
+      "calibrated": {
+        "matches": 3,
+        "totalExactHits": 1,
+        "totalExactAccuracy": 0.3333333333333333,
+        "totalAdjacentCoreHits": 3,
+        "totalAdjacentCoreAccuracy": 1.0,
+        "averageTotalLogLoss": 1.4331740215006203,
+        "averageTotalRps": 0.053742806447467935,
+        "scoreTop1Hits": 0,
+        "scoreTop1Accuracy": 0.0,
+        "scoreTop3Hits": 2,
+        "scoreTop3Accuracy": 0.6666666666666666,
+        "scoreTop5Hits": 3,
+        "scoreTop5Accuracy": 1.0,
+        "averageScoreLogLoss": 2.375780620763145
+      }
+    }
+  },
+  "modelDecision": {
+    "primaryAdjustmentTarget": "total_goals_and_exact_score_matrix",
+    "wdlRole": "auxiliary outcome sanity check only",
+    "currentDecision": "keep current production total-goals model; keep optimized total-goals model as shadow; keep knockout score calibration enabled but do not widen it from this small knockout sample",
+    "reason": "latest completed matches slightly help calibrated total-goals log loss/RPS, but the settled knockout sample still favors the base matrix on exact-score top1 and log loss; optimized total-goals shadow has not cleared stable-window adoption gates"
+  },
+  "latestCompletedMatchIds": [
+    "2040345",
+    "2040346",
+    "2040351"
+  ],
+  "latestMatches": [
+    {
+      "matchId": "2040345",
+      "homeTeam": "科特迪瓦",
+      "awayTeam": "挪威",
+      "kickoff": "2026-07-01T01:00:00+08:00",
+      "stage": "knockout",
+      "historyPath": "public/data/history/2026-07-01.json",
+      "historyGeneratedAt": "2026-06-30T18:37:21+08:00",
+      "settlementScoreBasis": "90_minutes",
+      "actualScore": "1:2",
+      "xg": {
+        "home": 0.8906,
+        "away": 2.0853
+      },
+      "base": {
+        "predictedTotalBucket": "2",
+        "actualTotalBucket": "3",
+        "totalExactHit": false,
+        "totalAdjacentCoreHit": true,
+        "totalLogLoss": 1.4960077452099323,
+        "totalRps": 0.055177406626857994,
+        "topScore": "0:2",
+        "actualScore": "1:2",
+        "scoreTop1Hit": false,
+        "scoreTop3Hit": false,
+        "scoreTop5Hit": true,
+        "scoreLogLoss": 2.3150694258187605,
+        "actualScoreProbability": 0.09875932731695959,
+        "topScores": [
+          {
+            "score": "0:2",
+            "probability": 0.11089077848299977
+          },
+          {
+            "score": "1:1",
+            "probability": 0.10229710209784332
+          },
+          {
+            "score": "0:1",
+            "probability": 0.09877718534277367
+          },
+          {
+            "score": "1:2",
+            "probability": 0.09875932731695959
+          },
+          {
+            "score": "0:3",
+            "probability": 0.07708018012353313
+          }
+        ],
+        "totalProbabilities": {
+          "0": 0.05857969636591664,
+          "1": 0.13662212209468994,
+          "2": 0.23341451977307656,
+          "3": 0.22402273310292486,
+          "4": 0.16666731286024855,
+          "5": 0.09919705126816274,
+          "6": 0.04920008414482092,
+          "7+": 0.03229648039015975
+        }
+      },
+      "calibrated": {
+        "predictedTotalBucket": "2",
+        "actualTotalBucket": "3",
+        "totalExactHit": false,
+        "totalAdjacentCoreHit": true,
+        "totalLogLoss": 1.4919847353016384,
+        "totalRps": 0.05393137014604353,
+        "topScore": "0:2",
+        "actualScore": "1:2",
+        "scoreTop1Hit": false,
+        "scoreTop3Hit": true,
+        "scoreTop5Hit": true,
+        "scoreLogLoss": 2.339298890320689,
+        "actualScoreProbability": 0.09639519815073114,
+        "topScores": [
+          {
+            "score": "0:2",
+            "probability": 0.10808612353548441
+          },
+          {
+            "score": "1:1",
+            "probability": 0.10541866309882673
+          },
+          {
+            "score": "1:2",
+            "probability": 0.09639519815073114
+          },
+          {
+            "score": "0:1",
+            "probability": 0.08379830879780907
+          },
+          {
+            "score": "0:3",
+            "probability": 0.07888719769299096
+          }
+        ],
+        "totalProbabilities": {
+          "0": 0.046651799763031396,
+          "1": 0.11781201696442706,
+          "2": 0.232844145454101,
+          "3": 0.22492579407151952,
+          "4": 0.18134060556161286,
+          "5": 0.10722919399532341,
+          "6": 0.05462962674250325,
+          "7+": 0.03456681744748141
+        }
+      },
+      "scoreCalibration": {
+        "applied": true,
+        "policy": "knockout_score_total_matrix_calibration_v1",
+        "profile": "favorite_tail",
+        "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
+        "favoriteSide": "away",
+        "totalGoalWeights": {
+          "0": 0.84,
+          "1": 0.94,
+          "2": 1.0,
+          "3": 1.05,
+          "4": 1.09,
+          "5": 1.12,
+          "6": 1.12,
+          "7+": 1.1
+        },
+        "expectedTotalGoalsBefore": 2.9594,
+        "expectedTotalGoalsAfter": 3.0895,
+        "outcomePreserved": true,
+        "maxCellDelta": 0.014979
+      }
+    },
+    {
+      "matchId": "2040346",
+      "homeTeam": "法国",
+      "awayTeam": "瑞典",
+      "kickoff": "2026-07-01T05:00:00+08:00",
+      "stage": "knockout",
+      "historyPath": "public/data/history/2026-07-01.json",
+      "historyGeneratedAt": "2026-06-30T18:37:21+08:00",
+      "settlementScoreBasis": "90_minutes",
+      "actualScore": "3:0",
+      "xg": {
+        "home": 2.7301,
+        "away": 0.5831
+      },
+      "base": {
+        "predictedTotalBucket": "3",
+        "actualTotalBucket": "3",
+        "totalExactHit": true,
+        "totalAdjacentCoreHit": true,
+        "totalLogLoss": 1.511083983521688,
+        "totalRps": 0.05784913154668463,
+        "topScore": "2:0",
+        "actualScore": "3:0",
+        "scoreTop1Hit": false,
+        "scoreTop3Hit": true,
+        "scoreTop5Hit": true,
+        "scoreLogLoss": 2.091812737059699,
+        "actualScoreProbability": 0.12346312665874382,
+        "topScores": [
+          {
+            "score": "2:0",
+            "probability": 0.13566879600609186
+          },
+          {
+            "score": "3:0",
+            "probability": 0.12346312665874382
+          },
+          {
+            "score": "1:0",
+            "probability": 0.09475119446906684
+          },
+          {
+            "score": "4:0",
+            "probability": 0.08426667052275912
+          },
+          {
+            "score": "2:1",
+            "probability": 0.07910847495115216
+          }
+        ],
+        "totalProbabilities": {
+          "0": 0.04104053872477787,
+          "1": 0.11134232589232132,
+          "2": 0.20444665977256732,
+          "3": 0.22067064492346242,
+          "4": 0.1827814951901039,
+          "5": 0.12111832997277047,
+          "6": 0.06688154181096387,
+          "7+": 0.051718463713032826
+        }
+      },
+      "calibrated": {
+        "predictedTotalBucket": "3",
+        "actualTotalBucket": "3",
+        "totalExactHit": true,
+        "totalAdjacentCoreHit": true,
+        "totalLogLoss": 1.5164520065973122,
+        "totalRps": 0.05921213962960129,
+        "topScore": "2:0",
+        "actualScore": "3:0",
+        "scoreTop1Hit": false,
+        "scoreTop3Hit": true,
+        "scoreTop5Hit": true,
+        "scoreLogLoss": 2.083167253096857,
+        "actualScoreProbability": 0.12453515255429946,
+        "topScores": [
+          {
+            "score": "2:0",
+            "probability": 0.1303302888479223
+          },
+          {
+            "score": "3:0",
+            "probability": 0.12453515255429946
+          },
+          {
+            "score": "4:0",
+            "probability": 0.08823638756844222
+          },
+          {
+            "score": "1:0",
+            "probability": 0.07922352799566408
+          },
+          {
+            "score": "2:1",
+            "probability": 0.0761011408597613
+          }
+        ],
+        "totalProbabilities": {
+          "0": 0.033185702019274455,
+          "1": 0.09427374568857427,
+          "2": 0.2017917792580315,
+          "3": 0.21948925351445375,
+          "4": 0.19445551902909602,
+          "5": 0.12966355844281643,
+          "6": 0.07252117172133118,
+          "7+": 0.05461927032642252
+        }
+      },
+      "scoreCalibration": {
+        "applied": true,
+        "policy": "knockout_score_total_matrix_calibration_v1",
+        "profile": "favorite_tail",
+        "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
+        "favoriteSide": "home",
+        "totalGoalWeights": {
+          "0": 0.84,
+          "1": 0.94,
+          "2": 1.0,
+          "3": 1.05,
+          "4": 1.09,
+          "5": 1.12,
+          "6": 1.12,
+          "7+": 1.1
+        },
+        "expectedTotalGoalsBefore": 3.2823,
+        "expectedTotalGoalsAfter": 3.3999,
+        "outcomePreserved": true,
+        "maxCellDelta": 0.015528
+      }
+    },
+    {
+      "matchId": "2040351",
+      "homeTeam": "墨西哥",
+      "awayTeam": "厄瓜多尔",
+      "kickoff": "2026-07-01T09:00:00+08:00",
+      "stage": "knockout",
+      "historyPath": "public/data/history/2026-07-01.json",
+      "historyGeneratedAt": "2026-06-30T18:37:21+08:00",
+      "settlementScoreBasis": "90_minutes",
+      "actualScore": "2:0",
+      "xg": {
+        "home": 0.8382,
+        "away": 0.8236
+      },
+      "base": {
+        "predictedTotalBucket": "1",
+        "actualTotalBucket": "2",
+        "totalExactHit": false,
+        "totalAdjacentCoreHit": true,
+        "totalLogLoss": 1.2999267286057106,
+        "totalRps": 0.04964080364876387,
+        "topScore": "0:0",
+        "actualScore": "2:0",
+        "scoreTop1Hit": false,
+        "scoreTop3Hit": false,
+        "scoreTop5Hit": true,
+        "scoreLogLoss": 2.7079442644760148,
+        "actualScoreProbability": 0.06667372948251186,
+        "topScores": [
+          {
+            "score": "0:0",
+            "probability": 0.20027902043594104
+          },
+          {
+            "score": "1:0",
+            "probability": 0.1486058954768984
+          },
+          {
+            "score": "0:1",
+            "probability": 0.14583485871684645
+          },
+          {
+            "score": "1:1",
+            "probability": 0.14150675802896806
+          },
+          {
+            "score": "2:0",
+            "probability": 0.06667372948251186
+          }
+        ],
+        "totalProbabilities": {
+          "0": 0.20027902043594104,
+          "1": 0.2944407541937448,
+          "2": 0.27255176255006464,
+          "3": 0.14516918706381174,
+          "4": 0.06031053876566059,
+          "5": 0.020044810664154953,
+          "6": 0.00555174439361545,
+          "7+": 0.001652181933006647
+        }
+      },
+      "calibrated": {
+        "predictedTotalBucket": "1",
+        "actualTotalBucket": "2",
+        "totalExactHit": false,
+        "totalAdjacentCoreHit": true,
+        "totalLogLoss": 1.2910853226029109,
+        "totalRps": 0.04808490956675898,
+        "topScore": "0:0",
+        "actualScore": "2:0",
+        "scoreTop1Hit": false,
+        "scoreTop3Hit": false,
+        "scoreTop5Hit": true,
+        "scoreLogLoss": 2.7048757188718904,
+        "actualScoreProbability": 0.0668786350823327,
+        "topScores": [
+          {
+            "score": "0:0",
+            "probability": 0.19367881363718517
+          },
+          {
+            "score": "1:1",
+            "probability": 0.14350064078753968
+          },
+          {
+            "score": "1:0",
+            "probability": 0.14156336797013372
+          },
+          {
+            "score": "0:1",
+            "probability": 0.13897487452212345
+          },
+          {
+            "score": "2:0",
+            "probability": 0.0668786350823327
+          }
+        ],
+        "totalProbabilities": {
+          "0": 0.19367881363718517,
+          "1": 0.2805382424922572,
+          "2": 0.2749721875524972,
+          "3": 0.15011259832289273,
+          "4": 0.06798813826173583,
+          "5": 0.02372779662739473,
+          "6": 0.0069115806971994055,
+          "7+": 0.002070642408837709
+        }
+      },
+      "scoreCalibration": {
+        "applied": true,
+        "policy": "knockout_score_total_matrix_calibration_v1",
+        "profile": "close_late_tail",
+        "sourceKnockoutPolicy": "knockout_tension_close_game_v2",
+        "favoriteSide": "home",
+        "totalGoalWeights": {
+          "0": 0.925,
+          "1": 0.94,
+          "2": 0.97,
+          "3": 1.015,
+          "4": 1.06,
+          "5": 1.09,
+          "6": 1.12,
+          "7+": 1.15
+        },
+        "expectedTotalGoalsBefore": 1.6614,
+        "expectedTotalGoalsAfter": 1.7274,
+        "outcomePreserved": true,
+        "maxCellDelta": 0.007043
+      }
+    }
+  ],
+  "knockoutMatches": [
+    {
+      "matchId": "南非 vs 加拿大",
+      "homeTeam": "南非",
+      "awayTeam": "加拿大",
+      "kickoff": "2026-06-29T03:00:00+08:00",
+      "stage": "knockout",
+      "historyPath": "public/data/history/2026-06-29.json",
+      "historyGeneratedAt": "2026-06-28T16:25:34+08:00",
+      "settlementScoreBasis": "fulltime",
+      "actualScore": "0:1",
+      "xg": {
+        "home": 0.805,
+        "away": 1.7029
+      },
+      "base": {
+        "predictedTotalBucket": "2",
+        "actualTotalBucket": "1",
+        "totalExactHit": false,
+        "totalAdjacentCoreHit": true,
+        "totalLogLoss": 1.6799725152416984,
+        "totalRps": 0.11641390077714131,
+        "topScore": "0:1",
+        "actualScore": "0:1",
+        "scoreTop1Hit": true,
+        "scoreTop3Hit": true,
+        "scoreTop5Hit": true,
+        "scoreLogLoss": 2.042132709748823,
+        "actualScoreProbability": 0.12975169288359792,
+        "topScores": [
+          {
+            "score": "0:1",
+            "probability": 0.12975169288359792
+          },
+          {
+            "score": "1:1",
+            "probability": 0.12057088691000432
+          },
+          {
+            "score": "0:2",
+            "probability": 0.11808152939903747
+          },
+          {
+            "score": "1:2",
+            "probability": 0.09505563116622515
+          },
+          {
+            "score": "0:0",
+            "probability": 0.09037040970012475
+          }
+        ],
+        "totalProbabilities": {
+          "0": 0.09037040970012475,
+          "1": 0.18637909855349033,
+          "2": 0.2650397457564533,
+          "3": 0.2140982266884845,
+          "4": 0.13423423567801257,
+          "5": 0.06732920793137756,
+          "6": 0.0281424867618503,
+          "7+": 0.014406588930206639
+        }
+      },
+      "calibrated": {
+        "predictedTotalBucket": "2",
+        "actualTotalBucket": "1",
+        "totalExactHit": false,
+        "totalAdjacentCoreHit": true,
+        "totalLogLoss": 1.8076787657324571,
+        "totalRps": 0.13111733094488315,
+        "topScore": "1:1",
+        "actualScore": "0:1",
+        "scoreTop1Hit": false,
+        "scoreTop3Hit": true,
+        "scoreTop5Hit": true,
+        "scoreLogLoss": 2.1864527339548716,
+        "actualScoreProbability": 0.11231445206251557,
+        "topScores": [
+          {
+            "score": "1:1",
+            "probability": 0.12802121034508912
+          },
+          {
+            "score": "0:2",
+            "probability": 0.11743579205666091
+          },
+          {
+            "score": "0:1",
+            "probability": 0.11231445206251557
+          },
+          {
+            "score": "1:2",
+            "probability": 0.094667112345342
+          },
+          {
+            "score": "0:0",
+            "probability": 0.07415370208724385
+          }
+        ],
+        "totalProbabilities": {
+          "0": 0.07415370208724385,
+          "1": 0.16403445762917507,
+          "2": 0.2710959080030034,
+          "3": 0.21910319007591286,
+          "4": 0.14969522009148123,
+          "5": 0.07418341834284653,
+          "6": 0.032010544956515306,
+          "7+": 0.015723558813821766
+        }
+      },
+      "scoreCalibration": {
+        "applied": true,
+        "policy": "knockout_score_total_matrix_calibration_v1",
+        "profile": "favorite_tail",
+        "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
+        "favoriteSide": "away",
+        "totalGoalWeights": {
+          "0": 0.84,
+          "1": 0.94,
+          "2": 1.0,
+          "3": 1.05,
+          "4": 1.09,
+          "5": 1.12,
+          "6": 1.12,
+          "7+": 1.1
+        },
+        "expectedTotalGoalsBefore": 2.502,
+        "expectedTotalGoalsAfter": 2.6354,
+        "outcomePreserved": true,
+        "maxCellDelta": 0.017437
+      }
+    },
+    {
+      "matchId": "2040337",
+      "homeTeam": "巴西",
+      "awayTeam": "日本",
+      "kickoff": "2026-06-30T01:00:00+08:00",
+      "stage": "knockout",
+      "historyPath": "public/data/history/2026-06-30.json",
+      "historyGeneratedAt": "2026-06-29T19:40:31+08:00",
+      "settlementScoreBasis": "fulltime",
+      "actualScore": "2:1",
+      "xg": {
+        "home": 1.4961,
+        "away": 0.9059
+      },
+      "base": {
+        "predictedTotalBucket": "2",
+        "actualTotalBucket": "3",
+        "totalExactHit": false,
+        "totalAdjacentCoreHit": true,
+        "totalLogLoss": 1.5648537564866443,
+        "totalRps": 0.06896646582454614,
+        "topScore": "1:1",
+        "actualScore": "2:1",
+        "scoreTop1Hit": false,
+        "scoreTop3Hit": false,
+        "scoreTop5Hit": true,
+        "scoreLogLoss": 2.388249548622706,
+        "actualScoreProbability": 0.09179021764613676,
+        "topScores": [
+          {
+            "score": "1:1",
+            "probability": 0.1325224718372137
+          },
+          {
+            "score": "1:0",
+            "probability": 0.12563554891005377
+          },
+          {
+            "score": "2:0",
+            "probability": 0.10132488977385667
+          },
+          {
+            "score": "0:0",
+            "probability": 0.10035322714309526
+          },
+          {
+            "score": "2:1",
+            "probability": 0.09179021764613676
+          }
+        ],
+        "totalProbabilities": {
+          "0": 0.10035322714309526,
+          "1": 0.1978363092993878,
+          "2": 0.27099707037154264,
+          "3": 0.2091185931749389,
+          "4": 0.1255757152015508,
+          "5": 0.06032657358282501,
+          "6": 0.024150738290990945,
+          "7+": 0.011641772935668718
+        }
+      },
+      "calibrated": {
+        "predictedTotalBucket": "2",
+        "actualTotalBucket": "3",
+        "totalExactHit": false,
+        "totalAdjacentCoreHit": true,
+        "totalLogLoss": 1.5633744543620443,
+        "totalRps": 0.06508392903293134,
+        "topScore": "1:1",
+        "actualScore": "2:1",
+        "scoreTop1Hit": false,
+        "scoreTop3Hit": false,
+        "scoreTop5Hit": true,
+        "scoreLogLoss": 2.397115827413159,
+        "actualScoreProbability": 0.09097997720288221,
+        "topScores": [
+          {
+            "score": "1:1",
+            "probability": 0.13061944797005007
+          },
+          {
+            "score": "1:0",
+            "probability": 0.1153250832952499
+          },
+          {
+            "score": "2:0",
+            "probability": 0.09793663551916865
+          },
+          {
+            "score": "0:0",
+            "probability": 0.09432344574286103
+          },
+          {
+            "score": "2:1",
+            "probability": 0.09097997720288221
+          }
+        ],
+        "totalProbabilities": {
+          "0": 0.09432344574286103,
+          "1": 0.18250484016475665,
+          "2": 0.26495344269295573,
+          "3": 0.2094281716777293,
+          "4": 0.13664199966453097,
+          "5": 0.06906060043807269,
+          "6": 0.02898052260953708,
+          "7+": 0.014106977009556479
+        }
+      },
+      "scoreCalibration": {
+        "applied": true,
+        "policy": "knockout_score_total_matrix_calibration_v1",
+        "profile": "close_late_tail",
+        "sourceKnockoutPolicy": "knockout_tension_close_game_v2",
+        "favoriteSide": "home",
+        "totalGoalWeights": {
+          "0": 0.925,
+          "1": 0.94,
+          "2": 0.97,
+          "3": 1.015,
+          "4": 1.06,
+          "5": 1.09,
+          "6": 1.12,
+          "7+": 1.15
+        },
+        "expectedTotalGoalsBefore": 2.3975,
+        "expectedTotalGoalsAfter": 2.5052,
+        "outcomePreserved": true,
+        "maxCellDelta": 0.01031
+      }
+    },
+    {
+      "matchId": "2040344",
+      "homeTeam": "德国",
+      "awayTeam": "巴拉圭",
+      "kickoff": "2026-06-30T04:30:00+08:00",
+      "stage": "knockout",
+      "historyPath": "public/data/history/2026-06-30.json",
+      "historyGeneratedAt": "2026-06-29T19:40:31+08:00",
+      "settlementScoreBasis": "90_minutes",
+      "actualScore": "1:1",
+      "xg": {
+        "home": 1.8635,
+        "away": 0.903
+      },
+      "base": {
+        "predictedTotalBucket": "2",
+        "actualTotalBucket": "2",
+        "totalExactHit": true,
+        "totalAdjacentCoreHit": true,
+        "totalLogLoss": 1.3899031358568728,
+        "totalRps": 0.06381425886161028,
+        "topScore": "1:1",
+        "actualScore": "1:1",
+        "scoreTop1Hit": true,
+        "scoreTop3Hit": true,
+        "scoreTop5Hit": true,
+        "scoreLogLoss": 2.169110921896456,
+        "actualScoreProbability": 0.11427917486973571,
+        "topScores": [
+          {
+            "score": "1:1",
+            "probability": 0.11427917486973571
+          },
+          {
+            "score": "2:0",
+            "probability": 0.10918299206849208
+          },
+          {
+            "score": "1:0",
+            "probability": 0.10871544161144536
+          },
+          {
+            "score": "2:1",
+            "probability": 0.09859224183784836
+          },
+          {
+            "score": "0:0",
+            "probability": 0.07134710188887898
+          }
+        ],
+        "totalProbabilities": {
+          "0": 0.07134710188887898,
+          "1": 0.15703274352250257,
+          "2": 0.24909943226615794,
+          "3": 0.22190493788003152,
+          "4": 0.15347500266127678,
+          "5": 0.08491771897248444,
+          "6": 0.039154144922896365,
+          "7+": 0.023068917885771444
+        }
+      },
+      "calibrated": {
+        "predictedTotalBucket": "2",
+        "actualTotalBucket": "2",
+        "totalExactHit": true,
+        "totalAdjacentCoreHit": true,
+        "totalLogLoss": 1.3824463503371622,
+        "totalRps": 0.06992181185351348,
+        "topScore": "1:1",
+        "actualScore": "1:1",
+        "scoreTop1Hit": true,
+        "scoreTop3Hit": true,
+        "scoreTop5Hit": true,
+        "scoreLogLoss": 2.129293169087557,
+        "actualScoreProbability": 0.11892132141839773,
+        "topScores": [
+          {
+            "score": "1:1",
+            "probability": 0.11892132141839773
+          },
+          {
+            "score": "2:0",
+            "probability": 0.10740646929928002
+          },
+          {
+            "score": "2:1",
+            "probability": 0.09712274739082939
+          },
+          {
+            "score": "1:0",
+            "probability": 0.0930830877775532
+          },
+          {
+            "score": "3:0",
+            "probability": 0.07005318443872292
+          }
+        ],
+        "totalProbabilities": {
+          "0": 0.05737676793496123,
+          "1": 0.13672765346123433,
+          "2": 0.250963855970433,
+          "3": 0.22461307642047362,
+          "4": 0.16889252542067,
+          "5": 0.09253670764041808,
+          "6": 0.04398370032944932,
+          "7+": 0.02490571282236051
+        }
+      },
+      "scoreCalibration": {
+        "applied": true,
+        "policy": "knockout_score_total_matrix_calibration_v1",
+        "profile": "favorite_tail",
+        "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
+        "favoriteSide": "home",
+        "totalGoalWeights": {
+          "0": 0.84,
+          "1": 0.94,
+          "2": 1.0,
+          "3": 1.05,
+          "4": 1.09,
+          "5": 1.12,
+          "6": 1.12,
+          "7+": 1.1
+        },
+        "expectedTotalGoalsBefore": 2.7558,
+        "expectedTotalGoalsAfter": 2.889,
+        "outcomePreserved": true,
+        "maxCellDelta": 0.015632
+      }
+    },
+    {
+      "matchId": "2040338",
+      "homeTeam": "荷兰",
+      "awayTeam": "摩洛哥",
+      "kickoff": "2026-06-30T09:00:00+08:00",
+      "stage": "knockout",
+      "historyPath": "public/data/history/2026-06-30.json",
+      "historyGeneratedAt": "2026-06-29T19:40:31+08:00",
+      "settlementScoreBasis": "90_minutes",
+      "actualScore": "1:1",
+      "xg": {
+        "home": 1.5807,
+        "away": 0.9986
+      },
+      "base": {
+        "predictedTotalBucket": "2",
+        "actualTotalBucket": "2",
+        "totalExactHit": true,
+        "totalAdjacentCoreHit": true,
+        "totalLogLoss": 1.3401503039371054,
+        "totalRps": 0.05528029755061979,
+        "topScore": "1:1",
+        "actualScore": "1:1",
+        "scoreTop1Hit": true,
+        "scoreTop3Hit": true,
+        "scoreTop5Hit": true,
+        "scoreLogLoss": 2.045871230315947,
+        "actualScoreProbability": 0.12926751912183915,
+        "topScores": [
+          {
+            "score": "1:1",
+            "probability": 0.12926751912183915
+          },
+          {
+            "score": "1:0",
+            "probability": 0.11028457948000688
+          },
+          {
+            "score": "2:0",
+            "probability": 0.09473131248372312
+          },
+          {
+            "score": "2:1",
+            "probability": 0.09459868864624589
+          },
+          {
+            "score": "0:0",
+            "probability": 0.0854025061366541
+          }
+        ],
+        "totalProbabilities": {
+          "0": 0.0854025061366541,
+          "1": 0.17643018405496536,
+          "2": 0.26180631510298974,
+          "3": 0.21685975736514687,
+          "4": 0.13983659304298085,
+          "5": 0.0721361048871521,
+          "6": 0.031010109222571903,
+          "7+": 0.016518430187539023
+        }
+      },
+      "calibrated": {
+        "predictedTotalBucket": "2",
+        "actualTotalBucket": "2",
+        "totalExactHit": true,
+        "totalAdjacentCoreHit": true,
+        "totalLogLoss": 1.3710201302333584,
+        "totalRps": 0.060912480636918176,
+        "topScore": "1:1",
+        "actualScore": "1:1",
+        "scoreTop1Hit": true,
+        "scoreTop3Hit": true,
+        "scoreTop5Hit": true,
+        "scoreLogLoss": 2.0692007420575522,
+        "actualScoreProbability": 0.12628667700860574,
+        "topScores": [
+          {
+            "score": "1:1",
+            "probability": 0.12628667700860574
+          },
+          {
+            "score": "1:0",
+            "probability": 0.10043089349224268
+          },
+          {
+            "score": "2:1",
+            "probability": 0.09301989387281527
+          },
+          {
+            "score": "2:0",
+            "probability": 0.09083723250212992
+          },
+          {
+            "score": "0:0",
+            "probability": 0.0795625576177647
+          }
+        ],
+        "totalProbabilities": {
+          "0": 0.0795625576177647,
+          "1": 0.16144846517592037,
+          "2": 0.2538478695361021,
+          "3": 0.2154214564400892,
+          "4": 0.15099306106223034,
+          "5": 0.0819275229995231,
+          "6": 0.036933646012823305,
+          "7+": 0.019865421155546823
+        }
+      },
+      "scoreCalibration": {
+        "applied": true,
+        "policy": "knockout_score_total_matrix_calibration_v1",
+        "profile": "close_late_tail",
+        "sourceKnockoutPolicy": "knockout_tension_close_game_v2",
+        "favoriteSide": "home",
+        "totalGoalWeights": {
+          "0": 0.925,
+          "1": 0.94,
+          "2": 0.97,
+          "3": 1.015,
+          "4": 1.06,
+          "5": 1.09,
+          "6": 1.12,
+          "7+": 1.15
+        },
+        "expectedTotalGoalsBefore": 2.5723,
+        "expectedTotalGoalsAfter": 2.6897,
+        "outcomePreserved": true,
+        "maxCellDelta": 0.009854
+      }
+    },
+    {
+      "matchId": "2040345",
+      "homeTeam": "科特迪瓦",
+      "awayTeam": "挪威",
+      "kickoff": "2026-07-01T01:00:00+08:00",
+      "stage": "knockout",
+      "historyPath": "public/data/history/2026-07-01.json",
+      "historyGeneratedAt": "2026-06-30T18:37:21+08:00",
+      "settlementScoreBasis": "90_minutes",
+      "actualScore": "1:2",
+      "xg": {
+        "home": 0.8906,
+        "away": 2.0853
+      },
+      "base": {
+        "predictedTotalBucket": "2",
+        "actualTotalBucket": "3",
+        "totalExactHit": false,
+        "totalAdjacentCoreHit": true,
+        "totalLogLoss": 1.4960077452099323,
+        "totalRps": 0.055177406626857994,
+        "topScore": "0:2",
+        "actualScore": "1:2",
+        "scoreTop1Hit": false,
+        "scoreTop3Hit": false,
+        "scoreTop5Hit": true,
+        "scoreLogLoss": 2.3150694258187605,
+        "actualScoreProbability": 0.09875932731695959,
+        "topScores": [
+          {
+            "score": "0:2",
+            "probability": 0.11089077848299977
+          },
+          {
+            "score": "1:1",
+            "probability": 0.10229710209784332
+          },
+          {
+            "score": "0:1",
+            "probability": 0.09877718534277367
+          },
+          {
+            "score": "1:2",
+            "probability": 0.09875932731695959
+          },
+          {
+            "score": "0:3",
+            "probability": 0.07708018012353313
+          }
+        ],
+        "totalProbabilities": {
+          "0": 0.05857969636591664,
+          "1": 0.13662212209468994,
+          "2": 0.23341451977307656,
+          "3": 0.22402273310292486,
+          "4": 0.16666731286024855,
+          "5": 0.09919705126816274,
+          "6": 0.04920008414482092,
+          "7+": 0.03229648039015975
+        }
+      },
+      "calibrated": {
+        "predictedTotalBucket": "2",
+        "actualTotalBucket": "3",
+        "totalExactHit": false,
+        "totalAdjacentCoreHit": true,
+        "totalLogLoss": 1.4919847353016384,
+        "totalRps": 0.05393137014604353,
+        "topScore": "0:2",
+        "actualScore": "1:2",
+        "scoreTop1Hit": false,
+        "scoreTop3Hit": true,
+        "scoreTop5Hit": true,
+        "scoreLogLoss": 2.339298890320689,
+        "actualScoreProbability": 0.09639519815073114,
+        "topScores": [
+          {
+            "score": "0:2",
+            "probability": 0.10808612353548441
+          },
+          {
+            "score": "1:1",
+            "probability": 0.10541866309882673
+          },
+          {
+            "score": "1:2",
+            "probability": 0.09639519815073114
+          },
+          {
+            "score": "0:1",
+            "probability": 0.08379830879780907
+          },
+          {
+            "score": "0:3",
+            "probability": 0.07888719769299096
+          }
+        ],
+        "totalProbabilities": {
+          "0": 0.046651799763031396,
+          "1": 0.11781201696442706,
+          "2": 0.232844145454101,
+          "3": 0.22492579407151952,
+          "4": 0.18134060556161286,
+          "5": 0.10722919399532341,
+          "6": 0.05462962674250325,
+          "7+": 0.03456681744748141
+        }
+      },
+      "scoreCalibration": {
+        "applied": true,
+        "policy": "knockout_score_total_matrix_calibration_v1",
+        "profile": "favorite_tail",
+        "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
+        "favoriteSide": "away",
+        "totalGoalWeights": {
+          "0": 0.84,
+          "1": 0.94,
+          "2": 1.0,
+          "3": 1.05,
+          "4": 1.09,
+          "5": 1.12,
+          "6": 1.12,
+          "7+": 1.1
+        },
+        "expectedTotalGoalsBefore": 2.9594,
+        "expectedTotalGoalsAfter": 3.0895,
+        "outcomePreserved": true,
+        "maxCellDelta": 0.014979
+      }
+    },
+    {
+      "matchId": "2040346",
+      "homeTeam": "法国",
+      "awayTeam": "瑞典",
+      "kickoff": "2026-07-01T05:00:00+08:00",
+      "stage": "knockout",
+      "historyPath": "public/data/history/2026-07-01.json",
+      "historyGeneratedAt": "2026-06-30T18:37:21+08:00",
+      "settlementScoreBasis": "90_minutes",
+      "actualScore": "3:0",
+      "xg": {
+        "home": 2.7301,
+        "away": 0.5831
+      },
+      "base": {
+        "predictedTotalBucket": "3",
+        "actualTotalBucket": "3",
+        "totalExactHit": true,
+        "totalAdjacentCoreHit": true,
+        "totalLogLoss": 1.511083983521688,
+        "totalRps": 0.05784913154668463,
+        "topScore": "2:0",
+        "actualScore": "3:0",
+        "scoreTop1Hit": false,
+        "scoreTop3Hit": true,
+        "scoreTop5Hit": true,
+        "scoreLogLoss": 2.091812737059699,
+        "actualScoreProbability": 0.12346312665874382,
+        "topScores": [
+          {
+            "score": "2:0",
+            "probability": 0.13566879600609186
+          },
+          {
+            "score": "3:0",
+            "probability": 0.12346312665874382
+          },
+          {
+            "score": "1:0",
+            "probability": 0.09475119446906684
+          },
+          {
+            "score": "4:0",
+            "probability": 0.08426667052275912
+          },
+          {
+            "score": "2:1",
+            "probability": 0.07910847495115216
+          }
+        ],
+        "totalProbabilities": {
+          "0": 0.04104053872477787,
+          "1": 0.11134232589232132,
+          "2": 0.20444665977256732,
+          "3": 0.22067064492346242,
+          "4": 0.1827814951901039,
+          "5": 0.12111832997277047,
+          "6": 0.06688154181096387,
+          "7+": 0.051718463713032826
+        }
+      },
+      "calibrated": {
+        "predictedTotalBucket": "3",
+        "actualTotalBucket": "3",
+        "totalExactHit": true,
+        "totalAdjacentCoreHit": true,
+        "totalLogLoss": 1.5164520065973122,
+        "totalRps": 0.05921213962960129,
+        "topScore": "2:0",
+        "actualScore": "3:0",
+        "scoreTop1Hit": false,
+        "scoreTop3Hit": true,
+        "scoreTop5Hit": true,
+        "scoreLogLoss": 2.083167253096857,
+        "actualScoreProbability": 0.12453515255429946,
+        "topScores": [
+          {
+            "score": "2:0",
+            "probability": 0.1303302888479223
+          },
+          {
+            "score": "3:0",
+            "probability": 0.12453515255429946
+          },
+          {
+            "score": "4:0",
+            "probability": 0.08823638756844222
+          },
+          {
+            "score": "1:0",
+            "probability": 0.07922352799566408
+          },
+          {
+            "score": "2:1",
+            "probability": 0.0761011408597613
+          }
+        ],
+        "totalProbabilities": {
+          "0": 0.033185702019274455,
+          "1": 0.09427374568857427,
+          "2": 0.2017917792580315,
+          "3": 0.21948925351445375,
+          "4": 0.19445551902909602,
+          "5": 0.12966355844281643,
+          "6": 0.07252117172133118,
+          "7+": 0.05461927032642252
+        }
+      },
+      "scoreCalibration": {
+        "applied": true,
+        "policy": "knockout_score_total_matrix_calibration_v1",
+        "profile": "favorite_tail",
+        "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
+        "favoriteSide": "home",
+        "totalGoalWeights": {
+          "0": 0.84,
+          "1": 0.94,
+          "2": 1.0,
+          "3": 1.05,
+          "4": 1.09,
+          "5": 1.12,
+          "6": 1.12,
+          "7+": 1.1
+        },
+        "expectedTotalGoalsBefore": 3.2823,
+        "expectedTotalGoalsAfter": 3.3999,
+        "outcomePreserved": true,
+        "maxCellDelta": 0.015528
+      }
+    },
+    {
+      "matchId": "2040351",
+      "homeTeam": "墨西哥",
+      "awayTeam": "厄瓜多尔",
+      "kickoff": "2026-07-01T09:00:00+08:00",
+      "stage": "knockout",
+      "historyPath": "public/data/history/2026-07-01.json",
+      "historyGeneratedAt": "2026-06-30T18:37:21+08:00",
+      "settlementScoreBasis": "90_minutes",
+      "actualScore": "2:0",
+      "xg": {
+        "home": 0.8382,
+        "away": 0.8236
+      },
+      "base": {
+        "predictedTotalBucket": "1",
+        "actualTotalBucket": "2",
+        "totalExactHit": false,
+        "totalAdjacentCoreHit": true,
+        "totalLogLoss": 1.2999267286057106,
+        "totalRps": 0.04964080364876387,
+        "topScore": "0:0",
+        "actualScore": "2:0",
+        "scoreTop1Hit": false,
+        "scoreTop3Hit": false,
+        "scoreTop5Hit": true,
+        "scoreLogLoss": 2.7079442644760148,
+        "actualScoreProbability": 0.06667372948251186,
+        "topScores": [
+          {
+            "score": "0:0",
+            "probability": 0.20027902043594104
+          },
+          {
+            "score": "1:0",
+            "probability": 0.1486058954768984
+          },
+          {
+            "score": "0:1",
+            "probability": 0.14583485871684645
+          },
+          {
+            "score": "1:1",
+            "probability": 0.14150675802896806
+          },
+          {
+            "score": "2:0",
+            "probability": 0.06667372948251186
+          }
+        ],
+        "totalProbabilities": {
+          "0": 0.20027902043594104,
+          "1": 0.2944407541937448,
+          "2": 0.27255176255006464,
+          "3": 0.14516918706381174,
+          "4": 0.06031053876566059,
+          "5": 0.020044810664154953,
+          "6": 0.00555174439361545,
+          "7+": 0.001652181933006647
+        }
+      },
+      "calibrated": {
+        "predictedTotalBucket": "1",
+        "actualTotalBucket": "2",
+        "totalExactHit": false,
+        "totalAdjacentCoreHit": true,
+        "totalLogLoss": 1.2910853226029109,
+        "totalRps": 0.04808490956675898,
+        "topScore": "0:0",
+        "actualScore": "2:0",
+        "scoreTop1Hit": false,
+        "scoreTop3Hit": false,
+        "scoreTop5Hit": true,
+        "scoreLogLoss": 2.7048757188718904,
+        "actualScoreProbability": 0.0668786350823327,
+        "topScores": [
+          {
+            "score": "0:0",
+            "probability": 0.19367881363718517
+          },
+          {
+            "score": "1:1",
+            "probability": 0.14350064078753968
+          },
+          {
+            "score": "1:0",
+            "probability": 0.14156336797013372
+          },
+          {
+            "score": "0:1",
+            "probability": 0.13897487452212345
+          },
+          {
+            "score": "2:0",
+            "probability": 0.0668786350823327
+          }
+        ],
+        "totalProbabilities": {
+          "0": 0.19367881363718517,
+          "1": 0.2805382424922572,
+          "2": 0.2749721875524972,
+          "3": 0.15011259832289273,
+          "4": 0.06798813826173583,
+          "5": 0.02372779662739473,
+          "6": 0.0069115806971994055,
+          "7+": 0.002070642408837709
+        }
+      },
+      "scoreCalibration": {
+        "applied": true,
+        "policy": "knockout_score_total_matrix_calibration_v1",
+        "profile": "close_late_tail",
+        "sourceKnockoutPolicy": "knockout_tension_close_game_v2",
+        "favoriteSide": "home",
+        "totalGoalWeights": {
+          "0": 0.925,
+          "1": 0.94,
+          "2": 0.97,
+          "3": 1.015,
+          "4": 1.06,
+          "5": 1.09,
+          "6": 1.12,
+          "7+": 1.15
+        },
+        "expectedTotalGoalsBefore": 1.6614,
+        "expectedTotalGoalsAfter": 1.7274,
+        "outcomePreserved": true,
+        "maxCellDelta": 0.007043
+      }
+    }
+  ]
+}

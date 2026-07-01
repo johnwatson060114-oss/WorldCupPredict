@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-30T16:33:19+08:00",
+  "generatedAt": "2026-07-01T12:00:00+08:00",
   "matches": [
     {
       "matchId": "537327",
@@ -2890,6 +2890,36 @@
       "closingOddsSource": "zgzcw.com",
       "closingOddsIssue": "2026-06-29",
       "closingOddsCheckedAt": "2026-06-30T13:00:12+08:00"
+    },
+    {
+      "matchId": "2040345",
+      "matchLabel": "???? vs ??",
+      "homeScore": 1,
+      "awayScore": 2,
+      "settlementScoreBasis": "90_minutes",
+      "settledAt": "2026-06-30T17:00:00Z",
+      "settlementSource": "external_result_review",
+      "settlementSourceUrl": "https://www.theguardian.com/football/2026/jun/30/cote-d-ivoire-norway-world-cup-2026-last-32-match-report"
+    },
+    {
+      "matchId": "2040346",
+      "matchLabel": "?? vs ??",
+      "homeScore": 3,
+      "awayScore": 0,
+      "settlementScoreBasis": "90_minutes",
+      "settledAt": "2026-06-30T21:00:00Z",
+      "settlementSource": "external_result_review",
+      "settlementSourceUrl": "https://www.theguardian.com/football/2026/jul/01/france-sweden-world-cup-2026-last-32-match-report"
+    },
+    {
+      "matchId": "2040351",
+      "matchLabel": "??? vs ????",
+      "homeScore": 2,
+      "awayScore": 0,
+      "settlementScoreBasis": "90_minutes",
+      "settledAt": "2026-07-01T01:00:00Z",
+      "settlementSource": "external_result_review",
+      "settlementSourceUrl": "https://www.theguardian.com/football/live/2026/jul/01/fifa-world-cup-2026-live-mexico-v-ecuador-updates-mex-vs-ecu-last-round-32-match-score-latest"
     }
   ]
 }

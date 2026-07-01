@@ -72,3 +72,6 @@ date,match,score,actual_total_goals,actual_bucket,current_predicted_bucket,curre
 2026-06-27,Panama vs England,0-2,2,2,2,True,2-3,True,1.4044453498970688,2,True,2-3,True,1.3995072943851894
 2026-06-27,Croatia vs Ghana,2-1,3,3,2,False,2-3,True,1.5398602627859646,2,False,2-3,True,1.5494260413785443
 2026-06-28,South Africa vs Canada,0-1,1,1,2,False,2-3,False,1.5556430595288544,2,False,1-2,True,1.5257014776161884
+2026-06-30,Ivory Coast vs Norway,1-2,3,3,3,True,2-3,True,1.496472187945591,3,True,2-3,True,1.497176940521985
+2026-06-30,France vs Sweden,3-0,3,3,3,True,2-3,True,1.5222660201844553,3,True,3-4,True,1.5352532185532957
+2026-07-01,Mexico vs Ecuador,2-0,2,2,1,False,1-2,True,1.3101926360652012,1,False,1-2,True,1.3216215154384308

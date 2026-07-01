@@ -1,12 +1,10 @@
 {
-  "generatedAt": "2026-06-30T13:02:48+08:00",
+  "generatedAt": "2026-07-01T12:14:26+08:00",
   "timezone": "Asia/Shanghai",
   "data_refresh": {
-    "status": "ok",
-    "url": "https://raw.githubusercontent.com/martj42/international_results/master/results.csv",
-    "bytes": 3725503,
-    "path": "artifacts\\total-goals-backtest\\international_results.csv",
-    "refreshedAt": "2026-06-30T13:01:07+08:00"
+    "status": "skipped",
+    "reason": "TOTAL_GOALS_SKIP_FETCH=1",
+    "path": "artifacts\\total-goals-backtest\\international_results.csv"
   },
   "optimization": {
     "validation_set": "FIFA World Cup 2018 and 2022",
@@ -64,67 +62,67 @@
     }
   },
   "current_model_2026": {
-    "matches": 73,
-    "exact_hits": 14,
-    "exact_accuracy": 0.1917808219178082,
-    "core_hits": 27,
-    "core_accuracy": 0.3698630136986301,
-    "average_log_loss": 1.9774811770102856,
-    "average_rps": 0.14660486404958906,
-    "calibration_error": 0.04811643835616439,
+    "matches": 76,
+    "exact_hits": 16,
+    "exact_accuracy": 0.21052631578947367,
+    "core_hits": 30,
+    "core_accuracy": 0.39473684210526316,
+    "average_log_loss": 1.956382325867712,
+    "average_rps": 0.14293524082304165,
+    "calibration_error": 0.04276315789473684,
     "predicted_bucket_counts": {
       "0": 0,
-      "1": 1,
+      "1": 2,
       "2": 63,
-      "3": 9,
+      "3": 11,
       "4": 0,
       "5": 0,
       "6": 0,
       "7+": 0
     },
-    "average_bucketed_expected_total": 2.648828498524981
+    "average_bucketed_expected_total": 2.653527898345483
   },
   "optimized_model_2026": {
-    "matches": 73,
-    "exact_hits": 12,
-    "exact_accuracy": 0.1643835616438356,
-    "core_hits": 29,
-    "core_accuracy": 0.3972602739726027,
-    "average_log_loss": 1.9760830947167438,
-    "average_rps": 0.14648525876477267,
-    "calibration_error": 0.049828767123287675,
+    "matches": 76,
+    "exact_hits": 14,
+    "exact_accuracy": 0.18421052631578946,
+    "core_hits": 32,
+    "core_accuracy": 0.42105263157894735,
+    "average_log_loss": 1.955369968274158,
+    "average_rps": 0.1428845737446883,
+    "calibration_error": 0.04539473684210526,
     "predicted_bucket_counts": {
       "0": 0,
-      "1": 3,
+      "1": 4,
       "2": 58,
-      "3": 12,
+      "3": 14,
       "4": 0,
       "5": 0,
       "6": 0,
       "7+": 0
     },
-    "average_bucketed_expected_total": 2.62486831910653
+    "average_bucketed_expected_total": 2.630513921914106
   },
   "tail_shadow_model_2026": {
-    "matches": 73,
-    "exact_hits": 13,
-    "exact_accuracy": 0.1780821917808219,
-    "core_hits": 27,
-    "core_accuracy": 0.3698630136986301,
-    "average_log_loss": 1.975313524950698,
-    "average_rps": 0.14668113147855694,
-    "calibration_error": 0.05136986301369863,
+    "matches": 76,
+    "exact_hits": 14,
+    "exact_accuracy": 0.18421052631578946,
+    "core_hits": 30,
+    "core_accuracy": 0.39473684210526316,
+    "average_log_loss": 1.9569892140999485,
+    "average_rps": 0.14329112454587847,
+    "calibration_error": 0.045723684210526305,
     "predicted_bucket_counts": {
       "0": 0,
-      "1": 7,
-      "2": 60,
-      "3": 6,
+      "1": 8,
+      "2": 61,
+      "3": 7,
       "4": 0,
       "5": 0,
       "6": 0,
       "7+": 0
     },
-    "average_bucketed_expected_total": 2.5742730908085654
+    "average_bucketed_expected_total": 2.5809851342519754
   },
   "validation_2018_2022": {
     "current": {
@@ -215,9 +213,9 @@
       "second_round_forward_sample": true
     },
     "deltas": {
-      "log_loss_improvement": 0.0013980822935417692,
-      "rps_improvement": 0.00011960528481638755,
-      "calibration_delta": 0.0017123287671232876
+      "log_loss_improvement": 0.001012357593553892,
+      "rps_improvement": 5.066707835335582e-05,
+      "calibration_delta": 0.0026315789473684154
     },
     "thresholds": {
       "min_matches": 24,
@@ -1321,6 +1319,51 @@
       "core_hit": false,
       "bucketed_expected_total": 2.447819355618139,
       "probabilities": "{\"0\": 0.086042, \"1\": 0.211054, \"2\": 0.258849, \"3\": 0.211646, \"4\": 0.129788, \"5\": 0.063672, \"6\": 0.02603, \"7+\": 0.012919}"
+    },
+    {
+      "date": "2026-06-30",
+      "match": "Ivory Coast vs Norway",
+      "score": "1-2",
+      "actual_total_goals": 3,
+      "actual_bucket": "3",
+      "predicted_bucket": "3",
+      "predicted_probability": 0.22391871152981468,
+      "exact_hit": true,
+      "core_interval": "2-3",
+      "core_probability": 0.4436000350751544,
+      "core_hit": true,
+      "bucketed_expected_total": 3.0386415994041593,
+      "probabilities": "{\"0\": 0.046988, \"1\": 0.143683, \"2\": 0.219681, \"3\": 0.223919, \"4\": 0.171178, \"5\": 0.104688, \"6\": 0.053354, \"7+\": 0.036509}"
+    },
+    {
+      "date": "2026-06-30",
+      "match": "France vs Sweden",
+      "score": "3-0",
+      "actual_total_goals": 3,
+      "actual_bucket": "3",
+      "predicted_bucket": "3",
+      "predicted_probability": 0.21821684250398815,
+      "exact_hit": true,
+      "core_interval": "2-3",
+      "core_probability": 0.4098891433564543,
+      "core_hit": true,
+      "bucketed_expected_total": 3.3793162094234637,
+      "probabilities": "{\"0\": 0.032862, \"1\": 0.112238, \"2\": 0.191672, \"3\": 0.218217, \"4\": 0.186328, \"5\": 0.12728, \"6\": 0.072453, \"7+\": 0.058951}"
+    },
+    {
+      "date": "2026-07-01",
+      "match": "Mexico vs Ecuador",
+      "score": "2-0",
+      "actual_total_goals": 2,
+      "actual_bucket": "2",
+      "predicted_bucket": "1",
+      "predicted_probability": 0.28597863129660983,
+      "exact_hit": false,
+      "core_interval": "1-2",
+      "core_probability": 0.5557467156133304,
+      "core_hit": true,
+      "bucketed_expected_total": 1.8856820731054875,
+      "probabilities": "{\"0\": 0.151582, \"1\": 0.285979, \"2\": 0.269768, \"3\": 0.169651, \"4\": 0.080017, \"5\": 0.030193, \"6\": 0.009494, \"7+\": 0.003317}"
     }
   ],
   "optimized_predictions_2026": [
@@ -2418,6 +2461,51 @@
       "core_hit": true,
       "bucketed_expected_total": 2.397526106412533,
       "probabilities": "{\"0\": 0.090536, \"1\": 0.217468, \"2\": 0.26118, \"3\": 0.209119, \"4\": 0.125576, \"5\": 0.060327, \"6\": 0.024151, \"7+\": 0.011642}"
+    },
+    {
+      "date": "2026-06-30",
+      "match": "Ivory Coast vs Norway",
+      "score": "1-2",
+      "actual_total_goals": 3,
+      "actual_bucket": "3",
+      "predicted_bucket": "3",
+      "predicted_probability": 0.22376095983544697,
+      "exact_hit": true,
+      "core_interval": "2-3",
+      "core_probability": 0.4411700981416872,
+      "core_hit": true,
+      "bucketed_expected_total": 3.0673112223645678,
+      "probabilities": "{\"0\": 0.045609, \"1\": 0.140825, \"2\": 0.217409, \"3\": 0.223761, \"4\": 0.172724, \"5\": 0.106662, \"6\": 0.054889, \"7+\": 0.038121}"
+    },
+    {
+      "date": "2026-06-30",
+      "match": "France vs Sweden",
+      "score": "3-0",
+      "actual_total_goals": 3,
+      "actual_bucket": "3",
+      "predicted_bucket": "3",
+      "predicted_probability": 0.21540114069821198,
+      "exact_hit": true,
+      "core_interval": "3-4",
+      "core_probability": 0.40455264064687313,
+      "core_hit": true,
+      "bucketed_expected_total": 3.470282255749987,
+      "probabilities": "{\"0\": 0.029822, \"1\": 0.10475, \"2\": 0.18397, \"3\": 0.215401, \"4\": 0.189151, \"5\": 0.132881, \"6\": 0.077791, \"7+\": 0.066233}"
+    },
+    {
+      "date": "2026-07-01",
+      "match": "Mexico vs Ecuador",
+      "score": "2-0",
+      "actual_total_goals": 2,
+      "actual_bucket": "2",
+      "predicted_bucket": "1",
+      "predicted_probability": 0.3019232348484587,
+      "exact_hit": false,
+      "core_interval": "1-2",
+      "core_probability": 0.5686257237993477,
+      "core_hit": true,
+      "bucketed_expected_total": 1.7660772925808297,
+      "probabilities": "{\"0\": 0.170898, \"1\": 0.301923, \"2\": 0.266702, \"3\": 0.15706, \"4\": 0.069369, \"5\": 0.024511, \"6\": 0.007217, \"7+\": 0.002319}"
     }
   ],
   "comparison_2026": [
@@ -3661,6 +3749,57 @@
       "candidate_core_interval": "1-2",
       "candidate_core_hit": true,
       "candidate_log_loss": 1.5257014776161884
+    },
+    {
+      "date": "2026-06-30",
+      "match": "Ivory Coast vs Norway",
+      "score": "1-2",
+      "actual_total_goals": 3,
+      "actual_bucket": "3",
+      "current_predicted_bucket": "3",
+      "current_exact_hit": true,
+      "current_core_interval": "2-3",
+      "current_core_hit": true,
+      "current_log_loss": 1.496472187945591,
+      "candidate_predicted_bucket": "3",
+      "candidate_exact_hit": true,
+      "candidate_core_interval": "2-3",
+      "candidate_core_hit": true,
+      "candidate_log_loss": 1.497176940521985
+    },
+    {
+      "date": "2026-06-30",
+      "match": "France vs Sweden",
+      "score": "3-0",
+      "actual_total_goals": 3,
+      "actual_bucket": "3",
+      "current_predicted_bucket": "3",
+      "current_exact_hit": true,
+      "current_core_interval": "2-3",
+      "current_core_hit": true,
+      "current_log_loss": 1.5222660201844553,
+      "candidate_predicted_bucket": "3",
+      "candidate_exact_hit": true,
+      "candidate_core_interval": "3-4",
+      "candidate_core_hit": true,
+      "candidate_log_loss": 1.5352532185532957
+    },
+    {
+      "date": "2026-07-01",
+      "match": "Mexico vs Ecuador",
+      "score": "2-0",
+      "actual_total_goals": 2,
+      "actual_bucket": "2",
+      "current_predicted_bucket": "1",
+      "current_exact_hit": false,
+      "current_core_interval": "1-2",
+      "current_core_hit": true,
+      "current_log_loss": 1.3101926360652012,
+      "candidate_predicted_bucket": "1",
+      "candidate_exact_hit": false,
+      "candidate_core_interval": "1-2",
+      "candidate_core_hit": true,
+      "candidate_log_loss": 1.3216215154384308
     }
   ]
 }

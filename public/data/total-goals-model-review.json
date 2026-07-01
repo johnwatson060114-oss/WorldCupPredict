@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-30T16:34:36+08:00",
+  "generatedAt": "2026-07-01T12:14:26+08:00",
   "timezone": "Asia/Shanghai",
   "scheduledReviewStartDate": "2026-06-17",
   "productionPolicy": "current model remains primary; optimized model runs as shadow until adoption gates pass",
@@ -12,20 +12,20 @@
     "exact_accuracy": 0.21052631578947367,
     "core_hits": 30,
     "core_accuracy": 0.39473684210526316,
-    "average_log_loss": 1.9573761903410098,
-    "average_rps": 0.14339588761041547,
-    "calibration_error": 0.043256578947368424,
+    "average_log_loss": 1.956382325867712,
+    "average_rps": 0.14293524082304165,
+    "calibration_error": 0.04276315789473684,
     "predicted_bucket_counts": {
       "0": 0,
-      "1": 1,
-      "2": 66,
-      "3": 9,
+      "1": 2,
+      "2": 63,
+      "3": 11,
       "4": 0,
       "5": 0,
       "6": 0,
       "7+": 0
     },
-    "average_bucketed_expected_total": 2.6520864803666204
+    "average_bucketed_expected_total": 2.653527898345483
   },
   "shadowModel": {
     "role": "shadow",
@@ -35,44 +35,44 @@
     "exact_accuracy": 0.18421052631578946,
     "core_hits": 32,
     "core_accuracy": 0.42105263157894735,
-    "average_log_loss": 1.956089495089752,
-    "average_rps": 0.14329443102985956,
-    "calibration_error": 0.04506578947368421,
+    "average_log_loss": 1.955369968274158,
+    "average_rps": 0.1428845737446883,
+    "calibration_error": 0.04539473684210526,
     "predicted_bucket_counts": {
       "0": 0,
-      "1": 3,
-      "2": 61,
-      "3": 12,
+      "1": 4,
+      "2": 58,
+      "3": 14,
       "4": 0,
       "5": 0,
       "6": 0,
       "7+": 0
     },
-    "average_bucketed_expected_total": 2.6277676324899715
+    "average_bucketed_expected_total": 2.630513921914106
   },
   "tailShadowModel": {
     "role": "shadow_only",
     "spec": "poisson_nb_mixture[dispersion=2,half_life_days=730,rho=-0.04,shrinkage=8,tail_weight=0.2]",
     "reason": "tests wider high-score tails; first round is diagnostic only",
     "matches": 76,
-    "exact_hits": 15,
-    "exact_accuracy": 0.19736842105263158,
-    "core_hits": 29,
-    "core_accuracy": 0.3815789473684211,
-    "average_log_loss": 1.9565552406061095,
-    "average_rps": 0.1435589028619244,
-    "calibration_error": 0.04687500000000001,
+    "exact_hits": 14,
+    "exact_accuracy": 0.18421052631578946,
+    "core_hits": 30,
+    "core_accuracy": 0.39473684210526316,
+    "average_log_loss": 1.9569892140999485,
+    "average_rps": 0.14329112454587847,
+    "calibration_error": 0.045723684210526305,
     "predicted_bucket_counts": {
       "0": 0,
-      "1": 7,
-      "2": 63,
-      "3": 6,
+      "1": 8,
+      "2": 61,
+      "3": 7,
       "4": 0,
       "5": 0,
       "6": 0,
       "7+": 0
     },
-    "average_bucketed_expected_total": 2.5764531417453815
+    "average_bucketed_expected_total": 2.5809851342519754
   },
   "strengthAllocationPolicy": {
     "eloAllocationWeight": 1.0,
@@ -110,7 +110,7 @@
       "1.0": {
         "log_loss": 0.9956599332430888,
         "rps": 0.206183751889683,
-        "brier": 0.5844177652726106,
+        "brier": 0.5844177652726107,
         "calibration_error": 0.06848958333333335
       }
     },
@@ -189,7 +189,7 @@
         "window": 4,
         "matches": 32,
         "logLossDelta": 0.004852608661605862,
-        "rpsDelta": 0.0006742282970945701,
+        "rpsDelta": 0.0006742282970945424,
         "improved": false
       }
     ]
@@ -208,9 +208,9 @@
       "second_round_forward_sample": true
     },
     "deltas": {
-      "log_loss_improvement": 0.0012866952512577967,
-      "rps_improvement": 0.00010145658055590867,
-      "calibration_delta": 0.0018092105263157882
+      "log_loss_improvement": 0.001012357593553892,
+      "rps_improvement": 5.066707835335582e-05,
+      "calibration_delta": 0.0026315789473684154
     },
     "thresholds": {
       "min_matches": 24,
@@ -220,12 +220,10 @@
     }
   },
   "dataRefresh": {
-    "status": "ok",
-    "url": "https://raw.githubusercontent.com/martj42/international_results/master/results.csv",
-    "bytes": 3725571,
-    "path": "artifacts/total-goals-backtest/international_results.csv",
-    "refreshedAt": "2026-06-30T16:33:26+08:00"
+    "status": "skipped",
+    "reason": "TOTAL_GOALS_SKIP_FETCH=1",
+    "path": "artifacts\\total-goals-backtest\\international_results.csv"
   },
-  "manualResultRows": 12,
-  "comparisonPath": "artifacts/total-goals-backtest/model_comparison_2026.csv"
+  "manualResultRows": 15,
+  "comparisonPath": "artifacts\\total-goals-backtest\\model_comparison_2026.csv"
 }
