@@ -13,11 +13,18 @@ from zoneinfo import ZoneInfo
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
+from pipeline.model import (  # noqa: E402
+    half_full_probabilities as structural_half_full_probabilities,
+    outcome_probabilities,
+    score_matrix,
+)
+
 
 BEIJING = ZoneInfo("Asia/Shanghai")
 DEFAULT_HISTORY_DIR = ROOT / "public" / "data" / "history"
 DEFAULT_SETTLEMENTS_PATH = ROOT / "public" / "data" / "settlements.json"
 DEFAULT_OUTPUT_PATH = ROOT / "artifacts" / "half-full-backtest-2026.json"
+DEFAULT_SCORE_MATRIX_BACKTEST_PATH = ROOT / "artifacts" / "score-matrix-backtest-2026.json"
 HALF_FULL_MARKET = "\u534a\u5168\u573a"
 OUTCOME_LABELS = {"home": "\u80dc", "draw": "\u5e73", "away": "\u8d1f"}
 SELECTIONS = [
@@ -33,7 +40,7 @@ SELECTIONS = [
 ]
 OUTCOME_KEYS = ("home", "draw", "away")
 GROUP_OUTCOME_ASSIST_WEIGHT = 0.20
-KNOCKOUT_OUTCOME_ASSIST_WEIGHT = 0.05
+KNOCKOUT_OUTCOME_ASSIST_WEIGHT = 0.0
 
 
 def parse_args() -> argparse.Namespace:
@@ -136,6 +143,66 @@ def archived_forecasts(
                     "match": match,
                 }
     return forecasts
+
+
+def supplemental_score_matrix_forecasts(
+    path: Path,
+    settlements: dict[str, dict[str, Any]],
+    existing_forecasts: dict[str, dict[str, Any]],
+) -> dict[str, dict[str, Any]]:
+    if not path.exists():
+        return {}
+
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+
+    supplemental: dict[str, dict[str, Any]] = {}
+    try:
+        artifact_path = str(path.relative_to(ROOT)).replace("\\", "/")
+    except ValueError:
+        artifact_path = str(path)
+    for section in ("latestMatches", "knockoutMatches", "matches"):
+        for row in payload.get(section, []):
+            match_id = str(row.get("matchId") or "")
+            if not match_id or match_id in existing_forecasts or match_id in supplemental:
+                continue
+            if match_id not in settlements or actual_half_full(settlements[match_id]) is None:
+                continue
+
+            xg = row.get("xg") or {}
+            if xg.get("home") is None or xg.get("away") is None:
+                continue
+            home_xg = float(xg["home"])
+            away_xg = float(xg["away"])
+            half_full = structural_half_full_probabilities(home_xg, away_xg)
+            outcomes = outcome_probabilities(score_matrix(home_xg, away_xg))
+            quotes = [
+                {
+                    "market": HALF_FULL_MARKET,
+                    "selection": selection,
+                    "modelProbability": probability,
+                    "matchId": match_id,
+                }
+                for selection, probability in half_full.items()
+            ]
+
+            supplemental[match_id] = {
+                "historyPath": row.get("historyPath") or artifact_path,
+                "historyGeneratedAt": row.get("historyGeneratedAt"),
+                "match": {
+                    "id": match_id,
+                    "homeTeam": row.get("homeTeam"),
+                    "awayTeam": row.get("awayTeam"),
+                    "kickoff": row.get("kickoff"),
+                    "knockoutContext": {"reconstructed": True} if row.get("stage") == "knockout" else None,
+                    "outcomeProbabilities": outcomes,
+                    "quotes": quotes,
+                    "halfFullSource": "reconstructed_from_archived_xg",
+                },
+            }
+    return supplemental
 
 
 def multiclass_brier(probabilities: dict[str, float], actual: str) -> float:
@@ -327,6 +394,12 @@ def build_report(
 ) -> dict[str, Any]:
     settlements = load_settlements(settlements_path)
     forecasts = archived_forecasts(history_dir, settlements)
+    supplemental = supplemental_score_matrix_forecasts(
+        DEFAULT_SCORE_MATRIX_BACKTEST_PATH,
+        settlements,
+        forecasts,
+    )
+    forecasts.update(supplemental)
     rows = []
     missing_halftime = 0
     for match_id, forecast in sorted(
@@ -353,6 +426,7 @@ def build_report(
             ),
             "settlementCount": len(settlements),
             "forecastsWithHalfFullMarket": len(forecasts),
+            "supplementalReconstructedForecasts": len(supplemental),
             "excludedMissingHalftime": missing_halftime,
             "evaluatedMatches": len(rows),
         },

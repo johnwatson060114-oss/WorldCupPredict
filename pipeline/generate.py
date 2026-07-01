@@ -382,7 +382,7 @@ def _market_date_matches_seed(seed: dict, market: SportteryMatch) -> bool:
 
 def half_full_assist_weight(seed: dict[str, Any]) -> float:
     if seed.get("knockout_context"):
-        return 0.05
+        return 0.0
     return 0.20
 
 

@@ -142,7 +142,7 @@ def test_spain_cape_verde_uses_elo_gap_instead_of_neutral_fallback(monkeypatch):
 
 def test_half_full_assist_weight_is_conservative_for_knockout():
     assert generate.half_full_assist_weight({}) == 0.20
-    assert generate.half_full_assist_weight({"knockout_context": {"applied": True}}) == 0.05
+    assert generate.half_full_assist_weight({"knockout_context": {"applied": True}}) == 0.0
 
 
 def test_sporttery_seed_uses_model_policy_for_strength_allocation(monkeypatch):

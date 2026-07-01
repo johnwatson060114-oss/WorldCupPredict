@@ -4,6 +4,7 @@ from tools.backtest_half_full import (
     actual_half_full,
     evaluate_row,
     half_full_probabilities,
+    supplemental_score_matrix_forecasts,
     summarize,
 )
 
@@ -92,3 +93,40 @@ def test_summarize_reports_model_and_in_sample_baseline_accuracy():
     assert summary["accuracy"] == 2 / 3
     assert summary["inSampleMostCommonActual"] == "\u5e73\u80dc"
     assert summary["inSampleMostCommonAccuracy"] == 2 / 3
+
+
+def test_supplemental_score_matrix_forecasts_reconstruct_half_full_when_archived_quotes_missing(tmp_path):
+    artifact = tmp_path / "score-matrix.json"
+    artifact.write_text(
+        """{
+  "latestMatches": [
+    {
+      "matchId": "2040345",
+      "homeTeam": "Home",
+      "awayTeam": "Away",
+      "kickoff": "2026-07-01T01:00:00+08:00",
+      "historyPath": "public/data/history/2026-07-01.json",
+      "historyGeneratedAt": "2026-06-30T18:37:21+08:00",
+      "stage": "knockout",
+      "xg": {"home": 0.9, "away": 2.0}
+    }
+  ]
+}""",
+        encoding="utf-8",
+    )
+    settlements = {
+        "2040345": {
+            "homeScore": 1,
+            "awayScore": 2,
+            "halfTimeHomeScore": 0,
+            "halfTimeAwayScore": 1,
+        }
+    }
+
+    forecasts = supplemental_score_matrix_forecasts(artifact, settlements, {})
+
+    assert set(forecasts) == {"2040345"}
+    match = forecasts["2040345"]["match"]
+    assert match["halfFullSource"] == "reconstructed_from_archived_xg"
+    assert len([quote for quote in match["quotes"] if quote["market"] == "\u534a\u5168\u573a"]) == 9
+    assert abs(sum(match["outcomeProbabilities"].values()) - 1) < 1e-9
