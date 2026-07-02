@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-01T16:52:55+08:00",
+  "generatedAt": "2026-07-02T16:16:05+08:00",
   "finalDate": "2026-07-19",
   "days": [
     {
@@ -1972,8 +1972,104 @@
     },
     {
       "targetDate": "2026-07-02",
-      "generatedAt": "2026-07-01T16:52:16+08:00",
-      "coverage": 0.787,
+      "generatedAt": "2026-07-01T18:26:40+08:00",
+      "coverage": 0.7736,
+      "strategies": [
+        {
+          "key": "conservative",
+          "name": "稳健",
+          "stake": 0,
+          "payout": 0,
+          "profit": 0,
+          "roi": null,
+          "status": "no-bet"
+        },
+        {
+          "key": "balanced",
+          "name": "均衡",
+          "stake": 0,
+          "payout": 0,
+          "profit": 0,
+          "roi": null,
+          "status": "no-bet"
+        },
+        {
+          "key": "aggressive",
+          "name": "激进",
+          "stake": 0,
+          "payout": 0,
+          "profit": 0,
+          "roi": null,
+          "status": "no-bet"
+        }
+      ],
+      "review": {
+        "snapshotLabel": "升级前基线快照",
+        "matches": [
+          {
+            "matchId": "2040352",
+            "label": "英格兰 vs 刚果金",
+            "predictedScore": "2-0",
+            "actualScore": "2-1",
+            "predictedOutcome": "home",
+            "predictedOutcomeSource": "outcomeDecision",
+            "actualOutcome": "home",
+            "outcomeCorrect": true,
+            "exactScore": false,
+            "goalAbsoluteError": 1,
+            "actualOutcomeProbability": 0.75942,
+            "logLoss": 0.2752,
+            "brier": 0.09709,
+            "diagnosis": "赛果方向正确，但比分尺度仍有偏差。"
+          },
+          {
+            "matchId": "2040353",
+            "label": "比利时 vs 塞内加尔",
+            "predictedScore": "1-1",
+            "actualScore": "2-2",
+            "predictedOutcome": "home",
+            "predictedOutcomeSource": "outcomeDecision",
+            "actualOutcome": "draw",
+            "outcomeCorrect": false,
+            "exactScore": false,
+            "goalAbsoluteError": 2,
+            "actualOutcomeProbability": 0.26038,
+            "logLoss": 1.34561,
+            "brier": 0.82288,
+            "diagnosis": "赛果方向判断错误，需要继续积累同类对阵样本。"
+          },
+          {
+            "matchId": "2040339",
+            "label": "美国 vs 波黑",
+            "predictedScore": "1-1",
+            "actualScore": "2-0",
+            "predictedOutcome": "home",
+            "predictedOutcomeSource": "outcomeDecision",
+            "actualOutcome": "home",
+            "outcomeCorrect": true,
+            "exactScore": false,
+            "goalAbsoluteError": 2,
+            "actualOutcomeProbability": 0.59274,
+            "logLoss": 0.523,
+            "brier": 0.24986,
+            "diagnosis": "赛果方向正确，但比分尺度仍有偏差。"
+          }
+        ],
+        "summary": {
+          "matchCount": 3,
+          "outcomeAccuracy": 0.6667,
+          "exactScoreAccuracy": 0.0,
+          "meanGoalAbsoluteError": 1.667,
+          "logLoss": 0.7146,
+          "brier": 0.38994,
+          "strategyDiagnosis": "策略结果已按真实派彩结算，继续观察多日样本后再调整资金规则。"
+        }
+      }
+    },
+    {
+      "targetDate": "2026-07-03",
+      "generatedAt": "2026-07-02T16:15:00+08:00",
+      "coverage": 0.5684,
       "strategies": [
         {
           "key": "conservative",
