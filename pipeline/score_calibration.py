@@ -7,6 +7,7 @@ from .model import outcome_probabilities, total_goals_probabilities
 
 
 GOAL_BUCKETS = ("0", "1", "2", "3", "4", "5", "6", "7+")
+KNOCKOUT_SCORE_CALIBRATION_INTENSITY = 0.25
 
 
 @dataclass(frozen=True)
@@ -151,6 +152,22 @@ def _preserve_outcomes(
     return _normalize(preserved)
 
 
+def _blend_matrices(
+    base: list[list[float]],
+    calibrated: list[list[float]],
+    intensity: float,
+) -> list[list[float]]:
+    bounded = min(1.0, max(0.0, intensity))
+    blended = [
+        [
+            (1 - bounded) * base_value + bounded * calibrated[home_goals][away_goals]
+            for away_goals, base_value in enumerate(row)
+        ]
+        for home_goals, row in enumerate(base)
+    ]
+    return _normalize(blended)
+
+
 def apply_score_matrix_calibration(
     matrix: list[list[float]],
     seed: dict[str, Any],
@@ -175,8 +192,10 @@ def apply_score_matrix_calibration(
         ]
         for home_goals, row in enumerate(matrix)
     ]
-    calibrated = _preserve_outcomes(_normalize(weighted), base_outcomes)
+    full_calibrated = _preserve_outcomes(_normalize(weighted), base_outcomes)
+    calibrated = _blend_matrices(matrix, full_calibrated, KNOCKOUT_SCORE_CALIBRATION_INTENSITY)
     calibrated_totals = total_goals_probabilities(calibrated)
+    full_calibrated_totals = total_goals_probabilities(full_calibrated)
     calibrated_outcomes = outcome_probabilities(calibrated)
     max_cell_delta = max(
         abs(calibrated[home][away] - matrix[home][away])
@@ -188,13 +207,15 @@ def apply_score_matrix_calibration(
         matrix=calibrated,
         metadata={
             "applied": True,
-            "policy": "knockout_score_total_matrix_calibration_v1",
+            "policy": "knockout_score_total_matrix_calibration_v2",
             "profile": profile,
+            "intensity": KNOCKOUT_SCORE_CALIBRATION_INTENSITY,
             "sourceKnockoutPolicy": policy,
             "favoriteSide": favorite_side,
             "totalGoalWeights": {key: round(value, 4) for key, value in total_weights.items()},
             "expectedTotalGoalsBefore": round(_expected_total(base_totals), 4),
             "expectedTotalGoalsAfter": round(_expected_total(calibrated_totals), 4),
+            "fullIntensityExpectedTotalGoalsAfter": round(_expected_total(full_calibrated_totals), 4),
             "outcomePreserved": _round_probabilities(base_outcomes) == _round_probabilities(calibrated_outcomes),
             "maxCellDelta": round(max_cell_delta, 6),
         },

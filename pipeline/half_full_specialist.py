@@ -22,6 +22,17 @@ FULL_OUTCOME_BY_LABEL = {
     "\u8d1f": "away",
 }
 DEFAULT_OUTCOME_ASSIST_WEIGHT = 0.20
+KNOCKOUT_HALF_FULL_WEIGHTS = {
+    "\u80dc\u80dc": 0.95,
+    "\u80dc\u5e73": 1.30,
+    "\u80dc\u8d1f": 1.30,
+    "\u5e73\u80dc": 0.95,
+    "\u5e73\u5e73": 1.10,
+    "\u5e73\u8d1f": 0.95,
+    "\u8d1f\u80dc": 1.30,
+    "\u8d1f\u5e73": 1.30,
+    "\u8d1f\u8d1f": 0.95,
+}
 
 
 @dataclass(frozen=True)
@@ -32,12 +43,58 @@ class HalfFullSignal:
     metadata: dict[str, object]
 
 
+@dataclass(frozen=True)
+class HalfFullMarketCalibration:
+    probabilities: dict[str, float]
+    metadata: dict[str, object]
+
+
 def normalize_distribution(probabilities: Mapping[str, float], keys: tuple[str, ...]) -> dict[str, float]:
     values = {key: max(0.0, float(probabilities.get(key, 0.0))) for key in keys}
     total = sum(values.values())
     if total <= 0:
         return {key: 1 / len(keys) for key in keys}
     return {key: value / total for key, value in values.items()}
+
+
+def apply_half_full_market_calibration(
+    half_full: Mapping[str, float],
+    seed: Mapping[str, object] | None = None,
+) -> HalfFullMarketCalibration:
+    normalized = normalize_distribution(half_full, HALF_FULL_SELECTIONS)
+    seed = seed or {}
+    knockout_context = seed.get("knockout_context") or seed.get("knockoutContext")
+    if not knockout_context:
+        return HalfFullMarketCalibration(
+            probabilities=normalized,
+            metadata={"applied": False, "reason": "not_knockout"},
+        )
+
+    weighted = {
+        selection: normalized[selection] * KNOCKOUT_HALF_FULL_WEIGHTS[selection]
+        for selection in HALF_FULL_SELECTIONS
+    }
+    calibrated = normalize_distribution(weighted, HALF_FULL_SELECTIONS)
+    top_before = max(normalized, key=normalized.get)
+    top_after = max(calibrated, key=calibrated.get)
+
+    return HalfFullMarketCalibration(
+        probabilities=calibrated,
+        metadata={
+            "applied": True,
+            "policy": "knockout_half_full_late_swing_v1",
+            "sourceKnockoutPolicy": (
+                knockout_context.get("policy")
+                if isinstance(knockout_context, Mapping)
+                else None
+            ),
+            "weights": KNOCKOUT_HALF_FULL_WEIGHTS,
+            "topSelectionBefore": top_before,
+            "topSelectionAfter": top_after,
+            "topProbabilityBefore": normalized[top_before],
+            "topProbabilityAfter": calibrated[top_after],
+        },
+    )
 
 
 def half_full_to_outcomes(half_full: Mapping[str, float]) -> dict[str, float]:

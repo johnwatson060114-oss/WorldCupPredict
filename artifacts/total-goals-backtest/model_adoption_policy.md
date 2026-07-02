@@ -10,11 +10,22 @@
 
 ## Score Matrix Backtest
 
-Run this after new 2026 World Cup settlements are added:
+Run the combined market backtest after new 2026 World Cup settlements are added:
 
-`python tools/backtest_score_matrix.py`
+`python tools/backtest_model_markets.py`
 
-The script writes `artifacts/score-matrix-backtest-2026.json` and compares the base full score matrix with the knockout-calibrated score matrix. Use it to judge exact-score top-k accuracy, total-goals bucket accuracy, total-goals log loss, and total-goals RPS before changing score-calibration weights.
+The script refreshes:
+
+- `artifacts/model-markets-backtest-2026.json`
+- `artifacts/score-matrix-backtest-2026.json`
+- `artifacts/half-full-backtest-2026.json`
+
+Use the combined report to judge exact-score top-k accuracy, total-goals bucket accuracy/log loss/RPS, and half-time/full-time accuracy/log loss before changing calibration weights. When the user asks for a generic backtest, run all three markets together.
+
+## Knockout Specialist Calibration
+
+- Score matrix calibration uses `knockout_score_total_matrix_calibration_v2` with a 25% blend toward the knockout tail adjustment. This keeps the live knockout exact-score top1 count from the base matrix while retaining the calibrated matrix's top3 gain.
+- Half-time/full-time uses `knockout_half_full_late_swing_v1` only for knockout matches. It slightly discounts straight-through half/full outcomes and lifts halftime-leader-to-draw/comeback paths, improving probability quality without using it as a W/D/L override.
 
 ## Switch Gates
 

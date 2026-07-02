@@ -2926,6 +2926,43 @@
       "settledAt": "2026-07-01T01:00:00Z",
       "settlementSource": "external_result_review",
       "settlementSourceUrl": "https://www.theguardian.com/football/live/2026/jul/01/fifa-world-cup-2026-live-mexico-v-ecuador-updates-mex-vs-ecu-last-round-32-match-score-latest"
+    },
+    {
+      "matchId": "2040352",
+      "matchLabel": "英格兰 vs 刚果金",
+      "homeScore": 2,
+      "awayScore": 1,
+      "settlementScoreBasis": "90_minutes",
+      "halfTimeHomeScore": 0,
+      "halfTimeAwayScore": 1,
+      "settledAt": "2026-07-01T16:00:00Z",
+      "settlementSource": "external_result_review",
+      "settlementSourceUrl": "https://www.theguardian.com/football/live/2026/jul/01/england-v-dr-congo-world-cup-2026-last-32-live"
+    },
+    {
+      "matchId": "2040353",
+      "matchLabel": "比利时 vs 塞内加尔",
+      "homeScore": 2,
+      "awayScore": 2,
+      "rawSettlementScore": "3-2",
+      "settlementScoreBasis": "90_minutes",
+      "halfTimeHomeScore": 0,
+      "halfTimeAwayScore": 1,
+      "settledAt": "2026-07-01T20:00:00Z",
+      "settlementSource": "external_result_review",
+      "settlementSourceUrl": "https://www.theguardian.com/football/live/2026/jul/01/belgium-v-senegal-world-cup-last-32-live"
+    },
+    {
+      "matchId": "2040339",
+      "matchLabel": "美国 vs 波黑",
+      "homeScore": 2,
+      "awayScore": 0,
+      "settlementScoreBasis": "90_minutes",
+      "halfTimeHomeScore": 1,
+      "halfTimeAwayScore": 0,
+      "settledAt": "2026-07-02T00:00:00Z",
+      "settlementSource": "external_result_review",
+      "settlementSourceUrl": "https://www.theguardian.com/football/live/2026/jul/01/usa-v-bosnia-and-herzegovina-world-cup-2026-last-32-live"
     }
   ]
 }

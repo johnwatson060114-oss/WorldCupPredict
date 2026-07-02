@@ -18,6 +18,7 @@ from pipeline.model import (  # noqa: E402
     outcome_probabilities,
     score_matrix,
 )
+from pipeline.half_full_specialist import apply_half_full_market_calibration  # noqa: E402
 
 
 BEIJING = ZoneInfo("Asia/Shanghai")
@@ -26,6 +27,7 @@ DEFAULT_SETTLEMENTS_PATH = ROOT / "public" / "data" / "settlements.json"
 DEFAULT_OUTPUT_PATH = ROOT / "artifacts" / "half-full-backtest-2026.json"
 DEFAULT_SCORE_MATRIX_BACKTEST_PATH = ROOT / "artifacts" / "score-matrix-backtest-2026.json"
 HALF_FULL_MARKET = "\u534a\u5168\u573a"
+FORECAST_SECTIONS = ("matches", "parlayMatches", "parlayCandidateMatches")
 OUTCOME_LABELS = {"home": "\u80dc", "draw": "\u5e73", "away": "\u8d1f"}
 SELECTIONS = [
     "\u80dc\u80dc",
@@ -57,6 +59,13 @@ def parse_datetime(value: str | None) -> datetime | None:
     if not value:
         return None
     return datetime.fromisoformat(value.replace("Z", "+00:00"))
+
+
+def display_path(path: Path) -> str:
+    try:
+        return str(path.resolve().relative_to(ROOT)).replace("\\", "/")
+    except ValueError:
+        return str(path)
 
 
 def outcome_label(home_goals: int, away_goals: int) -> str:
@@ -121,27 +130,29 @@ def archived_forecasts(
     for path in sorted(history_dir.glob("*.json")):
         payload = json.loads(path.read_text(encoding="utf-8"))
         generated_at = parse_datetime(payload.get("generatedAt"))
-        for match in payload.get("matches", []):
-            match_id = settlement_key(match)
-            if match_id not in settlements:
-                continue
-            if not half_full_probabilities(match):
-                continue
+        for section in FORECAST_SECTIONS:
+            for match in payload.get(section, []):
+                match_id = settlement_key(match)
+                if match_id not in settlements:
+                    continue
+                if not half_full_probabilities(match):
+                    continue
 
-            kickoff = parse_datetime(match.get("kickoff"))
-            if generated_at and kickoff and generated_at > kickoff:
-                continue
+                kickoff = parse_datetime(match.get("kickoff"))
+                if generated_at and kickoff and generated_at > kickoff:
+                    continue
 
-            previous = forecasts.get(match_id)
-            previous_generated = parse_datetime(previous["historyGeneratedAt"]) if previous else None
-            if previous is None or (
-                generated_at and previous_generated and generated_at > previous_generated
-            ):
-                forecasts[match_id] = {
-                    "historyPath": str(path.resolve().relative_to(ROOT)).replace("\\", "/"),
-                    "historyGeneratedAt": payload.get("generatedAt"),
-                    "match": match,
-                }
+                previous = forecasts.get(match_id)
+                previous_generated = parse_datetime(previous["historyGeneratedAt"]) if previous else None
+                if previous is None or (
+                    generated_at and previous_generated and generated_at > previous_generated
+                ):
+                    forecasts[match_id] = {
+                        "historyPath": display_path(path),
+                        "historySection": section,
+                        "historyGeneratedAt": payload.get("generatedAt"),
+                        "match": match,
+                    }
     return forecasts
 
 
@@ -267,6 +278,11 @@ def evaluate_row(
     probabilities = half_full_probabilities(match)
     if not probabilities:
         return None
+    calibration = apply_half_full_market_calibration(
+        probabilities,
+        {"knockout_context": match.get("knockoutContext")},
+    )
+    probabilities = calibration.probabilities
 
     ranked = sorted(
         (
@@ -294,7 +310,9 @@ def evaluate_row(
         "kickoff": match.get("kickoff"),
         "stage": stage,
         "historyPath": forecast["historyPath"],
+        "historySection": forecast.get("historySection"),
         "historyGeneratedAt": forecast["historyGeneratedAt"],
+        "halfFullCalibration": calibration.metadata,
         "actual": actual,
         "predicted": predicted,
         "hit": predicted == actual,
@@ -352,6 +370,22 @@ def summarize_by_stage(rows: list[dict[str, Any]]) -> dict[str, Any]:
     return {stage: summarize(stage_rows) for stage, stage_rows in sorted(grouped.items())}
 
 
+def latest_matched_kickoff_date_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    dated_rows = [
+        (parse_datetime(row.get("kickoff")), row)
+        for row in rows
+        if row.get("kickoff")
+    ]
+    if not dated_rows:
+        return []
+    latest_date = max(kickoff.astimezone(BEIJING).date() for kickoff, _row in dated_rows if kickoff)
+    return [
+        row
+        for kickoff, row in dated_rows
+        if kickoff and kickoff.astimezone(BEIJING).date() == latest_date
+    ]
+
+
 def summarize_outcomes(rows: list[dict[str, Any]], key: str) -> dict[str, Any]:
     if not rows:
         return {"matches": 0}
@@ -391,11 +425,12 @@ def outcome_assistance_by_stage(rows: list[dict[str, Any]]) -> dict[str, Any]:
 def build_report(
     history_dir: Path = DEFAULT_HISTORY_DIR,
     settlements_path: Path = DEFAULT_SETTLEMENTS_PATH,
+    score_matrix_backtest_path: Path = DEFAULT_SCORE_MATRIX_BACKTEST_PATH,
 ) -> dict[str, Any]:
     settlements = load_settlements(settlements_path)
     forecasts = archived_forecasts(history_dir, settlements)
     supplemental = supplemental_score_matrix_forecasts(
-        DEFAULT_SCORE_MATRIX_BACKTEST_PATH,
+        score_matrix_backtest_path,
         settlements,
         forecasts,
     )
@@ -412,6 +447,7 @@ def build_report(
                 missing_halftime += 1
             continue
         rows.append(row)
+    latest_rows = latest_matched_kickoff_date_rows(rows)
 
     report = {
         "schemaVersion": 1,
@@ -440,12 +476,15 @@ def build_report(
         },
         "metrics": {
             "allMatchedSettled": summarize(rows),
+            "latestCompleted": summarize(latest_rows),
             "byStage": summarize_by_stage(rows),
             "outcomeAssistance": {
                 "allMatchedSettled": outcome_assistance_summary(rows),
+                "latestCompleted": outcome_assistance_summary(latest_rows),
                 "byStage": outcome_assistance_by_stage(rows),
             },
         },
+        "latestCompletedMatchIds": [str(row["matchId"]) for row in latest_rows],
         "matches": rows,
     }
     return report

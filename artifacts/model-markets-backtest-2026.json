@@ -1,0 +1,402 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-02T14:47:48+08:00",
+  "scope": {
+    "tournament": "FIFA World Cup 2026",
+    "predictionTarget": "90_minutes",
+    "policy": "full model-market backtest: total goals, exact score, and half-time/full-time are refreshed together from archived pre-kickoff forecasts and local settlements",
+    "scoreMatrixReport": "artifacts/score-matrix-backtest-2026.json",
+    "halfFullReport": "artifacts/half-full-backtest-2026.json"
+  },
+  "metricDefinitions": {
+    "totalGoals": {
+      "totalExactAccuracy": "predicted total-goals bucket with highest probability equals actual total-goals bucket",
+      "totalAdjacentCoreAccuracy": "predicted total-goals bucket is within one bucket of the actual bucket",
+      "scoreTopKAccuracy": "actual exact score appears in the top K score probabilities from the reconstructed full matrix",
+      "logLoss": "negative log probability assigned to the realized bucket or exact score",
+      "rps": "ranked probability score over ordered total-goals buckets 0,1,2,3,4,5,6,7+"
+    },
+    "exactScore": {
+      "totalExactAccuracy": "predicted total-goals bucket with highest probability equals actual total-goals bucket",
+      "totalAdjacentCoreAccuracy": "predicted total-goals bucket is within one bucket of the actual bucket",
+      "scoreTopKAccuracy": "actual exact score appears in the top K score probabilities from the reconstructed full matrix",
+      "logLoss": "negative log probability assigned to the realized bucket or exact score",
+      "rps": "ranked probability score over ordered total-goals buckets 0,1,2,3,4,5,6,7+"
+    },
+    "halfFull": {
+      "accuracy": "top probability half-time/full-time selection equals the realized selection",
+      "top3Accuracy": "realized selection appears in the three highest model probabilities",
+      "averageLogLoss": "negative log probability assigned to the realized selection",
+      "averageBrier": "sum of squared probability errors across the nine selections",
+      "inSampleMostCommonAccuracy": "accuracy from always picking the most frequent realized class in this same sample",
+      "outcomeAssistance": "W/D/L metrics before and after adding the half-full specialist signal"
+    }
+  },
+  "metrics": {
+    "totalGoals": {
+      "allMatchedSettled": {
+        "base": {
+          "matches": 70,
+          "totalExactHits": 13,
+          "totalExactAccuracy": 0.18571428571428572,
+          "totalAdjacentCoreHits": 37,
+          "totalAdjacentCoreAccuracy": 0.5285714285714286,
+          "averageTotalLogLoss": 1.9765437810615136,
+          "averageTotalRps": 0.14415076341714464
+        },
+        "calibrated": {
+          "matches": 70,
+          "totalExactHits": 13,
+          "totalExactAccuracy": 0.18571428571428572,
+          "totalAdjacentCoreHits": 37,
+          "totalAdjacentCoreAccuracy": 0.5285714285714286,
+          "averageTotalLogLoss": 1.9766094698955718,
+          "averageTotalRps": 0.14417444463686563
+        }
+      },
+      "knockout": {
+        "base": {
+          "matches": 10,
+          "totalExactHits": 4,
+          "totalExactAccuracy": 0.4,
+          "totalAdjacentCoreHits": 9,
+          "totalAdjacentCoreAccuracy": 0.9,
+          "averageTotalLogLoss": 1.5375512447179156,
+          "averageTotalRps": 0.07621632371687834
+        },
+        "calibrated": {
+          "matches": 10,
+          "totalExactHits": 4,
+          "totalExactAccuracy": 0.4,
+          "totalAdjacentCoreHits": 9,
+          "totalAdjacentCoreAccuracy": 0.9,
+          "averageTotalLogLoss": 1.538011066556325,
+          "averageTotalRps": 0.07638209225492511
+        }
+      },
+      "latestCompleted": {
+        "base": {
+          "matches": 3,
+          "totalExactHits": 1,
+          "totalExactAccuracy": 0.3333333333333333,
+          "totalAdjacentCoreHits": 2,
+          "totalAdjacentCoreAccuracy": 0.6666666666666666,
+          "averageTotalLogLoss": 1.697862013404291,
+          "averageTotalRps": 0.09833897239248468
+        },
+        "calibrated": {
+          "matches": 3,
+          "totalExactHits": 1,
+          "totalExactAccuracy": 0.3333333333333333,
+          "totalAdjacentCoreHits": 2,
+          "totalAdjacentCoreAccuracy": 0.6666666666666666,
+          "averageTotalLogLoss": 1.688087751965594,
+          "averageTotalRps": 0.0973036461586047
+        }
+      }
+    },
+    "exactScore": {
+      "allMatchedSettled": {
+        "base": {
+          "matches": 70,
+          "scoreTop1Hits": 7,
+          "scoreTop1Accuracy": 0.1,
+          "scoreTop3Hits": 22,
+          "scoreTop3Accuracy": 0.3142857142857143,
+          "scoreTop5Hits": 36,
+          "scoreTop5Accuracy": 0.5142857142857142,
+          "averageScoreLogLoss": 2.88681628887561
+        },
+        "calibrated": {
+          "matches": 70,
+          "scoreTop1Hits": 7,
+          "scoreTop1Accuracy": 0.1,
+          "scoreTop3Hits": 23,
+          "scoreTop3Accuracy": 0.32857142857142857,
+          "scoreTop5Hits": 36,
+          "scoreTop5Accuracy": 0.5142857142857142,
+          "averageScoreLogLoss": 2.886921246091925
+        }
+      },
+      "knockout": {
+        "base": {
+          "matches": 10,
+          "scoreTop1Hits": 3,
+          "scoreTop1Accuracy": 0.3,
+          "scoreTop3Hits": 5,
+          "scoreTop3Accuracy": 0.5,
+          "scoreTop5Hits": 8,
+          "scoreTop5Accuracy": 0.8,
+          "averageScoreLogLoss": 2.3926421294322604
+        },
+        "calibrated": {
+          "matches": 10,
+          "scoreTop1Hits": 3,
+          "scoreTop1Accuracy": 0.3,
+          "scoreTop3Hits": 6,
+          "scoreTop3Accuracy": 0.6,
+          "scoreTop5Hits": 8,
+          "scoreTop5Accuracy": 0.8,
+          "averageScoreLogLoss": 2.393376829946466
+        }
+      },
+      "latestCompleted": {
+        "base": {
+          "matches": 3,
+          "scoreTop1Hits": 0,
+          "scoreTop1Accuracy": 0.0,
+          "scoreTop3Hits": 1,
+          "scoreTop3Accuracy": 0.3333333333333333,
+          "scoreTop5Hits": 1,
+          "scoreTop5Accuracy": 0.3333333333333333,
+          "averageScoreLogLoss": 2.7220990042759747
+        },
+        "calibrated": {
+          "matches": 3,
+          "scoreTop1Hits": 0,
+          "scoreTop1Accuracy": 0.0,
+          "scoreTop3Hits": 1,
+          "scoreTop3Accuracy": 0.3333333333333333,
+          "scoreTop5Hits": 1,
+          "scoreTop5Accuracy": 0.3333333333333333,
+          "averageScoreLogLoss": 2.712842951522435
+        }
+      }
+    },
+    "halfFull": {
+      "allMatchedSettled": {
+        "matches": 70,
+        "hits": 26,
+        "accuracy": 0.37142857142857144,
+        "top3Hits": 51,
+        "top3Accuracy": 0.7285714285714285,
+        "averageLogLoss": 1.7583621800028337,
+        "averageBrier": 0.7446828899831411,
+        "averageActualProbability": 0.25798023681838184,
+        "inSampleMostCommonActual": "胜胜",
+        "inSampleMostCommonAccuracy": 0.2714285714285714,
+        "uniformNineWayLogLoss": 2.1972245773362196,
+        "actualDistribution": {
+          "平平": 13,
+          "平胜": 10,
+          "平负": 3,
+          "胜平": 3,
+          "胜胜": 19,
+          "胜负": 2,
+          "负平": 3,
+          "负胜": 4,
+          "负负": 13
+        },
+        "predictionDistribution": {
+          "平平": 2,
+          "胜胜": 42,
+          "负负": 26
+        }
+      },
+      "latestCompleted": {
+        "matches": 3,
+        "hits": 1,
+        "accuracy": 0.3333333333333333,
+        "top3Hits": 1,
+        "top3Accuracy": 0.3333333333333333,
+        "averageLogLoss": 2.626335571981588,
+        "averageBrier": 0.9274658531938845,
+        "averageActualProbability": 0.14756312578828448,
+        "inSampleMostCommonActual": "负胜",
+        "inSampleMostCommonAccuracy": 0.3333333333333333,
+        "uniformNineWayLogLoss": 2.1972245773362196,
+        "actualDistribution": {
+          "胜胜": 1,
+          "负平": 1,
+          "负胜": 1
+        },
+        "predictionDistribution": {
+          "胜胜": 3
+        }
+      },
+      "byStage": {
+        "group": {
+          "matches": 60,
+          "hits": 23,
+          "accuracy": 0.38333333333333336,
+          "top3Hits": 45,
+          "top3Accuracy": 0.75,
+          "averageLogLoss": 1.7010180115891083,
+          "averageBrier": 0.7330660062698651,
+          "averageActualProbability": 0.26733720328541416,
+          "inSampleMostCommonActual": "胜胜",
+          "inSampleMostCommonAccuracy": 0.26666666666666666,
+          "uniformNineWayLogLoss": 2.1972245773362196,
+          "actualDistribution": {
+            "平平": 12,
+            "平胜": 10,
+            "平负": 2,
+            "胜平": 3,
+            "胜胜": 16,
+            "胜负": 2,
+            "负平": 1,
+            "负胜": 2,
+            "负负": 12
+          },
+          "predictionDistribution": {
+            "平平": 1,
+            "胜胜": 35,
+            "负负": 24
+          }
+        },
+        "knockout": {
+          "matches": 10,
+          "hits": 3,
+          "accuracy": 0.3,
+          "top3Hits": 6,
+          "top3Accuracy": 0.6,
+          "averageLogLoss": 2.1024271904851863,
+          "averageBrier": 0.8143841922627976,
+          "averageActualProbability": 0.20183843801618745,
+          "inSampleMostCommonActual": "胜胜",
+          "inSampleMostCommonAccuracy": 0.3,
+          "uniformNineWayLogLoss": 2.1972245773362196,
+          "actualDistribution": {
+            "平平": 1,
+            "平负": 1,
+            "胜胜": 3,
+            "负平": 2,
+            "负胜": 2,
+            "负负": 1
+          },
+          "predictionDistribution": {
+            "平平": 1,
+            "胜胜": 7,
+            "负负": 2
+          }
+        }
+      },
+      "outcomeAssistance": {
+        "allMatchedSettled": {
+          "assistPolicy": {
+            "groupWeight": 0.2,
+            "knockoutWeight": 0.0
+          },
+          "base": {
+            "matches": 70,
+            "hits": 41,
+            "accuracy": 0.5857142857142857,
+            "averageLogLoss": 0.8567486853017141,
+            "averageActualProbability": 0.4946522768049739
+          },
+          "halfFullSignal": {
+            "matches": 70,
+            "hits": 41,
+            "accuracy": 0.5857142857142857,
+            "averageLogLoss": 0.8542398129546055,
+            "averageActualProbability": 0.49557304470427194
+          },
+          "assisted": {
+            "matches": 70,
+            "hits": 41,
+            "accuracy": 0.5857142857142857,
+            "averageLogLoss": 0.85638082336614,
+            "averageActualProbability": 0.4950159954833342
+          }
+        },
+        "latestCompleted": {
+          "assistPolicy": {
+            "groupWeight": 0.2,
+            "knockoutWeight": 0.0
+          },
+          "base": {
+            "matches": 3,
+            "hits": 2,
+            "accuracy": 0.6666666666666666,
+            "averageLogLoss": 0.7146042987201034,
+            "averageActualProbability": 0.5375133333333334
+          },
+          "halfFullSignal": {
+            "matches": 3,
+            "hits": 2,
+            "accuracy": 0.6666666666666666,
+            "averageLogLoss": 0.6891749021958025,
+            "averageActualProbability": 0.5362210897352111
+          },
+          "assisted": {
+            "matches": 3,
+            "hits": 2,
+            "accuracy": 0.6666666666666666,
+            "averageLogLoss": 0.7146042987201034,
+            "averageActualProbability": 0.5375133333333334
+          }
+        },
+        "byStage": {
+          "group": {
+            "assistPolicy": {
+              "groupWeight": 0.2,
+              "knockoutWeight": 0.0
+            },
+            "base": {
+              "matches": 60,
+              "hits": 35,
+              "accuracy": 0.5833333333333334,
+              "averageLogLoss": 0.8678549026134685,
+              "averageActualProbability": 0.4937758229391363
+            },
+            "halfFullSignal": {
+              "matches": 60,
+              "hits": 35,
+              "accuracy": 0.5833333333333334,
+              "averageLogLoss": 0.8660834211875742,
+              "averageActualProbability": 0.49589751522957076
+            },
+            "assisted": {
+              "matches": 60,
+              "hits": 35,
+              "accuracy": 0.5833333333333334,
+              "averageLogLoss": 0.8674257303552987,
+              "averageActualProbability": 0.49420016139722317
+            }
+          },
+          "knockout": {
+            "assistPolicy": {
+              "groupWeight": 0.2,
+              "knockoutWeight": 0.0
+            },
+            "base": {
+              "matches": 10,
+              "hits": 6,
+              "accuracy": 0.6,
+              "averageLogLoss": 0.7901113814311873,
+              "averageActualProbability": 0.499911
+            },
+            "halfFullSignal": {
+              "matches": 10,
+              "hits": 6,
+              "accuracy": 0.6,
+              "averageLogLoss": 0.7831781635567924,
+              "averageActualProbability": 0.4936262215524788
+            },
+            "assisted": {
+              "matches": 10,
+              "hits": 6,
+              "accuracy": 0.6,
+              "averageLogLoss": 0.7901113814311873,
+              "averageActualProbability": 0.499911
+            }
+          }
+        }
+      }
+    }
+  },
+  "modelDecision": {
+    "primaryAdjustmentTargets": [
+      "total_goals_bucket_distribution",
+      "exact_score_matrix",
+      "half_time_full_time_distribution"
+    ],
+    "wdlRole": "auxiliary outcome sanity check only",
+    "productionScoreMatrix": "calibrated",
+    "scoreCalibrationPolicy": "knockout_score_total_matrix_calibration_v2",
+    "scoreCalibrationIntensity": 0.25,
+    "halfFullCalibrationPolicy": "knockout_half_full_late_swing_v1",
+    "diagnosticScoreMatrix": "base",
+    "note": "Future generic backtests should use this combined report so all three specialist markets move through the same evidence gate."
+  }
+}

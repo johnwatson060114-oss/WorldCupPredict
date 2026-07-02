@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-01T12:14:26+08:00",
+  "generatedAt": "2026-07-02T14:30:16+08:00",
   "timezone": "Asia/Shanghai",
   "data_refresh": {
     "status": "skipped",
@@ -62,67 +62,67 @@
     }
   },
   "current_model_2026": {
-    "matches": 76,
+    "matches": 79,
     "exact_hits": 16,
-    "exact_accuracy": 0.21052631578947367,
-    "core_hits": 30,
-    "core_accuracy": 0.39473684210526316,
-    "average_log_loss": 1.956382325867712,
-    "average_rps": 0.14293524082304165,
-    "calibration_error": 0.04276315789473684,
+    "exact_accuracy": 0.20253164556962025,
+    "core_hits": 31,
+    "core_accuracy": 0.3924050632911392,
+    "average_log_loss": 1.9476982595283643,
+    "average_rps": 0.14139730438346873,
+    "calibration_error": 0.04414556962025317,
     "predicted_bucket_counts": {
       "0": 0,
       "1": 2,
-      "2": 63,
-      "3": 11,
+      "2": 65,
+      "3": 12,
       "4": 0,
       "5": 0,
       "6": 0,
       "7+": 0
     },
-    "average_bucketed_expected_total": 2.653527898345483
+    "average_bucketed_expected_total": 2.656032115476566
   },
   "optimized_model_2026": {
-    "matches": 76,
+    "matches": 79,
     "exact_hits": 14,
-    "exact_accuracy": 0.18421052631578946,
-    "core_hits": 32,
-    "core_accuracy": 0.42105263157894735,
-    "average_log_loss": 1.955369968274158,
-    "average_rps": 0.1428845737446883,
-    "calibration_error": 0.04539473684210526,
+    "exact_accuracy": 0.17721518987341772,
+    "core_hits": 33,
+    "core_accuracy": 0.4177215189873418,
+    "average_log_loss": 1.9480052486653878,
+    "average_rps": 0.1415763974561687,
+    "calibration_error": 0.047310126582278476,
     "predicted_bucket_counts": {
       "0": 0,
       "1": 4,
-      "2": 58,
-      "3": 14,
+      "2": 60,
+      "3": 15,
       "4": 0,
       "5": 0,
       "6": 0,
       "7+": 0
     },
-    "average_bucketed_expected_total": 2.630513921914106
+    "average_bucketed_expected_total": 2.633332782173802
   },
   "tail_shadow_model_2026": {
-    "matches": 76,
+    "matches": 79,
     "exact_hits": 14,
-    "exact_accuracy": 0.18421052631578946,
-    "core_hits": 30,
-    "core_accuracy": 0.39473684210526316,
-    "average_log_loss": 1.9569892140999485,
-    "average_rps": 0.14329112454587847,
-    "calibration_error": 0.045723684210526305,
+    "exact_accuracy": 0.17721518987341772,
+    "core_hits": 31,
+    "core_accuracy": 0.3924050632911392,
+    "average_log_loss": 1.9524653460631074,
+    "average_rps": 0.14231617351074263,
+    "calibration_error": 0.05015822784810126,
     "predicted_bucket_counts": {
       "0": 0,
-      "1": 8,
-      "2": 61,
-      "3": 7,
+      "1": 9,
+      "2": 62,
+      "3": 8,
       "4": 0,
       "5": 0,
       "6": 0,
       "7+": 0
     },
-    "average_bucketed_expected_total": 2.5809851342519754
+    "average_bucketed_expected_total": 2.584034475230769
   },
   "validation_2018_2022": {
     "current": {
@@ -206,16 +206,16 @@
     "recommendation_zh": "新模型优势不显著，继续使用旧模型。",
     "gates": {
       "sample_size": true,
-      "log_loss_improvement": true,
-      "rps_improvement": true,
+      "log_loss_improvement": false,
+      "rps_improvement": false,
       "calibration_not_materially_worse": true,
       "stable_windows": false,
       "second_round_forward_sample": true
     },
     "deltas": {
-      "log_loss_improvement": 0.001012357593553892,
-      "rps_improvement": 5.066707835335582e-05,
-      "calibration_delta": 0.0026315789473684154
+      "log_loss_improvement": -0.0003069891370235389,
+      "rps_improvement": -0.0001790930726999762,
+      "calibration_delta": 0.0031645569620253056
     },
     "thresholds": {
       "min_matches": 24,
@@ -1364,6 +1364,51 @@
       "core_hit": true,
       "bucketed_expected_total": 1.8856820731054875,
       "probabilities": "{\"0\": 0.151582, \"1\": 0.285979, \"2\": 0.269768, \"3\": 0.169651, \"4\": 0.080017, \"5\": 0.030193, \"6\": 0.009494, \"7+\": 0.003317}"
+    },
+    {
+      "date": "2026-07-01",
+      "match": "England vs DR Congo",
+      "score": "2-1",
+      "actual_total_goals": 3,
+      "actual_bucket": "3",
+      "predicted_bucket": "2",
+      "predicted_probability": 0.2693607111606655,
+      "exact_hit": false,
+      "core_interval": "1-2",
+      "core_probability": 0.5207996435747597,
+      "core_hit": false,
+      "bucketed_expected_total": 2.1403817529695233,
+      "probabilities": "{\"0\": 0.117355, \"1\": 0.251439, \"2\": 0.269361, \"3\": 0.192373, \"4\": 0.103043, \"5\": 0.044155, \"6\": 0.015767, \"7+\": 0.006508}"
+    },
+    {
+      "date": "2026-07-01",
+      "match": "Belgium vs Senegal",
+      "score": "2-2",
+      "actual_total_goals": 4,
+      "actual_bucket": "4",
+      "predicted_bucket": "2",
+      "predicted_probability": 0.24499140131249975,
+      "exact_hit": false,
+      "core_interval": "2-3",
+      "core_probability": 0.46544867217424946,
+      "core_hit": false,
+      "bucketed_expected_total": 2.690389257809384,
+      "probabilities": "{\"0\": 0.067234, \"1\": 0.181504, \"2\": 0.244991, \"3\": 0.220457, \"4\": 0.148785, \"5\": 0.080331, \"6\": 0.036143, \"7+\": 0.020554}"
+    },
+    {
+      "date": "2026-07-01",
+      "match": "United States vs Bosnia and Herzegovina",
+      "score": "2-0",
+      "actual_total_goals": 2,
+      "actual_bucket": "2",
+      "predicted_bucket": "3",
+      "predicted_probability": 0.21959378769432908,
+      "exact_hit": false,
+      "core_interval": "2-3",
+      "core_probability": 0.4156144207026595,
+      "core_hit": true,
+      "bucketed_expected_total": 3.327645837613094,
+      "probabilities": "{\"0\": 0.03471, \"1\": 0.116652, \"2\": 0.196021, \"3\": 0.219594, \"4\": 0.184501, \"5\": 0.124014, \"6\": 0.069464, \"7+\": 0.055045}"
     }
   ],
   "optimized_predictions_2026": [
@@ -2506,6 +2551,51 @@
       "core_hit": true,
       "bucketed_expected_total": 1.7660772925808297,
       "probabilities": "{\"0\": 0.170898, \"1\": 0.301923, \"2\": 0.266702, \"3\": 0.15706, \"4\": 0.069369, \"5\": 0.024511, \"6\": 0.007217, \"7+\": 0.002319}"
+    },
+    {
+      "date": "2026-07-01",
+      "match": "England vs DR Congo",
+      "score": "2-1",
+      "actual_total_goals": 3,
+      "actual_bucket": "3",
+      "predicted_bucket": "2",
+      "predicted_probability": 0.2705496631417163,
+      "exact_hit": false,
+      "core_interval": "1-2",
+      "core_probability": 0.5354596275346315,
+      "core_hit": false,
+      "bucketed_expected_total": 2.0409828255505476,
+      "probabilities": "{\"0\": 0.129694, \"1\": 0.26491, \"2\": 0.27055, \"3\": 0.184206, \"4\": 0.094064, \"5\": 0.038427, \"6\": 0.013082, \"7+\": 0.005068}"
+    },
+    {
+      "date": "2026-07-01",
+      "match": "Belgium vs Senegal",
+      "score": "2-2",
+      "actual_total_goals": 4,
+      "actual_bucket": "4",
+      "predicted_bucket": "2",
+      "predicted_probability": 0.24726776484627566,
+      "exact_hit": false,
+      "core_interval": "2-3",
+      "core_probability": 0.46677343854421827,
+      "core_hit": false,
+      "bucketed_expected_total": 2.6547161733471327,
+      "probabilities": "{\"0\": 0.069727, \"1\": 0.185694, \"2\": 0.247268, \"3\": 0.219506, \"4\": 0.146145, \"5\": 0.077842, \"6\": 0.034551, \"7+\": 0.019267}"
+    },
+    {
+      "date": "2026-07-01",
+      "match": "United States vs Bosnia and Herzegovina",
+      "score": "2-0",
+      "actual_total_goals": 2,
+      "actual_bucket": "2",
+      "predicted_bucket": "3",
+      "predicted_probability": 0.21706871629875485,
+      "exact_hit": false,
+      "core_interval": "2-3",
+      "core_probability": 0.40542028669448105,
+      "core_hit": true,
+      "bucketed_expected_total": 3.418532727360591,
+      "probabilities": "{\"0\": 0.031514, \"1\": 0.108956, \"2\": 0.188352, \"3\": 0.217069, \"4\": 0.187623, \"5\": 0.129738, \"6\": 0.074759, \"7+\": 0.06199}"
     }
   ],
   "comparison_2026": [
@@ -3800,6 +3890,57 @@
       "candidate_core_interval": "1-2",
       "candidate_core_hit": true,
       "candidate_log_loss": 1.3216215154384308
+    },
+    {
+      "date": "2026-07-01",
+      "match": "England vs DR Congo",
+      "score": "2-1",
+      "actual_total_goals": 3,
+      "actual_bucket": "3",
+      "current_predicted_bucket": "2",
+      "current_exact_hit": false,
+      "current_core_interval": "1-2",
+      "current_core_hit": false,
+      "current_log_loss": 1.648317703611398,
+      "candidate_predicted_bucket": "2",
+      "candidate_exact_hit": false,
+      "candidate_core_interval": "1-2",
+      "candidate_core_hit": false,
+      "candidate_log_loss": 1.691699040336199
+    },
+    {
+      "date": "2026-07-01",
+      "match": "Belgium vs Senegal",
+      "score": "2-2",
+      "actual_total_goals": 4,
+      "actual_bucket": "4",
+      "current_predicted_bucket": "2",
+      "current_exact_hit": false,
+      "current_core_interval": "2-3",
+      "current_core_hit": false,
+      "current_log_loss": 1.9052526783417671,
+      "candidate_predicted_bucket": "2",
+      "candidate_exact_hit": false,
+      "candidate_core_interval": "2-3",
+      "candidate_core_hit": false,
+      "candidate_log_loss": 1.9231530081611001
+    },
+    {
+      "date": "2026-07-01",
+      "match": "United States vs Bosnia and Herzegovina",
+      "score": "2-0",
+      "actual_total_goals": 2,
+      "actual_bucket": "2",
+      "current_predicted_bucket": "3",
+      "current_exact_hit": false,
+      "current_core_interval": "2-3",
+      "current_core_hit": true,
+      "current_log_loss": 1.6295353548414993,
+      "candidate_predicted_bucket": "3",
+      "candidate_exact_hit": false,
+      "candidate_core_interval": "2-3",
+      "candidate_core_hit": true,
+      "candidate_log_loss": 1.669445007232303
     }
   ]
 }

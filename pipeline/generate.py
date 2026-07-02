@@ -35,7 +35,7 @@ from .football_data import (
 )
 from .factor_gate import apply_factor_admissions, load_factor_admissions
 from .group_stage_form import apply_group_stage_form, load_group_stage_profiles
-from .half_full_specialist import build_half_full_signal
+from .half_full_specialist import apply_half_full_market_calibration, build_half_full_signal
 from .knockout_context import apply_knockout_context
 from .model import (
     adjust_xg,
@@ -671,7 +671,9 @@ def build_match(
         },
     )
     outcomes = draw_risk_result.probabilities
-    half_full_model = simulated["halfFull"] if simulated else half_full_probabilities(home_xg, away_xg)
+    raw_half_full_model = simulated["halfFull"] if simulated else half_full_probabilities(home_xg, away_xg)
+    half_full_calibration = apply_half_full_market_calibration(raw_half_full_model, seed)
+    half_full_model = half_full_calibration.probabilities
     half_full_signal = build_half_full_signal(
         half_full_model,
         outcomes,
@@ -843,6 +845,7 @@ def build_match(
         "knockoutContext": seed.get("knockout_context"),
         "scoreCalibration": score_calibration.metadata,
         "drawRisk": draw_risk_result.metadata,
+        "halfFullCalibration": half_full_calibration.metadata,
         "halfFullSignal": {
             **half_full_signal.metadata,
             "topHalfFullProbability": round(float(half_full_signal.metadata["topHalfFullProbability"]), 5),
@@ -905,9 +908,6 @@ def _sporttery_fixture_seeds(
     seeds = []
     for m in all_markets:
         if m.match_date != target_date:
-            continue
-        # Only World Cup matches — sporttery also lists domestic leagues
-        if m.league_name and m.league_name != "世界杯":
             continue
         if not m.home_team or not m.away_team:
             continue

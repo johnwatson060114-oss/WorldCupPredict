@@ -3,6 +3,7 @@ from __future__ import annotations
 import math
 
 from pipeline.half_full_specialist import (
+    apply_half_full_market_calibration,
     build_half_full_signal,
     half_full_to_outcomes,
     normalize_distribution,
@@ -38,3 +39,29 @@ def test_half_full_signal_blends_conservatively_into_outcomes():
     assert signal.assisted_outcomes["home"] > 0.4
     assert signal.assisted_outcomes["away"] < 0.25
     assert signal.metadata["policy"] == "half_full_specialist_v1"
+
+
+def test_half_full_market_calibration_only_applies_to_knockout():
+    half_full = {
+        "\u80dc\u80dc": 0.5,
+        "\u80dc\u5e73": 0.1,
+        "\u80dc\u8d1f": 0.05,
+        "\u5e73\u80dc": 0.1,
+        "\u5e73\u5e73": 0.1,
+        "\u5e73\u8d1f": 0.05,
+        "\u8d1f\u80dc": 0.02,
+        "\u8d1f\u5e73": 0.03,
+        "\u8d1f\u8d1f": 0.05,
+    }
+
+    group = apply_half_full_market_calibration(half_full, {})
+    knockout = apply_half_full_market_calibration(
+        half_full,
+        {"knockout_context": {"policy": "knockout_underdog_chase_favorite_tempo_v1"}},
+    )
+
+    assert group.metadata == {"applied": False, "reason": "not_knockout"}
+    assert knockout.metadata["policy"] == "knockout_half_full_late_swing_v1"
+    assert knockout.probabilities["\u80dc\u80dc"] < group.probabilities["\u80dc\u80dc"]
+    assert knockout.probabilities["\u8d1f\u80dc"] > group.probabilities["\u8d1f\u80dc"]
+    assert math.isclose(sum(knockout.probabilities.values()), 1.0)

@@ -18,6 +18,7 @@ from pipeline.score_calibration import apply_score_matrix_calibration
 
 BEIJING = ZoneInfo("Asia/Shanghai")
 GOAL_BUCKETS = ["0", "1", "2", "3", "4", "5", "6", "7+"]
+FORECAST_SECTIONS = ("matches", "parlayMatches", "parlayCandidateMatches")
 DEFAULT_HISTORY_DIR = ROOT / "public" / "data" / "history"
 DEFAULT_SETTLEMENTS_PATH = ROOT / "public" / "data" / "settlements.json"
 DEFAULT_OUTPUT_PATH = ROOT / "artifacts" / "score-matrix-backtest-2026.json"
@@ -46,6 +47,13 @@ def parse_datetime(value: str | None) -> datetime | None:
     if not value:
         return None
     return datetime.fromisoformat(value.replace("Z", "+00:00"))
+
+
+def display_path(path: Path) -> str:
+    try:
+        return str(path.resolve().relative_to(ROOT)).replace("\\", "/")
+    except ValueError:
+        return str(path)
 
 
 def actual_bucket(total_goals: int) -> str:
@@ -177,8 +185,25 @@ def latest_history_match_ids(history_dir: Path, settlements: dict[str, dict[str,
     payload = json.loads(latest_path.read_text(encoding="utf-8"))
     return {
         str(match.get("id"))
-        for match in payload.get("matches", [])
+        for section in FORECAST_SECTIONS
+        for match in payload.get(section, [])
         if str(match.get("id")) in settlements
+    }
+
+
+def latest_matched_kickoff_date_match_ids(rows: list[dict[str, Any]]) -> set[str]:
+    dated_rows = [
+        (parse_datetime(row.get("kickoff")), str(row["matchId"]))
+        for row in rows
+        if row.get("kickoff")
+    ]
+    if not dated_rows:
+        return set()
+    latest_date = max(kickoff.astimezone(BEIJING).date() for kickoff, _match_id in dated_rows if kickoff)
+    return {
+        match_id
+        for kickoff, match_id in dated_rows
+        if kickoff and kickoff.astimezone(BEIJING).date() == latest_date
     }
 
 
@@ -191,26 +216,27 @@ def archived_forecasts(
     for path in sorted(history_dir.glob("*.json")):
         payload = json.loads(path.read_text(encoding="utf-8"))
         generated_at = parse_datetime(payload.get("generatedAt"))
-        for match in payload.get("matches", []):
-            match_id = str(match.get("id") or "")
-            if match_id not in settlements:
-                continue
+        for section in FORECAST_SECTIONS:
+            for match in payload.get(section, []):
+                match_id = str(match.get("id") or "")
+                if match_id not in settlements:
+                    continue
 
-            kickoff = parse_datetime(match.get("kickoff"))
-            if generated_at and kickoff and generated_at > kickoff:
-                continue
+                kickoff = parse_datetime(match.get("kickoff"))
+                if generated_at and kickoff and generated_at > kickoff:
+                    continue
 
-            previous = forecasts.get(match_id)
-            previous_generated = parse_datetime(previous["historyGeneratedAt"]) if previous else None
-            if previous is None or (
-                generated_at and previous_generated and generated_at > previous_generated
-            ):
-                forecasts[match_id] = {
-                    "historyPath": str(path.relative_to(ROOT)).replace("\\", "/"),
-                    "historyGeneratedAt": payload.get("generatedAt"),
-                    "match": match,
-                }
-
+                previous = forecasts.get(match_id)
+                previous_generated = parse_datetime(previous["historyGeneratedAt"]) if previous else None
+                if previous is None or (
+                    generated_at and previous_generated and generated_at > previous_generated
+                ):
+                    forecasts[match_id] = {
+                        "historyPath": display_path(path),
+                        "historySection": section,
+                        "historyGeneratedAt": payload.get("generatedAt"),
+                        "match": match,
+                    }
     return forecasts
 
 
@@ -249,6 +275,7 @@ def build_rows(
                 "kickoff": match.get("kickoff"),
                 "stage": "knockout" if match.get("knockoutContext") else "group",
                 "historyPath": forecast["historyPath"],
+                "historySection": forecast.get("historySection"),
                 "historyGeneratedAt": forecast["historyGeneratedAt"],
                 "settlementScoreBasis": settlement.get("settlementScoreBasis", "fulltime"),
                 "actualScore": f"{home_score}:{away_score}",
@@ -262,20 +289,20 @@ def build_rows(
     return rows
 
 
-def main() -> None:
-    args = parse_args()
-    settlements = load_settlements(args.settlements)
-    forecasts = archived_forecasts(args.history_dir, settlements)
+def build_report(
+    history_dir: Path = DEFAULT_HISTORY_DIR,
+    settlements_path: Path = DEFAULT_SETTLEMENTS_PATH,
+    latest_match_ids: set[str] | None = None,
+) -> dict[str, Any]:
+    settlements = load_settlements(settlements_path)
+    forecasts = archived_forecasts(history_dir, settlements)
     rows = build_rows(forecasts, settlements)
 
-    latest_match_ids = set(args.latest_match_id or []) or latest_history_match_ids(
-        args.history_dir,
-        settlements,
-    )
-    latest_rows = [row for row in rows if row["matchId"] in latest_match_ids]
+    latest_scope_ids = latest_match_ids or latest_matched_kickoff_date_match_ids(rows)
+    latest_rows = [row for row in rows if row["matchId"] in latest_scope_ids]
     knockout_rows = [row for row in rows if row["stage"] == "knockout"]
 
-    report = {
+    return {
         "schemaVersion": 1,
         "generatedAt": datetime.now(BEIJING).isoformat(timespec="seconds"),
         "scope": {
@@ -312,23 +339,33 @@ def main() -> None:
         "modelDecision": {
             "primaryAdjustmentTarget": "total_goals_and_exact_score_matrix",
             "wdlRole": "auxiliary outcome sanity check only",
+            "scoreCalibrationPolicy": "knockout_score_total_matrix_calibration_v2",
+            "scoreCalibrationIntensity": 0.25,
             "currentDecision": (
                 "keep current production total-goals model; keep optimized total-goals model "
-                "as shadow; keep knockout score calibration enabled but do not widen it from "
-                "this small knockout sample"
+                "as shadow; use shrinked knockout score calibration rather than the full "
+                "tail shift from the previous small-sample live replay"
             ),
             "reason": (
-                "latest completed matches slightly help calibrated total-goals log loss/RPS, "
-                "but the settled knockout sample still favors the base matrix on exact-score "
-                "top1 and log loss; optimized total-goals shadow has not cleared stable-window "
-                "adoption gates"
+                "A 25% calibration blend keeps the base matrix's knockout exact-score top1 "
+                "hit count while preserving the calibrated matrix's top3 gain; optimized "
+                "total-goals shadow has not cleared stable-window adoption gates"
             ),
         },
-        "latestCompletedMatchIds": sorted(latest_match_ids),
+        "latestCompletedMatchIds": sorted(latest_scope_ids),
+        "matches": rows,
         "latestMatches": latest_rows,
         "knockoutMatches": knockout_rows,
     }
 
+
+def main() -> None:
+    args = parse_args()
+    report = build_report(
+        args.history_dir,
+        args.settlements,
+        latest_match_ids=set(args.latest_match_id or []) or None,
+    )
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report["metrics"], ensure_ascii=False, indent=2))

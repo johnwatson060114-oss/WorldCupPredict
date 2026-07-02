@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-01T16:54:08+08:00",
+  "generatedAt": "2026-07-02T14:30:16+08:00",
   "status": "selected_on_chronological_validation",
   "validationSet": "FIFA World Cup 2018 and 2022",
   "eloAllocationWeight": 1.0,
@@ -38,7 +38,7 @@
     "1.0": {
       "log_loss": 0.9956599332430888,
       "rps": 0.206183751889683,
-      "brier": 0.5844177652726106,
+      "brier": 0.5844177652726107,
       "calibration_error": 0.06848958333333335
     }
   },

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from tools.backtest_half_full import (
     actual_half_full,
+    archived_forecasts,
     evaluate_row,
     half_full_probabilities,
     supplemental_score_matrix_forecasts,
@@ -130,3 +131,32 @@ def test_supplemental_score_matrix_forecasts_reconstruct_half_full_when_archived
     assert match["halfFullSource"] == "reconstructed_from_archived_xg"
     assert len([quote for quote in match["quotes"] if quote["market"] == "\u534a\u5168\u573a"]) == 9
     assert abs(sum(match["outcomeProbabilities"].values()) - 1) < 1e-9
+
+
+def test_archived_forecasts_include_cross_day_parlay_matches(tmp_path):
+    history_dir = tmp_path / "history"
+    history_dir.mkdir()
+    (history_dir / "2026-07-01.json").write_text(
+        """{
+  "generatedAt": "2026-06-30T18:00:00+08:00",
+  "parlayMatches": [
+    {
+      "id": "m1",
+      "homeTeam": "Home",
+      "awayTeam": "Away",
+      "kickoff": "2026-07-01T01:00:00+08:00",
+      "quotes": [
+        {"market": "\u534a\u5168\u573a", "selection": "\u80dc\u80dc", "modelProbability": 0.5},
+        {"market": "\u534a\u5168\u573a", "selection": "\u5e73\u80dc", "modelProbability": 0.5}
+      ]
+    }
+  ]
+}""",
+        encoding="utf-8",
+    )
+    settlements = {"m1": {"matchId": "m1", "homeScore": 1, "awayScore": 0, "halfTimeHomeScore": 0, "halfTimeAwayScore": 0}}
+
+    forecasts = archived_forecasts(history_dir, settlements)
+
+    assert set(forecasts) == {"m1"}
+    assert forecasts["m1"]["historySection"] == "parlayMatches"
