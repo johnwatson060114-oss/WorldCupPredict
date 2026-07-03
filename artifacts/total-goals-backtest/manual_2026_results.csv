@@ -17,3 +17,6 @@ date,home_team,away_team,home_score,away_score,source,neutral
 2026-07-01,England,DR Congo,2,1,guardian-90min-confirmed,TRUE
 2026-07-01,Belgium,Senegal,2,2,guardian-90min-normalized-from-aet,TRUE
 2026-07-01,United States,Bosnia and Herzegovina,2,0,guardian-90min-confirmed,FALSE
+2026-07-02,Spain,Austria,3,0,guardian-90min-confirmed,TRUE
+2026-07-02,Portugal,Croatia,2,1,guardian-90min-confirmed,TRUE
+2026-07-03,Switzerland,Algeria,2,0,guardian-90min-confirmed,TRUE

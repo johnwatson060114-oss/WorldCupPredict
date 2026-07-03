@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-02T14:30:16+08:00",
+  "generatedAt": "2026-07-03T13:28:40+08:00",
   "timezone": "Asia/Shanghai",
   "data_refresh": {
     "status": "skipped",
@@ -62,67 +62,67 @@
     }
   },
   "current_model_2026": {
-    "matches": 79,
-    "exact_hits": 16,
-    "exact_accuracy": 0.20253164556962025,
-    "core_hits": 31,
-    "core_accuracy": 0.3924050632911392,
-    "average_log_loss": 1.9476982595283643,
-    "average_rps": 0.14139730438346873,
-    "calibration_error": 0.04414556962025317,
+    "matches": 82,
+    "exact_hits": 18,
+    "exact_accuracy": 0.21951219512195122,
+    "core_hits": 34,
+    "core_accuracy": 0.4146341463414634,
+    "average_log_loss": 1.9310640332809081,
+    "average_rps": 0.13850218660116112,
+    "calibration_error": 0.0399390243902439,
     "predicted_bucket_counts": {
       "0": 0,
       "1": 2,
-      "2": 65,
-      "3": 12,
+      "2": 67,
+      "3": 13,
       "4": 0,
       "5": 0,
       "6": 0,
       "7+": 0
     },
-    "average_bucketed_expected_total": 2.656032115476566
+    "average_bucketed_expected_total": 2.6666249382023604
   },
   "optimized_model_2026": {
-    "matches": 79,
-    "exact_hits": 14,
-    "exact_accuracy": 0.17721518987341772,
-    "core_hits": 33,
-    "core_accuracy": 0.4177215189873418,
-    "average_log_loss": 1.9480052486653878,
-    "average_rps": 0.1415763974561687,
-    "calibration_error": 0.047310126582278476,
+    "matches": 82,
+    "exact_hits": 16,
+    "exact_accuracy": 0.1951219512195122,
+    "core_hits": 36,
+    "core_accuracy": 0.43902439024390244,
+    "average_log_loss": 1.931420691400169,
+    "average_rps": 0.13868564459084123,
+    "calibration_error": 0.04314024390243903,
     "predicted_bucket_counts": {
       "0": 0,
       "1": 4,
-      "2": 60,
-      "3": 15,
+      "2": 62,
+      "3": 16,
       "4": 0,
       "5": 0,
       "6": 0,
       "7+": 0
     },
-    "average_bucketed_expected_total": 2.633332782173802
+    "average_bucketed_expected_total": 2.645135905035957
   },
   "tail_shadow_model_2026": {
-    "matches": 79,
-    "exact_hits": 14,
-    "exact_accuracy": 0.17721518987341772,
-    "core_hits": 31,
-    "core_accuracy": 0.3924050632911392,
-    "average_log_loss": 1.9524653460631074,
-    "average_rps": 0.14231617351074263,
-    "calibration_error": 0.05015822784810126,
+    "matches": 82,
+    "exact_hits": 15,
+    "exact_accuracy": 0.18292682926829268,
+    "core_hits": 34,
+    "core_accuracy": 0.4146341463414634,
+    "average_log_loss": 1.9371958357828645,
+    "average_rps": 0.1394891114866762,
+    "calibration_error": 0.045579268292682926,
     "predicted_bucket_counts": {
       "0": 0,
       "1": 9,
-      "2": 62,
+      "2": 65,
       "3": 8,
       "4": 0,
       "5": 0,
       "6": 0,
       "7+": 0
     },
-    "average_bucketed_expected_total": 2.584034475230769
+    "average_bucketed_expected_total": 2.5972066606204915
   },
   "validation_2018_2022": {
     "current": {
@@ -213,9 +213,9 @@
       "second_round_forward_sample": true
     },
     "deltas": {
-      "log_loss_improvement": -0.0003069891370235389,
-      "rps_improvement": -0.0001790930726999762,
-      "calibration_delta": 0.0031645569620253056
+      "log_loss_improvement": -0.00035665811926088864,
+      "rps_improvement": -0.00018345798968011362,
+      "calibration_delta": 0.003201219512195125
     },
     "thresholds": {
       "min_matches": 24,
@@ -1409,6 +1409,51 @@
       "core_hit": true,
       "bucketed_expected_total": 3.327645837613094,
       "probabilities": "{\"0\": 0.03471, \"1\": 0.116652, \"2\": 0.196021, \"3\": 0.219594, \"4\": 0.184501, \"5\": 0.124014, \"6\": 0.069464, \"7+\": 0.055045}"
+    },
+    {
+      "date": "2026-07-02",
+      "match": "Spain vs Austria",
+      "score": "3-0",
+      "actual_total_goals": 3,
+      "actual_bucket": "3",
+      "predicted_bucket": "3",
+      "predicted_probability": 0.2240390531596997,
+      "exact_hit": true,
+      "core_interval": "2-3",
+      "core_probability": 0.447328345582925,
+      "core_hit": true,
+      "bucketed_expected_total": 2.9925208558159704,
+      "probabilities": "{\"0\": 0.049288, \"1\": 0.148361, \"2\": 0.223289, \"3\": 0.224039, \"4\": 0.168593, \"5\": 0.101496, \"6\": 0.050918, \"7+\": 0.034014}"
+    },
+    {
+      "date": "2026-07-02",
+      "match": "Portugal vs Croatia",
+      "score": "2-1",
+      "actual_total_goals": 3,
+      "actual_bucket": "3",
+      "predicted_bucket": "2",
+      "predicted_probability": 0.23097268065059,
+      "exact_hit": false,
+      "core_interval": "2-3",
+      "core_probability": 0.45467518521428024,
+      "core_hit": true,
+      "bucketed_expected_total": 2.891313182502311,
+      "probabilities": "{\"0\": 0.054718, \"1\": 0.158986, \"2\": 0.230973, \"3\": 0.223703, \"4\": 0.162496, \"5\": 0.094429, \"6\": 0.045728, \"7+\": 0.028968}"
+    },
+    {
+      "date": "2026-07-03",
+      "match": "Switzerland vs Algeria",
+      "score": "2-0",
+      "actual_total_goals": 2,
+      "actual_bucket": "2",
+      "predicted_bucket": "2",
+      "predicted_probability": 0.2263404235905208,
+      "exact_hit": true,
+      "core_interval": "2-3",
+      "core_probability": 0.4503465086730023,
+      "core_hit": true,
+      "bucketed_expected_total": 2.9528737716265856,
+      "probabilities": "{\"0\": 0.051352, \"1\": 0.152466, \"2\": 0.22634, \"3\": 0.224006, \"4\": 0.166272, \"5\": 0.098734, \"6\": 0.048858, \"7+\": 0.031972}"
     }
   ],
   "optimized_predictions_2026": [
@@ -2596,6 +2641,51 @@
       "core_hit": true,
       "bucketed_expected_total": 3.418532727360591,
       "probabilities": "{\"0\": 0.031514, \"1\": 0.108956, \"2\": 0.188352, \"3\": 0.217069, \"4\": 0.187623, \"5\": 0.129738, \"6\": 0.074759, \"7+\": 0.06199}"
+    },
+    {
+      "date": "2026-07-02",
+      "match": "Spain vs Austria",
+      "score": "3-0",
+      "actual_total_goals": 3,
+      "actual_bucket": "3",
+      "predicted_bucket": "3",
+      "predicted_probability": 0.2240221296233892,
+      "exact_hit": true,
+      "core_interval": "2-3",
+      "core_probability": 0.44628123495873,
+      "core_hit": true,
+      "bucketed_expected_total": 3.0057668493866014,
+      "probabilities": "{\"0\": 0.048617, \"1\": 0.147007, \"2\": 0.222259, \"3\": 0.224022, \"4\": 0.169349, \"5\": 0.102416, \"6\": 0.051614, \"7+\": 0.034717}"
+    },
+    {
+      "date": "2026-07-02",
+      "match": "Portugal vs Croatia",
+      "score": "2-1",
+      "actual_total_goals": 3,
+      "actual_bucket": "3",
+      "predicted_bucket": "2",
+      "predicted_probability": 0.23074308222410594,
+      "exact_hit": false,
+      "core_interval": "2-3",
+      "core_probability": 0.4544685037822997,
+      "core_hit": true,
+      "bucketed_expected_total": 2.894407212469594,
+      "probabilities": "{\"0\": 0.054543, \"1\": 0.158654, \"2\": 0.230743, \"3\": 0.223725, \"4\": 0.162691, \"5\": 0.094646, \"6\": 0.045884, \"7+\": 0.029114}"
+    },
+    {
+      "date": "2026-07-03",
+      "match": "Switzerland vs Algeria",
+      "score": "2-0",
+      "actual_total_goals": 2,
+      "actual_bucket": "2",
+      "predicted_bucket": "2",
+      "predicted_probability": 0.22520687932530198,
+      "exact_hit": true,
+      "core_interval": "2-3",
+      "core_probability": 0.4492398140280045,
+      "core_hit": true,
+      "bucketed_expected_total": 2.9676803593619416,
+      "probabilities": "{\"0\": 0.050572, \"1\": 0.150925, \"2\": 0.225207, \"3\": 0.224033, \"4\": 0.167149, \"5\": 0.099767, \"6\": 0.049623, \"7+\": 0.032725}"
     }
   ],
   "comparison_2026": [
@@ -3941,6 +4031,57 @@
       "candidate_core_interval": "2-3",
       "candidate_core_hit": true,
       "candidate_log_loss": 1.669445007232303
+    },
+    {
+      "date": "2026-07-02",
+      "match": "Spain vs Austria",
+      "score": "3-0",
+      "actual_total_goals": 3,
+      "actual_bucket": "3",
+      "current_predicted_bucket": "3",
+      "current_exact_hit": true,
+      "current_core_interval": "2-3",
+      "current_core_hit": true,
+      "current_log_loss": 1.4959348978603817,
+      "candidate_predicted_bucket": "3",
+      "candidate_exact_hit": true,
+      "candidate_core_interval": "2-3",
+      "candidate_core_hit": true,
+      "candidate_log_loss": 1.4960104390452416
+    },
+    {
+      "date": "2026-07-02",
+      "match": "Portugal vs Croatia",
+      "score": "2-1",
+      "actual_total_goals": 3,
+      "actual_bucket": "3",
+      "current_predicted_bucket": "2",
+      "current_exact_hit": false,
+      "current_core_interval": "2-3",
+      "current_core_hit": true,
+      "current_log_loss": 1.4974382144660725,
+      "candidate_predicted_bucket": "2",
+      "candidate_exact_hit": false,
+      "candidate_core_interval": "2-3",
+      "candidate_core_hit": true,
+      "candidate_log_loss": 1.497335775645491
+    },
+    {
+      "date": "2026-07-03",
+      "match": "Switzerland vs Algeria",
+      "score": "2-0",
+      "actual_total_goals": 2,
+      "actual_bucket": "2",
+      "current_predicted_bucket": "2",
+      "current_exact_hit": true,
+      "current_core_interval": "2-3",
+      "current_core_hit": true,
+      "current_log_loss": 1.485715113967252,
+      "candidate_predicted_bucket": "2",
+      "candidate_exact_hit": true,
+      "candidate_core_interval": "2-3",
+      "candidate_core_hit": true,
+      "candidate_log_loss": 1.490735835557496
     }
   ]
 }

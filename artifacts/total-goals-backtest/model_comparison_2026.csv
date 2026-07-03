@@ -78,3 +78,6 @@ date,match,score,actual_total_goals,actual_bucket,current_predicted_bucket,curre
 2026-07-01,England vs DR Congo,2-1,3,3,2,False,1-2,False,1.648317703611398,2,False,1-2,False,1.691699040336199
 2026-07-01,Belgium vs Senegal,2-2,4,4,2,False,2-3,False,1.9052526783417671,2,False,2-3,False,1.9231530081611001
 2026-07-01,United States vs Bosnia and Herzegovina,2-0,2,2,3,False,2-3,True,1.6295353548414993,3,False,2-3,True,1.669445007232303
+2026-07-02,Spain vs Austria,3-0,3,3,3,True,2-3,True,1.4959348978603817,3,True,2-3,True,1.4960104390452416
+2026-07-02,Portugal vs Croatia,2-1,3,3,2,False,2-3,True,1.4974382144660725,2,False,2-3,True,1.497335775645491
+2026-07-03,Switzerland vs Algeria,2-0,2,2,2,True,2-3,True,1.485715113967252,2,True,2-3,True,1.490735835557496
