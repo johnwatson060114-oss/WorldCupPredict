@@ -93,6 +93,10 @@ def preserve_parlay_matches(
             cached_matches = cached_payload.get("matches", [])
         except (OSError, json.JSONDecodeError, AttributeError):
             cached_matches = []
+    latest_fresh_kickoff = max(
+        (str(match.get("kickoffBeijing", "")) for match in fresh_matches if match.get("kickoffBeijing")),
+        default="",
+    )
 
     def remains_selectable(match: dict[str, Any]) -> bool:
         kickoff_date = str(match.get("kickoffBeijing", ""))[:10]
@@ -106,7 +110,12 @@ def preserve_parlay_matches(
     merged = {
         match["id"]: match
         for match in cached_matches
-        if isinstance(match, dict) and match.get("id") and remains_selectable(match)
+        if (
+            isinstance(match, dict)
+            and match.get("id")
+            and remains_selectable(match)
+            and (not latest_fresh_kickoff or str(match.get("kickoffBeijing", "")) > latest_fresh_kickoff)
+        )
     }
     cached_ids = set(merged)
     fresh_ids = {match.get("id") for match in fresh_matches}
@@ -908,6 +917,10 @@ def _sporttery_fixture_seeds(
     seeds = []
     for m in all_markets:
         if m.match_date != target_date:
+            continue
+        # WorldCupPredict forecasts should stay scoped to World Cup matches.
+        # Sporttery can also list domestic leagues in the same calculator pool.
+        if m.league_name and m.league_name != "世界杯":
             continue
         if not m.home_team or not m.away_team:
             continue

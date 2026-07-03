@@ -75,16 +75,17 @@ def save_odds_snapshot(
 ) -> Path:
     timezone = ZoneInfo(SETTINGS.timezone)
     observed = observed_at.astimezone(timezone)
-    captured_matches = [
+    world_cup = [
         compact_match(match, observed, timezone)
         for match in matches
+        if not match.league_name or match.league_name == "世界杯"
     ]
     payload = {
         "schemaVersion": 1,
         "observedAt": observed.isoformat(timespec="seconds"),
         "timezone": SETTINGS.timezone,
-        "matches": captured_matches,
-        "closingWindowMatches": sum(item["snapshotKind"] == "closing_60m" for item in captured_matches),
+        "matches": world_cup,
+        "closingWindowMatches": sum(item["snapshotKind"] == "closing_60m" for item in world_cup),
     }
     day_directory = directory / observed.date().isoformat()
     day_directory.mkdir(parents=True, exist_ok=True)
@@ -104,7 +105,7 @@ def save_odds_snapshot(
     snapshots.append({
         "observedAt": payload["observedAt"],
         "path": relative,
-        "matches": len(captured_matches),
+        "matches": len(world_cup),
         "closingWindowMatches": payload["closingWindowMatches"],
     })
     snapshots.sort(key=lambda item: item["observedAt"])
