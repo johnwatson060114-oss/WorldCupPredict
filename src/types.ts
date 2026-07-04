@@ -194,6 +194,12 @@ export interface MatchForecast {
   likelyScore: string
   scoreStars: 0 | 1 | 2 | 3
   scoreProbabilities: ScoreProbability[]
+  totalGoalsCore?: {
+    policy: string
+    label: string
+    selections: string[]
+    probability: number
+  }
   coverage: number
   weather: string
   altitude: number

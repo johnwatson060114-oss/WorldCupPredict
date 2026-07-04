@@ -43,13 +43,16 @@ export function summarizeTotalGoals(match: MatchForecast): TotalGoalsSummary {
     }
   })
   const peak = points.reduce((best, point) => point.probability > best.probability ? point : best, points[0])
-  const core = points.slice(0, -1).reduce((best, point, index) => {
+  const localCore = points.slice(0, -1).reduce((best, point, index) => {
     const next = points[index + 1]
     const probability = point.probability + next.probability
     return probability > best.probability
       ? { label: `${point.selection}–${next.selection}球`, selections: [point.selection, next.selection], probability }
       : best
   }, { label: '0–1球', selections: ['0', '1'], probability: points[0].probability + points[1].probability })
+  const core = match.totalGoalsCore
+    ? { label: match.totalGoalsCore.label, selections: match.totalGoalsCore.selections, probability: match.totalGoalsCore.probability }
+    : localCore
   const sum = (selections: string[]) => selections.reduce((total, selection) => total + (bySelection.get(selection)?.modelProbability ?? 0), 0)
   const marketAvailable = points.some((point) => point.available && point.odds !== null && point.marketProbability !== null)
   const bestValue = marketAvailable

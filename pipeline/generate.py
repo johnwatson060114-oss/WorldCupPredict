@@ -574,6 +574,25 @@ def score_selection_probability(selection: str, matrix: list[list[float]], offer
     return probability
 
 
+def total_goals_core_interval(probabilities: dict[str, float]) -> dict[str, Any]:
+    ordered = ["0", "1", "2", "3", "4", "5", "6", "7+"]
+    best = {
+        "label": "0-1",
+        "selections": ["0", "1"],
+        "probability": float(probabilities.get("0", 0.0)) + float(probabilities.get("1", 0.0)),
+    }
+    for left, right in zip(ordered, ordered[1:]):
+        probability = float(probabilities.get(left, 0.0)) + float(probabilities.get(right, 0.0))
+        if probability > best["probability"]:
+            best = {"label": f"{left}-{right}", "selections": [left, right], "probability": probability}
+    return {
+        "policy": "strongest_adjacent_two_bucket_v1",
+        "label": best["label"],
+        "selections": best["selections"],
+        "probability": round(float(best["probability"]), 5),
+    }
+
+
 def _sample_odds(probability: float, margin: float = 0.08) -> float | None:
     """Generate a sample decimal odds from a model probability with a margin.
 
@@ -801,6 +820,7 @@ def build_match(
         ))
 
     total_goal_model = total_goals_probabilities(calibrated_score_matrix)
+    total_goal_core = total_goals_core_interval(total_goal_model)
     if market:
         total_goal_odds = market.total_goals
     else:
@@ -884,6 +904,7 @@ def build_match(
         "likelyScoreSource": likely_score_source,
         "scoreStars": stars,
         "scoreProbabilities": scores,
+        "totalGoalsCore": total_goal_core,
         "coverage": coverage,
         "weather": seed.get("weather", "天气待更新"),
         "altitude": venue["altitude"] if venue else 0,

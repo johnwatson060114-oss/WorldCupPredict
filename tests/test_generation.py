@@ -60,6 +60,26 @@ def test_fresh_parlay_match_replaces_cached_version(tmp_path):
     assert fallback_count == 0
 
 
+def test_total_goals_core_interval_uses_two_adjacent_buckets():
+    core = generate.total_goals_core_interval({
+        "0": 0.04,
+        "1": 0.22,
+        "2": 0.28,
+        "3": 0.18,
+        "4": 0.16,
+        "5": 0.08,
+        "6": 0.03,
+        "7+": 0.01,
+    })
+
+    assert core == {
+        "policy": "strongest_adjacent_two_bucket_v1",
+        "label": "1-2",
+        "selections": ["1", "2"],
+        "probability": 0.5,
+    }
+
+
 def test_offline_generation(tmp_path):
     output = tmp_path / "forecast.json"
     subprocess.run([
@@ -76,6 +96,8 @@ def test_offline_generation(tmp_path):
     assert all(match["simulation"]["actualPaths"] == 100000 for match in payload["matches"])
     assert all(match["halfFullSignal"]["policy"] == "half_full_specialist_v1" for match in payload["matches"])
     assert all(abs(sum(match["halfFullSignal"]["outcomeSignal"].values()) - 1) < 0.0001 for match in payload["matches"])
+    assert all(match["totalGoalsCore"]["policy"] == "strongest_adjacent_two_bucket_v1" for match in payload["matches"])
+    assert all(len(match["totalGoalsCore"]["selections"]) == 2 for match in payload["matches"])
     assert len(payload["dataSnapshot"]["id"]) == 64
     assert payload["dataSnapshot"]["files"]
     assert len(payload["matches"]) == 4

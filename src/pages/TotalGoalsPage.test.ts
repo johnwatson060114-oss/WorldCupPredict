@@ -39,6 +39,20 @@ describe('summarizeTotalGoals', () => {
     expect(summary.bestValue).toBeNull()
   })
 
+  it('uses the generated two-bucket core interval when present', () => {
+    const summary = summarizeTotalGoals({
+      ...match(),
+      totalGoalsCore: {
+        policy: 'strongest_adjacent_two_bucket_v1',
+        label: '1-2',
+        selections: ['1', '2'],
+        probability: 0.51,
+      },
+    })
+
+    expect(summary.core).toEqual({ label: '1-2', selections: ['1', '2'], probability: 0.51 })
+  })
+
   it('only enables market evaluation when usable odds and market probability exist', () => {
     const summary = summarizeTotalGoals(match(true))
 
