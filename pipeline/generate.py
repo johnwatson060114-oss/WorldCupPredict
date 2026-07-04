@@ -37,6 +37,7 @@ from .factor_gate import apply_factor_admissions, load_factor_admissions
 from .group_stage_form import apply_group_stage_form, load_group_stage_profiles
 from .half_full_specialist import apply_half_full_market_calibration, build_half_full_signal
 from .knockout_context import apply_knockout_context
+from .knockout_round32_form import apply_knockout_round32_form, load_knockout_round32_profiles
 from .model import (
     adjust_xg,
     estimate_from_recent_results,
@@ -146,6 +147,7 @@ def local_snapshot_paths() -> list[Path]:
         ROOT / "public" / "data" / "two-round-match-timelines.json",
         ROOT / "pipeline" / "data" / "fifa-2026-annex-c.json",
         ROOT / "pipeline" / "data" / "model-policy.json",
+        ROOT / "pipeline" / "data" / "knockout-round32-performance.json",
         FIXTURE_DIR / "sporttery-spf.html",
         FIXTURE_DIR / "sporttery-score.html",
         *sorted(MANUAL_DIR.glob("*.csv")),
@@ -852,6 +854,7 @@ def build_match(
         "groupStageForm": seed.get("group_stage_form"),
         "currentTournament": seed.get("current_tournament"),
         "knockoutContext": seed.get("knockout_context"),
+        "knockoutRound32Form": seed.get("knockout_round32_form"),
         "scoreCalibration": score_calibration.metadata,
         "drawRisk": draw_risk_result.metadata,
         "halfFullCalibration": half_full_calibration.metadata,
@@ -1170,6 +1173,7 @@ def main() -> None:
     factor_admissions = load_factor_admissions()
     group_stage_profiles = load_group_stage_profiles()
     two_round_profiles = load_two_round_profiles()
+    knockout_round32_profiles = load_knockout_round32_profiles()
 
     def prepare_seeds(batch: list[dict], batch_date: str) -> None:
         apply_availability(batch, batch_date, availability_records)
@@ -1182,6 +1186,7 @@ def main() -> None:
             apply_two_round_form(batch, batch_date, two_round_profiles)
         apply_current_tournament_context(batch, all_football_matches)
         apply_knockout_context(batch, batch_date, all_football_matches)
+        apply_knockout_round32_form(batch, batch_date, knockout_round32_profiles)
 
     prepare_seeds(seeds, target_date)
 
@@ -1210,7 +1215,12 @@ def main() -> None:
     def late_multiplier(seed: dict[str, Any], side: str, field: str) -> float:
         current = (seed.get("current_tournament") or {}).get(f"{side}LatePressure", {})
         knockout = (seed.get("knockout_context") or {}).get(f"{side}LatePressure", {})
-        return float(current.get(field, 1.0)) * float(knockout.get(field, 1.0))
+        round32 = (seed.get("knockout_round32_form") or {}).get(f"{side}LatePressure", {})
+        return (
+            float(current.get(field, 1.0))
+            * float(knockout.get(field, 1.0))
+            * float(round32.get(field, 1.0))
+        )
 
     for seed in simulation_seeds:
         market = match_seed_to_market(seed, all_markets)

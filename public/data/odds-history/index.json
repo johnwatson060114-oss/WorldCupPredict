@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-03T19:17:50+08:00",
+  "generatedAt": "2026-07-04T12:30:00+08:00",
   "snapshots": [
     {
       "observedAt": "2026-06-18T13:00:00+08:00",
@@ -180,6 +180,12 @@
       "observedAt": "2026-07-03T19:17:50+08:00",
       "path": "odds-history/2026-07-03/191750.json",
       "matches": 7,
+      "closingWindowMatches": 0
+    },
+    {
+      "observedAt": "2026-07-04T12:30:00+08:00",
+      "path": "odds-history/2026-07-04/123000.json",
+      "matches": 6,
       "closingWindowMatches": 0
     }
   ]

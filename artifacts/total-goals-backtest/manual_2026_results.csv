@@ -20,3 +20,6 @@ date,home_team,away_team,home_score,away_score,source,neutral
 2026-07-02,Spain,Austria,3,0,guardian-90min-confirmed,TRUE
 2026-07-02,Portugal,Croatia,2,1,guardian-90min-confirmed,TRUE
 2026-07-03,Switzerland,Algeria,2,0,guardian-90min-confirmed,TRUE
+2026-07-04,Australia,Egypt,1,1,guardian-90min-normalized-from-pens,TRUE
+2026-07-03,Argentina,Cape Verde,1,1,guardian-90min-normalized-from-aet,TRUE
+2026-07-04,Colombia,Ghana,1,0,guardian-90min-confirmed,TRUE

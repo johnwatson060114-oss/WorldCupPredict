@@ -7,13 +7,16 @@ from typing import Any, Iterable
 
 EVENT_PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
     ("cooling_break", re.compile(r"\b(drinks?|cooling|hydration) break\b", re.I)),
+    ("extra_time", re.compile(r"\b(extra time|start of extra time|extra-time|aet)\b", re.I)),
     ("var", re.compile(r"\b(VAR|video review)\b", re.I)),
     ("substitution", re.compile(r"^Substitution,", re.I)),
-    ("injury", re.compile(r"\b(injur|treatment|medical attention|unable to continue)\w*", re.I)),
+    ("fatigue", re.compile(r"\b(cramp|cramping|limp|limped|tired|fatigue|exhausted|run out of legs|physically drained)\b", re.I)),
+    ("injury", re.compile(r"\b(injur|treatment|medical attention|unable to continue|knocked unconscious)\w*", re.I)),
     ("second_yellow", re.compile(r"\bsecond yellow card\b", re.I)),
     ("red_card", re.compile(r"\bshown the red card\b|\bcard upgraded\b", re.I)),
     ("yellow_card", re.compile(r"\bshown the yellow card\b", re.I)),
-    ("penalty_goal", re.compile(r"\bconverts the penalty\b|\bpenalty[ -]shootout\b", re.I)),
+    ("penalty_shootout", re.compile(r"\bpenalt(?:y|ies)[ -]shootout\b|\bwon .* on penalt(?:y|ies)\b|\bon pens\b", re.I)),
+    ("penalty_goal", re.compile(r"\bconverts the penalty\b", re.I)),
     ("penalty_event", re.compile(r"\bpenalty (?:conceded|won|awarded|saved|missed)\b", re.I)),
     ("own_goal", re.compile(r"\bown goal\b", re.I)),
     ("keeper_error", re.compile(r"\bgoalkeeping error\b|\bkeeper error\b|\berror by the goalkeeper\b", re.I)),
@@ -35,7 +38,16 @@ ATTACKING_EVENT_TYPES = {
     "woodwork",
 }
 CARD_EVENT_TYPES = {"yellow_card", "second_yellow", "red_card"}
-DISTORTION_EVENT_TYPES = {"penalty_goal", "penalty_event", "own_goal", "keeper_error"}
+DISTORTION_EVENT_TYPES = {
+    "penalty_goal",
+    "penalty_event",
+    "own_goal",
+    "keeper_error",
+    "extra_time",
+    "fatigue",
+    "penalty_shootout",
+}
+LOAD_EVENT_TYPES = {"extra_time", "penalty_shootout", "fatigue", "injury"}
 
 
 def minute_value(display_value: str) -> float:
@@ -207,6 +219,7 @@ def match_tactical_summary(
             "classifiedEvents": len(event_list),
             "attackingEvents": sum(event.get("type") in ATTACKING_EVENT_TYPES for event in event_list),
             "injuryEvents": sum(event.get("type") == "injury" for event in event_list),
+            "loadEvents": sum(event.get("type") in LOAD_EVENT_TYPES for event in event_list),
             "cardEvents": sum(event.get("type") in CARD_EVENT_TYPES for event in event_list),
         },
     }
@@ -237,6 +250,24 @@ def match_tactical_summary(
         )
         if set_piece_attempts >= 2:
             labels.append("set_piece_creation")
+        cards = sum(
+            event.get("team") == team and event.get("type") in CARD_EVENT_TYPES
+            for event in event_list
+        )
+        if cards >= 2:
+            labels.append("card_suspension_risk")
+        fatigue_events = sum(
+            event.get("team") == team and event.get("type") in {"fatigue", "injury"}
+            for event in event_list
+        )
+        if fatigue_events:
+            labels.append("visible_cramp_or_fatigue")
+        if any(event.get("type") == "penalty_shootout" for event in event_list):
+            labels.append("penalty_shootout_load")
+        if any(event.get("type") == "extra_time" for event in event_list):
+            labels.append("extra_time_load")
+        if counts[4] == 0 and (cards >= 2 or fatigue_events) and counts[3] <= 1:
+            labels.append("late_survival_pressure")
         substitutions_after_break = sum(
             event.get("type") == "substitution"
             and event.get("team") == team

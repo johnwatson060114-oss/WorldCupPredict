@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-03T13:27:10+08:00",
+  "generatedAt": "2026-07-04T13:05:48+08:00",
   "scope": {
     "tournament": "FIFA World Cup 2026",
     "market": "半全场",
     "policy": "latest archived pre-kickoff forecast with half-time/full-time quotes, joined to local settlements by match id; settlements missing halftime scores are excluded",
-    "settlementCount": 85,
-    "forecastsWithHalfFullMarket": 73,
+    "settlementCount": 88,
+    "forecastsWithHalfFullMarket": 76,
     "supplementalReconstructedForecasts": 4,
     "excludedMissingHalftime": 0,
-    "evaluatedMatches": 73
+    "evaluatedMatches": 76
   },
   "metricDefinitions": {
     "accuracy": "top probability half-time/full-time selection equals the realized selection",
@@ -21,31 +21,31 @@
   },
   "metrics": {
     "allMatchedSettled": {
-      "matches": 73,
-      "hits": 27,
-      "accuracy": 0.3698630136986301,
-      "top3Hits": 54,
-      "top3Accuracy": 0.7397260273972602,
-      "averageLogLoss": 1.7439412620421335,
-      "averageBrier": 0.7404207855420624,
-      "averageActualProbability": 0.2588980964614941,
+      "matches": 76,
+      "hits": 29,
+      "accuracy": 0.3815789473684211,
+      "top3Hits": 55,
+      "top3Accuracy": 0.7236842105263158,
+      "averageLogLoss": 1.7672062807977742,
+      "averageBrier": 0.744740524861302,
+      "averageActualProbability": 0.25759695399743066,
       "inSampleMostCommonActual": "胜胜",
-      "inSampleMostCommonAccuracy": 0.2876712328767123,
+      "inSampleMostCommonAccuracy": 0.2894736842105263,
       "uniformNineWayLogLoss": 2.1972245773362196,
       "actualDistribution": {
         "平平": 13,
         "平胜": 11,
         "平负": 3,
-        "胜平": 3,
-        "胜胜": 21,
+        "胜平": 4,
+        "胜胜": 22,
         "胜负": 2,
-        "负平": 3,
+        "负平": 4,
         "负胜": 4,
         "负负": 13
       },
       "predictionDistribution": {
         "平平": 3,
-        "胜胜": 44,
+        "胜胜": 47,
         "负负": 26
       }
     },
@@ -53,17 +53,18 @@
       "matches": 3,
       "hits": 1,
       "accuracy": 0.3333333333333333,
-      "top3Hits": 3,
-      "top3Accuracy": 1.0,
-      "averageLogLoss": 1.407453176292461,
-      "averageBrier": 0.640971681916891,
-      "averageActualProbability": 0.28031482146744713,
-      "inSampleMostCommonActual": "胜胜",
-      "inSampleMostCommonAccuracy": 0.6666666666666666,
+      "top3Hits": 1,
+      "top3Accuracy": 0.3333333333333333,
+      "averageLogLoss": 2.4068894019008655,
+      "averageBrier": 0.873183170680067,
+      "averageActualProbability": 0.20574215665829534,
+      "inSampleMostCommonActual": "负平",
+      "inSampleMostCommonAccuracy": 0.3333333333333333,
       "uniformNineWayLogLoss": 2.1972245773362196,
       "actualDistribution": {
-        "平胜": 1,
-        "胜胜": 2
+        "胜平": 1,
+        "胜胜": 1,
+        "负平": 1
       },
       "predictionDistribution": {
         "平平": 1,
@@ -101,29 +102,30 @@
         }
       },
       "knockout": {
-        "matches": 13,
-        "hits": 4,
-        "accuracy": 0.3076923076923077,
-        "top3Hits": 9,
-        "top3Accuracy": 0.6923076923076923,
-        "averageLogLoss": 1.9420485718253269,
-        "averageBrier": 0.7743659206445114,
-        "averageActualProbability": 0.21994837265878583,
+        "matches": 16,
+        "hits": 6,
+        "accuracy": 0.375,
+        "top3Hits": 10,
+        "top3Accuracy": 0.625,
+        "averageLogLoss": 2.015412290330272,
+        "averageBrier": 0.7885199695791905,
+        "averageActualProbability": 0.22107101916749256,
         "inSampleMostCommonActual": "胜胜",
-        "inSampleMostCommonAccuracy": 0.38461538461538464,
+        "inSampleMostCommonAccuracy": 0.375,
         "uniformNineWayLogLoss": 2.1972245773362196,
         "actualDistribution": {
           "平平": 1,
           "平胜": 1,
           "平负": 1,
-          "胜胜": 5,
-          "负平": 2,
+          "胜平": 1,
+          "胜胜": 6,
+          "负平": 3,
           "负胜": 2,
           "负负": 1
         },
         "predictionDistribution": {
           "平平": 2,
-          "胜胜": 9,
+          "胜胜": 12,
           "负负": 2
         }
       }
@@ -135,25 +137,25 @@
           "knockoutWeight": 0.0
         },
         "base": {
-          "matches": 73,
-          "hits": 44,
-          "accuracy": 0.6027397260273972,
-          "averageLogLoss": 0.8466288246683626,
-          "averageActualProbability": 0.4973812243335367
+          "matches": 76,
+          "hits": 45,
+          "accuracy": 0.5921052631578947,
+          "averageLogLoss": 0.8572202179682721,
+          "averageActualProbability": 0.49400959705721287
         },
         "halfFullSignal": {
-          "matches": 73,
-          "hits": 44,
-          "accuracy": 0.6027397260273972,
-          "averageLogLoss": 0.847646226139474,
-          "averageActualProbability": 0.49661985755861593
+          "matches": 76,
+          "hits": 46,
+          "accuracy": 0.6052631578947368,
+          "averageLogLoss": 0.8494018513314798,
+          "averageActualProbability": 0.49581470567111674
         },
         "assisted": {
-          "matches": 73,
-          "hits": 44,
-          "accuracy": 0.6027397260273972,
-          "averageLogLoss": 0.8462760803465792,
-          "averageActualProbability": 0.49772999566895054
+          "matches": 76,
+          "hits": 45,
+          "accuracy": 0.5921052631578947,
+          "averageLogLoss": 0.8568813977644536,
+          "averageActualProbability": 0.49434460110307094
         }
       },
       "latestCompleted": {
@@ -163,24 +165,24 @@
         },
         "base": {
           "matches": 3,
-          "hits": 3,
-          "accuracy": 1.0,
-          "averageLogLoss": 0.6104987432234964,
-          "averageActualProbability": 0.5610566666666666
+          "hits": 1,
+          "accuracy": 0.3333333333333333,
+          "averageLogLoss": 1.1133009492713766,
+          "averageActualProbability": 0.41240000000000004
         },
         "halfFullSignal": {
           "matches": 3,
-          "hits": 3,
-          "accuracy": 1.0,
-          "averageLogLoss": 0.6937958671197412,
-          "averageActualProbability": 0.5210454908266429
+          "hits": 2,
+          "accuracy": 0.6666666666666666,
+          "averageLogLoss": 0.9449721115203013,
+          "averageActualProbability": 0.44917148783701766
         },
         "assisted": {
           "matches": 3,
-          "hits": 3,
-          "accuracy": 1.0,
-          "averageLogLoss": 0.6104987432234964,
-          "averageActualProbability": 0.5610566666666666
+          "hits": 1,
+          "accuracy": 0.3333333333333333,
+          "averageLogLoss": 1.1133009492713766,
+          "averageActualProbability": 0.41240000000000004
         }
       },
       "byStage": {
@@ -217,34 +219,34 @@
             "knockoutWeight": 0.0
           },
           "base": {
-            "matches": 13,
-            "hits": 9,
-            "accuracy": 0.6923076923076923,
-            "averageLogLoss": 0.7486623110755664,
-            "averageActualProbability": 0.5140215384615384
+            "matches": 16,
+            "hits": 10,
+            "accuracy": 0.625,
+            "averageLogLoss": 0.8173401505487851,
+            "averageActualProbability": 0.49488624999999997
           },
           "halfFullSignal": {
-            "matches": 13,
-            "hits": 9,
-            "accuracy": 0.6923076923076923,
-            "averageLogLoss": 0.7625514797636266,
-            "averageActualProbability": 0.49995374523113206
+            "matches": 16,
+            "hits": 11,
+            "accuracy": 0.6875,
+            "averageLogLoss": 0.7868459643711255,
+            "averageActualProbability": 0.495504169826914
           },
           "assisted": {
-            "matches": 13,
-            "hits": 9,
-            "accuracy": 0.6923076923076923,
-            "averageLogLoss": 0.7486623110755664,
-            "averageActualProbability": 0.5140215384615384
+            "matches": 16,
+            "hits": 10,
+            "accuracy": 0.625,
+            "averageLogLoss": 0.8173401505487851,
+            "averageActualProbability": 0.49488624999999997
           }
         }
       }
     }
   },
   "latestCompletedMatchIds": [
-    "2040354",
-    "2040355",
-    "2040356"
+    "2040347",
+    "2040348",
+    "2040357"
   ],
   "matches": [
     {
@@ -7063,9 +7065,9 @@
       "awayTeam": "奥地利",
       "kickoff": "2026-07-03T03:00:00+08:00",
       "stage": "knockout",
-      "historyPath": "public/data/history/2026-07-03.json",
-      "historySection": "matches",
-      "historyGeneratedAt": "2026-07-02T14:59:31+08:00",
+      "historyPath": "public/data/history/2026-07-02.json",
+      "historySection": "parlayMatches",
+      "historyGeneratedAt": "2026-07-01T18:26:40+08:00",
       "halfFullCalibration": {
         "applied": true,
         "policy": "knockout_half_full_late_swing_v1",
@@ -7083,82 +7085,82 @@
         },
         "topSelectionBefore": "胜胜",
         "topSelectionAfter": "胜胜",
-        "topProbabilityBefore": 0.5182048179518205,
-        "topProbabilityAfter": 0.49057488399531446
+        "topProbabilityBefore": 0.54554,
+        "topProbabilityAfter": 0.5220733523622156
       },
       "actual": "胜胜",
       "predicted": "胜胜",
       "hit": true,
       "top3Hit": true,
-      "actualProbability": 0.49057488399531446,
-      "logLoss": 0.7121773429335486,
-      "brier": 0.31887809061985845,
+      "actualProbability": 0.5220733523622156,
+      "logLoss": 0.6499471792050603,
+      "brier": 0.28702226092964683,
       "topSelections": [
         {
           "selection": "胜胜",
-          "probability": 0.49057488399531446
+          "probability": 0.5220733523622156
         },
         {
           "selection": "平胜",
-          "probability": 0.1951564275788466
+          "probability": 0.20595264538232289
         },
         {
           "selection": "平平",
-          "probability": 0.1171013302734238
-        },
-        {
-          "selection": "胜平",
-          "probability": 0.045146288223749415
+          "probability": 0.1041823750644076
         },
         {
           "selection": "负平",
-          "probability": 0.04482242675872969
+          "probability": 0.035017575776807024
+        },
+        {
+          "selection": "胜平",
+          "probability": 0.03449375265374335
         }
       ],
       "probabilities": {
-        "胜胜": 0.490575,
-        "胜平": 0.045146,
-        "胜负": 0.006801,
-        "平胜": 0.195156,
-        "平平": 0.117101,
-        "平负": 0.027842,
-        "负胜": 0.041959,
-        "负平": 0.044822,
-        "负负": 0.030596
+        "胜胜": 0.522073,
+        "胜平": 0.034494,
+        "胜负": 0.005382,
+        "平胜": 0.205953,
+        "平平": 0.104182,
+        "平负": 0.027724,
+        "负胜": 0.03211,
+        "负平": 0.035018,
+        "负负": 0.033064
       },
       "outcomeAssistance": {
         "actual": "home",
         "base": {
           "predicted": "home",
           "hit": true,
-          "actualProbability": 0.75696,
-          "logLoss": 0.27844486709929916,
+          "actualProbability": 0.76027,
+          "logLoss": 0.2740816456348791,
           "probabilities": {
-            "home": 0.75696,
-            "draw": 0.1745,
-            "away": 0.06854
+            "home": 0.76027,
+            "draw": 0.1721,
+            "away": 0.06763
           }
         },
         "halfFullSignal": {
           "predicted": "home",
           "hit": true,
-          "actualProbability": 0.7276908029821163,
-          "logLoss": 0.3178790421834488,
+          "actualProbability": 0.7601363551883421,
+          "logLoss": 0.2742574470731538,
           "probabilities": {
-            "home": 0.727691,
-            "draw": 0.20707,
-            "away": 0.065239
+            "home": 0.760136,
+            "draw": 0.173694,
+            "away": 0.06617
           }
         },
         "assisted": {
           "predicted": "home",
           "hit": true,
-          "actualProbability": 0.75696,
-          "logLoss": 0.27844486709929916,
+          "actualProbability": 0.76027,
+          "logLoss": 0.2740816456348791,
           "probabilities": {
-            "home": 0.75696,
-            "draw": 0.1745,
-            "away": 0.06854
+            "home": 0.76027,
+            "draw": 0.1721,
+            "away": 0.06763
           }
         },
         "assistWeight": 0.0
@@ -7174,9 +7176,9 @@
       "awayTeam": "克罗地亚",
       "kickoff": "2026-07-03T07:00:00+08:00",
       "stage": "knockout",
-      "historyPath": "public/data/history/2026-07-03.json",
-      "historySection": "matches",
-      "historyGeneratedAt": "2026-07-02T14:59:31+08:00",
+      "historyPath": "public/data/history/2026-07-02.json",
+      "historySection": "parlayMatches",
+      "historyGeneratedAt": "2026-07-01T18:26:40+08:00",
       "halfFullCalibration": {
         "applied": true,
         "policy": "knockout_half_full_late_swing_v1",
@@ -7194,82 +7196,82 @@
         },
         "topSelectionBefore": "胜胜",
         "topSelectionAfter": "胜胜",
-        "topProbabilityBefore": 0.30529,
-        "topProbabilityAfter": 0.2801795696530378
+        "topProbabilityBefore": 0.32513,
+        "topProbabilityAfter": 0.3025321241457803
       },
       "actual": "平胜",
       "predicted": "胜胜",
       "hit": false,
       "top3Hit": true,
-      "actualProbability": 0.14693160307069128,
-      "logLoss": 1.9177880857155558,
-      "brier": 0.8647378633882953,
+      "actualProbability": 0.15855649726091398,
+      "logLoss": 1.8416442995821947,
+      "brier": 0.8540428703970906,
       "topSelections": [
         {
           "selection": "胜胜",
-          "probability": 0.2801795696530378
-        },
-        {
-          "selection": "平平",
-          "probability": 0.1596110290235683
+          "probability": 0.3025321241457803
         },
         {
           "selection": "平胜",
-          "probability": 0.14693160307069128
+          "probability": 0.15855649726091398
+        },
+        {
+          "selection": "平平",
+          "probability": 0.15158169606870392
         },
         {
           "selection": "负负",
-          "probability": 0.11259861574480397
+          "probability": 0.12280684570713278
         },
         {
-          "selection": "负平",
-          "probability": 0.07841633245309942
+          "selection": "平负",
+          "probability": 0.08313980651562597
         }
       ],
       "probabilities": {
-        "胜胜": 0.28018,
-        "胜平": 0.075578,
-        "胜负": 0.024828,
-        "平胜": 0.146932,
-        "平平": 0.159611,
-        "平负": 0.076017,
-        "负胜": 0.045839,
-        "负平": 0.078416,
-        "负负": 0.112599
+        "胜胜": 0.302532,
+        "胜平": 0.062188,
+        "胜负": 0.019978,
+        "平胜": 0.158556,
+        "平平": 0.151582,
+        "平负": 0.08314,
+        "负胜": 0.036748,
+        "负平": 0.062469,
+        "负负": 0.122807
       },
       "outcomeAssistance": {
         "actual": "home",
         "base": {
           "predicted": "home",
           "hit": true,
-          "actualProbability": 0.51663,
-          "logLoss": 0.6604283279972192,
+          "actualProbability": 0.51269,
+          "logLoss": 0.6680839049662762,
           "probabilities": {
-            "home": 0.51663,
-            "draw": 0.25349,
-            "away": 0.22988
+            "home": 0.51269,
+            "draw": 0.25659,
+            "away": 0.23072
           }
         },
         "halfFullSignal": {
           "predicted": "home",
           "hit": true,
-          "actualProbability": 0.47295031645432056,
-          "logLoss": 0.7487649352158326,
+          "actualProbability": 0.4978363522210936,
+          "logLoss": 0.6974838659593846,
           "probabilities": {
-            "home": 0.47295,
-            "draw": 0.313605,
-            "away": 0.213444
+            "home": 0.497836,
+            "draw": 0.276239,
+            "away": 0.225925
           }
         },
         "assisted": {
           "predicted": "home",
           "hit": true,
-          "actualProbability": 0.51663,
-          "logLoss": 0.6604283279972192,
+          "actualProbability": 0.51269,
+          "logLoss": 0.6680839049662762,
           "probabilities": {
-            "home": 0.51663,
-            "draw": 0.25349,
-            "away": 0.22988
+            "home": 0.51269,
+            "draw": 0.25659,
+            "away": 0.23072
           }
         },
         "assistWeight": 0.0
@@ -7285,9 +7287,120 @@
       "awayTeam": "阿尔及利",
       "kickoff": "2026-07-03T11:00:00+08:00",
       "stage": "knockout",
-      "historyPath": "public/data/history/2026-07-03.json",
+      "historyPath": "public/data/history/2026-07-02.json",
+      "historySection": "parlayMatches",
+      "historyGeneratedAt": "2026-07-01T18:26:40+08:00",
+      "halfFullCalibration": {
+        "applied": true,
+        "policy": "knockout_half_full_late_swing_v1",
+        "sourceKnockoutPolicy": "knockout_tension_close_game_v2",
+        "weights": {
+          "胜胜": 0.95,
+          "胜平": 1.3,
+          "胜负": 1.3,
+          "平胜": 0.95,
+          "平平": 1.1,
+          "平负": 0.95,
+          "负胜": 1.3,
+          "负平": 1.3,
+          "负负": 0.95
+        },
+        "topSelectionBefore": "胜胜",
+        "topSelectionAfter": "胜胜",
+        "topProbabilityBefore": 0.23812,
+        "topProbabilityAfter": 0.22089560691999083
+      },
+      "actual": "胜胜",
+      "predicted": "胜胜",
+      "hit": true,
+      "top3Hit": true,
+      "actualProbability": 0.22089560691999083,
+      "logLoss": 1.510065055942633,
+      "brier": 0.711862947272134,
+      "topSelections": [
+        {
+          "selection": "胜胜",
+          "probability": 0.22089560691999083
+        },
+        {
+          "selection": "平平",
+          "probability": 0.1926789649015479
+        },
+        {
+          "selection": "负负",
+          "probability": 0.16434514413718115
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.1394744435596364
+        },
+        {
+          "selection": "平负",
+          "probability": 0.11152389494339533
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.220896,
+        "胜平": 0.062456,
+        "胜负": 0.020819,
+        "平胜": 0.139474,
+        "平平": 0.192679,
+        "平负": 0.111524,
+        "负胜": 0.025947,
+        "负平": 0.06186,
+        "负负": 0.164345
+      },
+      "outcomeAssistance": {
+        "actual": "home",
+        "base": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.40891,
+          "logLoss": 0.8942601960534022,
+          "probabilities": {
+            "home": 0.40891,
+            "draw": 0.27731,
+            "away": 0.31378
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.3863173307853466,
+          "logLoss": 0.9510961467766422,
+          "probabilities": {
+            "home": 0.386317,
+            "draw": 0.316995,
+            "away": 0.296688
+          }
+        },
+        "assisted": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.40891,
+          "logLoss": 0.8942601960534022,
+          "probabilities": {
+            "home": 0.40891,
+            "draw": 0.27731,
+            "away": 0.31378
+          }
+        },
+        "assistWeight": 0.0
+      },
+      "score": {
+        "halftime": "1:0",
+        "fulltime": "2:0"
+      }
+    },
+    {
+      "matchId": "2040347",
+      "homeTeam": "澳大利亚",
+      "awayTeam": "埃及",
+      "kickoff": "2026-07-04T02:00:00+08:00",
+      "stage": "knockout",
+      "historyPath": "public/data/history/2026-07-04.json",
       "historySection": "matches",
-      "historyGeneratedAt": "2026-07-02T14:59:31+08:00",
+      "historyGeneratedAt": "2026-07-03T19:17:50+08:00",
       "halfFullCalibration": {
         "applied": true,
         "policy": "knockout_half_full_late_swing_v1",
@@ -7305,89 +7418,311 @@
         },
         "topSelectionBefore": "胜胜",
         "topSelectionAfter": "平平",
-        "topProbabilityBefore": 0.22235222352223522,
-        "topProbabilityAfter": 0.2056738135092082
+        "topProbabilityBefore": 0.21319,
+        "topProbabilityAfter": 0.20242443955164133
       },
-      "actual": "胜胜",
+      "actual": "负平",
       "predicted": "平平",
       "hit": false,
-      "top3Hit": true,
-      "actualProbability": 0.20343797733633562,
-      "logLoss": 1.592394100228278,
-      "brier": 0.7392990917425195,
+      "top3Hit": false,
+      "actualProbability": 0.07833767013610887,
+      "logLoss": 2.5467266915988986,
+      "brier": 0.9875325300943619,
       "topSelections": [
         {
           "selection": "平平",
-          "probability": 0.2056738135092082
+          "probability": 0.20242443955164133
         },
         {
           "selection": "胜胜",
-          "probability": 0.20343797733633562
+          "probability": 0.19489678281086403
         },
         {
           "selection": "负负",
-          "probability": 0.14867853077200152
+          "probability": 0.15822850588162837
         },
         {
           "selection": "平胜",
-          "probability": 0.12740606406154592
+          "probability": 0.12217273819055245
         },
         {
           "selection": "平负",
-          "probability": 0.10302278501493767
+          "probability": 0.10609208520662683
         }
       ],
       "probabilities": {
-        "胜胜": 0.203438,
-        "胜平": 0.077213,
-        "胜负": 0.026205,
-        "平胜": 0.127406,
-        "平平": 0.205674,
-        "平负": 0.103023,
-        "负胜": 0.031651,
-        "负平": 0.076712,
-        "负负": 0.148679
+        "胜胜": 0.194897,
+        "胜平": 0.078012,
+        "胜负": 0.027034,
+        "平胜": 0.122173,
+        "平平": 0.202424,
+        "平负": 0.106092,
+        "负胜": 0.032801,
+        "负平": 0.078338,
+        "负负": 0.158229
       },
       "outcomeAssistance": {
-        "actual": "home",
+        "actual": "draw",
         "base": {
           "predicted": "home",
-          "hit": true,
-          "actualProbability": 0.40958,
-          "logLoss": 0.8926230345739707,
+          "hit": false,
+          "actualProbability": 0.27656,
+          "logLoss": 1.285327483368768,
           "probabilities": {
-            "home": 0.40958,
-            "draw": 0.27749,
-            "away": 0.31293
+            "home": 0.39464,
+            "draw": 0.27656,
+            "away": 0.3288
           }
         },
         "halfFullSignal": {
-          "predicted": "home",
+          "predicted": "draw",
           "hit": true,
-          "actualProbability": 0.3624953530434916,
-          "logLoss": 1.014743623959942,
+          "actualProbability": 0.35877451961569257,
+          "logLoss": 1.0250611668830651,
           "probabilities": {
-            "home": 0.362495,
-            "draw": 0.359598,
-            "away": 0.277906
+            "home": 0.349871,
+            "draw": 0.358775,
+            "away": 0.291355
           }
         },
         "assisted": {
           "predicted": "home",
-          "hit": true,
-          "actualProbability": 0.40958,
-          "logLoss": 0.8926230345739707,
+          "hit": false,
+          "actualProbability": 0.27656,
+          "logLoss": 1.285327483368768,
           "probabilities": {
-            "home": 0.40958,
-            "draw": 0.27749,
-            "away": 0.31293
+            "home": 0.39464,
+            "draw": 0.27656,
+            "away": 0.3288
+          }
+        },
+        "assistWeight": 0.0
+      },
+      "score": {
+        "halftime": "0:1",
+        "fulltime": "1:1"
+      }
+    },
+    {
+      "matchId": "2040348",
+      "homeTeam": "阿根廷",
+      "awayTeam": "佛得角",
+      "kickoff": "2026-07-04T06:00:00+08:00",
+      "stage": "knockout",
+      "historyPath": "public/data/history/2026-07-04.json",
+      "historySection": "matches",
+      "historyGeneratedAt": "2026-07-03T19:17:50+08:00",
+      "halfFullCalibration": {
+        "applied": true,
+        "policy": "knockout_half_full_late_swing_v1",
+        "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
+        "weights": {
+          "胜胜": 0.95,
+          "胜平": 1.3,
+          "胜负": 1.3,
+          "平胜": 0.95,
+          "平平": 1.1,
+          "平负": 0.95,
+          "负胜": 1.3,
+          "负平": 1.3,
+          "负负": 0.95
+        },
+        "topSelectionBefore": "胜胜",
+        "topSelectionAfter": "胜胜",
+        "topProbabilityBefore": 0.5268852688526885,
+        "topProbabilityAfter": 0.5073103690126098
+      },
+      "actual": "胜平",
+      "predicted": "胜胜",
+      "hit": false,
+      "top3Hit": false,
+      "actualProbability": 0.017919285174578733,
+      "logLoss": 4.021877762042427,
+      "brier": 1.3143621741856408,
+      "topSelections": [
+        {
+          "selection": "胜胜",
+          "probability": 0.5073103690126098
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.24760843929411394
+        },
+        {
+          "selection": "平平",
+          "probability": 0.1746360018507135
+        },
+        {
+          "selection": "胜平",
+          "probability": 0.017919285174578733
+        },
+        {
+          "selection": "负平",
+          "probability": 0.017695294109896502
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.50731,
+        "胜平": 0.017919,
+        "胜负": 0.000659,
+        "平胜": 0.247608,
+        "平平": 0.174636,
+        "平负": 0.010649,
+        "负胜": 0.013268,
+        "负平": 0.017695,
+        "负负": 0.010254
+      },
+      "outcomeAssistance": {
+        "actual": "draw",
+        "base": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.16007,
+          "logLoss": 1.832144059423531,
+          "probabilities": {
+            "home": 0.81713,
+            "draw": 0.16007,
+            "away": 0.0228
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.21025058113518874,
+          "logLoss": 1.5594552161129769,
+          "probabilities": {
+            "home": 0.768187,
+            "draw": 0.210251,
+            "away": 0.021562
+          }
+        },
+        "assisted": {
+          "predicted": "home",
+          "hit": false,
+          "actualProbability": 0.16007,
+          "logLoss": 1.832144059423531,
+          "probabilities": {
+            "home": 0.81713,
+            "draw": 0.16007,
+            "away": 0.0228
           }
         },
         "assistWeight": 0.0
       },
       "score": {
         "halftime": "1:0",
-        "fulltime": "2:0"
+        "fulltime": "1:1"
+      }
+    },
+    {
+      "matchId": "2040357",
+      "homeTeam": "哥伦比亚",
+      "awayTeam": "加纳",
+      "kickoff": "2026-07-04T09:30:00+08:00",
+      "stage": "knockout",
+      "historyPath": "public/data/history/2026-07-04.json",
+      "historySection": "matches",
+      "historyGeneratedAt": "2026-07-03T19:17:50+08:00",
+      "halfFullCalibration": {
+        "applied": true,
+        "policy": "knockout_half_full_late_swing_v1",
+        "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
+        "weights": {
+          "胜胜": 0.95,
+          "胜平": 1.3,
+          "胜负": 1.3,
+          "平胜": 0.95,
+          "平平": 1.1,
+          "平负": 0.95,
+          "负胜": 1.3,
+          "负平": 1.3,
+          "负负": 0.95
+        },
+        "topSelectionBefore": "胜胜",
+        "topSelectionAfter": "胜胜",
+        "topProbabilityBefore": 0.5403491930161397,
+        "topProbabilityAfter": 0.5209695146641985
+      },
+      "actual": "胜胜",
+      "predicted": "胜胜",
+      "hit": true,
+      "top3Hit": true,
+      "actualProbability": 0.5209695146641985,
+      "logLoss": 0.6520637520612699,
+      "brier": 0.31765480776019844,
+      "topSelections": [
+        {
+          "selection": "胜胜",
+          "probability": 0.5209695146641985
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.24317888201153084
+        },
+        {
+          "selection": "平平",
+          "probability": 0.1675967845221894
+        },
+        {
+          "selection": "胜平",
+          "probability": 0.017190688875831046
+        },
+        {
+          "selection": "负平",
+          "probability": 0.01610884966798903
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.52097,
+        "胜平": 0.017191,
+        "胜负": 0.000686,
+        "平胜": 0.243179,
+        "平平": 0.167597,
+        "平负": 0.010306,
+        "负胜": 0.014341,
+        "负平": 0.016109,
+        "负负": 0.009622
+      },
+      "outcomeAssistance": {
+        "actual": "home",
+        "base": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.80057,
+          "logLoss": 0.22243130502183078,
+          "probabilities": {
+            "home": 0.80057,
+            "draw": 0.17773,
+            "away": 0.0217
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.7784893627601717,
+          "logLoss": 0.2503999515648616,
+          "probabilities": {
+            "home": 0.778489,
+            "draw": 0.200896,
+            "away": 0.020614
+          }
+        },
+        "assisted": {
+          "predicted": "home",
+          "hit": true,
+          "actualProbability": 0.80057,
+          "logLoss": 0.22243130502183078,
+          "probabilities": {
+            "home": 0.80057,
+            "draw": 0.17773,
+            "away": 0.0217
+          }
+        },
+        "assistWeight": 0.0
+      },
+      "score": {
+        "halftime": "1:0",
+        "fulltime": "1:0"
       }
     }
   ]

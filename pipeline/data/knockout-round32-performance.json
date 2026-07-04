@@ -1,0 +1,192 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-04T12:00:00+08:00",
+  "round": {
+    "name": "round_of_32",
+    "predictionTarget": "90_minutes",
+    "policy": "process evidence is converted into bounded fatigue, discipline, and performance-shape signals only"
+  },
+  "method": {
+    "objectiveAndProcessSeparated": true,
+    "forbiddenDirectFields": [
+      "xg_adjustment",
+      "probability_delta",
+      "home_probability",
+      "away_probability"
+    ],
+    "activeLabels": [
+      "extra_time_load",
+      "penalty_shootout_load",
+      "visible_cramp_or_fatigue",
+      "late_survival_pressure",
+      "underwhelming_favorite",
+      "card_suspension_risk",
+      "injury_doubtful"
+    ]
+  },
+  "teams": [
+    {
+      "team": "\u57c3\u53ca",
+      "summary": "Egypt advanced after 120 minutes plus penalties; Salah was subdued while returning from a hamstring issue.",
+      "matches": [
+        {
+          "matchId": "2040347",
+          "observedDate": "2026-07-04",
+          "opponent": "\u6fb3\u5927\u5229\u4e9a",
+          "result90": "1-1",
+          "resultAfterExtraOrPens": "won_on_penalties_4-2",
+          "labels": [
+            "extra_time_load",
+            "penalty_shootout_load",
+            "underwhelming_favorite",
+            "injury_doubtful",
+            "card_suspension_risk"
+          ],
+          "evidenceConfidence": 0.78,
+          "observations": {
+            "minutesPlayed": 120,
+            "shootout": true,
+            "salahHamstringReturn": true,
+            "yellowCardsMentioned": 2
+          },
+          "sourceUrls": [
+            "https://www.theguardian.com/football/2026/jul/04/australia-egypt-player-ratings-world-cup-last-round-32",
+            "https://www.theguardian.com/football/2026/jul/04/australia-socceroos-egypt-world-cup-last-32-penalty-shootout-defeat"
+          ]
+        }
+      ]
+    },
+    {
+      "team": "\u963f\u6839\u5ef7",
+      "summary": "Argentina survived a Cape Verde scare after extra time, with visible physical drain in humid conditions.",
+      "matches": [
+        {
+          "matchId": "2040348",
+          "observedDate": "2026-07-04",
+          "opponent": "\u4f5b\u5f97\u89d2",
+          "result90": "1-1",
+          "resultAfterExtraOrPens": "won_after_extra_time_3-2",
+          "labels": [
+            "extra_time_load",
+            "visible_cramp_or_fatigue",
+            "late_survival_pressure",
+            "underwhelming_favorite"
+          ],
+          "evidenceConfidence": 0.82,
+          "observations": {
+            "minutesPlayed": 120,
+            "favoritePushedToBrink": true,
+            "humidConditions": true,
+            "messiPhysicallyDrainedMentioned": true
+          },
+          "sourceUrls": [
+            "https://www.theguardian.com/football/live/2026/jul/03/argentina-v-cape-verde-world-cup-2026-last-32-live",
+            "https://www.theguardian.com/football/2026/jul/04/argentina-cape-verde-world-cup-2026-last-32-match-report"
+          ]
+        }
+      ]
+    },
+    {
+      "team": "\u54e5\u4f26\u6bd4\u4e9a",
+      "summary": "Colombia advanced in 90 minutes but the report flags a scrappy, physical match and attack that did not fully convert dominance.",
+      "matches": [
+        {
+          "matchId": "2040357",
+          "observedDate": "2026-07-04",
+          "opponent": "\u52a0\u7eb3",
+          "result90": "1-0",
+          "resultAfterExtraOrPens": "won_in_90",
+          "labels": [
+            "card_suspension_risk",
+            "underwhelming_favorite"
+          ],
+          "evidenceConfidence": 0.70,
+          "observations": {
+            "minutesPlayed": 90,
+            "scrappyPhysicalMatch": true,
+            "missedFurtherChances": true
+          },
+          "sourceUrls": [
+            "https://www.theguardian.com/football/live/2026/jul/04/colombia-v-ghana-world-cup-2026-last-32-live",
+            "https://www.theguardian.com/football/2026/jul/04/colombia-ghana-world-cup-2026-last-32-match-report"
+          ]
+        }
+      ]
+    },
+    {
+      "team": "\u5df4\u62c9\u572d",
+      "summary": "Paraguay advanced after Germany were held over 90 minutes and the tie went beyond regulation.",
+      "matches": [
+        {
+          "matchId": "2040344",
+          "observedDate": "2026-06-30",
+          "opponent": "\u5fb7\u56fd",
+          "result90": "1-1",
+          "resultAfterExtraOrPens": "won_on_penalties_5-4",
+          "labels": [
+            "extra_time_load",
+            "penalty_shootout_load",
+            "late_survival_pressure"
+          ],
+          "evidenceConfidence": 0.66,
+          "observations": {
+            "minutesPlayed": 120,
+            "shootout": true
+          },
+          "sourceUrls": [
+            "https://www.theguardian.com/football/2026/jun/29/germany-paraguay-world-cup-2026-last-32-match-report"
+          ]
+        }
+      ]
+    },
+    {
+      "team": "\u6469\u6d1b\u54e5",
+      "summary": "Morocco advanced after a 90-minute draw and a tie that required penalties.",
+      "matches": [
+        {
+          "matchId": "2040338",
+          "observedDate": "2026-06-30",
+          "opponent": "\u8377\u5170",
+          "result90": "1-1",
+          "resultAfterExtraOrPens": "won_on_penalties_4-4",
+          "labels": [
+            "extra_time_load",
+            "penalty_shootout_load"
+          ],
+          "evidenceConfidence": 0.62,
+          "observations": {
+            "minutesPlayed": 120,
+            "shootout": true
+          },
+          "sourceUrls": [
+            "https://www.theguardian.com/football/2026/jun/30/netherlands-morocco-world-cup-2026-last-32-match-report"
+          ]
+        }
+      ]
+    },
+    {
+      "team": "\u6bd4\u5229\u65f6",
+      "summary": "Belgium needed extra time after a 2-2 regulation draw with Senegal.",
+      "matches": [
+        {
+          "matchId": "2040353",
+          "observedDate": "2026-07-02",
+          "opponent": "\u585e\u5185\u52a0\u5c14",
+          "result90": "2-2",
+          "resultAfterExtraOrPens": "won_after_extra_time_3-2",
+          "labels": [
+            "extra_time_load",
+            "late_survival_pressure"
+          ],
+          "evidenceConfidence": 0.64,
+          "observations": {
+            "minutesPlayed": 120
+          },
+          "sourceUrls": [
+            "https://www.theguardian.com/football/live/2026/jul/01/belgium-v-senegal-world-cup-last-32-live"
+          ]
+        }
+      ]
+    }
+  ]
+}

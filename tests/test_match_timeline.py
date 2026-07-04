@@ -63,3 +63,27 @@ def test_distortion_events_are_classified_for_credibility_gates():
     ], ["Team A", "Team B"], "https://example.test/commentary")
 
     assert [event["type"] for event in events] == ["penalty_goal", "own_goal", "keeper_error"]
+
+
+def test_knockout_load_events_are_classified_and_labeled():
+    events = extract_timeline([
+        commentary("90'", "Start of extra time."),
+        commentary("94'", "Player One (Team A) is cramping and looks physically drained."),
+        commentary("101'", "Player Two (Team A) is shown the yellow card."),
+        commentary("108'", "Player Three (Team A) is shown the yellow card."),
+        commentary("120'", "Team A won the match on penalties."),
+    ], ["Team A", "Team B"], "https://example.test/commentary")
+    summary = match_tactical_summary(events, ["Team A", "Team B"])
+    labels = summary["teams"]["Team A"]["labels"]
+
+    assert [event["type"] for event in events] == [
+        "extra_time",
+        "fatigue",
+        "yellow_card",
+        "yellow_card",
+        "penalty_shootout",
+    ]
+    assert "extra_time_load" in labels
+    assert "visible_cramp_or_fatigue" in labels
+    assert "card_suspension_risk" in labels
+    assert "penalty_shootout_load" in labels
