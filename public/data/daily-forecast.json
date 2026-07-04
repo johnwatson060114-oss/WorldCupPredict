@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-04T17:02:00+08:00",
+  "generatedAt": "2026-07-04T17:06:44+08:00",
   "targetDate": "2026-07-05",
   "timezone": "Asia/Shanghai",
   "modelVersion": "hierarchical_poisson[half_life_days=730.0,rho=0.0,shrinkage=24.0,tournament_tier=1.0]",
   "pipelineVersion": "2.0.0-dev",
   "dataSnapshot": {
     "id": "0f3a6788a74883a6014e4be1bf7fe1a3207e6ea9adcc40d9f519c7bcad48a753",
-    "cutoff": "2026-07-04T17:02:00+08:00",
+    "cutoff": "2026-07-04T17:06:44+08:00",
     "files": [
       {
         "path": "manual-data/availability.csv",
@@ -647,12 +647,12 @@
           "selection": "胜",
           "handicap": null,
           "excludedScores": [],
-          "odds": 5.25,
+          "odds": 5.5,
           "modelProbability": 0.19184,
-          "marketProbability": 0.16861,
+          "marketProbability": 0.16093,
           "coverage": 0.764,
-          "rawExpectedReturn": 0.00716,
-          "robustExpectedReturn": -0.28342,
+          "rawExpectedReturn": 0.05512,
+          "robustExpectedReturn": -0.24929,
           "singleEligible": true,
           "available": true,
           "recommendation": "观察",
@@ -661,14 +661,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.037358,
+            "maxGap": 0.048725,
             "modelFavorite": "负",
             "marketFavorite": "负",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "胜平负最高概率 53.7% 低于 60% 门槛",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -681,12 +681,12 @@
           "selection": "平",
           "handicap": null,
           "excludedScores": [],
-          "odds": 3.45,
+          "odds": 3.5,
           "modelProbability": 0.27071,
-          "marketProbability": 0.25658,
+          "marketProbability": 0.25289,
           "coverage": 0.764,
-          "rawExpectedReturn": -0.06605,
-          "robustExpectedReturn": -0.27316,
+          "rawExpectedReturn": -0.05251,
+          "robustExpectedReturn": -0.26263,
           "singleEligible": true,
           "available": true,
           "recommendation": "观察",
@@ -695,14 +695,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.037358,
+            "maxGap": 0.048725,
             "modelFavorite": "负",
             "marketFavorite": "负",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "胜平负最高概率 53.7% 低于 60% 门槛",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -715,12 +715,12 @@
           "selection": "负",
           "handicap": null,
           "excludedScores": [],
-          "odds": 1.54,
+          "odds": 1.51,
           "modelProbability": 0.53745,
-          "marketProbability": 0.57481,
+          "marketProbability": 0.58618,
           "coverage": 0.764,
-          "rawExpectedReturn": -0.17233,
-          "robustExpectedReturn": -0.27252,
+          "rawExpectedReturn": -0.18845,
+          "robustExpectedReturn": -0.28669,
           "singleEligible": true,
           "available": true,
           "recommendation": "观察",
@@ -729,14 +729,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.037358,
+            "maxGap": 0.048725,
             "modelFavorite": "负",
             "marketFavorite": "负",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "胜平负最高概率 53.7% 低于 60% 门槛",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -749,12 +749,12 @@
           "selection": "+1 胜",
           "handicap": 1,
           "excludedScores": [],
-          "odds": 2.14,
+          "odds": 2.17,
           "modelProbability": 0.46255,
-          "marketProbability": 0.41369,
+          "marketProbability": 0.4079,
           "coverage": 0.764,
-          "rawExpectedReturn": -0.01014,
-          "robustExpectedReturn": -0.14937,
+          "rawExpectedReturn": 0.00373,
+          "robustExpectedReturn": -0.13744,
           "singleEligible": false,
           "available": true,
           "recommendation": "不建议",
@@ -763,14 +763,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.048865,
+            "maxGap": 0.054655,
             "modelFavorite": "胜",
             "marketFavorite": "胜",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -783,12 +783,12 @@
           "selection": "+1 平",
           "handicap": 1,
           "excludedScores": [],
-          "odds": 2.9,
+          "odds": 2.87,
           "modelProbability": 0.26498,
-          "marketProbability": 0.30527,
+          "marketProbability": 0.30841,
           "coverage": 0.764,
-          "rawExpectedReturn": -0.23156,
-          "robustExpectedReturn": -0.40485,
+          "rawExpectedReturn": -0.23951,
+          "robustExpectedReturn": -0.411,
           "singleEligible": false,
           "available": true,
           "recommendation": "不建议",
@@ -797,14 +797,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.048865,
+            "maxGap": 0.054655,
             "modelFavorite": "胜",
             "marketFavorite": "胜",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -817,12 +817,12 @@
           "selection": "+1 负",
           "handicap": 1,
           "excludedScores": [],
-          "odds": 3.15,
+          "odds": 3.12,
           "modelProbability": 0.27247,
-          "marketProbability": 0.28104,
+          "marketProbability": 0.2837,
           "coverage": 0.764,
-          "rawExpectedReturn": -0.14172,
-          "robustExpectedReturn": -0.33109,
+          "rawExpectedReturn": -0.14989,
+          "robustExpectedReturn": -0.33746,
           "singleEligible": false,
           "available": true,
           "recommendation": "不建议",
@@ -831,14 +831,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.048865,
+            "maxGap": 0.054655,
             "modelFavorite": "胜",
             "marketFavorite": "胜",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -901,7 +901,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -964,7 +964,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -1027,7 +1027,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -1090,7 +1090,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -1153,7 +1153,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -1216,7 +1216,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -1279,7 +1279,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -1342,7 +1342,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -1405,7 +1405,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -1468,7 +1468,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -1531,7 +1531,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -1594,7 +1594,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -1657,7 +1657,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -1720,7 +1720,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -1783,7 +1783,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -1846,7 +1846,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -1909,7 +1909,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -1972,7 +1972,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -2035,7 +2035,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -2098,7 +2098,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -2161,7 +2161,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -2224,7 +2224,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -2287,7 +2287,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -2350,7 +2350,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -2413,7 +2413,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -2476,7 +2476,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -2539,7 +2539,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -2602,7 +2602,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -2665,7 +2665,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -2728,7 +2728,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -2791,7 +2791,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -2825,7 +2825,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -2859,7 +2859,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -2893,7 +2893,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -2927,7 +2927,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -2961,7 +2961,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -2995,7 +2995,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -3029,7 +3029,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -3063,7 +3063,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -3097,7 +3097,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -3131,7 +3131,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -3165,7 +3165,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -3199,7 +3199,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -3233,7 +3233,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -3267,7 +3267,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -3301,7 +3301,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -3335,7 +3335,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -3369,7 +3369,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T01:00:00+08:00",
           "lotteryCode": "周六089",
           "matchDate": "2026-07-05"
@@ -3934,7 +3934,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "官方固定奖金未开售",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -3968,7 +3968,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "官方固定奖金未开售",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -4002,7 +4002,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "官方固定奖金未开售",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -4036,7 +4036,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -4070,7 +4070,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -4104,7 +4104,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -4167,7 +4167,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -4230,7 +4230,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -4293,7 +4293,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -4356,7 +4356,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -4419,7 +4419,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -4482,7 +4482,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -4545,7 +4545,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -4608,7 +4608,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -4671,7 +4671,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -4734,7 +4734,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -4797,7 +4797,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -4860,7 +4860,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -4923,7 +4923,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -4986,7 +4986,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -5049,7 +5049,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -5112,7 +5112,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -5175,7 +5175,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -5238,7 +5238,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -5301,7 +5301,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -5364,7 +5364,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -5427,7 +5427,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -5490,7 +5490,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -5553,7 +5553,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -5616,7 +5616,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -5679,7 +5679,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -5742,7 +5742,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -5805,7 +5805,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -5868,7 +5868,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -5931,7 +5931,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -5994,7 +5994,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -6057,7 +6057,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -6091,7 +6091,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -6125,7 +6125,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -6159,7 +6159,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -6193,7 +6193,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -6227,7 +6227,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -6261,7 +6261,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -6295,7 +6295,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -6329,7 +6329,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -6363,7 +6363,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -6397,7 +6397,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -6431,7 +6431,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -6465,7 +6465,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -6499,7 +6499,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -6533,7 +6533,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -6567,7 +6567,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -6601,7 +6601,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -6635,7 +6635,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-05T05:00:00+08:00",
           "lotteryCode": "周六090",
           "matchDate": "2026-07-05"
@@ -7243,7 +7243,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "胜平负最高概率 48.7% 低于 60% 门槛",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -7277,7 +7277,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "胜平负最高概率 48.7% 低于 60% 门槛",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -7311,7 +7311,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "胜平负最高概率 48.7% 低于 60% 门槛",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -7345,7 +7345,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -7379,7 +7379,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -7413,7 +7413,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -7476,7 +7476,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -7539,7 +7539,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -7602,7 +7602,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -7665,7 +7665,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -7728,7 +7728,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -7791,7 +7791,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -7854,7 +7854,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -7917,7 +7917,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -7980,7 +7980,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -8043,7 +8043,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -8106,7 +8106,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -8169,7 +8169,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -8232,7 +8232,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -8295,7 +8295,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -8358,7 +8358,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -8421,7 +8421,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -8484,7 +8484,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -8547,7 +8547,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -8610,7 +8610,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -8673,7 +8673,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -8736,7 +8736,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -8799,7 +8799,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -8862,7 +8862,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -8925,7 +8925,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -8988,7 +8988,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -9051,7 +9051,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -9114,7 +9114,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -9177,7 +9177,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -9240,7 +9240,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -9303,7 +9303,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -9366,7 +9366,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -9400,7 +9400,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -9434,7 +9434,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -9468,7 +9468,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -9502,7 +9502,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -9536,7 +9536,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -9570,7 +9570,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -9604,7 +9604,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -9638,7 +9638,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -9672,7 +9672,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -9706,7 +9706,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -9740,7 +9740,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -9774,7 +9774,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -9808,7 +9808,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -9842,7 +9842,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -9876,7 +9876,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -9910,7 +9910,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -9944,7 +9944,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T04:00:00+08:00",
           "lotteryCode": "周日091",
           "matchDate": "2026-07-06"
@@ -10448,7 +10448,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "胜平负最高概率 48.2% 低于 60% 门槛",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -10482,7 +10482,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "胜平负最高概率 48.2% 低于 60% 门槛",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -10516,7 +10516,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "胜平负最高概率 48.2% 低于 60% 门槛",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -10550,7 +10550,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -10584,7 +10584,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -10618,7 +10618,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -10681,7 +10681,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -10744,7 +10744,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -10807,7 +10807,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -10870,7 +10870,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -10933,7 +10933,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -10996,7 +10996,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -11059,7 +11059,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -11122,7 +11122,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -11185,7 +11185,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -11248,7 +11248,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -11311,7 +11311,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -11374,7 +11374,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -11437,7 +11437,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -11500,7 +11500,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -11563,7 +11563,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -11626,7 +11626,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -11689,7 +11689,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -11752,7 +11752,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -11815,7 +11815,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -11878,7 +11878,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -11941,7 +11941,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -12004,7 +12004,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -12067,7 +12067,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -12130,7 +12130,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -12193,7 +12193,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -12256,7 +12256,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -12319,7 +12319,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -12382,7 +12382,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -12445,7 +12445,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -12508,7 +12508,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -12571,7 +12571,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -12605,7 +12605,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -12639,7 +12639,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -12673,7 +12673,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -12707,7 +12707,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -12741,7 +12741,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -12775,7 +12775,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -12809,7 +12809,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -12843,7 +12843,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -12877,7 +12877,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -12911,7 +12911,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -12945,7 +12945,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -12979,7 +12979,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -13013,7 +13013,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -13047,7 +13047,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -13081,7 +13081,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -13115,7 +13115,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -13149,7 +13149,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-06T08:00:00+08:00",
           "lotteryCode": "周日092",
           "matchDate": "2026-07-06"
@@ -13653,7 +13653,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "胜平负最高概率 56.3% 低于 60% 门槛",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -13687,7 +13687,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "胜平负最高概率 56.3% 低于 60% 门槛",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -13721,7 +13721,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "胜平负最高概率 56.3% 低于 60% 门槛",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -13755,7 +13755,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -13789,7 +13789,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -13823,7 +13823,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -13886,7 +13886,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -13949,7 +13949,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -14012,7 +14012,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -14075,7 +14075,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -14138,7 +14138,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -14201,7 +14201,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -14264,7 +14264,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -14327,7 +14327,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -14390,7 +14390,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -14453,7 +14453,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -14516,7 +14516,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -14579,7 +14579,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -14642,7 +14642,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -14705,7 +14705,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -14768,7 +14768,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -14831,7 +14831,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -14894,7 +14894,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -14957,7 +14957,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -15020,7 +15020,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -15083,7 +15083,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -15146,7 +15146,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -15209,7 +15209,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -15272,7 +15272,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -15335,7 +15335,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -15398,7 +15398,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -15461,7 +15461,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -15524,7 +15524,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -15587,7 +15587,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -15650,7 +15650,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -15713,7 +15713,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -15776,7 +15776,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -15810,7 +15810,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -15844,7 +15844,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -15878,7 +15878,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -15912,7 +15912,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -15946,7 +15946,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -15980,7 +15980,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -16014,7 +16014,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -16048,7 +16048,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -16082,7 +16082,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -16116,7 +16116,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -16150,7 +16150,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -16184,7 +16184,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -16218,7 +16218,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -16252,7 +16252,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -16286,7 +16286,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -16320,7 +16320,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -16354,7 +16354,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T03:00:00+08:00",
           "lotteryCode": "周一093",
           "matchDate": "2026-07-07"
@@ -16929,7 +16929,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "胜平负最高概率 47.7% 低于 60% 门槛",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -16963,7 +16963,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "胜平负最高概率 47.7% 低于 60% 门槛",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -16997,7 +16997,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "胜平负最高概率 47.7% 低于 60% 门槛",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -17031,7 +17031,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -17065,7 +17065,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -17099,7 +17099,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -17162,7 +17162,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -17225,7 +17225,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -17288,7 +17288,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -17351,7 +17351,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -17414,7 +17414,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -17477,7 +17477,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -17540,7 +17540,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -17603,7 +17603,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -17666,7 +17666,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -17729,7 +17729,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -17792,7 +17792,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -17855,7 +17855,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -17918,7 +17918,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -17981,7 +17981,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -18044,7 +18044,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -18107,7 +18107,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -18170,7 +18170,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -18233,7 +18233,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -18296,7 +18296,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -18359,7 +18359,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -18422,7 +18422,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -18485,7 +18485,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -18548,7 +18548,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -18611,7 +18611,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -18674,7 +18674,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -18737,7 +18737,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -18800,7 +18800,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -18863,7 +18863,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -18926,7 +18926,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -18989,7 +18989,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -19052,7 +19052,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -19086,7 +19086,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -19120,7 +19120,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -19154,7 +19154,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -19188,7 +19188,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -19222,7 +19222,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -19256,7 +19256,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -19290,7 +19290,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -19324,7 +19324,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -19358,7 +19358,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -19392,7 +19392,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -19426,7 +19426,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -19460,7 +19460,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -19494,7 +19494,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -19528,7 +19528,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -19562,7 +19562,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -19596,7 +19596,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -19630,7 +19630,7 @@
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-04T17:02:00+08:00",
+          "observedAt": "2026-07-04T17:06:44+08:00",
           "kickoffBeijing": "2026-07-07T08:00:00+08:00",
           "lotteryCode": "周一094",
           "matchDate": "2026-07-07"
@@ -19677,35 +19677,35 @@
     {
       "source": "中国体育彩票",
       "field": "固定奖金/单关资格",
-      "observedAt": "2026-07-04T17:02:00+08:00",
+      "observedAt": "2026-07-04T17:06:44+08:00",
       "confidence": 1.0,
       "status": "fresh"
     },
     {
       "source": "football-data.org 免费档",
       "field": "2026 世界杯赛程/赛果",
-      "observedAt": "2026-07-04T17:02:00+08:00",
+      "observedAt": "2026-07-04T17:06:44+08:00",
       "confidence": 0.9,
       "status": "missing"
     },
     {
       "source": "World Football Elo Ratings",
       "field": "国家队基础实力",
-      "observedAt": "2026-07-04T17:02:00+08:00",
+      "observedAt": "2026-07-04T17:06:44+08:00",
       "confidence": 0.72,
       "status": "missing"
     },
     {
       "source": "API-Football 免费档",
       "field": "预计首发/伤停/球员数据",
-      "observedAt": "2026-07-04T17:02:00+08:00",
+      "observedAt": "2026-07-04T17:06:44+08:00",
       "confidence": 0.0,
       "status": "missing"
     },
     {
       "source": "Open-Meteo",
       "field": "开球时刻天气",
-      "observedAt": "2026-07-04T17:02:00+08:00",
+      "observedAt": "2026-07-04T17:06:44+08:00",
       "confidence": 0.8,
       "status": "manual"
     }
