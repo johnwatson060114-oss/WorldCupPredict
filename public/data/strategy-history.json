@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-04T13:06:10+08:00",
+  "generatedAt": "2026-07-04T15:52:03+08:00",
   "finalDate": "2026-07-19",
   "days": [
     {
@@ -2099,7 +2099,68 @@
           "status": "no-bet"
         }
       ],
-      "review": null
+      "review": {
+        "snapshotLabel": "升级前基线快照",
+        "matches": [
+          {
+            "matchId": "西班牙 vs 奥地利",
+            "label": "西班牙 vs 奥地利",
+            "predictedScore": "1-1",
+            "actualScore": "3-0",
+            "predictedOutcome": "home",
+            "predictedOutcomeSource": "outcomeDecision",
+            "actualOutcome": "home",
+            "outcomeCorrect": true,
+            "exactScore": false,
+            "goalAbsoluteError": 3,
+            "actualOutcomeProbability": 0.56472,
+            "logLoss": 0.57143,
+            "brier": 0.2867,
+            "diagnosis": "赛果方向正确，但比分尺度仍有偏差。"
+          },
+          {
+            "matchId": "葡萄牙 vs 克罗地亚",
+            "label": "葡萄牙 vs 克罗地亚",
+            "predictedScore": "1-1",
+            "actualScore": "2-1",
+            "predictedOutcome": "home",
+            "predictedOutcomeSource": "outcomeDecision",
+            "actualOutcome": "home",
+            "outcomeCorrect": true,
+            "exactScore": false,
+            "goalAbsoluteError": 1,
+            "actualOutcomeProbability": 0.57329,
+            "logLoss": 0.55636,
+            "brier": 0.27456,
+            "diagnosis": "赛果方向正确，但比分尺度仍有偏差。"
+          },
+          {
+            "matchId": "瑞士 vs 阿尔及利亚",
+            "label": "瑞士 vs 阿尔及利亚",
+            "predictedScore": "2-1",
+            "actualScore": "2-0",
+            "predictedOutcome": "home",
+            "predictedOutcomeSource": "outcomeDecision",
+            "actualOutcome": "home",
+            "outcomeCorrect": true,
+            "exactScore": false,
+            "goalAbsoluteError": 1,
+            "actualOutcomeProbability": 0.59219,
+            "logLoss": 0.52393,
+            "brier": 0.24948,
+            "diagnosis": "赛果方向正确，但比分尺度仍有偏差。"
+          }
+        ],
+        "summary": {
+          "matchCount": 3,
+          "outcomeAccuracy": 1.0,
+          "exactScoreAccuracy": 0.0,
+          "meanGoalAbsoluteError": 1.667,
+          "logLoss": 0.55057,
+          "brier": 0.27025,
+          "strategyDiagnosis": "策略结果已按真实派彩结算，继续观察多日样本后再调整资金规则。"
+        }
+      }
     },
     {
       "targetDate": "2026-07-04",
@@ -2199,8 +2260,8 @@
     },
     {
       "targetDate": "2026-07-05",
-      "generatedAt": "2026-07-04T12:30:00+08:00",
-      "coverage": 0.76,
+      "generatedAt": "2026-07-04T15:50:59+08:00",
+      "coverage": 0.57,
       "strategies": [
         {
           "key": "conservative",

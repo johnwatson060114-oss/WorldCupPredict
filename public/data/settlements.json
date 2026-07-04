@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-04T13:04:42+08:00",
+  "generatedAt": "2026-07-04T15:50:58+08:00",
   "matches": [
     {
       "matchId": "537327",
@@ -3172,6 +3172,16 @@
       "closingOddsCheckedAt": "2026-07-04T13:04:24+08:00"
     },
     {
+      "matchId": "西班牙 vs 奥地利",
+      "fixtureId": 537420,
+      "matchLabel": "西班牙 vs 奥地利",
+      "homeScore": 3,
+      "awayScore": 0,
+      "halfTimeHomeScore": 1,
+      "halfTimeAwayScore": 0,
+      "settledAt": "2026-07-02T19:00:00Z"
+    },
+    {
       "matchId": "2040354",
       "matchLabel": "??? vs ???",
       "homeScore": 3,
@@ -3184,6 +3194,16 @@
       "settlementSourceUrl": "https://www.theguardian.com/football/live/2026/jul/02/spain-v-austria-world-cup-2026-last-32-live"
     },
     {
+      "matchId": "葡萄牙 vs 克罗地亚",
+      "fixtureId": 537419,
+      "matchLabel": "葡萄牙 vs 克罗地亚",
+      "homeScore": 2,
+      "awayScore": 1,
+      "halfTimeHomeScore": 0,
+      "halfTimeAwayScore": 0,
+      "settledAt": "2026-07-02T23:00:00Z"
+    },
+    {
       "matchId": "2040355",
       "matchLabel": "??? vs ????",
       "homeScore": 2,
@@ -3194,6 +3214,16 @@
       "settledAt": "2026-07-02T23:00:00Z",
       "settlementSource": "external_result_review",
       "settlementSourceUrl": "https://www.theguardian.com/football/live/2026/jul/02/portugal-v-croatia-world-cup-2026-last-32-live"
+    },
+    {
+      "matchId": "瑞士 vs 阿尔及利亚",
+      "fixtureId": 537429,
+      "matchLabel": "瑞士 vs 阿尔及利亚",
+      "homeScore": 2,
+      "awayScore": 0,
+      "halfTimeHomeScore": 1,
+      "halfTimeAwayScore": 0,
+      "settledAt": "2026-07-03T03:00:00Z"
     },
     {
       "matchId": "2040356",
