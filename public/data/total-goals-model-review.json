@@ -1,78 +1,78 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-04T15:53:18+08:00",
+  "generatedAt": "2026-07-05T16:07:16+08:00",
   "timezone": "Asia/Shanghai",
   "scheduledReviewStartDate": "2026-06-17",
   "productionPolicy": "current model remains primary; optimized model runs as shadow until adoption gates pass",
   "currentModel": {
     "role": "production",
     "spec": "hierarchical_poisson[half_life_days=730,rho=0,shrinkage=24,tournament_tier=1]",
-    "matches": 92,
+    "matches": 94,
     "exact_hits": 23,
-    "exact_accuracy": 0.25,
+    "exact_accuracy": 0.24468085106382978,
     "core_hits": 43,
-    "core_accuracy": 0.4673913043478261,
-    "average_log_loss": 1.8978100572356298,
-    "average_rps": 0.13396690427860894,
-    "calibration_error": 0.034374999999999996,
+    "core_accuracy": 0.4574468085106383,
+    "average_log_loss": 1.892002212640229,
+    "average_rps": 0.1332377577502797,
+    "calibration_error": 0.03297872340425532,
     "predicted_bucket_counts": {
       "0": 0,
       "1": 3,
-      "2": 76,
+      "2": 78,
       "3": 13,
       "4": 0,
       "5": 0,
       "6": 0,
       "7+": 0
     },
-    "average_bucketed_expected_total": 2.6331681670181206
+    "average_bucketed_expected_total": 2.6299918659740866
   },
   "shadowModel": {
     "role": "shadow",
     "spec": "hierarchical_poisson[rho=0,shrinkage=16]",
-    "matches": 92,
+    "matches": 94,
     "exact_hits": 20,
-    "exact_accuracy": 0.21739130434782608,
+    "exact_accuracy": 0.2127659574468085,
     "core_hits": 45,
-    "core_accuracy": 0.4891304347826087,
-    "average_log_loss": 1.8987874256009387,
-    "average_rps": 0.13418549822484732,
-    "calibration_error": 0.03614130434782609,
+    "core_accuracy": 0.4787234042553192,
+    "average_log_loss": 1.893048803728373,
+    "average_rps": 0.13347136552913677,
+    "calibration_error": 0.03351063829787235,
     "predicted_bucket_counts": {
       "0": 0,
       "1": 8,
-      "2": 68,
+      "2": 70,
       "3": 16,
       "4": 0,
       "5": 0,
       "6": 0,
       "7+": 0
     },
-    "average_bucketed_expected_total": 2.606948294676161
+    "average_bucketed_expected_total": 2.603355312311606
   },
   "tailShadowModel": {
     "role": "shadow_only",
     "spec": "poisson_nb_mixture[dispersion=2,half_life_days=730,rho=-0.04,shrinkage=8,tail_weight=0.2]",
     "reason": "tests wider high-score tails; first round is diagnostic only",
-    "matches": 92,
+    "matches": 94,
     "exact_hits": 19,
-    "exact_accuracy": 0.20652173913043478,
+    "exact_accuracy": 0.20212765957446807,
     "core_hits": 42,
-    "core_accuracy": 0.45652173913043476,
-    "average_log_loss": 1.9070874197790941,
-    "average_rps": 0.13510988244615343,
-    "calibration_error": 0.03953804347826087,
+    "core_accuracy": 0.44680851063829785,
+    "average_log_loss": 1.9018830048154696,
+    "average_rps": 0.13439838548986738,
+    "calibration_error": 0.03976063829787234,
     "predicted_bucket_counts": {
       "0": 0,
       "1": 14,
-      "2": 70,
+      "2": 72,
       "3": 8,
       "4": 0,
       "5": 0,
       "6": 0,
       "7+": 0
     },
-    "average_bucketed_expected_total": 2.553595567137172
+    "average_bucketed_expected_total": 2.5495745537241503
   },
   "strengthAllocationPolicy": {
     "eloAllocationWeight": 1.0,
@@ -208,9 +208,9 @@
       "second_round_forward_sample": true
     },
     "deltas": {
-      "log_loss_improvement": -0.0009773683653089282,
-      "rps_improvement": -0.00021859394623838235,
-      "calibration_delta": 0.0017663043478260976
+      "log_loss_improvement": -0.0010465910881440887,
+      "rps_improvement": -0.00023360777885705897,
+      "calibration_delta": 0.000531914893617029
     },
     "thresholds": {
       "min_matches": 24,
@@ -222,9 +222,9 @@
   "dataRefresh": {
     "status": "ok",
     "url": "https://raw.githubusercontent.com/martj42/international_results/master/results.csv",
-    "bytes": 3726085,
+    "bytes": 3726158,
     "path": "artifacts/total-goals-backtest/international_results.csv",
-    "refreshedAt": "2026-07-04T15:52:03+08:00"
+    "refreshedAt": "2026-07-05T16:05:57+08:00"
   },
   "manualResultRows": 24,
   "comparisonPath": "artifacts/total-goals-backtest/model_comparison_2026.csv"

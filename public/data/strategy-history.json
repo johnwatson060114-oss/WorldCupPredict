@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-04T15:52:03+08:00",
+  "generatedAt": "2026-07-05T16:05:57+08:00",
   "finalDate": "2026-07-19",
   "days": [
     {
@@ -2260,8 +2260,88 @@
     },
     {
       "targetDate": "2026-07-05",
-      "generatedAt": "2026-07-04T15:50:59+08:00",
-      "coverage": 0.57,
+      "generatedAt": "2026-07-04T17:16:03+08:00",
+      "coverage": 0.76,
+      "strategies": [
+        {
+          "key": "conservative",
+          "name": "稳健",
+          "stake": 0,
+          "payout": 0,
+          "profit": 0,
+          "roi": null,
+          "status": "no-bet"
+        },
+        {
+          "key": "balanced",
+          "name": "均衡",
+          "stake": 0,
+          "payout": 0,
+          "profit": 0,
+          "roi": null,
+          "status": "no-bet"
+        },
+        {
+          "key": "aggressive",
+          "name": "激进",
+          "stake": 0,
+          "payout": 0,
+          "profit": 0,
+          "roi": null,
+          "status": "no-bet"
+        }
+      ],
+      "review": {
+        "snapshotLabel": "升级前基线快照",
+        "matches": [
+          {
+            "matchId": "2040359",
+            "label": "加拿大 vs 摩洛哥",
+            "predictedScore": "0-1",
+            "actualScore": "0-3",
+            "predictedOutcome": "away",
+            "predictedOutcomeSource": "outcomeDecision",
+            "actualOutcome": "away",
+            "outcomeCorrect": true,
+            "exactScore": false,
+            "goalAbsoluteError": 2,
+            "actualOutcomeProbability": 0.53745,
+            "logLoss": 0.62092,
+            "brier": 0.32404,
+            "diagnosis": "赛果方向正确，但比分尺度仍有偏差。"
+          },
+          {
+            "matchId": "2040373",
+            "label": "巴拉圭 vs 法国",
+            "predictedScore": "0-2",
+            "actualScore": "0-1",
+            "predictedOutcome": "away",
+            "predictedOutcomeSource": "outcomeDecision",
+            "actualOutcome": "away",
+            "outcomeCorrect": true,
+            "exactScore": false,
+            "goalAbsoluteError": 1,
+            "actualOutcomeProbability": 0.77962,
+            "logLoss": 0.24895,
+            "brier": 0.07908,
+            "diagnosis": "赛果方向正确，但比分尺度仍有偏差。"
+          }
+        ],
+        "summary": {
+          "matchCount": 2,
+          "outcomeAccuracy": 1.0,
+          "exactScoreAccuracy": 0.0,
+          "meanGoalAbsoluteError": 1.5,
+          "logLoss": 0.43494,
+          "brier": 0.20156,
+          "strategyDiagnosis": "策略结果已按真实派彩结算，继续观察多日样本后再调整资金规则。"
+        }
+      }
+    },
+    {
+      "targetDate": "2026-07-06",
+      "generatedAt": "2026-07-05T16:05:51+08:00",
+      "coverage": 0.7874,
       "strategies": [
         {
           "key": "conservative",
