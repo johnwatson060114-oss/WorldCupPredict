@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-04T13:05:47+08:00",
+  "generatedAt": "2026-07-05T14:07:58+08:00",
   "scope": {
     "tournament": "FIFA World Cup 2026",
     "predictionTarget": "90_minutes",
     "policy": "archived forecasts joined to local settlements by match id; full score matrix reconstructed from archived adjustedExpectedGoals; knockout score calibration applied from archived knockoutContext",
-    "matchedSettledMatches": 76,
-    "settlementCount": 88
+    "matchedSettledMatches": 79,
+    "settlementCount": 91
   },
   "metricDefinitions": {
     "totalExactAccuracy": "predicted total-goals bucket with highest probability equals actual total-goals bucket",
@@ -18,70 +18,70 @@
   "metrics": {
     "allMatchedSettled": {
       "base": {
-        "matches": 76,
+        "matches": 79,
         "totalExactHits": 16,
-        "totalExactAccuracy": 0.21052631578947367,
-        "totalAdjacentCoreHits": 43,
-        "totalAdjacentCoreAccuracy": 0.5657894736842105,
-        "averageTotalLogLoss": 1.929677375193755,
-        "averageTotalRps": 0.13719263921657224,
+        "totalExactAccuracy": 0.20253164556962025,
+        "totalAdjacentCoreHits": 46,
+        "totalAdjacentCoreAccuracy": 0.5822784810126582,
+        "averageTotalLogLoss": 1.9168821713740545,
+        "averageTotalRps": 0.13514547940794394,
         "scoreTop1Hits": 8,
-        "scoreTop1Accuracy": 0.10526315789473684,
+        "scoreTop1Accuracy": 0.10126582278481013,
         "scoreTop3Hits": 26,
-        "scoreTop3Accuracy": 0.34210526315789475,
-        "scoreTop5Hits": 40,
-        "scoreTop5Accuracy": 0.5263157894736842,
-        "averageScoreLogLoss": 2.838901494228978
+        "scoreTop3Accuracy": 0.3291139240506329,
+        "scoreTop5Hits": 42,
+        "scoreTop5Accuracy": 0.5316455696202531,
+        "averageScoreLogLoss": 2.830976836219068
       },
       "calibrated": {
-        "matches": 76,
+        "matches": 79,
         "totalExactHits": 16,
-        "totalExactAccuracy": 0.21052631578947367,
-        "totalAdjacentCoreHits": 43,
-        "totalAdjacentCoreAccuracy": 0.5657894736842105,
-        "averageTotalLogLoss": 1.930188842632373,
-        "averageTotalRps": 0.13726187435909432,
+        "totalExactAccuracy": 0.20253164556962025,
+        "totalAdjacentCoreHits": 46,
+        "totalAdjacentCoreAccuracy": 0.5822784810126582,
+        "averageTotalLogLoss": 1.9174657877917758,
+        "averageTotalRps": 0.13523593052615573,
         "scoreTop1Hits": 8,
-        "scoreTop1Accuracy": 0.10526315789473684,
-        "scoreTop3Hits": 27,
-        "scoreTop3Accuracy": 0.35526315789473684,
-        "scoreTop5Hits": 40,
-        "scoreTop5Accuracy": 0.5263157894736842,
-        "averageScoreLogLoss": 2.838931338147739
+        "scoreTop1Accuracy": 0.10126582278481013,
+        "scoreTop3Hits": 28,
+        "scoreTop3Accuracy": 0.35443037974683544,
+        "scoreTop5Hits": 42,
+        "scoreTop5Accuracy": 0.5316455696202531,
+        "averageScoreLogLoss": 2.8311314465047315
       }
     },
     "knockout": {
       "base": {
-        "matches": 16,
+        "matches": 19,
         "totalExactHits": 7,
-        "totalExactAccuracy": 0.4375,
-        "totalAdjacentCoreHits": 15,
-        "totalAdjacentCoreAccuracy": 0.9375,
-        "averageTotalLogLoss": 1.4795580179749128,
-        "averageTotalRps": 0.06864064865175935,
+        "totalExactAccuracy": 0.3684210526315789,
+        "totalAdjacentCoreHits": 18,
+        "totalAdjacentCoreAccuracy": 0.9473684210526315,
+        "averageTotalLogLoss": 1.4974283848117644,
+        "averageTotalRps": 0.07095277216822263,
         "scoreTop1Hits": 4,
-        "scoreTop1Accuracy": 0.25,
+        "scoreTop1Accuracy": 0.21052631578947367,
         "scoreTop3Hits": 9,
-        "scoreTop3Accuracy": 0.5625,
-        "scoreTop5Hits": 12,
-        "scoreTop5Accuracy": 0.75,
-        "averageScoreLogLoss": 2.3503621646520143
+        "scoreTop3Accuracy": 0.47368421052631576,
+        "scoreTop5Hits": 14,
+        "scoreTop5Accuracy": 0.7368421052631579,
+        "averageScoreLogLoss": 2.3945500597019085
       },
       "calibrated": {
-        "matches": 16,
+        "matches": 19,
         "totalExactHits": 7,
-        "totalExactAccuracy": 0.4375,
-        "totalAdjacentCoreHits": 15,
-        "totalAdjacentCoreAccuracy": 0.9375,
-        "averageTotalLogLoss": 1.4819874883083484,
-        "averageTotalRps": 0.06896951557873923,
+        "totalExactAccuracy": 0.3684210526315789,
+        "totalAdjacentCoreHits": 18,
+        "totalAdjacentCoreAccuracy": 0.9473684210526315,
+        "averageTotalLogLoss": 1.4998550004433415,
+        "averageTotalRps": 0.07132885839657685,
         "scoreTop1Hits": 4,
-        "scoreTop1Accuracy": 0.25,
-        "scoreTop3Hits": 10,
-        "scoreTop3Accuracy": 0.625,
-        "scoreTop5Hits": 12,
-        "scoreTop5Accuracy": 0.75,
-        "averageScoreLogLoss": 2.3505039232661273
+        "scoreTop1Accuracy": 0.21052631578947367,
+        "scoreTop3Hits": 11,
+        "scoreTop3Accuracy": 0.5789473684210527,
+        "scoreTop5Hits": 14,
+        "scoreTop5Accuracy": 0.7368421052631579,
+        "averageScoreLogLoss": 2.3951929129949305
       }
     },
     "latestCompleted": {
@@ -8437,6 +8437,139 @@
       }
     },
     {
+      "matchId": "西班牙 vs 奥地利",
+      "homeTeam": "西班牙",
+      "awayTeam": "奥地利",
+      "kickoff": "2026-07-03T03:00:00+08:00",
+      "stage": "knockout",
+      "historyPath": "public/data/history/2026-07-03.json",
+      "historySection": "matches",
+      "historyGeneratedAt": "2026-07-02T16:15:00+08:00",
+      "settlementScoreBasis": "fulltime",
+      "actualScore": "3:0",
+      "xg": {
+        "home": 1.9294,
+        "away": 1.0718
+      },
+      "base": {
+        "predictedTotalBucket": "2",
+        "actualTotalBucket": "3",
+        "totalExactHit": false,
+        "totalAdjacentCoreHit": true,
+        "totalLogLoss": 1.4959168590699288,
+        "totalRps": 0.05508961365231578,
+        "topScore": "1:1",
+        "actualScore": "3:0",
+        "scoreTop1Hit": false,
+        "scoreTop3Hit": false,
+        "scoreTop5Hit": false,
+        "scoreLogLoss": 2.8213262638752905,
+        "actualScoreProbability": 0.05952694189991147,
+        "topScores": [
+          {
+            "score": "1:1",
+            "probability": 0.11106002890087541
+          },
+          {
+            "score": "2:1",
+            "probability": 0.09920334248210602
+          },
+          {
+            "score": "2:0",
+            "probability": 0.09255769964742118
+          },
+          {
+            "score": "1:0",
+            "probability": 0.08771787317181787
+          },
+          {
+            "score": "3:1",
+            "probability": 0.06380097632832511
+          }
+        ],
+        "totalProbabilities": {
+          "0": 0.05795432609952683,
+          "1": 0.13278930744996972,
+          "2": 0.23218018199188256,
+          "3": 0.22404309458968408,
+          "4": 0.16809953387063997,
+          "5": 0.10090006421051294,
+          "6": 0.05047021211809857,
+          "7+": 0.033563279669685336
+        }
+      },
+      "calibrated": {
+        "predictedTotalBucket": "2",
+        "actualTotalBucket": "3",
+        "totalExactHit": false,
+        "totalAdjacentCoreHit": true,
+        "totalLogLoss": 1.49515258110819,
+        "totalRps": 0.0547469591438508,
+        "topScore": "1:1",
+        "actualScore": "3:0",
+        "scoreTop1Hit": false,
+        "scoreTop3Hit": false,
+        "scoreTop5Hit": false,
+        "scoreLogLoss": 2.8151515899504873,
+        "actualScoreProbability": 0.05989563847502026,
+        "topScores": [
+          {
+            "score": "1:1",
+            "probability": 0.11160430445358546
+          },
+          {
+            "score": "2:1",
+            "probability": 0.09864115253067263
+          },
+          {
+            "score": "2:0",
+            "probability": 0.09200180484868271
+          },
+          {
+            "score": "1:0",
+            "probability": 0.08441662957419362
+          },
+          {
+            "score": "3:1",
+            "probability": 0.06481882772024226
+          }
+        ],
+        "totalProbabilities": {
+          "0": 0.05488201001339918,
+          "1": 0.12827838455214616,
+          "2": 0.23180882299028072,
+          "3": 0.22421439124014797,
+          "4": 0.17184826655365423,
+          "5": 0.10291246190188136,
+          "6": 0.051901600895074715,
+          "7+": 0.03415406185341568
+        }
+      },
+      "scoreCalibration": {
+        "applied": true,
+        "policy": "knockout_score_total_matrix_calibration_v2",
+        "profile": "favorite_tail",
+        "intensity": 0.25,
+        "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
+        "favoriteSide": "home",
+        "totalGoalWeights": {
+          "0": 0.84,
+          "1": 0.94,
+          "2": 1.0,
+          "3": 1.05,
+          "4": 1.09,
+          "5": 1.12,
+          "6": 1.12,
+          "7+": 1.1
+        },
+        "expectedTotalGoalsBefore": 2.9839,
+        "expectedTotalGoalsAfter": 3.017,
+        "fullIntensityExpectedTotalGoalsAfter": 3.1161,
+        "outcomePreserved": true,
+        "maxCellDelta": 0.003301
+      }
+    },
+    {
       "matchId": "2040355",
       "homeTeam": "葡萄牙",
       "awayTeam": "克罗地亚",
@@ -8570,6 +8703,139 @@
       }
     },
     {
+      "matchId": "葡萄牙 vs 克罗地亚",
+      "homeTeam": "葡萄牙",
+      "awayTeam": "克罗地亚",
+      "kickoff": "2026-07-03T07:00:00+08:00",
+      "stage": "knockout",
+      "historyPath": "public/data/history/2026-07-03.json",
+      "historySection": "matches",
+      "historyGeneratedAt": "2026-07-02T16:15:00+08:00",
+      "settlementScoreBasis": "fulltime",
+      "actualScore": "2:1",
+      "xg": {
+        "home": 1.8655,
+        "away": 0.964
+      },
+      "base": {
+        "predictedTotalBucket": "2",
+        "actualTotalBucket": "3",
+        "totalExactHit": false,
+        "totalAdjacentCoreHit": true,
+        "totalLogLoss": 1.5009550471011326,
+        "totalRps": 0.056377487513542233,
+        "topScore": "1:1",
+        "actualScore": "2:1",
+        "scoreTop1Hit": false,
+        "scoreTop3Hit": false,
+        "scoreTop5Hit": true,
+        "scoreLogLoss": 2.312248568247788,
+        "actualScoreProbability": 0.0990383066085572,
+        "topScores": [
+          {
+            "score": "1:1",
+            "probability": 0.11467313978798369
+          },
+          {
+            "score": "2:0",
+            "probability": 0.10273683258149088
+          },
+          {
+            "score": "1:0",
+            "probability": 0.10164971112603197
+          },
+          {
+            "score": "2:1",
+            "probability": 0.0990383066085572
+          },
+          {
+            "score": "0:0",
+            "probability": 0.0675369321009718
+          }
+        ],
+        "totalProbabilities": {
+          "0": 0.0675369321009718,
+          "1": 0.15007249540887987,
+          "2": 0.24484401019957083,
+          "3": 0.22291716206359644,
+          "4": 0.15768602751473654,
+          "5": 0.08923452297058941,
+          "6": 0.04208151379088045,
+          "7+": 0.025627335950774745
+        }
+      },
+      "calibrated": {
+        "predictedTotalBucket": "2",
+        "actualTotalBucket": "3",
+        "totalExactHit": false,
+        "totalAdjacentCoreHit": true,
+        "totalLogLoss": 1.4985429167283686,
+        "totalRps": 0.055640861699296204,
+        "topScore": "1:1",
+        "actualScore": "2:1",
+        "scoreTop1Hit": false,
+        "scoreTop3Hit": true,
+        "scoreTop5Hit": true,
+        "scoreLogLoss": 2.316468277864122,
+        "actualScoreProbability": 0.0986212742103907,
+        "topScores": [
+          {
+            "score": "1:1",
+            "probability": 0.11564225390998817
+          },
+          {
+            "score": "2:0",
+            "probability": 0.10226920333308068
+          },
+          {
+            "score": "2:1",
+            "probability": 0.0986212742103907
+          },
+          {
+            "score": "1:0",
+            "probability": 0.09795280371189946
+          },
+          {
+            "score": "3:0",
+            "probability": 0.06437842507149204
+          }
+        ],
+        "totalProbabilities": {
+          "0": 0.06414191871935901,
+          "1": 0.1451625466303563,
+          "2": 0.24505215384125592,
+          "3": 0.22345551635015454,
+          "4": 0.16153602564767408,
+          "5": 0.09117404763933885,
+          "6": 0.04335590846822316,
+          "7+": 0.026121882703638192
+        }
+      },
+      "scoreCalibration": {
+        "applied": true,
+        "policy": "knockout_score_total_matrix_calibration_v2",
+        "profile": "favorite_tail",
+        "intensity": 0.25,
+        "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
+        "favoriteSide": "home",
+        "totalGoalWeights": {
+          "0": 0.84,
+          "1": 0.94,
+          "2": 1.0,
+          "3": 1.05,
+          "4": 1.09,
+          "5": 1.12,
+          "6": 1.12,
+          "7+": 1.1
+        },
+        "expectedTotalGoalsBefore": 2.8173,
+        "expectedTotalGoalsAfter": 2.8506,
+        "fullIntensityExpectedTotalGoalsAfter": 2.9506,
+        "outcomePreserved": true,
+        "maxCellDelta": 0.003697
+      }
+    },
+    {
       "matchId": "2040356",
       "homeTeam": "瑞士",
       "awayTeam": "阿尔及利",
@@ -8700,6 +8966,139 @@
         "fullIntensityExpectedTotalGoalsAfter": 2.4523,
         "outcomePreserved": true,
         "maxCellDelta": 0.002149
+      }
+    },
+    {
+      "matchId": "瑞士 vs 阿尔及利亚",
+      "homeTeam": "瑞士",
+      "awayTeam": "阿尔及利亚",
+      "kickoff": "2026-07-03T11:00:00+08:00",
+      "stage": "knockout",
+      "historyPath": "public/data/history/2026-07-03.json",
+      "historySection": "matches",
+      "historyGeneratedAt": "2026-07-02T16:15:00+08:00",
+      "settlementScoreBasis": "fulltime",
+      "actualScore": "2:0",
+      "xg": {
+        "home": 2.3697,
+        "away": 1.4198
+      },
+      "base": {
+        "predictedTotalBucket": "3",
+        "actualTotalBucket": "2",
+        "totalExactHit": false,
+        "totalAdjacentCoreHit": true,
+        "totalLogLoss": 1.781339117653857,
+        "totalRps": 0.1383851916022222,
+        "topScore": "2:1",
+        "actualScore": "2:0",
+        "scoreTop1Hit": false,
+        "scoreTop3Hit": false,
+        "scoreTop5Hit": true,
+        "scoreLogLoss": 2.7570816677809535,
+        "actualScoreProbability": 0.06347674454614588,
+        "topScores": [
+          {
+            "score": "2:1",
+            "probability": 0.0901242819066179
+          },
+          {
+            "score": "1:1",
+            "probability": 0.08214898464712608
+          },
+          {
+            "score": "3:1",
+            "probability": 0.07118917027803748
+          },
+          {
+            "score": "2:2",
+            "probability": 0.06397922772550806
+          },
+          {
+            "score": "2:0",
+            "probability": 0.06347674454614588
+          }
+        ],
+        "totalProbabilities": {
+          "0": 0.028692889232829283,
+          "1": 0.0735019595541372,
+          "2": 0.16841247208500965,
+          "3": 0.20504651290673234,
+          "4": 0.19425594016501554,
+          "5": 0.14722657705106526,
+          "6": 0.09298585228916864,
+          "7+": 0.08987779671604211
+        }
+      },
+      "calibrated": {
+        "predictedTotalBucket": "3",
+        "actualTotalBucket": "2",
+        "totalExactHit": false,
+        "totalAdjacentCoreHit": true,
+        "totalLogLoss": 1.7917496976533536,
+        "totalRps": 0.14134823943198524,
+        "topScore": "2:1",
+        "actualScore": "2:0",
+        "scoreTop1Hit": false,
+        "scoreTop3Hit": false,
+        "scoreTop5Hit": true,
+        "scoreLogLoss": 2.768982706831032,
+        "actualScoreProbability": 0.06272578280652552,
+        "topScores": [
+          {
+            "score": "2:1",
+            "probability": 0.08908787872731429
+          },
+          {
+            "score": "1:1",
+            "probability": 0.0815851806027978
+          },
+          {
+            "score": "3:1",
+            "probability": 0.07187292467874955
+          },
+          {
+            "score": "2:2",
+            "probability": 0.06544881121411583
+          },
+          {
+            "score": "2:0",
+            "probability": 0.06272578280652552
+          }
+        ],
+        "totalProbabilities": {
+          "0": 0.02691094968956555,
+          "1": 0.0706229881366308,
+          "2": 0.16666829527040725,
+          "3": 0.2039351310105341,
+          "4": 0.19694531550336405,
+          "5": 0.14918126196703022,
+          "6": 0.09486859643142674,
+          "7+": 0.09086746199104125
+        }
+      },
+      "scoreCalibration": {
+        "applied": true,
+        "policy": "knockout_score_total_matrix_calibration_v2",
+        "profile": "favorite_tail",
+        "intensity": 0.25,
+        "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
+        "favoriteSide": "home",
+        "totalGoalWeights": {
+          "0": 0.84,
+          "1": 0.94,
+          "2": 1.0,
+          "3": 1.05,
+          "4": 1.09,
+          "5": 1.12,
+          "6": 1.12,
+          "7+": 1.1
+        },
+        "expectedTotalGoalsBefore": 3.7257,
+        "expectedTotalGoalsAfter": 3.7547,
+        "fullIntensityExpectedTotalGoalsAfter": 3.8419,
+        "outcomePreserved": true,
+        "maxCellDelta": 0.002028
       }
     },
     {
@@ -10968,6 +11367,139 @@
       }
     },
     {
+      "matchId": "西班牙 vs 奥地利",
+      "homeTeam": "西班牙",
+      "awayTeam": "奥地利",
+      "kickoff": "2026-07-03T03:00:00+08:00",
+      "stage": "knockout",
+      "historyPath": "public/data/history/2026-07-03.json",
+      "historySection": "matches",
+      "historyGeneratedAt": "2026-07-02T16:15:00+08:00",
+      "settlementScoreBasis": "fulltime",
+      "actualScore": "3:0",
+      "xg": {
+        "home": 1.9294,
+        "away": 1.0718
+      },
+      "base": {
+        "predictedTotalBucket": "2",
+        "actualTotalBucket": "3",
+        "totalExactHit": false,
+        "totalAdjacentCoreHit": true,
+        "totalLogLoss": 1.4959168590699288,
+        "totalRps": 0.05508961365231578,
+        "topScore": "1:1",
+        "actualScore": "3:0",
+        "scoreTop1Hit": false,
+        "scoreTop3Hit": false,
+        "scoreTop5Hit": false,
+        "scoreLogLoss": 2.8213262638752905,
+        "actualScoreProbability": 0.05952694189991147,
+        "topScores": [
+          {
+            "score": "1:1",
+            "probability": 0.11106002890087541
+          },
+          {
+            "score": "2:1",
+            "probability": 0.09920334248210602
+          },
+          {
+            "score": "2:0",
+            "probability": 0.09255769964742118
+          },
+          {
+            "score": "1:0",
+            "probability": 0.08771787317181787
+          },
+          {
+            "score": "3:1",
+            "probability": 0.06380097632832511
+          }
+        ],
+        "totalProbabilities": {
+          "0": 0.05795432609952683,
+          "1": 0.13278930744996972,
+          "2": 0.23218018199188256,
+          "3": 0.22404309458968408,
+          "4": 0.16809953387063997,
+          "5": 0.10090006421051294,
+          "6": 0.05047021211809857,
+          "7+": 0.033563279669685336
+        }
+      },
+      "calibrated": {
+        "predictedTotalBucket": "2",
+        "actualTotalBucket": "3",
+        "totalExactHit": false,
+        "totalAdjacentCoreHit": true,
+        "totalLogLoss": 1.49515258110819,
+        "totalRps": 0.0547469591438508,
+        "topScore": "1:1",
+        "actualScore": "3:0",
+        "scoreTop1Hit": false,
+        "scoreTop3Hit": false,
+        "scoreTop5Hit": false,
+        "scoreLogLoss": 2.8151515899504873,
+        "actualScoreProbability": 0.05989563847502026,
+        "topScores": [
+          {
+            "score": "1:1",
+            "probability": 0.11160430445358546
+          },
+          {
+            "score": "2:1",
+            "probability": 0.09864115253067263
+          },
+          {
+            "score": "2:0",
+            "probability": 0.09200180484868271
+          },
+          {
+            "score": "1:0",
+            "probability": 0.08441662957419362
+          },
+          {
+            "score": "3:1",
+            "probability": 0.06481882772024226
+          }
+        ],
+        "totalProbabilities": {
+          "0": 0.05488201001339918,
+          "1": 0.12827838455214616,
+          "2": 0.23180882299028072,
+          "3": 0.22421439124014797,
+          "4": 0.17184826655365423,
+          "5": 0.10291246190188136,
+          "6": 0.051901600895074715,
+          "7+": 0.03415406185341568
+        }
+      },
+      "scoreCalibration": {
+        "applied": true,
+        "policy": "knockout_score_total_matrix_calibration_v2",
+        "profile": "favorite_tail",
+        "intensity": 0.25,
+        "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
+        "favoriteSide": "home",
+        "totalGoalWeights": {
+          "0": 0.84,
+          "1": 0.94,
+          "2": 1.0,
+          "3": 1.05,
+          "4": 1.09,
+          "5": 1.12,
+          "6": 1.12,
+          "7+": 1.1
+        },
+        "expectedTotalGoalsBefore": 2.9839,
+        "expectedTotalGoalsAfter": 3.017,
+        "fullIntensityExpectedTotalGoalsAfter": 3.1161,
+        "outcomePreserved": true,
+        "maxCellDelta": 0.003301
+      }
+    },
+    {
       "matchId": "2040355",
       "homeTeam": "葡萄牙",
       "awayTeam": "克罗地亚",
@@ -11101,6 +11633,139 @@
       }
     },
     {
+      "matchId": "葡萄牙 vs 克罗地亚",
+      "homeTeam": "葡萄牙",
+      "awayTeam": "克罗地亚",
+      "kickoff": "2026-07-03T07:00:00+08:00",
+      "stage": "knockout",
+      "historyPath": "public/data/history/2026-07-03.json",
+      "historySection": "matches",
+      "historyGeneratedAt": "2026-07-02T16:15:00+08:00",
+      "settlementScoreBasis": "fulltime",
+      "actualScore": "2:1",
+      "xg": {
+        "home": 1.8655,
+        "away": 0.964
+      },
+      "base": {
+        "predictedTotalBucket": "2",
+        "actualTotalBucket": "3",
+        "totalExactHit": false,
+        "totalAdjacentCoreHit": true,
+        "totalLogLoss": 1.5009550471011326,
+        "totalRps": 0.056377487513542233,
+        "topScore": "1:1",
+        "actualScore": "2:1",
+        "scoreTop1Hit": false,
+        "scoreTop3Hit": false,
+        "scoreTop5Hit": true,
+        "scoreLogLoss": 2.312248568247788,
+        "actualScoreProbability": 0.0990383066085572,
+        "topScores": [
+          {
+            "score": "1:1",
+            "probability": 0.11467313978798369
+          },
+          {
+            "score": "2:0",
+            "probability": 0.10273683258149088
+          },
+          {
+            "score": "1:0",
+            "probability": 0.10164971112603197
+          },
+          {
+            "score": "2:1",
+            "probability": 0.0990383066085572
+          },
+          {
+            "score": "0:0",
+            "probability": 0.0675369321009718
+          }
+        ],
+        "totalProbabilities": {
+          "0": 0.0675369321009718,
+          "1": 0.15007249540887987,
+          "2": 0.24484401019957083,
+          "3": 0.22291716206359644,
+          "4": 0.15768602751473654,
+          "5": 0.08923452297058941,
+          "6": 0.04208151379088045,
+          "7+": 0.025627335950774745
+        }
+      },
+      "calibrated": {
+        "predictedTotalBucket": "2",
+        "actualTotalBucket": "3",
+        "totalExactHit": false,
+        "totalAdjacentCoreHit": true,
+        "totalLogLoss": 1.4985429167283686,
+        "totalRps": 0.055640861699296204,
+        "topScore": "1:1",
+        "actualScore": "2:1",
+        "scoreTop1Hit": false,
+        "scoreTop3Hit": true,
+        "scoreTop5Hit": true,
+        "scoreLogLoss": 2.316468277864122,
+        "actualScoreProbability": 0.0986212742103907,
+        "topScores": [
+          {
+            "score": "1:1",
+            "probability": 0.11564225390998817
+          },
+          {
+            "score": "2:0",
+            "probability": 0.10226920333308068
+          },
+          {
+            "score": "2:1",
+            "probability": 0.0986212742103907
+          },
+          {
+            "score": "1:0",
+            "probability": 0.09795280371189946
+          },
+          {
+            "score": "3:0",
+            "probability": 0.06437842507149204
+          }
+        ],
+        "totalProbabilities": {
+          "0": 0.06414191871935901,
+          "1": 0.1451625466303563,
+          "2": 0.24505215384125592,
+          "3": 0.22345551635015454,
+          "4": 0.16153602564767408,
+          "5": 0.09117404763933885,
+          "6": 0.04335590846822316,
+          "7+": 0.026121882703638192
+        }
+      },
+      "scoreCalibration": {
+        "applied": true,
+        "policy": "knockout_score_total_matrix_calibration_v2",
+        "profile": "favorite_tail",
+        "intensity": 0.25,
+        "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
+        "favoriteSide": "home",
+        "totalGoalWeights": {
+          "0": 0.84,
+          "1": 0.94,
+          "2": 1.0,
+          "3": 1.05,
+          "4": 1.09,
+          "5": 1.12,
+          "6": 1.12,
+          "7+": 1.1
+        },
+        "expectedTotalGoalsBefore": 2.8173,
+        "expectedTotalGoalsAfter": 2.8506,
+        "fullIntensityExpectedTotalGoalsAfter": 2.9506,
+        "outcomePreserved": true,
+        "maxCellDelta": 0.003697
+      }
+    },
+    {
       "matchId": "2040356",
       "homeTeam": "瑞士",
       "awayTeam": "阿尔及利",
@@ -11231,6 +11896,139 @@
         "fullIntensityExpectedTotalGoalsAfter": 2.4523,
         "outcomePreserved": true,
         "maxCellDelta": 0.002149
+      }
+    },
+    {
+      "matchId": "瑞士 vs 阿尔及利亚",
+      "homeTeam": "瑞士",
+      "awayTeam": "阿尔及利亚",
+      "kickoff": "2026-07-03T11:00:00+08:00",
+      "stage": "knockout",
+      "historyPath": "public/data/history/2026-07-03.json",
+      "historySection": "matches",
+      "historyGeneratedAt": "2026-07-02T16:15:00+08:00",
+      "settlementScoreBasis": "fulltime",
+      "actualScore": "2:0",
+      "xg": {
+        "home": 2.3697,
+        "away": 1.4198
+      },
+      "base": {
+        "predictedTotalBucket": "3",
+        "actualTotalBucket": "2",
+        "totalExactHit": false,
+        "totalAdjacentCoreHit": true,
+        "totalLogLoss": 1.781339117653857,
+        "totalRps": 0.1383851916022222,
+        "topScore": "2:1",
+        "actualScore": "2:0",
+        "scoreTop1Hit": false,
+        "scoreTop3Hit": false,
+        "scoreTop5Hit": true,
+        "scoreLogLoss": 2.7570816677809535,
+        "actualScoreProbability": 0.06347674454614588,
+        "topScores": [
+          {
+            "score": "2:1",
+            "probability": 0.0901242819066179
+          },
+          {
+            "score": "1:1",
+            "probability": 0.08214898464712608
+          },
+          {
+            "score": "3:1",
+            "probability": 0.07118917027803748
+          },
+          {
+            "score": "2:2",
+            "probability": 0.06397922772550806
+          },
+          {
+            "score": "2:0",
+            "probability": 0.06347674454614588
+          }
+        ],
+        "totalProbabilities": {
+          "0": 0.028692889232829283,
+          "1": 0.0735019595541372,
+          "2": 0.16841247208500965,
+          "3": 0.20504651290673234,
+          "4": 0.19425594016501554,
+          "5": 0.14722657705106526,
+          "6": 0.09298585228916864,
+          "7+": 0.08987779671604211
+        }
+      },
+      "calibrated": {
+        "predictedTotalBucket": "3",
+        "actualTotalBucket": "2",
+        "totalExactHit": false,
+        "totalAdjacentCoreHit": true,
+        "totalLogLoss": 1.7917496976533536,
+        "totalRps": 0.14134823943198524,
+        "topScore": "2:1",
+        "actualScore": "2:0",
+        "scoreTop1Hit": false,
+        "scoreTop3Hit": false,
+        "scoreTop5Hit": true,
+        "scoreLogLoss": 2.768982706831032,
+        "actualScoreProbability": 0.06272578280652552,
+        "topScores": [
+          {
+            "score": "2:1",
+            "probability": 0.08908787872731429
+          },
+          {
+            "score": "1:1",
+            "probability": 0.0815851806027978
+          },
+          {
+            "score": "3:1",
+            "probability": 0.07187292467874955
+          },
+          {
+            "score": "2:2",
+            "probability": 0.06544881121411583
+          },
+          {
+            "score": "2:0",
+            "probability": 0.06272578280652552
+          }
+        ],
+        "totalProbabilities": {
+          "0": 0.02691094968956555,
+          "1": 0.0706229881366308,
+          "2": 0.16666829527040725,
+          "3": 0.2039351310105341,
+          "4": 0.19694531550336405,
+          "5": 0.14918126196703022,
+          "6": 0.09486859643142674,
+          "7+": 0.09086746199104125
+        }
+      },
+      "scoreCalibration": {
+        "applied": true,
+        "policy": "knockout_score_total_matrix_calibration_v2",
+        "profile": "favorite_tail",
+        "intensity": 0.25,
+        "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
+        "favoriteSide": "home",
+        "totalGoalWeights": {
+          "0": 0.84,
+          "1": 0.94,
+          "2": 1.0,
+          "3": 1.05,
+          "4": 1.09,
+          "5": 1.12,
+          "6": 1.12,
+          "7+": 1.1
+        },
+        "expectedTotalGoalsBefore": 3.7257,
+        "expectedTotalGoalsAfter": 3.7547,
+        "fullIntensityExpectedTotalGoalsAfter": 3.8419,
+        "outcomePreserved": true,
+        "maxCellDelta": 0.002028
       }
     },
     {
