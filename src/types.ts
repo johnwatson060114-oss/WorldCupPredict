@@ -200,6 +200,19 @@ export interface MatchForecast {
     selections: string[]
     probability: number
   }
+  totalGoalsBoundaryRisk?: {
+    policy: string
+    triggered: boolean
+    level: 'watch' | 'none'
+    coreProbability: number
+    adjacentSelection: string | null
+    adjacentProbability: number
+    thresholds: {
+      maxCoreProbability: number
+      minAdjacentProbability: number
+    }
+    reason: string
+  }
   coverage: number
   weather: string
   altitude: number

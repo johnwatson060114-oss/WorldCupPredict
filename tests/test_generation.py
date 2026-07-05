@@ -80,6 +80,48 @@ def test_total_goals_core_interval_uses_two_adjacent_buckets():
     }
 
 
+def test_total_goals_boundary_risk_marks_nearby_adjacent_bucket():
+    probabilities = {
+        "0": 0.08,
+        "1": 0.24,
+        "2": 0.27,
+        "3": 0.20,
+        "4": 0.12,
+        "5": 0.06,
+        "6": 0.02,
+        "7+": 0.01,
+    }
+    core = generate.total_goals_core_interval(probabilities)
+
+    risk = generate.total_goals_boundary_risk(probabilities, core)
+
+    assert risk["policy"] == "two_bucket_boundary_watch_v1"
+    assert risk["triggered"] is True
+    assert risk["level"] == "watch"
+    assert risk["adjacentSelection"] == "3"
+    assert risk["adjacentProbability"] == 0.2
+    assert risk["coreProbability"] == 0.51
+
+
+def test_total_goals_boundary_risk_stays_quiet_for_confident_core():
+    probabilities = {
+        "0": 0.04,
+        "1": 0.30,
+        "2": 0.31,
+        "3": 0.16,
+        "4": 0.10,
+        "5": 0.05,
+        "6": 0.03,
+        "7+": 0.01,
+    }
+    core = generate.total_goals_core_interval(probabilities)
+
+    risk = generate.total_goals_boundary_risk(probabilities, core)
+
+    assert risk["triggered"] is False
+    assert risk["level"] == "none"
+
+
 def test_offline_generation(tmp_path):
     output = tmp_path / "forecast.json"
     subprocess.run([
@@ -98,6 +140,7 @@ def test_offline_generation(tmp_path):
     assert all(abs(sum(match["halfFullSignal"]["outcomeSignal"].values()) - 1) < 0.0001 for match in payload["matches"])
     assert all(match["totalGoalsCore"]["policy"] == "strongest_adjacent_two_bucket_v1" for match in payload["matches"])
     assert all(len(match["totalGoalsCore"]["selections"]) == 2 for match in payload["matches"])
+    assert all(match["totalGoalsBoundaryRisk"]["policy"] == "two_bucket_boundary_watch_v1" for match in payload["matches"])
     assert len(payload["dataSnapshot"]["id"]) == 64
     assert payload["dataSnapshot"]["files"]
     assert len(payload["matches"]) == 4

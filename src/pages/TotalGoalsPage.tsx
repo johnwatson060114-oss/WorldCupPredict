@@ -20,12 +20,41 @@ export interface TotalGoalsSummary {
   points: TotalGoalPoint[]
   peak: TotalGoalPoint
   core: { label: string; selections: string[]; probability: number }
+  boundaryRisk: NonNullable<MatchForecast['totalGoalsBoundaryRisk']>
   zones: Array<{ key: 'low' | 'core' | 'high'; label: string; range: string; probability: number }>
   marketAvailable: boolean
   bestValue: TotalGoalPoint | null
 }
 
 const goalValue = (selection: string) => selection === '7+' ? 7 : Number.parseInt(selection, 10)
+
+function localBoundaryRisk(points: TotalGoalPoint[], core: { selections: string[]; probability: number }): NonNullable<MatchForecast['totalGoalsBoundaryRisk']> {
+  const maxCoreProbability = 0.52
+  const minAdjacentProbability = 0.18
+  const bySelection = new Map(points.map((point) => [point.selection, point.probability]))
+  const firstIndex = goalOrder.findIndex((selection) => selection === core.selections[0])
+  const lastIndex = goalOrder.findIndex((selection) => selection === core.selections[core.selections.length - 1])
+  const adjacent = [
+    firstIndex > 0 ? goalOrder[firstIndex - 1] : null,
+    lastIndex >= 0 && lastIndex < goalOrder.length - 1 ? goalOrder[lastIndex + 1] : null,
+  ].filter((selection): selection is typeof goalOrder[number] => selection !== null)
+  const adjacentSelection = adjacent.reduce<string | null>((best, selection) => {
+    if (best === null) return selection
+    return (bySelection.get(selection) ?? 0) > (bySelection.get(best) ?? 0) ? selection : best
+  }, null)
+  const adjacentProbability = adjacentSelection === null ? 0 : bySelection.get(adjacentSelection) ?? 0
+  const triggered = core.probability <= maxCoreProbability && adjacentProbability >= minAdjacentProbability
+  return {
+    policy: 'two_bucket_boundary_watch_v1',
+    triggered,
+    level: triggered ? 'watch' : 'none',
+    coreProbability: core.probability,
+    adjacentSelection,
+    adjacentProbability,
+    thresholds: { maxCoreProbability, minAdjacentProbability },
+    reason: triggered ? 'adjacent_bucket_near_low_confidence_core' : 'core_interval_sufficient',
+  }
+}
 
 export function summarizeTotalGoals(match: MatchForecast): TotalGoalsSummary {
   const quotes = match.quotes.filter((quote) => quote.market === '总进球数')
@@ -53,6 +82,7 @@ export function summarizeTotalGoals(match: MatchForecast): TotalGoalsSummary {
   const core = match.totalGoalsCore
     ? { label: match.totalGoalsCore.label, selections: match.totalGoalsCore.selections, probability: match.totalGoalsCore.probability }
     : localCore
+  const boundaryRisk = match.totalGoalsBoundaryRisk ?? localBoundaryRisk(points, core)
   const sum = (selections: string[]) => selections.reduce((total, selection) => total + (bySelection.get(selection)?.modelProbability ?? 0), 0)
   const marketAvailable = points.some((point) => point.available && point.odds !== null && point.marketProbability !== null)
   const bestValue = marketAvailable
@@ -64,6 +94,7 @@ export function summarizeTotalGoals(match: MatchForecast): TotalGoalsSummary {
     points,
     peak,
     core,
+    boundaryRisk,
     zones: [
       { key: 'low', label: '低比分', range: '0–1球', probability: sum(['0', '1']) },
       { key: 'core', label: '中枢', range: '2–3球', probability: sum(['2', '3']) },
@@ -183,6 +214,16 @@ export function TotalGoalsPage({ matches, selectedId, onSelect }: {
             <div><span>核心区间</span><strong>{summary.core.label}</strong></div>
             <div><span>区间概率</span><strong>{percent(summary.core.probability, 1)}</strong></div>
           </div>
+          {summary.boundaryRisk.triggered && summary.boundaryRisk.adjacentSelection && (
+            <div className="goal-boundary-risk">
+              <CircleAlert size={14} />
+              <div>
+                <span>边界风险</span>
+                <strong>邻格 {summary.boundaryRisk.adjacentSelection} 球需防</strong>
+              </div>
+              <b>{percent(summary.boundaryRisk.adjacentProbability, 1)}</b>
+            </div>
+          )}
           <div className="goal-picks">
             <div><span>首选</span><strong>{summary.peak.selection}球</strong><b>{percent(summary.peak.probability, 1)}</b></div>
             <div><span>当前查看</span><strong>{selectedPoint.selection}球</strong><b>{percent(selectedPoint.probability, 1)}</b></div>
@@ -213,7 +254,13 @@ export function TotalGoalsPage({ matches, selectedId, onSelect }: {
                   <td><strong>{match.homeTeam} vs {match.awayTeam}</strong></td>
                   <td className="numeric">{(match.expectedGoals.home + match.expectedGoals.away).toFixed(2)}</td>
                   <td><b>{rowSummary.peak.selection}球</b><span>{percent(rowSummary.peak.probability, 1)}</span></td>
-                  <td><b className="amber-text">{rowSummary.core.label}</b><span>{percent(rowSummary.core.probability, 1)}</span></td>
+                  <td>
+                    <b className="amber-text">{rowSummary.core.label}</b>
+                    <span>{percent(rowSummary.core.probability, 1)}</span>
+                    {rowSummary.boundaryRisk.triggered && rowSummary.boundaryRisk.adjacentSelection && (
+                      <small className="goal-boundary-chip">防 {rowSummary.boundaryRisk.adjacentSelection}</small>
+                    )}
+                  </td>
                   <td><i className="goal-coverage"><em style={{ width: percent(match.coverage) }} /></i><span>{percent(match.coverage)}</span></td>
                   <td>{rowSummary.marketAvailable ? '赔率已接入' : '官方赔率未开售'}</td>
                   <td><span className={rowSummary.marketAvailable ? 'goal-state open' : 'goal-state'}>{rowSummary.marketAvailable ? '等待价值复核' : '仅观察模型'}</span></td>

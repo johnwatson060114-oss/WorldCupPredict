@@ -34,6 +34,8 @@ describe('summarizeTotalGoals', () => {
 
     expect(summary.peak.selection).toBe('2')
     expect(summary.core).toEqual({ label: '2–3球', selections: ['2', '3'], probability: 0.47 })
+    expect(summary.boundaryRisk.triggered).toBe(true)
+    expect(summary.boundaryRisk.adjacentSelection).toBe('1')
     expect(summary.zones.map((zone) => zone.probability)).toEqual([0.28, 0.47, 0.25])
     expect(summary.marketAvailable).toBe(false)
     expect(summary.bestValue).toBeNull()
@@ -51,6 +53,29 @@ describe('summarizeTotalGoals', () => {
     })
 
     expect(summary.core).toEqual({ label: '1-2', selections: ['1', '2'], probability: 0.51 })
+  })
+
+  it('uses the generated boundary risk when present', () => {
+    const summary = summarizeTotalGoals({
+      ...match(),
+      totalGoalsBoundaryRisk: {
+        policy: 'two_bucket_boundary_watch_v1',
+        triggered: true,
+        level: 'watch',
+        coreProbability: 0.51,
+        adjacentSelection: '3',
+        adjacentProbability: 0.2,
+        thresholds: {
+          maxCoreProbability: 0.52,
+          minAdjacentProbability: 0.18,
+        },
+        reason: 'adjacent_bucket_near_low_confidence_core',
+      },
+    })
+
+    expect(summary.boundaryRisk.triggered).toBe(true)
+    expect(summary.boundaryRisk.adjacentSelection).toBe('3')
+    expect(summary.boundaryRisk.adjacentProbability).toBe(0.2)
   })
 
   it('only enables market evaluation when usable odds and market probability exist', () => {

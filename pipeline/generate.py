@@ -593,6 +593,43 @@ def total_goals_core_interval(probabilities: dict[str, float]) -> dict[str, Any]
     }
 
 
+def total_goals_boundary_risk(
+    probabilities: dict[str, float],
+    core: dict[str, Any],
+    *,
+    max_core_probability: float = 0.52,
+    min_adjacent_probability: float = 0.18,
+) -> dict[str, Any]:
+    ordered = ["0", "1", "2", "3", "4", "5", "6", "7+"]
+    selections = [str(selection) for selection in core.get("selections", [])]
+    adjacent: list[str] = []
+    if selections:
+        left_index = ordered.index(selections[0]) - 1 if selections[0] in ordered else -1
+        right_index = ordered.index(selections[-1]) + 1 if selections[-1] in ordered else len(ordered)
+        if left_index >= 0:
+            adjacent.append(ordered[left_index])
+        if right_index < len(ordered):
+            adjacent.append(ordered[right_index])
+
+    adjacent_selection = max(adjacent, key=lambda key: float(probabilities.get(key, 0.0))) if adjacent else None
+    adjacent_probability = float(probabilities.get(adjacent_selection, 0.0)) if adjacent_selection else 0.0
+    core_probability = float(core.get("probability", 0.0))
+    triggered = core_probability <= max_core_probability and adjacent_probability >= min_adjacent_probability
+    return {
+        "policy": "two_bucket_boundary_watch_v1",
+        "triggered": triggered,
+        "level": "watch" if triggered else "none",
+        "coreProbability": round(core_probability, 5),
+        "adjacentSelection": adjacent_selection,
+        "adjacentProbability": round(adjacent_probability, 5),
+        "thresholds": {
+            "maxCoreProbability": max_core_probability,
+            "minAdjacentProbability": min_adjacent_probability,
+        },
+        "reason": "adjacent_bucket_near_low_confidence_core" if triggered else "core_interval_sufficient",
+    }
+
+
 def _sample_odds(probability: float, margin: float = 0.08) -> float | None:
     """Generate a sample decimal odds from a model probability with a margin.
 
@@ -821,6 +858,7 @@ def build_match(
 
     total_goal_model = total_goals_probabilities(calibrated_score_matrix)
     total_goal_core = total_goals_core_interval(total_goal_model)
+    total_goal_boundary_risk = total_goals_boundary_risk(total_goal_model, total_goal_core)
     if market:
         total_goal_odds = market.total_goals
     else:
@@ -905,6 +943,7 @@ def build_match(
         "scoreStars": stars,
         "scoreProbabilities": scores,
         "totalGoalsCore": total_goal_core,
+        "totalGoalsBoundaryRisk": total_goal_boundary_risk,
         "coverage": coverage,
         "weather": seed.get("weather", "天气待更新"),
         "altitude": venue["altitude"] if venue else 0,
