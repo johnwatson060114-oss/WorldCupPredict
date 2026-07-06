@@ -3387,6 +3387,26 @@
           "minAdjacentProbability": 0.18
         },
         "reason": "adjacent_bucket_near_low_confidence_core"
+      },
+      "totalGoalsTailRisk": {
+        "policy": "low_core_far_tail_watch_v1",
+        "triggered": true,
+        "level": "tail_watch",
+        "coreProbability": 0.51081,
+        "threeProbability": 0.19499,
+        "fourPlusProbability": 0.18724,
+        "watchSelections": [
+          "4",
+          "5",
+          "6",
+          "7+"
+        ],
+        "thresholds": {
+          "maxLowCoreProbability": 0.56,
+          "minThreeProbability": 0.17,
+          "minFourPlusProbability": 0.12
+        },
+        "reason": "low_core_with_near_three_and_tail_mass"
       }
     },
     {
@@ -6666,6 +6686,26 @@
           "minAdjacentProbability": 0.18
         },
         "reason": "adjacent_bucket_near_low_confidence_core"
+      },
+      "totalGoalsTailRisk": {
+        "policy": "low_core_far_tail_watch_v1",
+        "triggered": false,
+        "level": "none",
+        "coreProbability": 0.47527,
+        "threeProbability": 0.21636,
+        "fourPlusProbability": 0.24895,
+        "watchSelections": [
+          "4",
+          "5",
+          "6",
+          "7+"
+        ],
+        "thresholds": {
+          "maxLowCoreProbability": 0.56,
+          "minThreeProbability": 0.17,
+          "minFourPlusProbability": 0.12
+        },
+        "reason": "tail_risk_below_threshold"
       }
     }
   ],
@@ -9988,6 +10028,26 @@
           "minAdjacentProbability": 0.18
         },
         "reason": "core_interval_sufficient"
+      },
+      "totalGoalsTailRisk": {
+        "policy": "low_core_far_tail_watch_v1",
+        "triggered": false,
+        "level": "none",
+        "coreProbability": 0.45113,
+        "threeProbability": 0.22265,
+        "fourPlusProbability": 0.34209,
+        "watchSelections": [
+          "4",
+          "5",
+          "6",
+          "7+"
+        ],
+        "thresholds": {
+          "maxLowCoreProbability": 0.56,
+          "minThreeProbability": 0.17,
+          "minFourPlusProbability": 0.12
+        },
+        "reason": "tail_risk_below_threshold"
       }
     },
     {
@@ -13206,6 +13266,26 @@
           "minAdjacentProbability": 0.18
         },
         "reason": "core_interval_sufficient"
+      },
+      "totalGoalsTailRisk": {
+        "policy": "low_core_far_tail_watch_v1",
+        "triggered": true,
+        "level": "tail_watch",
+        "coreProbability": 0.55036,
+        "threeProbability": 0.17222,
+        "fourPlusProbability": 0.12987,
+        "watchSelections": [
+          "4",
+          "5",
+          "6",
+          "7+"
+        ],
+        "thresholds": {
+          "maxLowCoreProbability": 0.56,
+          "minThreeProbability": 0.17,
+          "minFourPlusProbability": 0.12
+        },
+        "reason": "low_core_with_near_three_and_tail_mass"
       }
     },
     {
@@ -16424,6 +16504,26 @@
           "minAdjacentProbability": 0.18
         },
         "reason": "core_interval_sufficient"
+      },
+      "totalGoalsTailRisk": {
+        "policy": "low_core_far_tail_watch_v1",
+        "triggered": false,
+        "level": "none",
+        "coreProbability": 0.46681,
+        "threeProbability": 0.22042,
+        "fourPlusProbability": 0.29039,
+        "watchSelections": [
+          "4",
+          "5",
+          "6",
+          "7+"
+        ],
+        "thresholds": {
+          "maxLowCoreProbability": 0.56,
+          "minThreeProbability": 0.17,
+          "minFourPlusProbability": 0.12
+        },
+        "reason": "tail_risk_below_threshold"
       }
     },
     {
@@ -19713,6 +19813,26 @@
           "minAdjacentProbability": 0.18
         },
         "reason": "core_interval_sufficient"
+      },
+      "totalGoalsTailRisk": {
+        "policy": "low_core_far_tail_watch_v1",
+        "triggered": false,
+        "level": "none",
+        "coreProbability": 0.45246,
+        "threeProbability": 0.22144,
+        "fourPlusProbability": 0.33675,
+        "watchSelections": [
+          "4",
+          "5",
+          "6",
+          "7+"
+        ],
+        "thresholds": {
+          "maxLowCoreProbability": 0.56,
+          "minThreeProbability": 0.17,
+          "minFourPlusProbability": 0.12
+        },
+        "reason": "tail_risk_below_threshold"
       }
     }
   ],

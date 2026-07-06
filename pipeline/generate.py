@@ -630,6 +630,45 @@ def total_goals_boundary_risk(
     }
 
 
+def total_goals_tail_risk(
+    probabilities: dict[str, float],
+    core: dict[str, Any],
+    seed: dict[str, Any] | None = None,
+    *,
+    max_low_core_probability: float = 0.56,
+    min_three_probability: float = 0.17,
+    min_four_plus_probability: float = 0.12,
+) -> dict[str, Any]:
+    selections = [str(selection) for selection in core.get("selections", [])]
+    core_probability = float(core.get("probability", 0.0))
+    three_probability = float(probabilities.get("3", 0.0))
+    four_plus_probability = sum(float(probabilities.get(selection, 0.0)) for selection in ["4", "5", "6", "7+"])
+    low_core = bool(selections) and all(selection in {"0", "1", "2"} for selection in selections)
+    knockout_context = bool((seed or {}).get("knockout_context") or (seed or {}).get("knockoutContext"))
+    triggered = (
+        knockout_context
+        and low_core
+        and core_probability <= max_low_core_probability
+        and three_probability >= min_three_probability
+        and four_plus_probability >= min_four_plus_probability
+    )
+    return {
+        "policy": "low_core_far_tail_watch_v1",
+        "triggered": triggered,
+        "level": "tail_watch" if triggered else "none",
+        "coreProbability": round(core_probability, 5),
+        "threeProbability": round(three_probability, 5),
+        "fourPlusProbability": round(four_plus_probability, 5),
+        "watchSelections": ["4", "5", "6", "7+"],
+        "thresholds": {
+            "maxLowCoreProbability": max_low_core_probability,
+            "minThreeProbability": min_three_probability,
+            "minFourPlusProbability": min_four_plus_probability,
+        },
+        "reason": "low_core_with_near_three_and_tail_mass" if triggered else "tail_risk_below_threshold",
+    }
+
+
 def _sample_odds(probability: float, margin: float = 0.08) -> float | None:
     """Generate a sample decimal odds from a model probability with a margin.
 
@@ -859,6 +898,7 @@ def build_match(
     total_goal_model = total_goals_probabilities(calibrated_score_matrix)
     total_goal_core = total_goals_core_interval(total_goal_model)
     total_goal_boundary_risk = total_goals_boundary_risk(total_goal_model, total_goal_core)
+    total_goal_tail_risk = total_goals_tail_risk(total_goal_model, total_goal_core, seed)
     if market:
         total_goal_odds = market.total_goals
     else:
@@ -944,6 +984,7 @@ def build_match(
         "scoreProbabilities": scores,
         "totalGoalsCore": total_goal_core,
         "totalGoalsBoundaryRisk": total_goal_boundary_risk,
+        "totalGoalsTailRisk": total_goal_tail_risk,
         "coverage": coverage,
         "weather": seed.get("weather", "天气待更新"),
         "altitude": venue["altitude"] if venue else 0,

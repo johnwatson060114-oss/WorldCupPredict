@@ -1111,6 +1111,11 @@ body:has(.sporttery-ledger-page) .topbar {
 .goal-boundary-risk strong { display: block; margin-top: 2px; color: #f5d18a; font-size: 12px; }
 .goal-boundary-risk b { color: #f7b63a; font: 700 18px 'Barlow Condensed', sans-serif; }
 .goal-boundary-chip { display: inline-block; margin-left: 6px; padding: 2px 5px; border: 1px solid rgba(242, 174, 40, .45); border-radius: 4px; color: #f2c36b; font-size: 10px; white-space: nowrap; }
+.goal-tail-risk { display: grid; grid-template-columns: 18px 1fr auto; align-items: center; gap: 9px; margin: 0 12px; padding: 10px 11px; border-bottom: 1px solid #1f5658; background: rgba(70, 211, 206, .09); color: #7de5df; }
+.goal-tail-risk span { display: block; color: #70bdb9; font-size: 10px; }
+.goal-tail-risk strong { display: block; margin-top: 2px; color: #acf7f1; font-size: 12px; }
+.goal-tail-risk b { color: #46d3ce; font: 700 18px 'Barlow Condensed', sans-serif; }
+.goal-tail-chip { display: inline-block; margin-left: 6px; padding: 2px 5px; border: 1px solid rgba(70, 211, 206, .45); border-radius: 4px; color: #7de5df; font-size: 10px; white-space: nowrap; }
 .goal-picks { display: grid; grid-template-columns: repeat(3, 1fr); padding: 12px 8px; border-bottom: 1px solid var(--line); }
 .goal-picks > div { min-width: 0; padding: 0 10px; border-right: 1px solid #29445a; text-align: center; }
 .goal-picks > div:last-child { border: 0; }

@@ -122,6 +122,49 @@ def test_total_goals_boundary_risk_stays_quiet_for_confident_core():
     assert risk["level"] == "none"
 
 
+def test_total_goals_tail_risk_marks_low_core_far_tail_watch():
+    probabilities = {
+        "0": 0.15140,
+        "1": 0.28176,
+        "2": 0.26837,
+        "3": 0.17098,
+        "4": 0.08210,
+        "5": 0.03146,
+        "6": 0.01007,
+        "7+": 0.00386,
+    }
+    core = generate.total_goals_core_interval(probabilities)
+
+    risk = generate.total_goals_tail_risk(probabilities, core, {"knockout_context": {"round": "round_of_16"}})
+
+    assert core["label"] == "1-2"
+    assert risk["policy"] == "low_core_far_tail_watch_v1"
+    assert risk["triggered"] is True
+    assert risk["level"] == "tail_watch"
+    assert risk["threeProbability"] == 0.17098
+    assert risk["fourPlusProbability"] == 0.12749
+    assert risk["watchSelections"] == ["4", "5", "6", "7+"]
+
+
+def test_total_goals_tail_risk_stays_quiet_without_knockout_context():
+    probabilities = {
+        "0": 0.15140,
+        "1": 0.28176,
+        "2": 0.26837,
+        "3": 0.17098,
+        "4": 0.08210,
+        "5": 0.03146,
+        "6": 0.01007,
+        "7+": 0.00386,
+    }
+    core = generate.total_goals_core_interval(probabilities)
+
+    risk = generate.total_goals_tail_risk(probabilities, core, {})
+
+    assert risk["triggered"] is False
+    assert risk["level"] == "none"
+
+
 def test_offline_generation(tmp_path):
     output = tmp_path / "forecast.json"
     subprocess.run([
@@ -141,6 +184,7 @@ def test_offline_generation(tmp_path):
     assert all(match["totalGoalsCore"]["policy"] == "strongest_adjacent_two_bucket_v1" for match in payload["matches"])
     assert all(len(match["totalGoalsCore"]["selections"]) == 2 for match in payload["matches"])
     assert all(match["totalGoalsBoundaryRisk"]["policy"] == "two_bucket_boundary_watch_v1" for match in payload["matches"])
+    assert all(match["totalGoalsTailRisk"]["policy"] == "low_core_far_tail_watch_v1" for match in payload["matches"])
     assert len(payload["dataSnapshot"]["id"]) == 64
     assert payload["dataSnapshot"]["files"]
     assert len(payload["matches"]) == 4

@@ -472,6 +472,26 @@
         },
         "reason": "core_interval_sufficient"
       },
+      "totalGoalsTailRisk": {
+        "policy": "low_core_far_tail_watch_v1",
+        "triggered": false,
+        "level": "none",
+        "coreProbability": 0.44805,
+        "threeProbability": 0.22083,
+        "fourPlusProbability": 0.34388,
+        "watchSelections": [
+          "4",
+          "5",
+          "6",
+          "7+"
+        ],
+        "thresholds": {
+          "maxLowCoreProbability": 0.56,
+          "minThreeProbability": 0.17,
+          "minFourPlusProbability": 0.12
+        },
+        "reason": "tail_risk_below_threshold"
+      },
       "coverage": 0.7865211999999999,
       "weather": "场馆坐标待确认，天气未启用",
       "altitude": 0,
@@ -3690,6 +3710,26 @@
         },
         "reason": "core_interval_sufficient"
       },
+      "totalGoalsTailRisk": {
+        "policy": "low_core_far_tail_watch_v1",
+        "triggered": true,
+        "level": "tail_watch",
+        "coreProbability": 0.55013,
+        "threeProbability": 0.17098,
+        "fourPlusProbability": 0.12749,
+        "watchSelections": [
+          "4",
+          "5",
+          "6",
+          "7+"
+        ],
+        "thresholds": {
+          "maxLowCoreProbability": 0.56,
+          "minThreeProbability": 0.17,
+          "minFourPlusProbability": 0.12
+        },
+        "reason": "low_core_with_near_three_and_tail_mass"
+      },
       "coverage": 0.788369,
       "weather": "场馆坐标待确认，天气未启用",
       "altitude": 0,
@@ -6651,6 +6691,26 @@
           "minAdjacentProbability": 0.18
         },
         "reason": "core_interval_sufficient"
+      },
+      "totalGoalsTailRisk": {
+        "policy": "low_core_far_tail_watch_v1",
+        "triggered": false,
+        "level": "none",
+        "coreProbability": 0.46932,
+        "threeProbability": 0.22394,
+        "fourPlusProbability": 0.28918,
+        "watchSelections": [
+          "4",
+          "5",
+          "6",
+          "7+"
+        ],
+        "thresholds": {
+          "maxLowCoreProbability": 0.56,
+          "minThreeProbability": 0.17,
+          "minFourPlusProbability": 0.12
+        },
+        "reason": "tail_risk_below_threshold"
       },
       "coverage": 0.7785406,
       "weather": "天气待更新",
@@ -9941,6 +10001,26 @@
         },
         "reason": "core_interval_sufficient"
       },
+      "totalGoalsTailRisk": {
+        "policy": "low_core_far_tail_watch_v1",
+        "triggered": false,
+        "level": "none",
+        "coreProbability": 0.45086,
+        "threeProbability": 0.22138,
+        "fourPlusProbability": 0.33789,
+        "watchSelections": [
+          "4",
+          "5",
+          "6",
+          "7+"
+        ],
+        "thresholds": {
+          "maxLowCoreProbability": 0.56,
+          "minThreeProbability": 0.17,
+          "minFourPlusProbability": 0.12
+        },
+        "reason": "tail_risk_below_threshold"
+      },
       "coverage": 0.76,
       "weather": "天气待更新",
       "altitude": 0,
@@ -13227,6 +13307,26 @@
         },
         "reason": "core_interval_sufficient"
       },
+      "totalGoalsTailRisk": {
+        "policy": "low_core_far_tail_watch_v1",
+        "triggered": true,
+        "level": "tail_watch",
+        "coreProbability": 0.53719,
+        "threeProbability": 0.18268,
+        "fourPlusProbability": 0.14722,
+        "watchSelections": [
+          "4",
+          "5",
+          "6",
+          "7+"
+        ],
+        "thresholds": {
+          "maxLowCoreProbability": 0.56,
+          "minThreeProbability": 0.17,
+          "minFourPlusProbability": 0.12
+        },
+        "reason": "low_core_with_near_three_and_tail_mass"
+      },
       "coverage": 0.675,
       "weather": "天气待更新",
       "altitude": 0,
@@ -16497,6 +16597,26 @@
           "minAdjacentProbability": 0.18
         },
         "reason": "adjacent_bucket_near_low_confidence_core"
+      },
+      "totalGoalsTailRisk": {
+        "policy": "low_core_far_tail_watch_v1",
+        "triggered": true,
+        "level": "tail_watch",
+        "coreProbability": 0.48612,
+        "threeProbability": 0.20468,
+        "fourPlusProbability": 0.21323,
+        "watchSelections": [
+          "4",
+          "5",
+          "6",
+          "7+"
+        ],
+        "thresholds": {
+          "maxLowCoreProbability": 0.56,
+          "minThreeProbability": 0.17,
+          "minFourPlusProbability": 0.12
+        },
+        "reason": "low_core_with_near_three_and_tail_mass"
       },
       "coverage": 0.759,
       "weather": "天气待更新",

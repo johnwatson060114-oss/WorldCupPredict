@@ -21,6 +21,7 @@ export interface TotalGoalsSummary {
   peak: TotalGoalPoint
   core: { label: string; selections: string[]; probability: number }
   boundaryRisk: NonNullable<MatchForecast['totalGoalsBoundaryRisk']>
+  tailRisk: NonNullable<MatchForecast['totalGoalsTailRisk']>
   zones: Array<{ key: 'low' | 'core' | 'high'; label: string; range: string; probability: number }>
   marketAvailable: boolean
   bestValue: TotalGoalPoint | null
@@ -56,6 +57,33 @@ function localBoundaryRisk(points: TotalGoalPoint[], core: { selections: string[
   }
 }
 
+function localTailRisk(points: TotalGoalPoint[], core: { selections: string[]; probability: number }, match: MatchForecast): NonNullable<MatchForecast['totalGoalsTailRisk']> {
+  const maxLowCoreProbability = 0.56
+  const minThreeProbability = 0.17
+  const minFourPlusProbability = 0.12
+  const bySelection = new Map(points.map((point) => [point.selection, point.probability]))
+  const threeProbability = bySelection.get('3') ?? 0
+  const fourPlusProbability = ['4', '5', '6', '7+'].reduce((total, selection) => total + (bySelection.get(selection) ?? 0), 0)
+  const lowCore = core.selections.length > 0 && core.selections.every((selection) => ['0', '1', '2'].includes(selection))
+  const knockoutContext = Boolean(match.knockoutContext)
+  const triggered = knockoutContext
+    && lowCore
+    && core.probability <= maxLowCoreProbability
+    && threeProbability >= minThreeProbability
+    && fourPlusProbability >= minFourPlusProbability
+  return {
+    policy: 'low_core_far_tail_watch_v1',
+    triggered,
+    level: triggered ? 'tail_watch' : 'none',
+    coreProbability: core.probability,
+    threeProbability,
+    fourPlusProbability,
+    watchSelections: ['4', '5', '6', '7+'],
+    thresholds: { maxLowCoreProbability, minThreeProbability, minFourPlusProbability },
+    reason: triggered ? 'low_core_with_near_three_and_tail_mass' : 'tail_risk_below_threshold',
+  }
+}
+
 export function summarizeTotalGoals(match: MatchForecast): TotalGoalsSummary {
   const quotes = match.quotes.filter((quote) => quote.market === '总进球数')
   const bySelection = new Map(quotes.map((quote) => [quote.selection, quote]))
@@ -83,6 +111,7 @@ export function summarizeTotalGoals(match: MatchForecast): TotalGoalsSummary {
     ? { label: match.totalGoalsCore.label, selections: match.totalGoalsCore.selections, probability: match.totalGoalsCore.probability }
     : localCore
   const boundaryRisk = match.totalGoalsBoundaryRisk ?? localBoundaryRisk(points, core)
+  const tailRisk = match.totalGoalsTailRisk ?? localTailRisk(points, core, match)
   const sum = (selections: string[]) => selections.reduce((total, selection) => total + (bySelection.get(selection)?.modelProbability ?? 0), 0)
   const marketAvailable = points.some((point) => point.available && point.odds !== null && point.marketProbability !== null)
   const bestValue = marketAvailable
@@ -95,6 +124,7 @@ export function summarizeTotalGoals(match: MatchForecast): TotalGoalsSummary {
     peak,
     core,
     boundaryRisk,
+    tailRisk,
     zones: [
       { key: 'low', label: '低比分', range: '0–1球', probability: sum(['0', '1']) },
       { key: 'core', label: '中枢', range: '2–3球', probability: sum(['2', '3']) },
@@ -224,6 +254,16 @@ export function TotalGoalsPage({ matches, selectedId, onSelect }: {
               <b>{percent(summary.boundaryRisk.adjacentProbability, 1)}</b>
             </div>
           )}
+          {summary.tailRisk.triggered && (
+            <div className="goal-tail-risk">
+              <TrendingUp size={14} />
+              <div>
+                <span>尾部风险</span>
+                <strong>4+ 球需防</strong>
+              </div>
+              <b>{percent(summary.tailRisk.fourPlusProbability, 1)}</b>
+            </div>
+          )}
           <div className="goal-picks">
             <div><span>首选</span><strong>{summary.peak.selection}球</strong><b>{percent(summary.peak.probability, 1)}</b></div>
             <div><span>当前查看</span><strong>{selectedPoint.selection}球</strong><b>{percent(selectedPoint.probability, 1)}</b></div>
@@ -259,6 +299,9 @@ export function TotalGoalsPage({ matches, selectedId, onSelect }: {
                     <span>{percent(rowSummary.core.probability, 1)}</span>
                     {rowSummary.boundaryRisk.triggered && rowSummary.boundaryRisk.adjacentSelection && (
                       <small className="goal-boundary-chip">防 {rowSummary.boundaryRisk.adjacentSelection}</small>
+                    )}
+                    {rowSummary.tailRisk.triggered && (
+                      <small className="goal-tail-chip">尾 4+</small>
                     )}
                   </td>
                   <td><i className="goal-coverage"><em style={{ width: percent(match.coverage) }} /></i><span>{percent(match.coverage)}</span></td>

@@ -213,6 +213,21 @@ export interface MatchForecast {
     }
     reason: string
   }
+  totalGoalsTailRisk?: {
+    policy: string
+    triggered: boolean
+    level: 'tail_watch' | 'none'
+    coreProbability: number
+    threeProbability: number
+    fourPlusProbability: number
+    watchSelections: string[]
+    thresholds: {
+      maxLowCoreProbability: number
+      minThreeProbability: number
+      minFourPlusProbability: number
+    }
+    reason: string
+  }
   coverage: number
   weather: string
   altitude: number
