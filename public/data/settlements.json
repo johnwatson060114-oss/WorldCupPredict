@@ -3629,6 +3629,30 @@
       "closingOddsSource": "zgzcw.com",
       "closingOddsIssue": "2026-07-04",
       "closingOddsCheckedAt": "2026-07-05T16:05:15+08:00"
+    },
+    {
+      "matchId": "巴西 vs 挪威",
+      "matchLabel": "巴西 vs 挪威",
+      "homeScore": 1,
+      "awayScore": 2,
+      "settlementScoreBasis": "90_minutes",
+      "halfTimeHomeScore": 0,
+      "halfTimeAwayScore": 0,
+      "settledAt": "2026-07-05T20:00:00Z",
+      "settlementSource": "external_result_review",
+      "settlementSourceUrl": "https://www.theguardian.com/football/2026/jul/05/brazil-norway-world-cup-2026-last-16-match-report"
+    },
+    {
+      "matchId": "墨西哥 vs 英格兰",
+      "matchLabel": "墨西哥 vs 英格兰",
+      "homeScore": 2,
+      "awayScore": 3,
+      "settlementScoreBasis": "90_minutes",
+      "halfTimeHomeScore": 1,
+      "halfTimeAwayScore": 2,
+      "settledAt": "2026-07-06T00:00:00Z",
+      "settlementSource": "external_result_review",
+      "settlementSourceUrl": "https://www.theguardian.com/football/2026/jul/06/england-mexico-match-report-jude-bellingham-harry-kane-world-cup"
     }
   ]
 }
