@@ -146,7 +146,7 @@ def build_report(
             "productionScoreMatrix": "calibrated",
             "scoreCalibrationPolicy": "knockout_score_total_matrix_calibration_v2",
             "scoreCalibrationIntensity": 0.25,
-            "halfFullCalibrationPolicy": "knockout_half_full_late_swing_v1",
+            "halfFullCalibrationPolicy": "knockout_half_full_late_swing_v2",
             "diagnosticScoreMatrix": "base",
             "note": (
                 "Future generic backtests should use this combined report so all three "

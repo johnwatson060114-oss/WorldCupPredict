@@ -25,7 +25,7 @@ Use the combined report to judge exact-score top-k accuracy, total-goals bucket 
 ## Knockout Specialist Calibration
 
 - Score matrix calibration uses `knockout_score_total_matrix_calibration_v2` with a 25% blend toward the knockout tail adjustment. This keeps the live knockout exact-score top1 count from the base matrix while retaining the calibrated matrix's top3 gain.
-- Half-time/full-time uses `knockout_half_full_late_swing_v1` only for knockout matches. It slightly discounts straight-through half/full outcomes and lifts halftime-leader-to-draw/comeback paths, improving probability quality without using it as a W/D/L override.
+- Half-time/full-time uses `knockout_half_full_late_swing_v2` only for knockout matches. It slightly discounts straight-through half/full outcomes and lifts halftime-leader-to-draw/comeback plus halftime-draw-to-decision paths, improving probability quality without using it as a W/D/L override.
 
 ## Switch Gates
 

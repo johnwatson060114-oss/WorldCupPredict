@@ -61,7 +61,9 @@ def test_half_full_market_calibration_only_applies_to_knockout():
     )
 
     assert group.metadata == {"applied": False, "reason": "not_knockout"}
-    assert knockout.metadata["policy"] == "knockout_half_full_late_swing_v1"
+    assert knockout.metadata["policy"] == "knockout_half_full_late_swing_v2"
     assert knockout.probabilities["\u80dc\u80dc"] < group.probabilities["\u80dc\u80dc"]
+    assert knockout.probabilities["\u5e73\u80dc"] > group.probabilities["\u5e73\u80dc"]
+    assert knockout.probabilities["\u5e73\u8d1f"] > group.probabilities["\u5e73\u8d1f"]
     assert knockout.probabilities["\u8d1f\u80dc"] > group.probabilities["\u8d1f\u80dc"]
     assert math.isclose(sum(knockout.probabilities.values()), 1.0)

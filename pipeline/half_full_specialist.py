@@ -26,9 +26,9 @@ KNOCKOUT_HALF_FULL_WEIGHTS = {
     "\u80dc\u80dc": 0.95,
     "\u80dc\u5e73": 1.30,
     "\u80dc\u8d1f": 1.30,
-    "\u5e73\u80dc": 0.95,
-    "\u5e73\u5e73": 1.10,
-    "\u5e73\u8d1f": 0.95,
+    "\u5e73\u80dc": 1.20,
+    "\u5e73\u5e73": 0.95,
+    "\u5e73\u8d1f": 1.20,
     "\u8d1f\u80dc": 1.30,
     "\u8d1f\u5e73": 1.30,
     "\u8d1f\u8d1f": 0.95,
@@ -82,7 +82,7 @@ def apply_half_full_market_calibration(
         probabilities=calibrated,
         metadata={
             "applied": True,
-            "policy": "knockout_half_full_late_swing_v1",
+            "policy": "knockout_half_full_late_swing_v2",
             "sourceKnockoutPolicy": (
                 knockout_context.get("policy")
                 if isinstance(knockout_context, Mapping)
