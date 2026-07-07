@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-06T17:04:59+08:00",
+  "generatedAt": "2026-07-07T16:30:13+08:00",
   "finalDate": "2026-07-19",
   "days": [
     {
@@ -2422,6 +2422,86 @@
       "targetDate": "2026-07-07",
       "generatedAt": "2026-07-06T17:04:23+08:00",
       "coverage": 0.7793,
+      "strategies": [
+        {
+          "key": "conservative",
+          "name": "稳健",
+          "stake": 0,
+          "payout": 0,
+          "profit": 0,
+          "roi": null,
+          "status": "no-bet"
+        },
+        {
+          "key": "balanced",
+          "name": "均衡",
+          "stake": 0,
+          "payout": 0,
+          "profit": 0,
+          "roi": null,
+          "status": "no-bet"
+        },
+        {
+          "key": "aggressive",
+          "name": "激进",
+          "stake": 0,
+          "payout": 0,
+          "profit": 0,
+          "roi": null,
+          "status": "no-bet"
+        }
+      ],
+      "review": {
+        "snapshotLabel": "升级前基线快照",
+        "matches": [
+          {
+            "matchId": "葡萄牙 vs 西班牙",
+            "label": "葡萄牙 vs 西班牙",
+            "predictedScore": "0-1",
+            "actualScore": "0-1",
+            "predictedOutcome": "away",
+            "predictedOutcomeSource": "outcomeDecision",
+            "actualOutcome": "away",
+            "outcomeCorrect": true,
+            "exactScore": true,
+            "goalAbsoluteError": 0,
+            "actualOutcomeProbability": 0.5637,
+            "logLoss": 0.57323,
+            "brier": 0.28753,
+            "diagnosis": "赛果方向正确，但比分尺度仍有偏差。"
+          },
+          {
+            "matchId": "美国 vs 比利时",
+            "label": "美国 vs 比利时",
+            "predictedScore": "1-1",
+            "actualScore": "1-4",
+            "predictedOutcome": "away",
+            "predictedOutcomeSource": "outcomeDecision",
+            "actualOutcome": "away",
+            "outcomeCorrect": true,
+            "exactScore": false,
+            "goalAbsoluteError": 3,
+            "actualOutcomeProbability": 0.51833,
+            "logLoss": 0.65714,
+            "brier": 0.34828,
+            "diagnosis": "赛果方向正确，但比分尺度仍有偏差。"
+          }
+        ],
+        "summary": {
+          "matchCount": 2,
+          "outcomeAccuracy": 1.0,
+          "exactScoreAccuracy": 0.5,
+          "meanGoalAbsoluteError": 1.5,
+          "logLoss": 0.61518,
+          "brier": 0.3179,
+          "strategyDiagnosis": "策略结果已按真实派彩结算，继续观察多日样本后再调整资金规则。"
+        }
+      }
+    },
+    {
+      "targetDate": "2026-07-08",
+      "generatedAt": "2026-07-07T16:28:07+08:00",
+      "coverage": 0.727,
       "strategies": [
         {
           "key": "conservative",

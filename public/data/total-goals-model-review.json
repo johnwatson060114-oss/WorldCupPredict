@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-06T17:06:17+08:00",
+  "generatedAt": "2026-07-07T16:31:33+08:00",
   "timezone": "Asia/Shanghai",
   "scheduledReviewStartDate": "2026-06-17",
   "productionPolicy": "current model remains primary; optimized model runs as shadow until adoption gates pass",
@@ -8,12 +8,12 @@
     "role": "production",
     "spec": "hierarchical_poisson[half_life_days=730,rho=0,shrinkage=24,tournament_tier=1]",
     "matches": 96,
-    "exact_hits": 23,
-    "exact_accuracy": 0.23958333333333334,
+    "exact_hits": 24,
+    "exact_accuracy": 0.25,
     "core_hits": 44,
     "core_accuracy": 0.4583333333333333,
-    "average_log_loss": 1.9020473646897527,
-    "average_rps": 0.1345856806382774,
+    "average_log_loss": 1.9019030208476109,
+    "average_rps": 0.13432936532755976,
     "calibration_error": 0.034375,
     "predicted_bucket_counts": {
       "0": 0,
@@ -31,13 +31,13 @@
     "role": "shadow",
     "spec": "hierarchical_poisson[rho=0,shrinkage=16]",
     "matches": 96,
-    "exact_hits": 20,
-    "exact_accuracy": 0.20833333333333334,
+    "exact_hits": 21,
+    "exact_accuracy": 0.21875,
     "core_hits": 46,
     "core_accuracy": 0.4791666666666667,
-    "average_log_loss": 1.9048995634680128,
-    "average_rps": 0.13501084593696958,
-    "calibration_error": 0.035546875,
+    "average_log_loss": 1.9047001933256948,
+    "average_rps": 0.13474396837589528,
+    "calibration_error": 0.034895833333333334,
     "predicted_bucket_counts": {
       "0": 0,
       "1": 9,
@@ -55,13 +55,13 @@
     "spec": "poisson_nb_mixture[dispersion=2,half_life_days=730,rho=-0.04,shrinkage=8,tail_weight=0.2]",
     "reason": "tests wider high-score tails; first round is diagnostic only",
     "matches": 96,
-    "exact_hits": 20,
-    "exact_accuracy": 0.20833333333333334,
+    "exact_hits": 19,
+    "exact_accuracy": 0.19791666666666666,
     "core_hits": 43,
     "core_accuracy": 0.4479166666666667,
-    "average_log_loss": 1.9155256590929077,
-    "average_rps": 0.13615575825302662,
-    "calibration_error": 0.041276041666666666,
+    "average_log_loss": 1.9157502893245315,
+    "average_rps": 0.13592263300081744,
+    "calibration_error": 0.040625,
     "predicted_bucket_counts": {
       "0": 0,
       "1": 15,
@@ -208,9 +208,9 @@
       "second_round_forward_sample": true
     },
     "deltas": {
-      "log_loss_improvement": -0.002852198778260151,
-      "rps_improvement": -0.0004251652986921872,
-      "calibration_delta": 0.0011718749999999958
+      "log_loss_improvement": -0.0027971724780839757,
+      "rps_improvement": -0.00041460304833551564,
+      "calibration_delta": 0.0005208333333333315
     },
     "thresholds": {
       "min_matches": 24,
@@ -224,7 +224,7 @@
     "url": "https://raw.githubusercontent.com/martj42/international_results/master/results.csv",
     "bytes": 3726234,
     "path": "artifacts/total-goals-backtest/international_results.csv",
-    "refreshedAt": "2026-07-06T17:04:59+08:00"
+    "refreshedAt": "2026-07-07T16:30:13+08:00"
   },
   "manualResultRows": 24,
   "comparisonPath": "artifacts/total-goals-backtest/model_comparison_2026.csv"

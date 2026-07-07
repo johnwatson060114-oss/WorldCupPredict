@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-06T17:04:22+08:00",
+  "generatedAt": "2026-07-07T16:28:06+08:00",
   "matches": [
     {
       "matchId": "537327",
@@ -3653,6 +3653,26 @@
       "settledAt": "2026-07-06T00:00:00Z",
       "settlementSource": "external_result_review",
       "settlementSourceUrl": "https://www.theguardian.com/football/2026/jul/06/england-mexico-match-report-jude-bellingham-harry-kane-world-cup"
+    },
+    {
+      "matchId": "葡萄牙 vs 西班牙",
+      "fixtureId": 537379,
+      "matchLabel": "葡萄牙 vs 西班牙",
+      "homeScore": 0,
+      "awayScore": 1,
+      "halfTimeHomeScore": 0,
+      "halfTimeAwayScore": 0,
+      "settledAt": "2026-07-06T19:00:00Z"
+    },
+    {
+      "matchId": "美国 vs 比利时",
+      "fixtureId": 537380,
+      "matchLabel": "美国 vs 比利时",
+      "homeScore": 1,
+      "awayScore": 4,
+      "halfTimeHomeScore": 1,
+      "halfTimeAwayScore": 2,
+      "settledAt": "2026-07-07T00:00:00Z"
     }
   ]
 }
