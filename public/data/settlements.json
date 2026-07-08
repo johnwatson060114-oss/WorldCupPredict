@@ -3680,9 +3680,12 @@
       "matchLabel": "阿根廷 vs 埃及",
       "homeScore": 3,
       "awayScore": 2,
+      "settlementScoreBasis": "90_minutes",
       "halfTimeHomeScore": 0,
       "halfTimeAwayScore": 1,
       "settledAt": "2026-07-07T16:00:00Z",
+      "settlementSource": "external_result_review",
+      "settlementSourceUrl": "https://www.theguardian.com/football/live/2026/jul/07/argentina-v-egypt-world-cup-2026-last-16-live",
       "closingOdds": {
         "胜平负": {
           "胜": 1.2,
@@ -3759,9 +3762,13 @@
       "matchLabel": "瑞士 vs 哥伦比亚",
       "homeScore": 0,
       "awayScore": 0,
+      "settlementScoreBasis": "90_minutes",
+      "rawSettlementScore": "0-0 AET; Switzerland won 4-3 on penalties",
       "halfTimeHomeScore": 0,
       "halfTimeAwayScore": 0,
       "settledAt": "2026-07-07T20:00:00Z",
+      "settlementSource": "external_result_review",
+      "settlementSourceUrl": "https://timesofindia.indiatimes.com/sports/football/fifa-world-cup/switzerland-end-72-year-world-cup-quarter-final-wait-with-dramatic-4-3-penalty-shootout-win-over-colombia-argentina-next/articleshow/132250908.cms",
       "closingOdds": {
         "胜平负": {
           "胜": 3.4,
