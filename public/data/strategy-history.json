@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-07T16:30:13+08:00",
+  "generatedAt": "2026-07-08T15:34:06+08:00",
   "finalDate": "2026-07-19",
   "days": [
     {
@@ -2500,8 +2500,8 @@
     },
     {
       "targetDate": "2026-07-08",
-      "generatedAt": "2026-07-07T16:28:07+08:00",
-      "coverage": 0.727,
+      "generatedAt": "2026-07-07T17:08:41+08:00",
+      "coverage": 0.717,
       "strategies": [
         {
           "key": "conservative",
@@ -2531,7 +2531,164 @@
           "status": "no-bet"
         }
       ],
-      "review": null
+      "review": {
+        "snapshotLabel": "升级前基线快照",
+        "matches": [
+          {
+            "matchId": "2040427",
+            "label": "阿根廷 vs 埃及",
+            "predictedScore": "1-0",
+            "actualScore": "3-2",
+            "predictedOutcome": "home",
+            "predictedOutcomeSource": "outcomeDecision",
+            "actualOutcome": "home",
+            "outcomeCorrect": true,
+            "exactScore": false,
+            "goalAbsoluteError": 4,
+            "actualOutcomeProbability": 0.79691,
+            "logLoss": 0.22701,
+            "brier": 0.07336,
+            "diagnosis": "方向正确，但明显低估比赛开放度和大比分尾部。"
+          },
+          {
+            "matchId": "2040428",
+            "label": "瑞士 vs 哥伦比亚",
+            "predictedScore": "0-1",
+            "actualScore": "0-0",
+            "predictedOutcome": "away",
+            "predictedOutcomeSource": "outcomeDecision",
+            "actualOutcome": "draw",
+            "outcomeCorrect": false,
+            "exactScore": false,
+            "goalAbsoluteError": 1,
+            "actualOutcomeProbability": 0.27629,
+            "logLoss": 1.2863,
+            "brier": 0.80117,
+            "diagnosis": "赛果方向判断错误，需要继续积累同类对阵样本。"
+          }
+        ],
+        "summary": {
+          "matchCount": 2,
+          "outcomeAccuracy": 0.5,
+          "exactScoreAccuracy": 0.0,
+          "meanGoalAbsoluteError": 2.5,
+          "logLoss": 0.75665,
+          "brier": 0.43727,
+          "strategyDiagnosis": "策略结果已按真实派彩结算，继续观察多日样本后再调整资金规则。"
+        }
+      }
+    },
+    {
+      "targetDate": "2026-07-09",
+      "generatedAt": "2026-07-08T15:32:57+08:00",
+      "coverage": 0.77,
+      "strategies": [
+        {
+          "key": "conservative",
+          "name": "稳健",
+          "stake": 0,
+          "payout": 0,
+          "profit": 0,
+          "roi": null,
+          "status": "no-bet"
+        },
+        {
+          "key": "balanced",
+          "name": "均衡",
+          "stake": 0,
+          "payout": 0,
+          "profit": 0,
+          "roi": null,
+          "status": "no-bet"
+        },
+        {
+          "key": "aggressive",
+          "name": "激进",
+          "stake": 0,
+          "payout": 0,
+          "profit": 0,
+          "roi": null,
+          "status": "no-bet"
+        }
+      ],
+      "review": {
+        "snapshotLabel": "升级前基线快照",
+        "matches": [
+          {
+            "matchId": "德国 vs 库拉索",
+            "label": "德国 vs 库拉索",
+            "predictedScore": "4-0",
+            "actualScore": "7-1",
+            "predictedOutcome": "home",
+            "predictedOutcomeSource": "outcomeDecision",
+            "actualOutcome": "home",
+            "outcomeCorrect": true,
+            "exactScore": false,
+            "goalAbsoluteError": 4,
+            "actualOutcomeProbability": 0.96054,
+            "logLoss": 0.04026,
+            "brier": 0.00261,
+            "diagnosis": "方向正确，但明显低估比赛开放度和大比分尾部。"
+          },
+          {
+            "matchId": "荷兰 vs 日本",
+            "label": "荷兰 vs 日本",
+            "predictedScore": "1-0",
+            "actualScore": "2-2",
+            "predictedOutcome": "home",
+            "predictedOutcomeSource": "outcomeDecision",
+            "actualOutcome": "draw",
+            "outcomeCorrect": false,
+            "exactScore": false,
+            "goalAbsoluteError": 3,
+            "actualOutcomeProbability": 0.24363,
+            "logLoss": 1.4121,
+            "brier": 0.94074,
+            "diagnosis": "赛果方向判断错误，需要继续积累同类对阵样本。"
+          },
+          {
+            "matchId": "科特迪瓦 vs 厄瓜多尔",
+            "label": "科特迪瓦 vs 厄瓜多尔",
+            "predictedScore": "1-1",
+            "actualScore": "1-0",
+            "predictedOutcome": "home",
+            "predictedOutcomeSource": "outcomeDecision",
+            "actualOutcome": "home",
+            "outcomeCorrect": true,
+            "exactScore": false,
+            "goalAbsoluteError": 1,
+            "actualOutcomeProbability": 0.35982,
+            "logLoss": 1.02215,
+            "brier": 0.61576,
+            "diagnosis": "赛果方向正确，但比分尺度仍有偏差。"
+          },
+          {
+            "matchId": "瑞典 vs 突尼斯",
+            "label": "瑞典 vs 突尼斯",
+            "predictedScore": "2-0",
+            "actualScore": "5-1",
+            "predictedOutcome": "home",
+            "predictedOutcomeSource": "outcomeDecision",
+            "actualOutcome": "home",
+            "outcomeCorrect": true,
+            "exactScore": false,
+            "goalAbsoluteError": 4,
+            "actualOutcomeProbability": 0.71272,
+            "logLoss": 0.33867,
+            "brier": 0.12829,
+            "diagnosis": "方向正确，但明显低估比赛开放度和大比分尾部。"
+          }
+        ],
+        "summary": {
+          "matchCount": 4,
+          "outcomeAccuracy": 0.75,
+          "exactScoreAccuracy": 0.0,
+          "meanGoalAbsoluteError": 3.0,
+          "logLoss": 0.7033,
+          "brier": 0.42185,
+          "strategyDiagnosis": "策略结果已按真实派彩结算，继续观察多日样本后再调整资金规则。"
+        }
+      }
     }
   ]
 }
