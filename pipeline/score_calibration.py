@@ -54,12 +54,14 @@ def _score_shape_weight(
     outcome = _outcome(home_goals, away_goals)
 
     if profile == "close_late_tail":
+        if total == 0:
+            return 1.10
         if home_goals == away_goals and total <= 2:
-            return 0.94
+            return 1.01
         if abs(home_goals - away_goals) == 1 and total <= 3:
             return 0.98
         if total >= 5:
-            return 1.05
+            return 1.04
         return 1.0
 
     if profile == "favorite_tail":
@@ -67,13 +69,13 @@ def _score_shape_weight(
             favorite_goals = home_goals if favorite_side == "home" else away_goals
             underdog_goals = away_goals if favorite_side == "home" else home_goals
             if favorite_goals - underdog_goals >= 2 and total >= 2:
-                return 1.08
+                return 1.10
             if total >= 4:
-                return 1.04
+                return 1.07
         if total >= 3 and home_goals > 0 and away_goals > 0:
-            return 1.03
+            return 1.08
         if total == 0:
-            return 0.92
+            return 0.88
         return 1.0
 
     if total >= 4:
@@ -95,26 +97,26 @@ def _profile_for_match(
 
     if "tension_close" in policy or favorite_probability < 0.53:
         return "close_late_tail", favorite_side, {
-            "0": 0.925,
-            "1": 0.940,
-            "2": 0.970,
-            "3": 1.015,
-            "4": 1.060,
-            "5": 1.090,
-            "6": 1.120,
-            "7+": 1.150,
+            "0": 1.035,
+            "1": 0.975,
+            "2": 0.955,
+            "3": 1.000,
+            "4": 1.045,
+            "5": 1.070,
+            "6": 1.095,
+            "7+": 1.120,
         }
 
     if favorite_probability >= 0.60 or xg_gap >= 0.55:
         return "favorite_tail", favorite_side, {
-            "0": 0.84,
-            "1": 0.94,
-            "2": 1.00,
-            "3": 1.05,
-            "4": 1.09,
-            "5": 1.12,
-            "6": 1.12,
-            "7+": 1.10,
+            "0": 0.82,
+            "1": 0.925,
+            "2": 0.995,
+            "3": 1.055,
+            "4": 1.135,
+            "5": 1.220,
+            "6": 1.240,
+            "7+": 1.220,
         }
 
     return "balanced_knockout", favorite_side, {
@@ -207,7 +209,7 @@ def apply_score_matrix_calibration(
         matrix=calibrated,
         metadata={
             "applied": True,
-            "policy": "knockout_score_total_matrix_calibration_v2",
+            "policy": "knockout_score_total_matrix_calibration_v3",
             "profile": profile,
             "intensity": KNOCKOUT_SCORE_CALIBRATION_INTENSITY,
             "sourceKnockoutPolicy": policy,

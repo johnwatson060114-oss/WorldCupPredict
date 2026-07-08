@@ -339,16 +339,16 @@ def build_report(
         "modelDecision": {
             "primaryAdjustmentTarget": "total_goals_and_exact_score_matrix",
             "wdlRole": "auxiliary outcome sanity check only",
-            "scoreCalibrationPolicy": "knockout_score_total_matrix_calibration_v2",
+            "scoreCalibrationPolicy": "knockout_score_total_matrix_calibration_v3",
             "scoreCalibrationIntensity": 0.25,
             "currentDecision": (
                 "keep current production total-goals model; keep optimized total-goals model "
-                "as shadow; use shrinked knockout score calibration rather than the full "
-                "tail shift from the previous small-sample live replay"
+                "as shadow; use shrinked knockout score calibration with separate favorite-tail "
+                "and nil-nil tension adjustments"
             ),
             "reason": (
-                "A 25% calibration blend keeps the base matrix's knockout exact-score top1 "
-                "hit count while preserving the calibrated matrix's top3 gain; optimized "
+                "A 25% calibration blend responds to the latest high-tail and nil-nil misses "
+                "without widening the user-facing two-bucket total-goals core; optimized "
                 "total-goals shadow has not cleared stable-window adoption gates"
             ),
         },

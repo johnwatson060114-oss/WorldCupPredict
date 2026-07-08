@@ -144,7 +144,7 @@ def build_report(
             ],
             "wdlRole": "auxiliary outcome sanity check only",
             "productionScoreMatrix": "calibrated",
-            "scoreCalibrationPolicy": "knockout_score_total_matrix_calibration_v2",
+            "scoreCalibrationPolicy": "knockout_score_total_matrix_calibration_v3",
             "scoreCalibrationIntensity": 0.25,
             "halfFullCalibrationPolicy": "knockout_half_full_late_swing_v2",
             "diagnosticScoreMatrix": "base",

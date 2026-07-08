@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-08T19:53:59+08:00",
+  "generatedAt": "2026-07-08T20:12:48+08:00",
   "scope": {
     "tournament": "FIFA World Cup 2026",
     "predictionTarget": "90_minutes",
@@ -39,15 +39,15 @@
         "totalExactAccuracy": 0.1839080459770115,
         "totalAdjacentCoreHits": 50,
         "totalAdjacentCoreAccuracy": 0.5747126436781609,
-        "averageTotalLogLoss": 1.9469118921161652,
-        "averageTotalRps": 0.1395017592719703,
+        "averageTotalLogLoss": 1.9479979381362689,
+        "averageTotalRps": 0.1396524882541965,
         "scoreTop1Hits": 8,
         "scoreTop1Accuracy": 0.09195402298850575,
         "scoreTop3Hits": 31,
         "scoreTop3Accuracy": 0.3563218390804598,
         "scoreTop5Hits": 46,
         "scoreTop5Accuracy": 0.5287356321839081,
-        "averageScoreLogLoss": 2.873404149289431
+        "averageScoreLogLoss": 2.8745093270653066
       }
     },
     "knockout": {
@@ -73,15 +73,15 @@
         "totalExactAccuracy": 0.25925925925925924,
         "totalAdjacentCoreHits": 22,
         "totalAdjacentCoreAccuracy": 0.8148148148148148,
-        "averageTotalLogLoss": 1.7184734217399849,
-        "averageTotalRps": 0.10400973535666948,
+        "averageTotalLogLoss": 1.7219729033603186,
+        "averageTotalRps": 0.10449541763273154,
         "scoreTop1Hits": 4,
         "scoreTop1Accuracy": 0.14814814814814814,
         "scoreTop3Hits": 14,
         "scoreTop3Accuracy": 0.5185185185185185,
         "scoreTop5Hits": 18,
         "scoreTop5Accuracy": 0.6666666666666666,
-        "averageScoreLogLoss": 2.6605719281929776
+        "averageScoreLogLoss": 2.66413305658191
       }
     },
     "latestCompleted": {
@@ -107,25 +107,25 @@
         "totalExactAccuracy": 0.0,
         "totalAdjacentCoreHits": 0,
         "totalAdjacentCoreAccuracy": 0.0,
-        "averageTotalLogLoss": 2.750211371825338,
-        "averageTotalRps": 0.2661337885764307,
+        "averageTotalLogLoss": 2.720041562459659,
+        "averageTotalRps": 0.263828892706653,
         "scoreTop1Hits": 0,
         "scoreTop1Accuracy": 0.0,
         "scoreTop3Hits": 1,
         "scoreTop3Accuracy": 0.5,
         "scoreTop5Hits": 1,
         "scoreTop5Accuracy": 0.5,
-        "averageScoreLogLoss": 4.317388360395368
+        "averageScoreLogLoss": 4.286175854005224
       }
     }
   },
   "modelDecision": {
     "primaryAdjustmentTarget": "total_goals_and_exact_score_matrix",
     "wdlRole": "auxiliary outcome sanity check only",
-    "scoreCalibrationPolicy": "knockout_score_total_matrix_calibration_v2",
+    "scoreCalibrationPolicy": "knockout_score_total_matrix_calibration_v3",
     "scoreCalibrationIntensity": 0.25,
-    "currentDecision": "keep current production total-goals model; keep optimized total-goals model as shadow; use shrinked knockout score calibration rather than the full tail shift from the previous small-sample live replay",
-    "reason": "A 25% calibration blend keeps the base matrix's knockout exact-score top1 hit count while preserving the calibrated matrix's top3 gain; optimized total-goals shadow has not cleared stable-window adoption gates"
+    "currentDecision": "keep current production total-goals model; keep optimized total-goals model as shadow; use shrinked knockout score calibration with separate favorite-tail and nil-nil tension adjustments",
+    "reason": "A 25% calibration blend responds to the latest high-tail and nil-nil misses without widening the user-facing two-bucket total-goals core; optimized total-goals shadow has not cleared stable-window adoption gates"
   },
   "latestCompletedMatchIds": [
     "2040427",
@@ -7039,70 +7039,70 @@
         "actualTotalBucket": "1",
         "totalExactHit": false,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.7104028897381063,
-        "totalRps": 0.11998967695858791,
+        "totalLogLoss": 1.722338402186289,
+        "totalRps": 0.12168612205913269,
         "topScore": "0:1",
         "actualScore": "0:1",
         "scoreTop1Hit": true,
         "scoreTop3Hit": true,
         "scoreTop5Hit": true,
-        "scoreLogLoss": 2.0763073968202868,
-        "actualScoreProbability": 0.12539238267832734,
+        "scoreLogLoss": 2.088460890197335,
+        "actualScoreProbability": 0.12387765047453463,
         "topScores": [
           {
             "score": "0:1",
-            "probability": 0.12539238267832734
+            "probability": 0.12387765047453463
           },
           {
             "score": "1:1",
-            "probability": 0.12243346776877552
+            "probability": 0.12228750029676731
           },
           {
             "score": "0:2",
-            "probability": 0.11792009506344334
+            "probability": 0.11716565574347278
           },
           {
             "score": "1:2",
-            "probability": 0.09495850146100435
+            "probability": 0.09526298116449357
           },
           {
             "score": "0:0",
-            "probability": 0.08631623279690452
+            "probability": 0.08509565623263216
           }
         ],
         "totalProbabilities": {
-          "0": 0.08631623279690452,
-          "1": 0.18079293832241153,
-          "2": 0.2665537863180908,
-          "3": 0.2153494675353416,
-          "4": 0.13809948178137973,
-          "5": 0.06904276053424478,
-          "6": 0.029109501310516553,
-          "7+": 0.014735831401110412
+          "0": 0.08509565623263216,
+          "1": 0.17864790843636025,
+          "2": 0.26540881908417646,
+          "3": 0.21553727171395162,
+          "4": 0.13977561432601182,
+          "5": 0.07047385985959813,
+          "6": 0.02994665628578198,
+          "7+": 0.015114214061487639
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "favorite_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "favoriteSide": "away",
         "totalGoalWeights": {
-          "0": 0.84,
-          "1": 0.94,
-          "2": 1.0,
-          "3": 1.05,
-          "4": 1.09,
-          "5": 1.12,
-          "6": 1.12,
-          "7+": 1.1
+          "0": 0.82,
+          "1": 0.925,
+          "2": 0.995,
+          "3": 1.055,
+          "4": 1.135,
+          "5": 1.22,
+          "6": 1.24,
+          "7+": 1.22
         },
         "expectedTotalGoalsBefore": 2.502,
-        "expectedTotalGoalsAfter": 2.5354,
-        "fullIntensityExpectedTotalGoalsAfter": 2.6354,
+        "expectedTotalGoalsAfter": 2.553,
+        "fullIntensityExpectedTotalGoalsAfter": 2.706,
         "outcomePreserved": true,
-        "maxCellDelta": 0.004359
+        "maxCellDelta": 0.005874
       }
     },
     {
@@ -7172,70 +7172,70 @@
         "actualTotalBucket": "3",
         "totalExactHit": false,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.5644837257485322,
-        "totalRps": 0.06793438339482902,
+        "totalLogLoss": 1.5672794740336469,
+        "totalRps": 0.06884227413135095,
         "topScore": "1:1",
         "actualScore": "2:1",
         "scoreTop1Hit": false,
         "scoreTop3Hit": false,
         "scoreTop5Hit": true,
-        "scoreLogLoss": 2.3904587594448725,
-        "actualScoreProbability": 0.09158765753532312,
+        "scoreLogLoss": 2.3928766575806915,
+        "actualScoreProbability": 0.09136647541458,
         "topScores": [
           {
             "score": "1:1",
-            "probability": 0.1320467158704228
+            "probability": 0.1300369486803217
           },
           {
             "score": "1:0",
-            "probability": 0.1230579325063528
-          },
-          {
-            "score": "2:0",
-            "probability": 0.10047782621018467
+            "probability": 0.12428483988346192
           },
           {
             "score": "0:0",
-            "probability": 0.09884578179303671
+            "probability": 0.1026561213031066
+          },
+          {
+            "score": "2:0",
+            "probability": 0.10022285944273365
           },
           {
             "score": "2:1",
-            "probability": 0.09158765753532312
+            "probability": 0.09136647541458
           }
         ],
         "totalProbabilities": {
-          "0": 0.09884578179303671,
-          "1": 0.19400344201573,
-          "2": 0.2694861634518959,
-          "3": 0.20919598780063653,
-          "4": 0.12834228631729586,
-          "5": 0.06251008029663692,
-          "6": 0.025358184370627482,
-          "7+": 0.012258073954140658
+          "0": 0.1026561213031066,
+          "1": 0.1958663887390845,
+          "2": 0.2670862185548282,
+          "3": 0.20861194527485144,
+          "4": 0.1266231396875622,
+          "5": 0.06209664993805819,
+          "6": 0.02493294797388924,
+          "7+": 0.012126588528619643
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "close_late_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_tension_close_game_v2",
         "favoriteSide": "home",
         "totalGoalWeights": {
-          "0": 0.925,
-          "1": 0.94,
-          "2": 0.97,
-          "3": 1.015,
-          "4": 1.06,
-          "5": 1.09,
-          "6": 1.12,
-          "7+": 1.15
+          "0": 1.035,
+          "1": 0.975,
+          "2": 0.955,
+          "3": 1.0,
+          "4": 1.045,
+          "5": 1.07,
+          "6": 1.095,
+          "7+": 1.12
         },
         "expectedTotalGoalsBefore": 2.3975,
-        "expectedTotalGoalsAfter": 2.4244,
-        "fullIntensityExpectedTotalGoalsAfter": 2.5052,
+        "expectedTotalGoalsAfter": 2.4073,
+        "fullIntensityExpectedTotalGoalsAfter": 2.4368,
         "outcomePreserved": true,
-        "maxCellDelta": 0.002578
+        "maxCellDelta": 0.002486
       }
     },
     {
@@ -7305,70 +7305,70 @@
         "actualTotalBucket": "2",
         "totalExactHit": true,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.388033720159265,
-        "totalRps": 0.0652459348020706,
+        "totalLogLoss": 1.3942837659543574,
+        "totalRps": 0.06634192238459216,
         "topScore": "1:1",
         "actualScore": "1:1",
         "scoreTop1Hit": true,
         "scoreTop3Hit": true,
         "scoreTop5Hit": true,
-        "scoreLogLoss": 2.1590068635936115,
-        "actualScoreProbability": 0.11543971150690122,
+        "scoreLogLoss": 2.16260015226431,
+        "actualScoreProbability": 0.11502564767036422,
         "topScores": [
           {
             "score": "1:1",
-            "probability": 0.11543971150690122
+            "probability": 0.11502564767036422
           },
           {
             "score": "2:0",
-            "probability": 0.10873886137618907
+            "probability": 0.10788027290843168
           },
           {
             "score": "1:0",
-            "probability": 0.10480735315297232
+            "probability": 0.10341012240873929
           },
           {
             "score": "2:1",
-            "probability": 0.09822486822609361
+            "probability": 0.09837877319474318
           },
           {
             "score": "3:0",
-            "probability": 0.06837892253958948
+            "probability": 0.06798525784875922
           }
         ],
         "totalProbabilities": {
-          "0": 0.06785451840039954,
-          "1": 0.1519564710071855,
-          "2": 0.2495655381922267,
-          "3": 0.222581972515142,
-          "4": 0.15732938335112506,
-          "5": 0.08682246613946784,
-          "6": 0.04036153377453461,
-          "7+": 0.02352811661991872
+          "0": 0.06678400648897322,
+          "1": 0.1499445098868507,
+          "2": 0.24801060640877354,
+          "3": 0.22239910488515202,
+          "4": 0.15890259875871593,
+          "5": 0.08844629708472594,
+          "6": 0.041428774188266106,
+          "7+": 0.02408410229854257
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "favorite_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "favoriteSide": "home",
         "totalGoalWeights": {
-          "0": 0.84,
-          "1": 0.94,
-          "2": 1.0,
-          "3": 1.05,
-          "4": 1.09,
-          "5": 1.12,
-          "6": 1.12,
-          "7+": 1.1
+          "0": 0.82,
+          "1": 0.925,
+          "2": 0.995,
+          "3": 1.055,
+          "4": 1.135,
+          "5": 1.22,
+          "6": 1.24,
+          "7+": 1.22
         },
         "expectedTotalGoalsBefore": 2.7558,
-        "expectedTotalGoalsAfter": 2.7891,
-        "fullIntensityExpectedTotalGoalsAfter": 2.889,
+        "expectedTotalGoalsAfter": 2.8082,
+        "fullIntensityExpectedTotalGoalsAfter": 2.9651,
         "outcomePreserved": true,
-        "maxCellDelta": 0.003908
+        "maxCellDelta": 0.005305
       }
     },
     {
@@ -7438,70 +7438,70 @@
         "actualTotalBucket": "2",
         "totalExactHit": true,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.3477788823117947,
-        "totalRps": 0.05661683625738936,
+        "totalLogLoss": 1.3550571399662594,
+        "totalRps": 0.0563604270481879,
         "topScore": "1:1",
         "actualScore": "1:1",
         "scoreTop1Hit": true,
         "scoreTop3Hit": true,
         "scoreTop5Hit": true,
-        "scoreLogLoss": 2.051652781983184,
-        "actualScoreProbability": 0.1285223085935308,
+        "scoreLogLoss": 2.0640257790867156,
+        "actualScoreProbability": 0.12694189980042656,
         "topScores": [
           {
             "score": "1:1",
-            "probability": 0.1285223085935308
+            "probability": 0.12694189980042656
           },
           {
             "score": "1:0",
-            "probability": 0.10782115798306582
+            "probability": 0.1089425213656979
           },
           {
             "score": "2:1",
-            "probability": 0.09420398995288824
+            "probability": 0.09402439738051901
           },
           {
             "score": "2:0",
-            "probability": 0.09375779248832482
+            "probability": 0.09356673313098826
           },
           {
             "score": "0:0",
-            "probability": 0.08394251900693174
+            "probability": 0.087439401617598
           }
         ],
         "totalProbabilities": {
-          "0": 0.08394251900693174,
-          "1": 0.17268475433520414,
-          "2": 0.25981670371126786,
-          "3": 0.2165001821338825,
-          "4": 0.14262571004779323,
-          "5": 0.07458395941524486,
-          "6": 0.032490993420134756,
-          "7+": 0.017355177929540964
+          "0": 0.087439401617598,
+          "1": 0.17442537871139419,
+          "2": 0.2579325557732118,
+          "3": 0.21601443543723936,
+          "4": 0.14089105090824836,
+          "5": 0.07413599360841343,
+          "6": 0.031981465246476666,
+          "7+": 0.0171797186974182
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "close_late_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_tension_close_game_v2",
         "favoriteSide": "home",
         "totalGoalWeights": {
-          "0": 0.925,
-          "1": 0.94,
-          "2": 0.97,
-          "3": 1.015,
-          "4": 1.06,
-          "5": 1.09,
-          "6": 1.12,
-          "7+": 1.15
+          "0": 1.035,
+          "1": 0.975,
+          "2": 0.955,
+          "3": 1.0,
+          "4": 1.045,
+          "5": 1.07,
+          "6": 1.095,
+          "7+": 1.12
         },
         "expectedTotalGoalsBefore": 2.5723,
-        "expectedTotalGoalsAfter": 2.6017,
-        "fullIntensityExpectedTotalGoalsAfter": 2.6897,
+        "expectedTotalGoalsAfter": 2.5847,
+        "fullIntensityExpectedTotalGoalsAfter": 2.6219,
         "outcomePreserved": true,
-        "maxCellDelta": 0.002463
+        "maxCellDelta": 0.002326
       }
     },
     {
@@ -7571,70 +7571,70 @@
         "actualTotalBucket": "3",
         "totalExactHit": false,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.4949999571846397,
-        "totalRps": 0.05477784472333262,
+        "totalLogLoss": 1.49717943768525,
+        "totalRps": 0.054832863784755055,
         "topScore": "0:2",
         "actualScore": "1:2",
         "scoreTop1Hit": false,
         "scoreTop3Hit": true,
         "scoreTop5Hit": true,
-        "scoreLogLoss": 2.3210849440286734,
-        "actualScoreProbability": 0.09816702208266506,
+        "scoreLogLoss": 2.320690537980179,
+        "actualScoreProbability": 0.09820574738618212,
         "topScores": [
           {
             "score": "0:2",
-            "probability": 0.11021293579025207
+            "probability": 0.10922570671602168
           },
           {
             "score": "1:1",
-            "probability": 0.10308652216393493
+            "probability": 0.10259360732808662
           },
           {
             "score": "1:2",
-            "probability": 0.09816702208266506
+            "probability": 0.09820574738618212
           },
           {
             "score": "0:1",
-            "probability": 0.09506330105652519
+            "probability": 0.09371240005355067
           },
           {
             "score": "0:3",
-            "probability": 0.0775409161216598
+            "probability": 0.0770068969266727
           }
         ],
         "totalProbabilities": {
-          "0": 0.055618029927478156,
-          "1": 0.1319577637695298,
-          "2": 0.23330338055111652,
-          "3": 0.22424861433182036,
-          "4": 0.17031294846598968,
-          "5": 0.1011779575458333,
-          "6": 0.05053712720904804,
-          "7+": 0.03284417819918416
+          "0": 0.0546950114692027,
+          "1": 0.13009530079149226,
+          "2": 0.2315830428998114,
+          "3": 0.2237604010684956,
+          "4": 0.1716711410871183,
+          "5": 0.10288848282252519,
+          "6": 0.051751555438322806,
+          "7+": 0.033555064423031716
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "favorite_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "favoriteSide": "away",
         "totalGoalWeights": {
-          "0": 0.84,
-          "1": 0.94,
-          "2": 1.0,
-          "3": 1.05,
-          "4": 1.09,
-          "5": 1.12,
-          "6": 1.12,
-          "7+": 1.1
+          "0": 0.82,
+          "1": 0.925,
+          "2": 0.995,
+          "3": 1.055,
+          "4": 1.135,
+          "5": 1.22,
+          "6": 1.24,
+          "7+": 1.22
         },
         "expectedTotalGoalsBefore": 2.9591,
-        "expectedTotalGoalsAfter": 2.9916,
-        "fullIntensityExpectedTotalGoalsAfter": 3.0891,
+        "expectedTotalGoalsAfter": 3.0111,
+        "fullIntensityExpectedTotalGoalsAfter": 3.1671,
         "outcomePreserved": true,
-        "maxCellDelta": 0.003746
+        "maxCellDelta": 0.005097
       }
     },
     {
@@ -7704,70 +7704,70 @@
         "actualTotalBucket": "3",
         "totalExactHit": true,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.5123616954893808,
-        "totalRps": 0.05810704401870041,
+        "totalLogLoss": 1.516962457936892,
+        "totalRps": 0.058602557804185836,
         "topScore": "2:0",
         "actualScore": "3:0",
         "scoreTop1Hit": false,
         "scoreTop3Hit": true,
         "scoreTop5Hit": true,
-        "scoreLogLoss": 2.089479320505157,
-        "actualScoreProbability": 0.12375155394199376,
+        "scoreLogLoss": 2.097527926451411,
+        "actualScoreProbability": 0.12275952403329615,
         "topScores": [
           {
             "score": "2:0",
-            "probability": 0.13437600492488003
+            "probability": 0.13303108414391046
           },
           {
             "score": "3:0",
-            "probability": 0.12375155394199376
+            "probability": 0.12275952403329615
           },
           {
             "score": "1:0",
-            "probability": 0.09091238044345949
+            "probability": 0.08954388637020361
           },
           {
             "score": "4:0",
-            "probability": 0.08526068880446307
+            "probability": 0.08533422865374943
           },
           {
             "score": "2:1",
-            "probability": 0.07835416017201328
+            "probability": 0.07829104251636315
           }
         ],
         "totalProbabilities": {
-          "0": 0.03909851484340522,
-          "1": 0.10712321183429485,
-          "2": 0.2038320582207372,
-          "3": 0.22038887145052857,
-          "4": 0.18567778993268566,
-          "5": 0.12321761362901118,
-          "6": 0.0682585375175846,
-          "7+": 0.052403402571752696
+          "0": 0.03849952113171645,
+          "1": 0.10554956552196698,
+          "2": 0.20223658955951887,
+          "3": 0.21937724352123156,
+          "4": 0.1864328560594078,
+          "5": 0.12494833337826522,
+          "6": 0.06958522638028358,
+          "7+": 0.05337066444760954
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "favorite_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "favoriteSide": "home",
         "totalGoalWeights": {
-          "0": 0.84,
-          "1": 0.94,
-          "2": 1.0,
-          "3": 1.05,
-          "4": 1.09,
-          "5": 1.12,
-          "6": 1.12,
-          "7+": 1.1
+          "0": 0.82,
+          "1": 0.925,
+          "2": 0.995,
+          "3": 1.055,
+          "4": 1.135,
+          "5": 1.22,
+          "6": 1.24,
+          "7+": 1.22
         },
         "expectedTotalGoalsBefore": 3.2817,
-        "expectedTotalGoalsAfter": 3.3111,
-        "fullIntensityExpectedTotalGoalsAfter": 3.3994,
+        "expectedTotalGoalsAfter": 3.3297,
+        "fullIntensityExpectedTotalGoalsAfter": 3.4738,
         "outcomePreserved": true,
-        "maxCellDelta": 0.003883
+        "maxCellDelta": 0.005252
       }
     },
     {
@@ -7837,70 +7837,70 @@
         "actualTotalBucket": "2",
         "totalExactHit": false,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.297786539034749,
-        "totalRps": 0.049238263918527016,
+        "totalLogLoss": 1.3147711708782726,
+        "totalRps": 0.05031860126105268,
         "topScore": "0:0",
         "actualScore": "2:0",
         "scoreTop1Hit": false,
         "scoreTop3Hit": false,
         "scoreTop5Hit": true,
-        "scoreLogLoss": 2.707249378521573,
-        "actualScoreProbability": 0.06672007622164357,
+        "scoreLogLoss": 2.712950143427129,
+        "actualScoreProbability": 0.06634080285393307,
         "topScores": [
           {
             "score": "0:0",
-            "probability": 0.19870415890369583
+            "probability": 0.20378397159333989
           },
           {
             "score": "1:0",
-            "probability": 0.1468720611703592
+            "probability": 0.14792074611113784
           },
           {
             "score": "0:1",
-            "probability": 0.14414555696354192
+            "probability": 0.14516864016936767
           },
           {
             "score": "1:1",
-            "probability": 0.14199419552117362
+            "probability": 0.13814267455891688
           },
           {
             "score": "2:0",
-            "probability": 0.06672007622164357
+            "probability": 0.06634080285393307
           }
         ],
         "totalProbabilities": {
-          "0": 0.19870415890369583,
-          "1": 0.29101761813390115,
-          "2": 0.27313569963496176,
-          "3": 0.14635849609401363,
-          "4": 0.06219518833291858,
-          "5": 0.02094881265811265,
-          "6": 0.0058855811128731795,
-          "7+": 0.0017544451295233097
+          "0": 0.20378397159333989,
+          "1": 0.2930893862805055,
+          "2": 0.2685357650123952,
+          "3": 0.14552968826718468,
+          "4": 0.06085361059009162,
+          "5": 0.02074186224553584,
+          "6": 0.005736955251582681,
+          "7+": 0.0017287607593646673
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "close_late_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_tension_close_game_v2",
         "favoriteSide": "home",
         "totalGoalWeights": {
-          "0": 0.925,
-          "1": 0.94,
-          "2": 0.97,
-          "3": 1.015,
-          "4": 1.06,
-          "5": 1.09,
-          "6": 1.12,
-          "7+": 1.15
+          "0": 1.035,
+          "1": 0.975,
+          "2": 0.955,
+          "3": 1.0,
+          "4": 1.045,
+          "5": 1.07,
+          "6": 1.095,
+          "7+": 1.12
         },
         "expectedTotalGoalsBefore": 1.661,
-        "expectedTotalGoalsAfter": 1.6775,
-        "fullIntensityExpectedTotalGoalsAfter": 1.727,
+        "expectedTotalGoalsAfter": 1.6604,
+        "fullIntensityExpectedTotalGoalsAfter": 1.6586,
         "outcomePreserved": true,
-        "maxCellDelta": 0.00176
+        "maxCellDelta": 0.00343
       }
     },
     {
@@ -7970,70 +7970,70 @@
         "actualTotalBucket": "3",
         "totalExactHit": false,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.66071809187295,
-        "totalRps": 0.08584738477180873,
+        "totalLogLoss": 1.6585936698356218,
+        "totalRps": 0.08507737694535701,
         "topScore": "1:0",
         "actualScore": "2:1",
         "scoreTop1Hit": false,
         "scoreTop3Hit": false,
         "scoreTop5Hit": false,
-        "scoreLogLoss": 2.8940631210224845,
-        "actualScoreProbability": 0.05535085786550504,
+        "scoreLogLoss": 2.8872858976808415,
+        "actualScoreProbability": 0.05572725702129292,
         "topScores": [
           {
             "score": "1:0",
-            "probability": 0.21419128518419867
+            "probability": 0.21221226169089885
           },
           {
             "score": "2:0",
-            "probability": 0.20538790557719538
-          },
-          {
-            "score": "0:0",
-            "probability": 0.1259463479503683
+            "probability": 0.20476048341805264
           },
           {
             "score": "3:0",
-            "probability": 0.12583841763648548
+            "probability": 0.1257583388936777
+          },
+          {
+            "score": "0:0",
+            "probability": 0.12500584066751252
           },
           {
             "score": "1:1",
-            "probability": 0.06835029137177939
+            "probability": 0.06894358319893484
           }
         ],
         "totalProbabilities": {
-          "0": 0.1259463479503683,
-          "1": 0.24252776458683128,
-          "2": 0.27827255329606726,
-          "3": 0.1900024918565934,
-          "4": 0.10070427072154661,
-          "5": 0.04209366055875675,
-          "6": 0.014660091159497391,
-          "7+": 0.005792819870339055
+          "0": 0.12500584066751252,
+          "1": 0.24040235769089432,
+          "2": 0.2782264132062563,
+          "3": 0.1904065663978996,
+          "4": 0.10187605941998845,
+          "5": 0.04305541737194254,
+          "6": 0.015074744119598665,
+          "7+": 0.005952601125907658
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "favorite_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "favoriteSide": "home",
         "totalGoalWeights": {
-          "0": 0.84,
-          "1": 0.94,
-          "2": 1.0,
-          "3": 1.05,
-          "4": 1.09,
-          "5": 1.12,
-          "6": 1.12,
-          "7+": 1.1
+          "0": 0.82,
+          "1": 0.925,
+          "2": 0.995,
+          "3": 1.055,
+          "4": 1.135,
+          "5": 1.22,
+          "6": 1.24,
+          "7+": 1.22
         },
         "expectedTotalGoalsBefore": 2.0828,
-        "expectedTotalGoalsAfter": 2.1109,
-        "fullIntensityExpectedTotalGoalsAfter": 2.1952,
+        "expectedTotalGoalsAfter": 2.123,
+        "fullIntensityExpectedTotalGoalsAfter": 2.2436,
         "outcomePreserved": true,
-        "maxCellDelta": 0.006677
+        "maxCellDelta": 0.008656
       }
     },
     {
@@ -8103,70 +8103,70 @@
         "actualTotalBucket": "4",
         "totalExactHit": false,
         "totalAdjacentCoreHit": false,
-        "totalLogLoss": 1.917255325445809,
-        "totalRps": 0.12260037894131512,
+        "totalLogLoss": 1.9297358347923634,
+        "totalRps": 0.12412430428451605,
         "topScore": "1:1",
         "actualScore": "2:2",
         "scoreTop1Hit": false,
         "scoreTop3Hit": false,
         "scoreTop5Hit": false,
-        "scoreLogLoss": 2.89197522691722,
-        "actualScoreProbability": 0.05546654532491966,
+        "scoreLogLoss": 2.921972488113693,
+        "actualScoreProbability": 0.053827408594428826,
         "topScores": [
           {
             "score": "1:1",
-            "probability": 0.13304268774634803
+            "probability": 0.1316458296138945
           },
           {
             "score": "1:0",
-            "probability": 0.08766586486948819
+            "probability": 0.0885718383370476
           },
           {
             "score": "2:1",
-            "probability": 0.08590079564948334
+            "probability": 0.08573090388976747
           },
           {
             "score": "0:0",
-            "probability": 0.08005311332153771
+            "probability": 0.08353947759603489
           },
           {
             "score": "0:1",
-            "probability": 0.07762184529350857
+            "probability": 0.07840901548273645
           }
         ],
         "totalProbabilities": {
-          "0": 0.08005311332153771,
-          "1": 0.16528771016299676,
-          "2": 0.25664385547166435,
-          "3": 0.2181941886976038,
-          "4": 0.14700990324693708,
-          "5": 0.0785397259375408,
-          "6": 0.034994729144648455,
-          "7+": 0.01927677401707105
+          "0": 0.08353947759603489,
+          "1": 0.16698085381978406,
+          "2": 0.2549743488797313,
+          "3": 0.21773846527274401,
+          "4": 0.14518654665251723,
+          "5": 0.07807859189112308,
+          "6": 0.03442336250107098,
+          "7+": 0.019078353386994474
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "close_late_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_tension_close_game_v2",
         "favoriteSide": "home",
         "totalGoalWeights": {
-          "0": 0.925,
-          "1": 0.94,
-          "2": 0.97,
-          "3": 1.015,
-          "4": 1.06,
-          "5": 1.09,
-          "6": 1.12,
-          "7+": 1.15
+          "0": 1.035,
+          "1": 0.975,
+          "2": 0.955,
+          "3": 1.0,
+          "4": 1.045,
+          "5": 1.07,
+          "6": 1.095,
+          "7+": 1.12
         },
         "expectedTotalGoalsBefore": 2.6282,
-        "expectedTotalGoalsAfter": 2.6588,
-        "fullIntensityExpectedTotalGoalsAfter": 2.7505,
+        "expectedTotalGoalsAfter": 2.6414,
+        "fullIntensityExpectedTotalGoalsAfter": 2.6807,
         "outcomePreserved": true,
-        "maxCellDelta": 0.001992
+        "maxCellDelta": 0.002363
       }
     },
     {
@@ -8236,70 +8236,70 @@
         "actualTotalBucket": "2",
         "totalExactHit": true,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.4862898385780223,
-        "totalRps": 0.08346317476269029,
+        "totalLogLoss": 1.4947926996387493,
+        "totalRps": 0.08497393081591399,
         "topScore": "1:1",
         "actualScore": "2:0",
         "scoreTop1Hit": false,
         "scoreTop3Hit": true,
         "scoreTop5Hit": true,
-        "scoreLogLoss": 2.3524905066276003,
-        "actualScoreProbability": 0.09513194020908931,
+        "scoreLogLoss": 2.3621096539753883,
+        "actualScoreProbability": 0.09422123916460648,
         "topScores": [
           {
             "score": "1:1",
-            "probability": 0.10632394434698
+            "probability": 0.10564687372644181
           },
           {
             "score": "2:1",
-            "probability": 0.09883763512399968
+            "probability": 0.0988118723221254
           },
           {
             "score": "2:0",
-            "probability": 0.09513194020908931
+            "probability": 0.09422123916460648
           },
           {
             "score": "1:0",
-            "probability": 0.08321482006469584
+            "probability": 0.08198843655960175
           },
           {
             "score": "3:1",
-            "probability": 0.06832741118111217
+            "probability": 0.06842738662495196
           }
         ],
         "totalProbabilities": {
-          "0": 0.05143177388417574,
-          "1": 0.12256705879073207,
-          "2": 0.22621037755258006,
-          "3": 0.22390135726989918,
-          "4": 0.17539672991389083,
-          "5": 0.10742707717597766,
-          "6": 0.055369328328506315,
-          "7+": 0.03769629708423822
+          "0": 0.050522133918324184,
+          "1": 0.12075026137080774,
+          "2": 0.22429509636600586,
+          "3": 0.22329254784865682,
+          "4": 0.1767412137378424,
+          "5": 0.10919858962007443,
+          "6": 0.05669623420821445,
+          "7+": 0.038503922930074104
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "favorite_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "favoriteSide": "home",
         "totalGoalWeights": {
-          "0": 0.84,
-          "1": 0.94,
-          "2": 1.0,
-          "3": 1.05,
-          "4": 1.09,
-          "5": 1.12,
-          "6": 1.12,
-          "7+": 1.1
+          "0": 0.82,
+          "1": 0.925,
+          "2": 0.995,
+          "3": 1.055,
+          "4": 1.135,
+          "5": 1.22,
+          "6": 1.24,
+          "7+": 1.22
         },
         "expectedTotalGoalsBefore": 3.0489,
-        "expectedTotalGoalsAfter": 3.0815,
-        "fullIntensityExpectedTotalGoalsAfter": 3.1795,
+        "expectedTotalGoalsAfter": 3.1019,
+        "fullIntensityExpectedTotalGoalsAfter": 3.261,
         "outcomePreserved": true,
-        "maxCellDelta": 0.003317
+        "maxCellDelta": 0.004543
       }
     },
     {
@@ -8369,70 +8369,70 @@
         "actualTotalBucket": "3",
         "totalExactHit": false,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.4945430316669175,
-        "totalRps": 0.05489653445668944,
+        "totalLogLoss": 1.4970674335313885,
+        "totalRps": 0.05494405684228813,
         "topScore": "2:0",
         "actualScore": "3:0",
         "scoreTop1Hit": false,
         "scoreTop3Hit": true,
         "scoreTop5Hit": true,
-        "scoreLogLoss": 2.1154508760495876,
-        "actualScoreProbability": 0.12057891115199636,
+        "scoreLogLoss": 2.121639920902841,
+        "actualScoreProbability": 0.11983494744962953,
         "topScores": [
           {
             "score": "2:0",
-            "probability": 0.1489253581258967
+            "probability": 0.14769383466840577
           },
           {
             "score": "3:0",
-            "probability": 0.12057891115199636
+            "probability": 0.11983494744962953
           },
           {
             "score": "1:0",
-            "probability": 0.11484497771428107
+            "probability": 0.11328308184011224
           },
           {
             "score": "2:1",
-            "probability": 0.08274127499964282
+            "probability": 0.08283199818811023
           },
           {
             "score": "1:1",
-            "probability": 0.07617569689600687
+            "probability": 0.07610914813928056
           }
         ],
         "totalProbabilities": {
-          "0": 0.05508064395806023,
-          "1": 0.1377273553013436,
-          "2": 0.23308256508457278,
-          "3": 0.22435110265900526,
-          "4": 0.16877075302602612,
-          "5": 0.09983284215400406,
-          "6": 0.04936355338493098,
-          "7+": 0.03179118443205694
+          "0": 0.05431371753492066,
+          "1": 0.13590905045290286,
+          "2": 0.2317114945063079,
+          "3": 0.22378546456646675,
+          "4": 0.1698840141664231,
+          "5": 0.1014793221748425,
+          "6": 0.050459514676023984,
+          "7+": 0.032457421922112296
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "favorite_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "favoriteSide": "home",
         "totalGoalWeights": {
-          "0": 0.84,
-          "1": 0.94,
-          "2": 1.0,
-          "3": 1.05,
-          "4": 1.09,
-          "5": 1.12,
-          "6": 1.12,
-          "7+": 1.1
+          "0": 0.82,
+          "1": 0.925,
+          "2": 0.995,
+          "3": 1.055,
+          "4": 1.135,
+          "5": 1.22,
+          "6": 1.24,
+          "7+": 1.22
         },
         "expectedTotalGoalsBefore": 2.9391,
-        "expectedTotalGoalsAfter": 2.9699,
-        "fullIntensityExpectedTotalGoalsAfter": 3.0624,
+        "expectedTotalGoalsAfter": 2.9876,
+        "fullIntensityExpectedTotalGoalsAfter": 3.1331,
         "outcomePreserved": true,
-        "maxCellDelta": 0.004576
+        "maxCellDelta": 0.006137
       }
     },
     {
@@ -8502,70 +8502,70 @@
         "actualTotalBucket": "3",
         "totalExactHit": false,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.49515258110819,
-        "totalRps": 0.0547469591438508,
+        "totalLogLoss": 1.4974642348852163,
+        "totalRps": 0.05483852817557907,
         "topScore": "1:1",
         "actualScore": "3:0",
         "scoreTop1Hit": false,
         "scoreTop3Hit": false,
         "scoreTop5Hit": false,
-        "scoreLogLoss": 2.8151515899504873,
-        "actualScoreProbability": 0.05989563847502026,
+        "scoreLogLoss": 2.822373190003768,
+        "actualScoreProbability": 0.05946465420008751,
         "topScores": [
           {
             "score": "1:1",
-            "probability": 0.11160430445358546
+            "probability": 0.11092082454781879
           },
           {
             "score": "2:1",
-            "probability": 0.09864115253067263
+            "probability": 0.0986505013235075
           },
           {
             "score": "2:0",
-            "probability": 0.09200180484868271
+            "probability": 0.09115037110657848
           },
           {
             "score": "1:0",
-            "probability": 0.08441662957419362
+            "probability": 0.08319457122828745
           },
           {
             "score": "3:1",
-            "probability": 0.06481882772024226
+            "probability": 0.06493865118685076
           }
         ],
         "totalProbabilities": {
-          "0": 0.05488201001339918,
-          "1": 0.12827838455214616,
-          "2": 0.23180882299028072,
-          "3": 0.22421439124014797,
-          "4": 0.17184826655365423,
-          "5": 0.10291246190188136,
-          "6": 0.051901600895074715,
-          "7+": 0.03415406185341568
+          "0": 0.053920561452817144,
+          "1": 0.12640515591804086,
+          "2": 0.22990553070966457,
+          "3": 0.22369668380648755,
+          "4": 0.1732901160509856,
+          "5": 0.10467560728792542,
+          "6": 0.05319415561554207,
+          "7+": 0.03491218915853677
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "favorite_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "favoriteSide": "home",
         "totalGoalWeights": {
-          "0": 0.84,
-          "1": 0.94,
-          "2": 1.0,
-          "3": 1.05,
-          "4": 1.09,
-          "5": 1.12,
-          "6": 1.12,
-          "7+": 1.1
+          "0": 0.82,
+          "1": 0.925,
+          "2": 0.995,
+          "3": 1.055,
+          "4": 1.135,
+          "5": 1.22,
+          "6": 1.24,
+          "7+": 1.22
         },
         "expectedTotalGoalsBefore": 2.9839,
-        "expectedTotalGoalsAfter": 3.017,
-        "fullIntensityExpectedTotalGoalsAfter": 3.1161,
+        "expectedTotalGoalsAfter": 3.0374,
+        "fullIntensityExpectedTotalGoalsAfter": 3.1978,
         "outcomePreserved": true,
-        "maxCellDelta": 0.003301
+        "maxCellDelta": 0.004523
       }
     },
     {
@@ -8635,70 +8635,70 @@
         "actualTotalBucket": "3",
         "totalExactHit": false,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.506055466029993,
-        "totalRps": 0.05630046290468908,
+        "totalLogLoss": 1.507621478601203,
+        "totalRps": 0.05673198089352283,
         "topScore": "1:1",
         "actualScore": "2:1",
         "scoreTop1Hit": false,
         "scoreTop3Hit": true,
         "scoreTop5Hit": true,
-        "scoreLogLoss": 2.3369945645706336,
-        "actualScoreProbability": 0.09661758020996175,
+        "scoreLogLoss": 2.3382494665979476,
+        "actualScoreProbability": 0.0964964106565425,
         "topScores": [
           {
             "score": "1:1",
-            "probability": 0.12030423902404336
+            "probability": 0.11923205143157645
           },
           {
             "score": "2:1",
-            "probability": 0.09661758020996175
+            "probability": 0.0964964106565425
           },
           {
             "score": "1:0",
-            "probability": 0.09215816545954696
+            "probability": 0.09316674753115432
           },
           {
             "score": "2:0",
-            "probability": 0.0884582309998992
+            "probability": 0.088334678252107
           },
           {
             "score": "0:0",
-            "probability": 0.06739151868520404
+            "probability": 0.07043815984118323
           }
         ],
         "totalProbabilities": {
-          "0": 0.06739151868520404,
-          "1": 0.146831514639898,
-          "2": 0.24363774377732256,
-          "3": 0.2217830857413231,
-          "4": 0.15954949381796368,
-          "5": 0.09113397717488456,
-          "6": 0.043357028976339994,
-          "7+": 0.026315637187064044
+          "0": 0.07043815984118323,
+          "1": 0.1483956387298047,
+          "2": 0.24236184500357888,
+          "3": 0.22143604244897366,
+          "4": 0.1578890398059525,
+          "5": 0.09065638735731742,
+          "6": 0.04274984540702291,
+          "7+": 0.026073041406166706
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "close_late_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_tension_close_game_v2",
         "favoriteSide": "home",
         "totalGoalWeights": {
-          "0": 0.925,
-          "1": 0.94,
-          "2": 0.97,
-          "3": 1.015,
-          "4": 1.06,
-          "5": 1.09,
-          "6": 1.12,
-          "7+": 1.15
+          "0": 1.035,
+          "1": 0.975,
+          "2": 0.955,
+          "3": 1.0,
+          "4": 1.045,
+          "5": 1.07,
+          "6": 1.095,
+          "7+": 1.12
         },
         "expectedTotalGoalsBefore": 2.8055,
-        "expectedTotalGoalsAfter": 2.8377,
-        "fullIntensityExpectedTotalGoalsAfter": 2.9341,
+        "expectedTotalGoalsAfter": 2.8213,
+        "fullIntensityExpectedTotalGoalsAfter": 2.8685,
         "outcomePreserved": true,
-        "maxCellDelta": 0.002348
+        "maxCellDelta": 0.00211
       }
     },
     {
@@ -8768,70 +8768,70 @@
         "actualTotalBucket": "3",
         "totalExactHit": false,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.4985429167283686,
-        "totalRps": 0.055640861699296204,
+        "totalLogLoss": 1.4997580108220556,
+        "totalRps": 0.055494257275543954,
         "topScore": "1:1",
         "actualScore": "2:1",
         "scoreTop1Hit": false,
         "scoreTop3Hit": true,
         "scoreTop5Hit": true,
-        "scoreLogLoss": 2.316468277864122,
-        "actualScoreProbability": 0.0986212742103907,
+        "scoreLogLoss": 2.3153184509180385,
+        "actualScoreProbability": 0.09873473682762143,
         "topScores": [
           {
             "score": "1:1",
-            "probability": 0.11564225390998817
+            "probability": 0.11513445450821803
           },
           {
             "score": "2:0",
-            "probability": 0.10226920333308068
+            "probability": 0.10142220557306754
           },
           {
             "score": "2:1",
-            "probability": 0.0986212742103907
+            "probability": 0.09873473682762143
           },
           {
             "score": "1:0",
-            "probability": 0.09795280371189946
+            "probability": 0.09661492909545671
           },
           {
             "score": "3:0",
-            "probability": 0.06437842507149204
+            "probability": 0.06398150622805139
           }
         ],
         "totalProbabilities": {
-          "0": 0.06414191871935901,
-          "1": 0.1451625466303563,
-          "2": 0.24505215384125592,
-          "3": 0.22345551635015454,
-          "4": 0.16153602564767408,
-          "5": 0.09117404763933885,
-          "6": 0.04335590846822316,
-          "7+": 0.026121882703638192
+          "0": 0.06309462423904189,
+          "1": 0.14318211526875835,
+          "2": 0.2433788696167677,
+          "3": 0.22318416176609873,
+          "4": 0.16309389517701234,
+          "5": 0.09284504638674398,
+          "6": 0.04449003240719079,
+          "7+": 0.02673125513838626
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "favorite_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "favoriteSide": "home",
         "totalGoalWeights": {
-          "0": 0.84,
-          "1": 0.94,
-          "2": 1.0,
-          "3": 1.05,
-          "4": 1.09,
-          "5": 1.12,
-          "6": 1.12,
-          "7+": 1.1
+          "0": 0.82,
+          "1": 0.925,
+          "2": 0.995,
+          "3": 1.055,
+          "4": 1.135,
+          "5": 1.22,
+          "6": 1.24,
+          "7+": 1.22
         },
         "expectedTotalGoalsBefore": 2.8173,
-        "expectedTotalGoalsAfter": 2.8506,
-        "fullIntensityExpectedTotalGoalsAfter": 2.9506,
+        "expectedTotalGoalsAfter": 2.8702,
+        "fullIntensityExpectedTotalGoalsAfter": 3.0287,
         "outcomePreserved": true,
-        "maxCellDelta": 0.003697
+        "maxCellDelta": 0.005035
       }
     },
     {
@@ -8901,70 +8901,70 @@
         "actualTotalBucket": "2",
         "totalExactHit": true,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.3004494822172272,
-        "totalRps": 0.048587130398741726,
+        "totalLogLoss": 1.3097391488127104,
+        "totalRps": 0.048614050714065826,
         "topScore": "1:1",
         "actualScore": "2:0",
         "scoreTop1Hit": false,
         "scoreTop3Hit": false,
         "scoreTop5Hit": false,
-        "scoreLogLoss": 2.5648980264245003,
-        "actualScoreProbability": 0.07692702556573053,
+        "scoreLogLoss": 2.5678327572996844,
+        "actualScoreProbability": 0.07670159639743197,
         "topScores": [
           {
             "score": "1:1",
-            "probability": 0.1406653959318939
+            "probability": 0.13855330129618734
           },
           {
             "score": "1:0",
-            "probability": 0.10899378364630503
+            "probability": 0.11004244309396231
           },
           {
             "score": "0:0",
-            "probability": 0.10427984814698368
+            "probability": 0.10832253722545288
           },
           {
             "score": "0:1",
-            "probability": 0.09044875820853786
+            "probability": 0.09128829948244409
           },
           {
             "score": "2:1",
-            "probability": 0.08321941291018073
+            "probability": 0.08298515655409476
           }
         ],
         "totalProbabilities": {
-          "0": 0.10427984814698368,
-          "1": 0.1994425418548429,
-          "2": 0.2724093223656705,
-          "3": 0.20642430142714752,
-          "4": 0.12397817825653176,
-          "5": 0.059033890605888484,
-          "6": 0.023445139453566827,
-          "7+": 0.010986777889368297
+          "0": 0.10832253722545288,
+          "1": 0.2013307425764064,
+          "2": 0.2698904484472768,
+          "3": 0.20580616392483692,
+          "4": 0.12215127948478413,
+          "5": 0.05862725588233083,
+          "6": 0.023010296026135232,
+          "7+": 0.010861276432776833
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "close_late_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_tension_close_game_v2",
         "favoriteSide": "home",
         "totalGoalWeights": {
-          "0": 0.925,
-          "1": 0.94,
-          "2": 0.97,
-          "3": 1.015,
-          "4": 1.06,
-          "5": 1.09,
-          "6": 1.12,
-          "7+": 1.15
+          "0": 1.035,
+          "1": 0.975,
+          "2": 0.955,
+          "3": 1.0,
+          "4": 1.045,
+          "5": 1.07,
+          "6": 1.095,
+          "7+": 1.12
         },
         "expectedTotalGoalsBefore": 2.3455,
-        "expectedTotalGoalsAfter": 2.3722,
-        "fullIntensityExpectedTotalGoalsAfter": 2.4523,
+        "expectedTotalGoalsAfter": 2.3544,
+        "fullIntensityExpectedTotalGoalsAfter": 2.3809,
         "outcomePreserved": true,
-        "maxCellDelta": 0.002149
+        "maxCellDelta": 0.00264
       }
     },
     {
@@ -9034,70 +9034,70 @@
         "actualTotalBucket": "2",
         "totalExactHit": false,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.7917496976533536,
-        "totalRps": 0.14134823943198524,
+        "totalLogLoss": 1.8053266538687633,
+        "totalRps": 0.14371106128586325,
         "topScore": "2:1",
         "actualScore": "2:0",
         "scoreTop1Hit": false,
         "scoreTop3Hit": false,
         "scoreTop5Hit": true,
-        "scoreLogLoss": 2.768982706831032,
-        "actualScoreProbability": 0.06272578280652552,
+        "scoreLogLoss": 2.78222621600716,
+        "actualScoreProbability": 0.06190054987774838,
         "topScores": [
           {
             "score": "2:1",
-            "probability": 0.08908787872731429
+            "probability": 0.08871889427418156
           },
           {
             "score": "1:1",
-            "probability": 0.0815851806027978
+            "probability": 0.08056408905762312
           },
           {
             "score": "3:1",
-            "probability": 0.07187292467874955
+            "probability": 0.07167688765498406
           },
           {
             "score": "2:2",
-            "probability": 0.06544881121411583
+            "probability": 0.06616871339806181
           },
           {
             "score": "2:0",
-            "probability": 0.06272578280652552
+            "probability": 0.06190054987774838
           }
         ],
         "totalProbabilities": {
-          "0": 0.02691094968956555,
-          "1": 0.0706229881366308,
-          "2": 0.16666829527040725,
-          "3": 0.2039351310105341,
-          "4": 0.19694531550336405,
-          "5": 0.14918126196703022,
-          "6": 0.09486859643142674,
-          "7+": 0.09086746199104125
+          "0": 0.026320411576360798,
+          "1": 0.06932772874735896,
+          "2": 0.16442073913358426,
+          "3": 0.2025277288346085,
+          "4": 0.19744642727650624,
+          "5": 0.15093472329946386,
+          "6": 0.09663455627618939,
+          "7+": 0.0923876848559281
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "favorite_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "favoriteSide": "home",
         "totalGoalWeights": {
-          "0": 0.84,
-          "1": 0.94,
-          "2": 1.0,
-          "3": 1.05,
-          "4": 1.09,
-          "5": 1.12,
-          "6": 1.12,
-          "7+": 1.1
+          "0": 0.82,
+          "1": 0.925,
+          "2": 0.995,
+          "3": 1.055,
+          "4": 1.135,
+          "5": 1.22,
+          "6": 1.24,
+          "7+": 1.22
         },
         "expectedTotalGoalsBefore": 3.7257,
-        "expectedTotalGoalsAfter": 3.7547,
-        "fullIntensityExpectedTotalGoalsAfter": 3.8419,
+        "expectedTotalGoalsAfter": 3.7767,
+        "fullIntensityExpectedTotalGoalsAfter": 3.9299,
         "outcomePreserved": true,
-        "maxCellDelta": 0.002028
+        "maxCellDelta": 0.002835
       }
     },
     {
@@ -9167,70 +9167,70 @@
         "actualTotalBucket": "2",
         "totalExactHit": true,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.3104587287339375,
-        "totalRps": 0.050318969512592335,
+        "totalLogLoss": 1.3191458329900034,
+        "totalRps": 0.05026199230145402,
         "topScore": "1:1",
         "actualScore": "1:1",
         "scoreTop1Hit": true,
         "scoreTop3Hit": true,
         "scoreTop5Hit": true,
-        "scoreLogLoss": 1.9682543547685527,
-        "actualScoreProbability": 0.139700511016643,
+        "scoreLogLoss": 1.982352609684527,
+        "actualScoreProbability": 0.13774479607749618,
         "topScores": [
           {
             "score": "1:1",
-            "probability": 0.139700511016643
+            "probability": 0.13774479607749618
           },
           {
             "score": "1:0",
-            "probability": 0.10260417914757052
+            "probability": 0.10360470260625364
           },
           {
             "score": "0:0",
-            "probability": 0.09873522172711256
+            "probability": 0.10266996424582306
           },
           {
             "score": "0:1",
-            "probability": 0.08940901794975412
+            "probability": 0.09025909356877451
           },
           {
             "score": "2:1",
-            "probability": 0.08300762144487563
+            "probability": 0.08278659129356197
           }
         ],
         "totalProbabilities": {
-          "0": 0.09873522172711256,
-          "1": 0.19201319709732462,
-          "2": 0.26969631055688403,
-          "3": 0.2095017569147769,
-          "4": 0.12900185597902877,
-          "5": 0.06297358803319074,
-          "6": 0.025641530254477424,
-          "7+": 0.012436539437204894
+          "0": 0.10266996424582306,
+          "1": 0.19386379617502814,
+          "2": 0.26736357760687673,
+          "3": 0.20891530954238363,
+          "4": 0.12716020670260564,
+          "5": 0.06255344728414854,
+          "6": 0.02517651820331353,
+          "7+": 0.012297180239820646
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "close_late_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_tension_close_game_v2",
         "favoriteSide": "home",
         "totalGoalWeights": {
-          "0": 0.925,
-          "1": 0.94,
-          "2": 0.97,
-          "3": 1.015,
-          "4": 1.06,
-          "5": 1.09,
-          "6": 1.12,
-          "7+": 1.15
+          "0": 1.035,
+          "1": 0.975,
+          "2": 0.955,
+          "3": 1.0,
+          "4": 1.045,
+          "5": 1.07,
+          "6": 1.095,
+          "7+": 1.12
         },
         "expectedTotalGoalsBefore": 2.4041,
-        "expectedTotalGoalsAfter": 2.4317,
-        "fullIntensityExpectedTotalGoalsAfter": 2.5143,
+        "expectedTotalGoalsAfter": 2.4139,
+        "fullIntensityExpectedTotalGoalsAfter": 2.4431,
         "outcomePreserved": true,
-        "maxCellDelta": 0.002078
+        "maxCellDelta": 0.002584
       }
     },
     {
@@ -9300,70 +9300,70 @@
         "actualTotalBucket": "2",
         "totalExactHit": true,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.288435152515004,
-        "totalRps": 0.044127870777723864,
+        "totalLogLoss": 1.2888471535354267,
+        "totalRps": 0.04425497185855754,
         "topScore": "2:0",
         "actualScore": "1:1",
         "scoreTop1Hit": false,
         "scoreTop3Hit": false,
         "scoreTop5Hit": false,
-        "scoreLogLoss": 3.1932888715865815,
-        "actualScoreProbability": 0.04103668437005844,
+        "scoreLogLoss": 3.1811174079862408,
+        "actualScoreProbability": 0.041539212930297525,
         "topScores": [
           {
             "score": "2:0",
-            "probability": 0.23324841457318482
+            "probability": 0.23263322788825877
           },
           {
             "score": "1:0",
-            "probability": 0.23092858158939158
+            "probability": 0.22887945721641223
           },
           {
             "score": "3:0",
-            "probability": 0.1520009233561101
+            "probability": 0.15197053635669863
           },
           {
             "score": "0:0",
-            "probability": 0.12550870274340323
+            "probability": 0.12487215150828482
           },
           {
             "score": "4:0",
-            "probability": 0.07409685749553505
+            "probability": 0.07480397242470545
           }
         ],
         "totalProbabilities": {
-          "0": 0.12550870274340323,
-          "1": 0.24665540126358365,
-          "2": 0.27570187709257626,
-          "3": 0.1898647265950817,
-          "4": 0.10011527235650089,
-          "5": 0.041884532712171844,
-          "6": 0.01453573911550425,
-          "7+": 0.005733748121178179
+          "0": 0.12487215150828482,
+          "1": 0.24455434921881908,
+          "2": 0.27558831103415404,
+          "3": 0.19013024339636175,
+          "4": 0.10117346699420163,
+          "5": 0.04284621132712393,
+          "6": 0.01494173716157462,
+          "7+": 0.0058935293594801945
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "favorite_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "favoriteSide": "home",
         "totalGoalWeights": {
-          "0": 0.84,
-          "1": 0.94,
-          "2": 1.0,
-          "3": 1.05,
-          "4": 1.09,
-          "5": 1.12,
-          "6": 1.12,
-          "7+": 1.1
+          "0": 0.82,
+          "1": 0.925,
+          "2": 0.995,
+          "3": 1.055,
+          "4": 1.135,
+          "5": 1.22,
+          "6": 1.24,
+          "7+": 1.22
         },
         "expectedTotalGoalsBefore": 2.0789,
-        "expectedTotalGoalsAfter": 2.1049,
-        "fullIntensityExpectedTotalGoalsAfter": 2.1829,
+        "expectedTotalGoalsAfter": 2.116,
+        "fullIntensityExpectedTotalGoalsAfter": 2.2272,
         "outcomePreserved": true,
-        "maxCellDelta": 0.007214
+        "maxCellDelta": 0.009264
       }
     },
     {
@@ -9433,70 +9433,70 @@
         "actualTotalBucket": "1",
         "totalExactHit": false,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.431747286207247,
-        "totalRps": 0.08546035866014028,
+        "totalLogLoss": 1.4405626087479835,
+        "totalRps": 0.08642009886315942,
         "topScore": "2:0",
         "actualScore": "1:0",
         "scoreTop1Hit": false,
         "scoreTop3Hit": true,
         "scoreTop5Hit": true,
-        "scoreLogLoss": 1.4954077793935223,
-        "actualScoreProbability": 0.22415717941244734,
+        "scoreLogLoss": 1.5045796829785274,
+        "actualScoreProbability": 0.2221106310938541,
         "topScores": [
           {
             "score": "2:0",
-            "probability": 0.23335739375784947
+            "probability": 0.2326693548870474
           },
           {
             "score": "1:0",
-            "probability": 0.22415717941244734
+            "probability": 0.2221106310938541
           },
           {
             "score": "3:0",
-            "probability": 0.15674631067102238
+            "probability": 0.15666305192971108
           },
           {
             "score": "0:0",
-            "probability": 0.11830426130261003
+            "probability": 0.11768996983604783
           },
           {
             "score": "4:0",
-            "probability": 0.07875927521676412
+            "probability": 0.07948144067997608
           }
         ],
         "totalProbabilities": {
-          "0": 0.11830426130261003,
-          "1": 0.23889114615813245,
-          "2": 0.27453216752904064,
-          "3": 0.19454167205767608,
-          "4": 0.10549373111662042,
-          "5": 0.045398309318606174,
-          "6": 0.016204203777571806,
-          "7+": 0.006634508739742412
+          "0": 0.11768996983604783,
+          "1": 0.23679449854262224,
+          "2": 0.2743238494363397,
+          "3": 0.1947407452017491,
+          "4": 0.10656419932097376,
+          "5": 0.046420950509407415,
+          "6": 0.016649327340483015,
+          "7+": 0.006816459812376958
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "favorite_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "favoriteSide": "home",
         "totalGoalWeights": {
-          "0": 0.84,
-          "1": 0.94,
-          "2": 1.0,
-          "3": 1.05,
-          "4": 1.09,
-          "5": 1.12,
-          "6": 1.12,
-          "7+": 1.1
+          "0": 0.82,
+          "1": 0.925,
+          "2": 0.995,
+          "3": 1.055,
+          "4": 1.135,
+          "5": 1.22,
+          "6": 1.24,
+          "7+": 1.22
         },
         "expectedTotalGoalsBefore": 2.1379,
-        "expectedTotalGoalsAfter": 2.1642,
-        "fullIntensityExpectedTotalGoalsAfter": 2.2431,
+        "expectedTotalGoalsAfter": 2.1756,
+        "fullIntensityExpectedTotalGoalsAfter": 2.2888,
         "outcomePreserved": true,
-        "maxCellDelta": 0.007157
+        "maxCellDelta": 0.009203
       }
     },
     {
@@ -9566,70 +9566,70 @@
         "actualTotalBucket": "3",
         "totalExactHit": false,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.6228482914044453,
-        "totalRps": 0.07877144000177597,
+        "totalLogLoss": 1.6197043503578068,
+        "totalRps": 0.07786182507109622,
         "topScore": "0:1",
         "actualScore": "0:3",
         "scoreTop1Hit": false,
         "scoreTop3Hit": false,
         "scoreTop5Hit": false,
-        "scoreLogLoss": 2.8402200203004027,
-        "actualScoreProbability": 0.05841281254598243,
+        "scoreLogLoss": 2.842340815478554,
+        "actualScoreProbability": 0.058289062205738484,
         "topScores": [
           {
             "score": "0:1",
-            "probability": 0.14943716476445662
+            "probability": 0.14787095647446974
           },
           {
             "score": "1:1",
-            "probability": 0.13202080476194766
+            "probability": 0.13223214154299912
           },
           {
             "score": "0:2",
-            "probability": 0.11915308181044637
+            "probability": 0.11862028328054038
           },
           {
             "score": "0:0",
-            "probability": 0.11737680300026135
+            "probability": 0.11593982221245382
           },
           {
             "score": "1:2",
-            "probability": 0.087119468244197
+            "probability": 0.08758389267330563
           }
         ],
         "totalProbabilities": {
-          "0": 0.11737680300026135,
-          "1": 0.22085261085500263,
-          "2": 0.28114798249986145,
-          "3": 0.19733582791116178,
-          "4": 0.11033281473832603,
-          "5": 0.047960770339288215,
-          "6": 0.017625120733034794,
-          "7+": 0.007368069923063819
+          "0": 0.11593982221245382,
+          "1": 0.21860733123244747,
+          "2": 0.28060691278619665,
+          "3": 0.19795721641307676,
+          "4": 0.11202075723184311,
+          "5": 0.049092855306155626,
+          "6": 0.01819553438961113,
+          "7+": 0.007579570428215405
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "favorite_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "favoriteSide": "away",
         "totalGoalWeights": {
-          "0": 0.84,
-          "1": 0.94,
-          "2": 1.0,
-          "3": 1.05,
-          "4": 1.09,
-          "5": 1.12,
-          "6": 1.12,
-          "7+": 1.1
+          "0": 0.82,
+          "1": 0.925,
+          "2": 0.995,
+          "3": 1.055,
+          "4": 1.135,
+          "5": 1.22,
+          "6": 1.24,
+          "7+": 1.22
         },
         "expectedTotalGoalsBefore": 2.1808,
-        "expectedTotalGoalsAfter": 2.2136,
-        "fullIntensityExpectedTotalGoalsAfter": 2.3119,
+        "expectedTotalGoalsAfter": 2.2295,
+        "fullIntensityExpectedTotalGoalsAfter": 2.3753,
         "outcomePreserved": true,
-        "maxCellDelta": 0.004861
+        "maxCellDelta": 0.006298
       }
     },
     {
@@ -9699,70 +9699,70 @@
         "actualTotalBucket": "1",
         "totalExactHit": false,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.64926231220932,
-        "totalRps": 0.11506032291349835,
+        "totalLogLoss": 1.66003153831601,
+        "totalRps": 0.11646537604071149,
         "topScore": "0:2",
         "actualScore": "0:1",
         "scoreTop1Hit": false,
         "scoreTop3Hit": true,
         "scoreTop5Hit": true,
-        "scoreLogLoss": 1.8010371327436827,
-        "actualScoreProbability": 0.16512754020279713,
+        "scoreLogLoss": 1.812295364281273,
+        "actualScoreProbability": 0.1632789217349779,
         "topScores": [
           {
             "score": "0:2",
-            "probability": 0.18296089463119442
+            "probability": 0.1819731407953003
           },
           {
             "score": "0:1",
-            "probability": 0.16512754020279713
+            "probability": 0.1632789217349779
           },
           {
             "score": "0:3",
-            "probability": 0.1283057291939248
+            "probability": 0.1279047473156765
           },
           {
             "score": "0:0",
-            "probability": 0.08727750698340118
+            "probability": 0.08637137097933471
           },
           {
             "score": "1:1",
-            "probability": 0.076116515940985
+            "probability": 0.07644771185239951
           }
         ],
         "totalProbabilities": {
-          "0": 0.08727750698340118,
-          "1": 0.19219163376157083,
-          "2": 0.26547383908575556,
-          "3": 0.21375612960603665,
-          "4": 0.13414766770450587,
-          "5": 0.06626862619390082,
-          "6": 0.02732719185950916,
-          "7+": 0.013557404805320049
+          "0": 0.08637137097933471,
+          "1": 0.1901329835328416,
+          "2": 0.26478248040072283,
+          "3": 0.21378142882929924,
+          "4": 0.1354219944330161,
+          "5": 0.06759297000903822,
+          "6": 0.028026237059434765,
+          "7+": 0.013890534756312476
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "favorite_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "favoriteSide": "away",
         "totalGoalWeights": {
-          "0": 0.84,
-          "1": 0.94,
-          "2": 1.0,
-          "3": 1.05,
-          "4": 1.09,
-          "5": 1.12,
-          "6": 1.12,
-          "7+": 1.1
+          "0": 0.82,
+          "1": 0.925,
+          "2": 0.995,
+          "3": 1.055,
+          "4": 1.135,
+          "5": 1.22,
+          "6": 1.24,
+          "7+": 1.22
         },
         "expectedTotalGoalsBefore": 2.4609,
-        "expectedTotalGoalsAfter": 2.4912,
-        "fullIntensityExpectedTotalGoalsAfter": 2.5822,
+        "expectedTotalGoalsAfter": 2.5061,
+        "fullIntensityExpectedTotalGoalsAfter": 2.6417,
         "outcomePreserved": true,
-        "maxCellDelta": 0.005832
+        "maxCellDelta": 0.00768
       }
     },
     {
@@ -9832,70 +9832,70 @@
         "actualTotalBucket": "3",
         "totalExactHit": false,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.5025985327701823,
-        "totalRps": 0.05543234933137547,
+        "totalLogLoss": 1.5038985187922187,
+        "totalRps": 0.05575840338951361,
         "topScore": "1:1",
         "actualScore": "1:2",
         "scoreTop1Hit": false,
         "scoreTop3Hit": false,
         "scoreTop5Hit": true,
-        "scoreLogLoss": 2.690378243459555,
-        "actualScoreProbability": 0.06785526870560245,
+        "scoreLogLoss": 2.692058376539624,
+        "actualScoreProbability": 0.06774135854290536,
         "topScores": [
           {
             "score": "1:1",
-            "probability": 0.11961981843780287
+            "probability": 0.11877848818255382
           },
           {
             "score": "2:1",
-            "probability": 0.09434026628028147
+            "probability": 0.094240258951491
           },
           {
             "score": "1:0",
-            "probability": 0.0806987945285768
+            "probability": 0.08159471544979624
           },
           {
             "score": "2:0",
-            "probability": 0.0769034607114218
+            "probability": 0.07681071542391604
           },
           {
             "score": "1:2",
-            "probability": 0.06785526870560245
+            "probability": 0.06774135854290536
           }
         ],
         "totalProbabilities": {
-          "0": 0.061616693834943746,
-          "1": 0.13626489908602632,
-          "2": 0.2362107248328958,
-          "3": 0.2225511017921602,
-          "4": 0.16589256667727587,
-          "5": 0.09814152217967106,
-          "6": 0.0483824203192722,
-          "7+": 0.030940071277754794
+          "0": 0.06452207266368262,
+          "1": 0.1377486954734468,
+          "2": 0.23520466154465142,
+          "3": 0.22226197644081686,
+          "4": 0.16423336439113076,
+          "5": 0.09765483694563003,
+          "6": 0.047714274864551875,
+          "7+": 0.030660117676089577
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "close_late_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_tension_close_game_v2",
         "favoriteSide": "home",
         "totalGoalWeights": {
-          "0": 0.925,
-          "1": 0.94,
-          "2": 0.97,
-          "3": 1.015,
-          "4": 1.06,
-          "5": 1.09,
-          "6": 1.12,
-          "7+": 1.15
+          "0": 1.035,
+          "1": 0.975,
+          "2": 0.955,
+          "3": 1.0,
+          "4": 1.045,
+          "5": 1.07,
+          "6": 1.095,
+          "7+": 1.12
         },
         "expectedTotalGoalsBefore": 2.904,
-        "expectedTotalGoalsAfter": 2.9375,
-        "fullIntensityExpectedTotalGoalsAfter": 3.0381,
+        "expectedTotalGoalsAfter": 2.9211,
+        "fullIntensityExpectedTotalGoalsAfter": 2.9723,
         "outcomePreserved": true,
-        "maxCellDelta": 0.002127
+        "maxCellDelta": 0.002079
       }
     },
     {
@@ -9965,70 +9965,70 @@
         "actualTotalBucket": "5",
         "totalExactHit": false,
         "totalAdjacentCoreHit": false,
-        "totalLogLoss": 3.4555469437416377,
-        "totalRps": 0.33836701419423193,
+        "totalLogLoss": 3.464239468231447,
+        "totalRps": 0.34058629017077735,
         "topScore": "0:1",
         "actualScore": "2:3",
         "scoreTop1Hit": false,
         "scoreTop3Hit": false,
         "scoreTop5Hit": false,
-        "scoreLogLoss": 4.530119731800741,
-        "actualScoreProbability": 0.010779385360254903,
+        "scoreLogLoss": 4.53839540672349,
+        "actualScoreProbability": 0.010690546777782868,
         "topScores": [
           {
             "score": "0:1",
-            "probability": 0.1680972445084488
+            "probability": 0.16951591467772337
           },
           {
             "score": "0:0",
-            "probability": 0.15979321795645288
+            "probability": 0.1644080090640422
           },
           {
             "score": "1:1",
-            "probability": 0.13573545583641486
+            "probability": 0.132461174505567
           },
           {
             "score": "0:2",
-            "probability": 0.10761442929182426
+            "probability": 0.10715509241360009
           },
           {
             "score": "1:0",
-            "probability": 0.09384375434999698
+            "probability": 0.09451598772966663
           }
         ],
         "totalProbabilities": {
-          "0": 0.15979321795645288,
-          "1": 0.2619409988584458,
-          "2": 0.27981769484627433,
-          "3": 0.17086016290368605,
-          "4": 0.08241782007034976,
-          "5": 0.03157003260142765,
-          "6": 0.010068082954741046,
-          "7+": 0.0035319898086225185
+          "0": 0.1644080090640422,
+          "1": 0.26403190240739,
+          "2": 0.27587812878353424,
+          "3": 0.17006954190793636,
+          "4": 0.0809685999178337,
+          "5": 0.03129679858703736,
+          "6": 0.009860362599647086,
+          "7+": 0.0034866567325790797
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "close_late_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_tension_close_game_v2",
         "favoriteSide": "away",
         "totalGoalWeights": {
-          "0": 0.925,
-          "1": 0.94,
-          "2": 0.97,
-          "3": 1.015,
-          "4": 1.06,
-          "5": 1.09,
-          "6": 1.12,
-          "7+": 1.15
+          "0": 1.035,
+          "1": 0.975,
+          "2": 0.955,
+          "3": 1.0,
+          "4": 1.045,
+          "5": 1.07,
+          "6": 1.095,
+          "7+": 1.12
         },
         "expectedTotalGoalsBefore": 1.8873,
-        "expectedTotalGoalsAfter": 1.9068,
-        "fullIntensityExpectedTotalGoalsAfter": 1.9652,
+        "expectedTotalGoalsAfter": 1.8899,
+        "fullIntensityExpectedTotalGoalsAfter": 1.8977,
         "outcomePreserved": true,
-        "maxCellDelta": 0.002585
+        "maxCellDelta": 0.003044
       }
     },
     {
@@ -10098,70 +10098,70 @@
         "actualTotalBucket": "1",
         "totalExactHit": false,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.8109192197922266,
-        "totalRps": 0.13433606507433526,
+        "totalLogLoss": 1.8237406583523665,
+        "totalRps": 0.13621634299112462,
         "topScore": "1:1",
         "actualScore": "0:1",
         "scoreTop1Hit": false,
         "scoreTop3Hit": true,
         "scoreTop5Hit": true,
-        "scoreLogLoss": 2.2049526412955025,
-        "actualScoreProbability": 0.11025574675017331,
+        "scoreLogLoss": 2.2178727925526225,
+        "actualScoreProbability": 0.10884038883316936,
         "topScores": [
           {
             "score": "1:1",
-            "probability": 0.1214754590083503
+            "probability": 0.12112842030249481
           },
           {
             "score": "0:1",
-            "probability": 0.11025574675017331
+            "probability": 0.10884038883316936
           },
           {
             "score": "0:2",
-            "probability": 0.1076154374486391
+            "probability": 0.10682997197834022
           },
           {
             "score": "1:2",
-            "probability": 0.09719943392233746
+            "probability": 0.0974158541992267
           },
           {
             "score": "0:0",
-            "probability": 0.07535925454868175
+            "probability": 0.07420798547278183
           }
         ],
         "totalProbabilities": {
-          "0": 0.07535925454868175,
-          "1": 0.1635037718009059,
-          "2": 0.2574645365897014,
-          "3": 0.22022374173045922,
-          "4": 0.14951330318374115,
-          "5": 0.0791701478291377,
-          "6": 0.035350362838812675,
-          "7+": 0.01941488147856012
+          "0": 0.07420798547278183,
+          "1": 0.16142080011791168,
+          "2": 0.25603177985582465,
+          "3": 0.22020651933898286,
+          "4": 0.15117553964380734,
+          "5": 0.08072992250401244,
+          "6": 0.03633233661441206,
+          "7+": 0.01989511645226723
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "favorite_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "favoriteSide": "away",
         "totalGoalWeights": {
-          "0": 0.84,
-          "1": 0.94,
-          "2": 1.0,
-          "3": 1.05,
-          "4": 1.09,
-          "5": 1.12,
-          "6": 1.12,
-          "7+": 1.1
+          "0": 0.82,
+          "1": 0.925,
+          "2": 0.995,
+          "3": 1.055,
+          "4": 1.135,
+          "5": 1.22,
+          "6": 1.24,
+          "7+": 1.22
         },
         "expectedTotalGoalsBefore": 2.6475,
-        "expectedTotalGoalsAfter": 2.681,
-        "fullIntensityExpectedTotalGoalsAfter": 2.7816,
+        "expectedTotalGoalsAfter": 2.6997,
+        "fullIntensityExpectedTotalGoalsAfter": 2.8564,
         "outcomePreserved": true,
-        "maxCellDelta": 0.003979
+        "maxCellDelta": 0.005394
       }
     },
     {
@@ -10231,70 +10231,70 @@
         "actualTotalBucket": "5",
         "totalExactHit": false,
         "totalAdjacentCoreHit": false,
-        "totalLogLoss": 2.359939334987615,
-        "totalRps": 0.1987797764270375,
+        "totalLogLoss": 2.3650441230569825,
+        "totalRps": 0.20039887427814415,
         "topScore": "1:1",
         "actualScore": "1:4",
         "scoreTop1Hit": false,
         "scoreTop3Hit": false,
         "scoreTop5Hit": false,
-        "scoreLogLoss": 3.6252922239160976,
-        "actualScoreProbability": 0.02664131097050796,
+        "scoreLogLoss": 3.6300882349891337,
+        "actualScoreProbability": 0.02651384485686769,
         "topScores": [
           {
             "score": "1:1",
-            "probability": 0.11775291679309746
+            "probability": 0.11676392442582406
           },
           {
             "score": "1:2",
-            "probability": 0.09723240666617178
+            "probability": 0.09712334959621483
           },
           {
             "score": "0:1",
-            "probability": 0.0903323067874195
+            "probability": 0.09133079708593189
           },
           {
             "score": "0:2",
-            "probability": 0.08914527963808133
+            "probability": 0.089032376096096
           },
           {
             "score": "0:0",
-            "probability": 0.06446281445473119
+            "probability": 0.06741143277421893
           }
         ],
         "totalProbabilities": {
-          "0": 0.06446281445473119,
-          "1": 0.1421437527560881,
-          "2": 0.24005268168342012,
-          "3": 0.2222592860675317,
-          "4": 0.1625639506855837,
-          "5": 0.09442595137406017,
-          "6": 0.04567445112467836,
-          "7+": 0.028417111853906676
+          "0": 0.06741143277421893,
+          "1": 0.1436725690490046,
+          "2": 0.23887745587231868,
+          "3": 0.22193988196603084,
+          "4": 0.16093780867183846,
+          "5": 0.09394515512959654,
+          "6": 0.045054482323176985,
+          "7+": 0.02816121421381493
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "close_late_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "favoriteSide": "away",
         "totalGoalWeights": {
-          "0": 0.925,
-          "1": 0.94,
-          "2": 0.97,
-          "3": 1.015,
-          "4": 1.06,
-          "5": 1.09,
-          "6": 1.12,
-          "7+": 1.15
+          "0": 1.035,
+          "1": 0.975,
+          "2": 0.955,
+          "3": 1.0,
+          "4": 1.045,
+          "5": 1.07,
+          "6": 1.095,
+          "7+": 1.12
         },
         "expectedTotalGoalsBefore": 2.8518,
-        "expectedTotalGoalsAfter": 2.8844,
-        "fullIntensityExpectedTotalGoalsAfter": 2.9822,
+        "expectedTotalGoalsAfter": 2.8682,
+        "fullIntensityExpectedTotalGoalsAfter": 2.9174,
         "outcomePreserved": true,
-        "maxCellDelta": 0.002352
+        "maxCellDelta": 0.002059
       }
     },
     {
@@ -10364,70 +10364,70 @@
         "actualTotalBucket": "5",
         "totalExactHit": false,
         "totalAdjacentCoreHit": false,
-        "totalLogLoss": 3.267414718314718,
-        "totalRps": 0.3182555263963082,
+        "totalLogLoss": 3.244238665439238,
+        "totalRps": 0.3164342703995925,
         "topScore": "1:0",
         "actualScore": "3:2",
         "scoreTop1Hit": false,
         "scoreTop3Hit": false,
         "scoreTop5Hit": false,
-        "scoreLogLoss": 6.401768695454779,
-        "actualScoreProbability": 0.001658621081756661,
+        "scoreLogLoss": 6.376507248530367,
+        "actualScoreProbability": 0.0017010539515373018,
         "topScores": [
           {
             "score": "1:0",
-            "probability": 0.23845366834795767
+            "probability": 0.23640593426207127
           },
           {
             "score": "2:0",
-            "probability": 0.2326104783292481
+            "probability": 0.2320776519817888
           },
           {
             "score": "3:0",
-            "probability": 0.14639218739040216
+            "probability": 0.14641702556701602
           },
           {
             "score": "0:0",
-            "probability": 0.13405692771558025
+            "probability": 0.1333952972710558
           },
           {
             "score": "4:0",
-            "probability": 0.06891751698541325
+            "probability": 0.06960398140312316
           }
         ],
         "totalProbabilities": {
-          "0": 0.13405692771558025,
-          "1": 0.2553654048559915,
-          "2": 0.2764903136478115,
-          "3": 0.1842546716962347,
-          "4": 0.0940830610719052,
-          "5": 0.038104811515963705,
-          "6": 0.012804000354701004,
-          "7+": 0.004840809141812189
+          "0": 0.1333952972710558,
+          "1": 0.2532636821402143,
+          "2": 0.2764840939457206,
+          "3": 0.18458998302876686,
+          "4": 0.09512232924128372,
+          "5": 0.03899824376866097,
+          "6": 0.013168268432691902,
+          "7+": 0.004978102171605848
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "favorite_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "favoriteSide": "home",
         "totalGoalWeights": {
-          "0": 0.84,
-          "1": 0.94,
-          "2": 1.0,
-          "3": 1.05,
-          "4": 1.09,
-          "5": 1.12,
-          "6": 1.12,
-          "7+": 1.1
+          "0": 0.82,
+          "1": 0.925,
+          "2": 0.995,
+          "3": 1.055,
+          "4": 1.135,
+          "5": 1.22,
+          "6": 1.24,
+          "7+": 1.22
         },
         "expectedTotalGoalsBefore": 2.013,
-        "expectedTotalGoalsAfter": 2.0387,
-        "fullIntensityExpectedTotalGoalsAfter": 2.1156,
+        "expectedTotalGoalsAfter": 2.0493,
+        "fullIntensityExpectedTotalGoalsAfter": 2.1583,
         "outcomePreserved": true,
-        "maxCellDelta": 0.007263
+        "maxCellDelta": 0.009311
       }
     },
     {
@@ -10497,70 +10497,70 @@
         "actualTotalBucket": "0",
         "totalExactHit": false,
         "totalAdjacentCoreHit": false,
-        "totalLogLoss": 2.2330080253359577,
-        "totalRps": 0.21401205075655325,
+        "totalLogLoss": 2.19584445948008,
+        "totalRps": 0.21122351501371348,
         "topScore": "1:1",
         "actualScore": "0:0",
         "scoreTop1Hit": false,
         "scoreTop3Hit": true,
         "scoreTop5Hit": true,
-        "scoreLogLoss": 2.2330080253359577,
-        "actualScoreProbability": 0.10720546787645938,
+        "scoreLogLoss": 2.19584445948008,
+        "actualScoreProbability": 0.11126456340634037,
         "topScores": [
           {
             "score": "1:1",
-            "probability": 0.13891816886132136
+            "probability": 0.1367149180282621
           },
           {
             "score": "0:1",
-            "probability": 0.11931610792473003
+            "probability": 0.12046603467830393
           },
           {
             "score": "0:0",
-            "probability": 0.10720546787645938
+            "probability": 0.11126456340634037
           },
           {
             "score": "0:2",
-            "probability": 0.08783119135932613
+            "probability": 0.08757516910518477
           },
           {
             "score": "1:2",
-            "probability": 0.08639864968557277
+            "probability": 0.08615681003544955
           }
         ],
         "totalProbabilities": {
-          "0": 0.10720546787645938,
-          "1": 0.20376341621303162,
-          "2": 0.2735649769309253,
-          "3": 0.20466189746941452,
-          "4": 0.12124667048244585,
-          "5": 0.056971471420701164,
-          "6": 0.022317374270625513,
-          "7+": 0.01026872533639658
+          "0": 0.11126456340634037,
+          "1": 0.20567296247486502,
+          "2": 0.27093584359869327,
+          "3": 0.20402943938068027,
+          "4": 0.11946366096466973,
+          "5": 0.05657384049701604,
+          "6": 0.02190792274074886,
+          "7+": 0.010151766936986563
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "close_late_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_tension_close_game_v2",
         "favoriteSide": "away",
         "totalGoalWeights": {
-          "0": 0.925,
-          "1": 0.94,
-          "2": 0.97,
-          "3": 1.015,
-          "4": 1.06,
-          "5": 1.09,
-          "6": 1.12,
-          "7+": 1.15
+          "0": 1.035,
+          "1": 0.975,
+          "2": 0.955,
+          "3": 1.0,
+          "4": 1.045,
+          "5": 1.07,
+          "6": 1.095,
+          "7+": 1.12
         },
         "expectedTotalGoalsBefore": 2.3144,
-        "expectedTotalGoalsAfter": 2.3405,
-        "fullIntensityExpectedTotalGoalsAfter": 2.4188,
+        "expectedTotalGoalsAfter": 2.3229,
+        "fullIntensityExpectedTotalGoalsAfter": 2.3482,
         "outcomePreserved": true,
-        "maxCellDelta": 0.002351
+        "maxCellDelta": 0.002641
       }
     }
   ],
@@ -10632,70 +10632,70 @@
         "actualTotalBucket": "5",
         "totalExactHit": false,
         "totalAdjacentCoreHit": false,
-        "totalLogLoss": 3.267414718314718,
-        "totalRps": 0.3182555263963082,
+        "totalLogLoss": 3.244238665439238,
+        "totalRps": 0.3164342703995925,
         "topScore": "1:0",
         "actualScore": "3:2",
         "scoreTop1Hit": false,
         "scoreTop3Hit": false,
         "scoreTop5Hit": false,
-        "scoreLogLoss": 6.401768695454779,
-        "actualScoreProbability": 0.001658621081756661,
+        "scoreLogLoss": 6.376507248530367,
+        "actualScoreProbability": 0.0017010539515373018,
         "topScores": [
           {
             "score": "1:0",
-            "probability": 0.23845366834795767
+            "probability": 0.23640593426207127
           },
           {
             "score": "2:0",
-            "probability": 0.2326104783292481
+            "probability": 0.2320776519817888
           },
           {
             "score": "3:0",
-            "probability": 0.14639218739040216
+            "probability": 0.14641702556701602
           },
           {
             "score": "0:0",
-            "probability": 0.13405692771558025
+            "probability": 0.1333952972710558
           },
           {
             "score": "4:0",
-            "probability": 0.06891751698541325
+            "probability": 0.06960398140312316
           }
         ],
         "totalProbabilities": {
-          "0": 0.13405692771558025,
-          "1": 0.2553654048559915,
-          "2": 0.2764903136478115,
-          "3": 0.1842546716962347,
-          "4": 0.0940830610719052,
-          "5": 0.038104811515963705,
-          "6": 0.012804000354701004,
-          "7+": 0.004840809141812189
+          "0": 0.1333952972710558,
+          "1": 0.2532636821402143,
+          "2": 0.2764840939457206,
+          "3": 0.18458998302876686,
+          "4": 0.09512232924128372,
+          "5": 0.03899824376866097,
+          "6": 0.013168268432691902,
+          "7+": 0.004978102171605848
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "favorite_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "favoriteSide": "home",
         "totalGoalWeights": {
-          "0": 0.84,
-          "1": 0.94,
-          "2": 1.0,
-          "3": 1.05,
-          "4": 1.09,
-          "5": 1.12,
-          "6": 1.12,
-          "7+": 1.1
+          "0": 0.82,
+          "1": 0.925,
+          "2": 0.995,
+          "3": 1.055,
+          "4": 1.135,
+          "5": 1.22,
+          "6": 1.24,
+          "7+": 1.22
         },
         "expectedTotalGoalsBefore": 2.013,
-        "expectedTotalGoalsAfter": 2.0387,
-        "fullIntensityExpectedTotalGoalsAfter": 2.1156,
+        "expectedTotalGoalsAfter": 2.0493,
+        "fullIntensityExpectedTotalGoalsAfter": 2.1583,
         "outcomePreserved": true,
-        "maxCellDelta": 0.007263
+        "maxCellDelta": 0.009311
       }
     },
     {
@@ -10765,70 +10765,70 @@
         "actualTotalBucket": "0",
         "totalExactHit": false,
         "totalAdjacentCoreHit": false,
-        "totalLogLoss": 2.2330080253359577,
-        "totalRps": 0.21401205075655325,
+        "totalLogLoss": 2.19584445948008,
+        "totalRps": 0.21122351501371348,
         "topScore": "1:1",
         "actualScore": "0:0",
         "scoreTop1Hit": false,
         "scoreTop3Hit": true,
         "scoreTop5Hit": true,
-        "scoreLogLoss": 2.2330080253359577,
-        "actualScoreProbability": 0.10720546787645938,
+        "scoreLogLoss": 2.19584445948008,
+        "actualScoreProbability": 0.11126456340634037,
         "topScores": [
           {
             "score": "1:1",
-            "probability": 0.13891816886132136
+            "probability": 0.1367149180282621
           },
           {
             "score": "0:1",
-            "probability": 0.11931610792473003
+            "probability": 0.12046603467830393
           },
           {
             "score": "0:0",
-            "probability": 0.10720546787645938
+            "probability": 0.11126456340634037
           },
           {
             "score": "0:2",
-            "probability": 0.08783119135932613
+            "probability": 0.08757516910518477
           },
           {
             "score": "1:2",
-            "probability": 0.08639864968557277
+            "probability": 0.08615681003544955
           }
         ],
         "totalProbabilities": {
-          "0": 0.10720546787645938,
-          "1": 0.20376341621303162,
-          "2": 0.2735649769309253,
-          "3": 0.20466189746941452,
-          "4": 0.12124667048244585,
-          "5": 0.056971471420701164,
-          "6": 0.022317374270625513,
-          "7+": 0.01026872533639658
+          "0": 0.11126456340634037,
+          "1": 0.20567296247486502,
+          "2": 0.27093584359869327,
+          "3": 0.20402943938068027,
+          "4": 0.11946366096466973,
+          "5": 0.05657384049701604,
+          "6": 0.02190792274074886,
+          "7+": 0.010151766936986563
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "close_late_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_tension_close_game_v2",
         "favoriteSide": "away",
         "totalGoalWeights": {
-          "0": 0.925,
-          "1": 0.94,
-          "2": 0.97,
-          "3": 1.015,
-          "4": 1.06,
-          "5": 1.09,
-          "6": 1.12,
-          "7+": 1.15
+          "0": 1.035,
+          "1": 0.975,
+          "2": 0.955,
+          "3": 1.0,
+          "4": 1.045,
+          "5": 1.07,
+          "6": 1.095,
+          "7+": 1.12
         },
         "expectedTotalGoalsBefore": 2.3144,
-        "expectedTotalGoalsAfter": 2.3405,
-        "fullIntensityExpectedTotalGoalsAfter": 2.4188,
+        "expectedTotalGoalsAfter": 2.3229,
+        "fullIntensityExpectedTotalGoalsAfter": 2.3482,
         "outcomePreserved": true,
-        "maxCellDelta": 0.002351
+        "maxCellDelta": 0.002641
       }
     }
   ],
@@ -10900,70 +10900,70 @@
         "actualTotalBucket": "1",
         "totalExactHit": false,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.7104028897381063,
-        "totalRps": 0.11998967695858791,
+        "totalLogLoss": 1.722338402186289,
+        "totalRps": 0.12168612205913269,
         "topScore": "0:1",
         "actualScore": "0:1",
         "scoreTop1Hit": true,
         "scoreTop3Hit": true,
         "scoreTop5Hit": true,
-        "scoreLogLoss": 2.0763073968202868,
-        "actualScoreProbability": 0.12539238267832734,
+        "scoreLogLoss": 2.088460890197335,
+        "actualScoreProbability": 0.12387765047453463,
         "topScores": [
           {
             "score": "0:1",
-            "probability": 0.12539238267832734
+            "probability": 0.12387765047453463
           },
           {
             "score": "1:1",
-            "probability": 0.12243346776877552
+            "probability": 0.12228750029676731
           },
           {
             "score": "0:2",
-            "probability": 0.11792009506344334
+            "probability": 0.11716565574347278
           },
           {
             "score": "1:2",
-            "probability": 0.09495850146100435
+            "probability": 0.09526298116449357
           },
           {
             "score": "0:0",
-            "probability": 0.08631623279690452
+            "probability": 0.08509565623263216
           }
         ],
         "totalProbabilities": {
-          "0": 0.08631623279690452,
-          "1": 0.18079293832241153,
-          "2": 0.2665537863180908,
-          "3": 0.2153494675353416,
-          "4": 0.13809948178137973,
-          "5": 0.06904276053424478,
-          "6": 0.029109501310516553,
-          "7+": 0.014735831401110412
+          "0": 0.08509565623263216,
+          "1": 0.17864790843636025,
+          "2": 0.26540881908417646,
+          "3": 0.21553727171395162,
+          "4": 0.13977561432601182,
+          "5": 0.07047385985959813,
+          "6": 0.02994665628578198,
+          "7+": 0.015114214061487639
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "favorite_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "favoriteSide": "away",
         "totalGoalWeights": {
-          "0": 0.84,
-          "1": 0.94,
-          "2": 1.0,
-          "3": 1.05,
-          "4": 1.09,
-          "5": 1.12,
-          "6": 1.12,
-          "7+": 1.1
+          "0": 0.82,
+          "1": 0.925,
+          "2": 0.995,
+          "3": 1.055,
+          "4": 1.135,
+          "5": 1.22,
+          "6": 1.24,
+          "7+": 1.22
         },
         "expectedTotalGoalsBefore": 2.502,
-        "expectedTotalGoalsAfter": 2.5354,
-        "fullIntensityExpectedTotalGoalsAfter": 2.6354,
+        "expectedTotalGoalsAfter": 2.553,
+        "fullIntensityExpectedTotalGoalsAfter": 2.706,
         "outcomePreserved": true,
-        "maxCellDelta": 0.004359
+        "maxCellDelta": 0.005874
       }
     },
     {
@@ -11033,70 +11033,70 @@
         "actualTotalBucket": "3",
         "totalExactHit": false,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.5644837257485322,
-        "totalRps": 0.06793438339482902,
+        "totalLogLoss": 1.5672794740336469,
+        "totalRps": 0.06884227413135095,
         "topScore": "1:1",
         "actualScore": "2:1",
         "scoreTop1Hit": false,
         "scoreTop3Hit": false,
         "scoreTop5Hit": true,
-        "scoreLogLoss": 2.3904587594448725,
-        "actualScoreProbability": 0.09158765753532312,
+        "scoreLogLoss": 2.3928766575806915,
+        "actualScoreProbability": 0.09136647541458,
         "topScores": [
           {
             "score": "1:1",
-            "probability": 0.1320467158704228
+            "probability": 0.1300369486803217
           },
           {
             "score": "1:0",
-            "probability": 0.1230579325063528
-          },
-          {
-            "score": "2:0",
-            "probability": 0.10047782621018467
+            "probability": 0.12428483988346192
           },
           {
             "score": "0:0",
-            "probability": 0.09884578179303671
+            "probability": 0.1026561213031066
+          },
+          {
+            "score": "2:0",
+            "probability": 0.10022285944273365
           },
           {
             "score": "2:1",
-            "probability": 0.09158765753532312
+            "probability": 0.09136647541458
           }
         ],
         "totalProbabilities": {
-          "0": 0.09884578179303671,
-          "1": 0.19400344201573,
-          "2": 0.2694861634518959,
-          "3": 0.20919598780063653,
-          "4": 0.12834228631729586,
-          "5": 0.06251008029663692,
-          "6": 0.025358184370627482,
-          "7+": 0.012258073954140658
+          "0": 0.1026561213031066,
+          "1": 0.1958663887390845,
+          "2": 0.2670862185548282,
+          "3": 0.20861194527485144,
+          "4": 0.1266231396875622,
+          "5": 0.06209664993805819,
+          "6": 0.02493294797388924,
+          "7+": 0.012126588528619643
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "close_late_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_tension_close_game_v2",
         "favoriteSide": "home",
         "totalGoalWeights": {
-          "0": 0.925,
-          "1": 0.94,
-          "2": 0.97,
-          "3": 1.015,
-          "4": 1.06,
-          "5": 1.09,
-          "6": 1.12,
-          "7+": 1.15
+          "0": 1.035,
+          "1": 0.975,
+          "2": 0.955,
+          "3": 1.0,
+          "4": 1.045,
+          "5": 1.07,
+          "6": 1.095,
+          "7+": 1.12
         },
         "expectedTotalGoalsBefore": 2.3975,
-        "expectedTotalGoalsAfter": 2.4244,
-        "fullIntensityExpectedTotalGoalsAfter": 2.5052,
+        "expectedTotalGoalsAfter": 2.4073,
+        "fullIntensityExpectedTotalGoalsAfter": 2.4368,
         "outcomePreserved": true,
-        "maxCellDelta": 0.002578
+        "maxCellDelta": 0.002486
       }
     },
     {
@@ -11166,70 +11166,70 @@
         "actualTotalBucket": "2",
         "totalExactHit": true,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.388033720159265,
-        "totalRps": 0.0652459348020706,
+        "totalLogLoss": 1.3942837659543574,
+        "totalRps": 0.06634192238459216,
         "topScore": "1:1",
         "actualScore": "1:1",
         "scoreTop1Hit": true,
         "scoreTop3Hit": true,
         "scoreTop5Hit": true,
-        "scoreLogLoss": 2.1590068635936115,
-        "actualScoreProbability": 0.11543971150690122,
+        "scoreLogLoss": 2.16260015226431,
+        "actualScoreProbability": 0.11502564767036422,
         "topScores": [
           {
             "score": "1:1",
-            "probability": 0.11543971150690122
+            "probability": 0.11502564767036422
           },
           {
             "score": "2:0",
-            "probability": 0.10873886137618907
+            "probability": 0.10788027290843168
           },
           {
             "score": "1:0",
-            "probability": 0.10480735315297232
+            "probability": 0.10341012240873929
           },
           {
             "score": "2:1",
-            "probability": 0.09822486822609361
+            "probability": 0.09837877319474318
           },
           {
             "score": "3:0",
-            "probability": 0.06837892253958948
+            "probability": 0.06798525784875922
           }
         ],
         "totalProbabilities": {
-          "0": 0.06785451840039954,
-          "1": 0.1519564710071855,
-          "2": 0.2495655381922267,
-          "3": 0.222581972515142,
-          "4": 0.15732938335112506,
-          "5": 0.08682246613946784,
-          "6": 0.04036153377453461,
-          "7+": 0.02352811661991872
+          "0": 0.06678400648897322,
+          "1": 0.1499445098868507,
+          "2": 0.24801060640877354,
+          "3": 0.22239910488515202,
+          "4": 0.15890259875871593,
+          "5": 0.08844629708472594,
+          "6": 0.041428774188266106,
+          "7+": 0.02408410229854257
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "favorite_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "favoriteSide": "home",
         "totalGoalWeights": {
-          "0": 0.84,
-          "1": 0.94,
-          "2": 1.0,
-          "3": 1.05,
-          "4": 1.09,
-          "5": 1.12,
-          "6": 1.12,
-          "7+": 1.1
+          "0": 0.82,
+          "1": 0.925,
+          "2": 0.995,
+          "3": 1.055,
+          "4": 1.135,
+          "5": 1.22,
+          "6": 1.24,
+          "7+": 1.22
         },
         "expectedTotalGoalsBefore": 2.7558,
-        "expectedTotalGoalsAfter": 2.7891,
-        "fullIntensityExpectedTotalGoalsAfter": 2.889,
+        "expectedTotalGoalsAfter": 2.8082,
+        "fullIntensityExpectedTotalGoalsAfter": 2.9651,
         "outcomePreserved": true,
-        "maxCellDelta": 0.003908
+        "maxCellDelta": 0.005305
       }
     },
     {
@@ -11299,70 +11299,70 @@
         "actualTotalBucket": "2",
         "totalExactHit": true,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.3477788823117947,
-        "totalRps": 0.05661683625738936,
+        "totalLogLoss": 1.3550571399662594,
+        "totalRps": 0.0563604270481879,
         "topScore": "1:1",
         "actualScore": "1:1",
         "scoreTop1Hit": true,
         "scoreTop3Hit": true,
         "scoreTop5Hit": true,
-        "scoreLogLoss": 2.051652781983184,
-        "actualScoreProbability": 0.1285223085935308,
+        "scoreLogLoss": 2.0640257790867156,
+        "actualScoreProbability": 0.12694189980042656,
         "topScores": [
           {
             "score": "1:1",
-            "probability": 0.1285223085935308
+            "probability": 0.12694189980042656
           },
           {
             "score": "1:0",
-            "probability": 0.10782115798306582
+            "probability": 0.1089425213656979
           },
           {
             "score": "2:1",
-            "probability": 0.09420398995288824
+            "probability": 0.09402439738051901
           },
           {
             "score": "2:0",
-            "probability": 0.09375779248832482
+            "probability": 0.09356673313098826
           },
           {
             "score": "0:0",
-            "probability": 0.08394251900693174
+            "probability": 0.087439401617598
           }
         ],
         "totalProbabilities": {
-          "0": 0.08394251900693174,
-          "1": 0.17268475433520414,
-          "2": 0.25981670371126786,
-          "3": 0.2165001821338825,
-          "4": 0.14262571004779323,
-          "5": 0.07458395941524486,
-          "6": 0.032490993420134756,
-          "7+": 0.017355177929540964
+          "0": 0.087439401617598,
+          "1": 0.17442537871139419,
+          "2": 0.2579325557732118,
+          "3": 0.21601443543723936,
+          "4": 0.14089105090824836,
+          "5": 0.07413599360841343,
+          "6": 0.031981465246476666,
+          "7+": 0.0171797186974182
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "close_late_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_tension_close_game_v2",
         "favoriteSide": "home",
         "totalGoalWeights": {
-          "0": 0.925,
-          "1": 0.94,
-          "2": 0.97,
-          "3": 1.015,
-          "4": 1.06,
-          "5": 1.09,
-          "6": 1.12,
-          "7+": 1.15
+          "0": 1.035,
+          "1": 0.975,
+          "2": 0.955,
+          "3": 1.0,
+          "4": 1.045,
+          "5": 1.07,
+          "6": 1.095,
+          "7+": 1.12
         },
         "expectedTotalGoalsBefore": 2.5723,
-        "expectedTotalGoalsAfter": 2.6017,
-        "fullIntensityExpectedTotalGoalsAfter": 2.6897,
+        "expectedTotalGoalsAfter": 2.5847,
+        "fullIntensityExpectedTotalGoalsAfter": 2.6219,
         "outcomePreserved": true,
-        "maxCellDelta": 0.002463
+        "maxCellDelta": 0.002326
       }
     },
     {
@@ -11432,70 +11432,70 @@
         "actualTotalBucket": "3",
         "totalExactHit": false,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.4949999571846397,
-        "totalRps": 0.05477784472333262,
+        "totalLogLoss": 1.49717943768525,
+        "totalRps": 0.054832863784755055,
         "topScore": "0:2",
         "actualScore": "1:2",
         "scoreTop1Hit": false,
         "scoreTop3Hit": true,
         "scoreTop5Hit": true,
-        "scoreLogLoss": 2.3210849440286734,
-        "actualScoreProbability": 0.09816702208266506,
+        "scoreLogLoss": 2.320690537980179,
+        "actualScoreProbability": 0.09820574738618212,
         "topScores": [
           {
             "score": "0:2",
-            "probability": 0.11021293579025207
+            "probability": 0.10922570671602168
           },
           {
             "score": "1:1",
-            "probability": 0.10308652216393493
+            "probability": 0.10259360732808662
           },
           {
             "score": "1:2",
-            "probability": 0.09816702208266506
+            "probability": 0.09820574738618212
           },
           {
             "score": "0:1",
-            "probability": 0.09506330105652519
+            "probability": 0.09371240005355067
           },
           {
             "score": "0:3",
-            "probability": 0.0775409161216598
+            "probability": 0.0770068969266727
           }
         ],
         "totalProbabilities": {
-          "0": 0.055618029927478156,
-          "1": 0.1319577637695298,
-          "2": 0.23330338055111652,
-          "3": 0.22424861433182036,
-          "4": 0.17031294846598968,
-          "5": 0.1011779575458333,
-          "6": 0.05053712720904804,
-          "7+": 0.03284417819918416
+          "0": 0.0546950114692027,
+          "1": 0.13009530079149226,
+          "2": 0.2315830428998114,
+          "3": 0.2237604010684956,
+          "4": 0.1716711410871183,
+          "5": 0.10288848282252519,
+          "6": 0.051751555438322806,
+          "7+": 0.033555064423031716
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "favorite_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "favoriteSide": "away",
         "totalGoalWeights": {
-          "0": 0.84,
-          "1": 0.94,
-          "2": 1.0,
-          "3": 1.05,
-          "4": 1.09,
-          "5": 1.12,
-          "6": 1.12,
-          "7+": 1.1
+          "0": 0.82,
+          "1": 0.925,
+          "2": 0.995,
+          "3": 1.055,
+          "4": 1.135,
+          "5": 1.22,
+          "6": 1.24,
+          "7+": 1.22
         },
         "expectedTotalGoalsBefore": 2.9591,
-        "expectedTotalGoalsAfter": 2.9916,
-        "fullIntensityExpectedTotalGoalsAfter": 3.0891,
+        "expectedTotalGoalsAfter": 3.0111,
+        "fullIntensityExpectedTotalGoalsAfter": 3.1671,
         "outcomePreserved": true,
-        "maxCellDelta": 0.003746
+        "maxCellDelta": 0.005097
       }
     },
     {
@@ -11565,70 +11565,70 @@
         "actualTotalBucket": "3",
         "totalExactHit": true,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.5123616954893808,
-        "totalRps": 0.05810704401870041,
+        "totalLogLoss": 1.516962457936892,
+        "totalRps": 0.058602557804185836,
         "topScore": "2:0",
         "actualScore": "3:0",
         "scoreTop1Hit": false,
         "scoreTop3Hit": true,
         "scoreTop5Hit": true,
-        "scoreLogLoss": 2.089479320505157,
-        "actualScoreProbability": 0.12375155394199376,
+        "scoreLogLoss": 2.097527926451411,
+        "actualScoreProbability": 0.12275952403329615,
         "topScores": [
           {
             "score": "2:0",
-            "probability": 0.13437600492488003
+            "probability": 0.13303108414391046
           },
           {
             "score": "3:0",
-            "probability": 0.12375155394199376
+            "probability": 0.12275952403329615
           },
           {
             "score": "1:0",
-            "probability": 0.09091238044345949
+            "probability": 0.08954388637020361
           },
           {
             "score": "4:0",
-            "probability": 0.08526068880446307
+            "probability": 0.08533422865374943
           },
           {
             "score": "2:1",
-            "probability": 0.07835416017201328
+            "probability": 0.07829104251636315
           }
         ],
         "totalProbabilities": {
-          "0": 0.03909851484340522,
-          "1": 0.10712321183429485,
-          "2": 0.2038320582207372,
-          "3": 0.22038887145052857,
-          "4": 0.18567778993268566,
-          "5": 0.12321761362901118,
-          "6": 0.0682585375175846,
-          "7+": 0.052403402571752696
+          "0": 0.03849952113171645,
+          "1": 0.10554956552196698,
+          "2": 0.20223658955951887,
+          "3": 0.21937724352123156,
+          "4": 0.1864328560594078,
+          "5": 0.12494833337826522,
+          "6": 0.06958522638028358,
+          "7+": 0.05337066444760954
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "favorite_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "favoriteSide": "home",
         "totalGoalWeights": {
-          "0": 0.84,
-          "1": 0.94,
-          "2": 1.0,
-          "3": 1.05,
-          "4": 1.09,
-          "5": 1.12,
-          "6": 1.12,
-          "7+": 1.1
+          "0": 0.82,
+          "1": 0.925,
+          "2": 0.995,
+          "3": 1.055,
+          "4": 1.135,
+          "5": 1.22,
+          "6": 1.24,
+          "7+": 1.22
         },
         "expectedTotalGoalsBefore": 3.2817,
-        "expectedTotalGoalsAfter": 3.3111,
-        "fullIntensityExpectedTotalGoalsAfter": 3.3994,
+        "expectedTotalGoalsAfter": 3.3297,
+        "fullIntensityExpectedTotalGoalsAfter": 3.4738,
         "outcomePreserved": true,
-        "maxCellDelta": 0.003883
+        "maxCellDelta": 0.005252
       }
     },
     {
@@ -11698,70 +11698,70 @@
         "actualTotalBucket": "2",
         "totalExactHit": false,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.297786539034749,
-        "totalRps": 0.049238263918527016,
+        "totalLogLoss": 1.3147711708782726,
+        "totalRps": 0.05031860126105268,
         "topScore": "0:0",
         "actualScore": "2:0",
         "scoreTop1Hit": false,
         "scoreTop3Hit": false,
         "scoreTop5Hit": true,
-        "scoreLogLoss": 2.707249378521573,
-        "actualScoreProbability": 0.06672007622164357,
+        "scoreLogLoss": 2.712950143427129,
+        "actualScoreProbability": 0.06634080285393307,
         "topScores": [
           {
             "score": "0:0",
-            "probability": 0.19870415890369583
+            "probability": 0.20378397159333989
           },
           {
             "score": "1:0",
-            "probability": 0.1468720611703592
+            "probability": 0.14792074611113784
           },
           {
             "score": "0:1",
-            "probability": 0.14414555696354192
+            "probability": 0.14516864016936767
           },
           {
             "score": "1:1",
-            "probability": 0.14199419552117362
+            "probability": 0.13814267455891688
           },
           {
             "score": "2:0",
-            "probability": 0.06672007622164357
+            "probability": 0.06634080285393307
           }
         ],
         "totalProbabilities": {
-          "0": 0.19870415890369583,
-          "1": 0.29101761813390115,
-          "2": 0.27313569963496176,
-          "3": 0.14635849609401363,
-          "4": 0.06219518833291858,
-          "5": 0.02094881265811265,
-          "6": 0.0058855811128731795,
-          "7+": 0.0017544451295233097
+          "0": 0.20378397159333989,
+          "1": 0.2930893862805055,
+          "2": 0.2685357650123952,
+          "3": 0.14552968826718468,
+          "4": 0.06085361059009162,
+          "5": 0.02074186224553584,
+          "6": 0.005736955251582681,
+          "7+": 0.0017287607593646673
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "close_late_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_tension_close_game_v2",
         "favoriteSide": "home",
         "totalGoalWeights": {
-          "0": 0.925,
-          "1": 0.94,
-          "2": 0.97,
-          "3": 1.015,
-          "4": 1.06,
-          "5": 1.09,
-          "6": 1.12,
-          "7+": 1.15
+          "0": 1.035,
+          "1": 0.975,
+          "2": 0.955,
+          "3": 1.0,
+          "4": 1.045,
+          "5": 1.07,
+          "6": 1.095,
+          "7+": 1.12
         },
         "expectedTotalGoalsBefore": 1.661,
-        "expectedTotalGoalsAfter": 1.6775,
-        "fullIntensityExpectedTotalGoalsAfter": 1.727,
+        "expectedTotalGoalsAfter": 1.6604,
+        "fullIntensityExpectedTotalGoalsAfter": 1.6586,
         "outcomePreserved": true,
-        "maxCellDelta": 0.00176
+        "maxCellDelta": 0.00343
       }
     },
     {
@@ -11831,70 +11831,70 @@
         "actualTotalBucket": "3",
         "totalExactHit": false,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.66071809187295,
-        "totalRps": 0.08584738477180873,
+        "totalLogLoss": 1.6585936698356218,
+        "totalRps": 0.08507737694535701,
         "topScore": "1:0",
         "actualScore": "2:1",
         "scoreTop1Hit": false,
         "scoreTop3Hit": false,
         "scoreTop5Hit": false,
-        "scoreLogLoss": 2.8940631210224845,
-        "actualScoreProbability": 0.05535085786550504,
+        "scoreLogLoss": 2.8872858976808415,
+        "actualScoreProbability": 0.05572725702129292,
         "topScores": [
           {
             "score": "1:0",
-            "probability": 0.21419128518419867
+            "probability": 0.21221226169089885
           },
           {
             "score": "2:0",
-            "probability": 0.20538790557719538
-          },
-          {
-            "score": "0:0",
-            "probability": 0.1259463479503683
+            "probability": 0.20476048341805264
           },
           {
             "score": "3:0",
-            "probability": 0.12583841763648548
+            "probability": 0.1257583388936777
+          },
+          {
+            "score": "0:0",
+            "probability": 0.12500584066751252
           },
           {
             "score": "1:1",
-            "probability": 0.06835029137177939
+            "probability": 0.06894358319893484
           }
         ],
         "totalProbabilities": {
-          "0": 0.1259463479503683,
-          "1": 0.24252776458683128,
-          "2": 0.27827255329606726,
-          "3": 0.1900024918565934,
-          "4": 0.10070427072154661,
-          "5": 0.04209366055875675,
-          "6": 0.014660091159497391,
-          "7+": 0.005792819870339055
+          "0": 0.12500584066751252,
+          "1": 0.24040235769089432,
+          "2": 0.2782264132062563,
+          "3": 0.1904065663978996,
+          "4": 0.10187605941998845,
+          "5": 0.04305541737194254,
+          "6": 0.015074744119598665,
+          "7+": 0.005952601125907658
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "favorite_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "favoriteSide": "home",
         "totalGoalWeights": {
-          "0": 0.84,
-          "1": 0.94,
-          "2": 1.0,
-          "3": 1.05,
-          "4": 1.09,
-          "5": 1.12,
-          "6": 1.12,
-          "7+": 1.1
+          "0": 0.82,
+          "1": 0.925,
+          "2": 0.995,
+          "3": 1.055,
+          "4": 1.135,
+          "5": 1.22,
+          "6": 1.24,
+          "7+": 1.22
         },
         "expectedTotalGoalsBefore": 2.0828,
-        "expectedTotalGoalsAfter": 2.1109,
-        "fullIntensityExpectedTotalGoalsAfter": 2.1952,
+        "expectedTotalGoalsAfter": 2.123,
+        "fullIntensityExpectedTotalGoalsAfter": 2.2436,
         "outcomePreserved": true,
-        "maxCellDelta": 0.006677
+        "maxCellDelta": 0.008656
       }
     },
     {
@@ -11964,70 +11964,70 @@
         "actualTotalBucket": "4",
         "totalExactHit": false,
         "totalAdjacentCoreHit": false,
-        "totalLogLoss": 1.917255325445809,
-        "totalRps": 0.12260037894131512,
+        "totalLogLoss": 1.9297358347923634,
+        "totalRps": 0.12412430428451605,
         "topScore": "1:1",
         "actualScore": "2:2",
         "scoreTop1Hit": false,
         "scoreTop3Hit": false,
         "scoreTop5Hit": false,
-        "scoreLogLoss": 2.89197522691722,
-        "actualScoreProbability": 0.05546654532491966,
+        "scoreLogLoss": 2.921972488113693,
+        "actualScoreProbability": 0.053827408594428826,
         "topScores": [
           {
             "score": "1:1",
-            "probability": 0.13304268774634803
+            "probability": 0.1316458296138945
           },
           {
             "score": "1:0",
-            "probability": 0.08766586486948819
+            "probability": 0.0885718383370476
           },
           {
             "score": "2:1",
-            "probability": 0.08590079564948334
+            "probability": 0.08573090388976747
           },
           {
             "score": "0:0",
-            "probability": 0.08005311332153771
+            "probability": 0.08353947759603489
           },
           {
             "score": "0:1",
-            "probability": 0.07762184529350857
+            "probability": 0.07840901548273645
           }
         ],
         "totalProbabilities": {
-          "0": 0.08005311332153771,
-          "1": 0.16528771016299676,
-          "2": 0.25664385547166435,
-          "3": 0.2181941886976038,
-          "4": 0.14700990324693708,
-          "5": 0.0785397259375408,
-          "6": 0.034994729144648455,
-          "7+": 0.01927677401707105
+          "0": 0.08353947759603489,
+          "1": 0.16698085381978406,
+          "2": 0.2549743488797313,
+          "3": 0.21773846527274401,
+          "4": 0.14518654665251723,
+          "5": 0.07807859189112308,
+          "6": 0.03442336250107098,
+          "7+": 0.019078353386994474
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "close_late_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_tension_close_game_v2",
         "favoriteSide": "home",
         "totalGoalWeights": {
-          "0": 0.925,
-          "1": 0.94,
-          "2": 0.97,
-          "3": 1.015,
-          "4": 1.06,
-          "5": 1.09,
-          "6": 1.12,
-          "7+": 1.15
+          "0": 1.035,
+          "1": 0.975,
+          "2": 0.955,
+          "3": 1.0,
+          "4": 1.045,
+          "5": 1.07,
+          "6": 1.095,
+          "7+": 1.12
         },
         "expectedTotalGoalsBefore": 2.6282,
-        "expectedTotalGoalsAfter": 2.6588,
-        "fullIntensityExpectedTotalGoalsAfter": 2.7505,
+        "expectedTotalGoalsAfter": 2.6414,
+        "fullIntensityExpectedTotalGoalsAfter": 2.6807,
         "outcomePreserved": true,
-        "maxCellDelta": 0.001992
+        "maxCellDelta": 0.002363
       }
     },
     {
@@ -12097,70 +12097,70 @@
         "actualTotalBucket": "2",
         "totalExactHit": true,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.4862898385780223,
-        "totalRps": 0.08346317476269029,
+        "totalLogLoss": 1.4947926996387493,
+        "totalRps": 0.08497393081591399,
         "topScore": "1:1",
         "actualScore": "2:0",
         "scoreTop1Hit": false,
         "scoreTop3Hit": true,
         "scoreTop5Hit": true,
-        "scoreLogLoss": 2.3524905066276003,
-        "actualScoreProbability": 0.09513194020908931,
+        "scoreLogLoss": 2.3621096539753883,
+        "actualScoreProbability": 0.09422123916460648,
         "topScores": [
           {
             "score": "1:1",
-            "probability": 0.10632394434698
+            "probability": 0.10564687372644181
           },
           {
             "score": "2:1",
-            "probability": 0.09883763512399968
+            "probability": 0.0988118723221254
           },
           {
             "score": "2:0",
-            "probability": 0.09513194020908931
+            "probability": 0.09422123916460648
           },
           {
             "score": "1:0",
-            "probability": 0.08321482006469584
+            "probability": 0.08198843655960175
           },
           {
             "score": "3:1",
-            "probability": 0.06832741118111217
+            "probability": 0.06842738662495196
           }
         ],
         "totalProbabilities": {
-          "0": 0.05143177388417574,
-          "1": 0.12256705879073207,
-          "2": 0.22621037755258006,
-          "3": 0.22390135726989918,
-          "4": 0.17539672991389083,
-          "5": 0.10742707717597766,
-          "6": 0.055369328328506315,
-          "7+": 0.03769629708423822
+          "0": 0.050522133918324184,
+          "1": 0.12075026137080774,
+          "2": 0.22429509636600586,
+          "3": 0.22329254784865682,
+          "4": 0.1767412137378424,
+          "5": 0.10919858962007443,
+          "6": 0.05669623420821445,
+          "7+": 0.038503922930074104
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "favorite_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "favoriteSide": "home",
         "totalGoalWeights": {
-          "0": 0.84,
-          "1": 0.94,
-          "2": 1.0,
-          "3": 1.05,
-          "4": 1.09,
-          "5": 1.12,
-          "6": 1.12,
-          "7+": 1.1
+          "0": 0.82,
+          "1": 0.925,
+          "2": 0.995,
+          "3": 1.055,
+          "4": 1.135,
+          "5": 1.22,
+          "6": 1.24,
+          "7+": 1.22
         },
         "expectedTotalGoalsBefore": 3.0489,
-        "expectedTotalGoalsAfter": 3.0815,
-        "fullIntensityExpectedTotalGoalsAfter": 3.1795,
+        "expectedTotalGoalsAfter": 3.1019,
+        "fullIntensityExpectedTotalGoalsAfter": 3.261,
         "outcomePreserved": true,
-        "maxCellDelta": 0.003317
+        "maxCellDelta": 0.004543
       }
     },
     {
@@ -12230,70 +12230,70 @@
         "actualTotalBucket": "3",
         "totalExactHit": false,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.4945430316669175,
-        "totalRps": 0.05489653445668944,
+        "totalLogLoss": 1.4970674335313885,
+        "totalRps": 0.05494405684228813,
         "topScore": "2:0",
         "actualScore": "3:0",
         "scoreTop1Hit": false,
         "scoreTop3Hit": true,
         "scoreTop5Hit": true,
-        "scoreLogLoss": 2.1154508760495876,
-        "actualScoreProbability": 0.12057891115199636,
+        "scoreLogLoss": 2.121639920902841,
+        "actualScoreProbability": 0.11983494744962953,
         "topScores": [
           {
             "score": "2:0",
-            "probability": 0.1489253581258967
+            "probability": 0.14769383466840577
           },
           {
             "score": "3:0",
-            "probability": 0.12057891115199636
+            "probability": 0.11983494744962953
           },
           {
             "score": "1:0",
-            "probability": 0.11484497771428107
+            "probability": 0.11328308184011224
           },
           {
             "score": "2:1",
-            "probability": 0.08274127499964282
+            "probability": 0.08283199818811023
           },
           {
             "score": "1:1",
-            "probability": 0.07617569689600687
+            "probability": 0.07610914813928056
           }
         ],
         "totalProbabilities": {
-          "0": 0.05508064395806023,
-          "1": 0.1377273553013436,
-          "2": 0.23308256508457278,
-          "3": 0.22435110265900526,
-          "4": 0.16877075302602612,
-          "5": 0.09983284215400406,
-          "6": 0.04936355338493098,
-          "7+": 0.03179118443205694
+          "0": 0.05431371753492066,
+          "1": 0.13590905045290286,
+          "2": 0.2317114945063079,
+          "3": 0.22378546456646675,
+          "4": 0.1698840141664231,
+          "5": 0.1014793221748425,
+          "6": 0.050459514676023984,
+          "7+": 0.032457421922112296
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "favorite_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "favoriteSide": "home",
         "totalGoalWeights": {
-          "0": 0.84,
-          "1": 0.94,
-          "2": 1.0,
-          "3": 1.05,
-          "4": 1.09,
-          "5": 1.12,
-          "6": 1.12,
-          "7+": 1.1
+          "0": 0.82,
+          "1": 0.925,
+          "2": 0.995,
+          "3": 1.055,
+          "4": 1.135,
+          "5": 1.22,
+          "6": 1.24,
+          "7+": 1.22
         },
         "expectedTotalGoalsBefore": 2.9391,
-        "expectedTotalGoalsAfter": 2.9699,
-        "fullIntensityExpectedTotalGoalsAfter": 3.0624,
+        "expectedTotalGoalsAfter": 2.9876,
+        "fullIntensityExpectedTotalGoalsAfter": 3.1331,
         "outcomePreserved": true,
-        "maxCellDelta": 0.004576
+        "maxCellDelta": 0.006137
       }
     },
     {
@@ -12363,70 +12363,70 @@
         "actualTotalBucket": "3",
         "totalExactHit": false,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.49515258110819,
-        "totalRps": 0.0547469591438508,
+        "totalLogLoss": 1.4974642348852163,
+        "totalRps": 0.05483852817557907,
         "topScore": "1:1",
         "actualScore": "3:0",
         "scoreTop1Hit": false,
         "scoreTop3Hit": false,
         "scoreTop5Hit": false,
-        "scoreLogLoss": 2.8151515899504873,
-        "actualScoreProbability": 0.05989563847502026,
+        "scoreLogLoss": 2.822373190003768,
+        "actualScoreProbability": 0.05946465420008751,
         "topScores": [
           {
             "score": "1:1",
-            "probability": 0.11160430445358546
+            "probability": 0.11092082454781879
           },
           {
             "score": "2:1",
-            "probability": 0.09864115253067263
+            "probability": 0.0986505013235075
           },
           {
             "score": "2:0",
-            "probability": 0.09200180484868271
+            "probability": 0.09115037110657848
           },
           {
             "score": "1:0",
-            "probability": 0.08441662957419362
+            "probability": 0.08319457122828745
           },
           {
             "score": "3:1",
-            "probability": 0.06481882772024226
+            "probability": 0.06493865118685076
           }
         ],
         "totalProbabilities": {
-          "0": 0.05488201001339918,
-          "1": 0.12827838455214616,
-          "2": 0.23180882299028072,
-          "3": 0.22421439124014797,
-          "4": 0.17184826655365423,
-          "5": 0.10291246190188136,
-          "6": 0.051901600895074715,
-          "7+": 0.03415406185341568
+          "0": 0.053920561452817144,
+          "1": 0.12640515591804086,
+          "2": 0.22990553070966457,
+          "3": 0.22369668380648755,
+          "4": 0.1732901160509856,
+          "5": 0.10467560728792542,
+          "6": 0.05319415561554207,
+          "7+": 0.03491218915853677
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "favorite_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "favoriteSide": "home",
         "totalGoalWeights": {
-          "0": 0.84,
-          "1": 0.94,
-          "2": 1.0,
-          "3": 1.05,
-          "4": 1.09,
-          "5": 1.12,
-          "6": 1.12,
-          "7+": 1.1
+          "0": 0.82,
+          "1": 0.925,
+          "2": 0.995,
+          "3": 1.055,
+          "4": 1.135,
+          "5": 1.22,
+          "6": 1.24,
+          "7+": 1.22
         },
         "expectedTotalGoalsBefore": 2.9839,
-        "expectedTotalGoalsAfter": 3.017,
-        "fullIntensityExpectedTotalGoalsAfter": 3.1161,
+        "expectedTotalGoalsAfter": 3.0374,
+        "fullIntensityExpectedTotalGoalsAfter": 3.1978,
         "outcomePreserved": true,
-        "maxCellDelta": 0.003301
+        "maxCellDelta": 0.004523
       }
     },
     {
@@ -12496,70 +12496,70 @@
         "actualTotalBucket": "3",
         "totalExactHit": false,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.506055466029993,
-        "totalRps": 0.05630046290468908,
+        "totalLogLoss": 1.507621478601203,
+        "totalRps": 0.05673198089352283,
         "topScore": "1:1",
         "actualScore": "2:1",
         "scoreTop1Hit": false,
         "scoreTop3Hit": true,
         "scoreTop5Hit": true,
-        "scoreLogLoss": 2.3369945645706336,
-        "actualScoreProbability": 0.09661758020996175,
+        "scoreLogLoss": 2.3382494665979476,
+        "actualScoreProbability": 0.0964964106565425,
         "topScores": [
           {
             "score": "1:1",
-            "probability": 0.12030423902404336
+            "probability": 0.11923205143157645
           },
           {
             "score": "2:1",
-            "probability": 0.09661758020996175
+            "probability": 0.0964964106565425
           },
           {
             "score": "1:0",
-            "probability": 0.09215816545954696
+            "probability": 0.09316674753115432
           },
           {
             "score": "2:0",
-            "probability": 0.0884582309998992
+            "probability": 0.088334678252107
           },
           {
             "score": "0:0",
-            "probability": 0.06739151868520404
+            "probability": 0.07043815984118323
           }
         ],
         "totalProbabilities": {
-          "0": 0.06739151868520404,
-          "1": 0.146831514639898,
-          "2": 0.24363774377732256,
-          "3": 0.2217830857413231,
-          "4": 0.15954949381796368,
-          "5": 0.09113397717488456,
-          "6": 0.043357028976339994,
-          "7+": 0.026315637187064044
+          "0": 0.07043815984118323,
+          "1": 0.1483956387298047,
+          "2": 0.24236184500357888,
+          "3": 0.22143604244897366,
+          "4": 0.1578890398059525,
+          "5": 0.09065638735731742,
+          "6": 0.04274984540702291,
+          "7+": 0.026073041406166706
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "close_late_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_tension_close_game_v2",
         "favoriteSide": "home",
         "totalGoalWeights": {
-          "0": 0.925,
-          "1": 0.94,
-          "2": 0.97,
-          "3": 1.015,
-          "4": 1.06,
-          "5": 1.09,
-          "6": 1.12,
-          "7+": 1.15
+          "0": 1.035,
+          "1": 0.975,
+          "2": 0.955,
+          "3": 1.0,
+          "4": 1.045,
+          "5": 1.07,
+          "6": 1.095,
+          "7+": 1.12
         },
         "expectedTotalGoalsBefore": 2.8055,
-        "expectedTotalGoalsAfter": 2.8377,
-        "fullIntensityExpectedTotalGoalsAfter": 2.9341,
+        "expectedTotalGoalsAfter": 2.8213,
+        "fullIntensityExpectedTotalGoalsAfter": 2.8685,
         "outcomePreserved": true,
-        "maxCellDelta": 0.002348
+        "maxCellDelta": 0.00211
       }
     },
     {
@@ -12629,70 +12629,70 @@
         "actualTotalBucket": "3",
         "totalExactHit": false,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.4985429167283686,
-        "totalRps": 0.055640861699296204,
+        "totalLogLoss": 1.4997580108220556,
+        "totalRps": 0.055494257275543954,
         "topScore": "1:1",
         "actualScore": "2:1",
         "scoreTop1Hit": false,
         "scoreTop3Hit": true,
         "scoreTop5Hit": true,
-        "scoreLogLoss": 2.316468277864122,
-        "actualScoreProbability": 0.0986212742103907,
+        "scoreLogLoss": 2.3153184509180385,
+        "actualScoreProbability": 0.09873473682762143,
         "topScores": [
           {
             "score": "1:1",
-            "probability": 0.11564225390998817
+            "probability": 0.11513445450821803
           },
           {
             "score": "2:0",
-            "probability": 0.10226920333308068
+            "probability": 0.10142220557306754
           },
           {
             "score": "2:1",
-            "probability": 0.0986212742103907
+            "probability": 0.09873473682762143
           },
           {
             "score": "1:0",
-            "probability": 0.09795280371189946
+            "probability": 0.09661492909545671
           },
           {
             "score": "3:0",
-            "probability": 0.06437842507149204
+            "probability": 0.06398150622805139
           }
         ],
         "totalProbabilities": {
-          "0": 0.06414191871935901,
-          "1": 0.1451625466303563,
-          "2": 0.24505215384125592,
-          "3": 0.22345551635015454,
-          "4": 0.16153602564767408,
-          "5": 0.09117404763933885,
-          "6": 0.04335590846822316,
-          "7+": 0.026121882703638192
+          "0": 0.06309462423904189,
+          "1": 0.14318211526875835,
+          "2": 0.2433788696167677,
+          "3": 0.22318416176609873,
+          "4": 0.16309389517701234,
+          "5": 0.09284504638674398,
+          "6": 0.04449003240719079,
+          "7+": 0.02673125513838626
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "favorite_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "favoriteSide": "home",
         "totalGoalWeights": {
-          "0": 0.84,
-          "1": 0.94,
-          "2": 1.0,
-          "3": 1.05,
-          "4": 1.09,
-          "5": 1.12,
-          "6": 1.12,
-          "7+": 1.1
+          "0": 0.82,
+          "1": 0.925,
+          "2": 0.995,
+          "3": 1.055,
+          "4": 1.135,
+          "5": 1.22,
+          "6": 1.24,
+          "7+": 1.22
         },
         "expectedTotalGoalsBefore": 2.8173,
-        "expectedTotalGoalsAfter": 2.8506,
-        "fullIntensityExpectedTotalGoalsAfter": 2.9506,
+        "expectedTotalGoalsAfter": 2.8702,
+        "fullIntensityExpectedTotalGoalsAfter": 3.0287,
         "outcomePreserved": true,
-        "maxCellDelta": 0.003697
+        "maxCellDelta": 0.005035
       }
     },
     {
@@ -12762,70 +12762,70 @@
         "actualTotalBucket": "2",
         "totalExactHit": true,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.3004494822172272,
-        "totalRps": 0.048587130398741726,
+        "totalLogLoss": 1.3097391488127104,
+        "totalRps": 0.048614050714065826,
         "topScore": "1:1",
         "actualScore": "2:0",
         "scoreTop1Hit": false,
         "scoreTop3Hit": false,
         "scoreTop5Hit": false,
-        "scoreLogLoss": 2.5648980264245003,
-        "actualScoreProbability": 0.07692702556573053,
+        "scoreLogLoss": 2.5678327572996844,
+        "actualScoreProbability": 0.07670159639743197,
         "topScores": [
           {
             "score": "1:1",
-            "probability": 0.1406653959318939
+            "probability": 0.13855330129618734
           },
           {
             "score": "1:0",
-            "probability": 0.10899378364630503
+            "probability": 0.11004244309396231
           },
           {
             "score": "0:0",
-            "probability": 0.10427984814698368
+            "probability": 0.10832253722545288
           },
           {
             "score": "0:1",
-            "probability": 0.09044875820853786
+            "probability": 0.09128829948244409
           },
           {
             "score": "2:1",
-            "probability": 0.08321941291018073
+            "probability": 0.08298515655409476
           }
         ],
         "totalProbabilities": {
-          "0": 0.10427984814698368,
-          "1": 0.1994425418548429,
-          "2": 0.2724093223656705,
-          "3": 0.20642430142714752,
-          "4": 0.12397817825653176,
-          "5": 0.059033890605888484,
-          "6": 0.023445139453566827,
-          "7+": 0.010986777889368297
+          "0": 0.10832253722545288,
+          "1": 0.2013307425764064,
+          "2": 0.2698904484472768,
+          "3": 0.20580616392483692,
+          "4": 0.12215127948478413,
+          "5": 0.05862725588233083,
+          "6": 0.023010296026135232,
+          "7+": 0.010861276432776833
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "close_late_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_tension_close_game_v2",
         "favoriteSide": "home",
         "totalGoalWeights": {
-          "0": 0.925,
-          "1": 0.94,
-          "2": 0.97,
-          "3": 1.015,
-          "4": 1.06,
-          "5": 1.09,
-          "6": 1.12,
-          "7+": 1.15
+          "0": 1.035,
+          "1": 0.975,
+          "2": 0.955,
+          "3": 1.0,
+          "4": 1.045,
+          "5": 1.07,
+          "6": 1.095,
+          "7+": 1.12
         },
         "expectedTotalGoalsBefore": 2.3455,
-        "expectedTotalGoalsAfter": 2.3722,
-        "fullIntensityExpectedTotalGoalsAfter": 2.4523,
+        "expectedTotalGoalsAfter": 2.3544,
+        "fullIntensityExpectedTotalGoalsAfter": 2.3809,
         "outcomePreserved": true,
-        "maxCellDelta": 0.002149
+        "maxCellDelta": 0.00264
       }
     },
     {
@@ -12895,70 +12895,70 @@
         "actualTotalBucket": "2",
         "totalExactHit": false,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.7917496976533536,
-        "totalRps": 0.14134823943198524,
+        "totalLogLoss": 1.8053266538687633,
+        "totalRps": 0.14371106128586325,
         "topScore": "2:1",
         "actualScore": "2:0",
         "scoreTop1Hit": false,
         "scoreTop3Hit": false,
         "scoreTop5Hit": true,
-        "scoreLogLoss": 2.768982706831032,
-        "actualScoreProbability": 0.06272578280652552,
+        "scoreLogLoss": 2.78222621600716,
+        "actualScoreProbability": 0.06190054987774838,
         "topScores": [
           {
             "score": "2:1",
-            "probability": 0.08908787872731429
+            "probability": 0.08871889427418156
           },
           {
             "score": "1:1",
-            "probability": 0.0815851806027978
+            "probability": 0.08056408905762312
           },
           {
             "score": "3:1",
-            "probability": 0.07187292467874955
+            "probability": 0.07167688765498406
           },
           {
             "score": "2:2",
-            "probability": 0.06544881121411583
+            "probability": 0.06616871339806181
           },
           {
             "score": "2:0",
-            "probability": 0.06272578280652552
+            "probability": 0.06190054987774838
           }
         ],
         "totalProbabilities": {
-          "0": 0.02691094968956555,
-          "1": 0.0706229881366308,
-          "2": 0.16666829527040725,
-          "3": 0.2039351310105341,
-          "4": 0.19694531550336405,
-          "5": 0.14918126196703022,
-          "6": 0.09486859643142674,
-          "7+": 0.09086746199104125
+          "0": 0.026320411576360798,
+          "1": 0.06932772874735896,
+          "2": 0.16442073913358426,
+          "3": 0.2025277288346085,
+          "4": 0.19744642727650624,
+          "5": 0.15093472329946386,
+          "6": 0.09663455627618939,
+          "7+": 0.0923876848559281
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "favorite_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "favoriteSide": "home",
         "totalGoalWeights": {
-          "0": 0.84,
-          "1": 0.94,
-          "2": 1.0,
-          "3": 1.05,
-          "4": 1.09,
-          "5": 1.12,
-          "6": 1.12,
-          "7+": 1.1
+          "0": 0.82,
+          "1": 0.925,
+          "2": 0.995,
+          "3": 1.055,
+          "4": 1.135,
+          "5": 1.22,
+          "6": 1.24,
+          "7+": 1.22
         },
         "expectedTotalGoalsBefore": 3.7257,
-        "expectedTotalGoalsAfter": 3.7547,
-        "fullIntensityExpectedTotalGoalsAfter": 3.8419,
+        "expectedTotalGoalsAfter": 3.7767,
+        "fullIntensityExpectedTotalGoalsAfter": 3.9299,
         "outcomePreserved": true,
-        "maxCellDelta": 0.002028
+        "maxCellDelta": 0.002835
       }
     },
     {
@@ -13028,70 +13028,70 @@
         "actualTotalBucket": "2",
         "totalExactHit": true,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.3104587287339375,
-        "totalRps": 0.050318969512592335,
+        "totalLogLoss": 1.3191458329900034,
+        "totalRps": 0.05026199230145402,
         "topScore": "1:1",
         "actualScore": "1:1",
         "scoreTop1Hit": true,
         "scoreTop3Hit": true,
         "scoreTop5Hit": true,
-        "scoreLogLoss": 1.9682543547685527,
-        "actualScoreProbability": 0.139700511016643,
+        "scoreLogLoss": 1.982352609684527,
+        "actualScoreProbability": 0.13774479607749618,
         "topScores": [
           {
             "score": "1:1",
-            "probability": 0.139700511016643
+            "probability": 0.13774479607749618
           },
           {
             "score": "1:0",
-            "probability": 0.10260417914757052
+            "probability": 0.10360470260625364
           },
           {
             "score": "0:0",
-            "probability": 0.09873522172711256
+            "probability": 0.10266996424582306
           },
           {
             "score": "0:1",
-            "probability": 0.08940901794975412
+            "probability": 0.09025909356877451
           },
           {
             "score": "2:1",
-            "probability": 0.08300762144487563
+            "probability": 0.08278659129356197
           }
         ],
         "totalProbabilities": {
-          "0": 0.09873522172711256,
-          "1": 0.19201319709732462,
-          "2": 0.26969631055688403,
-          "3": 0.2095017569147769,
-          "4": 0.12900185597902877,
-          "5": 0.06297358803319074,
-          "6": 0.025641530254477424,
-          "7+": 0.012436539437204894
+          "0": 0.10266996424582306,
+          "1": 0.19386379617502814,
+          "2": 0.26736357760687673,
+          "3": 0.20891530954238363,
+          "4": 0.12716020670260564,
+          "5": 0.06255344728414854,
+          "6": 0.02517651820331353,
+          "7+": 0.012297180239820646
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "close_late_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_tension_close_game_v2",
         "favoriteSide": "home",
         "totalGoalWeights": {
-          "0": 0.925,
-          "1": 0.94,
-          "2": 0.97,
-          "3": 1.015,
-          "4": 1.06,
-          "5": 1.09,
-          "6": 1.12,
-          "7+": 1.15
+          "0": 1.035,
+          "1": 0.975,
+          "2": 0.955,
+          "3": 1.0,
+          "4": 1.045,
+          "5": 1.07,
+          "6": 1.095,
+          "7+": 1.12
         },
         "expectedTotalGoalsBefore": 2.4041,
-        "expectedTotalGoalsAfter": 2.4317,
-        "fullIntensityExpectedTotalGoalsAfter": 2.5143,
+        "expectedTotalGoalsAfter": 2.4139,
+        "fullIntensityExpectedTotalGoalsAfter": 2.4431,
         "outcomePreserved": true,
-        "maxCellDelta": 0.002078
+        "maxCellDelta": 0.002584
       }
     },
     {
@@ -13161,70 +13161,70 @@
         "actualTotalBucket": "2",
         "totalExactHit": true,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.288435152515004,
-        "totalRps": 0.044127870777723864,
+        "totalLogLoss": 1.2888471535354267,
+        "totalRps": 0.04425497185855754,
         "topScore": "2:0",
         "actualScore": "1:1",
         "scoreTop1Hit": false,
         "scoreTop3Hit": false,
         "scoreTop5Hit": false,
-        "scoreLogLoss": 3.1932888715865815,
-        "actualScoreProbability": 0.04103668437005844,
+        "scoreLogLoss": 3.1811174079862408,
+        "actualScoreProbability": 0.041539212930297525,
         "topScores": [
           {
             "score": "2:0",
-            "probability": 0.23324841457318482
+            "probability": 0.23263322788825877
           },
           {
             "score": "1:0",
-            "probability": 0.23092858158939158
+            "probability": 0.22887945721641223
           },
           {
             "score": "3:0",
-            "probability": 0.1520009233561101
+            "probability": 0.15197053635669863
           },
           {
             "score": "0:0",
-            "probability": 0.12550870274340323
+            "probability": 0.12487215150828482
           },
           {
             "score": "4:0",
-            "probability": 0.07409685749553505
+            "probability": 0.07480397242470545
           }
         ],
         "totalProbabilities": {
-          "0": 0.12550870274340323,
-          "1": 0.24665540126358365,
-          "2": 0.27570187709257626,
-          "3": 0.1898647265950817,
-          "4": 0.10011527235650089,
-          "5": 0.041884532712171844,
-          "6": 0.01453573911550425,
-          "7+": 0.005733748121178179
+          "0": 0.12487215150828482,
+          "1": 0.24455434921881908,
+          "2": 0.27558831103415404,
+          "3": 0.19013024339636175,
+          "4": 0.10117346699420163,
+          "5": 0.04284621132712393,
+          "6": 0.01494173716157462,
+          "7+": 0.0058935293594801945
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "favorite_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "favoriteSide": "home",
         "totalGoalWeights": {
-          "0": 0.84,
-          "1": 0.94,
-          "2": 1.0,
-          "3": 1.05,
-          "4": 1.09,
-          "5": 1.12,
-          "6": 1.12,
-          "7+": 1.1
+          "0": 0.82,
+          "1": 0.925,
+          "2": 0.995,
+          "3": 1.055,
+          "4": 1.135,
+          "5": 1.22,
+          "6": 1.24,
+          "7+": 1.22
         },
         "expectedTotalGoalsBefore": 2.0789,
-        "expectedTotalGoalsAfter": 2.1049,
-        "fullIntensityExpectedTotalGoalsAfter": 2.1829,
+        "expectedTotalGoalsAfter": 2.116,
+        "fullIntensityExpectedTotalGoalsAfter": 2.2272,
         "outcomePreserved": true,
-        "maxCellDelta": 0.007214
+        "maxCellDelta": 0.009264
       }
     },
     {
@@ -13294,70 +13294,70 @@
         "actualTotalBucket": "1",
         "totalExactHit": false,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.431747286207247,
-        "totalRps": 0.08546035866014028,
+        "totalLogLoss": 1.4405626087479835,
+        "totalRps": 0.08642009886315942,
         "topScore": "2:0",
         "actualScore": "1:0",
         "scoreTop1Hit": false,
         "scoreTop3Hit": true,
         "scoreTop5Hit": true,
-        "scoreLogLoss": 1.4954077793935223,
-        "actualScoreProbability": 0.22415717941244734,
+        "scoreLogLoss": 1.5045796829785274,
+        "actualScoreProbability": 0.2221106310938541,
         "topScores": [
           {
             "score": "2:0",
-            "probability": 0.23335739375784947
+            "probability": 0.2326693548870474
           },
           {
             "score": "1:0",
-            "probability": 0.22415717941244734
+            "probability": 0.2221106310938541
           },
           {
             "score": "3:0",
-            "probability": 0.15674631067102238
+            "probability": 0.15666305192971108
           },
           {
             "score": "0:0",
-            "probability": 0.11830426130261003
+            "probability": 0.11768996983604783
           },
           {
             "score": "4:0",
-            "probability": 0.07875927521676412
+            "probability": 0.07948144067997608
           }
         ],
         "totalProbabilities": {
-          "0": 0.11830426130261003,
-          "1": 0.23889114615813245,
-          "2": 0.27453216752904064,
-          "3": 0.19454167205767608,
-          "4": 0.10549373111662042,
-          "5": 0.045398309318606174,
-          "6": 0.016204203777571806,
-          "7+": 0.006634508739742412
+          "0": 0.11768996983604783,
+          "1": 0.23679449854262224,
+          "2": 0.2743238494363397,
+          "3": 0.1947407452017491,
+          "4": 0.10656419932097376,
+          "5": 0.046420950509407415,
+          "6": 0.016649327340483015,
+          "7+": 0.006816459812376958
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "favorite_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "favoriteSide": "home",
         "totalGoalWeights": {
-          "0": 0.84,
-          "1": 0.94,
-          "2": 1.0,
-          "3": 1.05,
-          "4": 1.09,
-          "5": 1.12,
-          "6": 1.12,
-          "7+": 1.1
+          "0": 0.82,
+          "1": 0.925,
+          "2": 0.995,
+          "3": 1.055,
+          "4": 1.135,
+          "5": 1.22,
+          "6": 1.24,
+          "7+": 1.22
         },
         "expectedTotalGoalsBefore": 2.1379,
-        "expectedTotalGoalsAfter": 2.1642,
-        "fullIntensityExpectedTotalGoalsAfter": 2.2431,
+        "expectedTotalGoalsAfter": 2.1756,
+        "fullIntensityExpectedTotalGoalsAfter": 2.2888,
         "outcomePreserved": true,
-        "maxCellDelta": 0.007157
+        "maxCellDelta": 0.009203
       }
     },
     {
@@ -13427,70 +13427,70 @@
         "actualTotalBucket": "3",
         "totalExactHit": false,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.6228482914044453,
-        "totalRps": 0.07877144000177597,
+        "totalLogLoss": 1.6197043503578068,
+        "totalRps": 0.07786182507109622,
         "topScore": "0:1",
         "actualScore": "0:3",
         "scoreTop1Hit": false,
         "scoreTop3Hit": false,
         "scoreTop5Hit": false,
-        "scoreLogLoss": 2.8402200203004027,
-        "actualScoreProbability": 0.05841281254598243,
+        "scoreLogLoss": 2.842340815478554,
+        "actualScoreProbability": 0.058289062205738484,
         "topScores": [
           {
             "score": "0:1",
-            "probability": 0.14943716476445662
+            "probability": 0.14787095647446974
           },
           {
             "score": "1:1",
-            "probability": 0.13202080476194766
+            "probability": 0.13223214154299912
           },
           {
             "score": "0:2",
-            "probability": 0.11915308181044637
+            "probability": 0.11862028328054038
           },
           {
             "score": "0:0",
-            "probability": 0.11737680300026135
+            "probability": 0.11593982221245382
           },
           {
             "score": "1:2",
-            "probability": 0.087119468244197
+            "probability": 0.08758389267330563
           }
         ],
         "totalProbabilities": {
-          "0": 0.11737680300026135,
-          "1": 0.22085261085500263,
-          "2": 0.28114798249986145,
-          "3": 0.19733582791116178,
-          "4": 0.11033281473832603,
-          "5": 0.047960770339288215,
-          "6": 0.017625120733034794,
-          "7+": 0.007368069923063819
+          "0": 0.11593982221245382,
+          "1": 0.21860733123244747,
+          "2": 0.28060691278619665,
+          "3": 0.19795721641307676,
+          "4": 0.11202075723184311,
+          "5": 0.049092855306155626,
+          "6": 0.01819553438961113,
+          "7+": 0.007579570428215405
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "favorite_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "favoriteSide": "away",
         "totalGoalWeights": {
-          "0": 0.84,
-          "1": 0.94,
-          "2": 1.0,
-          "3": 1.05,
-          "4": 1.09,
-          "5": 1.12,
-          "6": 1.12,
-          "7+": 1.1
+          "0": 0.82,
+          "1": 0.925,
+          "2": 0.995,
+          "3": 1.055,
+          "4": 1.135,
+          "5": 1.22,
+          "6": 1.24,
+          "7+": 1.22
         },
         "expectedTotalGoalsBefore": 2.1808,
-        "expectedTotalGoalsAfter": 2.2136,
-        "fullIntensityExpectedTotalGoalsAfter": 2.3119,
+        "expectedTotalGoalsAfter": 2.2295,
+        "fullIntensityExpectedTotalGoalsAfter": 2.3753,
         "outcomePreserved": true,
-        "maxCellDelta": 0.004861
+        "maxCellDelta": 0.006298
       }
     },
     {
@@ -13560,70 +13560,70 @@
         "actualTotalBucket": "1",
         "totalExactHit": false,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.64926231220932,
-        "totalRps": 0.11506032291349835,
+        "totalLogLoss": 1.66003153831601,
+        "totalRps": 0.11646537604071149,
         "topScore": "0:2",
         "actualScore": "0:1",
         "scoreTop1Hit": false,
         "scoreTop3Hit": true,
         "scoreTop5Hit": true,
-        "scoreLogLoss": 1.8010371327436827,
-        "actualScoreProbability": 0.16512754020279713,
+        "scoreLogLoss": 1.812295364281273,
+        "actualScoreProbability": 0.1632789217349779,
         "topScores": [
           {
             "score": "0:2",
-            "probability": 0.18296089463119442
+            "probability": 0.1819731407953003
           },
           {
             "score": "0:1",
-            "probability": 0.16512754020279713
+            "probability": 0.1632789217349779
           },
           {
             "score": "0:3",
-            "probability": 0.1283057291939248
+            "probability": 0.1279047473156765
           },
           {
             "score": "0:0",
-            "probability": 0.08727750698340118
+            "probability": 0.08637137097933471
           },
           {
             "score": "1:1",
-            "probability": 0.076116515940985
+            "probability": 0.07644771185239951
           }
         ],
         "totalProbabilities": {
-          "0": 0.08727750698340118,
-          "1": 0.19219163376157083,
-          "2": 0.26547383908575556,
-          "3": 0.21375612960603665,
-          "4": 0.13414766770450587,
-          "5": 0.06626862619390082,
-          "6": 0.02732719185950916,
-          "7+": 0.013557404805320049
+          "0": 0.08637137097933471,
+          "1": 0.1901329835328416,
+          "2": 0.26478248040072283,
+          "3": 0.21378142882929924,
+          "4": 0.1354219944330161,
+          "5": 0.06759297000903822,
+          "6": 0.028026237059434765,
+          "7+": 0.013890534756312476
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "favorite_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "favoriteSide": "away",
         "totalGoalWeights": {
-          "0": 0.84,
-          "1": 0.94,
-          "2": 1.0,
-          "3": 1.05,
-          "4": 1.09,
-          "5": 1.12,
-          "6": 1.12,
-          "7+": 1.1
+          "0": 0.82,
+          "1": 0.925,
+          "2": 0.995,
+          "3": 1.055,
+          "4": 1.135,
+          "5": 1.22,
+          "6": 1.24,
+          "7+": 1.22
         },
         "expectedTotalGoalsBefore": 2.4609,
-        "expectedTotalGoalsAfter": 2.4912,
-        "fullIntensityExpectedTotalGoalsAfter": 2.5822,
+        "expectedTotalGoalsAfter": 2.5061,
+        "fullIntensityExpectedTotalGoalsAfter": 2.6417,
         "outcomePreserved": true,
-        "maxCellDelta": 0.005832
+        "maxCellDelta": 0.00768
       }
     },
     {
@@ -13693,70 +13693,70 @@
         "actualTotalBucket": "3",
         "totalExactHit": false,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.5025985327701823,
-        "totalRps": 0.05543234933137547,
+        "totalLogLoss": 1.5038985187922187,
+        "totalRps": 0.05575840338951361,
         "topScore": "1:1",
         "actualScore": "1:2",
         "scoreTop1Hit": false,
         "scoreTop3Hit": false,
         "scoreTop5Hit": true,
-        "scoreLogLoss": 2.690378243459555,
-        "actualScoreProbability": 0.06785526870560245,
+        "scoreLogLoss": 2.692058376539624,
+        "actualScoreProbability": 0.06774135854290536,
         "topScores": [
           {
             "score": "1:1",
-            "probability": 0.11961981843780287
+            "probability": 0.11877848818255382
           },
           {
             "score": "2:1",
-            "probability": 0.09434026628028147
+            "probability": 0.094240258951491
           },
           {
             "score": "1:0",
-            "probability": 0.0806987945285768
+            "probability": 0.08159471544979624
           },
           {
             "score": "2:0",
-            "probability": 0.0769034607114218
+            "probability": 0.07681071542391604
           },
           {
             "score": "1:2",
-            "probability": 0.06785526870560245
+            "probability": 0.06774135854290536
           }
         ],
         "totalProbabilities": {
-          "0": 0.061616693834943746,
-          "1": 0.13626489908602632,
-          "2": 0.2362107248328958,
-          "3": 0.2225511017921602,
-          "4": 0.16589256667727587,
-          "5": 0.09814152217967106,
-          "6": 0.0483824203192722,
-          "7+": 0.030940071277754794
+          "0": 0.06452207266368262,
+          "1": 0.1377486954734468,
+          "2": 0.23520466154465142,
+          "3": 0.22226197644081686,
+          "4": 0.16423336439113076,
+          "5": 0.09765483694563003,
+          "6": 0.047714274864551875,
+          "7+": 0.030660117676089577
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "close_late_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_tension_close_game_v2",
         "favoriteSide": "home",
         "totalGoalWeights": {
-          "0": 0.925,
-          "1": 0.94,
-          "2": 0.97,
-          "3": 1.015,
-          "4": 1.06,
-          "5": 1.09,
-          "6": 1.12,
-          "7+": 1.15
+          "0": 1.035,
+          "1": 0.975,
+          "2": 0.955,
+          "3": 1.0,
+          "4": 1.045,
+          "5": 1.07,
+          "6": 1.095,
+          "7+": 1.12
         },
         "expectedTotalGoalsBefore": 2.904,
-        "expectedTotalGoalsAfter": 2.9375,
-        "fullIntensityExpectedTotalGoalsAfter": 3.0381,
+        "expectedTotalGoalsAfter": 2.9211,
+        "fullIntensityExpectedTotalGoalsAfter": 2.9723,
         "outcomePreserved": true,
-        "maxCellDelta": 0.002127
+        "maxCellDelta": 0.002079
       }
     },
     {
@@ -13826,70 +13826,70 @@
         "actualTotalBucket": "5",
         "totalExactHit": false,
         "totalAdjacentCoreHit": false,
-        "totalLogLoss": 3.4555469437416377,
-        "totalRps": 0.33836701419423193,
+        "totalLogLoss": 3.464239468231447,
+        "totalRps": 0.34058629017077735,
         "topScore": "0:1",
         "actualScore": "2:3",
         "scoreTop1Hit": false,
         "scoreTop3Hit": false,
         "scoreTop5Hit": false,
-        "scoreLogLoss": 4.530119731800741,
-        "actualScoreProbability": 0.010779385360254903,
+        "scoreLogLoss": 4.53839540672349,
+        "actualScoreProbability": 0.010690546777782868,
         "topScores": [
           {
             "score": "0:1",
-            "probability": 0.1680972445084488
+            "probability": 0.16951591467772337
           },
           {
             "score": "0:0",
-            "probability": 0.15979321795645288
+            "probability": 0.1644080090640422
           },
           {
             "score": "1:1",
-            "probability": 0.13573545583641486
+            "probability": 0.132461174505567
           },
           {
             "score": "0:2",
-            "probability": 0.10761442929182426
+            "probability": 0.10715509241360009
           },
           {
             "score": "1:0",
-            "probability": 0.09384375434999698
+            "probability": 0.09451598772966663
           }
         ],
         "totalProbabilities": {
-          "0": 0.15979321795645288,
-          "1": 0.2619409988584458,
-          "2": 0.27981769484627433,
-          "3": 0.17086016290368605,
-          "4": 0.08241782007034976,
-          "5": 0.03157003260142765,
-          "6": 0.010068082954741046,
-          "7+": 0.0035319898086225185
+          "0": 0.1644080090640422,
+          "1": 0.26403190240739,
+          "2": 0.27587812878353424,
+          "3": 0.17006954190793636,
+          "4": 0.0809685999178337,
+          "5": 0.03129679858703736,
+          "6": 0.009860362599647086,
+          "7+": 0.0034866567325790797
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "close_late_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_tension_close_game_v2",
         "favoriteSide": "away",
         "totalGoalWeights": {
-          "0": 0.925,
-          "1": 0.94,
-          "2": 0.97,
-          "3": 1.015,
-          "4": 1.06,
-          "5": 1.09,
-          "6": 1.12,
-          "7+": 1.15
+          "0": 1.035,
+          "1": 0.975,
+          "2": 0.955,
+          "3": 1.0,
+          "4": 1.045,
+          "5": 1.07,
+          "6": 1.095,
+          "7+": 1.12
         },
         "expectedTotalGoalsBefore": 1.8873,
-        "expectedTotalGoalsAfter": 1.9068,
-        "fullIntensityExpectedTotalGoalsAfter": 1.9652,
+        "expectedTotalGoalsAfter": 1.8899,
+        "fullIntensityExpectedTotalGoalsAfter": 1.8977,
         "outcomePreserved": true,
-        "maxCellDelta": 0.002585
+        "maxCellDelta": 0.003044
       }
     },
     {
@@ -13959,70 +13959,70 @@
         "actualTotalBucket": "1",
         "totalExactHit": false,
         "totalAdjacentCoreHit": true,
-        "totalLogLoss": 1.8109192197922266,
-        "totalRps": 0.13433606507433526,
+        "totalLogLoss": 1.8237406583523665,
+        "totalRps": 0.13621634299112462,
         "topScore": "1:1",
         "actualScore": "0:1",
         "scoreTop1Hit": false,
         "scoreTop3Hit": true,
         "scoreTop5Hit": true,
-        "scoreLogLoss": 2.2049526412955025,
-        "actualScoreProbability": 0.11025574675017331,
+        "scoreLogLoss": 2.2178727925526225,
+        "actualScoreProbability": 0.10884038883316936,
         "topScores": [
           {
             "score": "1:1",
-            "probability": 0.1214754590083503
+            "probability": 0.12112842030249481
           },
           {
             "score": "0:1",
-            "probability": 0.11025574675017331
+            "probability": 0.10884038883316936
           },
           {
             "score": "0:2",
-            "probability": 0.1076154374486391
+            "probability": 0.10682997197834022
           },
           {
             "score": "1:2",
-            "probability": 0.09719943392233746
+            "probability": 0.0974158541992267
           },
           {
             "score": "0:0",
-            "probability": 0.07535925454868175
+            "probability": 0.07420798547278183
           }
         ],
         "totalProbabilities": {
-          "0": 0.07535925454868175,
-          "1": 0.1635037718009059,
-          "2": 0.2574645365897014,
-          "3": 0.22022374173045922,
-          "4": 0.14951330318374115,
-          "5": 0.0791701478291377,
-          "6": 0.035350362838812675,
-          "7+": 0.01941488147856012
+          "0": 0.07420798547278183,
+          "1": 0.16142080011791168,
+          "2": 0.25603177985582465,
+          "3": 0.22020651933898286,
+          "4": 0.15117553964380734,
+          "5": 0.08072992250401244,
+          "6": 0.03633233661441206,
+          "7+": 0.01989511645226723
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "favorite_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "favoriteSide": "away",
         "totalGoalWeights": {
-          "0": 0.84,
-          "1": 0.94,
-          "2": 1.0,
-          "3": 1.05,
-          "4": 1.09,
-          "5": 1.12,
-          "6": 1.12,
-          "7+": 1.1
+          "0": 0.82,
+          "1": 0.925,
+          "2": 0.995,
+          "3": 1.055,
+          "4": 1.135,
+          "5": 1.22,
+          "6": 1.24,
+          "7+": 1.22
         },
         "expectedTotalGoalsBefore": 2.6475,
-        "expectedTotalGoalsAfter": 2.681,
-        "fullIntensityExpectedTotalGoalsAfter": 2.7816,
+        "expectedTotalGoalsAfter": 2.6997,
+        "fullIntensityExpectedTotalGoalsAfter": 2.8564,
         "outcomePreserved": true,
-        "maxCellDelta": 0.003979
+        "maxCellDelta": 0.005394
       }
     },
     {
@@ -14092,70 +14092,70 @@
         "actualTotalBucket": "5",
         "totalExactHit": false,
         "totalAdjacentCoreHit": false,
-        "totalLogLoss": 2.359939334987615,
-        "totalRps": 0.1987797764270375,
+        "totalLogLoss": 2.3650441230569825,
+        "totalRps": 0.20039887427814415,
         "topScore": "1:1",
         "actualScore": "1:4",
         "scoreTop1Hit": false,
         "scoreTop3Hit": false,
         "scoreTop5Hit": false,
-        "scoreLogLoss": 3.6252922239160976,
-        "actualScoreProbability": 0.02664131097050796,
+        "scoreLogLoss": 3.6300882349891337,
+        "actualScoreProbability": 0.02651384485686769,
         "topScores": [
           {
             "score": "1:1",
-            "probability": 0.11775291679309746
+            "probability": 0.11676392442582406
           },
           {
             "score": "1:2",
-            "probability": 0.09723240666617178
+            "probability": 0.09712334959621483
           },
           {
             "score": "0:1",
-            "probability": 0.0903323067874195
+            "probability": 0.09133079708593189
           },
           {
             "score": "0:2",
-            "probability": 0.08914527963808133
+            "probability": 0.089032376096096
           },
           {
             "score": "0:0",
-            "probability": 0.06446281445473119
+            "probability": 0.06741143277421893
           }
         ],
         "totalProbabilities": {
-          "0": 0.06446281445473119,
-          "1": 0.1421437527560881,
-          "2": 0.24005268168342012,
-          "3": 0.2222592860675317,
-          "4": 0.1625639506855837,
-          "5": 0.09442595137406017,
-          "6": 0.04567445112467836,
-          "7+": 0.028417111853906676
+          "0": 0.06741143277421893,
+          "1": 0.1436725690490046,
+          "2": 0.23887745587231868,
+          "3": 0.22193988196603084,
+          "4": 0.16093780867183846,
+          "5": 0.09394515512959654,
+          "6": 0.045054482323176985,
+          "7+": 0.02816121421381493
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "close_late_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "favoriteSide": "away",
         "totalGoalWeights": {
-          "0": 0.925,
-          "1": 0.94,
-          "2": 0.97,
-          "3": 1.015,
-          "4": 1.06,
-          "5": 1.09,
-          "6": 1.12,
-          "7+": 1.15
+          "0": 1.035,
+          "1": 0.975,
+          "2": 0.955,
+          "3": 1.0,
+          "4": 1.045,
+          "5": 1.07,
+          "6": 1.095,
+          "7+": 1.12
         },
         "expectedTotalGoalsBefore": 2.8518,
-        "expectedTotalGoalsAfter": 2.8844,
-        "fullIntensityExpectedTotalGoalsAfter": 2.9822,
+        "expectedTotalGoalsAfter": 2.8682,
+        "fullIntensityExpectedTotalGoalsAfter": 2.9174,
         "outcomePreserved": true,
-        "maxCellDelta": 0.002352
+        "maxCellDelta": 0.002059
       }
     },
     {
@@ -14225,70 +14225,70 @@
         "actualTotalBucket": "5",
         "totalExactHit": false,
         "totalAdjacentCoreHit": false,
-        "totalLogLoss": 3.267414718314718,
-        "totalRps": 0.3182555263963082,
+        "totalLogLoss": 3.244238665439238,
+        "totalRps": 0.3164342703995925,
         "topScore": "1:0",
         "actualScore": "3:2",
         "scoreTop1Hit": false,
         "scoreTop3Hit": false,
         "scoreTop5Hit": false,
-        "scoreLogLoss": 6.401768695454779,
-        "actualScoreProbability": 0.001658621081756661,
+        "scoreLogLoss": 6.376507248530367,
+        "actualScoreProbability": 0.0017010539515373018,
         "topScores": [
           {
             "score": "1:0",
-            "probability": 0.23845366834795767
+            "probability": 0.23640593426207127
           },
           {
             "score": "2:0",
-            "probability": 0.2326104783292481
+            "probability": 0.2320776519817888
           },
           {
             "score": "3:0",
-            "probability": 0.14639218739040216
+            "probability": 0.14641702556701602
           },
           {
             "score": "0:0",
-            "probability": 0.13405692771558025
+            "probability": 0.1333952972710558
           },
           {
             "score": "4:0",
-            "probability": 0.06891751698541325
+            "probability": 0.06960398140312316
           }
         ],
         "totalProbabilities": {
-          "0": 0.13405692771558025,
-          "1": 0.2553654048559915,
-          "2": 0.2764903136478115,
-          "3": 0.1842546716962347,
-          "4": 0.0940830610719052,
-          "5": 0.038104811515963705,
-          "6": 0.012804000354701004,
-          "7+": 0.004840809141812189
+          "0": 0.1333952972710558,
+          "1": 0.2532636821402143,
+          "2": 0.2764840939457206,
+          "3": 0.18458998302876686,
+          "4": 0.09512232924128372,
+          "5": 0.03899824376866097,
+          "6": 0.013168268432691902,
+          "7+": 0.004978102171605848
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "favorite_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "favoriteSide": "home",
         "totalGoalWeights": {
-          "0": 0.84,
-          "1": 0.94,
-          "2": 1.0,
-          "3": 1.05,
-          "4": 1.09,
-          "5": 1.12,
-          "6": 1.12,
-          "7+": 1.1
+          "0": 0.82,
+          "1": 0.925,
+          "2": 0.995,
+          "3": 1.055,
+          "4": 1.135,
+          "5": 1.22,
+          "6": 1.24,
+          "7+": 1.22
         },
         "expectedTotalGoalsBefore": 2.013,
-        "expectedTotalGoalsAfter": 2.0387,
-        "fullIntensityExpectedTotalGoalsAfter": 2.1156,
+        "expectedTotalGoalsAfter": 2.0493,
+        "fullIntensityExpectedTotalGoalsAfter": 2.1583,
         "outcomePreserved": true,
-        "maxCellDelta": 0.007263
+        "maxCellDelta": 0.009311
       }
     },
     {
@@ -14358,70 +14358,70 @@
         "actualTotalBucket": "0",
         "totalExactHit": false,
         "totalAdjacentCoreHit": false,
-        "totalLogLoss": 2.2330080253359577,
-        "totalRps": 0.21401205075655325,
+        "totalLogLoss": 2.19584445948008,
+        "totalRps": 0.21122351501371348,
         "topScore": "1:1",
         "actualScore": "0:0",
         "scoreTop1Hit": false,
         "scoreTop3Hit": true,
         "scoreTop5Hit": true,
-        "scoreLogLoss": 2.2330080253359577,
-        "actualScoreProbability": 0.10720546787645938,
+        "scoreLogLoss": 2.19584445948008,
+        "actualScoreProbability": 0.11126456340634037,
         "topScores": [
           {
             "score": "1:1",
-            "probability": 0.13891816886132136
+            "probability": 0.1367149180282621
           },
           {
             "score": "0:1",
-            "probability": 0.11931610792473003
+            "probability": 0.12046603467830393
           },
           {
             "score": "0:0",
-            "probability": 0.10720546787645938
+            "probability": 0.11126456340634037
           },
           {
             "score": "0:2",
-            "probability": 0.08783119135932613
+            "probability": 0.08757516910518477
           },
           {
             "score": "1:2",
-            "probability": 0.08639864968557277
+            "probability": 0.08615681003544955
           }
         ],
         "totalProbabilities": {
-          "0": 0.10720546787645938,
-          "1": 0.20376341621303162,
-          "2": 0.2735649769309253,
-          "3": 0.20466189746941452,
-          "4": 0.12124667048244585,
-          "5": 0.056971471420701164,
-          "6": 0.022317374270625513,
-          "7+": 0.01026872533639658
+          "0": 0.11126456340634037,
+          "1": 0.20567296247486502,
+          "2": 0.27093584359869327,
+          "3": 0.20402943938068027,
+          "4": 0.11946366096466973,
+          "5": 0.05657384049701604,
+          "6": 0.02190792274074886,
+          "7+": 0.010151766936986563
         }
       },
       "scoreCalibration": {
         "applied": true,
-        "policy": "knockout_score_total_matrix_calibration_v2",
+        "policy": "knockout_score_total_matrix_calibration_v3",
         "profile": "close_late_tail",
         "intensity": 0.25,
         "sourceKnockoutPolicy": "knockout_tension_close_game_v2",
         "favoriteSide": "away",
         "totalGoalWeights": {
-          "0": 0.925,
-          "1": 0.94,
-          "2": 0.97,
-          "3": 1.015,
-          "4": 1.06,
-          "5": 1.09,
-          "6": 1.12,
-          "7+": 1.15
+          "0": 1.035,
+          "1": 0.975,
+          "2": 0.955,
+          "3": 1.0,
+          "4": 1.045,
+          "5": 1.07,
+          "6": 1.095,
+          "7+": 1.12
         },
         "expectedTotalGoalsBefore": 2.3144,
-        "expectedTotalGoalsAfter": 2.3405,
-        "fullIntensityExpectedTotalGoalsAfter": 2.4188,
+        "expectedTotalGoalsAfter": 2.3229,
+        "fullIntensityExpectedTotalGoalsAfter": 2.3482,
         "outcomePreserved": true,
-        "maxCellDelta": 0.002351
+        "maxCellDelta": 0.002641
       }
     }
   ]

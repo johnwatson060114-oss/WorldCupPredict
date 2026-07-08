@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-08T19:54:00+08:00",
+  "generatedAt": "2026-07-08T20:12:49+08:00",
   "scope": {
     "tournament": "FIFA World Cup 2026",
     "predictionTarget": "90_minutes",
@@ -50,8 +50,8 @@
           "totalExactAccuracy": 0.1839080459770115,
           "totalAdjacentCoreHits": 50,
           "totalAdjacentCoreAccuracy": 0.5747126436781609,
-          "averageTotalLogLoss": 1.9469118921161652,
-          "averageTotalRps": 0.1395017592719703
+          "averageTotalLogLoss": 1.9479979381362689,
+          "averageTotalRps": 0.1396524882541965
         }
       },
       "knockout": {
@@ -70,8 +70,8 @@
           "totalExactAccuracy": 0.25925925925925924,
           "totalAdjacentCoreHits": 22,
           "totalAdjacentCoreAccuracy": 0.8148148148148148,
-          "averageTotalLogLoss": 1.7184734217399849,
-          "averageTotalRps": 0.10400973535666948
+          "averageTotalLogLoss": 1.7219729033603186,
+          "averageTotalRps": 0.10449541763273154
         }
       },
       "latestCompleted": {
@@ -90,8 +90,8 @@
           "totalExactAccuracy": 0.0,
           "totalAdjacentCoreHits": 0,
           "totalAdjacentCoreAccuracy": 0.0,
-          "averageTotalLogLoss": 2.750211371825338,
-          "averageTotalRps": 0.2661337885764307
+          "averageTotalLogLoss": 2.720041562459659,
+          "averageTotalRps": 0.263828892706653
         }
       }
     },
@@ -115,7 +115,7 @@
           "scoreTop3Accuracy": 0.3563218390804598,
           "scoreTop5Hits": 46,
           "scoreTop5Accuracy": 0.5287356321839081,
-          "averageScoreLogLoss": 2.873404149289431
+          "averageScoreLogLoss": 2.8745093270653066
         }
       },
       "knockout": {
@@ -137,7 +137,7 @@
           "scoreTop3Accuracy": 0.5185185185185185,
           "scoreTop5Hits": 18,
           "scoreTop5Accuracy": 0.6666666666666666,
-          "averageScoreLogLoss": 2.6605719281929776
+          "averageScoreLogLoss": 2.66413305658191
         }
       },
       "latestCompleted": {
@@ -159,7 +159,7 @@
           "scoreTop3Accuracy": 0.5,
           "scoreTop5Hits": 1,
           "scoreTop5Accuracy": 0.5,
-          "averageScoreLogLoss": 4.317388360395368
+          "averageScoreLogLoss": 4.286175854005224
         }
       }
     },
@@ -397,7 +397,7 @@
     ],
     "wdlRole": "auxiliary outcome sanity check only",
     "productionScoreMatrix": "calibrated",
-    "scoreCalibrationPolicy": "knockout_score_total_matrix_calibration_v2",
+    "scoreCalibrationPolicy": "knockout_score_total_matrix_calibration_v3",
     "scoreCalibrationIntensity": 0.25,
     "halfFullCalibrationPolicy": "knockout_half_full_late_swing_v2",
     "diagnosticScoreMatrix": "base",
