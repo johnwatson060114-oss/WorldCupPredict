@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-08T15:34:06+08:00",
+  "generatedAt": "2026-07-09T16:33:36+08:00",
   "finalDate": "2026-07-19",
   "days": [
     {
@@ -2580,7 +2580,7 @@
     },
     {
       "targetDate": "2026-07-09",
-      "generatedAt": "2026-07-08T15:32:57+08:00",
+      "generatedAt": "2026-07-08T20:05:00+08:00",
       "coverage": 0.77,
       "strategies": [
         {
@@ -2625,9 +2625,9 @@
             "outcomeCorrect": true,
             "exactScore": false,
             "goalAbsoluteError": 4,
-            "actualOutcomeProbability": 0.96054,
-            "logLoss": 0.04026,
-            "brier": 0.00261,
+            "actualOutcomeProbability": 0.95957,
+            "logLoss": 0.04127,
+            "brier": 0.00277,
             "diagnosis": "方向正确，但明显低估比赛开放度和大比分尾部。"
           },
           {
@@ -2641,9 +2641,9 @@
             "outcomeCorrect": false,
             "exactScore": false,
             "goalAbsoluteError": 3,
-            "actualOutcomeProbability": 0.24363,
-            "logLoss": 1.4121,
-            "brier": 0.94074,
+            "actualOutcomeProbability": 0.24431,
+            "logLoss": 1.40932,
+            "brier": 0.93584,
             "diagnosis": "赛果方向判断错误，需要继续积累同类对阵样本。"
           },
           {
@@ -2657,9 +2657,9 @@
             "outcomeCorrect": true,
             "exactScore": false,
             "goalAbsoluteError": 1,
-            "actualOutcomeProbability": 0.35982,
-            "logLoss": 1.02215,
-            "brier": 0.61576,
+            "actualOutcomeProbability": 0.36265,
+            "logLoss": 1.01432,
+            "brier": 0.60993,
             "diagnosis": "赛果方向正确，但比分尺度仍有偏差。"
           },
           {
@@ -2673,9 +2673,9 @@
             "outcomeCorrect": true,
             "exactScore": false,
             "goalAbsoluteError": 4,
-            "actualOutcomeProbability": 0.71272,
-            "logLoss": 0.33867,
-            "brier": 0.12829,
+            "actualOutcomeProbability": 0.71083,
+            "logLoss": 0.34132,
+            "brier": 0.13002,
             "diagnosis": "方向正确，但明显低估比赛开放度和大比分尾部。"
           }
         ],
@@ -2684,11 +2684,46 @@
           "outcomeAccuracy": 0.75,
           "exactScoreAccuracy": 0.0,
           "meanGoalAbsoluteError": 3.0,
-          "logLoss": 0.7033,
-          "brier": 0.42185,
+          "logLoss": 0.70156,
+          "brier": 0.41964,
           "strategyDiagnosis": "策略结果已按真实派彩结算，继续观察多日样本后再调整资金规则。"
         }
       }
+    },
+    {
+      "targetDate": "2026-07-10",
+      "generatedAt": "2026-07-09T16:33:01+08:00",
+      "coverage": 0.772,
+      "strategies": [
+        {
+          "key": "conservative",
+          "name": "稳健",
+          "stake": 0,
+          "payout": 0,
+          "profit": 0,
+          "roi": null,
+          "status": "no-bet"
+        },
+        {
+          "key": "balanced",
+          "name": "均衡",
+          "stake": 0,
+          "payout": 0,
+          "profit": 0,
+          "roi": null,
+          "status": "no-bet"
+        },
+        {
+          "key": "aggressive",
+          "name": "激进",
+          "stake": 0,
+          "payout": 0,
+          "profit": 0,
+          "roi": null,
+          "status": "no-bet"
+        }
+      ],
+      "review": null
     }
   ]
 }
