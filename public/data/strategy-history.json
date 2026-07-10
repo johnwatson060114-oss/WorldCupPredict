@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-09T16:33:36+08:00",
+  "generatedAt": "2026-07-10T16:29:01+08:00",
   "finalDate": "2026-07-19",
   "days": [
     {
@@ -2694,6 +2694,70 @@
       "targetDate": "2026-07-10",
       "generatedAt": "2026-07-09T16:33:01+08:00",
       "coverage": 0.772,
+      "strategies": [
+        {
+          "key": "conservative",
+          "name": "稳健",
+          "stake": 0,
+          "payout": 0,
+          "profit": 0,
+          "roi": null,
+          "status": "no-bet"
+        },
+        {
+          "key": "balanced",
+          "name": "均衡",
+          "stake": 0,
+          "payout": 0,
+          "profit": 0,
+          "roi": null,
+          "status": "no-bet"
+        },
+        {
+          "key": "aggressive",
+          "name": "激进",
+          "stake": 0,
+          "payout": 0,
+          "profit": 0,
+          "roi": null,
+          "status": "no-bet"
+        }
+      ],
+      "review": {
+        "snapshotLabel": "升级前基线快照",
+        "matches": [
+          {
+            "matchId": "法国 vs 摩洛哥",
+            "label": "法国 vs 摩洛哥",
+            "predictedScore": "1-0",
+            "actualScore": "2-0",
+            "predictedOutcome": "home",
+            "predictedOutcomeSource": "outcomeDecision",
+            "actualOutcome": "home",
+            "outcomeCorrect": true,
+            "exactScore": false,
+            "goalAbsoluteError": 1,
+            "actualOutcomeProbability": 0.65138,
+            "logLoss": 0.42866,
+            "brier": 0.19135,
+            "diagnosis": "赛果方向正确，但比分尺度仍有偏差。"
+          }
+        ],
+        "summary": {
+          "matchCount": 1,
+          "outcomeAccuracy": 1.0,
+          "exactScoreAccuracy": 0.0,
+          "meanGoalAbsoluteError": 1.0,
+          "logLoss": 0.42866,
+          "brier": 0.19135,
+          "strategyDiagnosis": "策略结果已按真实派彩结算，继续观察多日样本后再调整资金规则。"
+        }
+      }
+    },
+    {
+      "targetDate": "2026-07-11",
+      "generatedAt": "2026-07-10T16:27:57+08:00",
+      "coverage": 0.592,
       "strategies": [
         {
           "key": "conservative",

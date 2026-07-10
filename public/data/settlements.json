@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-09T16:33:00+08:00",
+  "generatedAt": "2026-07-10T16:27:57+08:00",
   "matches": [
     {
       "matchId": "537327",
@@ -3838,6 +3838,16 @@
       "closingOddsSource": "zgzcw.com",
       "closingOddsIssue": "2026-07-07",
       "closingOddsCheckedAt": "2026-07-08T15:31:50+08:00"
+    },
+    {
+      "matchId": "法国 vs 摩洛哥",
+      "fixtureId": 537383,
+      "matchLabel": "法国 vs 摩洛哥",
+      "homeScore": 2,
+      "awayScore": 0,
+      "halfTimeHomeScore": 0,
+      "halfTimeAwayScore": 0,
+      "settledAt": "2026-07-09T20:00:00Z"
     }
   ]
 }
