@@ -3,11 +3,11 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any
 
+from .final_sprint_policy import load_final_sprint_policy
 from .model import outcome_probabilities, total_goals_probabilities
 
 
 GOAL_BUCKETS = ("0", "1", "2", "3", "4", "5", "6", "7+")
-KNOCKOUT_SCORE_CALIBRATION_INTENSITY = 0.25
 
 
 @dataclass(frozen=True)
@@ -42,6 +42,23 @@ def _expected_total(totals: dict[str, float]) -> float:
 
 def _round_probabilities(values: dict[str, float]) -> dict[str, float]:
     return {key: round(float(values.get(key, 0.0)), 6) for key in values}
+
+
+def _validation_summary(validation: Any, selected_intensity: float) -> dict[str, Any] | None:
+    if not isinstance(validation, dict):
+        return None
+    candidates = validation.get("candidates") or {}
+    baseline = candidates.get("0.00") or {}
+    selected = candidates.get(f"{selected_intensity:.2f}") or {}
+    return {
+        "validationWeights": validation.get("validationWeights"),
+        "selectedIntensity": selected_intensity,
+        "selectionReason": validation.get("selectionReason"),
+        "baselineWeightedLoss": baseline.get("weightedLoss"),
+        "selectedWeightedLoss": selected.get("weightedLoss"),
+        "current2026": selected.get("current2026"),
+        "historical2018And2022": selected.get("historical2018And2022"),
+    }
 
 
 def _score_shape_weight(
@@ -175,12 +192,16 @@ def apply_score_matrix_calibration(
     seed: dict[str, Any],
     home_xg: float,
     away_xg: float,
+    intensity: float | None = None,
 ) -> ScoreCalibrationResult:
     knockout_context = seed.get("knockout_context") or {}
-    if not knockout_context:
-        return ScoreCalibrationResult(matrix=matrix, metadata={"applied": False, "reason": "not_knockout"})
+    tournament_evidence = seed.get("tournament_evidence") or seed.get("tournamentEvidence") or {}
+    if not knockout_context and not tournament_evidence:
+        return ScoreCalibrationResult(matrix=matrix, metadata={"applied": False, "reason": "no_current_tournament_evidence"})
 
-    policy = str(knockout_context.get("policy") or "")
+    sprint_policy = load_final_sprint_policy()["scoreCalibration"]
+    selected_intensity = float(sprint_policy["selectedIntensity"] if intensity is None else intensity)
+    policy = str(knockout_context.get("policy") or tournament_evidence.get("policy") or "")
     base_outcomes = outcome_probabilities(matrix)
     base_totals = total_goals_probabilities(matrix)
     profile, favorite_side, total_weights = _profile_for_match(base_outcomes, home_xg, away_xg, policy)
@@ -195,7 +216,7 @@ def apply_score_matrix_calibration(
         for home_goals, row in enumerate(matrix)
     ]
     full_calibrated = _preserve_outcomes(_normalize(weighted), base_outcomes)
-    calibrated = _blend_matrices(matrix, full_calibrated, KNOCKOUT_SCORE_CALIBRATION_INTENSITY)
+    calibrated = matrix if selected_intensity <= 0 else _blend_matrices(matrix, full_calibrated, selected_intensity)
     calibrated_totals = total_goals_probabilities(calibrated)
     full_calibrated_totals = total_goals_probabilities(full_calibrated)
     calibrated_outcomes = outcome_probabilities(calibrated)
@@ -208,10 +229,14 @@ def apply_score_matrix_calibration(
     return ScoreCalibrationResult(
         matrix=calibrated,
         metadata={
-            "applied": True,
-            "policy": "knockout_score_total_matrix_calibration_v3",
+            "applied": selected_intensity > 0,
+            "reason": None if selected_intensity > 0 else str(sprint_policy.get("selectionReason") or "validation_gate_fallback"),
+            "policy": "adaptive_score_total_matrix_calibration_v4",
             "profile": profile,
-            "intensity": KNOCKOUT_SCORE_CALIBRATION_INTENSITY,
+            "candidateProfile": profile,
+            "intensity": selected_intensity,
+            "candidateIntensities": sprint_policy.get("candidateIntensities", [0.0, 0.1, 0.15, 0.2, 0.25]),
+            "validation": _validation_summary(sprint_policy.get("validation"), selected_intensity),
             "sourceKnockoutPolicy": policy,
             "favoriteSide": favorite_side,
             "totalGoalWeights": {key: round(value, 4) for key, value in total_weights.items()},

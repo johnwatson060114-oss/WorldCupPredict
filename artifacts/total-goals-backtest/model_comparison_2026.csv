@@ -89,3 +89,13 @@ date,match,score,actual_total_goals,actual_bucket,current_predicted_bucket,curre
 2026-07-03,Argentina vs Cape Verde,1-1,2,2,2,True,1-2,True,1.3136545029876852,2,True,1-2,True,1.3082310558894716
 2026-07-04,Australia vs Egypt,1-1,2,2,2,True,1-2,True,1.3089340500721185,1,False,1-2,True,1.3068533621835938
 2026-07-04,Colombia vs Ghana,1-0,1,1,2,False,1-2,True,1.4099136037163806,2,False,1-2,True,1.365074212535975
+2026-07-04,Canada vs Morocco,0-3,3,3,2,False,1-2,False,1.5810817765995908,2,False,1-2,False,1.6026232761802714
+2026-07-04,Paraguay vs France,0-1,1,1,2,False,2-3,False,1.6686440711123331,2,False,2-3,False,1.6555935190121287
+2026-07-05,Brazil vs Norway,1-2,3,3,3,True,2-3,True,1.496212325899719,3,True,2-3,True,1.4964786112897706
+2026-07-05,Mexico vs England,2-3,5,5,2,False,1-2,False,3.2246446358511234,1,False,1-2,False,3.393360269664941
+2026-07-06,Portugal vs Spain,0-1,1,1,2,False,2-3,False,1.6838998880518357,2,False,2-3,False,1.643745396773214
+2026-07-06,United States vs Belgium,1-4,5,5,2,False,2-3,False,2.354160412037452,2,False,2-3,False,2.3602544951028723
+2026-07-07,Argentina vs Egypt,3-2,5,5,2,False,1-2,False,3.1470663164860873,2,False,1-2,False,3.2740245140828774
+2026-07-07,Switzerland vs Colombia,0-0,0,0,2,False,1-2,False,2.3683397157472963,2,False,1-2,False,2.295390874897714
+2026-07-09,France vs Morocco,2-0,2,2,2,True,1-2,True,1.3289731903080984,2,True,1-2,True,1.3182758645375667
+2026-07-10,Spain vs Belgium,2-1,3,3,2,False,2-3,True,1.5094219062414114,2,False,2-3,True,1.5153506639120404

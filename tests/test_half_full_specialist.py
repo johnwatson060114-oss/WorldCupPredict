@@ -41,7 +41,7 @@ def test_half_full_signal_blends_conservatively_into_outcomes():
     assert signal.metadata["policy"] == "half_full_specialist_v1"
 
 
-def test_half_full_market_calibration_only_applies_to_knockout():
+def test_half_full_market_calibration_applies_to_current_tournament_evidence():
     half_full = {
         "\u80dc\u80dc": 0.5,
         "\u80dc\u5e73": 0.1,
@@ -57,11 +57,11 @@ def test_half_full_market_calibration_only_applies_to_knockout():
     group = apply_half_full_market_calibration(half_full, {})
     knockout = apply_half_full_market_calibration(
         half_full,
-        {"knockout_context": {"policy": "knockout_underdog_chase_favorite_tempo_v1"}},
+        {"tournament_evidence": {"policy": "current_tournament_evidence_v1"}},
     )
 
     assert group.metadata == {"applied": False, "reason": "not_knockout"}
-    assert knockout.metadata["policy"] == "knockout_half_full_late_swing_v2"
+    assert knockout.metadata["policy"] == "current_tournament_half_full_late_swing_v3"
     assert knockout.probabilities["\u80dc\u80dc"] < group.probabilities["\u80dc\u80dc"]
     assert knockout.probabilities["\u5e73\u80dc"] > group.probabilities["\u5e73\u80dc"]
     assert knockout.probabilities["\u5e73\u8d1f"] > group.probabilities["\u5e73\u8d1f"]

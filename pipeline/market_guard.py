@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from typing import Any
 
+from .final_sprint_policy import load_final_sprint_policy
 from .model import normalized_market_probabilities, outcome_probabilities, score_matrix
 
 
@@ -110,3 +111,115 @@ def apply_market_strength_calibration(
         "adjustedExpectedGoals": {"home": round(adjusted_home, 4), "away": round(adjusted_away, 4)},
     }
     return seed["model_decomposition"]["marketStrengthCalibration"]
+
+
+def _normalize_available_odds(odds: dict[str, float | None]) -> dict[str, float] | None:
+    if not odds or any(value is None or float(value) <= 1 for value in odds.values()):
+        return None
+    implied = {str(key): 1 / float(value) for key, value in odds.items()}
+    margin = sum(implied.values())
+    if margin <= 0:
+        return None
+    return {key: value / margin for key, value in implied.items()}
+
+
+def _wdl_market(odds: dict[str, float | None]) -> dict[str, float] | None:
+    aliases = {
+        "home": ("home", "\u80dc"),
+        "draw": ("draw", "\u5e73"),
+        "away": ("away", "\u8d1f"),
+    }
+    selected: dict[str, float | None] = {}
+    for outcome, keys in aliases.items():
+        selected[outcome] = next((odds.get(key) for key in keys if odds.get(key) is not None), None)
+    return _normalize_available_odds(selected)
+
+
+def _total_goals_market(odds: dict[str, float | None]) -> dict[str, float] | None:
+    selected = {bucket: odds.get(bucket) for bucket in ("0", "1", "2", "3", "4", "5", "6", "7+")}
+    return _normalize_available_odds(selected)
+
+
+def apply_bounded_market_anchor(
+    seed: dict[str, Any],
+    win_draw_loss_odds: dict[str, float | None],
+    total_goals_odds: dict[str, float | None],
+    observed_at: str | None = None,
+    settings: dict[str, float] | None = None,
+) -> dict[str, Any]:
+    """Use de-vigged pre-kickoff markets as bounded strength and total-xG anchors."""
+
+    policy = settings or load_final_sprint_policy()["marketAnchor"]
+    strength_blend = float(policy["strengthBlend"])
+    total_blend = float(policy["totalGoalsBlend"])
+    max_side_shift = float(policy["maxSideXgShift"])
+    max_total_shift = float(policy["maxTotalXgShift"])
+    wdl = _wdl_market(win_draw_loss_odds)
+    totals = _total_goals_market(total_goals_odds)
+    base_home, base_away = map(float, seed["base_xg"])
+    base_total = base_home + base_away
+
+    if wdl is None and totals is None:
+        metadata = {
+            "applied": False,
+            "policy": "bounded_dual_axis_market_anchor_v1",
+            "reason": "incomplete_pre_kickoff_markets",
+            "observedAt": observed_at,
+        }
+        seed["market_calibration"] = metadata
+        return metadata
+
+    market_total = None
+    target_total = base_total
+    total_shift = 0.0
+    if totals is not None:
+        market_total = sum((7 if bucket == "7+" else int(bucket)) * probability for bucket, probability in totals.items())
+        total_shift = max(-max_total_shift, min(max_total_shift, total_blend * (market_total - base_total)))
+        target_total = max(0.30, base_total + total_shift)
+
+    strength_home, strength_away = base_home, base_away
+    if wdl is not None:
+        market_home, market_away = _market_implied_xg_split(base_total, wdl)
+        strength_home = base_home + strength_blend * (market_home - base_home)
+        strength_away = base_away + strength_blend * (market_away - base_away)
+
+    strength_total = max(0.30, strength_home + strength_away)
+    candidate_home = strength_home / strength_total * target_total
+    candidate_away = strength_away / strength_total * target_total
+    home_shift = max(-max_side_shift, min(max_side_shift, candidate_home - base_home))
+    away_shift = max(-max_side_shift, min(max_side_shift, candidate_away - base_away))
+    adjusted_home = max(0.15, base_home + home_shift)
+    adjusted_away = max(0.15, base_away + away_shift)
+    side_cap_hit = abs(candidate_home - base_home) > max_side_shift or abs(candidate_away - base_away) > max_side_shift
+    total_cap_hit = bool(totals is not None and abs(total_blend * (market_total - base_total)) > max_total_shift)
+    anchor_enabled = strength_blend > 0 or total_blend > 0
+    metadata = {
+        "applied": anchor_enabled,
+        "policy": "bounded_dual_axis_market_anchor_v1",
+        "reason": None if anchor_enabled else "validation_gate_fallback_to_diagnostic_only",
+        "observedAt": observed_at,
+        "strengthBlend": strength_blend if wdl is not None else 0.0,
+        "totalGoalsBlend": total_blend if totals is not None else 0.0,
+        "deViggedOutcomeProbabilities": wdl,
+        "deViggedTotalGoalsProbabilities": totals,
+        "marketExpectedTotalGoals": round(market_total, 4) if market_total is not None else None,
+        "preCalibrationExpectedGoals": {"home": round(base_home, 4), "away": round(base_away, 4)},
+        "postCalibrationExpectedGoals": {"home": round(adjusted_home, 4), "away": round(adjusted_away, 4)},
+        "xgShift": {"home": round(adjusted_home - base_home, 4), "away": round(adjusted_away - base_away, 4)},
+        "totalXgShift": round(adjusted_home + adjusted_away - base_total, 4),
+        "bounds": {"maxSideXgShift": max_side_shift, "maxTotalXgShift": max_total_shift},
+        "sideCapHit": side_cap_hit,
+        "totalCapHit": total_cap_hit,
+    }
+    seed["base_xg"] = [adjusted_home, adjusted_away] if anchor_enabled else [base_home, base_away]
+    seed["market_calibration"] = metadata
+    seed["model_decomposition"] = {
+        **seed.get("model_decomposition", {}),
+        "marketCalibration": metadata,
+        "adjustedExpectedGoals": (
+            metadata["postCalibrationExpectedGoals"]
+            if anchor_enabled
+            else metadata["preCalibrationExpectedGoals"]
+        ),
+    }
+    return metadata

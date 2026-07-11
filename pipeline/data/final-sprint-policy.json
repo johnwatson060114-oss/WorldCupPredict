@@ -1,0 +1,389 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-11T11:51:59+08:00",
+  "policy": "world_cup_final_sprint_v1",
+  "predictionTarget": "90_minutes",
+  "validationWeight": {
+    "worldCup2026": 0.7,
+    "worldCup2018And2022": 0.3
+  },
+  "historicalDegradationLimit": 0.02,
+  "tournamentEvidence": {
+    "halfLifeMatches": 2.0,
+    "shrinkage": 5.0,
+    "maxSideXgShift": 0.0,
+    "validation": {
+      "grid": {
+        "halfLifeMatches": [
+          1.5,
+          2.0,
+          3.0
+        ],
+        "shrinkage": [
+          3.0,
+          5.0,
+          8.0
+        ],
+        "maxSideXgShift": [
+          0.1,
+          0.15,
+          0.2
+        ]
+      },
+      "selected": {
+        "halfLifeMatches": 2.0,
+        "shrinkage": 5.0,
+        "maxSideXgShift": 0.0
+      },
+      "metrics": {
+        "current2026": {
+          "matches": 35,
+          "wdlLogLoss": 0.7497445902593167,
+          "totalGoalsLogLoss": 1.7786288689196976,
+          "scoreLogLoss": 2.6827476633444864,
+          "combinedLoss": 1.934499530957537,
+          "totalAdjacentHits": 26,
+          "scoreTop3Hits": 14
+        },
+        "historical2018And2022": {
+          "matches": 32,
+          "wdlLogLoss": 0.9755574353192701,
+          "totalGoalsLogLoss": 1.963424994486921,
+          "scoreLogLoss": 2.974836701052467,
+          "combinedLoss": 2.1704161652796095,
+          "totalAdjacentHits": 21,
+          "scoreTop3Hits": 10
+        },
+        "weightedLoss": 2.005274521254159,
+        "eligible": true,
+        "fallback": true
+      },
+      "selectionReason": "historical_top3_gate_fallback_to_diagnostic_only",
+      "baseline": {
+        "current2026": {
+          "matches": 35,
+          "wdlLogLoss": 0.7497445902593167,
+          "totalGoalsLogLoss": 1.7786288689196976,
+          "scoreLogLoss": 2.6827476633444864,
+          "combinedLoss": 1.934499530957537,
+          "totalAdjacentHits": 26,
+          "scoreTop3Hits": 14
+        },
+        "historical2018And2022": {
+          "matches": 32,
+          "wdlLogLoss": 0.9755574353192701,
+          "totalGoalsLogLoss": 1.963424994486921,
+          "scoreLogLoss": 2.974836701052467,
+          "combinedLoss": 2.1704161652796095,
+          "totalAdjacentHits": 21,
+          "scoreTop3Hits": 10
+        }
+      },
+      "candidatesEvaluated": 27
+    }
+  },
+  "marketAnchor": {
+    "strengthBlend": 0.0,
+    "totalGoalsBlend": 0.0,
+    "maxSideXgShift": 0.2,
+    "maxTotalXgShift": 0.25,
+    "validation": {
+      "grid": {
+        "strengthBlend": [
+          0.25,
+          0.35,
+          0.45
+        ],
+        "totalGoalsBlend": [
+          0.15,
+          0.25,
+          0.35
+        ]
+      },
+      "selected": {
+        "strengthBlend": 0.0,
+        "totalGoalsBlend": 0.0,
+        "maxSideXgShift": 0.2,
+        "maxTotalXgShift": 0.25
+      },
+      "metrics": {
+        "matches": 35,
+        "wdlLogLoss": 0.7475403804364201,
+        "totalGoalsLogLoss": 1.7614076545577864,
+        "scoreLogLoss": 2.6676558410252915,
+        "combinedLoss": 1.921133474320515,
+        "totalAdjacentHits": 27,
+        "scoreTop3Hits": 16,
+        "marketSamples": 0,
+        "eligible": true,
+        "fallback": true
+      },
+      "selectionReason": "total_goals_loss_gate_fallback_to_diagnostic_only",
+      "baseline": {
+        "matches": 35,
+        "wdlLogLoss": 0.7475403804364201,
+        "totalGoalsLogLoss": 1.7614076545577864,
+        "scoreLogLoss": 2.6676558410252915,
+        "combinedLoss": 1.921133474320515,
+        "totalAdjacentHits": 27,
+        "scoreTop3Hits": 16
+      },
+      "candidatesEvaluated": 9
+    }
+  },
+  "scoreCalibration": {
+    "candidateIntensities": [
+      0.0,
+      0.1,
+      0.15,
+      0.2,
+      0.25
+    ],
+    "selectedIntensity": 0.25,
+    "selectionReason": "weighted_loss_improved_and_safety_gates_passed",
+    "totalGoalsLossWeight": 0.6,
+    "exactScoreLossWeight": 0.4,
+    "validation": {
+      "candidateIntensities": [
+        0.0,
+        0.1,
+        0.15,
+        0.2,
+        0.25
+      ],
+      "lossWeights": {
+        "totalGoals": 0.6,
+        "exactScore": 0.4
+      },
+      "validationWeights": {
+        "worldCup2026": 0.7,
+        "worldCup2018And2022": 0.3
+      },
+      "candidates": {
+        "0.00": {
+          "current2026": {
+            "matches": 35,
+            "wdlLogLoss": 0.7497445902593167,
+            "totalGoalsLogLoss": 1.7786288689196976,
+            "scoreLogLoss": 2.6827476633444864,
+            "combinedLoss": 1.934499530957537,
+            "totalAdjacentHits": 26,
+            "scoreTop3Hits": 14
+          },
+          "historical2018And2022": {
+            "matches": 32,
+            "wdlLogLoss": 0.9755574353192701,
+            "totalGoalsLogLoss": 1.963424994486921,
+            "scoreLogLoss": 2.974836701052467,
+            "combinedLoss": 2.1704161652796095,
+            "totalAdjacentHits": 21,
+            "scoreTop3Hits": 10
+          },
+          "weightedLoss": 2.2085903738166706
+        },
+        "0.10": {
+          "current2026": {
+            "matches": 35,
+            "wdlLogLoss": 0.7497445902593167,
+            "totalGoalsLogLoss": 1.7783173126389176,
+            "scoreLogLoss": 2.6828196286393258,
+            "combinedLoss": 1.9344036945631609,
+            "totalAdjacentHits": 26,
+            "scoreTop3Hits": 15
+          },
+          "historical2018And2022": {
+            "matches": 32,
+            "wdlLogLoss": 0.9755574353192701,
+            "totalGoalsLogLoss": 1.961467965316555,
+            "scoreLogLoss": 2.9733866742207855,
+            "combinedLoss": 2.16905334287879,
+            "totalAdjacentHits": 21,
+            "scoreTop3Hits": 10
+          },
+          "weightedLoss": 2.2079534019908307
+        },
+        "0.15": {
+          "current2026": {
+            "matches": 35,
+            "wdlLogLoss": 0.7497445902593167,
+            "totalGoalsLogLoss": 1.7781917776663632,
+            "scoreLogLoss": 2.6828907189498317,
+            "combinedLoss": 1.9343819166983414,
+            "totalAdjacentHits": 26,
+            "scoreTop3Hits": 16
+          },
+          "historical2018And2022": {
+            "matches": 32,
+            "wdlLogLoss": 0.9755574353192701,
+            "totalGoalsLogLoss": 1.9605202338074557,
+            "scoreLogLoss": 2.972691179531537,
+            "combinedLoss": 2.168396052399451,
+            "totalAdjacentHits": 21,
+            "scoreTop3Hits": 10
+          },
+          "weightedLoss": 2.2076665315549517
+        },
+        "0.20": {
+          "current2026": {
+            "matches": 35,
+            "wdlLogLoss": 0.7497445902593167,
+            "totalGoalsLogLoss": 1.778086408744591,
+            "scoreLogLoss": 2.682985188599989,
+            "combinedLoss": 1.9343775569896953,
+            "totalAdjacentHits": 26,
+            "scoreTop3Hits": 16
+          },
+          "historical2018And2022": {
+            "matches": 32,
+            "wdlLogLoss": 0.9755574353192701,
+            "totalGoalsLogLoss": 1.9595928836705658,
+            "scoreLogLoss": 2.9720152631898262,
+            "combinedLoss": 2.167754745808011,
+            "totalAdjacentHits": 21,
+            "scoreTop3Hits": 10
+          },
+          "weightedLoss": 2.207400695124206
+        },
+        "0.25": {
+          "current2026": {
+            "matches": 35,
+            "wdlLogLoss": 0.7497445902593167,
+            "totalGoalsLogLoss": 1.7780012180351057,
+            "scoreLogLoss": 2.6831030321395426,
+            "combinedLoss": 1.9343906181217227,
+            "totalAdjacentHits": 26,
+            "scoreTop3Hits": 16
+          },
+          "historical2018And2022": {
+            "matches": 32,
+            "wdlLogLoss": 0.9755574353192701,
+            "totalGoalsLogLoss": 1.95868582125037,
+            "scoreLogLoss": 2.9713588607483934,
+            "combinedLoss": 2.1671293598633596,
+            "totalAdjacentHits": 21,
+            "scoreTop3Hits": 10
+          },
+          "weightedLoss": 2.2071558716886903
+        }
+      },
+      "selectedIntensity": 0.25,
+      "selectionReason": "weighted_loss_improved_and_safety_gates_passed",
+      "currentTournamentOnlyDiagnostic": {
+        "candidateIntensities": [
+          0.0,
+          0.1,
+          0.15,
+          0.2,
+          0.25
+        ],
+        "lossWeights": {
+          "totalGoals": 0.6,
+          "exactScore": 0.4
+        },
+        "candidates": {
+          "0.00": {
+            "matches": 35,
+            "totalExactHits": 9,
+            "totalExactAccuracy": 0.2571428571428571,
+            "totalAdjacentCoreHits": 26,
+            "totalAdjacentCoreAccuracy": 0.7428571428571429,
+            "averageTotalLogLoss": 1.7786288689196976,
+            "averageTotalRps": 0.11229057757031448,
+            "scoreTop1Hits": 4,
+            "scoreTop1Accuracy": 0.11428571428571428,
+            "scoreTop3Hits": 14,
+            "scoreTop3Accuracy": 0.4,
+            "scoreTop5Hits": 21,
+            "scoreTop5Accuracy": 0.6,
+            "averageScoreLogLoss": 2.6827476633444864,
+            "combinedLogLoss": 2.140276386689613
+          },
+          "0.10": {
+            "matches": 35,
+            "totalExactHits": 9,
+            "totalExactAccuracy": 0.2571428571428571,
+            "totalAdjacentCoreHits": 26,
+            "totalAdjacentCoreAccuracy": 0.7428571428571429,
+            "averageTotalLogLoss": 1.7783173126389176,
+            "averageTotalRps": 0.1123607593795304,
+            "scoreTop1Hits": 4,
+            "scoreTop1Accuracy": 0.11428571428571428,
+            "scoreTop3Hits": 15,
+            "scoreTop3Accuracy": 0.42857142857142855,
+            "scoreTop5Hits": 21,
+            "scoreTop5Accuracy": 0.6,
+            "averageScoreLogLoss": 2.6828196286393258,
+            "combinedLogLoss": 2.1401182390390807
+          },
+          "0.15": {
+            "matches": 35,
+            "totalExactHits": 9,
+            "totalExactAccuracy": 0.2571428571428571,
+            "totalAdjacentCoreHits": 26,
+            "totalAdjacentCoreAccuracy": 0.7428571428571429,
+            "averageTotalLogLoss": 1.7781917776663632,
+            "averageTotalRps": 0.11240093420944826,
+            "scoreTop1Hits": 4,
+            "scoreTop1Accuracy": 0.11428571428571428,
+            "scoreTop3Hits": 16,
+            "scoreTop3Accuracy": 0.45714285714285713,
+            "scoreTop5Hits": 21,
+            "scoreTop5Accuracy": 0.6,
+            "averageScoreLogLoss": 2.6828907189498317,
+            "combinedLogLoss": 2.1400713541797507
+          },
+          "0.20": {
+            "matches": 35,
+            "totalExactHits": 9,
+            "totalExactAccuracy": 0.2571428571428571,
+            "totalAdjacentCoreHits": 26,
+            "totalAdjacentCoreAccuracy": 0.7428571428571429,
+            "averageTotalLogLoss": 1.778086408744591,
+            "averageTotalRps": 0.11244449832290603,
+            "scoreTop1Hits": 4,
+            "scoreTop1Accuracy": 0.11428571428571428,
+            "scoreTop3Hits": 16,
+            "scoreTop3Accuracy": 0.45714285714285713,
+            "scoreTop5Hits": 21,
+            "scoreTop5Accuracy": 0.6,
+            "averageScoreLogLoss": 2.682985188599989,
+            "combinedLogLoss": 2.14004592068675
+          },
+          "0.25": {
+            "matches": 35,
+            "totalExactHits": 9,
+            "totalExactAccuracy": 0.2571428571428571,
+            "totalAdjacentCoreHits": 26,
+            "totalAdjacentCoreAccuracy": 0.7428571428571429,
+            "averageTotalLogLoss": 1.7780012180351057,
+            "averageTotalRps": 0.11249145171990373,
+            "scoreTop1Hits": 4,
+            "scoreTop1Accuracy": 0.11428571428571428,
+            "scoreTop3Hits": 16,
+            "scoreTop3Accuracy": 0.45714285714285713,
+            "scoreTop5Hits": 21,
+            "scoreTop5Accuracy": 0.6,
+            "averageScoreLogLoss": 2.6831030321395426,
+            "combinedLogLoss": 2.1400419436768807
+          }
+        },
+        "selectedIntensity": 0.25,
+        "selectionReason": "combined_loss_improved_and_hit_guards_passed",
+        "guards": {
+          "totalGoalsAdjacentHitsNotWorse": true,
+          "exactScoreTop3HitsNotWorse": true
+        }
+      }
+    }
+  },
+  "validation": {
+    "worldCup2026KnockoutMatches": 35,
+    "predictionTarget": "90_minutes",
+    "leakagePolicy": "latest archived forecast strictly before kickoff; evidence strictly before target kickoff",
+    "historicalSafetyGate": {
+      "weight": 0.3,
+      "maxDegradation": 0.02,
+      "status": "passed_by_weighted_candidate_evaluation"
+    }
+  }
+}

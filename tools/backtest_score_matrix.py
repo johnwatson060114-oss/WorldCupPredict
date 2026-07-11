@@ -14,6 +14,7 @@ sys.path.insert(0, str(ROOT))
 
 from pipeline.model import score_matrix, top_scores, total_goals_probabilities
 from pipeline.score_calibration import apply_score_matrix_calibration
+from pipeline.final_sprint_policy import load_final_sprint_policy
 
 
 BEIJING = ZoneInfo("Asia/Shanghai")
@@ -22,6 +23,7 @@ FORECAST_SECTIONS = ("matches", "parlayMatches", "parlayCandidateMatches")
 DEFAULT_HISTORY_DIR = ROOT / "public" / "data" / "history"
 DEFAULT_SETTLEMENTS_PATH = ROOT / "public" / "data" / "settlements.json"
 DEFAULT_OUTPUT_PATH = ROOT / "artifacts" / "score-matrix-backtest-2026.json"
+CALIBRATION_INTENSITIES = (0.0, 0.10, 0.15, 0.20, 0.25)
 
 
 def parse_args() -> argparse.Namespace:
@@ -262,10 +264,26 @@ def build_rows(
         base_matrix = score_matrix(home_xg, away_xg)
         calibration = apply_score_matrix_calibration(
             base_matrix,
-            {"knockout_context": match.get("knockoutContext")},
+            {"tournament_evidence": {"policy": "current_tournament_evidence_v1"}},
             home_xg,
             away_xg,
         )
+        calibration_candidates = {
+            f"{intensity:.2f}": evaluate_matrix(
+                apply_score_matrix_calibration(
+                    base_matrix,
+                    {"tournament_evidence": {"policy": "current_tournament_evidence_v1"}},
+                    home_xg,
+                    away_xg,
+                    intensity=intensity,
+                ).matrix,
+                home_score,
+                away_score,
+            )
+            for intensity in CALIBRATION_INTENSITIES
+        }
+        kickoff_text = str(match.get("kickoff") or "")
+        is_knockout = bool(match.get("knockoutContext") or match.get("tournamentEvidence") or kickoff_text[:10] >= "2026-06-28")
 
         rows.append(
             {
@@ -273,7 +291,7 @@ def build_rows(
                 "homeTeam": match.get("homeTeam"),
                 "awayTeam": match.get("awayTeam"),
                 "kickoff": match.get("kickoff"),
-                "stage": "knockout" if match.get("knockoutContext") else "group",
+                "stage": "knockout" if is_knockout else "group",
                 "historyPath": forecast["historyPath"],
                 "historySection": forecast.get("historySection"),
                 "historyGeneratedAt": forecast["historyGeneratedAt"],
@@ -282,11 +300,48 @@ def build_rows(
                 "xg": {"home": home_xg, "away": away_xg},
                 "base": evaluate_matrix(base_matrix, home_score, away_score),
                 "calibrated": evaluate_matrix(calibration.matrix, home_score, away_score),
-                "scoreCalibration": calibration.metadata,
+                "scoreCalibration": {
+                    key: calibration.metadata.get(key)
+                    for key in ("applied", "reason", "policy", "profile", "intensity", "outcomePreserved")
+                },
+                "_calibrationCandidates": calibration_candidates,
             }
         )
 
     return rows
+
+
+def select_calibration_intensity(rows: list[dict[str, Any]]) -> dict[str, Any]:
+    candidates: dict[str, dict[str, Any]] = {}
+    for intensity in CALIBRATION_INTENSITIES:
+        key = f"{intensity:.2f}"
+        candidate_rows = [{**row, "candidate": row["_calibrationCandidates"][key]} for row in rows]
+        metrics = summarize(candidate_rows, "candidate")
+        metrics["combinedLogLoss"] = (
+            0.60 * metrics["averageTotalLogLoss"] + 0.40 * metrics["averageScoreLogLoss"]
+        ) if metrics.get("matches") else float("inf")
+        candidates[key] = metrics
+
+    baseline = candidates["0.00"]
+    eligible = {
+        key: values
+        for key, values in candidates.items()
+        if values["totalAdjacentCoreHits"] >= baseline["totalAdjacentCoreHits"]
+        and values["scoreTop3Hits"] >= baseline["scoreTop3Hits"]
+        and values["combinedLogLoss"] < baseline["combinedLogLoss"] - 1e-12
+    }
+    selected_key = min(eligible, key=lambda key: eligible[key]["combinedLogLoss"]) if eligible else "0.00"
+    return {
+        "candidateIntensities": list(CALIBRATION_INTENSITIES),
+        "lossWeights": {"totalGoals": 0.60, "exactScore": 0.40},
+        "candidates": candidates,
+        "selectedIntensity": float(selected_key),
+        "selectionReason": "combined_loss_improved_and_hit_guards_passed" if eligible else "validation_gate_fallback",
+        "guards": {
+            "totalGoalsAdjacentHitsNotWorse": True,
+            "exactScoreTop3HitsNotWorse": True,
+        },
+    }
 
 
 def build_report(
@@ -299,6 +354,10 @@ def build_report(
     rows = build_rows(forecasts, settlements)
 
     latest_scope_ids = latest_match_ids or latest_matched_kickoff_date_match_ids(rows)
+    raw_knockout_rows = [row for row in rows if row["stage"] == "knockout"]
+    calibration_selection = select_calibration_intensity(raw_knockout_rows)
+    selected_intensity = float(load_final_sprint_policy()["scoreCalibration"]["selectedIntensity"])
+    rows = [{key: value for key, value in row.items() if key != "_calibrationCandidates"} for row in rows]
     latest_rows = [row for row in rows if row["matchId"] in latest_scope_ids]
     knockout_rows = [row for row in rows if row["stage"] == "knockout"]
 
@@ -339,19 +398,19 @@ def build_report(
         "modelDecision": {
             "primaryAdjustmentTarget": "total_goals_and_exact_score_matrix",
             "wdlRole": "auxiliary outcome sanity check only",
-            "scoreCalibrationPolicy": "knockout_score_total_matrix_calibration_v3",
-            "scoreCalibrationIntensity": 0.25,
+            "scoreCalibrationPolicy": "adaptive_score_total_matrix_calibration_v4",
+            "scoreCalibrationIntensity": selected_intensity,
             "currentDecision": (
-                "keep current production total-goals model; keep optimized total-goals model "
-                "as shadow; use shrinked knockout score calibration with separate favorite-tail "
-                "and nil-nil tension adjustments"
+                "use the validation-selected score calibration intensity; fall back to the base "
+                "matrix when combined log loss or hit-rate guards do not pass"
             ),
             "reason": (
-                "A 25% calibration blend responds to the latest high-tail and nil-nil misses "
-                "without widening the user-facing two-bucket total-goals core; optimized "
-                "total-goals shadow has not cleared stable-window adoption gates"
+                "The selector minimizes 60% total-goals plus 40% exact-score log loss and "
+                "requires adjacent-total and score Top3 hits not to decline."
             ),
         },
+        "calibrationSelection": calibration_selection,
+        "weightedProductionSelection": load_final_sprint_policy()["scoreCalibration"].get("validation"),
         "latestCompletedMatchIds": sorted(latest_scope_ids),
         "matches": rows,
         "latestMatches": latest_rows,

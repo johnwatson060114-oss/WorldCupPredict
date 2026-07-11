@@ -134,6 +134,8 @@ export interface MatchForecast {
     formLayer?: string
     motivationLayer?: string
     knockoutLayer?: string
+    tournamentEvidence?: TournamentEvidence
+    marketCalibration?: MarketCalibration
   }
   tournamentForm?: {
     sourceRound: string
@@ -149,6 +151,7 @@ export interface MatchForecast {
     home: TournamentFormSide
     away: TournamentFormSide
   } | null
+  tournamentEvidence?: TournamentEvidence | null
   knockoutContext?: {
     policy: string
     favoriteSide: 'home' | 'away' | null
@@ -163,6 +166,10 @@ export interface MatchForecast {
     reason?: string
     policy?: string
     profile?: string
+    candidateProfile?: string
+    intensity?: number
+    candidateIntensities?: number[]
+    validation?: Record<string, unknown> | null
     sourceKnockoutPolicy?: string
     favoriteSide?: 'home' | 'away' | null
     totalGoalWeights?: Record<string, number>
@@ -171,6 +178,7 @@ export interface MatchForecast {
     outcomePreserved?: boolean
     maxCellDelta?: number
   }
+  marketCalibration?: MarketCalibration | null
   outcomeProbabilities: { home: number; draw: number; away: number }
   halfFullSignal?: {
     applied: boolean
@@ -237,6 +245,52 @@ export interface MatchForecast {
   intelligence?: IntelligenceEvent[]
   simulation?: SimulationQuality | null
   quotes: MarketQuote[]
+}
+
+export interface TournamentEvidenceSide {
+  team: string
+  matchesUsed: number
+  effectiveWeight: number
+  attackResidual: number
+  defenseResidual: number
+  restDays: number | null
+  extraTimeLoad: boolean
+  fatigueAttackDelta: number
+  fatigueDefenseRiskDelta: number
+}
+
+export interface TournamentEvidence {
+  policy: 'current_tournament_evidence_v1'
+  predictionTarget: '90_minutes'
+  halfLifeMatches: number
+  shrinkage: number
+  maxSideXgShift: number
+  home: TournamentEvidenceSide
+  away: TournamentEvidenceSide
+  xgNet: { home: number; away: number }
+  adjustedExpectedGoals: { home: number; away: number }
+  applied: boolean
+  diagnosticOnly?: boolean
+  selectionReason?: string
+}
+
+export interface MarketCalibration {
+  applied: boolean
+  policy: 'bounded_dual_axis_market_anchor_v1'
+  reason?: string
+  observedAt?: string | null
+  strengthBlend?: number
+  totalGoalsBlend?: number
+  deViggedOutcomeProbabilities?: { home: number; draw: number; away: number } | null
+  deViggedTotalGoalsProbabilities?: Record<string, number> | null
+  marketExpectedTotalGoals?: number | null
+  preCalibrationExpectedGoals?: { home: number; away: number }
+  postCalibrationExpectedGoals?: { home: number; away: number }
+  xgShift?: { home: number; away: number }
+  totalXgShift?: number
+  bounds?: { maxSideXgShift: number; maxTotalXgShift: number }
+  sideCapHit?: boolean
+  totalCapHit?: boolean
 }
 
 export interface TournamentFormSide {

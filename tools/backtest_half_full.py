@@ -280,7 +280,11 @@ def evaluate_row(
         return None
     calibration = apply_half_full_market_calibration(
         probabilities,
-        {"knockout_context": match.get("knockoutContext")},
+        (
+            {"tournament_evidence": {"policy": "current_tournament_evidence_v1"}}
+            if match.get("knockoutContext") or str(match.get("kickoff") or "")[:10] >= "2026-06-28"
+            else {}
+        ),
     )
     probabilities = calibration.probabilities
 

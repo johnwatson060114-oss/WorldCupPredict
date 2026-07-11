@@ -23,3 +23,13 @@ date,home_team,away_team,home_score,away_score,source,neutral
 2026-07-04,Australia,Egypt,1,1,guardian-90min-normalized-from-pens,TRUE
 2026-07-03,Argentina,Cape Verde,1,1,guardian-90min-normalized-from-aet,TRUE
 2026-07-04,Colombia,Ghana,1,0,guardian-90min-confirmed,TRUE
+2026-07-04,Canada,Morocco,0,3,official-result-confirmed,TRUE
+2026-07-04,Paraguay,France,0,1,official-result-confirmed,TRUE
+2026-07-05,Brazil,Norway,1,2,external-result-90min-confirmed,TRUE
+2026-07-05,Mexico,England,2,3,external-result-90min-confirmed,TRUE
+2026-07-06,Portugal,Spain,0,1,official-result-confirmed,TRUE
+2026-07-06,United States,Belgium,1,4,official-result-confirmed,TRUE
+2026-07-07,Argentina,Egypt,3,2,external-result-90min-confirmed,TRUE
+2026-07-07,Switzerland,Colombia,0,0,external-result-90min-normalized-from-pens,TRUE
+2026-07-09,France,Morocco,2,0,afc-90min-confirmed,TRUE
+2026-07-10,Spain,Belgium,2,1,ap-90min-confirmed,TRUE

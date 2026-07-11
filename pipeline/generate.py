@@ -34,10 +34,8 @@ from .football_data import (
     team_flag,
 )
 from .factor_gate import apply_factor_admissions, load_factor_admissions
-from .group_stage_form import apply_group_stage_form, load_group_stage_profiles
 from .half_full_specialist import apply_half_full_market_calibration, build_half_full_signal
-from .knockout_context import apply_knockout_context
-from .knockout_round32_form import apply_knockout_round32_form, load_knockout_round32_profiles
+from .current_tournament_evidence import apply_current_tournament_evidence, load_evidence_matches
 from .model import (
     adjust_xg,
     estimate_from_recent_results,
@@ -53,15 +51,13 @@ from .model import (
 )
 from .lineup import apply_lineup_impacts
 from .intelligence import apply_intelligence, load_daily_intelligence
-from .current_tournament import apply_current_tournament_context
 from .draw_risk import apply_draw_risk_layer
-from .market_guard import apply_market_strength_calibration, market_conflict_decision
+from .market_guard import apply_bounded_market_anchor, market_conflict_decision
 from .portfolio import build_portfolios
 from .provenance import build_snapshot_manifest
 from .simulation import MatchSimulationInput, TournamentSimulation, simulate_tournament
 from .score_calibration import apply_score_matrix_calibration
 from .sporttery import SportteryMatch, fetch_sporttery, filter_by_beijing_date, load_fixture
-from .two_round_form import apply_two_round_form, load_two_round_profiles
 from .weather import OpenMeteoClient
 
 OUTCOME_KEYS = {"胜": "home", "平": "draw", "负": "away"}
@@ -139,15 +135,10 @@ def local_snapshot_paths() -> list[Path]:
         ROOT / "pipeline" / "data" / "demo_matches.json",
         ROOT / "pipeline" / "data" / "fifa-2026-discipline.json",
         ROOT / "pipeline" / "data" / "factor-admissions.json",
-        ROOT / "pipeline" / "data" / "group-stage-performance.json",
-        ROOT / "pipeline" / "data" / "two-round-performance.json",
         ROOT / "pipeline" / "data" / "tournament-availability.json",
-        ROOT / "public" / "data" / "group-stage-match-timelines.json",
-        ROOT / "public" / "data" / "group-stage-model-review.json",
-        ROOT / "public" / "data" / "two-round-match-timelines.json",
         ROOT / "pipeline" / "data" / "fifa-2026-annex-c.json",
         ROOT / "pipeline" / "data" / "model-policy.json",
-        ROOT / "pipeline" / "data" / "knockout-round32-performance.json",
+        ROOT / "pipeline" / "data" / "final-sprint-policy.json",
         FIXTURE_DIR / "sporttery-spf.html",
         FIXTURE_DIR / "sporttery-score.html",
         *sorted(MANUAL_DIR.glob("*.csv")),
@@ -392,7 +383,7 @@ def _market_date_matches_seed(seed: dict, market: SportteryMatch) -> bool:
 
 
 def half_full_assist_weight(seed: dict[str, Any]) -> float:
-    if seed.get("knockout_context"):
+    if seed.get("knockout_context") or seed.get("tournament_evidence"):
         return 0.0
     return 0.20
 
@@ -950,10 +941,12 @@ def build_match(
         }),
         "tournamentForm": seed.get("tournament_form"),
         "groupStageForm": seed.get("group_stage_form"),
+        "tournamentEvidence": seed.get("tournament_evidence"),
         "currentTournament": seed.get("current_tournament"),
         "knockoutContext": seed.get("knockout_context"),
         "knockoutRound32Form": seed.get("knockout_round32_form"),
         "scoreCalibration": score_calibration.metadata,
+        "marketCalibration": seed.get("market_calibration"),
         "drawRisk": draw_risk_result.metadata,
         "halfFullCalibration": half_full_calibration.metadata,
         "halfFullSignal": {
@@ -1272,22 +1265,14 @@ def main() -> None:
 
     availability_records = load_availability()
     factor_admissions = load_factor_admissions()
-    group_stage_profiles = load_group_stage_profiles()
-    two_round_profiles = load_two_round_profiles()
-    knockout_round32_profiles = load_knockout_round32_profiles()
+    tournament_evidence = load_evidence_matches()
 
     def prepare_seeds(batch: list[dict], batch_date: str) -> None:
         apply_availability(batch, batch_date, availability_records)
         apply_intelligence(batch, load_daily_intelligence(batch_date, generated_at))
         apply_lineup_impacts(batch)
         apply_factor_admissions(batch, factor_admissions)
-        if group_stage_profiles:
-            apply_group_stage_form(batch, batch_date, group_stage_profiles)
-        else:
-            apply_two_round_form(batch, batch_date, two_round_profiles)
-        apply_current_tournament_context(batch, all_football_matches)
-        apply_knockout_context(batch, batch_date, all_football_matches)
-        apply_knockout_round32_form(batch, batch_date, knockout_round32_profiles)
+        apply_current_tournament_evidence(batch, batch_date, tournament_evidence)
 
     prepare_seeds(seeds, target_date)
 
@@ -1326,7 +1311,12 @@ def main() -> None:
     for seed in simulation_seeds:
         market = match_seed_to_market(seed, all_markets)
         if market is not None:
-            apply_market_strength_calibration(seed, market.win_draw_loss)
+            apply_bounded_market_anchor(
+                seed,
+                market.win_draw_loss,
+                market.total_goals,
+                observed_at=generated_at,
+            )
         match_id = market.match_id if market else seed.get("sporttery_id") or f"{seed['home_team']} vs {seed['away_team']}"
         factors = seed.get("factors", default_factors())
         home_xg, away_xg = adjust_xg(float(seed["base_xg"][0]), float(seed["base_xg"][1]), factors)

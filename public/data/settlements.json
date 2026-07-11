@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-10T16:27:57+08:00",
+  "generatedAt": "2026-07-08T15:32:57+08:00",
   "matches": [
     {
       "matchId": "537327",
@@ -3840,14 +3840,28 @@
       "closingOddsCheckedAt": "2026-07-08T15:31:50+08:00"
     },
     {
-      "matchId": "法国 vs 摩洛哥",
-      "fixtureId": 537383,
+      "matchId": "2040451",
       "matchLabel": "法国 vs 摩洛哥",
       "homeScore": 2,
       "awayScore": 0,
+      "settlementScoreBasis": "90_minutes",
       "halfTimeHomeScore": 0,
       "halfTimeAwayScore": 0,
-      "settledAt": "2026-07-09T20:00:00Z"
+      "settledAt": "2026-07-10T00:00:00Z",
+      "settlementSource": "external_result_review",
+      "settlementSourceUrl": "https://www.the-afc.com/en/national/fifa_world_cup.html/news/q-final-france-2-0-morocco"
+    },
+    {
+      "matchId": "2040466",
+      "matchLabel": "西班牙 vs 比利时",
+      "homeScore": 2,
+      "awayScore": 1,
+      "settlementScoreBasis": "90_minutes",
+      "halfTimeHomeScore": 1,
+      "halfTimeAwayScore": 1,
+      "settledAt": "2026-07-10T20:00:00Z",
+      "settlementSource": "external_result_review",
+      "settlementSourceUrl": "https://apnews.com/article/spain-belgium-score-world-cup-780243a17571b6b2b26074b66feec90a"
     }
   ]
 }

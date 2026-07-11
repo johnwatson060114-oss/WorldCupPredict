@@ -63,7 +63,12 @@ def apply_half_full_market_calibration(
 ) -> HalfFullMarketCalibration:
     normalized = normalize_distribution(half_full, HALF_FULL_SELECTIONS)
     seed = seed or {}
-    knockout_context = seed.get("knockout_context") or seed.get("knockoutContext")
+    knockout_context = (
+        seed.get("knockout_context")
+        or seed.get("knockoutContext")
+        or seed.get("tournament_evidence")
+        or seed.get("tournamentEvidence")
+    )
     if not knockout_context:
         return HalfFullMarketCalibration(
             probabilities=normalized,
@@ -82,7 +87,7 @@ def apply_half_full_market_calibration(
         probabilities=calibrated,
         metadata={
             "applied": True,
-            "policy": "knockout_half_full_late_swing_v2",
+            "policy": "current_tournament_half_full_late_swing_v3",
             "sourceKnockoutPolicy": (
                 knockout_context.get("policy")
                 if isinstance(knockout_context, Mapping)

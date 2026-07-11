@@ -113,6 +113,7 @@ def build_report(
     write_json(half_full_output_path, half_full_report)
 
     split_metrics = split_score_matrix_metrics(score_report["metrics"])
+    selected_intensity = float(score_report["modelDecision"]["scoreCalibrationIntensity"])
     return {
         "schemaVersion": 1,
         "generatedAt": datetime.now(BEIJING).isoformat(timespec="seconds"),
@@ -143,10 +144,11 @@ def build_report(
                 "half_time_full_time_distribution",
             ],
             "wdlRole": "auxiliary outcome sanity check only",
-            "productionScoreMatrix": "calibrated",
-            "scoreCalibrationPolicy": "knockout_score_total_matrix_calibration_v3",
-            "scoreCalibrationIntensity": 0.25,
-            "halfFullCalibrationPolicy": "knockout_half_full_late_swing_v2",
+            "productionScoreMatrix": "calibrated" if selected_intensity > 0 else "base",
+            "scoreCalibrationPolicy": "adaptive_score_total_matrix_calibration_v4",
+            "scoreCalibrationIntensity": selected_intensity,
+            "scoreCalibrationSelection": score_report["calibrationSelection"],
+            "halfFullCalibrationPolicy": "current_tournament_half_full_late_swing_v3",
             "diagnosticScoreMatrix": "base",
             "note": (
                 "Future generic backtests should use this combined report so all three "
