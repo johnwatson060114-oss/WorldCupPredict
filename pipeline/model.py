@@ -67,9 +67,14 @@ def total_goals_probabilities(matrix: list[list[float]]) -> dict[str, float]:
     return result
 
 
-def half_full_probabilities(home_xg: float, away_xg: float) -> dict[str, float]:
-    first_half = score_matrix(home_xg * 0.45, away_xg * 0.45, max_goals=7, rho=-0.04)
-    second_half = score_matrix(home_xg * 0.55, away_xg * 0.55, max_goals=8, rho=-0.04)
+def half_full_probabilities_split(
+    first_home_xg: float,
+    first_away_xg: float,
+    second_home_xg: float,
+    second_away_xg: float,
+) -> dict[str, float]:
+    first_half = score_matrix(first_home_xg, first_away_xg, max_goals=7, rho=-0.04)
+    second_half = score_matrix(second_home_xg, second_away_xg, max_goals=8, rho=-0.04)
     labels = {"home": "胜", "draw": "平", "away": "负"}
     result = {f"{first}{full}": 0.0 for first in labels.values() for full in labels.values()}
 
@@ -84,6 +89,15 @@ def half_full_probabilities(home_xg: float, away_xg: float) -> dict[str, float]:
                     full_label = labels[outcome(first_home + second_home, first_away + second_away)]
                     result[f"{first_label}{full_label}"] += first_probability * second_probability
     return result
+
+
+def half_full_probabilities(home_xg: float, away_xg: float) -> dict[str, float]:
+    return half_full_probabilities_split(
+        home_xg * 0.45,
+        away_xg * 0.45,
+        home_xg * 0.55,
+        away_xg * 0.55,
+    )
 
 
 def top_scores(matrix: list[list[float]], limit: int = 8) -> list[dict[str, float | str]]:

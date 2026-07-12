@@ -4,10 +4,22 @@ import math
 
 from pipeline.half_full_specialist import (
     apply_half_full_market_calibration,
+    apply_opponent_adjusted_half_split,
     build_half_full_signal,
     half_full_to_outcomes,
     normalize_distribution,
 )
+
+
+def test_opponent_adjusted_split_is_bounded_blend_of_independently_calibrated_models():
+    baseline = {key: 1.0 for key in ("胜胜", "胜平", "胜负", "平胜", "平平", "平负", "负胜", "负平", "负负")}
+    candidate = {**baseline, "平胜": 3.0}
+    result = apply_opponent_adjusted_half_split(
+        baseline, candidate, {"tournament_evidence": {"policy": "current_tournament_evidence_v1"}}, 0.25
+    )
+    assert result.metadata["policy"] == "opponent_adjusted_half_split_v1"
+    assert result.metadata["blend"] == 0.25
+    assert abs(sum(result.probabilities.values()) - 1.0) < 1e-12
 
 
 def test_half_full_to_outcomes_aggregates_by_fulltime_label():

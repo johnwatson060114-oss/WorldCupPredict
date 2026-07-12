@@ -82,6 +82,27 @@
       "candidatesEvaluated": 27
     }
   },
+  "halfFullEvidence": {
+    "policy": "opponent_adjusted_half_split_v1",
+    "halfLifeMatches": 1.5,
+    "shrinkage": 5.0,
+    "maxFirstHalfXgShift": 0.05,
+    "blend": 0.25,
+    "validation": {
+      "selectionObjective": "2026 knockout 70% + 2018/2022 knockout 30%",
+      "wdlAssistWeight": 0.0,
+      "matches": 88,
+      "knockoutMatches": 38,
+      "knockoutLogLossBefore": 1.947721539413088,
+      "knockoutLogLossAfter": 1.9423074603194004,
+      "knockoutTop1HitsBefore": 11,
+      "knockoutTop1HitsAfter": 11,
+      "knockoutTop3HitsBefore": 24,
+      "knockoutTop3HitsAfter": 24,
+      "allLogLossBefore": 1.7970415414906489,
+      "allLogLossAfter": 1.796052490823791
+    }
+  },
   "marketAnchor": {
     "strengthBlend": 0.0,
     "totalGoalsBlend": 0.0,

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-11T11:52:20+08:00",
+  "generatedAt": "2026-07-12T17:51:26+08:00",
   "scope": {
     "tournament": "FIFA World Cup 2026",
     "predictionTarget": "90_minutes",
@@ -36,151 +36,151 @@
     "totalGoals": {
       "allMatchedSettled": {
         "base": {
-          "matches": 89,
-          "totalExactHits": 17,
-          "totalExactAccuracy": 0.19101123595505617,
-          "totalAdjacentCoreHits": 52,
-          "totalAdjacentCoreAccuracy": 0.5842696629213483,
-          "averageTotalLogLoss": 1.9344859896256188,
-          "averageTotalRps": 0.13750591302202264
+          "matches": 92,
+          "totalExactHits": 19,
+          "totalExactAccuracy": 0.20652173913043478,
+          "totalAdjacentCoreHits": 55,
+          "totalAdjacentCoreAccuracy": 0.5978260869565217,
+          "averageTotalLogLoss": 1.9168246909573885,
+          "averageTotalRps": 0.1351267868940638
         },
         "calibrated": {
-          "matches": 89,
-          "totalExactHits": 17,
-          "totalExactAccuracy": 0.19101123595505617,
-          "totalAdjacentCoreHits": 52,
-          "totalAdjacentCoreAccuracy": 0.5842696629213483,
-          "averageTotalLogLoss": 1.9284063077510099,
-          "averageTotalRps": 0.1368359302346545
+          "matches": 92,
+          "totalExactHits": 19,
+          "totalExactAccuracy": 0.20652173913043478,
+          "totalAdjacentCoreHits": 55,
+          "totalAdjacentCoreAccuracy": 0.5978260869565217,
+          "averageTotalLogLoss": 1.9110171827742395,
+          "averageTotalRps": 0.1345227570942509
         }
       },
       "knockout": {
         "base": {
-          "matches": 35,
-          "totalExactHits": 9,
-          "totalExactAccuracy": 0.2571428571428571,
-          "totalAdjacentCoreHits": 26,
-          "totalAdjacentCoreAccuracy": 0.7428571428571429,
-          "averageTotalLogLoss": 1.7786288689196976,
-          "averageTotalRps": 0.11229057757031448
+          "matches": 38,
+          "totalExactHits": 11,
+          "totalExactAccuracy": 0.2894736842105263,
+          "totalAdjacentCoreHits": 29,
+          "totalAdjacentCoreAccuracy": 0.7631578947368421,
+          "averageTotalLogLoss": 1.748174444831292,
+          "averageTotalRps": 0.10852127237512788
         },
         "calibrated": {
-          "matches": 35,
-          "totalExactHits": 9,
-          "totalExactAccuracy": 0.2571428571428571,
-          "totalAdjacentCoreHits": 26,
-          "totalAdjacentCoreAccuracy": 0.7428571428571429,
-          "averageTotalLogLoss": 1.7780012180351057,
-          "averageTotalRps": 0.11249145171990373
+          "matches": 38,
+          "totalExactHits": 11,
+          "totalExactAccuracy": 0.2894736842105263,
+          "totalAdjacentCoreHits": 29,
+          "totalAdjacentCoreAccuracy": 0.7631578947368421,
+          "averageTotalLogLoss": 1.7477753172794437,
+          "averageTotalRps": 0.10881307031535427
         }
       },
       "latestCompleted": {
         "base": {
-          "matches": 1,
-          "totalExactHits": 0,
-          "totalExactAccuracy": 0.0,
-          "totalAdjacentCoreHits": 1,
+          "matches": 2,
+          "totalExactHits": 1,
+          "totalExactAccuracy": 0.5,
+          "totalAdjacentCoreHits": 2,
           "totalAdjacentCoreAccuracy": 1.0,
-          "averageTotalLogLoss": 1.5094163855734077,
-          "averageTotalRps": 0.05825443303608686
+          "averageTotalLogLoss": 1.442078739782002,
+          "averageTotalRps": 0.07374109432581077
         },
         "calibrated": {
-          "matches": 1,
-          "totalExactHits": 0,
-          "totalExactAccuracy": 0.0,
-          "totalAdjacentCoreHits": 1,
+          "matches": 2,
+          "totalExactHits": 1,
+          "totalExactAccuracy": 0.5,
+          "totalAdjacentCoreHits": 2,
           "totalAdjacentCoreAccuracy": 1.0,
-          "averageTotalLogLoss": 1.5065783685001095,
-          "averageTotalRps": 0.057017477379214934
+          "averageTotalLogLoss": 1.4494792168516528,
+          "averageTotalRps": 0.07549868752103125
         }
       }
     },
     "exactScore": {
       "allMatchedSettled": {
         "base": {
-          "matches": 89,
-          "scoreTop1Hits": 8,
-          "scoreTop1Accuracy": 0.0898876404494382,
-          "scoreTop3Hits": 30,
-          "scoreTop3Accuracy": 0.33707865168539325,
-          "scoreTop5Hits": 48,
-          "scoreTop5Accuracy": 0.5393258426966292,
-          "averageScoreLogLoss": 2.8564805819109123
+          "matches": 92,
+          "scoreTop1Hits": 9,
+          "scoreTop1Accuracy": 0.09782608695652174,
+          "scoreTop3Hits": 33,
+          "scoreTop3Accuracy": 0.358695652173913,
+          "scoreTop5Hits": 51,
+          "scoreTop5Accuracy": 0.5543478260869565,
+          "averageScoreLogLoss": 2.8325576526518326
         },
         "calibrated": {
-          "matches": 89,
-          "scoreTop1Hits": 8,
-          "scoreTop1Accuracy": 0.0898876404494382,
-          "scoreTop3Hits": 33,
-          "scoreTop3Accuracy": 0.3707865168539326,
-          "scoreTop5Hits": 46,
-          "scoreTop5Accuracy": 0.5168539325842697,
-          "averageScoreLogLoss": 2.849957276345395
+          "matches": 92,
+          "scoreTop1Hits": 9,
+          "scoreTop1Accuracy": 0.09782608695652174,
+          "scoreTop3Hits": 36,
+          "scoreTop3Accuracy": 0.391304347826087,
+          "scoreTop5Hits": 49,
+          "scoreTop5Accuracy": 0.532608695652174,
+          "averageScoreLogLoss": 2.8262742099100753
         }
       },
       "knockout": {
         "base": {
-          "matches": 35,
-          "scoreTop1Hits": 4,
-          "scoreTop1Accuracy": 0.11428571428571428,
-          "scoreTop3Hits": 14,
-          "scoreTop3Accuracy": 0.4,
-          "scoreTop5Hits": 21,
-          "scoreTop5Accuracy": 0.6,
-          "averageScoreLogLoss": 2.6827476633444864
+          "matches": 38,
+          "scoreTop1Hits": 5,
+          "scoreTop1Accuracy": 0.13157894736842105,
+          "scoreTop3Hits": 17,
+          "scoreTop3Accuracy": 0.4473684210526316,
+          "scoreTop5Hits": 24,
+          "scoreTop5Accuracy": 0.631578947368421,
+          "averageScoreLogLoss": 2.6385447492356433
         },
         "calibrated": {
-          "matches": 35,
-          "scoreTop1Hits": 4,
-          "scoreTop1Accuracy": 0.11428571428571428,
-          "scoreTop3Hits": 16,
-          "scoreTop3Accuracy": 0.45714285714285713,
-          "scoreTop5Hits": 21,
-          "scoreTop5Accuracy": 0.6,
-          "averageScoreLogLoss": 2.6831030321395426
+          "matches": 38,
+          "scoreTop1Hits": 5,
+          "scoreTop1Accuracy": 0.13157894736842105,
+          "scoreTop3Hits": 19,
+          "scoreTop3Accuracy": 0.5,
+          "scoreTop5Hits": 24,
+          "scoreTop5Accuracy": 0.631578947368421,
+          "averageScoreLogLoss": 2.6389377853123888
         }
       },
       "latestCompleted": {
         "base": {
-          "matches": 1,
-          "scoreTop1Hits": 0,
-          "scoreTop1Accuracy": 0.0,
-          "scoreTop3Hits": 0,
-          "scoreTop3Accuracy": 0.0,
-          "scoreTop5Hits": 1,
+          "matches": 2,
+          "scoreTop1Hits": 1,
+          "scoreTop1Accuracy": 0.5,
+          "scoreTop3Hits": 2,
+          "scoreTop3Accuracy": 1.0,
+          "scoreTop5Hits": 2,
           "scoreTop5Accuracy": 1.0,
-          "averageScoreLogLoss": 2.3560212308724573
+          "averageScoreLogLoss": 2.2445707763303364
         },
         "calibrated": {
-          "matches": 1,
-          "scoreTop1Hits": 0,
-          "scoreTop1Accuracy": 0.0,
-          "scoreTop3Hits": 0,
-          "scoreTop3Accuracy": 0.0,
-          "scoreTop5Hits": 1,
+          "matches": 2,
+          "scoreTop1Hits": 1,
+          "scoreTop1Accuracy": 0.5,
+          "scoreTop3Hits": 2,
+          "scoreTop3Accuracy": 1.0,
+          "scoreTop5Hits": 2,
           "scoreTop5Accuracy": 1.0,
-          "averageScoreLogLoss": 2.357815331481667
+          "averageScoreLogLoss": 2.2438358758139385
         }
       }
     },
     "halfFull": {
       "allMatchedSettled": {
-        "matches": 89,
+        "matches": 92,
         "hits": 33,
-        "accuracy": 0.3707865168539326,
-        "top3Hits": 65,
-        "top3Accuracy": 0.7303370786516854,
-        "averageLogLoss": 1.7674070178157035,
-        "averageBrier": 0.748773713815635,
-        "averageActualProbability": 0.24988284447342823,
+        "accuracy": 0.358695652173913,
+        "top3Hits": 66,
+        "top3Accuracy": 0.717391304347826,
+        "averageLogLoss": 1.7810867072451828,
+        "averageBrier": 0.7540669562571248,
+        "averageActualProbability": 0.24644746785896582,
         "inSampleMostCommonActual": "胜胜",
-        "inSampleMostCommonAccuracy": 0.2696629213483146,
+        "inSampleMostCommonAccuracy": 0.2608695652173913,
         "uniformNineWayLogLoss": 2.1972245773362196,
         "actualDistribution": {
-          "平平": 14,
-          "平胜": 14,
+          "平平": 15,
+          "平胜": 15,
           "平负": 7,
-          "胜平": 4,
+          "胜平": 5,
           "胜胜": 24,
           "胜负": 2,
           "负平": 4,
@@ -190,47 +190,49 @@
         "predictionDistribution": {
           "平平": 2,
           "平负": 1,
-          "胜胜": 55,
-          "负负": 31
+          "胜胜": 57,
+          "负负": 32
         }
       },
       "latestCompleted": {
-        "matches": 1,
+        "matches": 2,
         "hits": 0,
         "accuracy": 0.0,
-        "top3Hits": 1,
-        "top3Accuracy": 1.0,
-        "averageLogLoss": 1.335847711906012,
-        "averageBrier": 0.6945585380970154,
-        "averageActualProbability": 0.2629351876655862,
-        "inSampleMostCommonActual": "平胜",
-        "inSampleMostCommonAccuracy": 1.0,
+        "top3Hits": 0,
+        "top3Accuracy": 0.0,
+        "averageLogLoss": 2.6589701815232583,
+        "averageBrier": 1.041676226160174,
+        "averageActualProbability": 0.07251184281738207,
+        "inSampleMostCommonActual": "平平",
+        "inSampleMostCommonAccuracy": 0.5,
         "uniformNineWayLogLoss": 2.1972245773362196,
         "actualDistribution": {
-          "平胜": 1
+          "平平": 1,
+          "胜平": 1
         },
         "predictionDistribution": {
-          "胜胜": 1
+          "胜胜": 1,
+          "负负": 1
         }
       },
       "byStage": {
         "group": {
-          "matches": 61,
+          "matches": 63,
           "hits": 23,
-          "accuracy": 0.3770491803278688,
+          "accuracy": 0.36507936507936506,
           "top3Hits": 45,
-          "top3Accuracy": 0.7377049180327869,
-          "averageLogLoss": 1.696006238608923,
-          "averageBrier": 0.7318674250131187,
-          "averageActualProbability": 0.26647700451843404,
+          "top3Accuracy": 0.7142857142857143,
+          "averageLogLoss": 1.7265765225109655,
+          "averageBrier": 0.7417026250495332,
+          "averageActualProbability": 0.2603193803374483,
           "inSampleMostCommonActual": "胜胜",
-          "inSampleMostCommonAccuracy": 0.26229508196721313,
+          "inSampleMostCommonAccuracy": 0.25396825396825395,
           "uniformNineWayLogLoss": 2.1972245773362196,
           "actualDistribution": {
-            "平平": 12,
+            "平平": 13,
             "平胜": 11,
             "平负": 2,
-            "胜平": 3,
+            "胜平": 4,
             "胜胜": 16,
             "胜负": 2,
             "负平": 1,
@@ -239,25 +241,25 @@
           },
           "predictionDistribution": {
             "平平": 1,
-            "胜胜": 36,
-            "负负": 24
+            "胜胜": 37,
+            "负负": 25
           }
         },
         "knockout": {
-          "matches": 28,
+          "matches": 29,
           "hits": 10,
-          "accuracy": 0.35714285714285715,
-          "top3Hits": 20,
-          "top3Accuracy": 0.7142857142857143,
-          "averageLogLoss": 1.9229587153733316,
-          "averageBrier": 0.7856052715639738,
-          "averageActualProbability": 0.2137312815182371,
+          "accuracy": 0.3448275862068966,
+          "top3Hits": 21,
+          "top3Accuracy": 0.7241379310344828,
+          "averageLogLoss": 1.8995053844264127,
+          "averageBrier": 0.7809273999149965,
+          "averageActualProbability": 0.2163119338539867,
           "inSampleMostCommonActual": "胜胜",
-          "inSampleMostCommonAccuracy": 0.2857142857142857,
+          "inSampleMostCommonAccuracy": 0.27586206896551724,
           "uniformNineWayLogLoss": 2.1972245773362196,
           "actualDistribution": {
             "平平": 2,
-            "平胜": 3,
+            "平胜": 4,
             "平负": 5,
             "胜平": 1,
             "胜胜": 8,
@@ -268,7 +270,7 @@
           "predictionDistribution": {
             "平平": 1,
             "平负": 1,
-            "胜胜": 19,
+            "胜胜": 20,
             "负负": 7
           }
         }
@@ -280,25 +282,25 @@
             "knockoutWeight": 0.0
           },
           "base": {
-            "matches": 89,
-            "hits": 56,
-            "accuracy": 0.6292134831460674,
-            "averageLogLoss": 0.8234042846556636,
-            "averageActualProbability": 0.503532577262339
+            "matches": 92,
+            "hits": 57,
+            "accuracy": 0.6195652173913043,
+            "averageLogLoss": 0.8318891770687702,
+            "averageActualProbability": 0.49951281930813235
           },
           "halfFullSignal": {
-            "matches": 89,
-            "hits": 56,
-            "accuracy": 0.6292134831460674,
-            "averageLogLoss": 0.8234050383759746,
-            "averageActualProbability": 0.5032896147254036
+            "matches": 92,
+            "hits": 57,
+            "accuracy": 0.6195652173913043,
+            "averageLogLoss": 0.8330203775421974,
+            "averageActualProbability": 0.4990407218533534
           },
           "assisted": {
-            "matches": 89,
-            "hits": 56,
-            "accuracy": 0.6292134831460674,
-            "averageLogLoss": 0.8229841814637767,
-            "averageActualProbability": 0.5038219380886007
+            "matches": 92,
+            "hits": 57,
+            "accuracy": 0.6195652173913043,
+            "averageLogLoss": 0.8317189144879569,
+            "averageActualProbability": 0.49973521974097074
           }
         },
         "latestCompleted": {
@@ -307,25 +309,25 @@
             "knockoutWeight": 0.0
           },
           "base": {
-            "matches": 1,
-            "hits": 1,
-            "accuracy": 1.0,
-            "averageLogLoss": 0.4119611618518665,
-            "averageActualProbability": 0.66235
+            "matches": 2,
+            "hits": 0,
+            "accuracy": 0.0,
+            "averageLogLoss": 1.4125300540997565,
+            "averageActualProbability": 0.243755
           },
           "halfFullSignal": {
-            "matches": 1,
-            "hits": 1,
-            "accuracy": 1.0,
-            "averageLogLoss": 0.4188168767462054,
-            "averageActualProbability": 0.6578246472285296
+            "matches": 2,
+            "hits": 0,
+            "accuracy": 0.0,
+            "averageLogLoss": 1.468079235826345,
+            "averageActualProbability": 0.23052431570963747
           },
           "assisted": {
-            "matches": 1,
-            "hits": 1,
-            "accuracy": 1.0,
-            "averageLogLoss": 0.41332854991958523,
-            "averageActualProbability": 0.661444929445706
+            "matches": 2,
+            "hits": 0,
+            "accuracy": 0.0,
+            "averageLogLoss": 1.4233925674213093,
+            "averageActualProbability": 0.24110886314192748
           }
         },
         "byStage": {
@@ -335,25 +337,25 @@
               "knockoutWeight": 0.0
             },
             "base": {
-              "matches": 61,
+              "matches": 63,
               "hits": 36,
-              "accuracy": 0.5901639344262295,
-              "averageLogLoss": 0.8603812347321308,
-              "averageActualProbability": 0.4965393340384947
+              "accuracy": 0.5714285714285714,
+              "averageLogLoss": 0.8779097686803095,
+              "averageActualProbability": 0.48851443454520915
             },
             "halfFullSignal": {
-              "matches": 61,
+              "matches": 63,
               "hits": 36,
-              "accuracy": 0.5901639344262295,
-              "averageLogLoss": 0.8575845024675645,
-              "averageActualProbability": 0.49865024498417304
+              "accuracy": 0.5714285714285714,
+              "averageLogLoss": 0.8769652876535574,
+              "averageActualProbability": 0.49013831072148933
             },
             "assisted": {
-              "matches": 61,
+              "matches": 63,
               "hits": 36,
-              "accuracy": 0.5901639344262295,
-              "averageLogLoss": 0.8597682972882305,
-              "averageActualProbability": 0.4969615162276304
+              "accuracy": 0.5714285714285714,
+              "averageLogLoss": 0.877661131260709,
+              "averageActualProbability": 0.48883920978046524
             }
           },
           "knockout": {
@@ -362,25 +364,25 @@
               "knockoutWeight": 0.0
             },
             "base": {
-              "matches": 28,
-              "hits": 20,
-              "accuracy": 0.7142857142857143,
-              "averageLogLoss": 0.74284735770336,
-              "averageActualProbability": 0.5187678571428571
+              "matches": 29,
+              "hits": 21,
+              "accuracy": 0.7241379310344828,
+              "averageLogLoss": 0.7319134090850813,
+              "averageActualProbability": 0.5234058620689656
             },
             "halfFullSignal": {
-              "matches": 28,
-              "hits": 20,
-              "accuracy": 0.7142857142857143,
-              "averageLogLoss": 0.7489426344621538,
-              "averageActualProbability": 0.5133968130902272
+              "matches": 29,
+              "hits": 21,
+              "accuracy": 0.7241379310344828,
+              "averageLogLoss": 0.7375538486795876,
+              "averageActualProbability": 0.5183804425880926
             },
             "assisted": {
-              "matches": 28,
-              "hits": 20,
-              "accuracy": 0.7142857142857143,
-              "averageLogLoss": 0.74284735770336,
-              "averageActualProbability": 0.5187678571428571
+              "matches": 29,
+              "hits": 21,
+              "accuracy": 0.7241379310344828,
+              "averageLogLoss": 0.7319134090850813,
+              "averageActualProbability": 0.5234058620689656
             }
           }
         }
@@ -411,92 +413,92 @@
       },
       "candidates": {
         "0.00": {
-          "matches": 35,
-          "totalExactHits": 9,
-          "totalExactAccuracy": 0.2571428571428571,
-          "totalAdjacentCoreHits": 26,
-          "totalAdjacentCoreAccuracy": 0.7428571428571429,
-          "averageTotalLogLoss": 1.7786288689196976,
-          "averageTotalRps": 0.11229057757031448,
-          "scoreTop1Hits": 4,
-          "scoreTop1Accuracy": 0.11428571428571428,
-          "scoreTop3Hits": 14,
-          "scoreTop3Accuracy": 0.4,
-          "scoreTop5Hits": 21,
-          "scoreTop5Accuracy": 0.6,
-          "averageScoreLogLoss": 2.6827476633444864,
-          "combinedLogLoss": 2.140276386689613
+          "matches": 38,
+          "totalExactHits": 11,
+          "totalExactAccuracy": 0.2894736842105263,
+          "totalAdjacentCoreHits": 29,
+          "totalAdjacentCoreAccuracy": 0.7631578947368421,
+          "averageTotalLogLoss": 1.748174444831292,
+          "averageTotalRps": 0.10852127237512788,
+          "scoreTop1Hits": 5,
+          "scoreTop1Accuracy": 0.13157894736842105,
+          "scoreTop3Hits": 17,
+          "scoreTop3Accuracy": 0.4473684210526316,
+          "scoreTop5Hits": 24,
+          "scoreTop5Accuracy": 0.631578947368421,
+          "averageScoreLogLoss": 2.6385447492356433,
+          "combinedLogLoss": 2.1043225665930327
         },
         "0.10": {
-          "matches": 35,
-          "totalExactHits": 9,
-          "totalExactAccuracy": 0.2571428571428571,
-          "totalAdjacentCoreHits": 26,
-          "totalAdjacentCoreAccuracy": 0.7428571428571429,
-          "averageTotalLogLoss": 1.7783173126389176,
-          "averageTotalRps": 0.1123607593795304,
-          "scoreTop1Hits": 4,
-          "scoreTop1Accuracy": 0.11428571428571428,
-          "scoreTop3Hits": 15,
-          "scoreTop3Accuracy": 0.42857142857142855,
-          "scoreTop5Hits": 21,
-          "scoreTop5Accuracy": 0.6,
-          "averageScoreLogLoss": 2.6828196286393258,
-          "combinedLogLoss": 2.1401182390390807
+          "matches": 38,
+          "totalExactHits": 11,
+          "totalExactAccuracy": 0.2894736842105263,
+          "totalAdjacentCoreHits": 29,
+          "totalAdjacentCoreAccuracy": 0.7631578947368421,
+          "averageTotalLogLoss": 1.7479578937778601,
+          "averageTotalRps": 0.10862766487915147,
+          "scoreTop1Hits": 5,
+          "scoreTop1Accuracy": 0.13157894736842105,
+          "scoreTop3Hits": 18,
+          "scoreTop3Accuracy": 0.47368421052631576,
+          "scoreTop5Hits": 24,
+          "scoreTop5Accuracy": 0.631578947368421,
+          "averageScoreLogLoss": 2.638635201905472,
+          "combinedLogLoss": 2.104228817028905
         },
         "0.15": {
-          "matches": 35,
-          "totalExactHits": 9,
-          "totalExactAccuracy": 0.2571428571428571,
-          "totalAdjacentCoreHits": 26,
-          "totalAdjacentCoreAccuracy": 0.7428571428571429,
-          "averageTotalLogLoss": 1.7781917776663632,
-          "averageTotalRps": 0.11240093420944826,
-          "scoreTop1Hits": 4,
-          "scoreTop1Accuracy": 0.11428571428571428,
-          "scoreTop3Hits": 16,
-          "scoreTop3Accuracy": 0.45714285714285713,
-          "scoreTop5Hits": 21,
-          "scoreTop5Accuracy": 0.6,
-          "averageScoreLogLoss": 2.6828907189498317,
-          "combinedLogLoss": 2.1400713541797507
+          "matches": 38,
+          "totalExactHits": 11,
+          "totalExactAccuracy": 0.2894736842105263,
+          "totalAdjacentCoreHits": 29,
+          "totalAdjacentCoreAccuracy": 0.7631578947368421,
+          "averageTotalLogLoss": 1.7478780618506737,
+          "averageTotalRps": 0.10868602446719675,
+          "scoreTop1Hits": 5,
+          "scoreTop1Accuracy": 0.13157894736842105,
+          "scoreTop3Hits": 19,
+          "scoreTop3Accuracy": 0.5,
+          "scoreTop5Hits": 24,
+          "scoreTop5Accuracy": 0.631578947368421,
+          "averageScoreLogLoss": 2.6387138249472053,
+          "combinedLogLoss": 2.1042123670892865
         },
         "0.20": {
-          "matches": 35,
-          "totalExactHits": 9,
-          "totalExactAccuracy": 0.2571428571428571,
-          "totalAdjacentCoreHits": 26,
-          "totalAdjacentCoreAccuracy": 0.7428571428571429,
-          "averageTotalLogLoss": 1.778086408744591,
-          "averageTotalRps": 0.11244449832290603,
-          "scoreTop1Hits": 4,
-          "scoreTop1Accuracy": 0.11428571428571428,
-          "scoreTop3Hits": 16,
-          "scoreTop3Accuracy": 0.45714285714285713,
-          "scoreTop5Hits": 21,
-          "scoreTop5Accuracy": 0.6,
-          "averageScoreLogLoss": 2.682985188599989,
-          "combinedLogLoss": 2.14004592068675
+          "matches": 38,
+          "totalExactHits": 11,
+          "totalExactAccuracy": 0.2894736842105263,
+          "totalAdjacentCoreHits": 29,
+          "totalAdjacentCoreAccuracy": 0.7631578947368421,
+          "averageTotalLogLoss": 1.7478171986093565,
+          "averageTotalRps": 0.10874782627926437,
+          "scoreTop1Hits": 5,
+          "scoreTop1Accuracy": 0.13157894736842105,
+          "scoreTop3Hits": 19,
+          "scoreTop3Accuracy": 0.5,
+          "scoreTop5Hits": 24,
+          "scoreTop5Accuracy": 0.631578947368421,
+          "averageScoreLogLoss": 2.6388146879318106,
+          "combinedLogLoss": 2.1042161943383384
         },
         "0.25": {
-          "matches": 35,
-          "totalExactHits": 9,
-          "totalExactAccuracy": 0.2571428571428571,
-          "totalAdjacentCoreHits": 26,
-          "totalAdjacentCoreAccuracy": 0.7428571428571429,
-          "averageTotalLogLoss": 1.7780012180351057,
-          "averageTotalRps": 0.11249145171990373,
-          "scoreTop1Hits": 4,
-          "scoreTop1Accuracy": 0.11428571428571428,
-          "scoreTop3Hits": 16,
-          "scoreTop3Accuracy": 0.45714285714285713,
-          "scoreTop5Hits": 21,
-          "scoreTop5Accuracy": 0.6,
-          "averageScoreLogLoss": 2.6831030321395426,
-          "combinedLogLoss": 2.1400419436768807
+          "matches": 38,
+          "totalExactHits": 11,
+          "totalExactAccuracy": 0.2894736842105263,
+          "totalAdjacentCoreHits": 29,
+          "totalAdjacentCoreAccuracy": 0.7631578947368421,
+          "averageTotalLogLoss": 1.7477753172794437,
+          "averageTotalRps": 0.10881307031535427,
+          "scoreTop1Hits": 5,
+          "scoreTop1Accuracy": 0.13157894736842105,
+          "scoreTop3Hits": 19,
+          "scoreTop3Accuracy": 0.5,
+          "scoreTop5Hits": 24,
+          "scoreTop5Accuracy": 0.631578947368421,
+          "averageScoreLogLoss": 2.6389377853123888,
+          "combinedLogLoss": 2.104240304492622
         }
       },
-      "selectedIntensity": 0.25,
+      "selectedIntensity": 0.15,
       "selectionReason": "combined_loss_improved_and_hit_guards_passed",
       "guards": {
         "totalGoalsAdjacentHitsNotWorse": true,

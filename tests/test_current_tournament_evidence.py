@@ -69,3 +69,23 @@ def test_extra_time_is_fatigue_metadata_not_a_score_input():
     assert home["extraTimeLoad"]
     assert home["fatigueAttackDelta"] == -0.03
     assert home["fatigueDefenseRiskDelta"] == 0.02
+
+
+def test_half_split_uses_only_prior_halftime_residuals_and_is_bounded():
+    evidence = [EvidenceMatch(
+        match_id="past", kickoff=datetime.fromisoformat("2026-07-01T12:00:00+08:00"),
+        home_team="A", away_team="C", home_xg=1.0, away_xg=1.0,
+        home_goals=2, away_goals=0, extra_time_load=False,
+        half_home_goals=2, half_away_goals=0,
+    )]
+    seed = {"home_team": "A", "away_team": "B", "kickoff": "2026-07-10T12:00:00+08:00",
+            "base_xg": [1.2, 1.0], "model_decomposition": {}}
+    apply_current_tournament_evidence([seed], "2026-07-10", evidence, settings={
+        "halfLifeMatches": 2.0, "shrinkage": 5.0, "maxSideXgShift": 0.0,
+        "halfFullEvidence": {"halfLifeMatches": 1.5, "shrinkage": 5.0,
+                             "maxFirstHalfXgShift": 0.05, "blend": 0.25},
+    })
+    split = seed["tournament_evidence"]["halfFullEvidence"]
+    assert split["firstHalfXgShift"]["home"] == 0.05
+    assert split["blend"] == 0.25
+    assert split["firstHalfExpectedGoals"]["home"] + split["secondHalfExpectedGoals"]["home"] == 1.2

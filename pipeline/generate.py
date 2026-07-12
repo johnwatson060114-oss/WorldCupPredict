@@ -34,13 +34,14 @@ from .football_data import (
     team_flag,
 )
 from .factor_gate import apply_factor_admissions, load_factor_admissions
-from .half_full_specialist import apply_half_full_market_calibration, build_half_full_signal
+from .half_full_specialist import apply_half_full_market_calibration, apply_opponent_adjusted_half_split, build_half_full_signal
 from .current_tournament_evidence import apply_current_tournament_evidence, load_evidence_matches
 from .model import (
     adjust_xg,
     estimate_from_recent_results,
     expected_return,
     half_full_probabilities,
+    half_full_probabilities_split,
     normalized_market_probabilities,
     outcome_probabilities,
     probability_lower_bound,
@@ -768,8 +769,20 @@ def build_match(
         },
     )
     outcomes = draw_risk_result.probabilities
-    raw_half_full_model = simulated["halfFull"] if simulated else half_full_probabilities(home_xg, away_xg)
-    half_full_calibration = apply_half_full_market_calibration(raw_half_full_model, seed)
+    half_split = ((seed.get("tournament_evidence") or {}).get("halfFullEvidence") or {})
+    first_half_xg = half_split.get("firstHalfExpectedGoals") or {}
+    second_half_xg = half_split.get("secondHalfExpectedGoals") or {}
+    baseline_half_full_model = simulated["halfFull"] if simulated else half_full_probabilities(home_xg, away_xg)
+    if all(first_half_xg.get(side) is not None and second_half_xg.get(side) is not None for side in ("home", "away")):
+        split_half_full_model = half_full_probabilities_split(
+            float(first_half_xg["home"]), float(first_half_xg["away"]),
+            float(second_half_xg["home"]), float(second_half_xg["away"]),
+        )
+        half_full_calibration = apply_opponent_adjusted_half_split(
+            baseline_half_full_model, split_half_full_model, seed, float(half_split.get("blend", 0.0))
+        )
+    else:
+        half_full_calibration = apply_half_full_market_calibration(baseline_half_full_model, seed)
     half_full_model = half_full_calibration.probabilities
     half_full_signal = build_half_full_signal(
         half_full_model,

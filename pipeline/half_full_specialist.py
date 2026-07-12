@@ -102,6 +102,34 @@ def apply_half_full_market_calibration(
     )
 
 
+def apply_opponent_adjusted_half_split(
+    baseline: Mapping[str, float],
+    candidate: Mapping[str, float],
+    seed: Mapping[str, object] | None,
+    blend: float,
+) -> HalfFullMarketCalibration:
+    baseline_calibration = apply_half_full_market_calibration(baseline, seed)
+    candidate_calibration = apply_half_full_market_calibration(candidate, seed)
+    bounded_blend = min(1.0, max(0.0, float(blend)))
+    probabilities = normalize_distribution({
+        key: (1.0 - bounded_blend) * baseline_calibration.probabilities[key]
+        + bounded_blend * candidate_calibration.probabilities[key]
+        for key in HALF_FULL_SELECTIONS
+    }, HALF_FULL_SELECTIONS)
+    return HalfFullMarketCalibration(
+        probabilities=probabilities,
+        metadata={
+            "applied": bounded_blend > 0,
+            "policy": "opponent_adjusted_half_split_v1",
+            "blend": bounded_blend,
+            "baselineCalibration": baseline_calibration.metadata,
+            "candidateCalibration": candidate_calibration.metadata,
+            "topSelectionBefore": max(baseline_calibration.probabilities, key=baseline_calibration.probabilities.get),
+            "topSelectionAfter": max(probabilities, key=probabilities.get),
+        },
+    )
+
+
 def half_full_to_outcomes(half_full: Mapping[str, float]) -> dict[str, float]:
     normalized = normalize_distribution(half_full, HALF_FULL_SELECTIONS)
     outcomes = {key: 0.0 for key in OUTCOME_KEYS}

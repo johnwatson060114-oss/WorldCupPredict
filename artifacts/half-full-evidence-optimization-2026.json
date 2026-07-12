@@ -1,0 +1,3497 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-12T17:47:52+08:00",
+  "objective": "opponent-adjusted first/second-half temporal residual model",
+  "leakagePolicy": "only matches with kickoff strictly before target kickoff",
+  "baseline": {
+    "all": {
+      "matches": 88,
+      "top1Hits": 31,
+      "top3Hits": 62,
+      "averageLogLoss": 1.7970415414906489,
+      "averageBrier": 0.7629017561879295
+    },
+    "knockout": {
+      "matches": 38,
+      "top1Hits": 11,
+      "top3Hits": 24,
+      "averageLogLoss": 1.947721539413088,
+      "averageBrier": 0.8048322182125126
+    }
+  },
+  "selected": {
+    "settings": {
+      "halfLifeMatches": 1.5,
+      "shrinkage": 5.0,
+      "maxFirstHalfXgShift": 0.05,
+      "blend": 0.25
+    },
+    "baseline": {
+      "all": {
+        "matches": 88,
+        "top1Hits": 31,
+        "top3Hits": 62,
+        "averageLogLoss": 1.7970415414906489,
+        "averageBrier": 0.7629017561879295
+      },
+      "knockout": {
+        "matches": 38,
+        "top1Hits": 11,
+        "top3Hits": 24,
+        "averageLogLoss": 1.947721539413088,
+        "averageBrier": 0.8048322182125126
+      }
+    },
+    "candidate": {
+      "all": {
+        "matches": 88,
+        "top1Hits": 31,
+        "top3Hits": 62,
+        "averageLogLoss": 1.796052490823791,
+        "averageBrier": 0.7628139697491535
+      },
+      "knockout": {
+        "matches": 38,
+        "top1Hits": 11,
+        "top3Hits": 24,
+        "averageLogLoss": 1.9423074603194004,
+        "averageBrier": 0.8042371088022401
+      }
+    },
+    "matches": [
+      {
+        "matchId": "西班牙 vs 佛得角",
+        "homeTeam": "西班牙",
+        "awayTeam": "佛得角",
+        "kickoff": "2026-06-16T00:00:00+08:00",
+        "stage": "group",
+        "actual": "平平",
+        "baseline": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 2.430278448637578,
+          "brier": 1.253900510599171,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 2.430278448637578,
+          "brier": 1.253900510599171,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.0,
+            "away": 0.0
+          },
+          "firstHalfExpectedGoals": {
+            "home": 1.08,
+            "away": 0.0675
+          },
+          "secondHalfExpectedGoals": {
+            "home": 1.32,
+            "away": 0.0825
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "比利时 vs 埃及",
+        "homeTeam": "比利时",
+        "awayTeam": "埃及",
+        "kickoff": "2026-06-16T03:00:00+08:00",
+        "stage": "group",
+        "actual": "负平",
+        "baseline": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 3.125246087945331,
+          "brier": 1.1401025904361957,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 3.125246087945331,
+          "brier": 1.1401025904361957,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.0,
+            "away": 0.0
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.8325,
+            "away": 0.315
+          },
+          "secondHalfExpectedGoals": {
+            "home": 1.0175,
+            "away": 0.385
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "沙特 vs 乌拉圭",
+        "homeTeam": "沙特",
+        "awayTeam": "乌拉圭",
+        "kickoff": "2026-06-16T06:00:00+08:00",
+        "stage": "group",
+        "actual": "胜平",
+        "baseline": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 3.6245890574583637,
+          "brier": 1.2691330087101518,
+          "predicted": "负负"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 3.6245890574583637,
+          "brier": 1.2691330087101518,
+          "predicted": "负负"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.0,
+            "away": 0.0
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.1845,
+            "away": 0.963
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.2255,
+            "away": 1.177
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "伊朗 vs 新西兰",
+        "homeTeam": "伊朗",
+        "awayTeam": "新西兰",
+        "kickoff": "2026-06-16T09:00:00+08:00",
+        "stage": "group",
+        "actual": "平平",
+        "baseline": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 2.0230989872618275,
+          "brier": 0.9717460777990844,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 2.0230989872618275,
+          "brier": 0.9717460777990844,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.0,
+            "away": 0.0
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.846,
+            "away": 0.3015
+          },
+          "secondHalfExpectedGoals": {
+            "home": 1.034,
+            "away": 0.3685
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040178",
+        "homeTeam": "法国",
+        "awayTeam": "塞内加尔",
+        "kickoff": "2026-06-17T03:00:00+08:00",
+        "stage": "group",
+        "actual": "平胜",
+        "baseline": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.4234750996851897,
+          "brier": 0.7516834995341646,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.4234750996851897,
+          "brier": 0.7516834995341646,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.0,
+            "away": 0.0
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.8415,
+            "away": 0.306
+          },
+          "secondHalfExpectedGoals": {
+            "home": 1.0285,
+            "away": 0.374
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040179",
+        "homeTeam": "伊拉克",
+        "awayTeam": "挪威",
+        "kickoff": "2026-06-17T06:00:00+08:00",
+        "stage": "group",
+        "actual": "负负",
+        "baseline": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 0.7426838067395846,
+          "brier": 0.3633059436708718,
+          "predicted": "负负"
+        },
+        "candidate": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 0.7426838067395846,
+          "brier": 0.3633059436708718,
+          "predicted": "负负"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.0,
+            "away": 0.0
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.1935,
+            "away": 0.954
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.2365,
+            "away": 1.166
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040180",
+        "homeTeam": "阿根廷",
+        "awayTeam": "阿尔及利亚",
+        "kickoff": "2026-06-17T09:00:00+08:00",
+        "stage": "group",
+        "actual": "胜胜",
+        "baseline": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 0.6799049334311265,
+          "brier": 0.33229979522637143,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 0.6799049334311265,
+          "brier": 0.33229979522637143,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.0,
+            "away": 0.0
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.99,
+            "away": 0.1575
+          },
+          "secondHalfExpectedGoals": {
+            "home": 1.21,
+            "away": 0.1925
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040181",
+        "homeTeam": "奥地利",
+        "awayTeam": "约旦",
+        "kickoff": "2026-06-17T12:00:00+08:00",
+        "stage": "group",
+        "actual": "胜胜",
+        "baseline": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 1.1136927815897928,
+          "brier": 0.5398029492975216,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 1.1136927815897928,
+          "brier": 0.5398029492975216,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.0,
+            "away": 0.0
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.774,
+            "away": 0.3735
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.946,
+            "away": 0.4565
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040182",
+        "homeTeam": "葡萄牙",
+        "awayTeam": "民主刚果",
+        "kickoff": "2026-06-18T01:00:00+08:00",
+        "stage": "group",
+        "actual": "平平",
+        "baseline": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.7955277269607741,
+          "brier": 0.8243355632015364,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.7955277269607741,
+          "brier": 0.8243355632015364,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.0,
+            "away": 0.0
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.603,
+            "away": 0.459
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.737,
+            "away": 0.561
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040183",
+        "homeTeam": "英格兰",
+        "awayTeam": "克罗地亚",
+        "kickoff": "2026-06-18T04:00:00+08:00",
+        "stage": "group",
+        "actual": "平胜",
+        "baseline": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.6582796189091404,
+          "brier": 0.7835404454663163,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.6582796189091404,
+          "brier": 0.7835404454663163,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.0,
+            "away": 0.0
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.7155,
+            "away": 0.477
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.8745,
+            "away": 0.583
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040184",
+        "homeTeam": "加纳",
+        "awayTeam": "巴拿马",
+        "kickoff": "2026-06-18T07:00:00+08:00",
+        "stage": "group",
+        "actual": "平胜",
+        "baseline": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 2.0060691939972446,
+          "brier": 0.8796964134938886,
+          "predicted": "负负"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 2.0060691939972446,
+          "brier": 0.8796964134938886,
+          "predicted": "负负"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.0,
+            "away": 0.0
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.594,
+            "away": 0.6705
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.726,
+            "away": 0.8195
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040185",
+        "homeTeam": "乌兹别克斯坦",
+        "awayTeam": "哥伦比亚",
+        "kickoff": "2026-06-18T10:00:00+08:00",
+        "stage": "group",
+        "actual": "负负",
+        "baseline": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.7144158448314075,
+          "brier": 0.7898062750043796,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.7144158448314075,
+          "brier": 0.7898062750043796,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.0,
+            "away": 0.0
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.531,
+            "away": 0.522
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.649,
+            "away": 0.638
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040235",
+        "homeTeam": "捷克",
+        "awayTeam": "南非",
+        "kickoff": "2026-06-19T00:00:00+08:00",
+        "stage": "group",
+        "actual": "胜平",
+        "baseline": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 3.1489511793279994,
+          "brier": 1.143971360333454,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 3.1489511793279994,
+          "brier": 1.143971360333454,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.0,
+            "away": 0.0
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.819,
+            "away": 0.3015
+          },
+          "secondHalfExpectedGoals": {
+            "home": 1.001,
+            "away": 0.3685
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040236",
+        "homeTeam": "瑞士",
+        "awayTeam": "波黑",
+        "kickoff": "2026-06-19T03:00:00+08:00",
+        "stage": "group",
+        "actual": "平胜",
+        "baseline": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.4188311149347312,
+          "brier": 0.7773214535647612,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.4188311149347312,
+          "brier": 0.7773214535647612,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.0,
+            "away": 0.0
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.9585,
+            "away": 0.3105
+          },
+          "secondHalfExpectedGoals": {
+            "home": 1.1715,
+            "away": 0.3795
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040237",
+        "homeTeam": "加拿大",
+        "awayTeam": "卡塔尔",
+        "kickoff": "2026-06-19T06:00:00+08:00",
+        "stage": "group",
+        "actual": "胜胜",
+        "baseline": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 0.724671139084772,
+          "brier": 0.3497543008026521,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 0.724671139084772,
+          "brier": 0.3497543008026521,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.0,
+            "away": 0.0
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.999,
+            "away": 0.2115
+          },
+          "secondHalfExpectedGoals": {
+            "home": 1.221,
+            "away": 0.2585
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040238",
+        "homeTeam": "墨西哥",
+        "awayTeam": "韩国",
+        "kickoff": "2026-06-19T09:00:00+08:00",
+        "stage": "group",
+        "actual": "平胜",
+        "baseline": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.6088464877272428,
+          "brier": 0.769032140064099,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.6088464877272428,
+          "brier": 0.769032140064099,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.0,
+            "away": 0.0
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.657,
+            "away": 0.4095
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.803,
+            "away": 0.5005
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040239",
+        "homeTeam": "美国",
+        "awayTeam": "澳大利亚",
+        "kickoff": "2026-06-20T03:00:00+08:00",
+        "stage": "group",
+        "actual": "胜胜",
+        "baseline": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 1.9297802937786377,
+          "brier": 0.86474939157465,
+          "predicted": "负负"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 1.9297802937786377,
+          "brier": 0.86474939157465,
+          "predicted": "负负"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.0,
+            "away": 0.0
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.504,
+            "away": 0.657
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.616,
+            "away": 0.803
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040240",
+        "homeTeam": "苏格兰",
+        "awayTeam": "摩洛哥",
+        "kickoff": "2026-06-20T06:00:00+08:00",
+        "stage": "group",
+        "actual": "负负",
+        "baseline": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 1.4881724473588651,
+          "brier": 0.7040072750019853,
+          "predicted": "负负"
+        },
+        "candidate": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 1.4881724473588651,
+          "brier": 0.7040072750019853,
+          "predicted": "负负"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.0,
+            "away": 0.0
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.459,
+            "away": 0.5895
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.561,
+            "away": 0.7205
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040241",
+        "homeTeam": "巴西",
+        "awayTeam": "海地",
+        "kickoff": "2026-06-20T08:30:00+08:00",
+        "stage": "group",
+        "actual": "胜胜",
+        "baseline": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 0.5451104445081955,
+          "brier": 0.2624535742552481,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 0.5451104445081955,
+          "brier": 0.2624535742552481,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.0,
+            "away": 0.0
+          },
+          "firstHalfExpectedGoals": {
+            "home": 1.0935,
+            "away": 0.0855
+          },
+          "secondHalfExpectedGoals": {
+            "home": 1.3365,
+            "away": 0.1045
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040242",
+        "homeTeam": "土耳其",
+        "awayTeam": "巴拉圭",
+        "kickoff": "2026-06-20T11:00:00+08:00",
+        "stage": "group",
+        "actual": "负负",
+        "baseline": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.97111024754262,
+          "brier": 0.8799587015272182,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.97111024754262,
+          "brier": 0.8799587015272182,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.0,
+            "away": 0.0
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.738,
+            "away": 0.5355
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.902,
+            "away": 0.6545
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040243",
+        "homeTeam": "荷兰",
+        "awayTeam": "瑞典",
+        "kickoff": "2026-06-21T01:00:00+08:00",
+        "stage": "group",
+        "actual": "胜胜",
+        "baseline": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 0.9580450094187997,
+          "brier": 0.45057486173869615,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 0.9580450094187997,
+          "brier": 0.45057486173869615,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.0,
+            "away": 0.0
+          },
+          "firstHalfExpectedGoals": {
+            "home": 1.053,
+            "away": 0.504
+          },
+          "secondHalfExpectedGoals": {
+            "home": 1.287,
+            "away": 0.616
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040244",
+        "homeTeam": "德国",
+        "awayTeam": "科特迪瓦",
+        "kickoff": "2026-06-21T04:00:00+08:00",
+        "stage": "group",
+        "actual": "负胜",
+        "baseline": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 3.3147906413678068,
+          "brier": 1.1555927482454988,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 3.3147906413678068,
+          "brier": 1.1555927482454988,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.0,
+            "away": 0.0
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.9405,
+            "away": 0.387
+          },
+          "secondHalfExpectedGoals": {
+            "home": 1.1495,
+            "away": 0.473
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040245",
+        "homeTeam": "厄瓜多尔",
+        "awayTeam": "库拉索",
+        "kickoff": "2026-06-21T08:00:00+08:00",
+        "stage": "group",
+        "actual": "平平",
+        "baseline": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 2.157845446409651,
+          "brier": 1.1544341541326597,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 2.157845446409651,
+          "brier": 1.1544341541326595,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.0,
+            "away": 0.0
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.945,
+            "away": 0.072
+          },
+          "secondHalfExpectedGoals": {
+            "home": 1.155,
+            "away": 0.088
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040246",
+        "homeTeam": "突尼斯",
+        "awayTeam": "日本",
+        "kickoff": "2026-06-21T12:00:00+08:00",
+        "stage": "group",
+        "actual": "负负",
+        "baseline": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 0.6799227392766155,
+          "brier": 0.32206308739513845,
+          "predicted": "负负"
+        },
+        "candidate": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 0.6799227392766155,
+          "brier": 0.32206308739513845,
+          "predicted": "负负"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.0,
+            "away": 0.0
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.2205,
+            "away": 1.071
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.2695,
+            "away": 1.309
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "西班牙 vs 沙特",
+        "homeTeam": "西班牙",
+        "awayTeam": "沙特",
+        "kickoff": "2026-06-22T00:00:00+08:00",
+        "stage": "group",
+        "actual": "胜胜",
+        "baseline": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 0.5956203048605622,
+          "brier": 0.2981983081418686,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 0.6112562903177803,
+          "brier": 0.30942522002663875,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": -0.05,
+            "away": 0.05
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.9445,
+            "away": 0.122
+          },
+          "secondHalfExpectedGoals": {
+            "home": 1.2655,
+            "away": 0.05
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "比利时 vs 伊朗",
+        "homeTeam": "比利时",
+        "awayTeam": "伊朗",
+        "kickoff": "2026-06-22T03:00:00+08:00",
+        "stage": "group",
+        "actual": "平平",
+        "baseline": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 2.074014618309213,
+          "brier": 0.9285469996344594,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 2.075455821364938,
+          "brier": 0.9283340858179268,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": -0.0111,
+            "away": 0.05
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.8124,
+            "away": 0.527
+          },
+          "secondHalfExpectedGoals": {
+            "home": 1.0177,
+            "away": 0.533
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "乌拉圭 vs 佛得角",
+        "homeTeam": "乌拉圭",
+        "awayTeam": "佛得角",
+        "kickoff": "2026-06-22T06:00:00+08:00",
+        "stage": "group",
+        "actual": "胜平",
+        "baseline": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 3.6075973438601965,
+          "brier": 1.2169192299314133,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 3.6975458742495015,
+          "brier": 1.2191365091433801,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": -0.05,
+            "away": 0.05
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.6565,
+            "away": 0.1985
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.9135,
+            "away": 0.1315
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "新西兰 vs 埃及",
+        "homeTeam": "新西兰",
+        "awayTeam": "埃及",
+        "kickoff": "2026-06-22T09:00:00+08:00",
+        "stage": "group",
+        "actual": "胜负",
+        "baseline": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 3.4869236444882015,
+          "brier": 1.1248487967666505,
+          "predicted": "负负"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 3.5244819715143856,
+          "brier": 1.128144923022186,
+          "predicted": "负负"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": -0.0111,
+            "away": 0.05
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.3894,
+            "away": 0.806
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.5007,
+            "away": 0.874
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040251",
+        "homeTeam": "阿根廷",
+        "awayTeam": "奥地利",
+        "kickoff": "2026-06-23T01:00:00+08:00",
+        "stage": "group",
+        "actual": "胜胜",
+        "baseline": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 0.8075968202945445,
+          "brier": 0.39225664341134775,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 0.8142349155649847,
+          "brier": 0.396867513342895,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": -0.0302,
+            "away": 0.0057
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.9103,
+            "away": 0.2533
+          },
+          "secondHalfExpectedGoals": {
+            "home": 1.1797,
+            "away": 0.2968
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040252",
+        "homeTeam": "法国",
+        "awayTeam": "伊拉克",
+        "kickoff": "2026-06-23T05:00:00+08:00",
+        "stage": "group",
+        "actual": "胜胜",
+        "baseline": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 0.4790526989245078,
+          "brier": 0.22083078643643125,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 0.4817999773583081,
+          "brier": 0.22235825597079478,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.0171,
+            "away": 0.0417
+          },
+          "firstHalfExpectedGoals": {
+            "home": 1.2231,
+            "away": 0.1227
+          },
+          "secondHalfExpectedGoals": {
+            "home": 1.4569,
+            "away": 0.0573
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040253",
+        "homeTeam": "挪威",
+        "awayTeam": "塞内加尔",
+        "kickoff": "2026-06-23T08:00:00+08:00",
+        "stage": "group",
+        "actual": "胜胜",
+        "baseline": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 1.2465854218713484,
+          "brier": 0.5926342035274129,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 1.245984804775102,
+          "brier": 0.5924180439144635,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.0171,
+            "away": 0.0417
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.8316,
+            "away": 0.5772
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.9785,
+            "away": 0.6128
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040254",
+        "homeTeam": "约旦",
+        "awayTeam": "阿尔及利",
+        "kickoff": "2026-06-23T11:00:00+08:00",
+        "stage": "group",
+        "actual": "胜负",
+        "baseline": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 3.6683998803421045,
+          "brier": 1.0993975834270369,
+          "predicted": "负负"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 3.6987873279470382,
+          "brier": 1.100985304328439,
+          "predicted": "负负"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": -0.0311,
+            "away": 0.0188
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.4909,
+            "away": 0.6174
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.6691,
+            "away": 0.7127
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "瑞士 vs 加拿大",
+        "homeTeam": "瑞士",
+        "awayTeam": "加拿大",
+        "kickoff": "2026-06-25T03:00:00+08:00",
+        "stage": "group",
+        "actual": "平胜",
+        "baseline": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.694202167148564,
+          "brier": 0.7968418994822661,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.6743854907044158,
+          "brier": 0.7885016018511063,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": -0.05,
+            "away": 0.05
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.7555,
+            "away": 0.599
+          },
+          "secondHalfExpectedGoals": {
+            "home": 1.0345,
+            "away": 0.621
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "波黑 vs 卡塔尔",
+        "homeTeam": "波黑",
+        "awayTeam": "卡塔尔",
+        "kickoff": "2026-06-25T03:00:00+08:00",
+        "stage": "group",
+        "actual": "胜胜",
+        "baseline": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 1.0261419315586013,
+          "brier": 0.487726111881632,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 1.0117773081026733,
+          "brier": 0.47921000613743653,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.05,
+            "away": -0.05
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.9995,
+            "away": 0.4225
+          },
+          "secondHalfExpectedGoals": {
+            "home": 1.1105,
+            "away": 0.6275
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "摩洛哥 vs 海地",
+        "homeTeam": "摩洛哥",
+        "awayTeam": "海地",
+        "kickoff": "2026-06-25T06:00:00+08:00",
+        "stage": "group",
+        "actual": "平胜",
+        "baseline": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.2365035671680478,
+          "brier": 0.8066631383871614,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.2573494897830322,
+          "brier": 0.822744157517873,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.05,
+            "away": -0.0454
+          },
+          "firstHalfExpectedGoals": {
+            "home": 1.031,
+            "away": 0.05
+          },
+          "secondHalfExpectedGoals": {
+            "home": 1.149,
+            "away": 0.14
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "苏格兰 vs 巴西",
+        "homeTeam": "苏格兰",
+        "awayTeam": "巴西",
+        "kickoff": "2026-06-25T06:00:00+08:00",
+        "stage": "group",
+        "actual": "负负",
+        "baseline": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 0.9051726208347437,
+          "brier": 0.45418488887770647,
+          "predicted": "负负"
+        },
+        "candidate": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 0.8888294001658077,
+          "brier": 0.44323000861921363,
+          "predicted": "负负"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": -0.0454,
+            "away": 0.05
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.1616,
+            "away": 0.842
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.2984,
+            "away": 0.918
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "捷克 vs 墨西哥",
+        "homeTeam": "捷克",
+        "awayTeam": "墨西哥",
+        "kickoff": "2026-06-25T09:00:00+08:00",
+        "stage": "group",
+        "actual": "平负",
+        "baseline": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.3867269269588145,
+          "brier": 0.7350851905337179,
+          "predicted": "负负"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.370628392310295,
+          "brier": 0.7260135692706439,
+          "predicted": "负负"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": -0.019,
+            "away": -0.05
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.2419,
+            "away": 0.724
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.338,
+            "away": 0.996
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "南非 vs 韩国",
+        "homeTeam": "南非",
+        "awayTeam": "韩国",
+        "kickoff": "2026-06-25T09:00:00+08:00",
+        "stage": "group",
+        "actual": "平胜",
+        "baseline": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 3.050616303431862,
+          "brier": 1.1687930814524605,
+          "predicted": "负负"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 3.006006149093469,
+          "brier": 1.165007348374063,
+          "predicted": "负负"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": -0.05,
+            "away": -0.019
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.184,
+            "away": 0.8225
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.336,
+            "away": 1.0476
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "厄瓜多尔 vs 德国",
+        "homeTeam": "厄瓜多尔",
+        "awayTeam": "德国",
+        "kickoff": "2026-06-26T04:00:00+08:00",
+        "stage": "group",
+        "actual": "平胜",
+        "baseline": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 2.2625229167059535,
+          "brier": 0.9603688972237626,
+          "predicted": "负负"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 2.2514852288066156,
+          "brier": 0.9574485415700762,
+          "predicted": "负负"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": -0.0277,
+            "away": -0.05
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.4224,
+            "away": 0.661
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.5776,
+            "away": 0.919
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "库拉索 vs 科特迪瓦",
+        "homeTeam": "库拉索",
+        "awayTeam": "科特迪瓦",
+        "kickoff": "2026-06-26T04:00:00+08:00",
+        "stage": "group",
+        "actual": "负负",
+        "baseline": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 0.7584704618012468,
+          "brier": 0.3617724217194326,
+          "predicted": "负负"
+        },
+        "candidate": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 0.7579877736809332,
+          "brier": 0.3618164687231908,
+          "predicted": "负负"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": -0.05,
+            "away": -0.0277
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.2155,
+            "away": 0.9939
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.3745,
+            "away": 1.2761
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "突尼斯 vs 荷兰",
+        "homeTeam": "突尼斯",
+        "awayTeam": "荷兰",
+        "kickoff": "2026-06-26T07:00:00+08:00",
+        "stage": "group",
+        "actual": "负负",
+        "baseline": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 0.4878454833463121,
+          "brier": 0.21088181208105863,
+          "predicted": "负负"
+        },
+        "candidate": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 0.4768665445053317,
+          "brier": 0.20321570693138938,
+          "predicted": "负负"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": -0.05,
+            "away": 0.05
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.139,
+            "away": 1.4045
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.281,
+            "away": 1.6055
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "日本 vs 瑞典",
+        "homeTeam": "日本",
+        "awayTeam": "瑞典",
+        "kickoff": "2026-06-26T07:00:00+08:00",
+        "stage": "group",
+        "actual": "平平",
+        "baseline": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 2.5955060410879875,
+          "brier": 1.0887790241598678,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 2.595077351709951,
+          "brier": 1.091239671996924,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.05,
+            "away": -0.05
+          },
+          "firstHalfExpectedGoals": {
+            "home": 1.2965,
+            "away": 0.535
+          },
+          "secondHalfExpectedGoals": {
+            "home": 1.4735,
+            "away": 0.765
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "土耳其 vs 美国",
+        "homeTeam": "土耳其",
+        "awayTeam": "美国",
+        "kickoff": "2026-06-26T10:00:00+08:00",
+        "stage": "group",
+        "actual": "胜胜",
+        "baseline": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.7824740693936019,
+          "brier": 0.8134130270660535,
+          "predicted": "负负"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.803406608408498,
+          "brier": 0.8207356262426898,
+          "predicted": "负负"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": -0.05,
+            "away": 0.05
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.571,
+            "away": 0.779
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.809,
+            "away": 0.841
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "巴拉圭 vs 澳大利亚",
+        "homeTeam": "巴拉圭",
+        "awayTeam": "澳大利亚",
+        "kickoff": "2026-06-26T10:00:00+08:00",
+        "stage": "group",
+        "actual": "平平",
+        "baseline": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.808687531721817,
+          "brier": 0.8215191995171044,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.8099117178291693,
+          "brier": 0.8218891302496435,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.05,
+            "away": -0.05
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.5945,
+            "away": 0.49
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.6155,
+            "away": 0.71
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "挪威 vs 法国",
+        "homeTeam": "挪威",
+        "awayTeam": "法国",
+        "kickoff": "2026-06-27T03:00:00+08:00",
+        "stage": "group",
+        "actual": "负负",
+        "baseline": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 1.0978906563019237,
+          "brier": 0.5182739605101825,
+          "predicted": "负负"
+        },
+        "candidate": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 1.111776184879715,
+          "brier": 0.5259743423293795,
+          "predicted": "负负"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.0431,
+            "away": -0.05
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.6371,
+            "away": 0.949
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.6829,
+            "away": 1.271
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "塞内加尔 vs 伊拉克",
+        "homeTeam": "塞内加尔",
+        "awayTeam": "伊拉克",
+        "kickoff": "2026-06-27T03:00:00+08:00",
+        "stage": "group",
+        "actual": "胜胜",
+        "baseline": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 0.9012136796996397,
+          "brier": 0.43443943470719637,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 0.9061358484510734,
+          "brier": 0.43763449298067464,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": -0.0207,
+            "away": 0.0062
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.9017,
+            "away": 0.3302
+          },
+          "secondHalfExpectedGoals": {
+            "home": 1.1482,
+            "away": 0.3898
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "乌拉圭 vs 西班牙",
+        "homeTeam": "乌拉圭",
+        "awayTeam": "西班牙",
+        "kickoff": "2026-06-27T08:00:00+08:00",
+        "stage": "group",
+        "actual": "负负",
+        "baseline": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 0.7389126154212103,
+          "brier": 0.36883115073461226,
+          "predicted": "负负"
+        },
+        "candidate": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 0.7338295319783587,
+          "brier": 0.3646070643991596,
+          "predicted": "负负"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.0432,
+            "away": 0.05
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.1962,
+            "away": 0.959
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.1439,
+            "away": 1.061
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "佛得角 vs 沙特",
+        "homeTeam": "佛得角",
+        "awayTeam": "沙特",
+        "kickoff": "2026-06-27T08:00:00+08:00",
+        "stage": "group",
+        "actual": "平平",
+        "baseline": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.7792912097339773,
+          "brier": 0.8180616626236792,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.7789199469996968,
+          "brier": 0.8184784840537428,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.05,
+            "away": 0.05
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.6395,
+            "away": 0.509
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.6705,
+            "away": 0.511
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "新西兰 vs 比利时",
+        "homeTeam": "新西兰",
+        "awayTeam": "比利时",
+        "kickoff": "2026-06-27T11:00:00+08:00",
+        "stage": "group",
+        "actual": "负负",
+        "baseline": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 0.6928411093708741,
+          "brier": 0.32138673686532054,
+          "predicted": "负负"
+        },
+        "candidate": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 0.7061927623172608,
+          "brier": 0.330518933188109,
+          "predicted": "负负"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.05,
+            "away": -0.05
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.338,
+            "away": 1.0885
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.302,
+            "away": 1.4415
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "埃及 vs 伊朗",
+        "homeTeam": "埃及",
+        "awayTeam": "伊朗",
+        "kickoff": "2026-06-27T11:00:00+08:00",
+        "stage": "group",
+        "actual": "平平",
+        "baseline": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.6720883506606032,
+          "brier": 0.7778099422867768,
+          "predicted": "负负"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.6714842093547662,
+          "brier": 0.7774180723626392,
+          "predicted": "负负"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": -0.05,
+            "away": -0.023
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.4045,
+            "away": 0.481
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.6055,
+            "away": 0.639
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "巴拿马 vs 英格兰",
+        "homeTeam": "巴拿马",
+        "awayTeam": "英格兰",
+        "kickoff": "2026-06-28T05:00:00+08:00",
+        "stage": "knockout",
+        "actual": "平负",
+        "baseline": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.3365726493021277,
+          "brier": 0.7126214633202829,
+          "predicted": "负负"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.3512696664150274,
+          "brier": 0.7208249509148064,
+          "predicted": "负负"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.05,
+            "away": 0.05
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.248,
+            "away": 0.7205
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.192,
+            "away": 0.7695
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "克罗地亚 vs 加纳",
+        "homeTeam": "克罗地亚",
+        "awayTeam": "加纳",
+        "kickoff": "2026-06-28T05:00:00+08:00",
+        "stage": "knockout",
+        "actual": "胜胜",
+        "baseline": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 2.1566898817870386,
+          "brier": 0.9408447310806947,
+          "predicted": "平平"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 2.124208030553381,
+          "brier": 0.9335285599155657,
+          "predicted": "平平"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.05,
+            "away": 0.05
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.3605,
+            "away": 0.5045
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.3295,
+            "away": 0.5055
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "哥伦比亚 vs 葡萄牙",
+        "homeTeam": "哥伦比亚",
+        "awayTeam": "葡萄牙",
+        "kickoff": "2026-06-28T07:30:00+08:00",
+        "stage": "knockout",
+        "actual": "平平",
+        "baseline": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 2.2589268629141004,
+          "brier": 0.9611904568593733,
+          "predicted": "负负"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 2.260151238545095,
+          "brier": 0.9609970069560452,
+          "predicted": "负负"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.05,
+            "away": -0.0112
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.6665,
+            "away": 0.9159
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.7035,
+            "away": 1.1442
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "民主刚果 vs 乌兹别克斯坦",
+        "homeTeam": "民主刚果",
+        "awayTeam": "乌兹别克斯坦",
+        "kickoff": "2026-06-28T07:30:00+08:00",
+        "stage": "knockout",
+        "actual": "负胜",
+        "baseline": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 3.3643907876352794,
+          "brier": 1.2077806519766718,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 3.3970362459576915,
+          "brier": 1.2121472624431635,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.05,
+            "away": -0.0112
+          },
+          "firstHalfExpectedGoals": {
+            "home": 1.0805,
+            "away": 0.3084
+          },
+          "secondHalfExpectedGoals": {
+            "home": 1.2095,
+            "away": 0.4016
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "约旦 vs 阿根廷",
+        "homeTeam": "约旦",
+        "awayTeam": "阿根廷",
+        "kickoff": "2026-06-28T10:00:00+08:00",
+        "stage": "knockout",
+        "actual": "负负",
+        "baseline": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 0.6494386115375558,
+          "brier": 0.29856608281301633,
+          "predicted": "负负"
+        },
+        "candidate": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 0.6529299337582904,
+          "brier": 0.3011652754143088,
+          "predicted": "负负"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": -0.0078,
+            "away": -0.0295
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.2576,
+            "away": 1.145
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.3323,
+            "away": 1.4649
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "阿尔及利亚 vs 奥地利",
+        "homeTeam": "阿尔及利亚",
+        "awayTeam": "奥地利",
+        "kickoff": "2026-06-28T10:00:00+08:00",
+        "stage": "knockout",
+        "actual": "平平",
+        "baseline": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 2.009981723104118,
+          "brier": 0.8844435017310589,
+          "predicted": "负负"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 2.0096539624830467,
+          "brier": 0.8842555109756004,
+          "predicted": "负负"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": -0.0263,
+            "away": -0.0071
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.5452,
+            "away": 0.7039
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.7248,
+            "away": 0.8761
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "南非 vs 加拿大",
+        "homeTeam": "南非",
+        "awayTeam": "加拿大",
+        "kickoff": "2026-06-29T03:00:00+08:00",
+        "stage": "knockout",
+        "actual": "平负",
+        "baseline": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.5047309347638609,
+          "brier": 0.7531660361093493,
+          "predicted": "负负"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.5089065697394843,
+          "brier": 0.7554930921160373,
+          "predicted": "负负"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": -0.05,
+            "away": -0.0012
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.3145,
+            "away": 0.7638
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.4955,
+            "away": 0.9362
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040337",
+        "homeTeam": "巴西",
+        "awayTeam": "日本",
+        "kickoff": "2026-06-30T01:00:00+08:00",
+        "stage": "knockout",
+        "actual": "负胜",
+        "baseline": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 3.595261477568617,
+          "brier": 1.1166612279325023,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 3.6594027145876256,
+          "brier": 1.1209755280370033,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.05,
+            "away": -0.05
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.725,
+            "away": 0.3595
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.775,
+            "away": 0.5505
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040344",
+        "homeTeam": "德国",
+        "awayTeam": "巴拉圭",
+        "kickoff": "2026-06-30T04:30:00+08:00",
+        "stage": "knockout",
+        "actual": "负平",
+        "baseline": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 2.9764549598560173,
+          "brier": 1.098095197677095,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 2.9294779338310857,
+          "brier": 1.091418352479125,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": -0.05,
+            "away": 0.05
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.787,
+            "away": 0.455
+          },
+          "secondHalfExpectedGoals": {
+            "home": 1.073,
+            "away": 0.445
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040338",
+        "homeTeam": "荷兰",
+        "awayTeam": "摩洛哥",
+        "kickoff": "2026-06-30T09:00:00+08:00",
+        "stage": "knockout",
+        "actual": "平平",
+        "baseline": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.9198798104142756,
+          "brier": 0.8752948275760368,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.9198177800437737,
+          "brier": 0.8758997551004258,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.05,
+            "away": 0.05
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.761,
+            "away": 0.5
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.819,
+            "away": 0.5
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040345",
+        "homeTeam": "科特迪瓦",
+        "awayTeam": "挪威",
+        "kickoff": "2026-07-01T01:00:00+08:00",
+        "stage": "knockout",
+        "actual": "负负",
+        "baseline": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 0.9619072543722907,
+          "brier": 0.459499115900062,
+          "predicted": "负负"
+        },
+        "candidate": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 0.9663850288433018,
+          "brier": 0.46215198651782025,
+          "predicted": "负负"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.05,
+            "away": 0.0021
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.4505,
+            "away": 0.9425
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.4395,
+            "away": 1.1474
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040346",
+        "homeTeam": "法国",
+        "awayTeam": "瑞典",
+        "kickoff": "2026-07-01T05:00:00+08:00",
+        "stage": "knockout",
+        "actual": "胜胜",
+        "baseline": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 0.6119594361262437,
+          "brier": 0.27705240299795403,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 0.6000330619738113,
+          "brier": 0.26868670436307407,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.05,
+            "away": -0.05
+          },
+          "firstHalfExpectedGoals": {
+            "home": 1.2785,
+            "away": 0.211
+          },
+          "secondHalfExpectedGoals": {
+            "home": 1.4515,
+            "away": 0.369
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040351",
+        "homeTeam": "墨西哥",
+        "awayTeam": "厄瓜多尔",
+        "kickoff": "2026-07-01T09:00:00+08:00",
+        "stage": "knockout",
+        "actual": "胜胜",
+        "baseline": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.8138094388279524,
+          "brier": 0.8394634865167009,
+          "predicted": "平平"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.8411045492809779,
+          "brier": 0.8483607881028761,
+          "predicted": "平平"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": -0.05,
+            "away": -0.0425
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.328,
+            "away": 0.3265
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.512,
+            "away": 0.4935
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040352",
+        "homeTeam": "英格兰",
+        "awayTeam": "刚果金",
+        "kickoff": "2026-07-02T00:00:00+08:00",
+        "stage": "knockout",
+        "actual": "负胜",
+        "baseline": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 4.216873538745712,
+          "brier": 1.287097869451286,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 4.12281758281268,
+          "brier": 1.2830799031325135,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.0104,
+            "away": 0.05
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.8295,
+            "away": 0.1715
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.9906,
+            "away": 0.0985
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040353",
+        "homeTeam": "比利时",
+        "awayTeam": "塞内加尔",
+        "kickoff": "2026-07-02T04:00:00+08:00",
+        "stage": "knockout",
+        "actual": "负平",
+        "baseline": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 2.8072237119306473,
+          "brier": 1.0281484350255468,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 2.8144604002968028,
+          "brier": 1.0285327868843905,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": -0.05,
+            "away": -0.0497
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.5755,
+            "away": 0.5128
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.8145,
+            "away": 0.7372
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040339",
+        "homeTeam": "美国",
+        "awayTeam": "波黑",
+        "kickoff": "2026-07-02T08:00:00+08:00",
+        "stage": "knockout",
+        "actual": "胜胜",
+        "baseline": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 1.058768692697009,
+          "brier": 0.5046400234344622,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 1.0529014947290236,
+          "brier": 0.5012362450844203,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.05,
+            "away": 0.05
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.9635,
+            "away": 0.518
+          },
+          "secondHalfExpectedGoals": {
+            "home": 1.0665,
+            "away": 0.522
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040354",
+        "homeTeam": "西班牙",
+        "awayTeam": "奥地利",
+        "kickoff": "2026-07-03T03:00:00+08:00",
+        "stage": "knockout",
+        "actual": "胜胜",
+        "baseline": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 0.7020374971582426,
+          "brier": 0.33086574152587833,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 0.6940407944906944,
+          "brier": 0.3250794004366968,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.05,
+            "away": -0.0002
+          },
+          "firstHalfExpectedGoals": {
+            "home": 1.13,
+            "away": 0.2519
+          },
+          "secondHalfExpectedGoals": {
+            "home": 1.27,
+            "away": 0.3081
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "西班牙 vs 奥地利",
+        "homeTeam": "西班牙",
+        "awayTeam": "奥地利",
+        "kickoff": "2026-07-03T03:00:00+08:00",
+        "stage": "knockout",
+        "actual": "胜胜",
+        "baseline": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 1.1224129033857173,
+          "brier": 0.5356548280810031,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 1.111392975300715,
+          "brier": 0.5295070854980446,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.05,
+            "away": -0.0002
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.9185,
+            "away": 0.4814
+          },
+          "secondHalfExpectedGoals": {
+            "home": 1.0115,
+            "away": 0.5887
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040355",
+        "homeTeam": "葡萄牙",
+        "awayTeam": "克罗地亚",
+        "kickoff": "2026-07-03T07:00:00+08:00",
+        "stage": "knockout",
+        "actual": "平胜",
+        "baseline": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.6416665634114307,
+          "brier": 0.7830571759107868,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.6295448494799285,
+          "brier": 0.7776702252869377,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": -0.0243,
+            "away": 0.05
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.7542,
+            "away": 0.5405
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.9758,
+            "away": 0.5495
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "葡萄牙 vs 克罗地亚",
+        "homeTeam": "葡萄牙",
+        "awayTeam": "克罗地亚",
+        "kickoff": "2026-07-03T07:00:00+08:00",
+        "stage": "knockout",
+        "actual": "平胜",
+        "baseline": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.5539281548191506,
+          "brier": 0.7708421292183182,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.5418847576188461,
+          "brier": 0.7646567849858662,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": -0.0243,
+            "away": 0.05
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.8172,
+            "away": 0.482
+          },
+          "secondHalfExpectedGoals": {
+            "home": 1.0528,
+            "away": 0.478
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040356",
+        "homeTeam": "瑞士",
+        "awayTeam": "阿尔及利",
+        "kickoff": "2026-07-03T11:00:00+08:00",
+        "stage": "knockout",
+        "actual": "胜胜",
+        "baseline": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 1.556294438148703,
+          "brier": 0.7303554729386876,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 1.5711839792405966,
+          "brier": 0.7362178080155447,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": -0.05,
+            "away": -0.05
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.5215,
+            "away": 0.436
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.7485,
+            "away": 0.644
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "瑞士 vs 阿尔及利亚",
+        "homeTeam": "瑞士",
+        "awayTeam": "阿尔及利亚",
+        "kickoff": "2026-07-03T11:00:00+08:00",
+        "stage": "knockout",
+        "actual": "胜胜",
+        "baseline": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 1.074367062327645,
+          "brier": 0.505012667718139,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 1.0807966304060075,
+          "brier": 0.5085669141262367,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": -0.05,
+            "away": -0.0313
+          },
+          "firstHalfExpectedGoals": {
+            "home": 1.0165,
+            "away": 0.6077
+          },
+          "secondHalfExpectedGoals": {
+            "home": 1.3535,
+            "away": 0.8123
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040347",
+        "homeTeam": "澳大利亚",
+        "awayTeam": "埃及",
+        "kickoff": "2026-07-04T02:00:00+08:00",
+        "stage": "knockout",
+        "actual": "负平",
+        "baseline": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 2.8400296154628513,
+          "brier": 1.0338549359470353,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 2.79970955113539,
+          "brier": 1.0289047970488128,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": -0.0333,
+            "away": 0.05
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.5427,
+            "away": 0.5585
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.7373,
+            "away": 0.5715
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040348",
+        "homeTeam": "阿根廷",
+        "awayTeam": "佛得角",
+        "kickoff": "2026-07-04T06:00:00+08:00",
+        "stage": "knockout",
+        "actual": "胜平",
+        "baseline": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 4.433600513187695,
+          "brier": 1.3420473641539747,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 4.361354717455942,
+          "brier": 1.343108032482853,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.05,
+            "away": -0.0402
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.9185,
+            "away": 0.05
+          },
+          "secondHalfExpectedGoals": {
+            "home": 1.0115,
+            "away": 0.1
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040357",
+        "homeTeam": "哥伦比亚",
+        "awayTeam": "加纳",
+        "kickoff": "2026-07-04T09:30:00+08:00",
+        "stage": "knockout",
+        "actual": "胜胜",
+        "baseline": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 0.6626622438319695,
+          "brier": 0.34283581957228365,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 0.6613257708891153,
+          "brier": 0.3420493361440419,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": -0.0037,
+            "away": -0.05
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.8918,
+            "away": 0.05
+          },
+          "secondHalfExpectedGoals": {
+            "home": 1.0981,
+            "away": 0.1
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040359",
+        "homeTeam": "加拿大",
+        "awayTeam": "摩洛哥",
+        "kickoff": "2026-07-05T01:00:00+08:00",
+        "stage": "knockout",
+        "actual": "平负",
+        "baseline": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.5081706436364222,
+          "brier": 0.7448694241139971,
+          "predicted": "负负"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.4913968542751816,
+          "brier": 0.7367057134860693,
+          "predicted": "负负"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": -0.0003,
+            "away": -0.0428
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.3282,
+            "away": 0.6098
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.4018,
+            "away": 0.8402
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040373",
+        "homeTeam": "巴拉圭",
+        "awayTeam": "法国",
+        "kickoff": "2026-07-05T05:00:00+08:00",
+        "stage": "knockout",
+        "actual": "平负",
+        "baseline": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.2998274959799585,
+          "brier": 0.7742616533465589,
+          "predicted": "负负"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.2814216306373902,
+          "brier": 0.7612309553662048,
+          "predicted": "负负"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.0232,
+            "away": -0.05
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.1988,
+            "away": 0.886
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.1913,
+            "away": 1.194
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "巴西 vs 挪威",
+        "homeTeam": "巴西",
+        "awayTeam": "挪威",
+        "kickoff": "2026-07-06T04:00:00+08:00",
+        "stage": "knockout",
+        "actual": "平负",
+        "baseline": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 2.1923366849820893,
+          "brier": 0.9363321477826712,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 2.209974194978386,
+          "brier": 0.9408959941672537,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.05,
+            "away": 0.05
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.815,
+            "away": 0.599
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.885,
+            "away": 0.621
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "墨西哥 vs 英格兰",
+        "homeTeam": "墨西哥",
+        "awayTeam": "英格兰",
+        "kickoff": "2026-07-06T08:00:00+08:00",
+        "stage": "knockout",
+        "actual": "负负",
+        "baseline": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 1.3837942400445125,
+          "brier": 0.6758507416281577,
+          "predicted": "负负"
+        },
+        "candidate": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 1.40805578645524,
+          "brier": 0.6870854207155848,
+          "predicted": "负负"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.05,
+            "away": -0.05
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.3605,
+            "away": 0.4855
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.3295,
+            "away": 0.7045
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "葡萄牙 vs 西班牙",
+        "homeTeam": "葡萄牙",
+        "awayTeam": "西班牙",
+        "kickoff": "2026-07-07T03:00:00+08:00",
+        "stage": "knockout",
+        "actual": "平负",
+        "baseline": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.5423401232474314,
+          "brier": 0.7627628844922032,
+          "predicted": "负负"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.5347680915087325,
+          "brier": 0.7592755794692748,
+          "predicted": "负负"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": -0.05,
+            "away": -0.035
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.355,
+            "away": 0.7525
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.545,
+            "away": 0.9975
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "美国 vs 比利时",
+        "homeTeam": "美国",
+        "awayTeam": "比利时",
+        "kickoff": "2026-07-07T08:00:00+08:00",
+        "stage": "knockout",
+        "actual": "负负",
+        "baseline": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 1.2079984374685175,
+          "brier": 0.5769219606149647,
+          "predicted": "负负"
+        },
+        "candidate": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 1.22526433886072,
+          "brier": 0.5859191243263413,
+          "predicted": "负负"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.05,
+            "away": -0.05
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.536,
+            "away": 0.751
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.544,
+            "away": 1.029
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040427",
+        "homeTeam": "阿根廷",
+        "awayTeam": "埃及",
+        "kickoff": "2026-07-08T00:00:00+08:00",
+        "stage": "knockout",
+        "actual": "负胜",
+        "baseline": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 4.716044570986537,
+          "brier": 1.3386855415179637,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 4.6537800781383805,
+          "brier": 1.3379667736235925,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.0305,
+            "away": 0.023
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.8675,
+            "away": 0.0905
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.9925,
+            "away": 0.0595
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040428",
+        "homeTeam": "瑞士",
+        "awayTeam": "哥伦比亚",
+        "kickoff": "2026-07-08T04:00:00+08:00",
+        "stage": "knockout",
+        "actual": "平平",
+        "baseline": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.7791753279603357,
+          "brier": 0.8211535571699714,
+          "predicted": "负负"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.777925734622368,
+          "brier": 0.8203621557697145,
+          "predicted": "负负"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": -0.05,
+            "away": -0.05
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.391,
+            "away": 0.553
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.589,
+            "away": 0.787
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040451",
+        "homeTeam": "法国",
+        "awayTeam": "摩洛哥",
+        "kickoff": "2026-07-10T04:00:00+08:00",
+        "stage": "knockout",
+        "actual": "平胜",
+        "baseline": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.3718286976866285,
+          "brier": 0.7331515476049735,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.3614576009825745,
+          "brier": 0.7276327629978799,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": -0.0407,
+            "away": -0.0461
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.7334,
+            "away": 0.2014
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.9866,
+            "away": 0.3486
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "法国 vs 摩洛哥",
+        "homeTeam": "法国",
+        "awayTeam": "摩洛哥",
+        "kickoff": "2026-07-10T04:00:00+08:00",
+        "stage": "knockout",
+        "actual": "平胜",
+        "baseline": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.3718286976866285,
+          "brier": 0.7331515476049735,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.3614576009825745,
+          "brier": 0.7276327629978799,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": -0.0407,
+            "away": -0.0461
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.7334,
+            "away": 0.2014
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.9866,
+            "away": 0.3486
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040466",
+        "homeTeam": "西班牙",
+        "awayTeam": "比利时",
+        "kickoff": "2026-07-11T03:00:00+08:00",
+        "stage": "knockout",
+        "actual": "平胜",
+        "baseline": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.433866796653464,
+          "brier": 0.7652918460276297,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": true,
+          "logLoss": 1.4390222908695218,
+          "brier": 0.7684858143738278,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.0079,
+            "away": -0.0261
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.9123,
+            "away": 0.2979
+          },
+          "secondHalfExpectedGoals": {
+            "home": 1.0976,
+            "away": 0.422
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "挪威 vs 英格兰",
+        "homeTeam": "挪威",
+        "awayTeam": "英格兰",
+        "kickoff": "2026-07-12T05:00:00+08:00",
+        "stage": "knockout",
+        "actual": "平平",
+        "baseline": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 2.2018266378455427,
+          "brier": 0.9503880197977721,
+          "predicted": "负负"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 2.2021229859545635,
+          "brier": 0.9511403483849719,
+          "predicted": "负负"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": 0.05,
+            "away": 0.05
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.626,
+            "away": 0.941
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.654,
+            "away": 1.039
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "阿根廷 vs 瑞士",
+        "homeTeam": "阿根廷",
+        "awayTeam": "瑞士",
+        "kickoff": "2026-07-12T09:00:00+08:00",
+        "stage": "knockout",
+        "actual": "胜平",
+        "baseline": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 3.174511380203028,
+          "brier": 1.1517117749054426,
+          "predicted": "胜胜"
+        },
+        "candidate": {
+          "top1": false,
+          "top3": false,
+          "logLoss": 3.199246084003246,
+          "brier": 1.1521626363443156,
+          "predicted": "胜胜"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.05,
+          "firstHalfXgShift": {
+            "home": -0.05,
+            "away": 0.01
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.778,
+            "away": 0.3025
+          },
+          "secondHalfExpectedGoals": {
+            "home": 1.062,
+            "away": 0.3475
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      }
+    ]
+  },
+  "candidatesEvaluated": 144
+}

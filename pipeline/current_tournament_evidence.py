@@ -27,6 +27,8 @@ class EvidenceMatch:
     home_goals: int
     away_goals: int
     extra_time_load: bool
+    half_home_goals: int | None = None
+    half_away_goals: int | None = None
 
 
 def _parse_datetime(value: str | None) -> datetime | None:
@@ -84,6 +86,8 @@ def load_evidence_matches(
             away_xg=xg[1],
             home_goals=int(settlement["homeScore"]),
             away_goals=int(settlement["awayScore"]),
+            half_home_goals=(int(settlement["halfTimeHomeScore"]) if settlement.get("halfTimeHomeScore") is not None else None),
+            half_away_goals=(int(settlement["halfTimeAwayScore"]) if settlement.get("halfTimeAwayScore") is not None else None),
             extra_time_load="AET" in raw or "PEN" in raw or "PENALT" in raw,
         ))
     return sorted(result, key=lambda row: row.kickoff)
@@ -99,6 +103,7 @@ def _team_evidence(
     rows = [row for row in evidence if row.kickoff < cutoff and team in {row.home_team, row.away_team}]
     rows.sort(key=lambda row: row.kickoff, reverse=True)
     weighted_attack = weighted_defense = weight_total = 0.0
+    first_attack = first_defense = first_weight_total = 0.0
     for index, row in enumerate(rows):
         is_home = row.home_team == team
         scored = row.home_goals if is_home else row.away_goals
@@ -109,10 +114,19 @@ def _team_evidence(
         weighted_attack += (scored - expected_for) * weight
         weighted_defense += (conceded - expected_against) * weight
         weight_total += weight
+        if row.half_home_goals is not None and row.half_away_goals is not None:
+            half_scored = row.half_home_goals if is_home else row.half_away_goals
+            half_conceded = row.half_away_goals if is_home else row.half_home_goals
+            first_attack += (half_scored - expected_for * 0.45) * weight
+            first_defense += (half_conceded - expected_against * 0.45) * weight
+            first_weight_total += weight
 
     shrink = weight_total / (weight_total + max(shrinkage, 0.0)) if weight_total else 0.0
     attack = weighted_attack / weight_total * shrink if weight_total else 0.0
     defense = weighted_defense / weight_total * shrink if weight_total else 0.0
+    first_shrink = first_weight_total / (first_weight_total + max(shrinkage, 0.0)) if first_weight_total else 0.0
+    first_attack_residual = first_attack / first_weight_total * first_shrink if first_weight_total else 0.0
+    first_defense_residual = first_defense / first_weight_total * first_shrink if first_weight_total else 0.0
     fatigue_attack = fatigue_defense_risk = 0.0
     rest_days: float | None = None
     extra_time_load = False
@@ -128,6 +142,9 @@ def _team_evidence(
         "effectiveWeight": round(weight_total, 4),
         "attackResidual": round(attack, 4),
         "defenseResidual": round(defense, 4),
+        "halfTimeMatchesUsed": sum(1 for row in rows if row.half_home_goals is not None),
+        "firstHalfAttackResidual": round(first_attack_residual, 4),
+        "firstHalfDefenseResidual": round(first_defense_residual, 4),
         "restDays": round(rest_days, 2) if rest_days is not None else None,
         "extraTimeLoad": extra_time_load,
         "fatigueAttackDelta": fatigue_attack,
@@ -177,6 +194,32 @@ def apply_current_tournament_evidence(
             "applied": abs(adjusted_home - base_home) > 1e-12 or abs(adjusted_away - base_away) > 1e-12,
             "diagnosticOnly": cap <= 0,
             "selectionReason": (settings.get("validation") or {}).get("selectionReason"),
+        }
+        half_settings = settings.get("halfFullEvidence") or policy.get("halfFullEvidence") or {}
+        half_cap = float(half_settings.get("maxFirstHalfXgShift", 0.18))
+        half_life_split = float(half_settings.get("halfLifeMatches", half_life))
+        half_shrinkage = float(half_settings.get("shrinkage", shrinkage))
+        half_home = _team_evidence(seed["home_team"], cutoff, evidence, half_life_split, half_shrinkage)
+        half_away = _team_evidence(seed["away_team"], cutoff, evidence, half_life_split, half_shrinkage)
+        home_half_raw = 0.5 * (float(half_home["firstHalfAttackResidual"]) + float(half_away["firstHalfDefenseResidual"]))
+        away_half_raw = 0.5 * (float(half_away["firstHalfAttackResidual"]) + float(half_home["firstHalfDefenseResidual"]))
+        home_half_delta = max(-half_cap, min(half_cap, home_half_raw))
+        away_half_delta = max(-half_cap, min(half_cap, away_half_raw))
+        first_home = max(0.05, adjusted_home * 0.45 + home_half_delta)
+        first_away = max(0.05, adjusted_away * 0.45 + away_half_delta)
+        payload["halfFullEvidence"] = {
+            "policy": "opponent_adjusted_half_split_v1",
+            "maxFirstHalfXgShift": half_cap,
+            "halfLifeMatches": half_life_split,
+            "shrinkage": half_shrinkage,
+            "blend": float(half_settings.get("blend", 0.0)),
+            "firstHalfXgShift": {"home": round(home_half_delta, 4), "away": round(away_half_delta, 4)},
+            "firstHalfExpectedGoals": {"home": round(first_home, 4), "away": round(first_away, 4)},
+            "secondHalfExpectedGoals": {
+                "home": round(max(0.05, adjusted_home - first_home), 4),
+                "away": round(max(0.05, adjusted_away - first_away), 4),
+            },
+            "opponentAdjustmentBasis": "pre_match_expected_goals_residual",
         }
         seed["tournament_evidence"] = payload
         seed["model_decomposition"] = {
