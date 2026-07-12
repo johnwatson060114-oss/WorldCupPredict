@@ -3,6 +3,8 @@
   "initialBankroll": 0,
   "baselineStake": 985,
   "baselineProfit": 153.54,
+  "targetTotalStake": 985,
+  "targetRealizedProfit": 153.54,
   "bets": [],
   "modelSnapshots": []
 }

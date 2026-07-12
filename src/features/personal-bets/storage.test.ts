@@ -39,6 +39,31 @@ describe('personal ledger settlement', () => {
     expect(merged.bets).toEqual([])
   })
 
+  it('reconciles the baseline around existing tickets to the target totals', () => {
+    const local: PersonalBetLedger = {
+      schemaVersion: 1,
+      initialBankroll: 0,
+      modelSnapshots: [],
+      bets: [{
+        id: 'existing-total', createdAt: 'now', targetDate: '2026-06-22', matchLabel: 'A vs B',
+        market: '胜平负', selection: '胜', odds: 2, stake: 10, decisionSource: 'subjective', status: 'settled', payout: 18,
+      }],
+    }
+    const seeded: PersonalBetLedger = {
+      schemaVersion: 1,
+      initialBankroll: 0,
+      baselineStake: 985,
+      baselineProfit: 153.54,
+      targetTotalStake: 985,
+      targetRealizedProfit: 153.54,
+      modelSnapshots: [],
+      bets: [],
+    }
+    const merged = mergeInitialPersonalLedger(local, seeded)
+    expect(merged.baselineStake).toBe(975)
+    expect(merged.baselineProfit).toBe(145.54)
+  })
+
   it('merges seeded tickets without overwriting local settlement edits', () => {
     const local: PersonalBetLedger = {
       schemaVersion: 1,

@@ -34,8 +34,18 @@ export const savePersonalLedger = (ledger: PersonalBetLedger) => {
 }
 
 export const mergeInitialPersonalLedger = (current: PersonalBetLedger, initial: PersonalBetLedger) => {
-  const baselineStake = initial.baselineStake ?? current.baselineStake
-  const baselineProfit = initial.baselineProfit ?? current.baselineProfit
+  const activeBets = current.bets.filter((bet) => bet.status !== 'void')
+  const settledBets = activeBets.filter((bet) => bet.status === 'settled')
+  const currentStake = activeBets.reduce((sum, bet) => sum + bet.stake, 0)
+  const currentProfit = settledBets.reduce((sum, bet) => sum + (bet.payout ?? 0) - bet.stake, 0)
+  const targetTotalStake = initial.targetTotalStake ?? initial.baselineStake
+  const targetRealizedProfit = initial.targetRealizedProfit ?? initial.baselineProfit
+  const baselineStake = targetTotalStake === undefined
+    ? current.baselineStake
+    : Math.round((targetTotalStake - currentStake) * 100) / 100
+  const baselineProfit = targetRealizedProfit === undefined
+    ? current.baselineProfit
+    : Math.round((targetRealizedProfit - currentProfit) * 100) / 100
   const existingIds = new Set(current.bets.map((bet) => bet.id))
   const missingBets = (initial.bets ?? []).filter((bet) => !existingIds.has(bet.id))
   const existingSnapshots = new Set(current.modelSnapshots.map((snapshot) => snapshot.targetDate))
