@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-11T15:15:43+08:00",
+  "generatedAt": "2026-07-12T15:31:40+08:00",
   "matches": [
     {
       "matchId": "537327",
@@ -3941,6 +3941,26 @@
       "closingOddsSource": "zgzcw.com",
       "closingOddsIssue": "2026-07-10",
       "closingOddsCheckedAt": "2026-07-11T15:14:33+08:00"
+    },
+    {
+      "matchId": "挪威 vs 英格兰",
+      "fixtureId": 537385,
+      "matchLabel": "挪威 vs 英格兰",
+      "homeScore": 1,
+      "awayScore": 1,
+      "halfTimeHomeScore": 1,
+      "halfTimeAwayScore": 1,
+      "settledAt": "2026-07-11T21:00:00Z"
+    },
+    {
+      "matchId": "阿根廷 vs 瑞士",
+      "fixtureId": 537386,
+      "matchLabel": "阿根廷 vs 瑞士",
+      "homeScore": 1,
+      "awayScore": 1,
+      "halfTimeHomeScore": 1,
+      "halfTimeAwayScore": 0,
+      "settledAt": "2026-07-12T01:00:00Z"
     }
   ]
 }
