@@ -29,13 +29,13 @@ describe('personal betting analytics', () => {
     const result = personalSummary({
       schemaVersion: 1,
       initialBankroll: 0,
-      baselineStake: 347,
-      baselineProfit: 37.6,
+      baselineStake: 985,
+      baselineProfit: 153.54,
       modelSnapshots: [],
       bets: [],
     })
-    expect(result.totalStaked).toBe(347)
-    expect(result.realizedProfit).toBe(37.6)
+    expect(result.totalStaked).toBe(985)
+    expect(result.realizedProfit).toBe(153.54)
     expect(result.pendingExposure).toBe(0)
   })
 

@@ -3,8 +3,8 @@ import type { ModelDaySnapshot, PersonalBet, PersonalBetLedger, PersonalBetLeg }
 import { groupLegsByMatch, inferPassType, payoutForWinningOdds } from './pass-types'
 
 const STORAGE_KEY = 'world-cup-predict-personal-bets-v2'
-const DEFAULT_BASELINE_STAKE = 347
-const DEFAULT_BASELINE_PROFIT = 37.6
+const DEFAULT_BASELINE_STAKE = 985
+const DEFAULT_BASELINE_PROFIT = 153.54
 const standardScores = new Set(['1:0', '2:0', '2:1', '3:0', '3:1', '3:2', '4:0', '4:1', '4:2', '5:0', '5:1', '5:2', '0:0', '1:1', '2:2', '3:3', '0:1', '0:2', '1:2', '0:3', '1:3', '2:3', '0:4', '1:4', '2:4', '0:5', '1:5', '2:5'])
 
 export const emptyPersonalLedger = (): PersonalBetLedger => ({
@@ -72,12 +72,12 @@ export const deletePersonalBet = (ledger: PersonalBetLedger, id: string) => {
   return next
 }
 
-export const settlePersonalBetManually = (ledger: PersonalBetLedger, id: string, profit: number) => {
+export const settlePersonalBetWithPayout = (ledger: PersonalBetLedger, id: string, payout: number) => {
   const bets = ledger.bets.map((bet) => bet.id === id
     ? {
         ...bet,
         status: 'settled' as const,
-        payout: Math.round((bet.stake + profit) * 100) / 100,
+        payout: Math.round(payout * 100) / 100,
         settledAt: new Date().toISOString(),
         settlementMode: 'manual' as const,
       }

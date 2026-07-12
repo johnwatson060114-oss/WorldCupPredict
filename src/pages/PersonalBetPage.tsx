@@ -14,7 +14,7 @@ import {
   personalBetProfit,
   reopenPersonalBet,
   savePersonalLedger,
-  settlePersonalBetManually,
+  settlePersonalBetWithPayout,
   upsertPersonalBet,
 } from '../features/personal-bets/storage'
 import type { DecisionSource, PersonalBet, PersonalBetLedger, PersonalBetLeg, StrategyHistory } from '../features/personal-bets/types'
@@ -114,7 +114,7 @@ export function PersonalBetPage({ forecast, ledger, onLedgerChange }: PersonalBe
   const [archiveState, setArchiveState] = useState<'ready' | 'loading' | 'missing'>('ready')
   const [historyDates, setHistoryDates] = useState<string[]>([])
   const [message, setMessage] = useState('')
-  const [settlementEditor, setSettlementEditor] = useState<{ id: string; profit: string } | null>(null)
+  const [settlementEditor, setSettlementEditor] = useState<{ id: string; payout: string } | null>(null)
   const selectableDates = useMemo(() => selectableMatchDates(forecast, historyDates), [forecast, historyDates])
   const minimumSelectableDate = selectableDates[0] ?? forecast.targetDate
   const maximumSelectableDate = selectableDates.at(-1) ?? forecast.targetDate
@@ -323,20 +323,21 @@ export function PersonalBetPage({ forecast, ledger, onLedgerChange }: PersonalBe
   }
 
   const openSettlementEditor = (bet: PersonalBet) => {
-    const profit = bet.status === 'settled' ? (bet.payout ?? 0) - bet.stake : -bet.stake
-    setSettlementEditor({ id: bet.id, profit: profit.toFixed(2) })
+    const payout = bet.status === 'settled' ? bet.payout ?? 0 : ''
+    setSettlementEditor({ id: bet.id, payout: payout === '' ? '' : payout.toFixed(2) })
   }
 
   const saveManualSettlement = (bet: PersonalBet) => {
     if (!settlementEditor || settlementEditor.id !== bet.id) return
-    const profit = Number(settlementEditor.profit)
-    if (!Number.isFinite(profit) || profit < -bet.stake) {
-      setMessage(`实际盈亏不能低于 -${preciseMoney(bet.stake)}。`)
+    const payout = Number(settlementEditor.payout)
+    if (!Number.isFinite(payout) || payout < 0) {
+      setMessage('实际彩金必须是大于或等于 0 的金额；未中奖请输入 0。')
       return
     }
-    onLedgerChange((current) => settlePersonalBetManually(current, bet.id, profit))
+    onLedgerChange((current) => settlePersonalBetWithPayout(current, bet.id, payout))
     setSettlementEditor(null)
-    setMessage(`已手动记录盈亏 ${profit >= 0 ? '+' : ''}${preciseMoney(profit)}。`)
+    const profit = payout - bet.stake
+    setMessage(`已记录彩金 ${preciseMoney(payout)} 元，自动计入盈亏 ${profit >= 0 ? '+' : ''}${preciseMoney(profit)} 元。`)
   }
 
   const reopenBet = (bet: PersonalBet) => {
@@ -546,9 +547,9 @@ export function PersonalBetPage({ forecast, ledger, onLedgerChange }: PersonalBe
                     : bet.status === 'settled' && <strong className={profit >= 0 ? 'positive-text' : 'negative-text'}>盈亏 {preciseMoney(profit)}</strong>}
                 </div>
                 {settlementEditor?.id === bet.id && <div className="manual-settlement-editor">
-                  <label>实际盈亏（元）<input type="number" step="0.01" min={-bet.stake} value={settlementEditor.profit} onChange={(event) => setSettlementEditor({ id: bet.id, profit: event.target.value })} /></label>
-                  <small>亏损填负数，例如亏 {bet.stake.toFixed(2)} 元填 -{bet.stake.toFixed(2)}；盈利填正数。</small>
-                  <div><button onClick={() => setSettlementEditor(null)}>取消</button><button className="primary" onClick={() => saveManualSettlement(bet)}><Save size={14} />保存盈亏</button></div>
+                  <label>实际彩金（元）<input type="number" step="0.01" min="0" placeholder="未中奖填 0" value={settlementEditor.payout} onChange={(event) => setSettlementEditor({ id: bet.id, payout: event.target.value })} /></label>
+                  <small>输入这张票最终一共收到的彩金；系统会自动用彩金减去本金，计算本张票盈利。未中奖请输入 0。</small>
+                  <div><button onClick={() => setSettlementEditor(null)}>取消</button><button className="primary" onClick={() => saveManualSettlement(bet)}><Save size={14} />保存彩金</button></div>
                 </div>}
                 <div className="saved-ticket-actions manual">
                   <button onClick={() => openSettlementEditor(bet)}><CheckCircle2 size={14} />{bet.status === 'settled' ? '修改盈亏' : '手动结算'}</button>

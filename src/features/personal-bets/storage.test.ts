@@ -1,5 +1,5 @@
 import { beforeAll, describe, expect, it } from 'vitest'
-import { isWinningPersonalBet, mergeInitialPersonalLedger, personalBalance, reopenPersonalBet, settlePersonalBetManually, settlePersonalLedger } from './storage'
+import { isWinningPersonalBet, mergeInitialPersonalLedger, personalBalance, personalBetProfit, reopenPersonalBet, settlePersonalBetWithPayout, settlePersonalLedger } from './storage'
 import type { PersonalBetLedger, PersonalBetLeg } from './types'
 
 beforeAll(() => {
@@ -28,14 +28,14 @@ describe('personal ledger settlement', () => {
     const seeded: PersonalBetLedger = {
       schemaVersion: 1,
       initialBankroll: 0,
-      baselineStake: 347,
-      baselineProfit: 37.6,
+      baselineStake: 985,
+      baselineProfit: 153.54,
       modelSnapshots: [],
       bets: [],
     }
     const merged = mergeInitialPersonalLedger(local, seeded)
-    expect(merged.baselineStake).toBe(347)
-    expect(merged.baselineProfit).toBe(37.6)
+    expect(merged.baselineStake).toBe(985)
+    expect(merged.baselineProfit).toBe(153.54)
     expect(merged.bets).toEqual([])
   })
 
@@ -94,7 +94,7 @@ describe('personal ledger settlement', () => {
     expect(isWinningPersonalBet({ status: 'pending', stake: 10, payout: 18 })).toBe(false)
   })
 
-  it('records manual profit and can reopen the ticket', () => {
+  it('records manual payout and calculates the ticket profit from its stake', () => {
     const ledger: PersonalBetLedger = {
       schemaVersion: 1,
       initialBankroll: 200,
@@ -113,10 +113,11 @@ describe('personal ledger settlement', () => {
         legs: [leg('m1')],
       }],
     }
-    const settled = settlePersonalBetManually(ledger, 'manual', 8)
+    const settled = settlePersonalBetWithPayout(ledger, 'manual', 18)
     expect(settled.bets[0].status).toBe('settled')
     expect(settled.bets[0].payout).toBe(18)
     expect(settled.bets[0].settlementMode).toBe('manual')
+    expect(personalBetProfit(settled.bets[0])).toBe(8)
     expect(personalBalance(settled)).toBe(208)
 
     const reopened = reopenPersonalBet(settled, 'manual')
