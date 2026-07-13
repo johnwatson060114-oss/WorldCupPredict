@@ -11,6 +11,13 @@ def commentary(minute: str, text: str) -> dict:
     return {"time": {"displayValue": minute}, "text": text}
 
 
+def play_commentary(minute: str, text: str, period: int, team: str | None = None) -> dict:
+    play = {"period": {"number": period}}
+    if team:
+        play["team"] = {"displayName": team}
+    return {"time": {"displayValue": minute}, "text": text, "play": play}
+
+
 def test_timeline_extracts_event_coordinates_and_actual_breaks():
     events = extract_timeline([
         commentary("25'", "Delay in match for a drinks break."),
@@ -87,3 +94,28 @@ def test_knockout_load_events_are_classified_and_labeled():
     assert "visible_cramp_or_fatigue" in labels
     assert "card_suspension_risk" in labels
     assert "penalty_shootout_load" in labels
+
+
+def test_saved_attempt_belongs_to_shooter_not_later_named_goalkeeper():
+    events = extract_timeline([
+        commentary(
+            "12'",
+            "Attempt saved. Striker (Team A) right footed shot is saved by Keeper (Long Team B).",
+        ),
+    ], ["Team A", "Long Team B"], "https://example.test/commentary")
+
+    assert events[0]["team"] == "Team A"
+
+
+def test_extra_time_pressure_is_archived_but_excluded_from_regular_time_tactics():
+    rows = [
+        play_commentary("80'", "Attempt saved. P1 (Team A) shot is saved.", 2, "Team A"),
+        play_commentary("93'", "Goal! Team A 1, Team B 0. P2 (Team A) scores.", 3, "Team A"),
+        play_commentary("101'", "Attempt missed. P3 (Team A) shot misses.", 3, "Team A"),
+    ]
+    events = extract_timeline(rows, ["Team A", "Team B"], "https://example.test/commentary")
+    summary = match_tactical_summary(events, ["Team A", "Team B"])
+
+    assert [event["regulationTime"] for event in events] == [True, False, False]
+    assert summary["coverage"]["post90ClassifiedEvents"] == 2
+    assert summary["teams"]["Team A"]["attackingEventsBySegment"] == [0, 0, 0, 1]

@@ -1,14 +1,15 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-13T15:22:00+08:00",
+  "generatedAt": "2026-07-13T16:01:09+08:00",
   "targetDate": "2026-07-15",
   "timezone": "Asia/Shanghai",
   "modelVersion": "hierarchical_poisson[half_life_days=730.0,rho=0.0,shrinkage=24.0,tournament_tier=1.0]",
   "pipelineVersion": "2.1.0",
   "predictionTarget": "90_minutes",
   "finalFourPolicy": {
-    "schemaVersion": 1,
-    "policy": "world_cup_final_four_matrix_v1",
+    "schemaVersion": 2,
+    "generatedAt": "2026-07-13T15:57:26+08:00",
+    "policy": "world_cup_final_four_commentary_matrix_v2",
     "predictionTarget": "90_minutes",
     "scoreMatrix": {
       "maxGoalsPerTeam": 10,
@@ -17,51 +18,83 @@
     },
     "stageProfiles": {
       "SEMI_FINAL": {
-        "candidateTotalXgMultiplier": 0.97,
-        "candidateFirstHalfShare": 0.43,
-        "activeMatrixBlend": 0.0,
+        "candidateTotalXgMultiplier": 1.0022,
+        "candidateFirstHalfShare": 0.3752,
+        "activeMatrixBlend": 0.2,
         "coveragePenalty": 0.02,
         "uncertaintyMultiplier": 1.1,
-        "valueProbabilityGap": 0.05
+        "valueProbabilityGap": 0.05,
+        "trainingMatches": 12,
+        "rawCommentaryPaceMultiplier": 1.0033
       },
       "FINAL": {
-        "candidateTotalXgMultiplier": 0.94,
-        "candidateFirstHalfShare": 0.41,
+        "candidateTotalXgMultiplier": 0.9692,
+        "candidateFirstHalfShare": 0.3379,
         "activeMatrixBlend": 0.0,
         "coveragePenalty": 0.03,
         "uncertaintyMultiplier": 1.15,
-        "valueProbabilityGap": 0.06
+        "valueProbabilityGap": 0.06,
+        "trainingMatches": 6,
+        "rawCommentaryPaceMultiplier": 0.9384
       },
       "THIRD_PLACE": {
-        "candidateTotalXgMultiplier": 1.08,
-        "candidateFirstHalfShare": 0.47,
-        "activeMatrixBlend": 0.0,
+        "candidateTotalXgMultiplier": 1.033,
+        "candidateFirstHalfShare": 0.3567,
+        "activeMatrixBlend": 0.1,
         "coveragePenalty": 0.04,
         "uncertaintyMultiplier": 1.2,
-        "valueProbabilityGap": 0.07
+        "valueProbabilityGap": 0.07,
+        "trainingMatches": 4,
+        "rawCommentaryPaceMultiplier": 1.0826
       }
     },
     "validation": {
-      "status": "diagnostic_only",
-      "reason": "historical_final_four_90_minute_stage_labels_not_yet_validated",
-      "leakagePolicy": "features_and_market_snapshots_must_precede_kickoff",
+      "status": "commentary_trained_safety_gated",
+      "reason": "stage pace is derived from archived minute-by-minute pressure events; only leave-one-tournament-out improvements are blended",
+      "leakagePolicy": "held-out tournament commentary and results never enter its training fold; extra time and shootouts are load only",
+      "historicalTournaments": 6,
+      "historicalMatches": 22,
+      "passedStages": [
+        "SEMI_FINAL",
+        "THIRD_PLACE"
+      ],
+      "metrics": {
+        "SEMI_FINAL": {
+          "protocol": "leave_one_tournament_out",
+          "testMatches": 12,
+          "baselinePoissonNll": 1.45824,
+          "commentaryStageNll": 1.45465,
+          "relativeImprovement": 0.00246,
+          "passed": true
+        },
+        "FINAL": {
+          "protocol": "leave_one_tournament_out",
+          "testMatches": 6,
+          "baselinePoissonNll": 2.15298,
+          "commentaryStageNll": 2.15825,
+          "relativeImprovement": -0.00244,
+          "passed": false
+        },
+        "THIRD_PLACE": {
+          "protocol": "leave_one_tournament_out",
+          "testMatches": 4,
+          "baselinePoissonNll": 2.21062,
+          "commentaryStageNll": 2.19956,
+          "relativeImprovement": 0.005,
+          "passed": true
+        }
+      },
       "requiredMetrics": [
-        "log_loss",
-        "brier_score",
-        "ranked_probability_score",
-        "calibration_error"
+        "poisson_total_goal_negative_log_likelihood"
       ],
       "comparators": [
-        "de_vigged_market",
-        "simple_poisson",
-        "world_cup_only_model",
-        "world_cup_plus_pre_tournament_rating"
+        "stage_neutral_poisson"
       ]
     }
   },
   "dataSnapshot": {
-    "id": "5639f3da65d082ae5afe88f223bd27ebf5d302cecda8ab7a52b3106335ca141c",
-    "cutoff": "2026-07-13T15:22:00+08:00",
+    "id": "373feb940a71f9a5def8d35d7874ca4122055436db656d45581d38630f0d84ad",
+    "cutoff": "2026-07-13T16:01:09+08:00",
     "files": [
       {
         "path": "manual-data/availability.csv",
@@ -100,13 +133,18 @@
       },
       {
         "path": "pipeline/data/final-four-policy.json",
-        "sha256": "97ea3cbbc7e17f0754a1ae621fb0ea9b0f9d61bf6806acef531994db07bfe5b3",
-        "bytes": 1492
+        "sha256": "6298c76d5ae47dd5ecc7d5cd90466509196173d9ce246e3e62e87aae6a8a2304",
+        "bytes": 2751
       },
       {
         "path": "pipeline/data/final-sprint-policy.json",
         "sha256": "8e9f93f893b438b98dd0bc19386fd845ac8edbdb007b81f1c1a310d0e74476eb",
         "bytes": 13539
+      },
+      {
+        "path": "pipeline/data/knockout-commentary-evidence.json",
+        "sha256": "907cb5ff8c3052d4764c0e3346c6983a9360b910b077ff8bbdcfe787ea0b7641",
+        "bytes": 67571
       },
       {
         "path": "pipeline/data/model-policy.json",
@@ -161,8 +199,8 @@
       "stage": "SEMI_FINAL",
       "predictionTarget": "90_minutes",
       "expectedGoals": {
-        "home": 1.18,
-        "away": 1.34
+        "home": 1.17,
+        "away": 1.35
       },
       "modelDecomposition": {
         "totalGoalsProvider": "hierarchical_goal_model",
@@ -176,50 +214,97 @@
           "away": 1.3397
         },
         "tournamentEvidence": {
-          "policy": "current_tournament_evidence_v1",
+          "policy": "current_tournament_commentary_evidence_v2",
           "predictionTarget": "90_minutes",
           "halfLifeMatches": 2.0,
           "shrinkage": 5.0,
-          "maxSideXgShift": 0.0,
+          "commentaryProcessScale": 0.45,
+          "maxSideXgShift": 0.03,
           "home": {
             "team": "法国",
-            "matchesUsed": 7,
-            "effectiveWeight": 3.1124,
-            "attackResidual": 0.0565,
-            "defenseResidual": -0.1752,
-            "halfTimeMatchesUsed": 7,
-            "firstHalfAttackResidual": -0.1984,
-            "firstHalfDefenseResidual": -0.0688,
+            "matchesUsed": 6,
+            "commentaryMatchesUsed": 3,
+            "effectiveWeight": 1.5255,
+            "attackResidual": -0.0014,
+            "defenseResidual": 0.0014,
+            "outcomeAttackResidualDiagnostic": 0.049,
+            "outcomeDefenseResidualDiagnostic": -0.15,
+            "scoreResidualsDirectlyAdjustStrength": false,
+            "halfTimeMatchesUsed": 3,
+            "firstHalfAttackResidual": 0.0133,
+            "firstHalfDefenseResidual": -0.0133,
             "restDays": 4.96,
             "extraTimeLoad": false,
+            "post90LoadSeverity": 0.0,
+            "visibleFatigueEvents": 0,
+            "forcedInjurySubstitutions": 1,
             "fatigueAttackDelta": 0.0,
-            "fatigueDefenseRiskDelta": 0.0
+            "fatigueDefenseRiskDelta": 0.0,
+            "commentarySourceUrls": [
+              "https://www.espn.com/soccer/commentary/_/gameId/760492",
+              "https://www.espn.com/soccer/commentary/_/gameId/760503",
+              "https://www.espn.com/soccer/commentary/_/gameId/760510"
+            ]
           },
           "away": {
             "team": "西班牙",
-            "matchesUsed": 7,
-            "effectiveWeight": 3.1124,
-            "attackResidual": -0.0187,
-            "defenseResidual": -0.1469,
-            "halfTimeMatchesUsed": 7,
-            "firstHalfAttackResidual": -0.0291,
-            "firstHalfDefenseResidual": 0.0017,
+            "matchesUsed": 6,
+            "commentaryMatchesUsed": 3,
+            "effectiveWeight": 1.9864,
+            "attackResidual": 0.0115,
+            "defenseResidual": -0.0115,
+            "outcomeAttackResidualDiagnostic": -0.0786,
+            "outcomeDefenseResidualDiagnostic": -0.1088,
+            "scoreResidualsDirectlyAdjustStrength": false,
+            "halfTimeMatchesUsed": 3,
+            "firstHalfAttackResidual": 0.0217,
+            "firstHalfDefenseResidual": -0.0217,
             "restDays": 4.0,
             "extraTimeLoad": false,
+            "post90LoadSeverity": 0.0,
+            "visibleFatigueEvents": 0,
+            "forcedInjurySubstitutions": 0,
             "fatigueAttackDelta": 0.0,
-            "fatigueDefenseRiskDelta": 0.0
+            "fatigueDefenseRiskDelta": 0.0,
+            "commentarySourceUrls": [
+              "https://www.espn.com/soccer/commentary/_/gameId/760497",
+              "https://www.espn.com/soccer/commentary/_/gameId/760506",
+              "https://www.espn.com/soccer/commentary/_/gameId/760511"
+            ]
           },
           "xgNet": {
-            "home": 0.0,
-            "away": 0.0
+            "home": -0.0065,
+            "away": 0.0065
           },
           "adjustedExpectedGoals": {
-            "home": 1.1763,
-            "away": 1.3397
+            "home": 1.1699,
+            "away": 1.3461
           },
-          "applied": false,
-          "diagnosticOnly": true,
-          "selectionReason": "historical_top3_gate_fallback_to_diagnostic_only",
+          "applied": true,
+          "diagnosticOnly": false,
+          "selectionReason": "walk_forward_commentary_process_gate",
+          "commentaryValidation": {
+            "protocol": "walk_forward_next_round_only",
+            "predictionTarget": "90_minutes",
+            "baseline": {
+              "commentaryProcessScale": 0.0,
+              "commentaryMaxSideXgShift": 0.0,
+              "matches": 12,
+              "scorePoissonNll": 2.92593
+            },
+            "selected": {
+              "commentaryProcessScale": 0.45,
+              "commentaryMaxSideXgShift": 0.03,
+              "matches": 12,
+              "scorePoissonNll": 2.89795
+            },
+            "relativeImprovement": 0.009563,
+            "fatigueAttackPerLoad": -0.05,
+            "fatigueDefenseRiskPerLoad": 0.03,
+            "candidatesEvaluated": 13,
+            "safetyGatePassed": true
+          },
+          "extraTimePolicy": "90_to_120_commentary_changes_next_match_load_only",
           "halfFullEvidence": {
             "policy": "opponent_adjusted_half_split_v1",
             "maxFirstHalfXgShift": 0.05,
@@ -227,37 +312,37 @@
             "shrinkage": 5.0,
             "blend": 0.25,
             "firstHalfXgShift": {
-              "home": -0.05,
-              "away": -0.05
+              "home": -0.0026,
+              "away": 0.0026
             },
             "firstHalfExpectedGoals": {
-              "home": 0.4793,
-              "away": 0.5529
+              "home": 0.5238,
+              "away": 0.6084
             },
             "secondHalfExpectedGoals": {
-              "home": 0.697,
-              "away": 0.7868
+              "home": 0.646,
+              "away": 0.7378
             },
             "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
           }
         },
         "adjustedExpectedGoals": {
-          "home": 1.1763,
-          "away": 1.3397
+          "home": 1.1704,
+          "away": 1.3467
         },
-        "formLayer": "current_tournament_evidence_v1",
+        "formLayer": "current_tournament_commentary_evidence_v2",
         "preFinalFourExpectedGoals": {
-          "home": 1.1763,
-          "away": 1.3397
+          "home": 1.1699,
+          "away": 1.3461
         },
-        "finalFourLayer": "world_cup_final_four_matrix_v1",
+        "finalFourLayer": "world_cup_final_four_commentary_matrix_v2",
         "finalFourStage": "SEMI_FINAL",
-        "finalFourMatrixBlend": 0.0,
+        "finalFourMatrixBlend": 0.2,
         "marketCalibration": {
           "applied": false,
           "policy": "bounded_dual_axis_market_anchor_v1",
           "reason": "validation_gate_fallback_to_diagnostic_only",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "strengthBlend": 0.0,
           "totalGoalsBlend": 0.0,
           "deViggedOutcomeProbabilities": {
@@ -277,12 +362,12 @@
           },
           "marketExpectedTotalGoals": 2.8604,
           "preCalibrationExpectedGoals": {
-            "home": 1.1763,
-            "away": 1.3397
+            "home": 1.1704,
+            "away": 1.3467
           },
           "postCalibrationExpectedGoals": {
-            "home": 1.1763,
-            "away": 1.3397
+            "home": 1.1704,
+            "away": 1.3467
           },
           "xgShift": {
             "home": 0.0,
@@ -300,50 +385,97 @@
       "tournamentForm": null,
       "groupStageForm": null,
       "tournamentEvidence": {
-        "policy": "current_tournament_evidence_v1",
+        "policy": "current_tournament_commentary_evidence_v2",
         "predictionTarget": "90_minutes",
         "halfLifeMatches": 2.0,
         "shrinkage": 5.0,
-        "maxSideXgShift": 0.0,
+        "commentaryProcessScale": 0.45,
+        "maxSideXgShift": 0.03,
         "home": {
           "team": "法国",
-          "matchesUsed": 7,
-          "effectiveWeight": 3.1124,
-          "attackResidual": 0.0565,
-          "defenseResidual": -0.1752,
-          "halfTimeMatchesUsed": 7,
-          "firstHalfAttackResidual": -0.1984,
-          "firstHalfDefenseResidual": -0.0688,
+          "matchesUsed": 6,
+          "commentaryMatchesUsed": 3,
+          "effectiveWeight": 1.5255,
+          "attackResidual": -0.0014,
+          "defenseResidual": 0.0014,
+          "outcomeAttackResidualDiagnostic": 0.049,
+          "outcomeDefenseResidualDiagnostic": -0.15,
+          "scoreResidualsDirectlyAdjustStrength": false,
+          "halfTimeMatchesUsed": 3,
+          "firstHalfAttackResidual": 0.0133,
+          "firstHalfDefenseResidual": -0.0133,
           "restDays": 4.96,
           "extraTimeLoad": false,
+          "post90LoadSeverity": 0.0,
+          "visibleFatigueEvents": 0,
+          "forcedInjurySubstitutions": 1,
           "fatigueAttackDelta": 0.0,
-          "fatigueDefenseRiskDelta": 0.0
+          "fatigueDefenseRiskDelta": 0.0,
+          "commentarySourceUrls": [
+            "https://www.espn.com/soccer/commentary/_/gameId/760492",
+            "https://www.espn.com/soccer/commentary/_/gameId/760503",
+            "https://www.espn.com/soccer/commentary/_/gameId/760510"
+          ]
         },
         "away": {
           "team": "西班牙",
-          "matchesUsed": 7,
-          "effectiveWeight": 3.1124,
-          "attackResidual": -0.0187,
-          "defenseResidual": -0.1469,
-          "halfTimeMatchesUsed": 7,
-          "firstHalfAttackResidual": -0.0291,
-          "firstHalfDefenseResidual": 0.0017,
+          "matchesUsed": 6,
+          "commentaryMatchesUsed": 3,
+          "effectiveWeight": 1.9864,
+          "attackResidual": 0.0115,
+          "defenseResidual": -0.0115,
+          "outcomeAttackResidualDiagnostic": -0.0786,
+          "outcomeDefenseResidualDiagnostic": -0.1088,
+          "scoreResidualsDirectlyAdjustStrength": false,
+          "halfTimeMatchesUsed": 3,
+          "firstHalfAttackResidual": 0.0217,
+          "firstHalfDefenseResidual": -0.0217,
           "restDays": 4.0,
           "extraTimeLoad": false,
+          "post90LoadSeverity": 0.0,
+          "visibleFatigueEvents": 0,
+          "forcedInjurySubstitutions": 0,
           "fatigueAttackDelta": 0.0,
-          "fatigueDefenseRiskDelta": 0.0
+          "fatigueDefenseRiskDelta": 0.0,
+          "commentarySourceUrls": [
+            "https://www.espn.com/soccer/commentary/_/gameId/760497",
+            "https://www.espn.com/soccer/commentary/_/gameId/760506",
+            "https://www.espn.com/soccer/commentary/_/gameId/760511"
+          ]
         },
         "xgNet": {
-          "home": 0.0,
-          "away": 0.0
+          "home": -0.0065,
+          "away": 0.0065
         },
         "adjustedExpectedGoals": {
-          "home": 1.1763,
-          "away": 1.3397
+          "home": 1.1699,
+          "away": 1.3461
         },
-        "applied": false,
-        "diagnosticOnly": true,
-        "selectionReason": "historical_top3_gate_fallback_to_diagnostic_only",
+        "applied": true,
+        "diagnosticOnly": false,
+        "selectionReason": "walk_forward_commentary_process_gate",
+        "commentaryValidation": {
+          "protocol": "walk_forward_next_round_only",
+          "predictionTarget": "90_minutes",
+          "baseline": {
+            "commentaryProcessScale": 0.0,
+            "commentaryMaxSideXgShift": 0.0,
+            "matches": 12,
+            "scorePoissonNll": 2.92593
+          },
+          "selected": {
+            "commentaryProcessScale": 0.45,
+            "commentaryMaxSideXgShift": 0.03,
+            "matches": 12,
+            "scorePoissonNll": 2.89795
+          },
+          "relativeImprovement": 0.009563,
+          "fatigueAttackPerLoad": -0.05,
+          "fatigueDefenseRiskPerLoad": 0.03,
+          "candidatesEvaluated": 13,
+          "safetyGatePassed": true
+        },
+        "extraTimePolicy": "90_to_120_commentary_changes_next_match_load_only",
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
           "maxFirstHalfXgShift": 0.05,
@@ -351,16 +483,16 @@
           "shrinkage": 5.0,
           "blend": 0.25,
           "firstHalfXgShift": {
-            "home": -0.05,
-            "away": -0.05
+            "home": -0.0026,
+            "away": 0.0026
           },
           "firstHalfExpectedGoals": {
-            "home": 0.4793,
-            "away": 0.5529
+            "home": 0.5238,
+            "away": 0.6084
           },
           "secondHalfExpectedGoals": {
-            "home": 0.697,
-            "away": 0.7868
+            "home": 0.646,
+            "away": 0.7378
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -369,34 +501,36 @@
       "knockoutContext": null,
       "knockoutRound32Form": null,
       "finalFourContext": {
-        "policy": "world_cup_final_four_matrix_v1",
+        "policy": "world_cup_final_four_commentary_matrix_v2",
         "predictionTarget": "90_minutes",
         "stage": "SEMI_FINAL",
         "stageSource": "official_2026_beijing_schedule",
         "applied": true,
-        "matrixAdjustmentApplied": false,
-        "diagnosticOnly": true,
-        "validationStatus": "diagnostic_only",
-        "validationReason": "historical_final_four_90_minute_stage_labels_not_yet_validated",
+        "matrixAdjustmentApplied": true,
+        "diagnosticOnly": false,
+        "validationStatus": "commentary_trained_safety_gated",
+        "validationReason": "stage pace is derived from archived minute-by-minute pressure events; only leave-one-tournament-out improvements are blended",
         "stageParameters": {
-          "candidateTotalXgMultiplier": 0.97,
-          "candidateFirstHalfShare": 0.43,
-          "activeMatrixBlend": 0.0,
+          "candidateTotalXgMultiplier": 1.0022,
+          "candidateFirstHalfShare": 0.3752,
+          "activeMatrixBlend": 0.2,
           "coveragePenalty": 0.02,
           "uncertaintyMultiplier": 1.1,
-          "valueProbabilityGap": 0.05
+          "valueProbabilityGap": 0.05,
+          "trainingMatches": 12,
+          "rawCommentaryPaceMultiplier": 1.0033
         },
         "preStageExpectedGoals": {
-          "home": 1.1763,
-          "away": 1.3397
+          "home": 1.1699,
+          "away": 1.3461
         },
         "candidateExpectedGoals": {
-          "home": 1.141,
-          "away": 1.2995
+          "home": 1.1724,
+          "away": 1.3491
         },
         "adjustedExpectedGoals": {
-          "home": 1.1763,
-          "away": 1.3397
+          "home": 1.1704,
+          "away": 1.3467
         },
         "coverageBefore": 0.8,
         "coverageAfter": 0.78
@@ -407,16 +541,16 @@
         "stage": "SEMI_FINAL",
         "confidence95": {
           "home": [
-            0.23724,
-            0.41734
+            0.23317,
+            0.41277
           ],
           "draw": [
-            0.1821,
-            0.35408
+            0.18226,
+            0.35428
           ],
           "away": [
-            0.31124,
-            0.498
+            0.31526,
+            0.50226
           ]
         },
         "noVigMarketProbabilities": {
@@ -425,9 +559,9 @@
           "away": 0.28591
         },
         "probabilityGaps": {
-          "home": -0.10089,
-          "draw": -0.01782,
-          "away": 0.11871
+          "home": -0.10521,
+          "draw": -0.01764,
+          "away": 0.12285
         },
         "valueProbabilityGap": 0.05,
         "valueSelections": [
@@ -485,7 +619,7 @@
             "scoreTop3Hits": 10
           }
         },
-        "sourceKnockoutPolicy": "current_tournament_evidence_v1",
+        "sourceKnockoutPolicy": "current_tournament_commentary_evidence_v2",
         "favoriteSide": "away",
         "totalGoalWeights": {
           "0": 1.035,
@@ -497,17 +631,17 @@
           "6": 1.095,
           "7+": 1.12
         },
-        "expectedTotalGoalsBefore": 2.4985,
-        "expectedTotalGoalsAfter": 2.5106,
-        "fullIntensityExpectedTotalGoalsAfter": 2.5467,
+        "expectedTotalGoalsBefore": 2.5024,
+        "expectedTotalGoalsAfter": 2.5145,
+        "fullIntensityExpectedTotalGoalsAfter": 2.5506,
         "outcomePreserved": true,
-        "maxCellDelta": 0.002276
+        "maxCellDelta": 0.002278
       },
       "marketCalibration": {
         "applied": false,
         "policy": "bounded_dual_axis_market_anchor_v1",
         "reason": "validation_gate_fallback_to_diagnostic_only",
-        "observedAt": "2026-07-13T15:22:00+08:00",
+        "observedAt": "2026-07-13T16:01:09+08:00",
         "strengthBlend": 0.0,
         "totalGoalsBlend": 0.0,
         "deViggedOutcomeProbabilities": {
@@ -527,12 +661,12 @@
         },
         "marketExpectedTotalGoals": 2.8604,
         "preCalibrationExpectedGoals": {
-          "home": 1.1763,
-          "away": 1.3397
+          "home": 1.1704,
+          "away": 1.3467
         },
         "postCalibrationExpectedGoals": {
-          "home": 1.1763,
-          "away": 1.3397
+          "home": 1.1704,
+          "away": 1.3467
         },
         "xgShift": {
           "home": 0.0,
@@ -554,14 +688,14 @@
         "labels": [],
         "drawShift": 0.0,
         "preAdjustment": {
-          "home": 0.32729,
-          "draw": 0.26809,
-          "away": 0.40462
+          "home": 0.32297,
+          "draw": 0.26827,
+          "away": 0.40876
         },
         "postAdjustment": {
-          "home": 0.32729,
-          "draw": 0.26809,
-          "away": 0.40462
+          "home": 0.32297,
+          "draw": 0.26827,
+          "away": 0.40876
         }
       },
       "halfFullCalibration": {
@@ -571,7 +705,7 @@
         "baselineCalibration": {
           "applied": true,
           "policy": "current_tournament_half_full_late_swing_v3",
-          "sourceKnockoutPolicy": "current_tournament_evidence_v1",
+          "sourceKnockoutPolicy": "current_tournament_commentary_evidence_v2",
           "weights": {
             "胜胜": 0.95,
             "胜平": 1.3,
@@ -585,13 +719,13 @@
           },
           "topSelectionBefore": "负负",
           "topSelectionAfter": "负负",
-          "topProbabilityBefore": 0.23712,
-          "topProbabilityAfter": 0.21123473917999128
+          "topProbabilityBefore": 0.24112,
+          "topProbabilityAfter": 0.21489571088560142
         },
         "candidateCalibration": {
           "applied": true,
           "policy": "current_tournament_half_full_late_swing_v3",
-          "sourceKnockoutPolicy": "current_tournament_evidence_v1",
+          "sourceKnockoutPolicy": "current_tournament_commentary_evidence_v2",
           "weights": {
             "胜胜": 0.95,
             "胜平": 1.3,
@@ -605,8 +739,8 @@
           },
           "topSelectionBefore": "负负",
           "topSelectionAfter": "负负",
-          "topProbabilityBefore": 0.2244818729046624,
-          "topProbabilityAfter": 0.19929341921224308
+          "topProbabilityBefore": 0.23941728201987073,
+          "topProbabilityAfter": 0.21366624100613482
         },
         "topSelectionBefore": "负负",
         "topSelectionAfter": "负负"
@@ -617,11 +751,11 @@
         "role": "auxiliary_wdl_calibration",
         "assistWeight": 0.0,
         "topHalfFullSelection": "负负",
-        "topHalfFullProbability": 0.20825,
+        "topHalfFullProbability": 0.21459,
         "outcomeSignal": {
-          "home": 0.3262,
-          "draw": 0.2721,
-          "away": 0.4017
+          "home": 0.3221,
+          "draw": 0.27272,
+          "away": 0.40518
         },
         "outcomeDelta": {
           "home": 0.0,
@@ -631,19 +765,19 @@
         "maxOutcomeDelta": 0.0,
         "note": "Aggregates the specialist half-time/full-time distribution into a conservative W/D/L calibration signal.",
         "assistedOutcomeProbabilities": {
-          "home": 0.32729,
-          "draw": 0.26809,
-          "away": 0.40462
+          "home": 0.32297,
+          "draw": 0.26827,
+          "away": 0.40876
         }
       },
       "outcomeProbabilities": {
-        "home": 0.32729,
-        "draw": 0.26809,
-        "away": 0.40462
+        "home": 0.32297,
+        "draw": 0.26827,
+        "away": 0.40876
       },
       "outcomeDecision": {
         "threshold": 0.6,
-        "maxProbability": 0.40462,
+        "maxProbability": 0.40876,
         "selection": "away",
         "status": "watch"
       },
@@ -653,35 +787,35 @@
       "scoreProbabilities": [
         {
           "score": "1:1",
-          "probability": 0.1252237075011749
+          "probability": 0.1250615970357069
         },
         {
           "score": "0:1",
-          "probability": 0.10727984592546135
+          "probability": 0.10777276840207492
         },
         {
           "score": "1:0",
-          "probability": 0.09556029097036293
+          "probability": 0.09354812888872152
         },
         {
           "score": "1:2",
-          "probability": 0.08608728460207966
+          "probability": 0.08736988766038654
         },
         {
           "score": "0:0",
-          "probability": 0.08359016492671766
+          "probability": 0.08375024135143783
         },
         {
           "score": "2:1",
-          "probability": 0.07381369539995215
+          "probability": 0.07331348734632656
         },
         {
           "score": "0:2",
-          "probability": 0.07110532224282798
+          "probability": 0.07203393796681155
         },
         {
           "score": "2:0",
-          "probability": 0.05456360927621917
+          "probability": 0.053710858950332716
         }
       ],
       "totalGoalsCore": {
@@ -691,15 +825,15 @@
           "2",
           "3"
         ],
-        "probability": 0.46722
+        "probability": 0.46823
       },
       "totalGoalsBoundaryRisk": {
         "policy": "two_bucket_boundary_watch_v1",
         "triggered": true,
         "level": "watch",
-        "coreProbability": 0.46722,
+        "coreProbability": 0.46823,
         "adjacentSelection": "1",
-        "adjacentProbability": 0.20284,
+        "adjacentProbability": 0.20132,
         "thresholds": {
           "maxCoreProbability": 0.52,
           "minAdjacentProbability": 0.18
@@ -710,9 +844,9 @@
         "policy": "low_core_far_tail_watch_v1",
         "triggered": false,
         "level": "none",
-        "coreProbability": 0.46722,
-        "threeProbability": 0.21633,
-        "fourPlusProbability": 0.24635,
+        "coreProbability": 0.46823,
+        "threeProbability": 0.21743,
+        "fourPlusProbability": 0.24669,
         "watchSelections": [
           "4",
           "5",
@@ -799,51 +933,51 @@
       "simulation": {
         "actualPaths": 100000,
         "monteCarloStandardError": {
-          "home": 0.001484,
+          "home": 0.001479,
           "draw": 0.001401,
-          "away": 0.001552
+          "away": 0.001555
         },
         "confidence95": {
           "home": [
-            0.324382,
-            0.330198
+            0.320072,
+            0.325868
           ],
           "draw": [
-            0.265344,
-            0.270836
+            0.265524,
+            0.271016
           ],
           "away": [
-            0.401578,
-            0.407662
+            0.405713,
+            0.411807
           ]
         },
         "convergence": [
           {
             "paths": 25000,
             "outcomes": {
-              "home": 0.32356,
-              "draw": 0.27128,
-              "away": 0.40516
+              "home": 0.32108,
+              "draw": 0.27112,
+              "away": 0.4078
             },
             "maxDeltaFromPrevious": null
           },
           {
             "paths": 50000,
             "outcomes": {
-              "home": 0.3252,
-              "draw": 0.2694,
-              "away": 0.4054
+              "home": 0.32272,
+              "draw": 0.26906,
+              "away": 0.40822
             },
-            "maxDeltaFromPrevious": 0.00188
+            "maxDeltaFromPrevious": 0.00206
           },
           {
             "paths": 100000,
             "outcomes": {
-              "home": 0.32729,
-              "draw": 0.26809,
-              "away": 0.40462
+              "home": 0.32297,
+              "draw": 0.26827,
+              "away": 0.40876
             },
-            "maxDeltaFromPrevious": 0.00209
+            "maxDeltaFromPrevious": 0.00079
           }
         ]
       },
@@ -857,27 +991,27 @@
           "handicap": null,
           "excludedScores": [],
           "odds": 2.07,
-          "modelProbability": 0.32729,
+          "modelProbability": 0.32297,
           "marketProbability": 0.42818,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.32251,
-          "robustExpectedReturn": -0.44797,
+          "rawExpectedReturn": -0.33145,
+          "robustExpectedReturn": -0.45661,
           "singleEligible": true,
           "available": true,
           "recommendation": "观察",
-          "reason": "胜平负最高概率 40.5% 低于 60% 门槛",
+          "reason": "胜平负最高概率 40.9% 低于 60% 门槛",
           "oddsSource": "official",
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.118708,
+            "maxGap": 0.122848,
             "modelFavorite": "负",
             "marketFavorite": "胜",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
-          "formalBlockReason": "胜平负最高概率 40.5% 低于 60% 门槛",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "formalBlockReason": "胜平负最高概率 40.9% 低于 60% 门槛",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -891,27 +1025,27 @@
           "handicap": null,
           "excludedScores": [],
           "odds": 3.1,
-          "modelProbability": 0.26809,
+          "modelProbability": 0.26827,
           "marketProbability": 0.28591,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.16892,
-          "robustExpectedReturn": -0.34935,
+          "rawExpectedReturn": -0.16836,
+          "robustExpectedReturn": -0.34882,
           "singleEligible": true,
           "available": true,
           "recommendation": "观察",
-          "reason": "胜平负最高概率 40.5% 低于 60% 门槛",
+          "reason": "胜平负最高概率 40.9% 低于 60% 门槛",
           "oddsSource": "official",
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.118708,
+            "maxGap": 0.122848,
             "modelFavorite": "负",
             "marketFavorite": "胜",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
-          "formalBlockReason": "胜平负最高概率 40.5% 低于 60% 门槛",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "formalBlockReason": "胜平负最高概率 40.9% 低于 60% 门槛",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -925,27 +1059,27 @@
           "handicap": null,
           "excludedScores": [],
           "odds": 3.1,
-          "modelProbability": 0.40462,
+          "modelProbability": 0.40876,
           "marketProbability": 0.28591,
           "coverage": 0.78,
-          "rawExpectedReturn": 0.25432,
-          "robustExpectedReturn": 0.06029,
+          "rawExpectedReturn": 0.26716,
+          "robustExpectedReturn": 0.0729,
           "singleEligible": true,
           "available": true,
           "recommendation": "观察",
-          "reason": "胜平负最高概率 40.5% 低于 60% 门槛",
+          "reason": "胜平负最高概率 40.9% 低于 60% 门槛",
           "oddsSource": "official",
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.118708,
+            "maxGap": 0.122848,
             "modelFavorite": "负",
             "marketFavorite": "胜",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
-          "formalBlockReason": "胜平负最高概率 40.5% 低于 60% 门槛",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "formalBlockReason": "胜平负最高概率 40.9% 低于 60% 门槛",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -959,11 +1093,11 @@
           "handicap": -1,
           "excludedScores": [],
           "odds": 4.6,
-          "modelProbability": 0.13494,
+          "modelProbability": 0.13347,
           "marketProbability": 0.19261,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.3793,
-          "robustExpectedReturn": -0.60431,
+          "rawExpectedReturn": -0.38605,
+          "robustExpectedReturn": -0.6104,
           "singleEligible": false,
           "available": true,
           "recommendation": "不建议",
@@ -972,14 +1106,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.104771,
+            "maxGap": 0.109091,
             "modelFavorite": "负",
             "marketFavorite": "负",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -993,11 +1127,11 @@
           "handicap": -1,
           "excludedScores": [],
           "odds": 3.7,
-          "modelProbability": 0.19235,
+          "modelProbability": 0.1895,
           "marketProbability": 0.23946,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.28829,
-          "robustExpectedReturn": -0.48709,
+          "rawExpectedReturn": -0.29884,
+          "robustExpectedReturn": -0.49688,
           "singleEligible": false,
           "available": true,
           "recommendation": "不建议",
@@ -1006,14 +1140,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.104771,
+            "maxGap": 0.109091,
             "modelFavorite": "负",
             "marketFavorite": "负",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -1027,11 +1161,11 @@
           "handicap": -1,
           "excludedScores": [],
           "odds": 1.56,
-          "modelProbability": 0.67271,
+          "modelProbability": 0.67703,
           "marketProbability": 0.56794,
           "coverage": 0.78,
-          "rawExpectedReturn": 0.04943,
-          "robustExpectedReturn": -0.04512,
+          "rawExpectedReturn": 0.05617,
+          "robustExpectedReturn": -0.03815,
           "singleEligible": false,
           "available": true,
           "recommendation": "不建议",
@@ -1040,14 +1174,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.104771,
+            "maxGap": 0.109091,
             "modelFavorite": "负",
             "marketFavorite": "负",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -1090,11 +1224,11 @@
             "5:2"
           ],
           "odds": 12.5,
-          "modelProbability": 0.08359,
+          "modelProbability": 0.08375,
           "marketProbability": 0.05675,
           "coverage": 0.78,
-          "rawExpectedReturn": 0.04488,
-          "robustExpectedReturn": -0.49224,
+          "rawExpectedReturn": 0.04688,
+          "robustExpectedReturn": -0.49052,
           "singleEligible": false,
           "available": true,
           "recommendation": "不建议",
@@ -1103,14 +1237,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.042789,
+            "maxGap": 0.043282,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -1153,11 +1287,11 @@
             "5:2"
           ],
           "odds": 11.0,
-          "modelProbability": 0.10728,
+          "modelProbability": 0.10777,
           "marketProbability": 0.06449,
           "coverage": 0.78,
-          "rawExpectedReturn": 0.18008,
-          "robustExpectedReturn": -0.32556,
+          "rawExpectedReturn": 0.1855,
+          "robustExpectedReturn": -0.32076,
           "singleEligible": false,
           "available": true,
           "recommendation": "不建议",
@@ -1166,14 +1300,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.042789,
+            "maxGap": 0.043282,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -1216,11 +1350,11 @@
             "5:2"
           ],
           "odds": 17.0,
-          "modelProbability": 0.07111,
+          "modelProbability": 0.07203,
           "marketProbability": 0.04173,
           "coverage": 0.78,
-          "rawExpectedReturn": 0.20879,
-          "robustExpectedReturn": -0.49088,
+          "rawExpectedReturn": 0.22458,
+          "robustExpectedReturn": -0.4775,
           "singleEligible": false,
           "available": true,
           "recommendation": "不建议",
@@ -1229,14 +1363,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.042789,
+            "maxGap": 0.043282,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -1279,10 +1413,10 @@
             "5:2"
           ],
           "odds": 45.0,
-          "modelProbability": 0.03308,
+          "modelProbability": 0.03353,
           "marketProbability": 0.01576,
           "coverage": 0.78,
-          "rawExpectedReturn": 0.48867,
+          "rawExpectedReturn": 0.5089,
           "robustExpectedReturn": -1.0,
           "singleEligible": false,
           "available": true,
@@ -1292,14 +1426,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.042789,
+            "maxGap": 0.043282,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -1342,10 +1476,10 @@
             "5:2"
           ],
           "odds": 125.0,
-          "modelProbability": 0.01053,
+          "modelProbability": 0.01083,
           "marketProbability": 0.00568,
           "coverage": 0.78,
-          "rawExpectedReturn": 0.31637,
+          "rawExpectedReturn": 0.35428,
           "robustExpectedReturn": -1.0,
           "singleEligible": false,
           "available": true,
@@ -1355,14 +1489,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.042789,
+            "maxGap": 0.043282,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -1405,10 +1539,10 @@
             "5:2"
           ],
           "odds": 350.0,
-          "modelProbability": 0.00275,
+          "modelProbability": 0.00295,
           "marketProbability": 0.00203,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.03878,
+          "rawExpectedReturn": 0.0332,
           "robustExpectedReturn": -1.0,
           "singleEligible": false,
           "available": true,
@@ -1418,14 +1552,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.042789,
+            "maxGap": 0.043282,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -1468,11 +1602,11 @@
             "5:2"
           ],
           "odds": 9.5,
-          "modelProbability": 0.09556,
+          "modelProbability": 0.09355,
           "marketProbability": 0.07467,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.09218,
-          "robustExpectedReturn": -0.51538,
+          "rawExpectedReturn": -0.11129,
+          "robustExpectedReturn": -0.53207,
           "singleEligible": false,
           "available": true,
           "recommendation": "不建议",
@@ -1481,14 +1615,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.042789,
+            "maxGap": 0.043282,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -1531,11 +1665,11 @@
             "5:2"
           ],
           "odds": 5.5,
-          "modelProbability": 0.12522,
+          "modelProbability": 0.12506,
           "marketProbability": 0.12898,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.31127,
-          "robustExpectedReturn": -0.57493,
+          "rawExpectedReturn": -0.31216,
+          "robustExpectedReturn": -0.57573,
           "singleEligible": false,
           "available": true,
           "recommendation": "不建议",
@@ -1544,14 +1678,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.042789,
+            "maxGap": 0.043282,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -1594,11 +1728,11 @@
             "5:2"
           ],
           "odds": 9.0,
-          "modelProbability": 0.08609,
+          "modelProbability": 0.08737,
           "marketProbability": 0.07882,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.22521,
-          "robustExpectedReturn": -0.61501,
+          "rawExpectedReturn": -0.21367,
+          "robustExpectedReturn": -0.60502,
           "singleEligible": false,
           "available": true,
           "recommendation": "不建议",
@@ -1607,14 +1741,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.042789,
+            "maxGap": 0.043282,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -1657,11 +1791,11 @@
             "5:2"
           ],
           "odds": 25.0,
-          "modelProbability": 0.03872,
+          "modelProbability": 0.0386,
           "marketProbability": 0.02838,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.03188,
-          "robustExpectedReturn": -0.91401,
+          "rawExpectedReturn": -0.03493,
+          "robustExpectedReturn": -0.9164,
           "singleEligible": false,
           "available": true,
           "recommendation": "不建议",
@@ -1670,14 +1804,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.042789,
+            "maxGap": 0.043282,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -1720,10 +1854,10 @@
             "5:2"
           ],
           "odds": 100.0,
-          "modelProbability": 0.01275,
+          "modelProbability": 0.01312,
           "marketProbability": 0.00709,
           "coverage": 0.78,
-          "rawExpectedReturn": 0.27545,
+          "rawExpectedReturn": 0.31246,
           "robustExpectedReturn": -1.0,
           "singleEligible": false,
           "available": true,
@@ -1733,14 +1867,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.042789,
+            "maxGap": 0.043282,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -1783,10 +1917,10 @@
             "5:2"
           ],
           "odds": 300.0,
-          "modelProbability": 0.00335,
+          "modelProbability": 0.00353,
           "marketProbability": 0.00236,
           "coverage": 0.78,
-          "rawExpectedReturn": 0.00612,
+          "rawExpectedReturn": 0.05889,
           "robustExpectedReturn": -1.0,
           "singleEligible": false,
           "available": true,
@@ -1796,14 +1930,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.042789,
+            "maxGap": 0.043282,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -1846,11 +1980,11 @@
             "5:2"
           ],
           "odds": 12.0,
-          "modelProbability": 0.05456,
+          "modelProbability": 0.05371,
           "marketProbability": 0.05912,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.34524,
-          "robustExpectedReturn": -0.80626,
+          "rawExpectedReturn": -0.35547,
+          "robustExpectedReturn": -0.81465,
           "singleEligible": false,
           "available": true,
           "recommendation": "不建议",
@@ -1859,14 +1993,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.042789,
+            "maxGap": 0.043282,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -1909,11 +2043,11 @@
             "5:2"
           ],
           "odds": 6.25,
-          "modelProbability": 0.07381,
+          "modelProbability": 0.07331,
           "marketProbability": 0.1135,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.53866,
-          "robustExpectedReturn": -0.79846,
+          "rawExpectedReturn": -0.54179,
+          "robustExpectedReturn": -0.80112,
           "singleEligible": false,
           "available": true,
           "recommendation": "不建议",
@@ -1922,14 +2056,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.042789,
+            "maxGap": 0.043282,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -1972,11 +2106,11 @@
             "5:2"
           ],
           "odds": 10.0,
-          "modelProbability": 0.04921,
+          "modelProbability": 0.04923,
           "marketProbability": 0.07094,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.50786,
-          "robustExpectedReturn": -0.88214,
+          "rawExpectedReturn": -0.50768,
+          "robustExpectedReturn": -0.88199,
           "singleEligible": false,
           "available": true,
           "recommendation": "不建议",
@@ -1985,14 +2119,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.042789,
+            "maxGap": 0.043282,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -2035,10 +2169,10 @@
             "5:2"
           ],
           "odds": 25.0,
-          "modelProbability": 0.02228,
+          "modelProbability": 0.02202,
           "marketProbability": 0.02838,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.44302,
+          "rawExpectedReturn": -0.44946,
           "robustExpectedReturn": -1.0,
           "singleEligible": false,
           "available": true,
@@ -2048,14 +2182,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.042789,
+            "maxGap": 0.043282,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -2098,10 +2232,10 @@
             "5:2"
           ],
           "odds": 90.0,
-          "modelProbability": 0.00748,
+          "modelProbability": 0.00763,
           "marketProbability": 0.00788,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.32646,
+          "rawExpectedReturn": -0.31343,
           "robustExpectedReturn": -1.0,
           "singleEligible": false,
           "available": true,
@@ -2111,14 +2245,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.042789,
+            "maxGap": 0.043282,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -2164,7 +2298,7 @@
           "modelProbability": 0.00195,
           "marketProbability": 0.00236,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.41566,
+          "rawExpectedReturn": -0.41567,
           "robustExpectedReturn": -1.0,
           "singleEligible": false,
           "available": true,
@@ -2174,14 +2308,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.042789,
+            "maxGap": 0.043282,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -2224,10 +2358,10 @@
             "5:2"
           ],
           "odds": 27.0,
-          "modelProbability": 0.02334,
+          "modelProbability": 0.02321,
           "marketProbability": 0.02627,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.36972,
+          "rawExpectedReturn": -0.37325,
           "robustExpectedReturn": -1.0,
           "singleEligible": false,
           "available": true,
@@ -2237,14 +2371,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.042789,
+            "maxGap": 0.043282,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -2287,10 +2421,10 @@
             "5:2"
           ],
           "odds": 14.0,
-          "modelProbability": 0.02937,
+          "modelProbability": 0.02944,
           "marketProbability": 0.05067,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.58886,
+          "rawExpectedReturn": -0.58788,
           "robustExpectedReturn": -1.0,
           "singleEligible": false,
           "available": true,
@@ -2300,14 +2434,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.042789,
+            "maxGap": 0.043282,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -2350,10 +2484,10 @@
             "5:2"
           ],
           "odds": 20.0,
-          "modelProbability": 0.02008,
+          "modelProbability": 0.01973,
           "marketProbability": 0.03547,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.59835,
+          "rawExpectedReturn": -0.60537,
           "robustExpectedReturn": -1.0,
           "singleEligible": false,
           "available": true,
@@ -2363,14 +2497,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.042789,
+            "maxGap": 0.043282,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -2413,10 +2547,10 @@
             "5:2"
           ],
           "odds": 30.0,
-          "modelProbability": 0.00917,
+          "modelProbability": 0.00922,
           "marketProbability": 0.02365,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.72503,
+          "rawExpectedReturn": -0.72351,
           "robustExpectedReturn": -1.0,
           "singleEligible": false,
           "available": true,
@@ -2426,14 +2560,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.042789,
+            "maxGap": 0.043282,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -2476,10 +2610,10 @@
             "5:2"
           ],
           "odds": 80.0,
-          "modelProbability": 0.00637,
+          "modelProbability": 0.00603,
           "marketProbability": 0.00887,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.4906,
+          "rawExpectedReturn": -0.51734,
           "robustExpectedReturn": -1.0,
           "singleEligible": false,
           "available": true,
@@ -2489,14 +2623,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.042789,
+            "maxGap": 0.043282,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -2539,10 +2673,10 @@
             "5:2"
           ],
           "odds": 55.0,
-          "modelProbability": 0.0085,
+          "modelProbability": 0.00864,
           "marketProbability": 0.0129,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.53237,
+          "rawExpectedReturn": -0.52503,
           "robustExpectedReturn": -1.0,
           "singleEligible": false,
           "available": true,
@@ -2552,14 +2686,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.042789,
+            "maxGap": 0.043282,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -2602,10 +2736,10 @@
             "5:2"
           ],
           "odds": 45.0,
-          "modelProbability": 0.00589,
+          "modelProbability": 0.00599,
           "marketProbability": 0.01576,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.73477,
+          "rawExpectedReturn": -0.73058,
           "robustExpectedReturn": -1.0,
           "singleEligible": false,
           "available": true,
@@ -2615,14 +2749,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.042789,
+            "maxGap": 0.043282,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -2665,10 +2799,10 @@
             "5:2"
           ],
           "odds": 250.0,
-          "modelProbability": 0.00165,
+          "modelProbability": 0.0015,
           "marketProbability": 0.00284,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.58826,
+          "rawExpectedReturn": -0.6243,
           "robustExpectedReturn": -1.0,
           "singleEligible": false,
           "available": true,
@@ -2678,14 +2812,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.042789,
+            "maxGap": 0.043282,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -2728,10 +2862,10 @@
             "5:2"
           ],
           "odds": 200.0,
-          "modelProbability": 0.00189,
+          "modelProbability": 0.00183,
           "marketProbability": 0.00355,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.62295,
+          "rawExpectedReturn": -0.63332,
           "robustExpectedReturn": -1.0,
           "singleEligible": false,
           "available": true,
@@ -2741,14 +2875,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.042789,
+            "maxGap": 0.043282,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -2791,10 +2925,10 @@
             "5:2"
           ],
           "odds": 125.0,
-          "modelProbability": 0.00132,
+          "modelProbability": 0.00116,
           "marketProbability": 0.00568,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.83452,
+          "rawExpectedReturn": -0.85537,
           "robustExpectedReturn": -1.0,
           "singleEligible": false,
           "available": true,
@@ -2804,14 +2938,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.042789,
+            "maxGap": 0.043282,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -2854,10 +2988,10 @@
             "5:2"
           ],
           "odds": 80.0,
-          "modelProbability": 0.00724,
+          "modelProbability": 0.00741,
           "marketProbability": 0.00887,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.42041,
+          "rawExpectedReturn": -0.40712,
           "robustExpectedReturn": -1.0,
           "singleEligible": false,
           "available": true,
@@ -2867,14 +3001,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.042789,
+            "maxGap": 0.043282,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -2917,10 +3051,10 @@
             "5:2"
           ],
           "odds": 150.0,
-          "modelProbability": 0.0009,
+          "modelProbability": 0.00101,
           "marketProbability": 0.00473,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.86554,
+          "rawExpectedReturn": -0.84855,
           "robustExpectedReturn": -1.0,
           "singleEligible": false,
           "available": true,
@@ -2930,14 +3064,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.042789,
+            "maxGap": 0.043282,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -2980,10 +3114,10 @@
             "5:2"
           ],
           "odds": 60.0,
-          "modelProbability": 0.00494,
+          "modelProbability": 0.00487,
           "marketProbability": 0.01182,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.70367,
+          "rawExpectedReturn": -0.70803,
           "robustExpectedReturn": -1.0,
           "singleEligible": false,
           "available": true,
@@ -2993,14 +3127,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.042789,
+            "maxGap": 0.043282,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -3014,11 +3148,11 @@
           "handicap": null,
           "excludedScores": [],
           "odds": 12.5,
-          "modelProbability": 0.08359,
+          "modelProbability": 0.08375,
           "marketProbability": 0.06391,
           "coverage": 0.78,
-          "rawExpectedReturn": 0.04488,
-          "robustExpectedReturn": -0.49224,
+          "rawExpectedReturn": 0.04688,
+          "robustExpectedReturn": -0.49052,
           "singleEligible": true,
           "available": true,
           "recommendation": "不建议",
@@ -3027,14 +3161,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.046205,
+            "maxGap": 0.044685,
             "modelFavorite": "2",
             "marketFavorite": "3",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -3048,11 +3182,11 @@
           "handicap": null,
           "excludedScores": [],
           "odds": 5.1,
-          "modelProbability": 0.20284,
+          "modelProbability": 0.20132,
           "marketProbability": 0.15664,
           "coverage": 0.78,
-          "rawExpectedReturn": 0.03448,
-          "robustExpectedReturn": -0.24326,
+          "rawExpectedReturn": 0.02674,
+          "robustExpectedReturn": -0.25048,
           "singleEligible": true,
           "available": true,
           "recommendation": "不建议",
@@ -3061,14 +3195,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.046205,
+            "maxGap": 0.044685,
             "modelFavorite": "2",
             "marketFavorite": "3",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -3082,11 +3216,11 @@
           "handicap": null,
           "excludedScores": [],
           "odds": 3.5,
-          "modelProbability": 0.25089,
+          "modelProbability": 0.25081,
           "marketProbability": 0.22824,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.12188,
-          "robustExpectedReturn": -0.32256,
+          "rawExpectedReturn": -0.12218,
+          "robustExpectedReturn": -0.32285,
           "singleEligible": true,
           "available": true,
           "recommendation": "不建议",
@@ -3095,14 +3229,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.046205,
+            "maxGap": 0.044685,
             "modelFavorite": "2",
             "marketFavorite": "3",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -3116,11 +3250,11 @@
           "handicap": null,
           "excludedScores": [],
           "odds": 3.45,
-          "modelProbability": 0.21633,
+          "modelProbability": 0.21743,
           "marketProbability": 0.23155,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.25367,
-          "robustExpectedReturn": -0.4446,
+          "rawExpectedReturn": -0.24987,
+          "robustExpectedReturn": -0.44104,
           "singleEligible": true,
           "available": true,
           "recommendation": "不建议",
@@ -3129,14 +3263,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.046205,
+            "maxGap": 0.044685,
             "modelFavorite": "2",
             "marketFavorite": "3",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -3150,11 +3284,11 @@
           "handicap": null,
           "excludedScores": [],
           "odds": 5.1,
-          "modelProbability": 0.1342,
+          "modelProbability": 0.13414,
           "marketProbability": 0.15664,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.31556,
-          "robustExpectedReturn": -0.56467,
+          "rawExpectedReturn": -0.31589,
+          "robustExpectedReturn": -0.56497,
           "singleEligible": true,
           "available": true,
           "recommendation": "不建议",
@@ -3163,14 +3297,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.046205,
+            "maxGap": 0.044685,
             "modelFavorite": "2",
             "marketFavorite": "3",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -3184,11 +3318,11 @@
           "handicap": null,
           "excludedScores": [],
           "odds": 9.5,
-          "modelProbability": 0.06801,
+          "modelProbability": 0.06797,
           "marketProbability": 0.08409,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.35389,
-          "robustExpectedReturn": -0.74033,
+          "rawExpectedReturn": -0.3543,
+          "robustExpectedReturn": -0.74067,
           "singleEligible": true,
           "available": true,
           "recommendation": "不建议",
@@ -3197,14 +3331,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.046205,
+            "maxGap": 0.044685,
             "modelFavorite": "2",
             "marketFavorite": "3",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -3218,10 +3352,10 @@
           "handicap": null,
           "excludedScores": [],
           "odds": 17.0,
-          "modelProbability": 0.02885,
+          "modelProbability": 0.02927,
           "marketProbability": 0.04699,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.50957,
+          "rawExpectedReturn": -0.50238,
           "robustExpectedReturn": -1.0,
           "singleEligible": true,
           "available": true,
@@ -3231,14 +3365,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.046205,
+            "maxGap": 0.044685,
             "modelFavorite": "2",
             "marketFavorite": "3",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -3252,10 +3386,10 @@
           "handicap": null,
           "excludedScores": [],
           "odds": 25.0,
-          "modelProbability": 0.01529,
+          "modelProbability": 0.01531,
           "marketProbability": 0.03195,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.61786,
+          "rawExpectedReturn": -0.61713,
           "robustExpectedReturn": -1.0,
           "singleEligible": true,
           "available": true,
@@ -3265,14 +3399,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.046205,
+            "maxGap": 0.044685,
             "modelFavorite": "2",
             "marketFavorite": "3",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -3286,11 +3420,11 @@
           "handicap": null,
           "excludedScores": [],
           "odds": 3.8,
-          "modelProbability": 0.16309,
+          "modelProbability": 0.16375,
           "marketProbability": 0.20979,
           "coverage": 0.7,
-          "rawExpectedReturn": -0.38027,
-          "robustExpectedReturn": -0.6073,
+          "rawExpectedReturn": -0.37774,
+          "robustExpectedReturn": -0.605,
           "singleEligible": true,
           "available": true,
           "recommendation": "观察",
@@ -3299,14 +3433,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.051932,
+            "maxGap": 0.058271,
             "modelFavorite": "负负",
             "marketFavorite": "胜胜",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -3320,11 +3454,11 @@
           "handicap": null,
           "excludedScores": [],
           "odds": 12.0,
-          "modelProbability": 0.06081,
+          "modelProbability": 0.06104,
           "marketProbability": 0.06644,
           "coverage": 0.7,
-          "rawExpectedReturn": -0.27027,
-          "robustExpectedReturn": -0.83576,
+          "rawExpectedReturn": -0.26749,
+          "robustExpectedReturn": -0.83347,
           "singleEligible": true,
           "available": true,
           "recommendation": "观察",
@@ -3333,14 +3467,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.051932,
+            "maxGap": 0.058271,
             "modelFavorite": "负负",
             "marketFavorite": "胜胜",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -3354,10 +3488,10 @@
           "handicap": null,
           "excludedScores": [],
           "odds": 21.0,
-          "modelProbability": 0.02622,
+          "modelProbability": 0.02613,
           "marketProbability": 0.03796,
           "coverage": 0.7,
-          "rawExpectedReturn": -0.44946,
+          "rawExpectedReturn": -0.4513,
           "robustExpectedReturn": -1.0,
           "singleEligible": true,
           "available": true,
@@ -3367,14 +3501,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.051932,
+            "maxGap": 0.058271,
             "modelFavorite": "负负",
             "marketFavorite": "胜胜",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -3388,11 +3522,11 @@
           "handicap": null,
           "excludedScores": [],
           "odds": 5.3,
-          "modelProbability": 0.14088,
+          "modelProbability": 0.13676,
           "marketProbability": 0.15042,
           "coverage": 0.7,
-          "rawExpectedReturn": -0.25334,
-          "robustExpectedReturn": -0.55895,
+          "rawExpectedReturn": -0.27518,
+          "robustExpectedReturn": -0.57858,
           "singleEligible": true,
           "available": true,
           "recommendation": "观察",
@@ -3401,14 +3535,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.051932,
+            "maxGap": 0.058271,
             "modelFavorite": "负负",
             "marketFavorite": "胜胜",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -3425,7 +3559,7 @@
           "modelProbability": 0.15068,
           "marketProbability": 0.14495,
           "coverage": 0.7,
-          "rawExpectedReturn": -0.17129,
+          "rawExpectedReturn": -0.17128,
           "robustExpectedReturn": -0.49366,
           "singleEligible": true,
           "available": true,
@@ -3435,14 +3569,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.051932,
+            "maxGap": 0.058271,
             "modelFavorite": "负负",
             "marketFavorite": "胜胜",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -3456,11 +3590,11 @@
           "handicap": null,
           "excludedScores": [],
           "odds": 6.6,
-          "modelProbability": 0.16723,
+          "modelProbability": 0.16446,
           "marketProbability": 0.12079,
           "coverage": 0.7,
-          "rawExpectedReturn": 0.10374,
-          "robustExpectedReturn": -0.29298,
+          "rawExpectedReturn": 0.08546,
+          "robustExpectedReturn": -0.30967,
           "singleEligible": true,
           "available": true,
           "recommendation": "观察",
@@ -3469,14 +3603,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.051932,
+            "maxGap": 0.058271,
             "modelFavorite": "负负",
             "marketFavorite": "胜胜",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -3490,10 +3624,10 @@
           "handicap": null,
           "excludedScores": [],
           "odds": 17.0,
-          "modelProbability": 0.02223,
+          "modelProbability": 0.02159,
           "marketProbability": 0.0469,
           "coverage": 0.7,
-          "rawExpectedReturn": -0.6221,
+          "rawExpectedReturn": -0.63299,
           "robustExpectedReturn": -1.0,
           "singleEligible": true,
           "available": true,
@@ -3503,14 +3637,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.051932,
+            "maxGap": 0.058271,
             "modelFavorite": "负负",
             "marketFavorite": "胜胜",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -3524,11 +3658,11 @@
           "handicap": null,
           "excludedScores": [],
           "odds": 12.0,
-          "modelProbability": 0.06062,
+          "modelProbability": 0.061,
           "marketProbability": 0.06644,
           "coverage": 0.7,
-          "rawExpectedReturn": -0.27257,
-          "robustExpectedReturn": -0.83765,
+          "rawExpectedReturn": -0.26797,
+          "robustExpectedReturn": -0.83386,
           "singleEligible": true,
           "available": true,
           "recommendation": "观察",
@@ -3537,14 +3671,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.051932,
+            "maxGap": 0.058271,
             "modelFavorite": "负负",
             "marketFavorite": "胜胜",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -3558,11 +3692,11 @@
           "handicap": null,
           "excludedScores": [],
           "odds": 5.1,
-          "modelProbability": 0.20825,
+          "modelProbability": 0.21459,
           "marketProbability": 0.15632,
           "coverage": 0.7,
-          "rawExpectedReturn": 0.06207,
-          "robustExpectedReturn": -0.2607,
+          "rawExpectedReturn": 0.0944,
+          "robustExpectedReturn": -0.23059,
           "singleEligible": true,
           "available": true,
           "recommendation": "观察",
@@ -3571,14 +3705,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.051932,
+            "maxGap": 0.058271,
             "modelFavorite": "负负",
             "marketFavorite": "胜胜",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-15T03:00:00+08:00",
           "lotteryCode": "周二101",
           "matchDate": "2026-07-15"
@@ -3704,7 +3838,7 @@
       "predictionTarget": "90_minutes",
       "expectedGoals": {
         "home": 1.03,
-        "away": 1.52
+        "away": 1.5
       },
       "modelDecomposition": {
         "totalGoalsProvider": "elo_fallback",
@@ -3718,50 +3852,97 @@
           "away": 1.5168
         },
         "tournamentEvidence": {
-          "policy": "current_tournament_evidence_v1",
+          "policy": "current_tournament_commentary_evidence_v2",
           "predictionTarget": "90_minutes",
           "halfLifeMatches": 2.0,
           "shrinkage": 5.0,
-          "maxSideXgShift": 0.0,
+          "commentaryProcessScale": 0.45,
+          "maxSideXgShift": 0.03,
           "home": {
             "team": "英格兰",
-            "matchesUsed": 5,
-            "effectiveWeight": 2.8107,
-            "attackResidual": 0.1344,
-            "defenseResidual": 0.132,
-            "halfTimeMatchesUsed": 5,
-            "firstHalfAttackResidual": 0.0978,
-            "firstHalfDefenseResidual": 0.2093,
+            "matchesUsed": 6,
+            "commentaryMatchesUsed": 3,
+            "effectiveWeight": 1.3964,
+            "attackResidual": -0.0774,
+            "defenseResidual": 0.0774,
+            "outcomeAttackResidualDiagnostic": 0.1469,
+            "outcomeDefenseResidualDiagnostic": 0.127,
+            "scoreResidualsDirectlyAdjustStrength": false,
+            "halfTimeMatchesUsed": 3,
+            "firstHalfAttackResidual": -0.0559,
+            "firstHalfDefenseResidual": 0.0559,
             "restDays": 3.92,
-            "extraTimeLoad": false,
-            "fatigueAttackDelta": 0.0,
-            "fatigueDefenseRiskDelta": 0.0
+            "extraTimeLoad": true,
+            "post90LoadSeverity": 0.45,
+            "visibleFatigueEvents": 0,
+            "forcedInjurySubstitutions": 0,
+            "fatigueAttackDelta": -0.0225,
+            "fatigueDefenseRiskDelta": 0.0135,
+            "commentarySourceUrls": [
+              "https://www.espn.com/soccer/commentary/_/gameId/760495",
+              "https://www.espn.com/soccer/commentary/_/gameId/760505",
+              "https://www.espn.com/soccer/commentary/_/gameId/760512"
+            ]
           },
           "away": {
             "team": "阿根廷",
             "matchesUsed": 6,
-            "effectiveWeight": 2.9874,
-            "attackResidual": -0.0393,
-            "defenseResidual": 0.2525,
-            "halfTimeMatchesUsed": 6,
-            "firstHalfAttackResidual": -0.0098,
-            "firstHalfDefenseResidual": 0.0181,
+            "commentaryMatchesUsed": 3,
+            "effectiveWeight": 1.1205,
+            "attackResidual": -0.0903,
+            "defenseResidual": 0.0903,
+            "outcomeAttackResidualDiagnostic": -0.0393,
+            "outcomeDefenseResidualDiagnostic": 0.2525,
+            "scoreResidualsDirectlyAdjustStrength": false,
+            "halfTimeMatchesUsed": 3,
+            "firstHalfAttackResidual": -0.0666,
+            "firstHalfDefenseResidual": 0.0666,
             "restDays": 3.75,
-            "extraTimeLoad": false,
-            "fatigueAttackDelta": 0.0,
-            "fatigueDefenseRiskDelta": 0.0
+            "extraTimeLoad": true,
+            "post90LoadSeverity": 0.55,
+            "visibleFatigueEvents": 0,
+            "forcedInjurySubstitutions": 1,
+            "fatigueAttackDelta": -0.0275,
+            "fatigueDefenseRiskDelta": 0.0165,
+            "commentarySourceUrls": [
+              "https://www.espn.com/soccer/commentary/_/gameId/760500",
+              "https://www.espn.com/soccer/commentary/_/gameId/760509",
+              "https://www.espn.com/soccer/commentary/_/gameId/760513"
+            ]
           },
           "xgNet": {
-            "home": 0.0,
-            "away": 0.0
+            "home": 0.0005,
+            "away": -0.0205
           },
           "adjustedExpectedGoals": {
-            "home": 1.0332,
-            "away": 1.5168
+            "home": 1.0336,
+            "away": 1.4964
           },
-          "applied": false,
-          "diagnosticOnly": true,
-          "selectionReason": "historical_top3_gate_fallback_to_diagnostic_only",
+          "applied": true,
+          "diagnosticOnly": false,
+          "selectionReason": "walk_forward_commentary_process_gate",
+          "commentaryValidation": {
+            "protocol": "walk_forward_next_round_only",
+            "predictionTarget": "90_minutes",
+            "baseline": {
+              "commentaryProcessScale": 0.0,
+              "commentaryMaxSideXgShift": 0.0,
+              "matches": 12,
+              "scorePoissonNll": 2.92593
+            },
+            "selected": {
+              "commentaryProcessScale": 0.45,
+              "commentaryMaxSideXgShift": 0.03,
+              "matches": 12,
+              "scorePoissonNll": 2.89795
+            },
+            "relativeImprovement": 0.009563,
+            "fatigueAttackPerLoad": -0.05,
+            "fatigueDefenseRiskPerLoad": 0.03,
+            "candidatesEvaluated": 13,
+            "safetyGatePassed": true
+          },
+          "extraTimePolicy": "90_to_120_commentary_changes_next_match_load_only",
           "halfFullEvidence": {
             "policy": "opponent_adjusted_half_split_v1",
             "maxFirstHalfXgShift": 0.05,
@@ -3769,37 +3950,37 @@
             "shrinkage": 5.0,
             "blend": 0.25,
             "firstHalfXgShift": {
-              "home": 0.05,
-              "away": 0.05
+              "home": 0.0036,
+              "away": -0.0036
             },
             "firstHalfExpectedGoals": {
-              "home": 0.5149,
-              "away": 0.7326
+              "home": 0.4687,
+              "away": 0.6698
             },
             "secondHalfExpectedGoals": {
-              "home": 0.5182,
-              "away": 0.7843
+              "home": 0.5649,
+              "away": 0.8266
             },
             "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
           }
         },
         "adjustedExpectedGoals": {
-          "home": 1.0332,
-          "away": 1.5168
+          "home": 1.0341,
+          "away": 1.497
         },
-        "formLayer": "current_tournament_evidence_v1",
+        "formLayer": "current_tournament_commentary_evidence_v2",
         "preFinalFourExpectedGoals": {
-          "home": 1.0332,
-          "away": 1.5168
+          "home": 1.0336,
+          "away": 1.4964
         },
-        "finalFourLayer": "world_cup_final_four_matrix_v1",
+        "finalFourLayer": "world_cup_final_four_commentary_matrix_v2",
         "finalFourStage": "SEMI_FINAL",
-        "finalFourMatrixBlend": 0.0,
+        "finalFourMatrixBlend": 0.2,
         "marketCalibration": {
           "applied": false,
           "policy": "bounded_dual_axis_market_anchor_v1",
           "reason": "validation_gate_fallback_to_diagnostic_only",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "strengthBlend": 0.0,
           "totalGoalsBlend": 0.0,
           "deViggedOutcomeProbabilities": {
@@ -3819,12 +4000,12 @@
           },
           "marketExpectedTotalGoals": 2.3672,
           "preCalibrationExpectedGoals": {
-            "home": 1.0332,
-            "away": 1.5168
+            "home": 1.0341,
+            "away": 1.497
           },
           "postCalibrationExpectedGoals": {
-            "home": 1.0332,
-            "away": 1.5168
+            "home": 1.0341,
+            "away": 1.497
           },
           "xgShift": {
             "home": 0.0,
@@ -3842,50 +4023,97 @@
       "tournamentForm": null,
       "groupStageForm": null,
       "tournamentEvidence": {
-        "policy": "current_tournament_evidence_v1",
+        "policy": "current_tournament_commentary_evidence_v2",
         "predictionTarget": "90_minutes",
         "halfLifeMatches": 2.0,
         "shrinkage": 5.0,
-        "maxSideXgShift": 0.0,
+        "commentaryProcessScale": 0.45,
+        "maxSideXgShift": 0.03,
         "home": {
           "team": "英格兰",
-          "matchesUsed": 5,
-          "effectiveWeight": 2.8107,
-          "attackResidual": 0.1344,
-          "defenseResidual": 0.132,
-          "halfTimeMatchesUsed": 5,
-          "firstHalfAttackResidual": 0.0978,
-          "firstHalfDefenseResidual": 0.2093,
+          "matchesUsed": 6,
+          "commentaryMatchesUsed": 3,
+          "effectiveWeight": 1.3964,
+          "attackResidual": -0.0774,
+          "defenseResidual": 0.0774,
+          "outcomeAttackResidualDiagnostic": 0.1469,
+          "outcomeDefenseResidualDiagnostic": 0.127,
+          "scoreResidualsDirectlyAdjustStrength": false,
+          "halfTimeMatchesUsed": 3,
+          "firstHalfAttackResidual": -0.0559,
+          "firstHalfDefenseResidual": 0.0559,
           "restDays": 3.92,
-          "extraTimeLoad": false,
-          "fatigueAttackDelta": 0.0,
-          "fatigueDefenseRiskDelta": 0.0
+          "extraTimeLoad": true,
+          "post90LoadSeverity": 0.45,
+          "visibleFatigueEvents": 0,
+          "forcedInjurySubstitutions": 0,
+          "fatigueAttackDelta": -0.0225,
+          "fatigueDefenseRiskDelta": 0.0135,
+          "commentarySourceUrls": [
+            "https://www.espn.com/soccer/commentary/_/gameId/760495",
+            "https://www.espn.com/soccer/commentary/_/gameId/760505",
+            "https://www.espn.com/soccer/commentary/_/gameId/760512"
+          ]
         },
         "away": {
           "team": "阿根廷",
           "matchesUsed": 6,
-          "effectiveWeight": 2.9874,
-          "attackResidual": -0.0393,
-          "defenseResidual": 0.2525,
-          "halfTimeMatchesUsed": 6,
-          "firstHalfAttackResidual": -0.0098,
-          "firstHalfDefenseResidual": 0.0181,
+          "commentaryMatchesUsed": 3,
+          "effectiveWeight": 1.1205,
+          "attackResidual": -0.0903,
+          "defenseResidual": 0.0903,
+          "outcomeAttackResidualDiagnostic": -0.0393,
+          "outcomeDefenseResidualDiagnostic": 0.2525,
+          "scoreResidualsDirectlyAdjustStrength": false,
+          "halfTimeMatchesUsed": 3,
+          "firstHalfAttackResidual": -0.0666,
+          "firstHalfDefenseResidual": 0.0666,
           "restDays": 3.75,
-          "extraTimeLoad": false,
-          "fatigueAttackDelta": 0.0,
-          "fatigueDefenseRiskDelta": 0.0
+          "extraTimeLoad": true,
+          "post90LoadSeverity": 0.55,
+          "visibleFatigueEvents": 0,
+          "forcedInjurySubstitutions": 1,
+          "fatigueAttackDelta": -0.0275,
+          "fatigueDefenseRiskDelta": 0.0165,
+          "commentarySourceUrls": [
+            "https://www.espn.com/soccer/commentary/_/gameId/760500",
+            "https://www.espn.com/soccer/commentary/_/gameId/760509",
+            "https://www.espn.com/soccer/commentary/_/gameId/760513"
+          ]
         },
         "xgNet": {
-          "home": 0.0,
-          "away": 0.0
+          "home": 0.0005,
+          "away": -0.0205
         },
         "adjustedExpectedGoals": {
-          "home": 1.0332,
-          "away": 1.5168
+          "home": 1.0336,
+          "away": 1.4964
         },
-        "applied": false,
-        "diagnosticOnly": true,
-        "selectionReason": "historical_top3_gate_fallback_to_diagnostic_only",
+        "applied": true,
+        "diagnosticOnly": false,
+        "selectionReason": "walk_forward_commentary_process_gate",
+        "commentaryValidation": {
+          "protocol": "walk_forward_next_round_only",
+          "predictionTarget": "90_minutes",
+          "baseline": {
+            "commentaryProcessScale": 0.0,
+            "commentaryMaxSideXgShift": 0.0,
+            "matches": 12,
+            "scorePoissonNll": 2.92593
+          },
+          "selected": {
+            "commentaryProcessScale": 0.45,
+            "commentaryMaxSideXgShift": 0.03,
+            "matches": 12,
+            "scorePoissonNll": 2.89795
+          },
+          "relativeImprovement": 0.009563,
+          "fatigueAttackPerLoad": -0.05,
+          "fatigueDefenseRiskPerLoad": 0.03,
+          "candidatesEvaluated": 13,
+          "safetyGatePassed": true
+        },
+        "extraTimePolicy": "90_to_120_commentary_changes_next_match_load_only",
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
           "maxFirstHalfXgShift": 0.05,
@@ -3893,16 +4121,16 @@
           "shrinkage": 5.0,
           "blend": 0.25,
           "firstHalfXgShift": {
-            "home": 0.05,
-            "away": 0.05
+            "home": 0.0036,
+            "away": -0.0036
           },
           "firstHalfExpectedGoals": {
-            "home": 0.5149,
-            "away": 0.7326
+            "home": 0.4687,
+            "away": 0.6698
           },
           "secondHalfExpectedGoals": {
-            "home": 0.5182,
-            "away": 0.7843
+            "home": 0.5649,
+            "away": 0.8266
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -3911,34 +4139,36 @@
       "knockoutContext": null,
       "knockoutRound32Form": null,
       "finalFourContext": {
-        "policy": "world_cup_final_four_matrix_v1",
+        "policy": "world_cup_final_four_commentary_matrix_v2",
         "predictionTarget": "90_minutes",
         "stage": "SEMI_FINAL",
         "stageSource": "official_2026_beijing_schedule",
         "applied": true,
-        "matrixAdjustmentApplied": false,
-        "diagnosticOnly": true,
-        "validationStatus": "diagnostic_only",
-        "validationReason": "historical_final_four_90_minute_stage_labels_not_yet_validated",
+        "matrixAdjustmentApplied": true,
+        "diagnosticOnly": false,
+        "validationStatus": "commentary_trained_safety_gated",
+        "validationReason": "stage pace is derived from archived minute-by-minute pressure events; only leave-one-tournament-out improvements are blended",
         "stageParameters": {
-          "candidateTotalXgMultiplier": 0.97,
-          "candidateFirstHalfShare": 0.43,
-          "activeMatrixBlend": 0.0,
+          "candidateTotalXgMultiplier": 1.0022,
+          "candidateFirstHalfShare": 0.3752,
+          "activeMatrixBlend": 0.2,
           "coveragePenalty": 0.02,
           "uncertaintyMultiplier": 1.1,
-          "valueProbabilityGap": 0.05
+          "valueProbabilityGap": 0.05,
+          "trainingMatches": 12,
+          "rawCommentaryPaceMultiplier": 1.0033
         },
         "preStageExpectedGoals": {
-          "home": 1.0332,
-          "away": 1.5168
+          "home": 1.0336,
+          "away": 1.4964
         },
         "candidateExpectedGoals": {
-          "home": 1.0022,
-          "away": 1.4713
+          "home": 1.0359,
+          "away": 1.4997
         },
         "adjustedExpectedGoals": {
-          "home": 1.0332,
-          "away": 1.5168
+          "home": 1.0341,
+          "away": 1.497
         },
         "coverageBefore": 0.8,
         "coverageAfter": 0.78
@@ -3949,16 +4179,16 @@
         "stage": "SEMI_FINAL",
         "confidence95": {
           "home": [
-            0.17353,
-            0.34397
+            0.17792,
+            0.34916
           ],
           "draw": [
-            0.17511,
-            0.34583
+            0.17634,
+            0.34728
           ],
           "away": [
-            0.38604,
-            0.57552
+            0.37995,
+            0.56935
           ]
         },
         "noVigMarketProbabilities": {
@@ -3967,9 +4197,9 @@
           "away": 0.30119
         },
         "probabilityGaps": {
-          "home": -0.11806,
-          "draw": -0.06153,
-          "away": 0.17959
+          "home": -0.11327,
+          "draw": -0.06019,
+          "away": 0.17346
         },
         "valueProbabilityGap": 0.05,
         "valueSelections": [
@@ -4027,7 +4257,7 @@
             "scoreTop3Hits": 10
           }
         },
-        "sourceKnockoutPolicy": "current_tournament_evidence_v1",
+        "sourceKnockoutPolicy": "current_tournament_commentary_evidence_v2",
         "favoriteSide": "away",
         "totalGoalWeights": {
           "0": 1.035,
@@ -4039,17 +4269,17 @@
           "6": 1.095,
           "7+": 1.12
         },
-        "expectedTotalGoalsBefore": 2.5395,
-        "expectedTotalGoalsAfter": 2.5523,
-        "fullIntensityExpectedTotalGoalsAfter": 2.5907,
+        "expectedTotalGoalsBefore": 2.5227,
+        "expectedTotalGoalsAfter": 2.5353,
+        "fullIntensityExpectedTotalGoalsAfter": 2.5729,
         "outcomePreserved": true,
-        "maxCellDelta": 0.002203
+        "maxCellDelta": 0.002216
       },
       "marketCalibration": {
         "applied": false,
         "policy": "bounded_dual_axis_market_anchor_v1",
         "reason": "validation_gate_fallback_to_diagnostic_only",
-        "observedAt": "2026-07-13T15:22:00+08:00",
+        "observedAt": "2026-07-13T16:01:09+08:00",
         "strengthBlend": 0.0,
         "totalGoalsBlend": 0.0,
         "deViggedOutcomeProbabilities": {
@@ -4069,12 +4299,12 @@
         },
         "marketExpectedTotalGoals": 2.3672,
         "preCalibrationExpectedGoals": {
-          "home": 1.0332,
-          "away": 1.5168
+          "home": 1.0341,
+          "away": 1.497
         },
         "postCalibrationExpectedGoals": {
-          "home": 1.0332,
-          "away": 1.5168
+          "home": 1.0341,
+          "away": 1.497
         },
         "xgShift": {
           "home": 0.0,
@@ -4096,14 +4326,14 @@
         "labels": [],
         "drawShift": 0.0,
         "preAdjustment": {
-          "home": 0.25875,
-          "draw": 0.26047,
-          "away": 0.48078
+          "home": 0.26354,
+          "draw": 0.26181,
+          "away": 0.47465
         },
         "postAdjustment": {
-          "home": 0.25875,
-          "draw": 0.26047,
-          "away": 0.48078
+          "home": 0.26354,
+          "draw": 0.26181,
+          "away": 0.47465
         }
       },
       "halfFullCalibration": {
@@ -4113,7 +4343,7 @@
         "baselineCalibration": {
           "applied": true,
           "policy": "current_tournament_half_full_late_swing_v3",
-          "sourceKnockoutPolicy": "current_tournament_evidence_v1",
+          "sourceKnockoutPolicy": "current_tournament_commentary_evidence_v2",
           "weights": {
             "胜胜": 0.95,
             "胜平": 1.3,
@@ -4127,13 +4357,13 @@
           },
           "topSelectionBefore": "负负",
           "topSelectionAfter": "负负",
-          "topProbabilityBefore": 0.29213,
-          "topProbabilityAfter": 0.26087559355922146
+          "topProbabilityBefore": 0.28635,
+          "topProbabilityAfter": 0.25562111328488385
         },
         "candidateCalibration": {
           "applied": true,
           "policy": "current_tournament_half_full_late_swing_v3",
-          "sourceKnockoutPolicy": "current_tournament_evidence_v1",
+          "sourceKnockoutPolicy": "current_tournament_commentary_evidence_v2",
           "weights": {
             "胜胜": 0.95,
             "胜平": 1.3,
@@ -4147,8 +4377,8 @@
           },
           "topSelectionBefore": "负负",
           "topSelectionAfter": "负负",
-          "topProbabilityBefore": 0.30224511814500016,
-          "topProbabilityAfter": 0.2715530213749363
+          "topProbabilityBefore": 0.2857694997187846,
+          "topProbabilityAfter": 0.2554222023844427
         },
         "topSelectionBefore": "负负",
         "topSelectionAfter": "负负"
@@ -4159,11 +4389,11 @@
         "role": "auxiliary_wdl_calibration",
         "assistWeight": 0.0,
         "topHalfFullSelection": "负负",
-        "topHalfFullProbability": 0.26354,
+        "topHalfFullProbability": 0.25557,
         "outcomeSignal": {
-          "home": 0.2584,
-          "draw": 0.26486,
-          "away": 0.47674
+          "home": 0.26301,
+          "draw": 0.26578,
+          "away": 0.47121
         },
         "outcomeDelta": {
           "home": 0.0,
@@ -4173,19 +4403,19 @@
         "maxOutcomeDelta": 0.0,
         "note": "Aggregates the specialist half-time/full-time distribution into a conservative W/D/L calibration signal.",
         "assistedOutcomeProbabilities": {
-          "home": 0.25875,
-          "draw": 0.26047,
-          "away": 0.48078
+          "home": 0.26354,
+          "draw": 0.26181,
+          "away": 0.47465
         }
       },
       "outcomeProbabilities": {
-        "home": 0.25875,
-        "draw": 0.26047,
-        "away": 0.48078
+        "home": 0.26354,
+        "draw": 0.26181,
+        "away": 0.47465
       },
       "outcomeDecision": {
         "threshold": 0.6,
-        "maxProbability": 0.48078,
+        "maxProbability": 0.47465,
         "selection": "away",
         "status": "watch"
       },
@@ -4195,35 +4425,35 @@
       "scoreProbabilities": [
         {
           "score": "1:1",
-          "probability": 0.1208269783002031
+          "probability": 0.12164428369497883
         },
         {
           "score": "0:1",
-          "probability": 0.11679115904542166
+          "probability": 0.11721442115584918
         },
         {
           "score": "1:2",
-          "probability": 0.09110090372432657
+          "probability": 0.09009076603739825
         },
         {
           "score": "0:2",
-          "probability": 0.08825676732133916
-        },
-        {
-          "score": "0:0",
-          "probability": 0.0817931356077299
+          "probability": 0.08805291285456965
         },
         {
           "score": "1:0",
-          "probability": 0.08086472271804246
+          "probability": 0.08258327406938287
+        },
+        {
+          "score": "0:0",
+          "probability": 0.08239892847374294
         },
         {
           "score": "2:1",
-          "probability": 0.06333256053503619
+          "probability": 0.06450059188725649
         },
         {
           "score": "2:2",
-          "probability": 0.048730644647388105
+          "probability": 0.048821699650005726
         }
       ],
       "totalGoalsCore": {
@@ -4233,15 +4463,15 @@
           "2",
           "3"
         ],
-        "probability": 0.46286
+        "probability": 0.46364
       },
       "totalGoalsBoundaryRisk": {
         "policy": "two_bucket_boundary_watch_v1",
         "triggered": true,
         "level": "watch",
-        "coreProbability": 0.46286,
+        "coreProbability": 0.46364,
         "adjacentSelection": "1",
-        "adjacentProbability": 0.19766,
+        "adjacentProbability": 0.1998,
         "thresholds": {
           "maxCoreProbability": 0.52,
           "minAdjacentProbability": 0.18
@@ -4252,9 +4482,9 @@
         "policy": "low_core_far_tail_watch_v1",
         "triggered": false,
         "level": "none",
-        "coreProbability": 0.46286,
-        "threeProbability": 0.21352,
-        "fourPlusProbability": 0.25769,
+        "coreProbability": 0.46364,
+        "threeProbability": 0.21195,
+        "fourPlusProbability": 0.25417,
         "watchSelections": [
           "4",
           "5",
@@ -4341,51 +4571,51 @@
       "simulation": {
         "actualPaths": 100000,
         "monteCarloStandardError": {
-          "home": 0.001385,
-          "draw": 0.001388,
-          "away": 0.00158
+          "home": 0.001393,
+          "draw": 0.00139,
+          "away": 0.001579
         },
         "confidence95": {
           "home": [
-            0.256036,
-            0.261464
+            0.260809,
+            0.266271
           ],
           "draw": [
-            0.25775,
-            0.26319
+            0.259085,
+            0.264535
           ],
           "away": [
-            0.477683,
-            0.483877
+            0.471555,
+            0.477745
           ]
         },
         "convergence": [
           {
             "paths": 25000,
             "outcomes": {
-              "home": 0.2584,
-              "draw": 0.26092,
-              "away": 0.48068
+              "home": 0.2634,
+              "draw": 0.263,
+              "away": 0.4736
             },
             "maxDeltaFromPrevious": null
           },
           {
             "paths": 50000,
             "outcomes": {
-              "home": 0.26098,
-              "draw": 0.25908,
-              "away": 0.47994
+              "home": 0.26396,
+              "draw": 0.2615,
+              "away": 0.47454
             },
-            "maxDeltaFromPrevious": 0.00258
+            "maxDeltaFromPrevious": 0.0015
           },
           {
             "paths": 100000,
             "outcomes": {
-              "home": 0.25875,
-              "draw": 0.26047,
-              "away": 0.48078
+              "home": 0.26354,
+              "draw": 0.26181,
+              "away": 0.47465
             },
-            "maxDeltaFromPrevious": 0.00223
+            "maxDeltaFromPrevious": 0.00042
           }
         ]
       },
@@ -4399,27 +4629,27 @@
           "handicap": null,
           "excludedScores": [],
           "odds": 2.35,
-          "modelProbability": 0.25875,
+          "modelProbability": 0.26354,
           "marketProbability": 0.37681,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.39194,
-          "robustExpectedReturn": -0.52763,
+          "rawExpectedReturn": -0.38068,
+          "robustExpectedReturn": -0.51694,
           "singleEligible": true,
           "available": true,
           "recommendation": "观察",
-          "reason": "模型与市场最大概率差 18.0% 超过 15%",
+          "reason": "模型与市场最大概率差 17.3% 超过 15%",
           "oddsSource": "official",
           "marketConflict": {
             "status": "conflict",
             "blocked": true,
-            "maxGap": 0.179589,
+            "maxGap": 0.173459,
             "modelFavorite": "负",
             "marketFavorite": "胜",
-            "reason": "模型与市场最大概率差 18.0% 超过 15%"
+            "reason": "模型与市场最大概率差 17.3% 超过 15%"
           },
           "formalEligible": false,
-          "formalBlockReason": "模型与市场最大概率差 18.0% 超过 15%",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "formalBlockReason": "模型与市场最大概率差 17.3% 超过 15%",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -4433,27 +4663,27 @@
           "handicap": null,
           "excludedScores": [],
           "odds": 2.75,
-          "modelProbability": 0.26047,
+          "modelProbability": 0.26181,
           "marketProbability": 0.322,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.28371,
-          "robustExpectedReturn": -0.44274,
+          "rawExpectedReturn": -0.28002,
+          "robustExpectedReturn": -0.43924,
           "singleEligible": true,
           "available": true,
           "recommendation": "观察",
-          "reason": "模型与市场最大概率差 18.0% 超过 15%",
+          "reason": "模型与市场最大概率差 17.3% 超过 15%",
           "oddsSource": "official",
           "marketConflict": {
             "status": "conflict",
             "blocked": true,
-            "maxGap": 0.179589,
+            "maxGap": 0.173459,
             "modelFavorite": "负",
             "marketFavorite": "胜",
-            "reason": "模型与市场最大概率差 18.0% 超过 15%"
+            "reason": "模型与市场最大概率差 17.3% 超过 15%"
           },
           "formalEligible": false,
-          "formalBlockReason": "模型与市场最大概率差 18.0% 超过 15%",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "formalBlockReason": "模型与市场最大概率差 17.3% 超过 15%",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -4467,27 +4697,27 @@
           "handicap": null,
           "excludedScores": [],
           "odds": 2.94,
-          "modelProbability": 0.48078,
+          "modelProbability": 0.47465,
           "marketProbability": 0.30119,
           "coverage": 0.78,
-          "rawExpectedReturn": 0.41349,
-          "robustExpectedReturn": 0.2271,
+          "rawExpectedReturn": 0.39547,
+          "robustExpectedReturn": 0.20916,
           "singleEligible": true,
           "available": true,
           "recommendation": "观察",
-          "reason": "模型与市场最大概率差 18.0% 超过 15%",
+          "reason": "模型与市场最大概率差 17.3% 超过 15%",
           "oddsSource": "official",
           "marketConflict": {
             "status": "conflict",
             "blocked": true,
-            "maxGap": 0.179589,
+            "maxGap": 0.173459,
             "modelFavorite": "负",
             "marketFavorite": "胜",
-            "reason": "模型与市场最大概率差 18.0% 超过 15%"
+            "reason": "模型与市场最大概率差 17.3% 超过 15%"
           },
           "formalEligible": false,
-          "formalBlockReason": "模型与市场最大概率差 18.0% 超过 15%",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "formalBlockReason": "模型与市场最大概率差 17.3% 超过 15%",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -4501,11 +4731,11 @@
           "handicap": -1,
           "excludedScores": [],
           "odds": 5.8,
-          "modelProbability": 0.09504,
+          "modelProbability": 0.09703,
           "marketProbability": 0.15275,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.44879,
-          "robustExpectedReturn": -0.70678,
+          "rawExpectedReturn": -0.43723,
+          "robustExpectedReturn": -0.69667,
           "singleEligible": false,
           "available": true,
           "recommendation": "不建议",
@@ -4514,14 +4744,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.130252,
+            "maxGap": 0.125462,
             "modelFavorite": "负",
             "marketFavorite": "负",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -4535,11 +4765,11 @@
           "handicap": -1,
           "excludedScores": [],
           "odds": 3.75,
-          "modelProbability": 0.16371,
+          "modelProbability": 0.16651,
           "marketProbability": 0.23625,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.38608,
-          "robustExpectedReturn": -0.57926,
+          "rawExpectedReturn": -0.37559,
+          "robustExpectedReturn": -0.56964,
           "singleEligible": false,
           "available": true,
           "recommendation": "不建议",
@@ -4548,14 +4778,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.130252,
+            "maxGap": 0.125462,
             "modelFavorite": "负",
             "marketFavorite": "负",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -4569,11 +4799,11 @@
           "handicap": -1,
           "excludedScores": [],
           "odds": 1.45,
-          "modelProbability": 0.74125,
+          "modelProbability": 0.73646,
           "marketProbability": 0.611,
           "coverage": 0.78,
-          "rawExpectedReturn": 0.07481,
-          "robustExpectedReturn": -0.00892,
+          "rawExpectedReturn": 0.06787,
+          "robustExpectedReturn": -0.01621,
           "singleEligible": false,
           "available": true,
           "recommendation": "观察",
@@ -4582,14 +4812,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.130252,
+            "maxGap": 0.125462,
             "modelFavorite": "负",
             "marketFavorite": "负",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "接近公平价格，等待赔率变化",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -4632,11 +4862,11 @@
             "5:2"
           ],
           "odds": 7.5,
-          "modelProbability": 0.08179,
+          "modelProbability": 0.0824,
           "marketProbability": 0.0946,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.38655,
-          "robustExpectedReturn": -0.70695,
+          "rawExpectedReturn": -0.38201,
+          "robustExpectedReturn": -0.70304,
           "singleEligible": false,
           "available": true,
           "recommendation": "不建议",
@@ -4645,14 +4875,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.040958,
+            "maxGap": 0.040754,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -4695,11 +4925,11 @@
             "5:2"
           ],
           "odds": 8.0,
-          "modelProbability": 0.11679,
+          "modelProbability": 0.11721,
           "marketProbability": 0.08869,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.06567,
-          "robustExpectedReturn": -0.44199,
+          "rawExpectedReturn": -0.06228,
+          "robustExpectedReturn": -0.43897,
           "singleEligible": false,
           "available": true,
           "recommendation": "不建议",
@@ -4708,14 +4938,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.040958,
+            "maxGap": 0.040754,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -4758,11 +4988,11 @@
             "5:2"
           ],
           "odds": 15.0,
-          "modelProbability": 0.08826,
+          "modelProbability": 0.08805,
           "marketProbability": 0.0473,
           "coverage": 0.78,
-          "rawExpectedReturn": 0.32385,
-          "robustExpectedReturn": -0.33018,
+          "rawExpectedReturn": 0.32079,
+          "robustExpectedReturn": -0.33283,
           "singleEligible": false,
           "available": true,
           "recommendation": "不建议",
@@ -4771,14 +5001,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.040958,
+            "maxGap": 0.040754,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -4821,11 +5051,11 @@
             "5:2"
           ],
           "odds": 36.0,
-          "modelProbability": 0.04445,
+          "modelProbability": 0.04248,
           "marketProbability": 0.01971,
           "coverage": 0.78,
-          "rawExpectedReturn": 0.60037,
-          "robustExpectedReturn": -0.71334,
+          "rawExpectedReturn": 0.52937,
+          "robustExpectedReturn": -0.76977,
           "singleEligible": false,
           "available": true,
           "recommendation": "不建议",
@@ -4834,14 +5064,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.040958,
+            "maxGap": 0.040754,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -4884,10 +5114,10 @@
             "5:2"
           ],
           "odds": 110.0,
-          "modelProbability": 0.01716,
+          "modelProbability": 0.01649,
           "marketProbability": 0.00645,
           "coverage": 0.78,
-          "rawExpectedReturn": 0.8877,
+          "rawExpectedReturn": 0.81352,
           "robustExpectedReturn": -1.0,
           "singleEligible": false,
           "available": true,
@@ -4897,14 +5127,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.040958,
+            "maxGap": 0.040754,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -4947,10 +5177,10 @@
             "5:2"
           ],
           "odds": 500.0,
-          "modelProbability": 0.00512,
+          "modelProbability": 0.0049,
           "marketProbability": 0.00142,
           "coverage": 0.78,
-          "rawExpectedReturn": 1.55864,
+          "rawExpectedReturn": 1.45117,
           "robustExpectedReturn": -1.0,
           "singleEligible": false,
           "available": true,
@@ -4960,14 +5190,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.040958,
+            "maxGap": 0.040754,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -5010,11 +5240,11 @@
             "5:2"
           ],
           "odds": 7.6,
-          "modelProbability": 0.08086,
+          "modelProbability": 0.08258,
           "marketProbability": 0.09335,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.38543,
-          "robustExpectedReturn": -0.70911,
+          "rawExpectedReturn": -0.37237,
+          "robustExpectedReturn": -0.69788,
           "singleEligible": false,
           "available": true,
           "recommendation": "不建议",
@@ -5023,14 +5253,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.040958,
+            "maxGap": 0.040754,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -5073,11 +5303,11 @@
             "5:2"
           ],
           "odds": 5.0,
-          "modelProbability": 0.12083,
+          "modelProbability": 0.12164,
           "marketProbability": 0.1419,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.39587,
-          "robustExpectedReturn": -0.63324,
+          "rawExpectedReturn": -0.39178,
+          "robustExpectedReturn": -0.62959,
           "singleEligible": false,
           "available": true,
           "recommendation": "不建议",
@@ -5086,14 +5316,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.040958,
+            "maxGap": 0.040754,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -5136,11 +5366,11 @@
             "5:2"
           ],
           "odds": 8.5,
-          "modelProbability": 0.0911,
+          "modelProbability": 0.09009,
           "marketProbability": 0.08347,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.22564,
-          "robustExpectedReturn": -0.59944,
+          "rawExpectedReturn": -0.23423,
+          "robustExpectedReturn": -0.6069,
           "singleEligible": false,
           "available": true,
           "recommendation": "不建议",
@@ -5149,14 +5379,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.040958,
+            "maxGap": 0.040754,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -5199,11 +5429,11 @@
             "5:2"
           ],
           "odds": 28.0,
-          "modelProbability": 0.04639,
+          "modelProbability": 0.04585,
           "marketProbability": 0.02534,
           "coverage": 0.78,
-          "rawExpectedReturn": 0.29889,
-          "robustExpectedReturn": -0.73372,
+          "rawExpectedReturn": 0.28383,
+          "robustExpectedReturn": -0.7458,
           "singleEligible": false,
           "available": true,
           "recommendation": "不建议",
@@ -5212,14 +5442,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.040958,
+            "maxGap": 0.040754,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -5262,10 +5492,10 @@
             "5:2"
           ],
           "odds": 100.0,
-          "modelProbability": 0.01859,
+          "modelProbability": 0.01824,
           "marketProbability": 0.00709,
           "coverage": 0.78,
-          "rawExpectedReturn": 0.85887,
+          "rawExpectedReturn": 0.82425,
           "robustExpectedReturn": -1.0,
           "singleEligible": false,
           "available": true,
@@ -5275,14 +5505,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.040958,
+            "maxGap": 0.040754,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -5325,10 +5555,10 @@
             "5:2"
           ],
           "odds": 350.0,
-          "modelProbability": 0.0054,
+          "modelProbability": 0.0051,
           "marketProbability": 0.00203,
           "coverage": 0.78,
-          "rawExpectedReturn": 0.88921,
+          "rawExpectedReturn": 0.78457,
           "robustExpectedReturn": -1.0,
           "singleEligible": false,
           "available": true,
@@ -5338,14 +5568,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.040958,
+            "maxGap": 0.040754,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -5388,11 +5618,11 @@
             "5:2"
           ],
           "odds": 11.0,
-          "modelProbability": 0.04026,
+          "modelProbability": 0.04199,
           "marketProbability": 0.0645,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.55715,
-          "robustExpectedReturn": -0.94895,
+          "rawExpectedReturn": -0.53812,
+          "robustExpectedReturn": -0.93394,
           "singleEligible": false,
           "available": true,
           "recommendation": "不建议",
@@ -5401,14 +5631,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.040958,
+            "maxGap": 0.040754,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -5451,11 +5681,11 @@
             "5:2"
           ],
           "odds": 7.0,
-          "modelProbability": 0.06333,
+          "modelProbability": 0.0645,
           "marketProbability": 0.10135,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.55667,
-          "robustExpectedReturn": -0.83615,
+          "rawExpectedReturn": -0.5485,
+          "robustExpectedReturn": -0.82931,
           "singleEligible": false,
           "available": true,
           "recommendation": "不建议",
@@ -5464,14 +5694,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.040958,
+            "maxGap": 0.040754,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -5514,11 +5744,11 @@
             "5:2"
           ],
           "odds": 12.0,
-          "modelProbability": 0.04873,
+          "modelProbability": 0.04882,
           "marketProbability": 0.05912,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.41523,
-          "robustExpectedReturn": -0.86326,
+          "rawExpectedReturn": -0.41414,
+          "robustExpectedReturn": -0.86237,
           "singleEligible": false,
           "available": true,
           "recommendation": "不建议",
@@ -5527,14 +5757,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.040958,
+            "maxGap": 0.040754,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -5577,10 +5807,10 @@
             "5:2"
           ],
           "odds": 42.0,
-          "modelProbability": 0.0252,
+          "modelProbability": 0.02464,
           "marketProbability": 0.01689,
           "coverage": 0.78,
-          "rawExpectedReturn": 0.05823,
+          "rawExpectedReturn": 0.03467,
           "robustExpectedReturn": -1.0,
           "singleEligible": false,
           "available": true,
@@ -5590,14 +5820,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.040958,
+            "maxGap": 0.040754,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -5640,10 +5870,10 @@
             "5:2"
           ],
           "odds": 125.0,
-          "modelProbability": 0.00932,
+          "modelProbability": 0.00916,
           "marketProbability": 0.00568,
           "coverage": 0.78,
-          "rawExpectedReturn": 0.1646,
+          "rawExpectedReturn": 0.14541,
           "robustExpectedReturn": -1.0,
           "singleEligible": false,
           "available": true,
@@ -5653,14 +5883,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.040958,
+            "maxGap": 0.040754,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -5703,10 +5933,10 @@
             "5:2"
           ],
           "odds": 500.0,
-          "modelProbability": 0.00307,
+          "modelProbability": 0.00301,
           "marketProbability": 0.00142,
           "coverage": 0.78,
-          "rawExpectedReturn": 0.53479,
+          "rawExpectedReturn": 0.50385,
           "robustExpectedReturn": -1.0,
           "singleEligible": false,
           "available": true,
@@ -5716,14 +5946,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.040958,
+            "maxGap": 0.040754,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -5766,10 +5996,10 @@
             "5:2"
           ],
           "odds": 30.0,
-          "modelProbability": 0.01463,
+          "modelProbability": 0.01487,
           "marketProbability": 0.02365,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.56106,
+          "rawExpectedReturn": -0.55377,
           "robustExpectedReturn": -1.0,
           "singleEligible": false,
           "available": true,
@@ -5779,14 +6009,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.040958,
+            "maxGap": 0.040754,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -5829,10 +6059,10 @@
             "5:2"
           ],
           "odds": 21.0,
-          "modelProbability": 0.02195,
+          "modelProbability": 0.02214,
           "marketProbability": 0.03378,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.53912,
+          "rawExpectedReturn": -0.53499,
           "robustExpectedReturn": -1.0,
           "singleEligible": false,
           "available": true,
@@ -5842,14 +6072,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.040958,
+            "maxGap": 0.040754,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -5892,10 +6122,10 @@
             "5:2"
           ],
           "odds": 30.0,
-          "modelProbability": 0.01697,
+          "modelProbability": 0.01696,
           "marketProbability": 0.02365,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.49086,
+          "rawExpectedReturn": -0.49106,
           "robustExpectedReturn": -1.0,
           "singleEligible": false,
           "available": true,
@@ -5905,14 +6135,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.040958,
+            "maxGap": 0.040754,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -5955,10 +6185,10 @@
             "5:2"
           ],
           "odds": 50.0,
-          "modelProbability": 0.00822,
+          "modelProbability": 0.00809,
           "marketProbability": 0.01419,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.58886,
+          "rawExpectedReturn": -0.5955,
           "robustExpectedReturn": -1.0,
           "singleEligible": false,
           "available": true,
@@ -5968,14 +6198,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.040958,
+            "maxGap": 0.040754,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -6018,10 +6248,10 @@
             "5:2"
           ],
           "odds": 85.0,
-          "modelProbability": 0.00358,
+          "modelProbability": 0.00384,
           "marketProbability": 0.00835,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.69612,
+          "rawExpectedReturn": -0.67367,
           "robustExpectedReturn": -1.0,
           "singleEligible": false,
           "available": true,
@@ -6031,14 +6261,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.040958,
+            "maxGap": 0.040754,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -6081,10 +6311,10 @@
             "5:2"
           ],
           "odds": 75.0,
-          "modelProbability": 0.00579,
+          "modelProbability": 0.00564,
           "marketProbability": 0.00946,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.56593,
+          "rawExpectedReturn": -0.57666,
           "robustExpectedReturn": -1.0,
           "singleEligible": false,
           "available": true,
@@ -6094,14 +6324,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.040958,
+            "maxGap": 0.040754,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -6144,10 +6374,10 @@
             "5:2"
           ],
           "odds": 100.0,
-          "modelProbability": 0.00466,
+          "modelProbability": 0.00443,
           "marketProbability": 0.00709,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.53364,
+          "rawExpectedReturn": -0.55738,
           "robustExpectedReturn": -1.0,
           "singleEligible": false,
           "available": true,
@@ -6157,14 +6387,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.040958,
+            "maxGap": 0.040754,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -6207,10 +6437,10 @@
             "5:2"
           ],
           "odds": 350.0,
-          "modelProbability": 0.00076,
+          "modelProbability": 0.0008,
           "marketProbability": 0.00203,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.73328,
+          "rawExpectedReturn": -0.7188,
           "robustExpectedReturn": -1.0,
           "singleEligible": false,
           "available": true,
@@ -6220,14 +6450,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.040958,
+            "maxGap": 0.040754,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -6270,10 +6500,10 @@
             "5:2"
           ],
           "odds": 300.0,
-          "modelProbability": 0.00135,
+          "modelProbability": 0.00119,
           "marketProbability": 0.00236,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.59582,
+          "rawExpectedReturn": -0.64238,
           "robustExpectedReturn": -1.0,
           "singleEligible": false,
           "available": true,
@@ -6283,14 +6513,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.040958,
+            "maxGap": 0.040754,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -6333,10 +6563,10 @@
             "5:2"
           ],
           "odds": 300.0,
-          "modelProbability": 0.00096,
+          "modelProbability": 0.00095,
           "marketProbability": 0.00236,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.71216,
+          "rawExpectedReturn": -0.71523,
           "robustExpectedReturn": -1.0,
           "singleEligible": false,
           "available": true,
@@ -6346,14 +6576,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.040958,
+            "maxGap": 0.040754,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -6396,10 +6626,10 @@
             "5:2"
           ],
           "odds": 200.0,
-          "modelProbability": 0.00994,
+          "modelProbability": 0.00942,
           "marketProbability": 0.00355,
           "coverage": 0.78,
-          "rawExpectedReturn": 0.98807,
+          "rawExpectedReturn": 0.88445,
           "robustExpectedReturn": -1.0,
           "singleEligible": false,
           "available": true,
@@ -6409,14 +6639,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.040958,
+            "maxGap": 0.040754,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -6459,10 +6689,10 @@
             "5:2"
           ],
           "odds": 200.0,
-          "modelProbability": 0.0009,
+          "modelProbability": 0.00086,
           "marketProbability": 0.00355,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.82073,
+          "rawExpectedReturn": -0.82897,
           "robustExpectedReturn": -1.0,
           "singleEligible": false,
           "available": true,
@@ -6472,14 +6702,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.040958,
+            "maxGap": 0.040754,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -6522,10 +6752,10 @@
             "5:2"
           ],
           "odds": 125.0,
-          "modelProbability": 0.00365,
+          "modelProbability": 0.00363,
           "marketProbability": 0.00568,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.54379,
+          "rawExpectedReturn": -0.54629,
           "robustExpectedReturn": -1.0,
           "singleEligible": false,
           "available": true,
@@ -6535,14 +6765,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.040958,
+            "maxGap": 0.040754,
             "modelFavorite": "1:1",
             "marketFavorite": "1:1",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "比分分布不够集中",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -6556,11 +6786,11 @@
           "handicap": null,
           "excludedScores": [],
           "odds": 7.5,
-          "modelProbability": 0.08179,
+          "modelProbability": 0.0824,
           "marketProbability": 0.1063,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.38655,
-          "robustExpectedReturn": -0.70695,
+          "rawExpectedReturn": -0.38201,
+          "robustExpectedReturn": -0.70304,
           "singleEligible": true,
           "available": true,
           "recommendation": "不建议",
@@ -6569,14 +6799,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.025579,
+            "maxGap": 0.023904,
             "modelFavorite": "2",
             "marketFavorite": "2",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -6590,11 +6820,11 @@
           "handicap": null,
           "excludedScores": [],
           "odds": 3.9,
-          "modelProbability": 0.19766,
+          "modelProbability": 0.1998,
           "marketProbability": 0.20443,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.22914,
-          "robustExpectedReturn": -0.44014,
+          "rawExpectedReturn": -0.22079,
+          "robustExpectedReturn": -0.43237,
           "singleEligible": true,
           "available": true,
           "recommendation": "不建议",
@@ -6603,14 +6833,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.025579,
+            "maxGap": 0.023904,
             "modelFavorite": "2",
             "marketFavorite": "2",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -6624,11 +6854,11 @@
           "handicap": null,
           "excludedScores": [],
           "odds": 2.9,
-          "modelProbability": 0.24934,
+          "modelProbability": 0.25169,
           "marketProbability": 0.27492,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.27691,
-          "robustExpectedReturn": -0.44295,
+          "rawExpectedReturn": -0.27011,
+          "robustExpectedReturn": -0.43651,
           "singleEligible": true,
           "available": true,
           "recommendation": "不建议",
@@ -6637,14 +6867,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.025579,
+            "maxGap": 0.023904,
             "modelFavorite": "2",
             "marketFavorite": "2",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -6658,11 +6888,11 @@
           "handicap": null,
           "excludedScores": [],
           "odds": 3.9,
-          "modelProbability": 0.21352,
+          "modelProbability": 0.21195,
           "marketProbability": 0.20443,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.16727,
-          "robustExpectedReturn": -0.38241,
+          "rawExpectedReturn": -0.1734,
+          "robustExpectedReturn": -0.38814,
           "singleEligible": true,
           "available": true,
           "recommendation": "不建议",
@@ -6671,14 +6901,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.025579,
+            "maxGap": 0.023904,
             "modelFavorite": "2",
             "marketFavorite": "2",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -6692,11 +6922,11 @@
           "handicap": null,
           "excludedScores": [],
           "odds": 7.0,
-          "modelProbability": 0.1378,
+          "modelProbability": 0.13714,
           "marketProbability": 0.1139,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.03538,
-          "robustExpectedReturn": -0.37975,
+          "rawExpectedReturn": -0.04001,
+          "robustExpectedReturn": -0.38393,
           "singleEligible": true,
           "available": true,
           "recommendation": "不建议",
@@ -6705,14 +6935,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.025579,
+            "maxGap": 0.023904,
             "modelFavorite": "2",
             "marketFavorite": "2",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -6726,11 +6956,11 @@
           "handicap": null,
           "excludedScores": [],
           "odds": 16.0,
-          "modelProbability": 0.07242,
+          "modelProbability": 0.07119,
           "marketProbability": 0.04983,
           "coverage": 0.78,
-          "rawExpectedReturn": 0.15877,
-          "robustExpectedReturn": -0.50296,
+          "rawExpectedReturn": 0.13908,
+          "robustExpectedReturn": -0.51965,
           "singleEligible": true,
           "available": true,
           "recommendation": "不建议",
@@ -6739,14 +6969,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.025579,
+            "maxGap": 0.023904,
             "modelFavorite": "2",
             "marketFavorite": "2",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -6760,10 +6990,10 @@
           "handicap": null,
           "excludedScores": [],
           "odds": 28.0,
-          "modelProbability": 0.03017,
+          "modelProbability": 0.0291,
           "marketProbability": 0.02847,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.15528,
+          "rawExpectedReturn": -0.18526,
           "robustExpectedReturn": -1.0,
           "singleEligible": true,
           "available": true,
@@ -6773,14 +7003,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.025579,
+            "maxGap": 0.023904,
             "modelFavorite": "2",
             "marketFavorite": "2",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -6794,10 +7024,10 @@
           "handicap": null,
           "excludedScores": [],
           "odds": 45.0,
-          "modelProbability": 0.0173,
+          "modelProbability": 0.01674,
           "marketProbability": 0.01772,
           "coverage": 0.78,
-          "rawExpectedReturn": -0.22172,
+          "rawExpectedReturn": -0.24686,
           "robustExpectedReturn": -1.0,
           "singleEligible": true,
           "available": true,
@@ -6807,14 +7037,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.025579,
+            "maxGap": 0.023904,
             "modelFavorite": "2",
             "marketFavorite": "2",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "稳健期望为负",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -6828,11 +7058,11 @@
           "handicap": null,
           "excludedScores": [],
           "odds": 4.1,
-          "modelProbability": 0.13119,
+          "modelProbability": 0.13128,
           "marketProbability": 0.19443,
           "coverage": 0.7,
-          "rawExpectedReturn": -0.46214,
-          "robustExpectedReturn": -0.69447,
+          "rawExpectedReturn": -0.46177,
+          "robustExpectedReturn": -0.69414,
           "singleEligible": true,
           "available": true,
           "recommendation": "观察",
@@ -6841,14 +7071,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.107235,
+            "maxGap": 0.099261,
             "modelFavorite": "负负",
             "marketFavorite": "胜胜",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -6862,11 +7092,11 @@
           "handicap": null,
           "excludedScores": [],
           "odds": 13.0,
-          "modelProbability": 0.05996,
+          "modelProbability": 0.0595,
           "marketProbability": 0.06132,
           "coverage": 0.7,
-          "rawExpectedReturn": -0.22047,
-          "robustExpectedReturn": -0.83111,
+          "rawExpectedReturn": -0.22649,
+          "robustExpectedReturn": -0.83605,
           "singleEligible": true,
           "available": true,
           "recommendation": "观察",
@@ -6875,14 +7105,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.107235,
+            "maxGap": 0.099261,
             "modelFavorite": "负负",
             "marketFavorite": "胜胜",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -6896,10 +7126,10 @@
           "handicap": null,
           "excludedScores": [],
           "odds": 25.0,
-          "modelProbability": 0.02985,
+          "modelProbability": 0.0294,
           "marketProbability": 0.03189,
           "coverage": 0.7,
-          "rawExpectedReturn": -0.25385,
+          "rawExpectedReturn": -0.26494,
           "robustExpectedReturn": -1.0,
           "singleEligible": true,
           "available": true,
@@ -6909,14 +7139,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.107235,
+            "maxGap": 0.099261,
             "modelFavorite": "负负",
             "marketFavorite": "胜胜",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -6930,11 +7160,11 @@
           "handicap": null,
           "excludedScores": [],
           "odds": 5.5,
-          "modelProbability": 0.1092,
+          "modelProbability": 0.11301,
           "marketProbability": 0.14494,
           "coverage": 0.7,
-          "rawExpectedReturn": -0.39939,
-          "robustExpectedReturn": -0.69737,
+          "rawExpectedReturn": -0.37846,
+          "robustExpectedReturn": -0.67895,
           "singleEligible": true,
           "available": true,
           "recommendation": "观察",
@@ -6943,14 +7173,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.107235,
+            "maxGap": 0.099261,
             "modelFavorite": "负负",
             "marketFavorite": "胜胜",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -6964,11 +7194,11 @@
           "handicap": null,
           "excludedScores": [],
           "odds": 4.25,
-          "modelProbability": 0.14677,
+          "modelProbability": 0.14791,
           "marketProbability": 0.18757,
           "coverage": 0.7,
-          "rawExpectedReturn": -0.37624,
-          "robustExpectedReturn": -0.62377,
+          "rawExpectedReturn": -0.37136,
+          "robustExpectedReturn": -0.61936,
           "singleEligible": true,
           "available": true,
           "recommendation": "观察",
@@ -6977,14 +7207,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.107235,
+            "maxGap": 0.099261,
             "modelFavorite": "负负",
             "marketFavorite": "胜胜",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -6998,11 +7228,11 @@
           "handicap": null,
           "excludedScores": [],
           "odds": 6.25,
-          "modelProbability": 0.18335,
+          "modelProbability": 0.18624,
           "marketProbability": 0.12755,
           "coverage": 0.7,
-          "rawExpectedReturn": 0.14592,
-          "robustExpectedReturn": -0.23809,
+          "rawExpectedReturn": 0.16401,
+          "robustExpectedReturn": -0.22142,
           "singleEligible": true,
           "available": true,
           "recommendation": "观察",
@@ -7011,14 +7241,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.107235,
+            "maxGap": 0.099261,
             "modelFavorite": "负负",
             "marketFavorite": "胜胜",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -7032,10 +7262,10 @@
           "handicap": null,
           "excludedScores": [],
           "odds": 23.0,
-          "modelProbability": 0.01801,
+          "modelProbability": 0.01872,
           "marketProbability": 0.03466,
           "coverage": 0.7,
-          "rawExpectedReturn": -0.58566,
+          "rawExpectedReturn": -0.56937,
           "robustExpectedReturn": -1.0,
           "singleEligible": true,
           "available": true,
@@ -7045,14 +7275,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.107235,
+            "maxGap": 0.099261,
             "modelFavorite": "负负",
             "marketFavorite": "胜胜",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -7066,11 +7296,11 @@
           "handicap": null,
           "excludedScores": [],
           "odds": 13.0,
-          "modelProbability": 0.05813,
+          "modelProbability": 0.05836,
           "marketProbability": 0.06132,
           "coverage": 0.7,
-          "rawExpectedReturn": -0.2443,
-          "robustExpectedReturn": -0.85063,
+          "rawExpectedReturn": -0.24127,
+          "robustExpectedReturn": -0.84816,
           "singleEligible": true,
           "available": true,
           "recommendation": "观察",
@@ -7079,14 +7309,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.107235,
+            "maxGap": 0.099261,
             "modelFavorite": "负负",
             "marketFavorite": "胜胜",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -7100,11 +7330,11 @@
           "handicap": null,
           "excludedScores": [],
           "odds": 5.1,
-          "modelProbability": 0.26354,
+          "modelProbability": 0.25557,
           "marketProbability": 0.15631,
           "coverage": 0.7,
-          "rawExpectedReturn": 0.34408,
-          "robustExpectedReturn": 0.00428,
+          "rawExpectedReturn": 0.30341,
+          "robustExpectedReturn": -0.03423,
           "singleEligible": true,
           "available": true,
           "recommendation": "观察",
@@ -7113,14 +7343,14 @@
           "marketConflict": {
             "status": "clear",
             "blocked": false,
-            "maxGap": 0.107235,
+            "maxGap": 0.099261,
             "modelFavorite": "负负",
             "marketFavorite": "胜胜",
             "reason": "模型与市场未触发严重冲突门槛"
           },
           "formalEligible": false,
           "formalBlockReason": "数据覆盖率低于 75%",
-          "observedAt": "2026-07-13T15:22:00+08:00",
+          "observedAt": "2026-07-13T16:01:09+08:00",
           "kickoffBeijing": "2026-07-16T03:00:00+08:00",
           "lotteryCode": "周三102",
           "matchDate": "2026-07-16"
@@ -7143,35 +7373,35 @@
     {
       "source": "中国体育彩票",
       "field": "固定奖金/单关资格",
-      "observedAt": "2026-07-13T15:22:00+08:00",
+      "observedAt": "2026-07-13T16:01:09+08:00",
       "confidence": 1.0,
       "status": "fresh"
     },
     {
       "source": "football-data.org 免费档",
       "field": "2026 世界杯赛程/赛果",
-      "observedAt": "2026-07-13T15:22:00+08:00",
+      "observedAt": "2026-07-13T16:01:09+08:00",
       "confidence": 0.9,
       "status": "missing"
     },
     {
       "source": "World Football Elo Ratings",
       "field": "国家队基础实力",
-      "observedAt": "2026-07-13T15:22:00+08:00",
+      "observedAt": "2026-07-13T16:01:09+08:00",
       "confidence": 0.72,
       "status": "missing"
     },
     {
       "source": "API-Football 免费档",
       "field": "预计首发/伤停/球员数据",
-      "observedAt": "2026-07-13T15:22:00+08:00",
+      "observedAt": "2026-07-13T16:01:09+08:00",
       "confidence": 0.0,
       "status": "missing"
     },
     {
       "source": "Open-Meteo",
       "field": "开球时刻天气",
-      "observedAt": "2026-07-13T15:22:00+08:00",
+      "observedAt": "2026-07-13T16:01:09+08:00",
       "confidence": 0.8,
       "status": "manual"
     }

@@ -1,0 +1,2028 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-13T15:57:26+08:00",
+  "policy": "current_knockout_commentary_evidence_v1",
+  "predictionTarget": "90_minutes",
+  "scoreResidualsDirectlyAdjustStrength": false,
+  "processSignal": "commentary_pseudo_xg_share_minus_pre_match_expected_xg_share",
+  "matches": [
+    {
+      "matchKey": "南非 vs 加拿大",
+      "espnEventId": "760486",
+      "kickoff": "2026-06-28T19:00Z",
+      "stage": "LAST_32",
+      "homeTeam": "南非",
+      "awayTeam": "加拿大",
+      "expectedShareSource": "latest_pre_match_forecast_xg_share",
+      "preMatchExpectedGoals": {
+        "home": 0.7528,
+        "away": 1.7658
+      },
+      "regularTimeScore": {
+        "home": 0,
+        "away": 1
+      },
+      "signals": {
+        "南非": {
+          "attackShareResidual": -0.0163,
+          "defenseShareResidual": 0.0163,
+          "firstHalfShareResidual": -0.0226,
+          "credibilityWeight": 0.9,
+          "credibilityLabels": [
+            "commentary_process_supported"
+          ],
+          "extraTimeLoad": false,
+          "shootoutLoad": false,
+          "injuryInterruptions": 0,
+          "forcedInjurySubstitutions": 0,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 1.5,
+            "intensityRatioProxy": 0.0,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.0,
+          "scoreResidualDiagnosticOnly": true
+        },
+        "加拿大": {
+          "attackShareResidual": 0.0163,
+          "defenseShareResidual": -0.0163,
+          "firstHalfShareResidual": 0.0226,
+          "credibilityWeight": 0.9,
+          "credibilityLabels": [
+            "commentary_process_supported"
+          ],
+          "extraTimeLoad": false,
+          "shootoutLoad": false,
+          "injuryInterruptions": 1,
+          "forcedInjurySubstitutions": 0,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 2.25,
+            "intensityRatioProxy": 0.0,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.0,
+          "scoreResidualDiagnosticOnly": true
+        }
+      },
+      "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760486"
+    },
+    {
+      "matchKey": "巴西 vs 日本",
+      "espnEventId": "760487",
+      "kickoff": "2026-06-29T17:00Z",
+      "stage": "LAST_32",
+      "homeTeam": "巴西",
+      "awayTeam": "日本",
+      "expectedShareSource": "latest_pre_match_forecast_xg_share",
+      "preMatchExpectedGoals": {
+        "home": 1.6,
+        "away": 0.9988
+      },
+      "regularTimeScore": {
+        "home": 2,
+        "away": 1
+      },
+      "signals": {
+        "巴西": {
+          "attackShareResidual": 0.1696,
+          "defenseShareResidual": -0.1696,
+          "firstHalfShareResidual": 0.06,
+          "credibilityWeight": 0.9,
+          "credibilityLabels": [
+            "forced_injury_substitution"
+          ],
+          "extraTimeLoad": false,
+          "shootoutLoad": false,
+          "injuryInterruptions": 1,
+          "forcedInjurySubstitutions": 2,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 3.75,
+            "intensityRatioProxy": 0.0,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.0,
+          "scoreResidualDiagnosticOnly": true
+        },
+        "日本": {
+          "attackShareResidual": -0.1696,
+          "defenseShareResidual": 0.1696,
+          "firstHalfShareResidual": -0.06,
+          "credibilityWeight": 0.9,
+          "credibilityLabels": [
+            "forced_injury_substitution"
+          ],
+          "extraTimeLoad": false,
+          "shootoutLoad": false,
+          "injuryInterruptions": 0,
+          "forcedInjurySubstitutions": 0,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 0.0,
+            "intensityRatioProxy": null,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.0,
+          "scoreResidualDiagnosticOnly": true
+        }
+      },
+      "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760487"
+    },
+    {
+      "matchKey": "德国 vs 巴拉圭",
+      "espnEventId": "760489",
+      "kickoff": "2026-06-29T20:30Z",
+      "stage": "LAST_32",
+      "homeTeam": "德国",
+      "awayTeam": "巴拉圭",
+      "expectedShareSource": "latest_pre_match_forecast_xg_share",
+      "preMatchExpectedGoals": {
+        "home": 1.7914,
+        "away": 1.1441
+      },
+      "regularTimeScore": {
+        "home": 1,
+        "away": 1
+      },
+      "signals": {
+        "德国": {
+          "attackShareResidual": 0.0129,
+          "defenseShareResidual": -0.0129,
+          "firstHalfShareResidual": -0.082,
+          "credibilityWeight": 0.63,
+          "credibilityLabels": [
+            "penalty_or_own_goal_distorted",
+            "extra_time_load_after_90",
+            "forced_injury_substitution"
+          ],
+          "extraTimeLoad": true,
+          "shootoutLoad": true,
+          "injuryInterruptions": 0,
+          "forcedInjurySubstitutions": 0,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 7,
+            "pseudoXg": 0.53,
+            "attackRatePer15": 3.5,
+            "lateRegulationAttackRatePer15": 3.75,
+            "intensityRatioProxy": 0.933,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.5,
+          "scoreResidualDiagnosticOnly": true
+        },
+        "巴拉圭": {
+          "attackShareResidual": -0.0129,
+          "defenseShareResidual": 0.0129,
+          "firstHalfShareResidual": 0.082,
+          "credibilityWeight": 0.63,
+          "credibilityLabels": [
+            "penalty_or_own_goal_distorted",
+            "extra_time_load_after_90",
+            "forced_injury_substitution"
+          ],
+          "extraTimeLoad": true,
+          "shootoutLoad": true,
+          "injuryInterruptions": 5,
+          "forcedInjurySubstitutions": 1,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 1.5,
+            "intensityRatioProxy": 0.0,
+            "injuryOrFatigueEvents": 2,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.8,
+          "scoreResidualDiagnosticOnly": true
+        }
+      },
+      "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760489"
+    },
+    {
+      "matchKey": "荷兰 vs 摩洛哥",
+      "espnEventId": "760488",
+      "kickoff": "2026-06-30T01:00Z",
+      "stage": "LAST_32",
+      "homeTeam": "荷兰",
+      "awayTeam": "摩洛哥",
+      "expectedShareSource": "latest_pre_match_forecast_xg_share",
+      "preMatchExpectedGoals": {
+        "home": 1.6621,
+        "away": 1.0276
+      },
+      "regularTimeScore": {
+        "home": 1,
+        "away": 1
+      },
+      "signals": {
+        "荷兰": {
+          "attackShareResidual": -0.3084,
+          "defenseShareResidual": 0.3084,
+          "firstHalfShareResidual": -0.3263,
+          "credibilityWeight": 0.63,
+          "credibilityLabels": [
+            "penalty_or_own_goal_distorted",
+            "extra_time_load_after_90",
+            "forced_injury_substitution"
+          ],
+          "extraTimeLoad": true,
+          "shootoutLoad": true,
+          "injuryInterruptions": 3,
+          "forcedInjurySubstitutions": 0,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 0.75,
+            "intensityRatioProxy": 0.0,
+            "injuryOrFatigueEvents": 1,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.7,
+          "scoreResidualDiagnosticOnly": true
+        },
+        "摩洛哥": {
+          "attackShareResidual": 0.3084,
+          "defenseShareResidual": -0.3084,
+          "firstHalfShareResidual": 0.3263,
+          "credibilityWeight": 0.63,
+          "credibilityLabels": [
+            "penalty_or_own_goal_distorted",
+            "extra_time_load_after_90",
+            "forced_injury_substitution"
+          ],
+          "extraTimeLoad": true,
+          "shootoutLoad": true,
+          "injuryInterruptions": 0,
+          "forcedInjurySubstitutions": 1,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 1,
+            "pseudoXg": 0.11,
+            "attackRatePer15": 0.5,
+            "lateRegulationAttackRatePer15": 1.5,
+            "intensityRatioProxy": 0.333,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.6,
+          "scoreResidualDiagnosticOnly": true
+        }
+      },
+      "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760488"
+    },
+    {
+      "matchKey": "科特迪瓦 vs 挪威",
+      "espnEventId": "760490",
+      "kickoff": "2026-06-30T17:00Z",
+      "stage": "LAST_32",
+      "homeTeam": "科特迪瓦",
+      "awayTeam": "挪威",
+      "expectedShareSource": "latest_pre_match_forecast_xg_share",
+      "preMatchExpectedGoals": {
+        "home": 0.9695,
+        "away": 2.088
+      },
+      "regularTimeScore": {
+        "home": 1,
+        "away": 2
+      },
+      "signals": {
+        "科特迪瓦": {
+          "attackShareResidual": 0.3296,
+          "defenseShareResidual": -0.3296,
+          "firstHalfShareResidual": 0.1559,
+          "credibilityWeight": 0.9,
+          "credibilityLabels": [
+            "commentary_process_supported"
+          ],
+          "extraTimeLoad": false,
+          "shootoutLoad": false,
+          "injuryInterruptions": 1,
+          "forcedInjurySubstitutions": 0,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 3.0,
+            "intensityRatioProxy": 0.0,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.0,
+          "scoreResidualDiagnosticOnly": true
+        },
+        "挪威": {
+          "attackShareResidual": -0.3296,
+          "defenseShareResidual": 0.3296,
+          "firstHalfShareResidual": -0.1559,
+          "credibilityWeight": 0.9,
+          "credibilityLabels": [
+            "commentary_process_supported"
+          ],
+          "extraTimeLoad": false,
+          "shootoutLoad": false,
+          "injuryInterruptions": 0,
+          "forcedInjurySubstitutions": 0,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 1.5,
+            "intensityRatioProxy": 0.0,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.0,
+          "scoreResidualDiagnosticOnly": true
+        }
+      },
+      "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760490"
+    },
+    {
+      "matchKey": "法国 vs 瑞典",
+      "espnEventId": "760492",
+      "kickoff": "2026-06-30T21:00Z",
+      "stage": "LAST_32",
+      "homeTeam": "法国",
+      "awayTeam": "瑞典",
+      "expectedShareSource": "latest_pre_match_forecast_xg_share",
+      "preMatchExpectedGoals": {
+        "home": 2.8671,
+        "away": 0.5479
+      },
+      "regularTimeScore": {
+        "home": 3,
+        "away": 0
+      },
+      "signals": {
+        "法国": {
+          "attackShareResidual": -0.0544,
+          "defenseShareResidual": 0.0544,
+          "firstHalfShareResidual": 0.0185,
+          "credibilityWeight": 0.9,
+          "credibilityLabels": [
+            "commentary_process_supported"
+          ],
+          "extraTimeLoad": false,
+          "shootoutLoad": false,
+          "injuryInterruptions": 0,
+          "forcedInjurySubstitutions": 0,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 3.75,
+            "intensityRatioProxy": 0.0,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.0,
+          "scoreResidualDiagnosticOnly": true
+        },
+        "瑞典": {
+          "attackShareResidual": 0.0544,
+          "defenseShareResidual": -0.0544,
+          "firstHalfShareResidual": -0.0185,
+          "credibilityWeight": 0.9,
+          "credibilityLabels": [
+            "commentary_process_supported"
+          ],
+          "extraTimeLoad": false,
+          "shootoutLoad": false,
+          "injuryInterruptions": 0,
+          "forcedInjurySubstitutions": 0,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 3.0,
+            "intensityRatioProxy": 0.0,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.0,
+          "scoreResidualDiagnosticOnly": true
+        }
+      },
+      "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760492"
+    },
+    {
+      "matchKey": "墨西哥 vs 厄瓜多尔",
+      "espnEventId": "760491",
+      "kickoff": "2026-07-01T02:00Z",
+      "stage": "LAST_32",
+      "homeTeam": "墨西哥",
+      "awayTeam": "厄瓜多尔",
+      "expectedShareSource": "latest_pre_match_forecast_xg_share",
+      "preMatchExpectedGoals": {
+        "home": 0.9338,
+        "away": 0.8809
+      },
+      "regularTimeScore": {
+        "home": 2,
+        "away": 0
+      },
+      "signals": {
+        "墨西哥": {
+          "attackShareResidual": 0.1153,
+          "defenseShareResidual": -0.1153,
+          "firstHalfShareResidual": 0.1736,
+          "credibilityWeight": 0.36,
+          "credibilityLabels": [
+            "red_card_changed_process"
+          ],
+          "extraTimeLoad": false,
+          "shootoutLoad": false,
+          "injuryInterruptions": 1,
+          "forcedInjurySubstitutions": 0,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 0.75,
+            "intensityRatioProxy": 0.0,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.0,
+          "scoreResidualDiagnosticOnly": true
+        },
+        "厄瓜多尔": {
+          "attackShareResidual": -0.1153,
+          "defenseShareResidual": 0.1153,
+          "firstHalfShareResidual": -0.1736,
+          "credibilityWeight": 0.36,
+          "credibilityLabels": [
+            "red_card_changed_process"
+          ],
+          "extraTimeLoad": false,
+          "shootoutLoad": false,
+          "injuryInterruptions": 0,
+          "forcedInjurySubstitutions": 0,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 3.0,
+            "intensityRatioProxy": 0.0,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.0,
+          "scoreResidualDiagnosticOnly": true
+        }
+      },
+      "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760491"
+    },
+    {
+      "matchKey": "英格兰 vs 民主刚果",
+      "espnEventId": "760495",
+      "kickoff": "2026-07-01T16:00Z",
+      "stage": "LAST_32",
+      "homeTeam": "英格兰",
+      "awayTeam": "民主刚果",
+      "expectedShareSource": "neutral_share_fallback",
+      "preMatchExpectedGoals": null,
+      "regularTimeScore": {
+        "home": 2,
+        "away": 1
+      },
+      "signals": {
+        "英格兰": {
+          "attackShareResidual": 0.1629,
+          "defenseShareResidual": -0.1629,
+          "firstHalfShareResidual": 0.118,
+          "credibilityWeight": 0.9,
+          "credibilityLabels": [
+            "commentary_process_supported"
+          ],
+          "extraTimeLoad": false,
+          "shootoutLoad": false,
+          "injuryInterruptions": 0,
+          "forcedInjurySubstitutions": 0,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 4.5,
+            "intensityRatioProxy": 0.0,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.0,
+          "scoreResidualDiagnosticOnly": true
+        },
+        "民主刚果": {
+          "attackShareResidual": -0.1629,
+          "defenseShareResidual": 0.1629,
+          "firstHalfShareResidual": -0.118,
+          "credibilityWeight": 0.9,
+          "credibilityLabels": [
+            "commentary_process_supported"
+          ],
+          "extraTimeLoad": false,
+          "shootoutLoad": false,
+          "injuryInterruptions": 1,
+          "forcedInjurySubstitutions": 0,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 1.5,
+            "intensityRatioProxy": 0.0,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.0,
+          "scoreResidualDiagnosticOnly": true
+        }
+      },
+      "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760495"
+    },
+    {
+      "matchKey": "比利时 vs 塞内加尔",
+      "espnEventId": "760493",
+      "kickoff": "2026-07-01T20:00Z",
+      "stage": "LAST_32",
+      "homeTeam": "比利时",
+      "awayTeam": "塞内加尔",
+      "expectedShareSource": "latest_pre_match_forecast_xg_share",
+      "preMatchExpectedGoals": {
+        "home": 1.4808,
+        "away": 1.2191
+      },
+      "regularTimeScore": {
+        "home": 2,
+        "away": 2
+      },
+      "signals": {
+        "比利时": {
+          "attackShareResidual": -0.0753,
+          "defenseShareResidual": 0.0753,
+          "firstHalfShareResidual": -0.2264,
+          "credibilityWeight": 0.63,
+          "credibilityLabels": [
+            "penalty_or_own_goal_distorted",
+            "extra_time_load_after_90"
+          ],
+          "extraTimeLoad": true,
+          "shootoutLoad": false,
+          "injuryInterruptions": 1,
+          "forcedInjurySubstitutions": 0,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 2,
+            "pseudoXg": 0.1,
+            "attackRatePer15": 1.0,
+            "lateRegulationAttackRatePer15": 5.25,
+            "intensityRatioProxy": 0.19,
+            "injuryOrFatigueEvents": 1,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.55,
+          "scoreResidualDiagnosticOnly": true
+        },
+        "塞内加尔": {
+          "attackShareResidual": 0.0753,
+          "defenseShareResidual": -0.0753,
+          "firstHalfShareResidual": 0.2264,
+          "credibilityWeight": 0.63,
+          "credibilityLabels": [
+            "penalty_or_own_goal_distorted",
+            "extra_time_load_after_90"
+          ],
+          "extraTimeLoad": true,
+          "shootoutLoad": false,
+          "injuryInterruptions": 0,
+          "forcedInjurySubstitutions": 0,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 6,
+            "pseudoXg": 0.37,
+            "attackRatePer15": 3.0,
+            "lateRegulationAttackRatePer15": 1.5,
+            "intensityRatioProxy": 2.0,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.35,
+          "scoreResidualDiagnosticOnly": true
+        }
+      },
+      "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760493"
+    },
+    {
+      "matchKey": "美国 vs 波黑",
+      "espnEventId": "760494",
+      "kickoff": "2026-07-02T00:00Z",
+      "stage": "LAST_32",
+      "homeTeam": "美国",
+      "awayTeam": "波黑",
+      "expectedShareSource": "latest_pre_match_forecast_xg_share",
+      "preMatchExpectedGoals": {
+        "home": 2.1258,
+        "away": 1.0812
+      },
+      "regularTimeScore": {
+        "home": 2,
+        "away": 0
+      },
+      "signals": {
+        "美国": {
+          "attackShareResidual": -0.1817,
+          "defenseShareResidual": 0.1817,
+          "firstHalfShareResidual": 0.1371,
+          "credibilityWeight": 0.36,
+          "credibilityLabels": [
+            "red_card_changed_process",
+            "forced_injury_substitution"
+          ],
+          "extraTimeLoad": false,
+          "shootoutLoad": false,
+          "injuryInterruptions": 3,
+          "forcedInjurySubstitutions": 0,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 2.25,
+            "intensityRatioProxy": 0.0,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.0,
+          "scoreResidualDiagnosticOnly": true
+        },
+        "波黑": {
+          "attackShareResidual": 0.1817,
+          "defenseShareResidual": -0.1817,
+          "firstHalfShareResidual": -0.1371,
+          "credibilityWeight": 0.36,
+          "credibilityLabels": [
+            "red_card_changed_process",
+            "forced_injury_substitution"
+          ],
+          "extraTimeLoad": false,
+          "shootoutLoad": false,
+          "injuryInterruptions": 4,
+          "forcedInjurySubstitutions": 1,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 4.5,
+            "intensityRatioProxy": 0.0,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.0,
+          "scoreResidualDiagnosticOnly": true
+        }
+      },
+      "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760494"
+    },
+    {
+      "matchKey": "西班牙 vs 奥地利",
+      "espnEventId": "760497",
+      "kickoff": "2026-07-02T19:00Z",
+      "stage": "LAST_32",
+      "homeTeam": "西班牙",
+      "awayTeam": "奥地利",
+      "expectedShareSource": "latest_pre_match_forecast_xg_share",
+      "preMatchExpectedGoals": {
+        "home": 2.4238,
+        "away": 0.5865
+      },
+      "regularTimeScore": {
+        "home": 3,
+        "away": 0
+      },
+      "signals": {
+        "西班牙": {
+          "attackShareResidual": 0.049,
+          "defenseShareResidual": -0.049,
+          "firstHalfShareResidual": 0.0958,
+          "credibilityWeight": 0.9,
+          "credibilityLabels": [
+            "commentary_process_supported"
+          ],
+          "extraTimeLoad": false,
+          "shootoutLoad": false,
+          "injuryInterruptions": 1,
+          "forcedInjurySubstitutions": 0,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 3.0,
+            "intensityRatioProxy": 0.0,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.0,
+          "scoreResidualDiagnosticOnly": true
+        },
+        "奥地利": {
+          "attackShareResidual": -0.049,
+          "defenseShareResidual": 0.049,
+          "firstHalfShareResidual": -0.0958,
+          "credibilityWeight": 0.9,
+          "credibilityLabels": [
+            "commentary_process_supported"
+          ],
+          "extraTimeLoad": false,
+          "shootoutLoad": false,
+          "injuryInterruptions": 1,
+          "forcedInjurySubstitutions": 0,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 1.5,
+            "intensityRatioProxy": 0.0,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.0,
+          "scoreResidualDiagnosticOnly": true
+        }
+      },
+      "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760497"
+    },
+    {
+      "matchKey": "葡萄牙 vs 克罗地亚",
+      "espnEventId": "760496",
+      "kickoff": "2026-07-02T23:00Z",
+      "stage": "LAST_32",
+      "homeTeam": "葡萄牙",
+      "awayTeam": "克罗地亚",
+      "expectedShareSource": "latest_pre_match_forecast_xg_share",
+      "preMatchExpectedGoals": {
+        "home": 1.725,
+        "away": 1.1809
+      },
+      "regularTimeScore": {
+        "home": 2,
+        "away": 1
+      },
+      "signals": {
+        "葡萄牙": {
+          "attackShareResidual": -0.1086,
+          "defenseShareResidual": 0.1086,
+          "firstHalfShareResidual": 0.1676,
+          "credibilityWeight": 0.63,
+          "credibilityLabels": [
+            "penalty_or_own_goal_distorted"
+          ],
+          "extraTimeLoad": false,
+          "shootoutLoad": false,
+          "injuryInterruptions": 0,
+          "forcedInjurySubstitutions": 0,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 3.0,
+            "intensityRatioProxy": 0.0,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.0,
+          "scoreResidualDiagnosticOnly": true
+        },
+        "克罗地亚": {
+          "attackShareResidual": 0.1086,
+          "defenseShareResidual": -0.1086,
+          "firstHalfShareResidual": -0.1676,
+          "credibilityWeight": 0.63,
+          "credibilityLabels": [
+            "penalty_or_own_goal_distorted"
+          ],
+          "extraTimeLoad": false,
+          "shootoutLoad": false,
+          "injuryInterruptions": 0,
+          "forcedInjurySubstitutions": 0,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 4.5,
+            "intensityRatioProxy": 0.0,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.0,
+          "scoreResidualDiagnosticOnly": true
+        }
+      },
+      "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760496"
+    },
+    {
+      "matchKey": "瑞士 vs 阿尔及利亚",
+      "espnEventId": "760498",
+      "kickoff": "2026-07-03T03:00Z",
+      "stage": "LAST_32",
+      "homeTeam": "瑞士",
+      "awayTeam": "阿尔及利亚",
+      "expectedShareSource": "latest_pre_match_forecast_xg_share",
+      "preMatchExpectedGoals": {
+        "home": 2.4354,
+        "away": 1.4348
+      },
+      "regularTimeScore": {
+        "home": 2,
+        "away": 0
+      },
+      "signals": {
+        "瑞士": {
+          "attackShareResidual": -0.0293,
+          "defenseShareResidual": 0.0293,
+          "firstHalfShareResidual": -0.1645,
+          "credibilityWeight": 0.9,
+          "credibilityLabels": [
+            "forced_injury_substitution"
+          ],
+          "extraTimeLoad": false,
+          "shootoutLoad": false,
+          "injuryInterruptions": 3,
+          "forcedInjurySubstitutions": 1,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 3.75,
+            "intensityRatioProxy": 0.0,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.0,
+          "scoreResidualDiagnosticOnly": true
+        },
+        "阿尔及利亚": {
+          "attackShareResidual": 0.0293,
+          "defenseShareResidual": -0.0293,
+          "firstHalfShareResidual": 0.1645,
+          "credibilityWeight": 0.9,
+          "credibilityLabels": [
+            "forced_injury_substitution"
+          ],
+          "extraTimeLoad": false,
+          "shootoutLoad": false,
+          "injuryInterruptions": 1,
+          "forcedInjurySubstitutions": 1,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 1.5,
+            "intensityRatioProxy": 0.0,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.0,
+          "scoreResidualDiagnosticOnly": true
+        }
+      },
+      "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760498"
+    },
+    {
+      "matchKey": "澳大利亚 vs 埃及",
+      "espnEventId": "760499",
+      "kickoff": "2026-07-03T18:00Z",
+      "stage": "LAST_32",
+      "homeTeam": "澳大利亚",
+      "awayTeam": "埃及",
+      "expectedShareSource": "latest_pre_match_forecast_xg_share",
+      "preMatchExpectedGoals": {
+        "home": 1.4509,
+        "away": 1.0991
+      },
+      "regularTimeScore": {
+        "home": 1,
+        "away": 1
+      },
+      "signals": {
+        "澳大利亚": {
+          "attackShareResidual": -0.0294,
+          "defenseShareResidual": 0.0294,
+          "firstHalfShareResidual": 0.1702,
+          "credibilityWeight": 0.63,
+          "credibilityLabels": [
+            "penalty_or_own_goal_distorted",
+            "extra_time_load_after_90",
+            "forced_injury_substitution"
+          ],
+          "extraTimeLoad": true,
+          "shootoutLoad": true,
+          "injuryInterruptions": 1,
+          "forcedInjurySubstitutions": 1,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 4,
+            "pseudoXg": 0.2,
+            "attackRatePer15": 2.0,
+            "lateRegulationAttackRatePer15": 3.75,
+            "intensityRatioProxy": 0.533,
+            "injuryOrFatigueEvents": 1,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.7,
+          "scoreResidualDiagnosticOnly": true
+        },
+        "埃及": {
+          "attackShareResidual": 0.0294,
+          "defenseShareResidual": -0.0294,
+          "firstHalfShareResidual": -0.1702,
+          "credibilityWeight": 0.63,
+          "credibilityLabels": [
+            "penalty_or_own_goal_distorted",
+            "extra_time_load_after_90",
+            "forced_injury_substitution"
+          ],
+          "extraTimeLoad": true,
+          "shootoutLoad": true,
+          "injuryInterruptions": 4,
+          "forcedInjurySubstitutions": 1,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 4,
+            "pseudoXg": 0.22,
+            "attackRatePer15": 2.0,
+            "lateRegulationAttackRatePer15": 4.5,
+            "intensityRatioProxy": 0.444,
+            "injuryOrFatigueEvents": 1,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.7,
+          "scoreResidualDiagnosticOnly": true
+        }
+      },
+      "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760499"
+    },
+    {
+      "matchKey": "阿根廷 vs 佛得角",
+      "espnEventId": "760500",
+      "kickoff": "2026-07-03T22:00Z",
+      "stage": "LAST_32",
+      "homeTeam": "阿根廷",
+      "awayTeam": "佛得角",
+      "expectedShareSource": "latest_pre_match_forecast_xg_share",
+      "preMatchExpectedGoals": {
+        "home": 2.0196,
+        "away": 0.15
+      },
+      "regularTimeScore": {
+        "home": 1,
+        "away": 1
+      },
+      "signals": {
+        "阿根廷": {
+          "attackShareResidual": -0.1809,
+          "defenseShareResidual": 0.1809,
+          "firstHalfShareResidual": -0.0261,
+          "credibilityWeight": 0.63,
+          "credibilityLabels": [
+            "penalty_or_own_goal_distorted",
+            "extra_time_load_after_90",
+            "forced_injury_substitution"
+          ],
+          "extraTimeLoad": true,
+          "shootoutLoad": false,
+          "injuryInterruptions": 0,
+          "forcedInjurySubstitutions": 1,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 7,
+            "pseudoXg": 0.43,
+            "attackRatePer15": 3.5,
+            "lateRegulationAttackRatePer15": 6.0,
+            "intensityRatioProxy": 0.583,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.45,
+          "scoreResidualDiagnosticOnly": true
+        },
+        "佛得角": {
+          "attackShareResidual": 0.1809,
+          "defenseShareResidual": -0.1809,
+          "firstHalfShareResidual": 0.0261,
+          "credibilityWeight": 0.63,
+          "credibilityLabels": [
+            "penalty_or_own_goal_distorted",
+            "extra_time_load_after_90",
+            "forced_injury_substitution"
+          ],
+          "extraTimeLoad": true,
+          "shootoutLoad": false,
+          "injuryInterruptions": 0,
+          "forcedInjurySubstitutions": 0,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 10,
+            "pseudoXg": 0.66,
+            "attackRatePer15": 5.0,
+            "lateRegulationAttackRatePer15": 0.75,
+            "intensityRatioProxy": 6.667,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.35,
+          "scoreResidualDiagnosticOnly": true
+        }
+      },
+      "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760500"
+    },
+    {
+      "matchKey": "哥伦比亚 vs 加纳",
+      "espnEventId": "760501",
+      "kickoff": "2026-07-04T01:30Z",
+      "stage": "LAST_32",
+      "homeTeam": "哥伦比亚",
+      "awayTeam": "加纳",
+      "expectedShareSource": "latest_pre_match_forecast_xg_share",
+      "preMatchExpectedGoals": {
+        "home": 2.0468,
+        "away": 0.15
+      },
+      "regularTimeScore": {
+        "home": 1,
+        "away": 0
+      },
+      "signals": {
+        "哥伦比亚": {
+          "attackShareResidual": -0.1328,
+          "defenseShareResidual": 0.1328,
+          "firstHalfShareResidual": -0.3206,
+          "credibilityWeight": 0.9,
+          "credibilityLabels": [
+            "forced_injury_substitution"
+          ],
+          "extraTimeLoad": false,
+          "shootoutLoad": false,
+          "injuryInterruptions": 1,
+          "forcedInjurySubstitutions": 1,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 8.25,
+            "intensityRatioProxy": 0.0,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.0,
+          "scoreResidualDiagnosticOnly": true
+        },
+        "加纳": {
+          "attackShareResidual": 0.1328,
+          "defenseShareResidual": -0.1328,
+          "firstHalfShareResidual": 0.3206,
+          "credibilityWeight": 0.9,
+          "credibilityLabels": [
+            "forced_injury_substitution"
+          ],
+          "extraTimeLoad": false,
+          "shootoutLoad": false,
+          "injuryInterruptions": 5,
+          "forcedInjurySubstitutions": 2,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 0.0,
+            "intensityRatioProxy": null,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.0,
+          "scoreResidualDiagnosticOnly": true
+        }
+      },
+      "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760501"
+    },
+    {
+      "matchKey": "加拿大 vs 摩洛哥",
+      "espnEventId": "760502",
+      "kickoff": "2026-07-04T17:00Z",
+      "stage": "LAST_16",
+      "homeTeam": "加拿大",
+      "awayTeam": "摩洛哥",
+      "expectedShareSource": "latest_pre_match_forecast_xg_share",
+      "preMatchExpectedGoals": {
+        "home": 0.819,
+        "away": 1.5227
+      },
+      "regularTimeScore": {
+        "home": 0,
+        "away": 3
+      },
+      "signals": {
+        "加拿大": {
+          "attackShareResidual": 0.1894,
+          "defenseShareResidual": -0.1894,
+          "firstHalfShareResidual": 0.3944,
+          "credibilityWeight": 0.9,
+          "credibilityLabels": [
+            "forced_injury_substitution"
+          ],
+          "extraTimeLoad": false,
+          "shootoutLoad": false,
+          "injuryInterruptions": 1,
+          "forcedInjurySubstitutions": 0,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 3.75,
+            "intensityRatioProxy": 0.0,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.0,
+          "scoreResidualDiagnosticOnly": true
+        },
+        "摩洛哥": {
+          "attackShareResidual": -0.1894,
+          "defenseShareResidual": 0.1894,
+          "firstHalfShareResidual": -0.3944,
+          "credibilityWeight": 0.9,
+          "credibilityLabels": [
+            "forced_injury_substitution"
+          ],
+          "extraTimeLoad": false,
+          "shootoutLoad": false,
+          "injuryInterruptions": 2,
+          "forcedInjurySubstitutions": 1,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 2.25,
+            "intensityRatioProxy": 0.0,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.0,
+          "scoreResidualDiagnosticOnly": true
+        }
+      },
+      "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760502"
+    },
+    {
+      "matchKey": "巴拉圭 vs 法国",
+      "espnEventId": "760503",
+      "kickoff": "2026-07-04T21:00Z",
+      "stage": "LAST_16",
+      "homeTeam": "巴拉圭",
+      "awayTeam": "法国",
+      "expectedShareSource": "latest_pre_match_forecast_xg_share",
+      "preMatchExpectedGoals": {
+        "home": 0.451,
+        "away": 2.1889
+      },
+      "regularTimeScore": {
+        "home": 0,
+        "away": 1
+      },
+      "signals": {
+        "巴拉圭": {
+          "attackShareResidual": 0.055,
+          "defenseShareResidual": -0.055,
+          "firstHalfShareResidual": 0.1625,
+          "credibilityWeight": 0.63,
+          "credibilityLabels": [
+            "penalty_or_own_goal_distorted",
+            "forced_injury_substitution"
+          ],
+          "extraTimeLoad": false,
+          "shootoutLoad": false,
+          "injuryInterruptions": 1,
+          "forcedInjurySubstitutions": 2,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 1.5,
+            "intensityRatioProxy": 0.0,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.0,
+          "scoreResidualDiagnosticOnly": true
+        },
+        "法国": {
+          "attackShareResidual": -0.055,
+          "defenseShareResidual": 0.055,
+          "firstHalfShareResidual": -0.1625,
+          "credibilityWeight": 0.63,
+          "credibilityLabels": [
+            "penalty_or_own_goal_distorted",
+            "forced_injury_substitution"
+          ],
+          "extraTimeLoad": false,
+          "shootoutLoad": false,
+          "injuryInterruptions": 1,
+          "forcedInjurySubstitutions": 0,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 3.0,
+            "intensityRatioProxy": 0.0,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.0,
+          "scoreResidualDiagnosticOnly": true
+        }
+      },
+      "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760503"
+    },
+    {
+      "matchKey": "巴西 vs 挪威",
+      "espnEventId": "760504",
+      "kickoff": "2026-07-05T20:00Z",
+      "stage": "LAST_16",
+      "homeTeam": "巴西",
+      "awayTeam": "挪威",
+      "expectedShareSource": "latest_pre_match_forecast_xg_share",
+      "preMatchExpectedGoals": {
+        "home": 1.8369,
+        "away": 1.2046
+      },
+      "regularTimeScore": {
+        "home": 1,
+        "away": 2
+      },
+      "signals": {
+        "巴西": {
+          "attackShareResidual": -0.1073,
+          "defenseShareResidual": 0.1073,
+          "firstHalfShareResidual": -0.0306,
+          "credibilityWeight": 0.63,
+          "credibilityLabels": [
+            "penalty_or_own_goal_distorted",
+            "forced_injury_substitution"
+          ],
+          "extraTimeLoad": false,
+          "shootoutLoad": false,
+          "injuryInterruptions": 0,
+          "forcedInjurySubstitutions": 0,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 1.5,
+            "intensityRatioProxy": 0.0,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.0,
+          "scoreResidualDiagnosticOnly": true
+        },
+        "挪威": {
+          "attackShareResidual": 0.1073,
+          "defenseShareResidual": -0.1073,
+          "firstHalfShareResidual": 0.0306,
+          "credibilityWeight": 0.63,
+          "credibilityLabels": [
+            "penalty_or_own_goal_distorted",
+            "forced_injury_substitution"
+          ],
+          "extraTimeLoad": false,
+          "shootoutLoad": false,
+          "injuryInterruptions": 0,
+          "forcedInjurySubstitutions": 1,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 2.25,
+            "intensityRatioProxy": 0.0,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.0,
+          "scoreResidualDiagnosticOnly": true
+        }
+      },
+      "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760504"
+    },
+    {
+      "matchKey": "墨西哥 vs 英格兰",
+      "espnEventId": "760505",
+      "kickoff": "2026-07-06T01:00Z",
+      "stage": "LAST_16",
+      "homeTeam": "墨西哥",
+      "awayTeam": "英格兰",
+      "expectedShareSource": "latest_pre_match_forecast_xg_share",
+      "preMatchExpectedGoals": {
+        "home": 0.7501,
+        "away": 1.3162
+      },
+      "regularTimeScore": {
+        "home": 2,
+        "away": 3
+      },
+      "signals": {
+        "墨西哥": {
+          "attackShareResidual": 0.3496,
+          "defenseShareResidual": -0.3496,
+          "firstHalfShareResidual": 0.2635,
+          "credibilityWeight": 0.252,
+          "credibilityLabels": [
+            "red_card_changed_process",
+            "penalty_or_own_goal_distorted"
+          ],
+          "extraTimeLoad": false,
+          "shootoutLoad": false,
+          "injuryInterruptions": 2,
+          "forcedInjurySubstitutions": 0,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 7.5,
+            "intensityRatioProxy": 0.0,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.0,
+          "scoreResidualDiagnosticOnly": true
+        },
+        "英格兰": {
+          "attackShareResidual": -0.3496,
+          "defenseShareResidual": 0.3496,
+          "firstHalfShareResidual": -0.2635,
+          "credibilityWeight": 0.252,
+          "credibilityLabels": [
+            "red_card_changed_process",
+            "penalty_or_own_goal_distorted"
+          ],
+          "extraTimeLoad": false,
+          "shootoutLoad": false,
+          "injuryInterruptions": 1,
+          "forcedInjurySubstitutions": 0,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 0.75,
+            "intensityRatioProxy": 0.0,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.0,
+          "scoreResidualDiagnosticOnly": true
+        }
+      },
+      "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760505"
+    },
+    {
+      "matchKey": "葡萄牙 vs 西班牙",
+      "espnEventId": "760506",
+      "kickoff": "2026-07-06T19:00Z",
+      "stage": "LAST_16",
+      "homeTeam": "葡萄牙",
+      "awayTeam": "西班牙",
+      "expectedShareSource": "latest_pre_match_forecast_xg_share",
+      "preMatchExpectedGoals": {
+        "home": 0.8893,
+        "away": 1.7744
+      },
+      "regularTimeScore": {
+        "home": 0,
+        "away": 1
+      },
+      "signals": {
+        "葡萄牙": {
+          "attackShareResidual": 0.0277,
+          "defenseShareResidual": -0.0277,
+          "firstHalfShareResidual": 0.0298,
+          "credibilityWeight": 0.9,
+          "credibilityLabels": [
+            "forced_injury_substitution"
+          ],
+          "extraTimeLoad": false,
+          "shootoutLoad": false,
+          "injuryInterruptions": 2,
+          "forcedInjurySubstitutions": 1,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 3.0,
+            "intensityRatioProxy": 0.0,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.0,
+          "scoreResidualDiagnosticOnly": true
+        },
+        "西班牙": {
+          "attackShareResidual": -0.0277,
+          "defenseShareResidual": 0.0277,
+          "firstHalfShareResidual": -0.0298,
+          "credibilityWeight": 0.9,
+          "credibilityLabels": [
+            "forced_injury_substitution"
+          ],
+          "extraTimeLoad": false,
+          "shootoutLoad": false,
+          "injuryInterruptions": 0,
+          "forcedInjurySubstitutions": 0,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 3.0,
+            "intensityRatioProxy": 0.0,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.0,
+          "scoreResidualDiagnosticOnly": true
+        }
+      },
+      "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760506"
+    },
+    {
+      "matchKey": "美国 vs 比利时",
+      "espnEventId": "760507",
+      "kickoff": "2026-07-07T00:00Z",
+      "stage": "LAST_16",
+      "homeTeam": "美国",
+      "awayTeam": "比利时",
+      "expectedShareSource": "latest_pre_match_forecast_xg_share",
+      "preMatchExpectedGoals": {
+        "home": 1.1002,
+        "away": 1.8138
+      },
+      "regularTimeScore": {
+        "home": 1,
+        "away": 4
+      },
+      "signals": {
+        "美国": {
+          "attackShareResidual": -0.0666,
+          "defenseShareResidual": 0.0666,
+          "firstHalfShareResidual": -0.1719,
+          "credibilityWeight": 0.9,
+          "credibilityLabels": [
+            "forced_injury_substitution"
+          ],
+          "extraTimeLoad": false,
+          "shootoutLoad": false,
+          "injuryInterruptions": 2,
+          "forcedInjurySubstitutions": 1,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 2.25,
+            "intensityRatioProxy": 0.0,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.0,
+          "scoreResidualDiagnosticOnly": true
+        },
+        "比利时": {
+          "attackShareResidual": 0.0666,
+          "defenseShareResidual": -0.0666,
+          "firstHalfShareResidual": 0.1719,
+          "credibilityWeight": 0.9,
+          "credibilityLabels": [
+            "forced_injury_substitution"
+          ],
+          "extraTimeLoad": false,
+          "shootoutLoad": false,
+          "injuryInterruptions": 2,
+          "forcedInjurySubstitutions": 1,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 1.5,
+            "intensityRatioProxy": 0.0,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.0,
+          "scoreResidualDiagnosticOnly": true
+        }
+      },
+      "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760507"
+    },
+    {
+      "matchKey": "阿根廷 vs 埃及",
+      "espnEventId": "760509",
+      "kickoff": "2026-07-07T16:00Z",
+      "stage": "LAST_16",
+      "homeTeam": "阿根廷",
+      "awayTeam": "埃及",
+      "expectedShareSource": "latest_pre_match_forecast_xg_share",
+      "preMatchExpectedGoals": {
+        "home": 1.9723,
+        "away": 0.15
+      },
+      "regularTimeScore": {
+        "home": 3,
+        "away": 2
+      },
+      "signals": {
+        "阿根廷": {
+          "attackShareResidual": -0.144,
+          "defenseShareResidual": 0.144,
+          "firstHalfShareResidual": -0.1515,
+          "credibilityWeight": 0.63,
+          "credibilityLabels": [
+            "penalty_or_own_goal_distorted",
+            "forced_injury_substitution"
+          ],
+          "extraTimeLoad": false,
+          "shootoutLoad": false,
+          "injuryInterruptions": 0,
+          "forcedInjurySubstitutions": 0,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 6.0,
+            "intensityRatioProxy": 0.0,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.0,
+          "scoreResidualDiagnosticOnly": true
+        },
+        "埃及": {
+          "attackShareResidual": 0.144,
+          "defenseShareResidual": -0.144,
+          "firstHalfShareResidual": 0.1515,
+          "credibilityWeight": 0.63,
+          "credibilityLabels": [
+            "penalty_or_own_goal_distorted",
+            "forced_injury_substitution"
+          ],
+          "extraTimeLoad": false,
+          "shootoutLoad": false,
+          "injuryInterruptions": 2,
+          "forcedInjurySubstitutions": 2,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 1.5,
+            "intensityRatioProxy": 0.0,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.0,
+          "scoreResidualDiagnosticOnly": true
+        }
+      },
+      "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760509"
+    },
+    {
+      "matchKey": "瑞士 vs 哥伦比亚",
+      "espnEventId": "760508",
+      "kickoff": "2026-07-07T20:00Z",
+      "stage": "LAST_16",
+      "homeTeam": "瑞士",
+      "awayTeam": "哥伦比亚",
+      "expectedShareSource": "latest_pre_match_forecast_xg_share",
+      "preMatchExpectedGoals": {
+        "home": 0.9905,
+        "away": 1.3778
+      },
+      "regularTimeScore": {
+        "home": 0,
+        "away": 0
+      },
+      "signals": {
+        "瑞士": {
+          "attackShareResidual": 0.0707,
+          "defenseShareResidual": -0.0707,
+          "firstHalfShareResidual": 0.0131,
+          "credibilityWeight": 0.63,
+          "credibilityLabels": [
+            "penalty_or_own_goal_distorted",
+            "extra_time_load_after_90",
+            "forced_injury_substitution"
+          ],
+          "extraTimeLoad": true,
+          "shootoutLoad": true,
+          "injuryInterruptions": 2,
+          "forcedInjurySubstitutions": 0,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 1,
+            "pseudoXg": 0.06,
+            "attackRatePer15": 0.5,
+            "lateRegulationAttackRatePer15": 0.75,
+            "intensityRatioProxy": 0.667,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.5,
+          "scoreResidualDiagnosticOnly": true
+        },
+        "哥伦比亚": {
+          "attackShareResidual": -0.0707,
+          "defenseShareResidual": 0.0707,
+          "firstHalfShareResidual": -0.0131,
+          "credibilityWeight": 0.63,
+          "credibilityLabels": [
+            "penalty_or_own_goal_distorted",
+            "extra_time_load_after_90",
+            "forced_injury_substitution"
+          ],
+          "extraTimeLoad": true,
+          "shootoutLoad": true,
+          "injuryInterruptions": 2,
+          "forcedInjurySubstitutions": 1,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 8,
+            "pseudoXg": 0.63,
+            "attackRatePer15": 4.0,
+            "lateRegulationAttackRatePer15": 0.0,
+            "intensityRatioProxy": null,
+            "injuryOrFatigueEvents": 2,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.7,
+          "scoreResidualDiagnosticOnly": true
+        }
+      },
+      "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760508"
+    },
+    {
+      "matchKey": "法国 vs 摩洛哥",
+      "espnEventId": "760510",
+      "kickoff": "2026-07-09T20:00Z",
+      "stage": "QUARTER_FINALS",
+      "homeTeam": "法国",
+      "awayTeam": "摩洛哥",
+      "expectedShareSource": "latest_pre_match_forecast_xg_share",
+      "preMatchExpectedGoals": {
+        "home": 1.818,
+        "away": 0.5743
+      },
+      "regularTimeScore": {
+        "home": 2,
+        "away": 0
+      },
+      "signals": {
+        "法国": {
+          "attackShareResidual": 0.07,
+          "defenseShareResidual": -0.07,
+          "firstHalfShareResidual": 0.1734,
+          "credibilityWeight": 0.63,
+          "credibilityLabels": [
+            "penalty_or_own_goal_distorted",
+            "forced_injury_substitution"
+          ],
+          "extraTimeLoad": false,
+          "shootoutLoad": false,
+          "injuryInterruptions": 1,
+          "forcedInjurySubstitutions": 1,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 3.75,
+            "intensityRatioProxy": 0.0,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.0,
+          "scoreResidualDiagnosticOnly": true
+        },
+        "摩洛哥": {
+          "attackShareResidual": -0.07,
+          "defenseShareResidual": 0.07,
+          "firstHalfShareResidual": -0.1734,
+          "credibilityWeight": 0.63,
+          "credibilityLabels": [
+            "penalty_or_own_goal_distorted",
+            "forced_injury_substitution"
+          ],
+          "extraTimeLoad": false,
+          "shootoutLoad": false,
+          "injuryInterruptions": 0,
+          "forcedInjurySubstitutions": 0,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 2.25,
+            "intensityRatioProxy": 0.0,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.0,
+          "scoreResidualDiagnosticOnly": true
+        }
+      },
+      "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760510"
+    },
+    {
+      "matchKey": "西班牙 vs 比利时",
+      "espnEventId": "760511",
+      "kickoff": "2026-07-10T19:00Z",
+      "stage": "QUARTER_FINALS",
+      "homeTeam": "西班牙",
+      "awayTeam": "比利时",
+      "expectedShareSource": "latest_pre_match_forecast_xg_share",
+      "preMatchExpectedGoals": {
+        "home": 2.006,
+        "away": 0.7183
+      },
+      "regularTimeScore": {
+        "home": 2,
+        "away": 1
+      },
+      "signals": {
+        "西班牙": {
+          "attackShareResidual": 0.0516,
+          "defenseShareResidual": -0.0516,
+          "firstHalfShareResidual": 0.0795,
+          "credibilityWeight": 0.9,
+          "credibilityLabels": [
+            "forced_injury_substitution"
+          ],
+          "extraTimeLoad": false,
+          "shootoutLoad": false,
+          "injuryInterruptions": 1,
+          "forcedInjurySubstitutions": 0,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 3.0,
+            "intensityRatioProxy": 0.0,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.0,
+          "scoreResidualDiagnosticOnly": true
+        },
+        "比利时": {
+          "attackShareResidual": -0.0516,
+          "defenseShareResidual": 0.0516,
+          "firstHalfShareResidual": -0.0795,
+          "credibilityWeight": 0.9,
+          "credibilityLabels": [
+            "forced_injury_substitution"
+          ],
+          "extraTimeLoad": false,
+          "shootoutLoad": false,
+          "injuryInterruptions": 2,
+          "forcedInjurySubstitutions": 1,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 0,
+            "pseudoXg": 0,
+            "attackRatePer15": 0.0,
+            "lateRegulationAttackRatePer15": 0.75,
+            "intensityRatioProxy": 0.0,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.0,
+          "scoreResidualDiagnosticOnly": true
+        }
+      },
+      "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760511"
+    },
+    {
+      "matchKey": "挪威 vs 英格兰",
+      "espnEventId": "760512",
+      "kickoff": "2026-07-11T21:00Z",
+      "stage": "QUARTER_FINALS",
+      "homeTeam": "挪威",
+      "awayTeam": "英格兰",
+      "expectedShareSource": "latest_pre_match_forecast_xg_share",
+      "preMatchExpectedGoals": {
+        "home": 1.2832,
+        "away": 1.9823
+      },
+      "regularTimeScore": {
+        "home": 1,
+        "away": 1
+      },
+      "signals": {
+        "挪威": {
+          "attackShareResidual": 0.2554,
+          "defenseShareResidual": -0.2554,
+          "firstHalfShareResidual": 0.1824,
+          "credibilityWeight": 0.9,
+          "credibilityLabels": [
+            "extra_time_load_after_90",
+            "forced_injury_substitution"
+          ],
+          "extraTimeLoad": true,
+          "shootoutLoad": false,
+          "injuryInterruptions": 2,
+          "forcedInjurySubstitutions": 1,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 4,
+            "pseudoXg": 0.2,
+            "attackRatePer15": 2.0,
+            "lateRegulationAttackRatePer15": 2.25,
+            "intensityRatioProxy": 0.889,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.35,
+          "scoreResidualDiagnosticOnly": true
+        },
+        "英格兰": {
+          "attackShareResidual": -0.2554,
+          "defenseShareResidual": 0.2554,
+          "firstHalfShareResidual": -0.1824,
+          "credibilityWeight": 0.9,
+          "credibilityLabels": [
+            "extra_time_load_after_90",
+            "forced_injury_substitution"
+          ],
+          "extraTimeLoad": true,
+          "shootoutLoad": false,
+          "injuryInterruptions": 2,
+          "forcedInjurySubstitutions": 0,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 7,
+            "pseudoXg": 0.71,
+            "attackRatePer15": 3.5,
+            "lateRegulationAttackRatePer15": 0.75,
+            "intensityRatioProxy": 4.667,
+            "injuryOrFatigueEvents": 1,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.45,
+          "scoreResidualDiagnosticOnly": true
+        }
+      },
+      "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760512"
+    },
+    {
+      "matchKey": "阿根廷 vs 瑞士",
+      "espnEventId": "760513",
+      "kickoff": "2026-07-12T01:00Z",
+      "stage": "QUARTER_FINALS",
+      "homeTeam": "阿根廷",
+      "awayTeam": "瑞士",
+      "expectedShareSource": "latest_pre_match_forecast_xg_share",
+      "preMatchExpectedGoals": {
+        "home": 1.8447,
+        "away": 0.6537
+      },
+      "regularTimeScore": {
+        "home": 1,
+        "away": 1
+      },
+      "signals": {
+        "阿根廷": {
+          "attackShareResidual": -0.288,
+          "defenseShareResidual": 0.288,
+          "firstHalfShareResidual": -0.2505,
+          "credibilityWeight": 0.36,
+          "credibilityLabels": [
+            "red_card_changed_process",
+            "extra_time_load_after_90",
+            "forced_injury_substitution"
+          ],
+          "extraTimeLoad": true,
+          "shootoutLoad": false,
+          "injuryInterruptions": 2,
+          "forcedInjurySubstitutions": 1,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 13,
+            "pseudoXg": 1.03,
+            "attackRatePer15": 6.5,
+            "lateRegulationAttackRatePer15": 3.0,
+            "intensityRatioProxy": 2.167,
+            "injuryOrFatigueEvents": 2,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.55,
+          "scoreResidualDiagnosticOnly": true
+        },
+        "瑞士": {
+          "attackShareResidual": 0.288,
+          "defenseShareResidual": -0.288,
+          "firstHalfShareResidual": 0.2505,
+          "credibilityWeight": 0.36,
+          "credibilityLabels": [
+            "red_card_changed_process",
+            "extra_time_load_after_90",
+            "forced_injury_substitution"
+          ],
+          "extraTimeLoad": true,
+          "shootoutLoad": false,
+          "injuryInterruptions": 1,
+          "forcedInjurySubstitutions": 0,
+          "visibleFatigueEvents": 0,
+          "extraTimeProcess": {
+            "pressureEvents": 2,
+            "pseudoXg": 0.12,
+            "attackRatePer15": 1.0,
+            "lateRegulationAttackRatePer15": 0.0,
+            "intensityRatioProxy": null,
+            "injuryOrFatigueEvents": 0,
+            "proxyOnly": true
+          },
+          "post90LoadSeverity": 0.35,
+          "scoreResidualDiagnosticOnly": true
+        }
+      },
+      "sourceUrl": "https://www.espn.com/soccer/commentary/_/gameId/760513"
+    }
+  ],
+  "validation": {
+    "protocol": "walk_forward_next_round_only",
+    "predictionTarget": "90_minutes",
+    "baseline": {
+      "commentaryProcessScale": 0.0,
+      "commentaryMaxSideXgShift": 0.0,
+      "matches": 12,
+      "scorePoissonNll": 2.92593
+    },
+    "selected": {
+      "commentaryProcessScale": 0.45,
+      "commentaryMaxSideXgShift": 0.03,
+      "matches": 12,
+      "scorePoissonNll": 2.89795
+    },
+    "relativeImprovement": 0.009563,
+    "fatigueAttackPerLoad": -0.05,
+    "fatigueDefenseRiskPerLoad": 0.03,
+    "candidatesEvaluated": 13,
+    "safetyGatePassed": true
+  }
+}

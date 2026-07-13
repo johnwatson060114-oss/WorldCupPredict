@@ -105,7 +105,7 @@ export interface MarketQuote {
 export type FinalFourStage = 'SEMI_FINAL' | 'FINAL' | 'THIRD_PLACE'
 
 export interface FinalFourContext {
-  policy: 'world_cup_final_four_matrix_v1'
+  policy: 'world_cup_final_four_commentary_matrix_v2'
   predictionTarget: '90_minutes'
   stage: FinalFourStage
   stageSource: 'fixture_stage' | 'official_2026_beijing_schedule'
@@ -121,6 +121,8 @@ export interface FinalFourContext {
     coveragePenalty: number
     uncertaintyMultiplier: number
     valueProbabilityGap: number
+    trainingMatches?: number
+    rawCommentaryPaceMultiplier?: number
   }
   preStageExpectedGoals: { home: number; away: number }
   candidateExpectedGoals: { home: number; away: number }
@@ -305,20 +307,32 @@ export interface MatchForecast {
 export interface TournamentEvidenceSide {
   team: string
   matchesUsed: number
+  commentaryMatchesUsed: number
   effectiveWeight: number
   attackResidual: number
   defenseResidual: number
+  outcomeAttackResidualDiagnostic: number
+  outcomeDefenseResidualDiagnostic: number
+  scoreResidualsDirectlyAdjustStrength: false
+  halfTimeMatchesUsed: number
+  firstHalfAttackResidual: number
+  firstHalfDefenseResidual: number
   restDays: number | null
   extraTimeLoad: boolean
+  post90LoadSeverity: number
+  visibleFatigueEvents: number
+  forcedInjurySubstitutions: number
   fatigueAttackDelta: number
   fatigueDefenseRiskDelta: number
+  commentarySourceUrls: string[]
 }
 
 export interface TournamentEvidence {
-  policy: 'current_tournament_evidence_v1'
+  policy: 'current_tournament_commentary_evidence_v2'
   predictionTarget: '90_minutes'
   halfLifeMatches: number
   shrinkage: number
+  commentaryProcessScale: number
   maxSideXgShift: number
   home: TournamentEvidenceSide
   away: TournamentEvidenceSide
@@ -327,6 +341,7 @@ export interface TournamentEvidence {
   applied: boolean
   diagnosticOnly?: boolean
   selectionReason?: string
+  extraTimePolicy: '90_to_120_commentary_changes_next_match_load_only'
 }
 
 export interface MarketCalibration {

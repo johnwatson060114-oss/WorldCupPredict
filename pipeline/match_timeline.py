@@ -68,15 +68,44 @@ def classify_commentary(text: str) -> str | None:
 
 
 def commentary_team(text: str, team_names: Iterable[str]) -> str | None:
-    candidates = sorted((str(team) for team in team_names), key=len, reverse=True)
+    candidates = tuple(str(team) for team in team_names)
     for team in candidates:
-        if (
-            f"({team})" in text
-            or text.startswith(f"{team} ")
-            or text.startswith(f"Substitution, {team}.")
-        ):
+        if text.startswith(f"Substitution, {team}.") or text.startswith(f"{team} "):
             return team
-    return None
+
+    # Saved-shot commentary normally names the shooter first and the opposing
+    # goalkeeper later.  Choosing the longest team name therefore attributes
+    # some attempts to the goalkeeper's side.  The first parenthesized team is
+    # the actor described by ESPN's commentary grammar.
+    positions = [
+        (text.find(f"({team})"), team)
+        for team in candidates
+        if f"({team})" in text
+    ]
+    return min(positions)[1] if positions else None
+
+
+def _play_period(item: dict[str, Any]) -> int | None:
+    value = ((item.get("play") or {}).get("period") or {}).get("number")
+    try:
+        return int(value) if value is not None else None
+    except (TypeError, ValueError):
+        return None
+
+
+def _play_team(item: dict[str, Any], team_names: Iterable[str]) -> str | None:
+    value = str((((item.get("play") or {}).get("team") or {}).get("displayName")) or "")
+    return value if value in set(team_names) else None
+
+
+def _phase(period: int | None) -> str:
+    return {
+        1: "first_half",
+        2: "second_half",
+        3: "extra_time_first_half",
+        4: "extra_time_second_half",
+        5: "penalty_shootout",
+    }.get(period, "unknown")
 
 
 def _player_name(text: str, team: str | None) -> str | None:
@@ -142,7 +171,8 @@ def extract_timeline(
         if event_type is None:
             continue
         display_minute = str(item.get("time", {}).get("displayValue") or "")
-        team = commentary_team(text, teams)
+        period = _play_period(item)
+        team = _play_team(item, teams) or commentary_team(text, teams)
         player = _player_name(text, team)
         incoming, outgoing = _substitution_players(text)
         if event_type == "substitution" and incoming:
@@ -154,6 +184,10 @@ def extract_timeline(
         events.append({
             "minute": minute_value(display_minute),
             "displayMinute": display_minute,
+            "period": period,
+            "phase": _phase(period),
+            "regulationTime": period in {None, 1, 2},
+            "extraTime": period in {3, 4},
             "type": event_type,
             "team": team,
             "player": player,
@@ -169,9 +203,20 @@ def extract_timeline(
                 or "following a free kick" in text.lower()
             ),
             "seriousInjuryHint": "unable to continue" in text.lower(),
+            "forcedInjurySubstitution": (
+                event_type == "substitution" and "because of an injury" in text.lower()
+            ),
             "sourceUrl": source_url,
         })
-    return sorted(events, key=lambda event: (float(event["minute"]), str(event["type"]), str(event["summary"])))
+    return sorted(
+        events,
+        key=lambda event: (
+            int(event.get("period") or 0),
+            float(event["minute"]),
+            str(event["type"]),
+            str(event["summary"]),
+        ),
+    )
 
 
 def cooling_break_minutes(events: Iterable[dict[str, Any]]) -> tuple[float, float]:
@@ -205,7 +250,8 @@ def match_tactical_summary(
 ) -> dict[str, Any]:
     event_list = list(events)
     teams = tuple(team_names)
-    first_break, second_break = cooling_break_minutes(event_list)
+    regulation_events = [event for event in event_list if event.get("regulationTime", True)]
+    first_break, second_break = cooling_break_minutes(regulation_events)
     durations = {
         1: first_break,
         2: max(1.0, 45 - first_break),
@@ -217,14 +263,20 @@ def match_tactical_summary(
         "teams": {},
         "coverage": {
             "classifiedEvents": len(event_list),
-            "attackingEvents": sum(event.get("type") in ATTACKING_EVENT_TYPES for event in event_list),
+            "regulationClassifiedEvents": len(regulation_events),
+            "post90ClassifiedEvents": len(event_list) - len(regulation_events),
+            "attackingEvents": sum(event.get("type") in ATTACKING_EVENT_TYPES for event in regulation_events),
             "injuryEvents": sum(event.get("type") == "injury" for event in event_list),
+            "forcedInjurySubstitutions": sum(bool(event.get("forcedInjurySubstitution")) for event in event_list),
             "loadEvents": sum(event.get("type") in LOAD_EVENT_TYPES for event in event_list),
             "cardEvents": sum(event.get("type") in CARD_EVENT_TYPES for event in event_list),
         },
     }
     for team in teams:
-        attacking = [event for event in event_list if event.get("team") == team and event.get("type") in ATTACKING_EVENT_TYPES]
+        attacking = [
+            event for event in regulation_events
+            if event.get("team") == team and event.get("type") in ATTACKING_EVENT_TYPES
+        ]
         counts = Counter(
             event_segment(float(event["minute"]), first_break, second_break)
             for event in attacking
@@ -252,12 +304,16 @@ def match_tactical_summary(
             labels.append("set_piece_creation")
         cards = sum(
             event.get("team") == team and event.get("type") in CARD_EVENT_TYPES
-            for event in event_list
+            for event in regulation_events
         )
         if cards >= 2:
             labels.append("card_suspension_risk")
         fatigue_events = sum(
-            event.get("team") == team and event.get("type") in {"fatigue", "injury"}
+            event.get("team") == team
+            and (
+                event.get("type") in {"fatigue", "injury"}
+                or bool(event.get("forcedInjurySubstitution"))
+            )
             for event in event_list
         )
         if fatigue_events:

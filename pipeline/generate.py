@@ -146,6 +146,7 @@ def local_snapshot_paths() -> list[Path]:
         ROOT / "pipeline" / "data" / "model-policy.json",
         ROOT / "pipeline" / "data" / "final-sprint-policy.json",
         ROOT / "pipeline" / "data" / "final-four-policy.json",
+        ROOT / "pipeline" / "data" / "knockout-commentary-evidence.json",
         FIXTURE_DIR / "sporttery-spf.html",
         FIXTURE_DIR / "sporttery-score.html",
         *sorted(MANUAL_DIR.glob("*.csv")),

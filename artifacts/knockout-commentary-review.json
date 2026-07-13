@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-13T15:57:26+08:00",
+  "scope": {
+    "currentKnockoutMatches": 28,
+    "currentCommentaryLinesRead": 3386,
+    "historicalFinalFourMatches": 22,
+    "historicalCommentaryLinesRead": 2628,
+    "historicalTournaments": 6
+  },
+  "method": {
+    "policy": "commentary_first_knockout_review_v1",
+    "predictionTarget": "90_minutes",
+    "fullScoreOnlyModel": false,
+    "scoreResidualsDirectlyAdjustStrength": false,
+    "regularTimeProcessFeatures": [
+      "shot_like_pressure_by_period",
+      "late_pressure",
+      "set_piece_creation",
+      "cards",
+      "injury_interruptions",
+      "forced_injury_substitutions",
+      "result_versus_pressure_support"
+    ],
+    "post90LoadFeatures": [
+      "extra_time_pressure_rate",
+      "extra_time_intensity_drop_proxy",
+      "extra_time_injury_and_cramp_events",
+      "forced_injury_substitutions",
+      "penalty_shootout"
+    ],
+    "runningDistancePolicy": "commentary has no GPS distance; event-rate change is labeled as a proxy and never presented as measured running distance",
+    "copyrightPolicy": "structured event coordinates and paraphrased factual summaries only"
+  },
+  "stagePolicy": {
+    "schemaVersion": 2,
+    "generatedAt": "2026-07-13T15:57:26+08:00",
+    "policy": "world_cup_final_four_commentary_matrix_v2",
+    "predictionTarget": "90_minutes",
+    "scoreMatrix": {
+      "maxGoalsPerTeam": 10,
+      "topScoreLimit": 8,
+      "derivationRule": "all_regular_time_markets_from_one_score_matrix"
+    },
+    "stageProfiles": {
+      "SEMI_FINAL": {
+        "candidateTotalXgMultiplier": 1.0022,
+        "candidateFirstHalfShare": 0.3752,
+        "activeMatrixBlend": 0.2,
+        "coveragePenalty": 0.02,
+        "uncertaintyMultiplier": 1.1,
+        "valueProbabilityGap": 0.05,
+        "trainingMatches": 12,
+        "rawCommentaryPaceMultiplier": 1.0033
+      },
+      "FINAL": {
+        "candidateTotalXgMultiplier": 0.9692,
+        "candidateFirstHalfShare": 0.3379,
+        "activeMatrixBlend": 0.0,
+        "coveragePenalty": 0.03,
+        "uncertaintyMultiplier": 1.15,
+        "valueProbabilityGap": 0.06,
+        "trainingMatches": 6,
+        "rawCommentaryPaceMultiplier": 0.9384
+      },
+      "THIRD_PLACE": {
+        "candidateTotalXgMultiplier": 1.033,
+        "candidateFirstHalfShare": 0.3567,
+        "activeMatrixBlend": 0.1,
+        "coveragePenalty": 0.04,
+        "uncertaintyMultiplier": 1.2,
+        "valueProbabilityGap": 0.07,
+        "trainingMatches": 4,
+        "rawCommentaryPaceMultiplier": 1.0826
+      }
+    },
+    "validation": {
+      "status": "commentary_trained_safety_gated",
+      "reason": "stage pace is derived from archived minute-by-minute pressure events; only leave-one-tournament-out improvements are blended",
+      "leakagePolicy": "held-out tournament commentary and results never enter its training fold; extra time and shootouts are load only",
+      "historicalTournaments": 6,
+      "historicalMatches": 22,
+      "passedStages": [
+        "SEMI_FINAL",
+        "THIRD_PLACE"
+      ],
+      "metrics": {
+        "SEMI_FINAL": {
+          "protocol": "leave_one_tournament_out",
+          "testMatches": 12,
+          "baselinePoissonNll": 1.45824,
+          "commentaryStageNll": 1.45465,
+          "relativeImprovement": 0.00246,
+          "passed": true
+        },
+        "FINAL": {
+          "protocol": "leave_one_tournament_out",
+          "testMatches": 6,
+          "baselinePoissonNll": 2.15298,
+          "commentaryStageNll": 2.15825,
+          "relativeImprovement": -0.00244,
+          "passed": false
+        },
+        "THIRD_PLACE": {
+          "protocol": "leave_one_tournament_out",
+          "testMatches": 4,
+          "baselinePoissonNll": 2.21062,
+          "commentaryStageNll": 2.19956,
+          "relativeImprovement": 0.005,
+          "passed": true
+        }
+      },
+      "requiredMetrics": [
+        "poisson_total_goal_negative_log_likelihood"
+      ],
+      "comparators": [
+        "stage_neutral_poisson"
+      ]
+    }
+  },
+  "sources": {
+    "provider": "ESPN match commentary",
+    "currentScoreboard": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+    "matchSourceUrlsArchived": 50
+  }
+}

@@ -32,7 +32,7 @@ def test_final_four_stage_uses_official_beijing_date_fallback():
     )
 
 
-def test_stage_profiles_are_distinct_but_unvalidated_xg_shift_self_disables():
+def test_stage_profiles_are_commentary_trained_and_validation_gated():
     policy = load_final_four_policy()
     candidates = {
         stage: profile["candidateTotalXgMultiplier"]
@@ -51,11 +51,17 @@ def test_stage_profiles_are_distinct_but_unvalidated_xg_shift_self_disables():
 
     context = seed["final_four_context"]
     assert seed["stage"] == "SEMI_FINAL"
-    assert context["diagnosticOnly"]
-    assert not context["matrixAdjustmentApplied"]
-    assert seed["base_xg"] == [1.2, 1.3]
+    assert not context["diagnosticOnly"]
+    assert context["matrixAdjustmentApplied"]
+    assert seed["base_xg"] != [1.2, 1.3]
     assert math.isclose(seed["coverage"], 0.78)
-    assert context["candidateExpectedGoals"] != context["adjustedExpectedGoals"]
+    assert context["candidateExpectedGoals"] != context["preStageExpectedGoals"]
+    assert context["validationStatus"] == "commentary_trained_safety_gated"
+
+    final_seed = {**seed, "stage": "FINAL", "base_xg": [1.2, 1.3], "coverage": 0.80}
+    apply_final_four_policy([final_seed], "2026-07-20", policy)
+    assert final_seed["final_four_context"]["diagnosticOnly"]
+    assert final_seed["base_xg"] == [1.2, 1.3]
 
 
 def test_market_assessment_requires_gap_and_confidence_lower_bound():

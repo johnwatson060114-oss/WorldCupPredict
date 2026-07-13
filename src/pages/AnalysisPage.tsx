@@ -34,14 +34,16 @@ export function AnalysisPage({ match }: { match: MatchForecast }) {
             <div className="model-breakdown-grid">
               <div><span>比赛阶段</span><strong>{finalFourStageLabel}</strong></div>
               <div><span>预测口径</span><strong>常规时间 90 分钟</strong></div>
-              <div><span>阶段候选总 xG 系数</span><strong>{match.finalFourContext.stageParameters.candidateTotalXgMultiplier.toFixed(2)}</strong></div>
+              <div><span>解说训练总 xG 系数</span><strong>{match.finalFourContext.stageParameters.candidateTotalXgMultiplier.toFixed(2)}</strong></div>
+              <div><span>历史逐场解说样本</span><strong>{match.finalFourContext.stageParameters.trainingMatches ?? '--'} 场</strong></div>
               <div><span>价值安全边际</span><strong>{percent(match.finalFourModel.valueProbabilityGap)}</strong></div>
               <div><span>主胜 95% 区间</span><strong>{match.finalFourModel.confidence95.home.map((value) => percent(value, 1)).join(' - ')}</strong></div>
               <div><span>平局 95% 区间</span><strong>{match.finalFourModel.confidence95.draw.map((value) => percent(value, 1)).join(' - ')}</strong></div>
               <div><span>客胜 95% 区间</span><strong>{match.finalFourModel.confidence95.away.map((value) => percent(value, 1)).join(' - ')}</strong></div>
               <div><span>最终判断</span><strong>{match.finalFourModel.conclusion}</strong></div>
             </div>
-            {match.finalFourContext.diagnosticOnly && <div className="missing-box"><strong>安全门控</strong><span>阶段候选节奏尚未通过严格 90 分钟历史标签验证，当前不直接改写 xG，只收紧不确定性与价值判定。</span></div>}
+            {match.finalFourContext.diagnosticOnly && <div className="missing-box"><strong>安全门控</strong><span>该阶段的逐分钟解说节奏未通过留一届赛事验证，当前不直接改写 xG，只收紧不确定性与价值判定。</span></div>}
+            {match.tournamentEvidence && <div className="missing-box"><strong>本届淘汰赛过程与加时负荷</strong><span>{match.tournamentEvidence.home.team}：读取 {match.tournamentEvidence.home.commentaryMatchesUsed} 场解说，后90分钟负荷 {percent(match.tournamentEvidence.home.post90LoadSeverity)}，疲劳修正 {match.tournamentEvidence.home.fatigueAttackDelta.toFixed(3)} xG</span><span>{match.tournamentEvidence.away.team}：读取 {match.tournamentEvidence.away.commentaryMatchesUsed} 场解说，后90分钟负荷 {percent(match.tournamentEvidence.away.post90LoadSeverity)}，疲劳修正 {match.tournamentEvidence.away.fatigueAttackDelta.toFixed(3)} xG</span></div>}
           </section>
         )}
         <section className="panel detail-section">
