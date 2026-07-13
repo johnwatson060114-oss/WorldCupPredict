@@ -7,6 +7,9 @@ export function AnalysisPage({ match }: { match: MatchForecast }) {
   const standardErrors = match.simulation ? Object.values(match.simulation.monteCarloStandardError) : []
   const maxStandardError = standardErrors.length ? Math.max(...standardErrors) : null
   const finalConvergence = match.simulation?.convergence.at(-1)
+  const finalFourStageLabel = match.finalFourContext
+    ? ({ SEMI_FINAL: '半决赛', FINAL: '决赛', THIRD_PLACE: '季军赛' } as const)[match.finalFourContext.stage]
+    : null
   return (
     <main className="content-page analysis-page">
       <div className="page-title">
@@ -25,6 +28,22 @@ export function AnalysisPage({ match }: { match: MatchForecast }) {
         </div>
       </section>
       <div className="analysis-grid">
+        {match.finalFourContext && match.finalFourModel && (
+          <section className="panel detail-section evidence-section">
+            <div className="section-heading"><div><h2>末四场 90 分钟模型</h2><p>所有胜平负、让球、总进球和比分概率由同一常规时间比分矩阵派生</p></div></div>
+            <div className="model-breakdown-grid">
+              <div><span>比赛阶段</span><strong>{finalFourStageLabel}</strong></div>
+              <div><span>预测口径</span><strong>常规时间 90 分钟</strong></div>
+              <div><span>阶段候选总 xG 系数</span><strong>{match.finalFourContext.stageParameters.candidateTotalXgMultiplier.toFixed(2)}</strong></div>
+              <div><span>价值安全边际</span><strong>{percent(match.finalFourModel.valueProbabilityGap)}</strong></div>
+              <div><span>主胜 95% 区间</span><strong>{match.finalFourModel.confidence95.home.map((value) => percent(value, 1)).join(' - ')}</strong></div>
+              <div><span>平局 95% 区间</span><strong>{match.finalFourModel.confidence95.draw.map((value) => percent(value, 1)).join(' - ')}</strong></div>
+              <div><span>客胜 95% 区间</span><strong>{match.finalFourModel.confidence95.away.map((value) => percent(value, 1)).join(' - ')}</strong></div>
+              <div><span>最终判断</span><strong>{match.finalFourModel.conclusion}</strong></div>
+            </div>
+            {match.finalFourContext.diagnosticOnly && <div className="missing-box"><strong>安全门控</strong><span>阶段候选节奏尚未通过严格 90 分钟历史标签验证，当前不直接改写 xG，只收紧不确定性与价值判定。</span></div>}
+          </section>
+        )}
         <section className="panel detail-section">
           <div className="section-heading"><div><h2>比分概率矩阵</h2><p>蒙特卡洛模拟后的前八种比分</p></div></div>
           <div className="score-matrix">

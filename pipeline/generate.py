@@ -34,6 +34,11 @@ from .football_data import (
     team_flag,
 )
 from .factor_gate import apply_factor_admissions, load_factor_admissions
+from .final_four_policy import (
+    apply_final_four_policy,
+    build_final_four_market_assessment,
+    load_final_four_policy,
+)
 from .half_full_specialist import apply_half_full_market_calibration, apply_opponent_adjusted_half_split, build_half_full_signal
 from .current_tournament_evidence import apply_current_tournament_evidence, load_evidence_matches
 from .model import (
@@ -52,7 +57,7 @@ from .model import (
 )
 from .lineup import apply_lineup_impacts
 from .intelligence import apply_intelligence, load_daily_intelligence
-from .draw_risk import apply_draw_risk_layer
+from .draw_risk import DrawRiskResult, apply_draw_risk_layer
 from .market_guard import apply_bounded_market_anchor, market_conflict_decision
 from .portfolio import build_portfolios
 from .provenance import build_snapshot_manifest
@@ -140,6 +145,7 @@ def local_snapshot_paths() -> list[Path]:
         ROOT / "pipeline" / "data" / "fifa-2026-annex-c.json",
         ROOT / "pipeline" / "data" / "model-policy.json",
         ROOT / "pipeline" / "data" / "final-sprint-policy.json",
+        ROOT / "pipeline" / "data" / "final-four-policy.json",
         FIXTURE_DIR / "sporttery-spf.html",
         FIXTURE_DIR / "sporttery-score.html",
         *sorted(MANUAL_DIR.glob("*.csv")),
@@ -384,7 +390,7 @@ def _market_date_matches_seed(seed: dict, market: SportteryMatch) -> bool:
 
 
 def half_full_assist_weight(seed: dict[str, Any]) -> float:
-    if seed.get("knockout_context") or seed.get("tournament_evidence"):
+    if seed.get("knockout_context") or seed.get("tournament_evidence") or seed.get("final_four_context"):
         return 0.0
     return 0.20
 
@@ -761,13 +767,30 @@ def build_match(
         away_xg,
     )
     calibrated_score_matrix = score_calibration.matrix
-    draw_risk_result = apply_draw_risk_layer(
-        raw_outcomes,
-        {
-            **seed,
-            "base_xg": [home_xg, away_xg],
-        },
-    )
+    final_four_context = seed.get("final_four_context")
+    if final_four_context:
+        matrix_outcomes = outcome_probabilities(calibrated_score_matrix)
+        draw_risk_result = DrawRiskResult(
+            probabilities=matrix_outcomes,
+            metadata={
+                "status": "matrix_authoritative",
+                "applied": False,
+                "layer": "draw_risk_probability_redistribution_v1",
+                "reason": "final_four_markets_derive_from_one_score_matrix",
+                "labels": [],
+                "drawShift": 0.0,
+                "preAdjustment": {key: round(value, 5) for key, value in matrix_outcomes.items()},
+                "postAdjustment": {key: round(value, 5) for key, value in matrix_outcomes.items()},
+            },
+        )
+    else:
+        draw_risk_result = apply_draw_risk_layer(
+            raw_outcomes,
+            {
+                **seed,
+                "base_xg": [home_xg, away_xg],
+            },
+        )
     outcomes = draw_risk_result.probabilities
     half_split = ((seed.get("tournament_evidence") or {}).get("halfFullEvidence") or {})
     first_half_xg = half_split.get("firstHalfExpectedGoals") or {}
@@ -825,6 +848,29 @@ def build_match(
     normal_market = normalized_market_probabilities(normal_odds)
     normal_model = {"胜": outcomes["home"], "平": outcomes["draw"], "负": outcomes["away"]}
     normal_conflict = market_conflict_decision(normal_model, normal_market)
+    final_four_model = build_final_four_market_assessment(
+        final_four_context,
+        outcomes,
+        {
+            outcome: normal_market.get(selection)
+            for selection, outcome in OUTCOME_KEYS.items()
+        },
+        coverage,
+    )
+    if final_four_model is not None:
+        final_four_model = {
+            **final_four_model,
+            "scoreMatrix": "calibrated_regular_time_score_matrix",
+            "topScoreLimit": len(scores),
+            "riskFlags": {
+                "lineupUncertainty": any(
+                    "阵容" in str(item) or "伤停" in str(item)
+                    for item in seed.get("missing_data", [])
+                ),
+                "smallStageSample": True,
+                "marketUsedAsIndependentAnchor": True,
+            },
+        }
     for chinese, outcome in OUTCOME_KEYS.items():
         quotes.append(make_quote(
             match_id, label, "胜平负", chinese, normal_odds.get(chinese), outcomes[outcome], normal_market.get(chinese),
@@ -839,7 +885,7 @@ def build_match(
         ))
 
     handicap = market.handicap if market else fallback_handicap(home_xg, away_xg)
-    handicap_outcomes = outcome_probabilities(matrix, handicap)
+    handicap_outcomes = outcome_probabilities(calibrated_score_matrix, handicap)
     if market:
         handicap_odds = market.handicap_win_draw_loss
     else:
@@ -947,6 +993,8 @@ def build_match(
         "awayTeam": seed["away_team"],
         "homeFlag": seed.get("home_flag", "🏳"),
         "awayFlag": seed.get("away_flag", "🏳"),
+        "stage": seed.get("stage"),
+        "predictionTarget": "90_minutes" if final_four_context else None,
         "expectedGoals": {"home": round(home_xg, 2), "away": round(away_xg, 2)},
         "modelDecomposition": seed.get("model_decomposition", {
             "longTermExpectedGoals": {"home": round(home_xg, 4), "away": round(away_xg, 4)},
@@ -958,6 +1006,8 @@ def build_match(
         "currentTournament": seed.get("current_tournament"),
         "knockoutContext": seed.get("knockout_context"),
         "knockoutRound32Form": seed.get("knockout_round32_form"),
+        "finalFourContext": final_four_context,
+        "finalFourModel": final_four_model,
         "scoreCalibration": score_calibration.metadata,
         "marketCalibration": seed.get("market_calibration"),
         "drawRisk": draw_risk_result.metadata,
@@ -1286,6 +1336,7 @@ def main() -> None:
         apply_lineup_impacts(batch)
         apply_factor_admissions(batch, factor_admissions)
         apply_current_tournament_evidence(batch, batch_date, tournament_evidence)
+        apply_final_four_policy(batch, batch_date)
 
     prepare_seeds(seeds, target_date)
 
@@ -1394,6 +1445,8 @@ def main() -> None:
         "timezone": SETTINGS.timezone,
         "modelVersion": get_model_version(),
         "pipelineVersion": PIPELINE_VERSION,
+        "predictionTarget": "90_minutes",
+        "finalFourPolicy": load_final_four_policy(),
         "dataSnapshot": build_snapshot_manifest(local_snapshot_paths(), generated_at),
         "reproducibility": {
             "baselineFrozen": True,

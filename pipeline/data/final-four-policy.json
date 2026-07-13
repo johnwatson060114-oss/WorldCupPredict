@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "policy": "world_cup_final_four_matrix_v1",
+  "predictionTarget": "90_minutes",
+  "scoreMatrix": {
+    "maxGoalsPerTeam": 10,
+    "topScoreLimit": 8,
+    "derivationRule": "all_regular_time_markets_from_one_score_matrix"
+  },
+  "stageProfiles": {
+    "SEMI_FINAL": {
+      "candidateTotalXgMultiplier": 0.97,
+      "candidateFirstHalfShare": 0.43,
+      "activeMatrixBlend": 0.0,
+      "coveragePenalty": 0.02,
+      "uncertaintyMultiplier": 1.1,
+      "valueProbabilityGap": 0.05
+    },
+    "FINAL": {
+      "candidateTotalXgMultiplier": 0.94,
+      "candidateFirstHalfShare": 0.41,
+      "activeMatrixBlend": 0.0,
+      "coveragePenalty": 0.03,
+      "uncertaintyMultiplier": 1.15,
+      "valueProbabilityGap": 0.06
+    },
+    "THIRD_PLACE": {
+      "candidateTotalXgMultiplier": 1.08,
+      "candidateFirstHalfShare": 0.47,
+      "activeMatrixBlend": 0.0,
+      "coveragePenalty": 0.04,
+      "uncertaintyMultiplier": 1.2,
+      "valueProbabilityGap": 0.07
+    }
+  },
+  "validation": {
+    "status": "diagnostic_only",
+    "reason": "historical_final_four_90_minute_stage_labels_not_yet_validated",
+    "leakagePolicy": "features_and_market_snapshots_must_precede_kickoff",
+    "requiredMetrics": [
+      "log_loss",
+      "brier_score",
+      "ranked_probability_score",
+      "calibration_error"
+    ],
+    "comparators": [
+      "de_vigged_market",
+      "simple_poisson",
+      "world_cup_only_model",
+      "world_cup_plus_pre_tournament_rating"
+    ]
+  }
+}

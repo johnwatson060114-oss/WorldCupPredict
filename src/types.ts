@@ -102,6 +102,53 @@ export interface MarketQuote {
   matchDate?: string
 }
 
+export type FinalFourStage = 'SEMI_FINAL' | 'FINAL' | 'THIRD_PLACE'
+
+export interface FinalFourContext {
+  policy: 'world_cup_final_four_matrix_v1'
+  predictionTarget: '90_minutes'
+  stage: FinalFourStage
+  stageSource: 'fixture_stage' | 'official_2026_beijing_schedule'
+  applied: boolean
+  matrixAdjustmentApplied: boolean
+  diagnosticOnly: boolean
+  validationStatus: string
+  validationReason?: string
+  stageParameters: {
+    candidateTotalXgMultiplier: number
+    candidateFirstHalfShare: number
+    activeMatrixBlend: number
+    coveragePenalty: number
+    uncertaintyMultiplier: number
+    valueProbabilityGap: number
+  }
+  preStageExpectedGoals: { home: number; away: number }
+  candidateExpectedGoals: { home: number; away: number }
+  adjustedExpectedGoals: { home: number; away: number }
+  coverageBefore: number
+  coverageAfter: number
+}
+
+export interface FinalFourModel {
+  policy: 'final_four_value_assessment_v1'
+  predictionTarget: '90_minutes'
+  stage: FinalFourStage
+  confidence95: Record<Outcome, [number, number]>
+  noVigMarketProbabilities: Record<Outcome, number> | null
+  probabilityGaps: Record<Outcome, number> | null
+  valueProbabilityGap: number
+  valueSelections: Outcome[]
+  status: 'value_identified' | 'no_clear_value' | 'market_unavailable'
+  conclusion: string
+  scoreMatrix: 'calibrated_regular_time_score_matrix'
+  topScoreLimit: number
+  riskFlags: {
+    lineupUncertainty: boolean
+    smallStageSample: boolean
+    marketUsedAsIndependentAnchor: boolean
+  }
+}
+
 export interface MatchForecast {
   id: string
   apiFixtureId?: number | null
@@ -113,6 +160,8 @@ export interface MatchForecast {
   awayTeam: string
   homeFlag: string
   awayFlag: string
+  stage?: string | null
+  predictionTarget?: '90_minutes' | null
   expectedGoals: { home: number; away: number }
   modelDecomposition?: {
     longTermExpectedGoals?: { home: number; away: number }
@@ -134,6 +183,10 @@ export interface MatchForecast {
     formLayer?: string
     motivationLayer?: string
     knockoutLayer?: string
+    preFinalFourExpectedGoals?: { home: number; away: number }
+    finalFourLayer?: string
+    finalFourStage?: FinalFourStage
+    finalFourMatrixBlend?: number
     tournamentEvidence?: TournamentEvidence
     marketCalibration?: MarketCalibration
   }
@@ -161,6 +214,8 @@ export interface MatchForecast {
     awayLatePressure: { attackMultiplier: number; defensiveRiskMultiplier: number }
     applied: boolean
   } | null
+  finalFourContext?: FinalFourContext | null
+  finalFourModel?: FinalFourModel | null
   scoreCalibration?: {
     applied: boolean
     reason?: string
@@ -487,6 +542,15 @@ export interface DailyForecast {
   timezone: 'Asia/Shanghai'
   modelVersion: string
   pipelineVersion?: string
+  predictionTarget?: '90_minutes'
+  finalFourPolicy?: {
+    schemaVersion: number
+    policy: string
+    predictionTarget: '90_minutes'
+    scoreMatrix: Record<string, unknown>
+    stageProfiles: Record<FinalFourStage, FinalFourContext['stageParameters']>
+    validation: Record<string, unknown>
+  }
   dataSnapshot?: {
     id: string
     cutoff: string

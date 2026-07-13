@@ -10,7 +10,7 @@ FIXTURE_DIR = ROOT / "tests" / "fixtures"
 MANUAL_DIR = ROOT / "manual-data"
 SPORTTERY_SNAPSHOT = CACHE_DIR / "sporttery-live.json"
 
-PIPELINE_VERSION = "2.0.0-dev"
+PIPELINE_VERSION = "2.1.0"
 LEGACY_MODEL_VERSION = "legacy-dixon-coles-v1"
 OUTCOME_RECOMMENDATION_THRESHOLD = 0.60
 
