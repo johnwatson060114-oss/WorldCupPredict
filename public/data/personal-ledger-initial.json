@@ -1,10 +1,9 @@
 {
   "schemaVersion": 1,
   "initialBankroll": 0,
-  "baselineStake": 985,
-  "baselineProfit": 153.54,
-  "targetTotalStake": 985,
-  "targetRealizedProfit": 153.54,
+  "baselineStake": 365,
+  "baselineProfit": -52.57,
+  "baselineRevision": 1,
   "bets": [],
   "modelSnapshots": []
 }

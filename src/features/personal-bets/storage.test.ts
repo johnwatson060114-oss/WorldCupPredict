@@ -28,18 +28,20 @@ describe('personal ledger settlement', () => {
     const seeded: PersonalBetLedger = {
       schemaVersion: 1,
       initialBankroll: 0,
-      baselineStake: 985,
-      baselineProfit: 153.54,
+      baselineStake: 365,
+      baselineProfit: -52.57,
+      baselineRevision: 1,
       modelSnapshots: [],
       bets: [],
     }
     const merged = mergeInitialPersonalLedger(local, seeded)
-    expect(merged.baselineStake).toBe(985)
-    expect(merged.baselineProfit).toBe(153.54)
+    expect(merged.baselineStake).toBe(365)
+    expect(merged.baselineProfit).toBe(-52.57)
+    expect(merged.baselineRevision).toBe(1)
     expect(merged.bets).toEqual([])
   })
 
-  it('reconciles the baseline around existing tickets to the target totals', () => {
+  it('applies a baseline revision once and keeps later tickets additive', () => {
     const local: PersonalBetLedger = {
       schemaVersion: 1,
       initialBankroll: 0,
@@ -52,16 +54,26 @@ describe('personal ledger settlement', () => {
     const seeded: PersonalBetLedger = {
       schemaVersion: 1,
       initialBankroll: 0,
-      baselineStake: 985,
-      baselineProfit: 153.54,
-      targetTotalStake: 985,
-      targetRealizedProfit: 153.54,
+      baselineStake: 365,
+      baselineProfit: -52.57,
+      baselineRevision: 1,
       modelSnapshots: [],
       bets: [],
     }
     const merged = mergeInitialPersonalLedger(local, seeded)
-    expect(merged.baselineStake).toBe(975)
-    expect(merged.baselineProfit).toBe(145.54)
+    expect(merged.baselineStake).toBe(365)
+    expect(merged.baselineProfit).toBe(-52.57)
+    const withNewTicket: PersonalBetLedger = {
+      ...merged,
+      bets: [{
+        id: 'new-ticket', createdAt: 'later', targetDate: '2026-07-16', matchLabel: 'C vs D',
+        market: '胜平负', selection: '平', odds: 3, stake: 20, decisionSource: 'subjective', status: 'pending',
+      }, ...merged.bets],
+    }
+    const refreshed = mergeInitialPersonalLedger(withNewTicket, seeded)
+    expect(refreshed.baselineStake).toBe(365)
+    expect(refreshed.baselineProfit).toBe(-52.57)
+    expect(refreshed.bets).toHaveLength(2)
   })
 
   it('merges seeded tickets without overwriting local settlement edits', () => {

@@ -59,8 +59,7 @@ export interface PersonalBetLedger {
   initialBankroll: number
   baselineStake?: number
   baselineProfit?: number
-  targetTotalStake?: number
-  targetRealizedProfit?: number
+  baselineRevision?: number
   bets: PersonalBet[]
   modelSnapshots: ModelDaySnapshot[]
 }

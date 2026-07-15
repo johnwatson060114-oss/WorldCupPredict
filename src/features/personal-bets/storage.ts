@@ -3,8 +3,9 @@ import type { ModelDaySnapshot, PersonalBet, PersonalBetLedger, PersonalBetLeg }
 import { groupLegsByMatch, inferPassType, payoutForWinningOdds } from './pass-types'
 
 const STORAGE_KEY = 'world-cup-predict-personal-bets-v2'
-const DEFAULT_BASELINE_STAKE = 985
-const DEFAULT_BASELINE_PROFIT = 153.54
+const DEFAULT_BASELINE_STAKE = 365
+const DEFAULT_BASELINE_PROFIT = -52.57
+const DEFAULT_BASELINE_REVISION = 1
 const standardScores = new Set(['1:0', '2:0', '2:1', '3:0', '3:1', '3:2', '4:0', '4:1', '4:2', '5:0', '5:1', '5:2', '0:0', '1:1', '2:2', '3:3', '0:1', '0:2', '1:2', '0:3', '1:3', '2:3', '0:4', '1:4', '2:4', '0:5', '1:5', '2:5'])
 
 export const emptyPersonalLedger = (): PersonalBetLedger => ({
@@ -12,6 +13,7 @@ export const emptyPersonalLedger = (): PersonalBetLedger => ({
   initialBankroll: 0,
   baselineStake: DEFAULT_BASELINE_STAKE,
   baselineProfit: DEFAULT_BASELINE_PROFIT,
+  baselineRevision: DEFAULT_BASELINE_REVISION,
   bets: [],
   modelSnapshots: [],
 })
@@ -34,18 +36,12 @@ export const savePersonalLedger = (ledger: PersonalBetLedger) => {
 }
 
 export const mergeInitialPersonalLedger = (current: PersonalBetLedger, initial: PersonalBetLedger) => {
-  const activeBets = current.bets.filter((bet) => bet.status !== 'void')
-  const settledBets = activeBets.filter((bet) => bet.status === 'settled')
-  const currentStake = activeBets.reduce((sum, bet) => sum + bet.stake, 0)
-  const currentProfit = settledBets.reduce((sum, bet) => sum + (bet.payout ?? 0) - bet.stake, 0)
-  const targetTotalStake = initial.targetTotalStake ?? initial.baselineStake
-  const targetRealizedProfit = initial.targetRealizedProfit ?? initial.baselineProfit
-  const baselineStake = targetTotalStake === undefined
-    ? current.baselineStake
-    : Math.round((targetTotalStake - currentStake) * 100) / 100
-  const baselineProfit = targetRealizedProfit === undefined
-    ? current.baselineProfit
-    : Math.round((targetRealizedProfit - currentProfit) * 100) / 100
+  const shouldApplyBaseline = initial.baselineRevision !== undefined
+    ? current.baselineRevision !== initial.baselineRevision
+    : current.baselineStake === undefined && current.baselineProfit === undefined
+  const baselineStake = shouldApplyBaseline ? initial.baselineStake : current.baselineStake
+  const baselineProfit = shouldApplyBaseline ? initial.baselineProfit : current.baselineProfit
+  const baselineRevision = shouldApplyBaseline ? initial.baselineRevision : current.baselineRevision
   const existingIds = new Set(current.bets.map((bet) => bet.id))
   const missingBets = (initial.bets ?? []).filter((bet) => !existingIds.has(bet.id))
   const existingSnapshots = new Set(current.modelSnapshots.map((snapshot) => snapshot.targetDate))
@@ -55,12 +51,14 @@ export const mergeInitialPersonalLedger = (current: PersonalBetLedger, initial: 
     && !missingSnapshots.length
     && current.baselineStake === baselineStake
     && current.baselineProfit === baselineProfit
+    && current.baselineRevision === baselineRevision
   ) return current
   return {
     ...current,
     initialBankroll: current.bets.length ? current.initialBankroll : initial.initialBankroll,
     baselineStake,
     baselineProfit,
+    baselineRevision,
     bets: [...missingBets, ...current.bets],
     modelSnapshots: [...current.modelSnapshots, ...missingSnapshots],
   }
