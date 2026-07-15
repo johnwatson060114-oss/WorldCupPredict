@@ -303,7 +303,11 @@ def evaluate_row(
         for key in OUTCOME_KEYS
     }
     half_full_outcomes = half_full_to_outcomes(probabilities)
-    stage = "knockout" if match.get("knockoutContext") else "group"
+    stage = (
+        "knockout"
+        if match.get("knockoutContext") or str(match.get("kickoff") or "")[:10] >= "2026-06-28"
+        else "group"
+    )
     assist_weight = assist_weight_for_stage(stage)
     assisted_outcomes = blend_outcomes(base_outcomes, half_full_outcomes, assist_weight)
     actual_wdl = actual_outcome(settlement)

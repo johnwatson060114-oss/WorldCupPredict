@@ -80,6 +80,33 @@ def test_evaluate_row_computes_top1_and_top3_hits():
     assert row["top3Hit"] is True
 
 
+def test_evaluate_row_classifies_post_group_date_without_legacy_context_as_knockout():
+    forecast = {
+        "historyPath": "public/data/history/2026-07-15.json",
+        "historyGeneratedAt": "2026-07-13T16:00:00+08:00",
+        "match": {
+            "id": "m2",
+            "kickoff": "2026-07-15T03:00:00+08:00",
+            "homeTeam": "France",
+            "awayTeam": "Spain",
+            "outcomeProbabilities": {"home": 0.33, "draw": 0.27, "away": 0.40},
+            "quotes": [
+                {"market": "\u534a\u5168\u573a", "selection": "\u8d1f\u8d1f", "modelProbability": 0.4},
+                {"market": "\u534a\u5168\u573a", "selection": "\u5e73\u8d1f", "modelProbability": 0.3},
+                {"market": "\u534a\u5168\u573a", "selection": "\u5e73\u5e73", "modelProbability": 0.3},
+            ],
+        },
+    }
+    settlement = {
+        "homeScore": 0,
+        "awayScore": 2,
+        "halfTimeHomeScore": 0,
+        "halfTimeAwayScore": 1,
+    }
+
+    assert evaluate_row("m2", forecast, settlement)["stage"] == "knockout"
+
+
 def test_summarize_reports_model_and_in_sample_baseline_accuracy():
     rows = [
         {"actual": "\u5e73\u80dc", "predicted": "\u5e73\u80dc", "hit": True, "top3Hit": True, "logLoss": 1.0, "brier": 0.5, "actualProbability": 0.3},

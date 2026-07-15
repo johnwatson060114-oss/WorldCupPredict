@@ -33,3 +33,4 @@ date,home_team,away_team,home_score,away_score,source,neutral
 2026-07-07,Switzerland,Colombia,0,0,external-result-90min-normalized-from-pens,TRUE
 2026-07-09,France,Morocco,2,0,afc-90min-confirmed,TRUE
 2026-07-10,Spain,Belgium,2,1,ap-90min-confirmed,TRUE
+2026-07-14,France,Spain,0,2,ap-90min-confirmed,TRUE

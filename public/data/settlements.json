@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-14T15:13:01+08:00",
+  "generatedAt": "2026-07-15T12:00:00+08:00",
   "matches": [
     {
       "matchId": "537327",
@@ -3961,6 +3961,18 @@
       "halfTimeHomeScore": 1,
       "halfTimeAwayScore": 0,
       "settledAt": "2026-07-12T01:00:00Z"
+    },
+    {
+      "matchId": "2040507",
+      "matchLabel": "法国 vs 西班牙",
+      "homeScore": 0,
+      "awayScore": 2,
+      "settlementScoreBasis": "90_minutes",
+      "halfTimeHomeScore": 0,
+      "halfTimeAwayScore": 1,
+      "settledAt": "2026-07-14T21:00:00Z",
+      "settlementSource": "external_result_review",
+      "settlementSourceUrl": "https://apnews.com/article/87fb7740fa552edf4bfd28d0e8727c23"
     }
   ]
 }
