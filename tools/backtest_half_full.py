@@ -278,15 +278,22 @@ def evaluate_row(
     probabilities = half_full_probabilities(match)
     if not probabilities:
         return None
-    calibration = apply_half_full_market_calibration(
-        probabilities,
-        (
-            {"tournament_evidence": {"policy": "current_tournament_evidence_v1"}}
-            if match.get("knockoutContext") or str(match.get("kickoff") or "")[:10] >= "2026-06-28"
-            else {}
-        ),
-    )
-    probabilities = calibration.probabilities
+    if match.get("halfFullSource") == "reconstructed_from_archived_xg":
+        calibration = apply_half_full_market_calibration(
+            probabilities,
+            (
+                {"tournament_evidence": {"policy": "current_tournament_evidence_v1"}}
+                if match.get("knockoutContext") or str(match.get("kickoff") or "")[:10] >= "2026-06-28"
+                else {}
+            ),
+        )
+        probabilities = calibration.probabilities
+        calibration_metadata = calibration.metadata
+    else:
+        calibration_metadata = match.get("halfFullCalibration") or {
+            "applied": False,
+            "reason": "archived_quotes_are_final_probabilities",
+        }
 
     ranked = sorted(
         (
@@ -320,7 +327,7 @@ def evaluate_row(
         "historyPath": forecast["historyPath"],
         "historySection": forecast.get("historySection"),
         "historyGeneratedAt": forecast["historyGeneratedAt"],
-        "halfFullCalibration": calibration.metadata,
+        "halfFullCalibration": calibration_metadata,
         "actual": actual,
         "predicted": predicted,
         "hit": predicted == actual,

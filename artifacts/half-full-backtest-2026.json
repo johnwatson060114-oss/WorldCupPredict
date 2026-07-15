@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-15T13:42:02+08:00",
+  "generatedAt": "2026-07-15T13:52:22+08:00",
   "scope": {
     "tournament": "FIFA World Cup 2026",
     "market": "半全场",
@@ -24,11 +24,11 @@
       "matches": 93,
       "hits": 34,
       "accuracy": 0.3655913978494624,
-      "top3Hits": 67,
-      "top3Accuracy": 0.7204301075268817,
-      "averageLogLoss": 1.7799098840882415,
-      "averageBrier": 0.7541927323921189,
-      "averageActualProbability": 0.2458183358251486,
+      "top3Hits": 68,
+      "top3Accuracy": 0.7311827956989247,
+      "averageLogLoss": 1.792370270006966,
+      "averageBrier": 0.7572739335256121,
+      "averageActualProbability": 0.24815772656677088,
       "inSampleMostCommonActual": "胜胜",
       "inSampleMostCommonAccuracy": 0.25806451612903225,
       "uniformNineWayLogLoss": 2.1972245773362196,
@@ -45,9 +45,8 @@
       },
       "predictionDistribution": {
         "平平": 2,
-        "平负": 1,
         "胜胜": 57,
-        "负负": 33
+        "负负": 34
       }
     },
     "latestCompleted": {
@@ -56,9 +55,9 @@
       "accuracy": 1.0,
       "top3Hits": 1,
       "top3Accuracy": 1.0,
-      "averageLogLoss": 1.6716421536496722,
-      "averageBrier": 0.7657641368115727,
-      "averageActualProbability": 0.18793818871396423,
+      "averageLogLoss": 1.5686699199119323,
+      "averageBrier": 0.7323693881145253,
+      "averageActualProbability": 0.2083220832208322,
       "inSampleMostCommonActual": "负负",
       "inSampleMostCommonAccuracy": 1.0,
       "uniformNineWayLogLoss": 2.1972245773362196,
@@ -102,11 +101,11 @@
         "matches": 39,
         "hits": 12,
         "accuracy": 0.3076923076923077,
-        "top3Hits": 25,
-        "top3Accuracy": 0.6410256410256411,
-        "averageLogLoss": 1.9276422172826535,
-        "averageBrier": 0.7999852742070553,
-        "averageActualProbability": 0.20616264191317862,
+        "top3Hits": 26,
+        "top3Accuracy": 0.6666666666666666,
+        "averageLogLoss": 1.9573554452426885,
+        "averageBrier": 0.8073327538330773,
+        "averageActualProbability": 0.2117411890662779,
         "inSampleMostCommonActual": "胜胜",
         "inSampleMostCommonAccuracy": 0.23076923076923078,
         "uniformNineWayLogLoss": 2.1972245773362196,
@@ -122,9 +121,8 @@
         },
         "predictionDistribution": {
           "平平": 2,
-          "平负": 1,
           "胜胜": 23,
-          "负负": 13
+          "负负": 14
         }
       }
     },
@@ -138,22 +136,22 @@
           "matches": 93,
           "hits": 58,
           "accuracy": 0.6236559139784946,
-          "averageLogLoss": 0.8325637783071503,
-          "averageActualProbability": 0.49853698254137824
+          "averageLogLoss": 0.832672175924279,
+          "averageActualProbability": 0.4984928965198729
         },
         "halfFullSignal": {
           "matches": 93,
           "hits": 58,
           "accuracy": 0.6236559139784946,
-          "averageLogLoss": 0.8338837595536093,
-          "averageActualProbability": 0.4979885861751023
+          "averageLogLoss": 0.8337861090396512,
+          "averageActualProbability": 0.49885336600730135
         },
         "assisted": {
           "matches": 93,
           "hits": 58,
           "accuracy": 0.6236559139784946,
-          "averageLogLoss": 0.8318046589825843,
-          "averageActualProbability": 0.49891117939605795
+          "averageLogLoss": 0.8319130565997129,
+          "averageActualProbability": 0.4988670933745526
         }
       },
       "latestCompleted": {
@@ -165,22 +163,22 @@
           "matches": 1,
           "hits": 1,
           "accuracy": 1.0,
-          "averageLogLoss": 0.8946270922381288,
-          "averageActualProbability": 0.40876
+          "averageLogLoss": 0.9047080706310885,
+          "averageActualProbability": 0.40466
         },
         "halfFullSignal": {
           "matches": 1,
           "hits": 1,
           "accuracy": 1.0,
-          "averageLogLoss": 0.9133149046035087,
-          "averageActualProbability": 0.401192103775994
+          "averageLogLoss": 0.9118406037981335,
+          "averageActualProbability": 0.40178401784017836
         },
         "assisted": {
           "matches": 1,
           "hits": 1,
           "accuracy": 1.0,
-          "averageLogLoss": 0.8946270922381288,
-          "averageActualProbability": 0.40876
+          "averageLogLoss": 0.9047080706310885,
+          "averageActualProbability": 0.40466
         }
       },
       "byStage": {
@@ -220,22 +218,22 @@
             "matches": 39,
             "hits": 26,
             "accuracy": 0.6666666666666666,
-            "averageLogLoss": 0.780626591541564,
-            "averageActualProbability": 0.5040861538461539
+            "averageLogLoss": 0.7808850781670245,
+            "averageActualProbability": 0.5039810256410256
           },
           "halfFullSignal": {
             "matches": 39,
             "hits": 26,
             "accuracy": 0.6666666666666666,
-            "averageLogLoss": 0.7926247710483231,
-            "averageActualProbability": 0.49831686155154514
+            "averageLogLoss": 0.792391912130423,
+            "averageActualProbability": 0.5003790288437123
           },
           "assisted": {
             "matches": 39,
             "hits": 26,
             "accuracy": 0.6666666666666666,
-            "averageLogLoss": 0.780626591541564,
-            "averageActualProbability": 0.5040861538461539
+            "averageLogLoss": 0.7808850781670245,
+            "averageActualProbability": 0.5039810256410256
           }
         }
       }
@@ -636,7 +634,7 @@
       "historyGeneratedAt": "2026-06-15T22:13:32+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "平平",
       "predicted": "胜胜",
@@ -731,7 +729,7 @@
       "historyGeneratedAt": "2026-06-15T22:13:32+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "负平",
       "predicted": "胜胜",
@@ -826,7 +824,7 @@
       "historyGeneratedAt": "2026-06-15T22:13:32+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "胜平",
       "predicted": "负负",
@@ -921,7 +919,7 @@
       "historyGeneratedAt": "2026-06-15T22:13:32+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "平平",
       "predicted": "胜胜",
@@ -1016,7 +1014,7 @@
       "historyGeneratedAt": "2026-06-16T23:17:57+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "平胜",
       "predicted": "胜胜",
@@ -1111,7 +1109,7 @@
       "historyGeneratedAt": "2026-06-16T23:17:57+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "负负",
       "predicted": "负负",
@@ -1206,7 +1204,7 @@
       "historyGeneratedAt": "2026-06-16T23:17:57+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "胜胜",
       "predicted": "胜胜",
@@ -1301,7 +1299,7 @@
       "historyGeneratedAt": "2026-06-16T23:17:57+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "胜胜",
       "predicted": "胜胜",
@@ -1396,7 +1394,7 @@
       "historyGeneratedAt": "2026-06-17T17:51:57+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "平平",
       "predicted": "胜胜",
@@ -1491,7 +1489,7 @@
       "historyGeneratedAt": "2026-06-17T17:51:57+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "平胜",
       "predicted": "胜胜",
@@ -1586,7 +1584,7 @@
       "historyGeneratedAt": "2026-06-17T17:51:57+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "平胜",
       "predicted": "负负",
@@ -1681,7 +1679,7 @@
       "historyGeneratedAt": "2026-06-17T17:51:57+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "负负",
       "predicted": "胜胜",
@@ -1776,7 +1774,7 @@
       "historyGeneratedAt": "2026-06-18T13:00:00+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "胜平",
       "predicted": "胜胜",
@@ -1871,7 +1869,7 @@
       "historyGeneratedAt": "2026-06-18T13:00:00+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "平胜",
       "predicted": "胜胜",
@@ -1966,7 +1964,7 @@
       "historyGeneratedAt": "2026-06-18T13:00:00+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "胜胜",
       "predicted": "胜胜",
@@ -2061,7 +2059,7 @@
       "historyGeneratedAt": "2026-06-18T13:00:00+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "平胜",
       "predicted": "胜胜",
@@ -2156,7 +2154,7 @@
       "historyGeneratedAt": "2026-06-19T18:21:28+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "胜胜",
       "predicted": "负负",
@@ -2251,7 +2249,7 @@
       "historyGeneratedAt": "2026-06-19T18:21:28+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "负负",
       "predicted": "负负",
@@ -2346,7 +2344,7 @@
       "historyGeneratedAt": "2026-06-19T18:21:28+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "胜胜",
       "predicted": "胜胜",
@@ -2441,7 +2439,7 @@
       "historyGeneratedAt": "2026-06-19T18:21:28+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "负负",
       "predicted": "胜胜",
@@ -2536,7 +2534,7 @@
       "historyGeneratedAt": "2026-06-19T18:21:28+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "胜胜",
       "predicted": "胜胜",
@@ -2631,7 +2629,7 @@
       "historyGeneratedAt": "2026-06-19T18:21:28+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "负胜",
       "predicted": "胜胜",
@@ -2726,7 +2724,7 @@
       "historyGeneratedAt": "2026-06-19T18:21:28+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "平平",
       "predicted": "胜胜",
@@ -2821,7 +2819,7 @@
       "historyGeneratedAt": "2026-06-19T18:21:28+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "负负",
       "predicted": "负负",
@@ -2916,7 +2914,7 @@
       "historyGeneratedAt": "2026-06-21T16:59:27+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "胜胜",
       "predicted": "胜胜",
@@ -3011,7 +3009,7 @@
       "historyGeneratedAt": "2026-06-21T16:59:27+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "平平",
       "predicted": "胜胜",
@@ -3106,7 +3104,7 @@
       "historyGeneratedAt": "2026-06-21T16:59:27+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "胜平",
       "predicted": "胜胜",
@@ -3201,7 +3199,7 @@
       "historyGeneratedAt": "2026-06-21T16:59:27+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "胜负",
       "predicted": "负负",
@@ -3296,7 +3294,7 @@
       "historyGeneratedAt": "2026-06-22T19:31:41+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "胜胜",
       "predicted": "胜胜",
@@ -3391,7 +3389,7 @@
       "historyGeneratedAt": "2026-06-22T19:31:41+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "胜胜",
       "predicted": "胜胜",
@@ -3486,7 +3484,7 @@
       "historyGeneratedAt": "2026-06-22T19:31:41+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "胜胜",
       "predicted": "胜胜",
@@ -3581,7 +3579,7 @@
       "historyGeneratedAt": "2026-06-22T19:31:41+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "胜负",
       "predicted": "负负",
@@ -3676,7 +3674,7 @@
       "historyGeneratedAt": "2026-06-24T16:25:31+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "平胜",
       "predicted": "胜胜",
@@ -3771,7 +3769,7 @@
       "historyGeneratedAt": "2026-06-24T16:25:31+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "胜胜",
       "predicted": "胜胜",
@@ -3866,7 +3864,7 @@
       "historyGeneratedAt": "2026-06-24T16:25:31+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "平胜",
       "predicted": "胜胜",
@@ -3961,7 +3959,7 @@
       "historyGeneratedAt": "2026-06-24T16:25:31+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "负负",
       "predicted": "负负",
@@ -4056,7 +4054,7 @@
       "historyGeneratedAt": "2026-06-24T16:25:31+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "平负",
       "predicted": "负负",
@@ -4151,7 +4149,7 @@
       "historyGeneratedAt": "2026-06-24T16:25:31+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "平胜",
       "predicted": "负负",
@@ -4246,7 +4244,7 @@
       "historyGeneratedAt": "2026-06-25T16:25:56+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "平胜",
       "predicted": "负负",
@@ -4341,7 +4339,7 @@
       "historyGeneratedAt": "2026-06-25T16:25:56+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "负负",
       "predicted": "负负",
@@ -4436,7 +4434,7 @@
       "historyGeneratedAt": "2026-06-25T16:25:56+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "负负",
       "predicted": "负负",
@@ -4531,7 +4529,7 @@
       "historyGeneratedAt": "2026-06-25T16:25:56+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "平平",
       "predicted": "胜胜",
@@ -4626,7 +4624,7 @@
       "historyGeneratedAt": "2026-06-25T16:25:56+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "胜胜",
       "predicted": "负负",
@@ -4721,7 +4719,7 @@
       "historyGeneratedAt": "2026-06-25T16:25:56+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "平平",
       "predicted": "胜胜",
@@ -4816,7 +4814,7 @@
       "historyGeneratedAt": "2026-06-26T16:33:01+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "负负",
       "predicted": "负负",
@@ -4911,7 +4909,7 @@
       "historyGeneratedAt": "2026-06-26T16:33:01+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "胜胜",
       "predicted": "胜胜",
@@ -5006,7 +5004,7 @@
       "historyGeneratedAt": "2026-06-26T16:33:01+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "负负",
       "predicted": "负负",
@@ -5101,7 +5099,7 @@
       "historyGeneratedAt": "2026-06-26T16:33:01+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "平平",
       "predicted": "胜胜",
@@ -5196,7 +5194,7 @@
       "historyGeneratedAt": "2026-06-26T16:33:01+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "负负",
       "predicted": "负负",
@@ -5291,7 +5289,7 @@
       "historyGeneratedAt": "2026-06-26T16:33:01+08:00",
       "halfFullCalibration": {
         "applied": false,
-        "reason": "not_knockout"
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "平平",
       "predicted": "负负",
@@ -5385,64 +5383,48 @@
       "historySection": "matches",
       "historyGeneratedAt": "2026-06-27T15:52:36+08:00",
       "halfFullCalibration": {
-        "applied": true,
-        "policy": "current_tournament_half_full_late_swing_v3",
-        "sourceKnockoutPolicy": "current_tournament_evidence_v1",
-        "weights": {
-          "胜胜": 0.95,
-          "胜平": 1.3,
-          "胜负": 1.3,
-          "平胜": 1.2,
-          "平平": 0.95,
-          "平负": 1.2,
-          "负胜": 1.3,
-          "负平": 1.3,
-          "负负": 0.95
-        },
-        "topSelectionBefore": "负负",
-        "topSelectionAfter": "负负",
-        "topProbabilityBefore": 0.38976,
-        "topProbabilityAfter": 0.354121746565271
+        "applied": false,
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "平负",
       "predicted": "负负",
       "hit": false,
       "top3Hit": true,
-      "actualProbability": 0.25941690301274906,
-      "logLoss": 1.3493188472614888,
-      "brier": 0.7168064216129418,
+      "actualProbability": 0.22604,
+      "logLoss": 1.4870433042204945,
+      "brier": 0.7998151278000001,
       "topSelections": [
         {
           "selection": "负负",
-          "probability": 0.354121746565271
+          "probability": 0.38976
         },
         {
           "selection": "平负",
-          "probability": 0.25941690301274906
+          "probability": 0.22604
         },
         {
           "selection": "平平",
-          "probability": 0.18520160308873368
-        },
-        {
-          "selection": "平胜",
-          "probability": 0.057222291559970224
+          "probability": 0.20384
         },
         {
           "selection": "胜胜",
-          "probability": 0.049434945172968994
+          "probability": 0.05441
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.04986
         }
       ],
       "probabilities": {
-        "胜胜": 0.049435,
-        "胜平": 0.035658,
-        "胜负": 0.018674,
-        "平胜": 0.057222,
-        "平平": 0.185202,
-        "平负": 0.259417,
-        "负胜": 0.004451,
-        "负平": 0.035819,
-        "负负": 0.354122
+        "胜胜": 0.05441,
+        "胜平": 0.02868,
+        "胜负": 0.01502,
+        "平胜": 0.04986,
+        "平平": 0.20384,
+        "平负": 0.22604,
+        "负胜": 0.00358,
+        "负平": 0.02881,
+        "负负": 0.38976
       },
       "outcomeAssistance": {
         "actual": "away",
@@ -5460,12 +5442,12 @@
         "halfFullSignal": {
           "predicted": "away",
           "hit": true,
-          "actualProbability": 0.6322129787831273,
-          "logLoss": 0.45852894985878984,
+          "actualProbability": 0.6308199999999999,
+          "logLoss": 0.4607347186254209,
           "probabilities": {
-            "home": 0.111108,
-            "draw": 0.256679,
-            "away": 0.632213
+            "home": 0.10785,
+            "draw": 0.26133,
+            "away": 0.63082
           }
         },
         "assisted": {
@@ -5496,64 +5478,48 @@
       "historySection": "matches",
       "historyGeneratedAt": "2026-06-27T15:52:36+08:00",
       "halfFullCalibration": {
-        "applied": true,
-        "policy": "current_tournament_half_full_late_swing_v3",
-        "sourceKnockoutPolicy": "current_tournament_evidence_v1",
-        "weights": {
-          "胜胜": 0.95,
-          "胜平": 1.3,
-          "胜负": 1.3,
-          "平胜": 1.2,
-          "平平": 0.95,
-          "平负": 1.2,
-          "负胜": 1.3,
-          "负平": 1.3,
-          "负负": 0.95
-        },
-        "topSelectionBefore": "平平",
-        "topSelectionAfter": "平平",
-        "topProbabilityBefore": 0.27154,
-        "topProbabilityAfter": 0.24616328596873183
+        "applied": false,
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "胜胜",
       "predicted": "平平",
       "hit": false,
       "top3Hit": false,
-      "actualProbability": 0.11905658225776515,
-      "logLoss": 2.1281564177182632,
-      "brier": 0.9367514393088816,
+      "actualProbability": 0.13133,
+      "logLoss": 2.0300420393850684,
+      "brier": 0.9260949894000001,
       "topSelections": [
         {
           "selection": "平平",
-          "probability": 0.24616328596873183
+          "probability": 0.27154
         },
         {
           "selection": "负负",
-          "probability": 0.2199097367249575
+          "probability": 0.24258
         },
         {
           "selection": "平负",
-          "probability": 0.1831144980912452
+          "probability": 0.15991
         },
         {
           "selection": "胜胜",
-          "probability": 0.11905658225776515
+          "probability": 0.13133
         },
         {
           "selection": "平胜",
-          "probability": 0.11642330699103808
+          "probability": 0.10167
         }
       ],
       "probabilities": {
-        "胜胜": 0.119057,
-        "胜平": 0.047748,
-        "胜负": 0.013137,
-        "平胜": 0.116423,
-        "平平": 0.246163,
-        "平负": 0.183114,
-        "负胜": 0.008336,
-        "负平": 0.046111,
-        "负负": 0.21991
+        "胜胜": 0.13133,
+        "胜平": 0.03849,
+        "胜负": 0.01059,
+        "平胜": 0.10167,
+        "平平": 0.27154,
+        "平负": 0.15991,
+        "负胜": 0.00672,
+        "负平": 0.03717,
+        "负负": 0.24258
       },
       "outcomeAssistance": {
         "actual": "home",
@@ -5571,12 +5537,12 @@
         "halfFullSignal": {
           "predicted": "away",
           "hit": false,
-          "actualProbability": 0.2438162881363291,
-          "logLoss": 1.4113402547477105,
+          "actualProbability": 0.23972,
+          "logLoss": 1.4282837033921525,
           "probabilities": {
-            "home": 0.243816,
-            "draw": 0.340022,
-            "away": 0.416162
+            "home": 0.23972,
+            "draw": 0.3472,
+            "away": 0.41308
           }
         },
         "assisted": {
@@ -5607,64 +5573,48 @@
       "historySection": "matches",
       "historyGeneratedAt": "2026-06-27T15:52:36+08:00",
       "halfFullCalibration": {
-        "applied": true,
-        "policy": "current_tournament_half_full_late_swing_v3",
-        "sourceKnockoutPolicy": "current_tournament_evidence_v1",
-        "weights": {
-          "胜胜": 0.95,
-          "胜平": 1.3,
-          "胜负": 1.3,
-          "平胜": 1.2,
-          "平平": 0.95,
-          "平负": 1.2,
-          "负胜": 1.3,
-          "负平": 1.3,
-          "负负": 0.95
-        },
-        "topSelectionBefore": "负负",
-        "topSelectionAfter": "负负",
-        "topProbabilityBefore": 0.34077,
-        "topProbabilityAfter": 0.30370589270008796
+        "applied": false,
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "平平",
       "predicted": "负负",
       "hit": false,
       "top3Hit": false,
-      "actualProbability": 0.09896265024919379,
-      "logLoss": 2.313012770242021,
-      "brier": 0.9724547686708864,
+      "actualProbability": 0.11104,
+      "logLoss": 2.197864782223643,
+      "brier": 0.9671891584,
       "topSelections": [
         {
           "selection": "负负",
-          "probability": 0.30370589270008796
+          "probability": 0.34077
         },
         {
           "selection": "平负",
-          "probability": 0.17711732629727353
+          "probability": 0.15733
         },
         {
           "selection": "胜胜",
-          "probability": 0.13101143359718556
+          "probability": 0.147
         },
         {
           "selection": "平平",
-          "probability": 0.09896265024919379
+          "probability": 0.11104
         },
         {
           "selection": "平胜",
-          "probability": 0.09845980650835531
+          "probability": 0.08746
         }
       ],
       "probabilities": {
-        "胜胜": 0.131011,
-        "胜平": 0.062113,
-        "胜负": 0.042002,
-        "平胜": 0.09846,
-        "平平": 0.098963,
-        "平负": 0.177117,
-        "负胜": 0.024001,
-        "负平": 0.062626,
-        "负负": 0.303706
+        "胜胜": 0.147,
+        "胜平": 0.05093,
+        "胜负": 0.03444,
+        "平胜": 0.08746,
+        "平平": 0.11104,
+        "平负": 0.15733,
+        "负胜": 0.01968,
+        "负平": 0.05135,
+        "负负": 0.34077
       },
       "outcomeAssistance": {
         "actual": "draw",
@@ -5682,12 +5632,12 @@
         "halfFullSignal": {
           "predicted": "away",
           "hit": false,
-          "actualProbability": 0.22370167106420408,
-          "logLoss": 1.497441940401285,
+          "actualProbability": 0.21332,
+          "logLoss": 1.5449618932497355,
           "probabilities": {
-            "home": 0.253473,
-            "draw": 0.223702,
-            "away": 0.522826
+            "home": 0.25414,
+            "draw": 0.21332,
+            "away": 0.53254
           }
         },
         "assisted": {
@@ -5718,64 +5668,48 @@
       "historySection": "matches",
       "historyGeneratedAt": "2026-06-27T15:52:36+08:00",
       "halfFullCalibration": {
-        "applied": true,
-        "policy": "current_tournament_half_full_late_swing_v3",
-        "sourceKnockoutPolicy": "current_tournament_evidence_v1",
-        "weights": {
-          "胜胜": 0.95,
-          "胜平": 1.3,
-          "胜负": 1.3,
-          "平胜": 1.2,
-          "平平": 0.95,
-          "平负": 1.2,
-          "负胜": 1.3,
-          "负平": 1.3,
-          "负负": 0.95
-        },
-        "topSelectionBefore": "胜胜",
-        "topSelectionAfter": "胜胜",
-        "topProbabilityBefore": 0.49446,
-        "topProbabilityAfter": 0.44873379056567814
+        "applied": false,
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "负胜",
       "predicted": "胜胜",
       "hit": false,
       "top3Hit": false,
-      "actualProbability": 0.035728700317298676,
-      "logLoss": 3.3318009827189976,
-      "brier": 1.2034044128208006,
+      "actualProbability": 0.02877,
+      "logLoss": 3.5484221014186805,
+      "brier": 1.2475825546000001,
       "topSelections": [
         {
           "selection": "胜胜",
-          "probability": 0.44873379056567814
+          "probability": 0.49446
         },
         {
           "selection": "平胜",
-          "probability": 0.2347140896756847
+          "probability": 0.20475
         },
         {
           "selection": "平平",
-          "probability": 0.0960976036140429
-        },
-        {
-          "selection": "平负",
-          "probability": 0.04847891991396682
+          "probability": 0.10589
         },
         {
           "selection": "负负",
-          "probability": 0.04762680364212835
+          "probability": 0.05248
+        },
+        {
+          "selection": "平负",
+          "probability": 0.04229
         }
       ],
       "probabilities": {
-        "胜胜": 0.448734,
-        "胜平": 0.040733,
-        "胜负": 0.008557,
-        "平胜": 0.234714,
-        "平平": 0.096098,
-        "平负": 0.048479,
-        "负胜": 0.035729,
-        "负平": 0.03933,
-        "负负": 0.047627
+        "胜胜": 0.49446,
+        "胜平": 0.0328,
+        "胜负": 0.00689,
+        "平胜": 0.20475,
+        "平平": 0.10589,
+        "平负": 0.04229,
+        "负胜": 0.02877,
+        "负平": 0.03167,
+        "负负": 0.05248
       },
       "outcomeAssistance": {
         "actual": "home",
@@ -5793,12 +5727,12 @@
         "halfFullSignal": {
           "predicted": "home",
           "hit": true,
-          "actualProbability": 0.7191765805586615,
-          "logLoss": 0.32964835953809213,
+          "actualProbability": 0.72798,
+          "logLoss": 0.31748170369030043,
           "probabilities": {
-            "home": 0.719177,
-            "draw": 0.176161,
-            "away": 0.104662
+            "home": 0.72798,
+            "draw": 0.17036,
+            "away": 0.10166
           }
         },
         "assisted": {
@@ -5829,64 +5763,48 @@
       "historySection": "matches",
       "historyGeneratedAt": "2026-06-27T15:52:36+08:00",
       "halfFullCalibration": {
-        "applied": true,
-        "policy": "current_tournament_half_full_late_swing_v3",
-        "sourceKnockoutPolicy": "current_tournament_evidence_v1",
-        "weights": {
-          "胜胜": 0.95,
-          "胜平": 1.3,
-          "胜负": 1.3,
-          "平胜": 1.2,
-          "平平": 0.95,
-          "平负": 1.2,
-          "负胜": 1.3,
-          "负平": 1.3,
-          "负负": 0.95
-        },
-        "topSelectionBefore": "负负",
-        "topSelectionAfter": "负负",
-        "topProbabilityBefore": 0.57001,
-        "topProbabilityAfter": 0.5222227687061447
+        "applied": false,
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "负负",
       "predicted": "负负",
       "hit": true,
       "top3Hit": true,
-      "actualProbability": 0.5222227687061447,
-      "logLoss": 0.649661022162179,
-      "brier": 0.2980341442173034,
+      "actualProbability": 0.57001,
+      "logLoss": 0.5621013744477837,
+      "brier": 0.2395737794,
       "topSelections": [
         {
           "selection": "负负",
-          "probability": 0.5222227687061447
+          "probability": 0.57001
         },
         {
           "selection": "平负",
-          "probability": 0.24342965594658086
+          "probability": 0.21035
         },
         {
           "selection": "平平",
-          "probability": 0.0758675592999348
+          "probability": 0.08281
+        },
+        {
+          "selection": "胜胜",
+          "probability": 0.03144
         },
         {
           "selection": "胜负",
-          "probability": 0.03311017501629808
-        },
-        {
-          "selection": "胜平",
-          "probability": 0.03200692041522492
+          "probability": 0.02641
         }
       ],
       "probabilities": {
-        "胜胜": 0.028804,
-        "胜平": 0.032007,
-        "胜负": 0.03311,
-        "平胜": 0.029418,
-        "平平": 0.075868,
-        "平负": 0.24343,
-        "负胜": 0.005002,
-        "负平": 0.030139,
-        "负负": 0.522223
+        "胜胜": 0.03144,
+        "胜平": 0.02553,
+        "胜负": 0.02641,
+        "平胜": 0.02542,
+        "平平": 0.08281,
+        "平负": 0.21035,
+        "负胜": 0.00399,
+        "负平": 0.02404,
+        "负负": 0.57001
       },
       "outcomeAssistance": {
         "actual": "away",
@@ -5904,12 +5822,12 @@
         "halfFullSignal": {
           "predicted": "away",
           "hit": true,
-          "actualProbability": 0.7987625996690236,
-          "logLoss": 0.224691499181285,
+          "actualProbability": 0.80677,
+          "logLoss": 0.21471665752995947,
           "probabilities": {
-            "home": 0.063224,
-            "draw": 0.138013,
-            "away": 0.798763
+            "home": 0.06085,
+            "draw": 0.13238,
+            "away": 0.80677
           }
         },
         "assisted": {
@@ -5940,64 +5858,48 @@
       "historySection": "matches",
       "historyGeneratedAt": "2026-06-27T15:52:36+08:00",
       "halfFullCalibration": {
-        "applied": true,
-        "policy": "current_tournament_half_full_late_swing_v3",
-        "sourceKnockoutPolicy": "current_tournament_evidence_v1",
-        "weights": {
-          "胜胜": 0.95,
-          "胜平": 1.3,
-          "胜负": 1.3,
-          "平胜": 1.2,
-          "平平": 0.95,
-          "平负": 1.2,
-          "负胜": 1.3,
-          "负平": 1.3,
-          "负负": 0.95
-        },
-        "topSelectionBefore": "负负",
-        "topSelectionAfter": "负负",
-        "topProbabilityBefore": 0.27195,
-        "topProbabilityAfter": 0.24289822206991282
+        "applied": false,
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "平平",
       "predicted": "负负",
       "hit": false,
-      "top3Hit": false,
-      "actualProbability": 0.13601228629088555,
-      "logLoss": 1.9950100569523725,
-      "brier": 0.8814047826805086,
+      "top3Hit": true,
+      "actualProbability": 0.15228,
+      "logLoss": 1.8820343474678405,
+      "brier": 0.8632063482000001,
       "topSelections": [
         {
           "selection": "负负",
-          "probability": 0.24289822206991282
-        },
-        {
-          "selection": "平负",
-          "probability": 0.1632531029512765
+          "probability": 0.27195
         },
         {
           "selection": "胜胜",
-          "probability": 0.16061025296051382
+          "probability": 0.17982
         },
         {
           "selection": "平平",
-          "probability": 0.13601228629088555
+          "probability": 0.15228
+        },
+        {
+          "selection": "平负",
+          "probability": 0.1447
         },
         {
           "selection": "平胜",
-          "probability": 0.11832747365259073
+          "probability": 0.10488
         }
       ],
       "probabilities": {
-        "胜胜": 0.16061,
-        "胜平": 0.064192,
-        "胜负": 0.029309,
-        "平胜": 0.118327,
-        "平平": 0.136012,
-        "平负": 0.163253,
-        "负胜": 0.022012,
-        "负平": 0.063385,
-        "负负": 0.242898
+        "胜胜": 0.17982,
+        "胜平": 0.05252,
+        "胜负": 0.02398,
+        "平胜": 0.10488,
+        "平平": 0.15228,
+        "平负": 0.1447,
+        "负胜": 0.01801,
+        "负平": 0.05186,
+        "负负": 0.27195
       },
       "outcomeAssistance": {
         "actual": "draw",
@@ -6015,12 +5917,12 @@
         "halfFullSignal": {
           "predicted": "away",
           "hit": false,
-          "actualProbability": 0.26358926482043243,
-          "logLoss": 1.3333632024469944,
+          "actualProbability": 0.25666,
+          "logLoss": 1.360003027165822,
           "probabilities": {
-            "home": 0.30095,
-            "draw": 0.263589,
-            "away": 0.435461
+            "home": 0.30271,
+            "draw": 0.25666,
+            "away": 0.44063
           }
         },
         "assisted": {
@@ -6051,64 +5953,48 @@
       "historySection": "matches",
       "historyGeneratedAt": "2026-06-28T16:25:34+08:00",
       "halfFullCalibration": {
-        "applied": true,
-        "policy": "current_tournament_half_full_late_swing_v3",
-        "sourceKnockoutPolicy": "current_tournament_evidence_v1",
-        "weights": {
-          "胜胜": 0.95,
-          "胜平": 1.3,
-          "胜负": 1.3,
-          "平胜": 1.2,
-          "平平": 0.95,
-          "平负": 1.2,
-          "负胜": 1.3,
-          "负平": 1.3,
-          "负负": 0.95
-        },
-        "topSelectionBefore": "负负",
-        "topSelectionAfter": "负负",
-        "topProbabilityBefore": 0.36681,
-        "topProbabilityAfter": 0.3291278105229057
+        "applied": false,
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "平负",
       "predicted": "负负",
       "hit": false,
       "top3Hit": true,
-      "actualProbability": 0.22346003580581744,
-      "logLoss": 1.498522691629281,
-      "brier": 0.7499602521617103,
+      "actualProbability": 0.19716,
+      "logLoss": 1.62373969714496,
+      "brier": 0.8203623156000001,
       "topSelections": [
         {
           "selection": "负负",
-          "probability": 0.3291278105229057
+          "probability": 0.36681
         },
         {
           "selection": "平负",
-          "probability": 0.22346003580581744
+          "probability": 0.19716
         },
         {
           "selection": "平平",
-          "probability": 0.1368875951401938
+          "probability": 0.15256
         },
         {
           "selection": "胜胜",
-          "probability": 0.08367945151268008
+          "probability": 0.09326
         },
         {
           "selection": "平胜",
-          "probability": 0.08043699909281225
+          "probability": 0.07097
         }
       ],
       "probabilities": {
-        "胜胜": 0.083679,
-        "胜平": 0.051508,
-        "胜负": 0.031433,
-        "平胜": 0.080437,
-        "平平": 0.136888,
-        "平负": 0.22346,
-        "负胜": 0.012303,
-        "负平": 0.051164,
-        "负负": 0.329128
+        "胜胜": 0.09326,
+        "胜平": 0.04195,
+        "胜负": 0.0256,
+        "平胜": 0.07097,
+        "平平": 0.15256,
+        "平负": 0.19716,
+        "负胜": 0.01002,
+        "负平": 0.04167,
+        "负负": 0.36681
       },
       "outcomeAssistance": {
         "actual": "away",
@@ -6126,12 +6012,12 @@
         "halfFullSignal": {
           "predicted": "away",
           "hit": true,
-          "actualProbability": 0.5840206504455894,
-          "logLoss": 0.5378189364270359,
+          "actualProbability": 0.58957,
+          "logLoss": 0.5283618213554077,
           "probabilities": {
-            "home": 0.176419,
-            "draw": 0.23956,
-            "away": 0.584021
+            "home": 0.17425,
+            "draw": 0.23618,
+            "away": 0.58957
           }
         },
         "assisted": {
@@ -6162,64 +6048,48 @@
       "historySection": "matches",
       "historyGeneratedAt": "2026-06-29T19:40:31+08:00",
       "halfFullCalibration": {
-        "applied": true,
-        "policy": "current_tournament_half_full_late_swing_v3",
-        "sourceKnockoutPolicy": "current_tournament_evidence_v1",
-        "weights": {
-          "胜胜": 0.95,
-          "胜平": 1.3,
-          "胜负": 1.3,
-          "平胜": 1.2,
-          "平平": 0.95,
-          "平负": 1.2,
-          "负胜": 1.3,
-          "负平": 1.3,
-          "负负": 0.95
-        },
-        "topSelectionBefore": "胜胜",
-        "topSelectionAfter": "胜胜",
-        "topProbabilityBefore": 0.30869,
-        "topProbabilityAfter": 0.27618518422595434
+        "applied": false,
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "负胜",
       "predicted": "胜胜",
       "hit": false,
       "top3Hit": false,
-      "actualProbability": 0.028318692418352668,
-      "logLoss": 3.5642331828909004,
-      "brier": 1.1139048042829436,
+      "actualProbability": 0.02313,
+      "logLoss": 3.766624802738789,
+      "brier": 1.1386342476,
       "topSelections": [
         {
           "selection": "胜胜",
-          "probability": 0.27618518422595434
+          "probability": 0.30869
         },
         {
           "selection": "平胜",
-          "probability": 0.20181059184456693
+          "probability": 0.17857
         },
         {
           "selection": "平平",
-          "probability": 0.15304751567492222
+          "probability": 0.17106
         },
         {
           "selection": "负负",
-          "probability": 0.11085342682171673
+          "probability": 0.1239
         },
         {
           "selection": "平负",
-          "probability": 0.10236883804267721
+          "probability": 0.09058
         }
       ],
       "probabilities": {
-        "胜胜": 0.276185,
-        "胜平": 0.056564,
-        "胜负": 0.01501,
-        "平胜": 0.201811,
-        "平平": 0.153048,
-        "平负": 0.102369,
-        "负胜": 0.028319,
-        "负平": 0.055842,
-        "负负": 0.110853
+        "胜胜": 0.30869,
+        "胜平": 0.0462,
+        "胜负": 0.01226,
+        "平胜": 0.17857,
+        "平平": 0.17106,
+        "平负": 0.09058,
+        "负胜": 0.02313,
+        "负平": 0.04561,
+        "负负": 0.1239
       },
       "outcomeAssistance": {
         "actual": "home",
@@ -6237,12 +6107,12 @@
         "halfFullSignal": {
           "predicted": "home",
           "hit": true,
-          "actualProbability": 0.506314468488874,
-          "logLoss": 0.6805973235058873,
+          "actualProbability": 0.51039,
+          "logLoss": 0.672580139619981,
           "probabilities": {
-            "home": 0.506314,
-            "draw": 0.265453,
-            "away": 0.228233
+            "home": 0.51039,
+            "draw": 0.26287,
+            "away": 0.22674
           }
         },
         "assisted": {
@@ -6273,64 +6143,48 @@
       "historySection": "matches",
       "historyGeneratedAt": "2026-06-29T19:40:31+08:00",
       "halfFullCalibration": {
-        "applied": true,
-        "policy": "current_tournament_half_full_late_swing_v3",
-        "sourceKnockoutPolicy": "current_tournament_evidence_v1",
-        "weights": {
-          "胜胜": 0.95,
-          "胜平": 1.3,
-          "胜负": 1.3,
-          "平胜": 1.2,
-          "平平": 0.95,
-          "平负": 1.2,
-          "负胜": 1.3,
-          "负平": 1.3,
-          "负负": 0.95
-        },
-        "topSelectionBefore": "胜胜",
-        "topSelectionAfter": "胜胜",
-        "topProbabilityBefore": 0.37912,
-        "topProbabilityAfter": 0.33971454334858836
+        "applied": false,
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "负平",
       "predicted": "胜胜",
       "hit": false,
       "top3Hit": false,
-      "actualProbability": 0.05295907549170154,
-      "logLoss": 2.9382358242334448,
-      "brier": 1.0920920399588363,
+      "actualProbability": 0.04319,
+      "logLoss": 3.142146292009527,
+      "brier": 1.1312298786000001,
       "topSelections": [
         {
           "selection": "胜胜",
-          "probability": 0.33971454334858836
+          "probability": 0.37912
         },
         {
           "selection": "平胜",
-          "probability": 0.21706929662062488
+          "probability": 0.19178
         },
         {
           "selection": "平平",
-          "probability": 0.12012590124844841
+          "probability": 0.13406
         },
         {
           "selection": "负负",
-          "probability": 0.0869358118687488
+          "probability": 0.09702
         },
         {
           "selection": "平负",
-          "probability": 0.07986447788899412
+          "probability": 0.07056
         }
       ],
       "probabilities": {
-        "胜胜": 0.339715,
-        "胜平": 0.053364,
-        "胜负": 0.014543,
-        "平胜": 0.217069,
-        "平平": 0.120126,
-        "平负": 0.079864,
-        "负胜": 0.035425,
-        "负平": 0.052959,
-        "负负": 0.086936
+        "胜胜": 0.37912,
+        "胜平": 0.04352,
+        "胜负": 0.01186,
+        "平胜": 0.19178,
+        "平平": 0.13406,
+        "平负": 0.07056,
+        "负胜": 0.02889,
+        "负平": 0.04319,
+        "负负": 0.09702
       },
       "outcomeAssistance": {
         "actual": "draw",
@@ -6348,12 +6202,12 @@
         "halfFullSignal": {
           "predicted": "home",
           "hit": false,
-          "actualProbability": 0.22644869439235765,
-          "logLoss": 1.485236874541434,
+          "actualProbability": 0.22077000000000002,
+          "logLoss": 1.5106338433755195,
           "probabilities": {
-            "home": 0.592208,
-            "draw": 0.226449,
-            "away": 0.181343
+            "home": 0.59979,
+            "draw": 0.22077,
+            "away": 0.17944
           }
         },
         "assisted": {
@@ -6384,64 +6238,48 @@
       "historySection": "matches",
       "historyGeneratedAt": "2026-06-29T19:40:31+08:00",
       "halfFullCalibration": {
-        "applied": true,
-        "policy": "current_tournament_half_full_late_swing_v3",
-        "sourceKnockoutPolicy": "current_tournament_evidence_v1",
-        "weights": {
-          "胜胜": 0.95,
-          "胜平": 1.3,
-          "胜负": 1.3,
-          "平胜": 1.2,
-          "平平": 0.95,
-          "平负": 1.2,
-          "负胜": 1.3,
-          "负平": 1.3,
-          "负负": 0.95
-        },
-        "topSelectionBefore": "胜胜",
-        "topSelectionAfter": "胜胜",
-        "topProbabilityBefore": 0.30864,
-        "topProbabilityAfter": 0.2757559569937778
+        "applied": false,
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "平平",
       "predicted": "胜胜",
       "hit": false,
       "top3Hit": true,
-      "actualProbability": 0.14005800874269247,
-      "logLoss": 1.9656985940292384,
-      "brier": 0.8867816926090673,
+      "actualProbability": 0.15676,
+      "logLoss": 1.8530393056507062,
+      "brier": 0.8681549774,
       "topSelections": [
         {
           "selection": "胜胜",
-          "probability": 0.2757559569937778
+          "probability": 0.30864
         },
         {
           "selection": "平胜",
-          "probability": 0.19431800227219717
+          "probability": 0.17218
         },
         {
           "selection": "平平",
-          "probability": 0.14005800874269247
+          "probability": 0.15676
         },
         {
           "selection": "负负",
-          "probability": 0.1209738095417234
+          "probability": 0.1354
         },
         {
           "selection": "平负",
-          "probability": 0.10398687843745062
+          "probability": 0.09214
         }
       ],
       "probabilities": {
-        "胜胜": 0.275756,
-        "胜平": 0.056889,
-        "胜负": 0.017606,
-        "平胜": 0.194318,
-        "平平": 0.140058,
-        "平负": 0.103987,
-        "负胜": 0.031079,
-        "负平": 0.059334,
-        "负负": 0.120974
+        "胜胜": 0.30864,
+        "胜平": 0.04653,
+        "胜负": 0.0144,
+        "平胜": 0.17218,
+        "平平": 0.15676,
+        "平负": 0.09214,
+        "负胜": 0.02542,
+        "负平": 0.04853,
+        "负负": 0.1354
       },
       "outcomeAssistance": {
         "actual": "draw",
@@ -6459,12 +6297,12 @@
         "halfFullSignal": {
           "predicted": "home",
           "hit": false,
-          "actualProbability": 0.2562805185424833,
-          "logLoss": 1.36148265886982,
+          "actualProbability": 0.25182000000000004,
+          "logLoss": 1.3790407324085823,
           "probabilities": {
-            "home": 0.501153,
-            "draw": 0.256281,
-            "away": 0.242566
+            "home": 0.50624,
+            "draw": 0.25182,
+            "away": 0.24194
           }
         },
         "assisted": {
@@ -6495,64 +6333,48 @@
       "historySection": "parlayMatches",
       "historyGeneratedAt": "2026-06-29T19:40:31+08:00",
       "halfFullCalibration": {
-        "applied": true,
-        "policy": "current_tournament_half_full_late_swing_v3",
-        "sourceKnockoutPolicy": "current_tournament_evidence_v1",
-        "weights": {
-          "胜胜": 0.95,
-          "胜平": 1.3,
-          "胜负": 1.3,
-          "平胜": 1.2,
-          "平平": 0.95,
-          "平负": 1.2,
-          "负胜": 1.3,
-          "负平": 1.3,
-          "负负": 0.95
-        },
-        "topSelectionBefore": "负负",
-        "topSelectionAfter": "负负",
-        "topProbabilityBefore": 0.42465,
-        "topProbabilityAfter": 0.3818464228060519
+        "applied": false,
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "负负",
       "predicted": "负负",
       "hit": true,
       "top3Hit": true,
-      "actualProbability": 0.3818464228060519,
-      "logLoss": 0.9627367857522454,
-      "brier": 0.45886687216409583,
+      "actualProbability": 0.42465,
+      "logLoss": 0.8564899787561187,
+      "brier": 0.397349807,
       "topSelections": [
         {
           "selection": "负负",
-          "probability": 0.3818464228060519
+          "probability": 0.42465
         },
         {
           "selection": "平负",
-          "probability": 0.22191943806457506
+          "probability": 0.19538
         },
         {
           "selection": "平平",
-          "probability": 0.10529663513620319
+          "probability": 0.1171
         },
         {
           "selection": "胜胜",
-          "probability": 0.07297929041549317
+          "probability": 0.08116
         },
         {
           "selection": "平胜",
-          "probability": 0.06760489790973236
+          "probability": 0.05952
         }
       ],
       "probabilities": {
-        "胜胜": 0.072979,
-        "胜平": 0.048604,
-        "胜负": 0.038896,
-        "平胜": 0.067605,
-        "平平": 0.105297,
-        "平负": 0.221919,
-        "负胜": 0.013117,
-        "负平": 0.049736,
-        "负负": 0.381846
+        "胜胜": 0.08116,
+        "胜平": 0.0395,
+        "胜负": 0.03161,
+        "平胜": 0.05952,
+        "平平": 0.1171,
+        "平负": 0.19538,
+        "负胜": 0.01066,
+        "负平": 0.04042,
+        "负负": 0.42465
       },
       "outcomeAssistance": {
         "actual": "away",
@@ -6570,12 +6392,12 @@
         "halfFullSignal": {
           "predicted": "away",
           "hit": true,
-          "actualProbability": 0.6426615831741193,
-          "logLoss": 0.44213700250981713,
+          "actualProbability": 0.65164,
+          "logLoss": 0.4282630167841685,
           "probabilities": {
-            "home": 0.153701,
-            "draw": 0.203637,
-            "away": 0.642662
+            "home": 0.15134,
+            "draw": 0.19702,
+            "away": 0.65164
           }
         },
         "assisted": {
@@ -6606,64 +6428,48 @@
       "historySection": "parlayMatches",
       "historyGeneratedAt": "2026-06-29T19:40:31+08:00",
       "halfFullCalibration": {
-        "applied": true,
-        "policy": "current_tournament_half_full_late_swing_v3",
-        "sourceKnockoutPolicy": "current_tournament_evidence_v1",
-        "weights": {
-          "胜胜": 0.95,
-          "胜平": 1.3,
-          "胜负": 1.3,
-          "平胜": 1.2,
-          "平平": 0.95,
-          "平负": 1.2,
-          "负胜": 1.3,
-          "负平": 1.3,
-          "负负": 0.95
-        },
-        "topSelectionBefore": "胜胜",
-        "topSelectionAfter": "胜胜",
-        "topProbabilityBefore": 0.59172,
-        "topProbabilityAfter": 0.5435778818473762
+        "applied": false,
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "胜胜",
       "predicted": "胜胜",
       "hit": true,
       "top3Hit": true,
-      "actualProbability": 0.5435778818473762,
-      "logLoss": 0.6095822858195907,
-      "brier": 0.27407703722559607,
+      "actualProbability": 0.59172,
+      "logLoss": 0.524721728958102,
+      "brier": 0.21757259219999997,
       "topSelections": [
         {
           "selection": "胜胜",
-          "probability": 0.5435778818473762
+          "probability": 0.59172
         },
         {
           "selection": "平胜",
-          "probability": 0.23833205851835879
+          "probability": 0.20539
         },
         {
           "selection": "平平",
-          "probability": 0.06834684379342389
+          "probability": 0.0744
+        },
+        {
+          "selection": "负负",
+          "probability": 0.02822
         },
         {
           "selection": "负胜",
-          "probability": 0.03435618298155854
-        },
-        {
-          "selection": "胜平",
-          "probability": 0.029579253039007405
+          "probability": 0.02733
         }
       ],
       "probabilities": {
-        "胜胜": 0.543578,
-        "胜平": 0.029579,
-        "胜负": 0.004513,
-        "平胜": 0.238332,
-        "平平": 0.068347,
-        "平负": 0.026747,
-        "负胜": 0.034356,
-        "负平": 0.028624,
-        "负负": 0.025924
+        "胜胜": 0.59172,
+        "胜平": 0.02353,
+        "胜负": 0.00359,
+        "平胜": 0.20539,
+        "平平": 0.0744,
+        "平负": 0.02305,
+        "负胜": 0.02733,
+        "负平": 0.02277,
+        "负负": 0.02822
       },
       "outcomeAssistance": {
         "actual": "home",
@@ -6681,12 +6487,12 @@
         "halfFullSignal": {
           "predicted": "home",
           "hit": true,
-          "actualProbability": 0.8162661233472935,
-          "logLoss": 0.20301484563430938,
+          "actualProbability": 0.82444,
+          "logLoss": 0.19305091100704047,
           "probabilities": {
-            "home": 0.816266,
-            "draw": 0.12655,
-            "away": 0.057184
+            "home": 0.82444,
+            "draw": 0.1207,
+            "away": 0.05486
           }
         },
         "assisted": {
@@ -6717,64 +6523,48 @@
       "historySection": "parlayMatches",
       "historyGeneratedAt": "2026-06-29T19:40:31+08:00",
       "halfFullCalibration": {
-        "applied": true,
-        "policy": "current_tournament_half_full_late_swing_v3",
-        "sourceKnockoutPolicy": "current_tournament_evidence_v1",
-        "weights": {
-          "胜胜": 0.95,
-          "胜平": 1.3,
-          "胜负": 1.3,
-          "平胜": 1.2,
-          "平平": 0.95,
-          "平负": 1.2,
-          "负胜": 1.3,
-          "负平": 1.3,
-          "负负": 0.95
-        },
-        "topSelectionBefore": "平平",
-        "topSelectionAfter": "平平",
-        "topProbabilityBefore": 0.26317,
-        "topProbabilityAfter": 0.2371501366396233
+        "applied": false,
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "胜胜",
       "predicted": "平平",
       "hit": false,
       "top3Hit": true,
-      "actualProbability": 0.16442902090904002,
-      "logLoss": 1.80527628572827,
-      "brier": 0.8348019128198988,
+      "actualProbability": 0.18247,
+      "logLoss": 1.7011695030336933,
+      "brier": 0.8108184878,
       "topSelections": [
         {
           "selection": "平平",
-          "probability": 0.2371501366396233
+          "probability": 0.26317
         },
         {
           "selection": "胜胜",
-          "probability": 0.16442902090904002
+          "probability": 0.18247
         },
         {
           "selection": "负负",
-          "probability": 0.15989634170055383
+          "probability": 0.17744
         },
         {
           "selection": "平胜",
-          "probability": 0.15765015893071077
+          "probability": 0.1385
         },
         {
           "selection": "平负",
-          "probability": 0.15752494941820264
+          "probability": 0.13839
         }
       ],
       "probabilities": {
-        "胜胜": 0.164429,
-        "胜平": 0.049461,
-        "胜负": 0.011863,
-        "平胜": 0.15765,
-        "平平": 0.23715,
-        "平负": 0.157525,
-        "负胜": 0.013157,
-        "负平": 0.048869,
-        "负负": 0.159896
+        "胜胜": 0.18247,
+        "胜平": 0.04011,
+        "胜负": 0.00962,
+        "平胜": 0.1385,
+        "平平": 0.26317,
+        "平负": 0.13839,
+        "负胜": 0.01067,
+        "负平": 0.03963,
+        "负负": 0.17744
       },
       "outcomeAssistance": {
         "actual": "home",
@@ -6792,12 +6582,12 @@
         "halfFullSignal": {
           "predicted": "draw",
           "hit": false,
-          "actualProbability": 0.3352366127791484,
-          "logLoss": 1.0929186896709033,
+          "actualProbability": 0.33164,
+          "logLoss": 1.103705235734119,
           "probabilities": {
-            "home": 0.335237,
-            "draw": 0.335479,
-            "away": 0.329284
+            "home": 0.33164,
+            "draw": 0.34291,
+            "away": 0.32545
           }
         },
         "assisted": {
@@ -6828,64 +6618,48 @@
       "historySection": "matches",
       "historyGeneratedAt": "2026-07-01T18:26:40+08:00",
       "halfFullCalibration": {
-        "applied": true,
-        "policy": "current_tournament_half_full_late_swing_v3",
-        "sourceKnockoutPolicy": "current_tournament_evidence_v1",
-        "weights": {
-          "胜胜": 0.95,
-          "胜平": 1.3,
-          "胜负": 1.3,
-          "平胜": 1.2,
-          "平平": 0.95,
-          "平负": 1.2,
-          "负胜": 1.3,
-          "负平": 1.3,
-          "负负": 0.95
-        },
-        "topSelectionBefore": "胜胜",
-        "topSelectionAfter": "胜胜",
-        "topProbabilityBefore": 0.49757,
-        "topProbabilityAfter": 0.456529003682624
+        "applied": false,
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "负胜",
       "predicted": "胜胜",
       "hit": false,
       "top3Hit": false,
-      "actualProbability": 0.015493484179589975,
-      "logLoss": 4.167335718949816,
-      "brier": 1.2841295672281954,
+      "actualProbability": 0.01234,
+      "logLoss": 4.394909260504895,
+      "brier": 1.311560347,
       "topSelections": [
         {
           "selection": "胜胜",
-          "probability": 0.456529003682624
+          "probability": 0.49757
         },
         {
           "selection": "平胜",
-          "probability": 0.2891743601283751
+          "probability": 0.24951
         },
         {
           "selection": "平平",
-          "probability": 0.14366483388593618
+          "probability": 0.15658
+        },
+        {
+          "selection": "负负",
+          "probability": 0.02391
         },
         {
           "selection": "平负",
-          "probability": 0.026946029710170818
-        },
-        {
-          "selection": "负平",
-          "probability": 0.022336230433946974
+          "probability": 0.02325
         }
       ],
       "probabilities": {
-        "胜胜": 0.456529,
-        "胜平": 0.02206,
-        "胜负": 0.001858,
-        "平胜": 0.289174,
-        "平平": 0.143665,
-        "平负": 0.026946,
-        "负胜": 0.015493,
-        "负平": 0.022336,
-        "负负": 0.021938
+        "胜胜": 0.49757,
+        "胜平": 0.01757,
+        "胜负": 0.00148,
+        "平胜": 0.24951,
+        "平平": 0.15658,
+        "平负": 0.02325,
+        "负胜": 0.01234,
+        "负平": 0.01779,
+        "负负": 0.02391
       },
       "outcomeAssistance": {
         "actual": "home",
@@ -6903,12 +6677,12 @@
         "halfFullSignal": {
           "predicted": "home",
           "hit": true,
-          "actualProbability": 0.7611968479905891,
-          "logLoss": 0.2728632844113472,
+          "actualProbability": 0.75942,
+          "logLoss": 0.2752002949497251,
           "probabilities": {
-            "home": 0.761197,
-            "draw": 0.188061,
-            "away": 0.050742
+            "home": 0.75942,
+            "draw": 0.19194,
+            "away": 0.04864
           }
         },
         "assisted": {
@@ -6939,64 +6713,48 @@
       "historySection": "matches",
       "historyGeneratedAt": "2026-07-01T18:26:40+08:00",
       "halfFullCalibration": {
-        "applied": true,
-        "policy": "current_tournament_half_full_late_swing_v3",
-        "sourceKnockoutPolicy": "current_tournament_evidence_v1",
-        "weights": {
-          "胜胜": 0.95,
-          "胜平": 1.3,
-          "胜负": 1.3,
-          "平胜": 1.2,
-          "平平": 0.95,
-          "平负": 1.2,
-          "负胜": 1.3,
-          "负平": 1.3,
-          "负负": 0.95
-        },
-        "topSelectionBefore": "胜胜",
-        "topSelectionAfter": "胜胜",
-        "topProbabilityBefore": 0.23927,
-        "topProbabilityAfter": 0.21323721516220526
+        "applied": false,
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "负平",
       "predicted": "胜胜",
       "hit": false,
       "top3Hit": false,
-      "actualProbability": 0.062074364469485575,
-      "logLoss": 2.7794221857476775,
-      "brier": 1.024739717829149,
+      "actualProbability": 0.0509,
+      "logLoss": 2.9778923554256598,
+      "brier": 1.0596806284,
       "topSelections": [
         {
           "selection": "胜胜",
-          "probability": 0.21323721516220526
+          "probability": 0.23927
         },
         {
           "selection": "负负",
-          "probability": 0.1740066295834019
-        },
-        {
-          "selection": "平胜",
-          "probability": 0.16069727419711163
+          "probability": 0.19525
         },
         {
           "selection": "平平",
-          "probability": 0.14172739719666277
+          "probability": 0.15903
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.14275
         },
         {
           "selection": "平负",
-          "probability": 0.13512079735116855
+          "probability": 0.12003
         }
       ],
       "probabilities": {
-        "胜胜": 0.213237,
-        "胜平": 0.061526,
-        "胜负": 0.024891,
-        "平胜": 0.160697,
-        "平平": 0.141727,
-        "平负": 0.135121,
-        "负胜": 0.02672,
-        "负平": 0.062074,
-        "负负": 0.174007
+        "胜胜": 0.23927,
+        "胜平": 0.05045,
+        "胜负": 0.02041,
+        "平胜": 0.14275,
+        "平平": 0.15903,
+        "平负": 0.12003,
+        "负胜": 0.02191,
+        "负平": 0.0509,
+        "负负": 0.19525
       },
       "outcomeAssistance": {
         "actual": "draw",
@@ -7014,12 +6772,12 @@
         "halfFullSignal": {
           "predicted": "home",
           "hit": false,
-          "actualProbability": 0.2653273350941552,
-          "logLoss": 1.3267909884904563,
+          "actualProbability": 0.26038,
+          "logLoss": 1.345613176512886,
           "probabilities": {
-            "home": 0.400655,
-            "draw": 0.265327,
-            "away": 0.334018
+            "home": 0.40393,
+            "draw": 0.26038,
+            "away": 0.33569
           }
         },
         "assisted": {
@@ -7050,64 +6808,48 @@
       "historySection": "matches",
       "historyGeneratedAt": "2026-07-01T18:26:40+08:00",
       "halfFullCalibration": {
-        "applied": true,
-        "policy": "current_tournament_half_full_late_swing_v3",
-        "sourceKnockoutPolicy": "current_tournament_evidence_v1",
-        "weights": {
-          "胜胜": 0.95,
-          "胜平": 1.3,
-          "胜负": 1.3,
-          "平胜": 1.2,
-          "平平": 0.95,
-          "平负": 1.2,
-          "负胜": 1.3,
-          "负平": 1.3,
-          "负负": 0.95
-        },
-        "topSelectionBefore": "胜胜",
-        "topSelectionAfter": "胜胜",
-        "topProbabilityBefore": 0.387,
-        "topProbabilityAfter": 0.3462619205598961
+        "applied": false,
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "胜胜",
       "predicted": "胜胜",
       "hit": true,
       "top3Hit": true,
-      "actualProbability": 0.3462619205598961,
-      "logLoss": 1.060559794463397,
-      "brier": 0.5047528274029133,
+      "actualProbability": 0.387,
+      "logLoss": 0.9493305859523552,
+      "brier": 0.44457092119999997,
       "topSelections": [
         {
           "selection": "胜胜",
-          "probability": 0.3462619205598961
+          "probability": 0.387
         },
         {
           "selection": "平胜",
-          "probability": 0.20832789821886785
+          "probability": 0.18433
         },
         {
           "selection": "平平",
-          "probability": 0.10564120144833831
+          "probability": 0.11807
         },
         {
           "selection": "负负",
-          "probability": 0.0921217760745398
+          "probability": 0.10296
         },
         {
           "selection": "平负",
-          "probability": 0.07897766791913681
+          "probability": 0.06988
         }
       ],
       "probabilities": {
-        "胜胜": 0.346262,
-        "胜平": 0.055158,
-        "胜负": 0.017166,
-        "平胜": 0.208328,
-        "平平": 0.105641,
-        "平负": 0.078978,
-        "负胜": 0.040539,
-        "负平": 0.055807,
-        "负负": 0.092122
+        "胜胜": 0.387,
+        "胜平": 0.04505,
+        "胜负": 0.01402,
+        "平胜": 0.18433,
+        "平平": 0.11807,
+        "平负": 0.06988,
+        "负胜": 0.03311,
+        "负平": 0.04558,
+        "负负": 0.10296
       },
       "outcomeAssistance": {
         "actual": "home",
@@ -7125,12 +6867,12 @@
         "halfFullSignal": {
           "predicted": "home",
           "hit": true,
-          "actualProbability": 0.5951287874899284,
-          "logLoss": 0.5189774472954294,
+          "actualProbability": 0.60444,
+          "logLoss": 0.5034528694365776,
           "probabilities": {
-            "home": 0.595129,
-            "draw": 0.216606,
-            "away": 0.188265
+            "home": 0.60444,
+            "draw": 0.2087,
+            "away": 0.18686
           }
         },
         "assisted": {
@@ -7161,64 +6903,48 @@
       "historySection": "parlayMatches",
       "historyGeneratedAt": "2026-07-01T18:26:40+08:00",
       "halfFullCalibration": {
-        "applied": true,
-        "policy": "current_tournament_half_full_late_swing_v3",
-        "sourceKnockoutPolicy": "current_tournament_evidence_v1",
-        "weights": {
-          "胜胜": 0.95,
-          "胜平": 1.3,
-          "胜负": 1.3,
-          "平胜": 1.2,
-          "平平": 0.95,
-          "平负": 1.2,
-          "负胜": 1.3,
-          "负平": 1.3,
-          "负负": 0.95
-        },
-        "topSelectionBefore": "胜胜",
-        "topSelectionAfter": "胜胜",
-        "topProbabilityBefore": 0.54554,
-        "topProbabilityAfter": 0.498500687976215
+        "applied": false,
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "胜胜",
       "predicted": "胜胜",
       "hit": true,
       "top3Hit": true,
-      "actualProbability": 0.498500687976215,
-      "logLoss": 0.6961503094884882,
-      "brier": 0.3258714814031529,
+      "actualProbability": 0.54554,
+      "logLoss": 0.6059791491745894,
+      "brier": 0.26574890519999994,
       "topSelections": [
         {
           "selection": "胜胜",
-          "probability": 0.498500687976215
+          "probability": 0.54554
         },
         {
           "selection": "平胜",
-          "probability": 0.2484043809248074
+          "probability": 0.21521
         },
         {
           "selection": "平平",
-          "probability": 0.08591310386685436
+          "probability": 0.09402
+        },
+        {
+          "selection": "负负",
+          "probability": 0.03455
         },
         {
           "selection": "平负",
-          "probability": 0.03343838536960025
-        },
-        {
-          "selection": "负平",
-          "probability": 0.03343646163324255
+          "probability": 0.02897
         }
       ],
       "probabilities": {
-        "胜胜": 0.498501,
-        "胜平": 0.032936,
-        "胜负": 0.005139,
-        "平胜": 0.248404,
-        "平平": 0.085913,
-        "平负": 0.033438,
-        "负胜": 0.030661,
-        "负平": 0.033436,
-        "负负": 0.031571
+        "胜胜": 0.54554,
+        "胜平": 0.02634,
+        "胜负": 0.00411,
+        "平胜": 0.21521,
+        "平平": 0.09402,
+        "平负": 0.02897,
+        "负胜": 0.02452,
+        "负平": 0.02674,
+        "负负": 0.03455
       },
       "outcomeAssistance": {
         "actual": "home",
@@ -7236,12 +6962,12 @@
         "halfFullSignal": {
           "predicted": "home",
           "hit": true,
-          "actualProbability": 0.7775655789700989,
-          "logLoss": 0.2515872925434174,
+          "actualProbability": 0.78527,
+          "logLoss": 0.24172767129205558,
           "probabilities": {
-            "home": 0.777566,
-            "draw": 0.152286,
-            "away": 0.070149
+            "home": 0.78527,
+            "draw": 0.1471,
+            "away": 0.06763
           }
         },
         "assisted": {
@@ -7273,63 +6999,63 @@
       "historyGeneratedAt": "2026-07-02T16:15:00+08:00",
       "halfFullCalibration": {
         "applied": true,
-        "policy": "current_tournament_half_full_late_swing_v3",
-        "sourceKnockoutPolicy": "current_tournament_evidence_v1",
+        "policy": "knockout_half_full_late_swing_v1",
+        "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "weights": {
           "胜胜": 0.95,
           "胜平": 1.3,
           "胜负": 1.3,
-          "平胜": 1.2,
-          "平平": 0.95,
-          "平负": 1.2,
+          "平胜": 0.95,
+          "平平": 1.1,
+          "平负": 0.95,
           "负胜": 1.3,
           "负平": 1.3,
           "负负": 0.95
         },
         "topSelectionBefore": "胜胜",
         "topSelectionAfter": "胜胜",
-        "topProbabilityBefore": 0.3418034180341803,
-        "topProbabilityAfter": 0.30267058718802325
+        "topProbabilityBefore": 0.36622,
+        "topProbabilityAfter": 0.3418016874486672
       },
       "actual": "胜胜",
       "predicted": "胜胜",
       "hit": true,
       "top3Hit": true,
-      "actualProbability": 0.30267058718802325,
-      "logLoss": 1.1951102358684522,
-      "brier": 0.5637299393222791,
+      "actualProbability": 0.3418034180341803,
+      "logLoss": 1.0735195082506463,
+      "brier": 0.504326286875305,
       "topSelections": [
         {
           "selection": "胜胜",
-          "probability": 0.30267058718802325
+          "probability": 0.3418034180341803
         },
         {
           "selection": "平胜",
-          "probability": 0.18610452020452706
+          "probability": 0.16638166381663816
         },
         {
           "selection": "平平",
-          "probability": 0.1176501293557659
+          "probability": 0.13286132861328614
         },
         {
           "selection": "负负",
-          "probability": 0.09401561217598724
+          "probability": 0.1061710617106171
         },
         {
           "selection": "平负",
-          "probability": 0.08100546551996543
+          "probability": 0.07242072420724206
         }
       ],
       "probabilities": {
-        "胜胜": 0.302671,
-        "胜平": 0.073542,
-        "胜负": 0.023666,
-        "平胜": 0.186105,
-        "平平": 0.11765,
-        "平负": 0.081005,
-        "负胜": 0.049416,
-        "负平": 0.07193,
-        "负负": 0.094016
+        "胜胜": 0.341803,
+        "胜平": 0.060691,
+        "胜负": 0.01953,
+        "平胜": 0.166382,
+        "平平": 0.132861,
+        "平负": 0.072421,
+        "负胜": 0.04078,
+        "负平": 0.059361,
+        "负负": 0.106171
       },
       "outcomeAssistance": {
         "actual": "home",
@@ -7347,12 +7073,12 @@
         "halfFullSignal": {
           "predicted": "home",
           "hit": true,
-          "actualProbability": 0.5381908276019244,
-          "logLoss": 0.6195420835660278,
+          "actualProbability": 0.5489654896548964,
+          "logLoss": 0.5997196998219974,
           "probabilities": {
-            "home": 0.538191,
-            "draw": 0.263122,
-            "away": 0.198687
+            "home": 0.548965,
+            "draw": 0.252913,
+            "away": 0.198122
           }
         },
         "assisted": {
@@ -7383,64 +7109,48 @@
       "historySection": "parlayMatches",
       "historyGeneratedAt": "2026-07-01T18:26:40+08:00",
       "halfFullCalibration": {
-        "applied": true,
-        "policy": "current_tournament_half_full_late_swing_v3",
-        "sourceKnockoutPolicy": "current_tournament_evidence_v1",
-        "weights": {
-          "胜胜": 0.95,
-          "胜平": 1.3,
-          "胜负": 1.3,
-          "平胜": 1.2,
-          "平平": 0.95,
-          "平负": 1.2,
-          "负胜": 1.3,
-          "负平": 1.3,
-          "负负": 0.95
-        },
-        "topSelectionBefore": "胜胜",
-        "topSelectionAfter": "胜胜",
-        "topProbabilityBefore": 0.32513,
-        "topProbabilityAfter": 0.29007790231922576
+        "applied": false,
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "平胜",
       "predicted": "胜胜",
       "hit": false,
       "top3Hit": true,
-      "actualProbability": 0.1920369648617809,
-      "logLoss": 1.6500674001632014,
-      "brier": 0.7854618780837398,
+      "actualProbability": 0.1704,
+      "logLoss": 1.7696066645869217,
+      "brier": 0.8450128008,
       "topSelections": [
         {
           "selection": "胜胜",
-          "probability": 0.29007790231922576
+          "probability": 0.32513
         },
         {
           "selection": "平胜",
-          "probability": 0.1920369648617809
+          "probability": 0.1704
         },
         {
           "selection": "平平",
-          "probability": 0.12552228363206064
+          "probability": 0.14069
         },
         {
           "selection": "负负",
-          "probability": 0.11775130424166154
+          "probability": 0.13198
         },
         {
           "selection": "平负",
-          "probability": 0.10069543902816974
+          "probability": 0.08935
         }
       ],
       "probabilities": {
-        "胜胜": 0.290078,
-        "胜平": 0.059628,
-        "胜负": 0.019156,
-        "平胜": 0.192037,
-        "平平": 0.125522,
-        "平负": 0.100695,
-        "负胜": 0.035235,
-        "负平": 0.059897,
-        "负负": 0.117751
+        "胜胜": 0.32513,
+        "胜平": 0.04884,
+        "胜负": 0.01569,
+        "平胜": 0.1704,
+        "平平": 0.14069,
+        "平负": 0.08935,
+        "负胜": 0.02886,
+        "负平": 0.04906,
+        "负负": 0.13198
       },
       "outcomeAssistance": {
         "actual": "home",
@@ -7458,12 +7168,12 @@
         "halfFullSignal": {
           "predicted": "home",
           "hit": true,
-          "actualProbability": 0.5173498185096662,
-          "logLoss": 0.6590360017388813,
+          "actualProbability": 0.52439,
+          "logLoss": 0.6455195966870779,
           "probabilities": {
-            "home": 0.51735,
-            "draw": 0.245048,
-            "away": 0.237603
+            "home": 0.52439,
+            "draw": 0.23859,
+            "away": 0.23702
           }
         },
         "assisted": {
@@ -7495,63 +7205,63 @@
       "historyGeneratedAt": "2026-07-02T16:15:00+08:00",
       "halfFullCalibration": {
         "applied": true,
-        "policy": "current_tournament_half_full_late_swing_v3",
-        "sourceKnockoutPolicy": "current_tournament_evidence_v1",
+        "policy": "knockout_half_full_late_swing_v1",
+        "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "weights": {
           "胜胜": 0.95,
           "胜平": 1.3,
           "胜负": 1.3,
-          "平胜": 1.2,
-          "平平": 0.95,
-          "平负": 1.2,
+          "平胜": 0.95,
+          "平平": 1.1,
+          "平负": 0.95,
           "负胜": 1.3,
           "负平": 1.3,
           "负负": 0.95
         },
         "topSelectionBefore": "胜胜",
         "topSelectionAfter": "胜胜",
-        "topProbabilityBefore": 0.34705,
-        "topProbabilityAfter": 0.3082692425467141
+        "topProbabilityBefore": 0.37126,
+        "topProbabilityAfter": 0.3470506592985424
       },
       "actual": "平胜",
       "predicted": "胜胜",
       "hit": false,
       "top3Hit": true,
-      "actualProbability": 0.1925477192157354,
-      "logLoss": 1.6474112639446563,
-      "brier": 0.7893269053552572,
+      "actualProbability": 0.17161,
+      "logLoss": 1.7625308185679252,
+      "brier": 0.8502295725999999,
       "topSelections": [
         {
           "selection": "胜胜",
-          "probability": 0.3082692425467141
+          "probability": 0.34705
         },
         {
           "selection": "平胜",
-          "probability": 0.1925477192157354
+          "probability": 0.17161
         },
         {
           "selection": "平平",
-          "probability": 0.12805098402401469
+          "probability": 0.14416
         },
         {
           "selection": "负负",
-          "probability": 0.08742215488099005
+          "probability": 0.09842
         },
         {
           "selection": "平负",
-          "probability": 0.07805806669680504
+          "probability": 0.06957
         }
       ],
       "probabilities": {
-        "胜胜": 0.308269,
-        "胜平": 0.07022,
-        "胜负": 0.020445,
-        "平胜": 0.192548,
-        "平平": 0.128051,
-        "平负": 0.078058,
-        "负胜": 0.046882,
-        "负平": 0.068105,
-        "负负": 0.087422
+        "胜胜": 0.34705,
+        "胜平": 0.05777,
+        "胜负": 0.01682,
+        "平胜": 0.17161,
+        "平平": 0.14416,
+        "平负": 0.06957,
+        "负胜": 0.03857,
+        "负平": 0.05603,
+        "负负": 0.09842
       },
       "outcomeAssistance": {
         "actual": "home",
@@ -7569,12 +7279,12 @@
         "halfFullSignal": {
           "predicted": "home",
           "hit": true,
-          "actualProbability": 0.5476991130997657,
-          "logLoss": 0.6020292065113447,
+          "actualProbability": 0.55723,
+          "logLoss": 0.5847771978941111,
           "probabilities": {
-            "home": 0.547699,
-            "draw": 0.266376,
-            "away": 0.185925
+            "home": 0.55723,
+            "draw": 0.25796,
+            "away": 0.18481
           }
         },
         "assisted": {
@@ -7605,64 +7315,48 @@
       "historySection": "parlayMatches",
       "historyGeneratedAt": "2026-07-01T18:26:40+08:00",
       "halfFullCalibration": {
-        "applied": true,
-        "policy": "current_tournament_half_full_late_swing_v3",
-        "sourceKnockoutPolicy": "current_tournament_evidence_v1",
-        "weights": {
-          "胜胜": 0.95,
-          "胜平": 1.3,
-          "胜负": 1.3,
-          "平胜": 1.2,
-          "平平": 0.95,
-          "平负": 1.2,
-          "负胜": 1.3,
-          "负平": 1.3,
-          "负负": 0.95
-        },
-        "topSelectionBefore": "胜胜",
-        "topSelectionAfter": "胜胜",
-        "topProbabilityBefore": 0.23812,
-        "topProbabilityAfter": 0.21244501376768854
+        "applied": false,
+        "reason": "archived_quotes_are_final_probabilities"
       },
       "actual": "胜胜",
       "predicted": "胜胜",
       "hit": true,
       "top3Hit": true,
-      "actualProbability": 0.21244501376768854,
-      "logLoss": 1.549072082841774,
-      "brier": 0.7260736362490273,
+      "actualProbability": 0.23812,
+      "logLoss": 1.4349805306969476,
+      "brier": 0.6865639618,
       "topSelections": [
         {
           "selection": "胜胜",
-          "probability": 0.21244501376768854
-        },
-        {
-          "selection": "平胜",
-          "probability": 0.16943836095010198
+          "probability": 0.23812
         },
         {
           "selection": "平平",
-          "probability": 0.16003857958024514
+          "probability": 0.17938
         },
         {
           "selection": "负负",
-          "probability": 0.15805794825753278
+          "probability": 0.17716
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.15035
         },
         {
           "selection": "平负",
-          "probability": 0.13548307119003164
+          "probability": 0.12022
         }
       ],
       "probabilities": {
-        "胜胜": 0.212445,
-        "胜平": 0.060067,
-        "胜负": 0.020022,
-        "平胜": 0.169438,
-        "平平": 0.160039,
-        "平负": 0.135483,
-        "负胜": 0.024955,
-        "负平": 0.059493,
-        "负负": 0.158058
+        "胜胜": 0.23812,
+        "胜平": 0.0492,
+        "胜负": 0.0164,
+        "平胜": 0.15035,
+        "平平": 0.17938,
+        "平负": 0.12022,
+        "负胜": 0.02044,
+        "负平": 0.04873,
+        "负负": 0.17716
       },
       "outcomeAssistance": {
         "actual": "home",
@@ -7680,12 +7374,12 @@
         "halfFullSignal": {
           "predicted": "home",
           "hit": true,
-          "actualProbability": 0.40683801459788205,
-          "logLoss": 0.8993401712929807,
+          "actualProbability": 0.40891,
+          "logLoss": 0.8942601960534022,
           "probabilities": {
-            "home": 0.406838,
-            "draw": 0.279599,
-            "away": 0.313563
+            "home": 0.40891,
+            "draw": 0.27731,
+            "away": 0.31378
           }
         },
         "assisted": {
@@ -7717,63 +7411,63 @@
       "historyGeneratedAt": "2026-07-02T16:15:00+08:00",
       "halfFullCalibration": {
         "applied": true,
-        "policy": "current_tournament_half_full_late_swing_v3",
-        "sourceKnockoutPolicy": "current_tournament_evidence_v1",
+        "policy": "knockout_half_full_late_swing_v1",
+        "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "weights": {
           "胜胜": 0.95,
           "胜平": 1.3,
           "胜负": 1.3,
-          "平胜": 1.2,
-          "平平": 0.95,
-          "平负": 1.2,
+          "平胜": 0.95,
+          "平平": 1.1,
+          "平负": 0.95,
           "负胜": 1.3,
           "负平": 1.3,
           "负负": 0.95
         },
         "topSelectionBefore": "胜胜",
         "topSelectionAfter": "胜胜",
-        "topProbabilityBefore": 0.36087,
-        "topProbabilityAfter": 0.318536351266033
+        "topProbabilityBefore": 0.38725,
+        "topProbabilityAfter": 0.36087391545316766
       },
       "actual": "胜胜",
       "predicted": "胜胜",
       "hit": true,
       "top3Hit": true,
-      "actualProbability": 0.318536351266033,
-      "logLoss": 1.14401867777916,
-      "brier": 0.533624823304328,
+      "actualProbability": 0.36087,
+      "logLoss": 1.0192374963080462,
+      "brier": 0.47095643379999996,
       "topSelections": [
         {
           "selection": "胜胜",
-          "probability": 0.318536351266033
+          "probability": 0.36087
         },
         {
           "selection": "平胜",
-          "probability": 0.17013432219394
+          "probability": 0.15259
         },
         {
           "selection": "负负",
-          "probability": 0.10331886805688796
+          "probability": 0.11705
         },
         {
           "selection": "平平",
-          "probability": 0.086794910688029
+          "probability": 0.09833
         },
         {
           "selection": "平负",
-          "probability": 0.07579612833569724
+          "probability": 0.06798
         }
       ],
       "probabilities": {
-        "胜胜": 0.318536,
-        "胜平": 0.075578,
-        "胜负": 0.031562,
-        "平胜": 0.170134,
-        "平平": 0.086795,
-        "平负": 0.075796,
-        "负胜": 0.063463,
-        "负平": 0.074817,
-        "负负": 0.103319
+        "胜胜": 0.36087,
+        "胜平": 0.06257,
+        "胜负": 0.02613,
+        "平胜": 0.15259,
+        "平平": 0.09833,
+        "平负": 0.06798,
+        "负胜": 0.05254,
+        "负平": 0.06194,
+        "负负": 0.11705
       },
       "outcomeAssistance": {
         "actual": "home",
@@ -7791,12 +7485,12 @@
         "halfFullSignal": {
           "predicted": "home",
           "hit": true,
-          "actualProbability": 0.5521332992026522,
-          "logLoss": 0.5939657777948492,
+          "actualProbability": 0.5660000000000001,
+          "logLoss": 0.569161200778954,
           "probabilities": {
-            "home": 0.552133,
-            "draw": 0.237189,
-            "away": 0.210677
+            "home": 0.566,
+            "draw": 0.22284,
+            "away": 0.21116
           }
         },
         "assisted": {
@@ -7828,63 +7522,63 @@
       "historyGeneratedAt": "2026-07-03T19:17:50+08:00",
       "halfFullCalibration": {
         "applied": true,
-        "policy": "current_tournament_half_full_late_swing_v3",
-        "sourceKnockoutPolicy": "current_tournament_evidence_v1",
+        "policy": "knockout_half_full_late_swing_v1",
+        "sourceKnockoutPolicy": "knockout_tension_close_game_v2",
         "weights": {
           "胜胜": 0.95,
           "胜平": 1.3,
           "胜负": 1.3,
-          "平胜": 1.2,
-          "平平": 0.95,
-          "平负": 1.2,
+          "平胜": 0.95,
+          "平平": 1.1,
+          "平负": 0.95,
           "负胜": 1.3,
           "负平": 1.3,
           "负负": 0.95
         },
         "topSelectionBefore": "胜胜",
         "topSelectionAfter": "胜胜",
-        "topProbabilityBefore": 0.21319,
-        "topProbabilityAfter": 0.18876816794761142
+        "topProbabilityBefore": 0.22988,
+        "topProbabilityAfter": 0.21319023420702352
       },
       "actual": "负平",
       "predicted": "胜胜",
       "hit": false,
       "top3Hit": false,
-      "actualProbability": 0.07587430772127288,
-      "logLoss": 2.5786771535811934,
-      "brier": 0.9883916031523796,
+      "actualProbability": 0.06262,
+      "logLoss": 2.7706705630838777,
+      "brier": 1.027027342,
       "topSelections": [
         {
           "selection": "胜胜",
-          "probability": 0.18876816794761142
+          "probability": 0.21319
         },
         {
           "selection": "平平",
-          "probability": 0.16932378046166208
+          "probability": 0.19123
         },
         {
           "selection": "负负",
-          "probability": 0.15325294107778317
+          "probability": 0.17308
         },
         {
           "selection": "平胜",
-          "probability": 0.1494706898833635
+          "probability": 0.13364
         },
         {
           "selection": "平负",
-          "probability": 0.12979701856453407
+          "probability": 0.11605
         }
       ],
       "probabilities": {
-        "胜胜": 0.188768,
-        "胜平": 0.075559,
-        "胜负": 0.026184,
-        "平胜": 0.149471,
-        "平平": 0.169324,
-        "平负": 0.129797,
-        "负胜": 0.03177,
-        "负平": 0.075874,
-        "负负": 0.153253
+        "胜胜": 0.21319,
+        "胜平": 0.06236,
+        "胜负": 0.02161,
+        "平胜": 0.13364,
+        "平平": 0.19123,
+        "平负": 0.11605,
+        "负胜": 0.02622,
+        "负平": 0.06262,
+        "负负": 0.17308
       },
       "outcomeAssistance": {
         "actual": "draw",
@@ -7902,12 +7596,12 @@
         "halfFullSignal": {
           "predicted": "home",
           "hit": false,
-          "actualProbability": 0.32075736364602303,
-          "logLoss": 1.1370703181629351,
+          "actualProbability": 0.31621,
+          "logLoss": 1.1513487291533955,
           "probabilities": {
-            "home": 0.370009,
-            "draw": 0.320757,
-            "away": 0.309234
+            "home": 0.37305,
+            "draw": 0.31621,
+            "away": 0.31074
           }
         },
         "assisted": {
@@ -7939,63 +7633,63 @@
       "historyGeneratedAt": "2026-07-03T19:17:50+08:00",
       "halfFullCalibration": {
         "applied": true,
-        "policy": "current_tournament_half_full_late_swing_v3",
-        "sourceKnockoutPolicy": "current_tournament_evidence_v1",
+        "policy": "knockout_half_full_late_swing_v1",
+        "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "weights": {
           "胜胜": 0.95,
           "胜平": 1.3,
           "胜负": 1.3,
-          "平胜": 1.2,
-          "平平": 0.95,
-          "平负": 1.2,
+          "平胜": 0.95,
+          "平平": 1.1,
+          "平负": 0.95,
           "负胜": 1.3,
           "负平": 1.3,
           "负负": 0.95
         },
         "topSelectionBefore": "胜胜",
         "topSelectionAfter": "胜胜",
-        "topProbabilityBefore": 0.5268852688526885,
-        "topProbabilityAfter": 0.4858603453388669
+        "topProbabilityBefore": 0.54401,
+        "topProbabilityAfter": 0.5268827070344378
       },
       "actual": "胜平",
       "predicted": "胜胜",
       "hit": false,
       "top3Hit": false,
-      "actualProbability": 0.01716162454966509,
-      "logLoss": 4.0650795186769075,
-      "brier": 1.313334068105404,
+      "actualProbability": 0.013600136001360012,
+      "logLoss": 4.297675486190131,
+      "brier": 1.3417797230602833,
       "topSelections": [
         {
           "selection": "胜胜",
-          "probability": 0.4858603453388669
+          "probability": 0.5268852688526885
         },
         {
           "selection": "平胜",
-          "probability": 0.2995441200808965
+          "probability": 0.25716257162571626
         },
         {
           "selection": "平平",
-          "probability": 0.14444496753317662
+          "probability": 0.15664156641566415
         },
         {
           "selection": "胜平",
-          "probability": 0.01716162454966509
+          "probability": 0.013600136001360012
         },
         {
           "selection": "负平",
-          "probability": 0.01694710424279428
+          "probability": 0.013430134301343013
         }
       ],
       "probabilities": {
-        "胜胜": 0.48586,
-        "胜平": 0.017162,
-        "胜负": 0.000631,
-        "平胜": 0.299544,
-        "平平": 0.144445,
-        "平负": 0.012883,
-        "负胜": 0.012707,
-        "负平": 0.016947,
-        "负负": 0.009821
+        "胜胜": 0.526885,
+        "胜平": 0.0136,
+        "胜负": 0.0005,
+        "平胜": 0.257163,
+        "平平": 0.156642,
+        "平负": 0.01106,
+        "负胜": 0.01007,
+        "负平": 0.01343,
+        "负负": 0.01065
       },
       "outcomeAssistance": {
         "actual": "draw",
@@ -8013,12 +7707,12 @@
         "halfFullSignal": {
           "predicted": "home",
           "hit": false,
-          "actualProbability": 0.178553696325636,
-          "logLoss": 1.7228659032481706,
+          "actualProbability": 0.18367183671836718,
+          "logLoss": 1.6946046097916931,
           "probabilities": {
-            "home": 0.798112,
-            "draw": 0.178554,
-            "away": 0.023335
+            "home": 0.794118,
+            "draw": 0.183672,
+            "away": 0.02221
           }
         },
         "assisted": {
@@ -8050,63 +7744,63 @@
       "historyGeneratedAt": "2026-07-03T19:17:50+08:00",
       "halfFullCalibration": {
         "applied": true,
-        "policy": "current_tournament_half_full_late_swing_v3",
-        "sourceKnockoutPolicy": "current_tournament_evidence_v1",
+        "policy": "knockout_half_full_late_swing_v1",
+        "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "weights": {
           "胜胜": 0.95,
           "胜平": 1.3,
           "胜负": 1.3,
-          "平胜": 1.2,
-          "平平": 0.95,
-          "平负": 1.2,
+          "平胜": 0.95,
+          "平平": 1.1,
+          "平负": 0.95,
           "负胜": 1.3,
           "负平": 1.3,
           "负负": 0.95
         },
         "topSelectionBefore": "胜胜",
         "topSelectionAfter": "胜胜",
-        "topProbabilityBefore": 0.5403491930161397,
-        "topProbabilityAfter": 0.49908343578144204
+        "topProbabilityBefore": 0.55726,
+        "topProbabilityAfter": 0.5403573380666754
       },
       "actual": "胜胜",
       "predicted": "胜胜",
       "hit": true,
       "top3Hit": true,
-      "actualProbability": 0.49908343578144204,
-      "logLoss": 0.6949819912331456,
-      "brier": 0.3576777783931991,
+      "actualProbability": 0.5403491930161397,
+      "logLoss": 0.615539694680659,
+      "brier": 0.29808555065873943,
       "topSelections": [
         {
           "selection": "胜胜",
-          "probability": 0.49908343578144204
+          "probability": 0.5403491930161397
         },
         {
           "selection": "平胜",
-          "probability": 0.2942688850874929
+          "probability": 0.25222495550089
         },
         {
           "selection": "平平",
-          "probability": 0.1386619961023538
+          "probability": 0.15012699746005082
         },
         {
           "selection": "胜平",
-          "probability": 0.016468503100665537
+          "probability": 0.013029739405211897
         },
         {
           "selection": "负平",
-          "probability": 0.01543211226854384
+          "probability": 0.012209755804883904
         }
       ],
       "probabilities": {
-        "胜胜": 0.499083,
-        "胜平": 0.016469,
-        "胜负": 0.000657,
-        "平胜": 0.294269,
-        "平平": 0.138662,
-        "平负": 0.012472,
-        "负胜": 0.013738,
-        "负平": 0.015432,
-        "负负": 0.009218
+        "胜胜": 0.540349,
+        "胜平": 0.01303,
+        "胜负": 0.00052,
+        "平胜": 0.252225,
+        "平平": 0.150127,
+        "平负": 0.01069,
+        "负胜": 0.01087,
+        "负平": 0.01221,
+        "负负": 0.00998
       },
       "outcomeAssistance": {
         "actual": "home",
@@ -8124,12 +7818,12 @@
         "halfFullSignal": {
           "predicted": "home",
           "hit": true,
-          "actualProbability": 0.8070908188508409,
-          "logLoss": 0.2143190781955838,
+          "actualProbability": 0.8034439311213776,
+          "logLoss": 0.2188478770466099,
           "probabilities": {
-            "home": 0.807091,
-            "draw": 0.170563,
-            "away": 0.022347
+            "home": 0.803444,
+            "draw": 0.175366,
+            "away": 0.02119
           }
         },
         "assisted": {
@@ -8161,63 +7855,63 @@
       "historyGeneratedAt": "2026-07-04T17:16:03+08:00",
       "halfFullCalibration": {
         "applied": true,
-        "policy": "current_tournament_half_full_late_swing_v3",
-        "sourceKnockoutPolicy": "current_tournament_evidence_v1",
+        "policy": "knockout_half_full_late_swing_v1",
+        "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "weights": {
           "胜胜": 0.95,
           "胜平": 1.3,
           "胜负": 1.3,
-          "平胜": 1.2,
-          "平平": 0.95,
-          "平负": 1.2,
+          "平胜": 0.95,
+          "平平": 1.1,
+          "平负": 0.95,
           "负胜": 1.3,
           "负平": 1.3,
           "负负": 0.95
         },
         "topSelectionBefore": "负负",
         "topSelectionAfter": "负负",
-        "topProbabilityBefore": 0.30483390332193355,
-        "topProbabilityAfter": 0.27209955003669045
+        "topProbabilityBefore": 0.32651,
+        "topProbabilityAfter": 0.3048368987044767
       },
       "actual": "平负",
       "predicted": "负负",
       "hit": false,
       "top3Hit": true,
-      "actualProbability": 0.20180981275174784,
-      "logLoss": 1.6004295461212135,
-      "brier": 0.7676599395987251,
+      "actualProbability": 0.1789864202715946,
+      "logLoss": 1.720445340423731,
+      "brier": 0.82876231137604,
       "topSelections": [
         {
           "selection": "负负",
-          "probability": 0.27209955003669045
-        },
-        {
-          "selection": "平负",
-          "probability": 0.20180981275174784
+          "probability": 0.3048339033219336
         },
         {
           "selection": "平平",
-          "probability": 0.17968888734380709
+          "probability": 0.2013059738805224
         },
         {
-          "selection": "平胜",
-          "probability": 0.085384977483043
+          "selection": "平负",
+          "probability": 0.1789864202715946
         },
         {
           "selection": "胜胜",
-          "probability": 0.08439513336822295
+          "probability": 0.09454810903781925
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.07572848543029141
         }
       ],
       "probabilities": {
-        "胜胜": 0.084395,
-        "胜平": 0.06492,
-        "胜负": 0.029999,
-        "平胜": 0.085385,
-        "平平": 0.179689,
-        "平负": 0.20181,
-        "负胜": 0.014767,
-        "负平": 0.066935,
-        "负负": 0.2721
+        "胜胜": 0.094548,
+        "胜平": 0.053149,
+        "胜负": 0.02456,
+        "平胜": 0.075728,
+        "平平": 0.201306,
+        "平负": 0.178986,
+        "负胜": 0.01209,
+        "负平": 0.054799,
+        "负负": 0.304834
       },
       "outcomeAssistance": {
         "actual": "away",
@@ -8235,12 +7929,12 @@
         "halfFullSignal": {
           "predicted": "away",
           "hit": true,
-          "actualProbability": 0.5039081695259553,
-          "logLoss": 0.6853612308333275,
+          "actualProbability": 0.5083798324033519,
+          "logLoss": 0.6765264092118232,
           "probabilities": {
-            "home": 0.184547,
-            "draw": 0.311544,
-            "away": 0.503908
+            "home": 0.182366,
+            "draw": 0.309254,
+            "away": 0.50838
           }
         },
         "assisted": {
@@ -8272,63 +7966,63 @@
       "historyGeneratedAt": "2026-07-04T17:16:03+08:00",
       "halfFullCalibration": {
         "applied": true,
-        "policy": "current_tournament_half_full_late_swing_v3",
-        "sourceKnockoutPolicy": "current_tournament_evidence_v1",
+        "policy": "knockout_half_full_late_swing_v1",
+        "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "weights": {
           "胜胜": 0.95,
           "胜平": 1.3,
           "胜负": 1.3,
-          "平胜": 1.2,
-          "平平": 0.95,
-          "平负": 1.2,
+          "平胜": 0.95,
+          "平平": 1.1,
+          "平负": 0.95,
           "负胜": 1.3,
           "负平": 1.3,
           "负负": 0.95
         },
         "topSelectionBefore": "负负",
         "topSelectionAfter": "负负",
-        "topProbabilityBefore": 0.5003650036500366,
-        "topProbabilityAfter": 0.4557814551788183
+        "topProbabilityBefore": 0.52195,
+        "topProbabilityAfter": 0.5003607503607503
       },
       "actual": "平负",
       "predicted": "负负",
       "hit": false,
       "top3Hit": true,
-      "actualProbability": 0.26330775282584945,
-      "logLoss": 1.3344317680753486,
-      "brier": 0.7706395704426143,
+      "actualProbability": 0.2288422884228842,
+      "logLoss": 1.4747222095318089,
+      "brier": 0.8670646852069978,
       "topSelections": [
         {
           "selection": "负负",
-          "probability": 0.4557814551788183
+          "probability": 0.5003650036500366
         },
         {
           "selection": "平负",
-          "probability": 0.26330775282584945
+          "probability": 0.2288422884228842
         },
         {
           "selection": "平平",
-          "probability": 0.12393801421302661
+          "probability": 0.1360613606136061
         },
         {
           "selection": "胜平",
-          "probability": 0.03687159997948062
+          "probability": 0.029580295802958026
         },
         {
           "selection": "负平",
-          "probability": 0.03410436022442832
+          "probability": 0.027360273602736025
         }
       ],
       "probabilities": {
-        "胜胜": 0.023456,
-        "胜平": 0.036872,
-        "胜负": 0.031001,
-        "平胜": 0.027926,
-        "平平": 0.123938,
-        "平负": 0.263308,
-        "负胜": 0.003615,
-        "负平": 0.034104,
-        "负负": 0.455781
+        "胜胜": 0.02575,
+        "胜平": 0.02958,
+        "胜负": 0.02487,
+        "平胜": 0.02427,
+        "平平": 0.136061,
+        "平负": 0.228842,
+        "负胜": 0.0029,
+        "负平": 0.02736,
+        "负负": 0.500365
       },
       "outcomeAssistance": {
         "actual": "away",
@@ -8346,12 +8040,12 @@
         "halfFullSignal": {
           "predicted": "away",
           "hit": true,
-          "actualProbability": 0.7500897722876185,
-          "logLoss": 0.2875623832313301,
+          "actualProbability": 0.7540775407754078,
+          "logLoss": 0.28226007703709277,
           "probabilities": {
-            "home": 0.054996,
-            "draw": 0.194914,
-            "away": 0.75009
+            "home": 0.052921,
+            "draw": 0.193002,
+            "away": 0.754078
           }
         },
         "assisted": {
@@ -8383,63 +8077,63 @@
       "historyGeneratedAt": "2026-07-05T16:05:51+08:00",
       "halfFullCalibration": {
         "applied": true,
-        "policy": "current_tournament_half_full_late_swing_v3",
-        "sourceKnockoutPolicy": "current_tournament_evidence_v1",
+        "policy": "knockout_half_full_late_swing_v1",
+        "sourceKnockoutPolicy": "knockout_tension_close_game_v2",
         "weights": {
           "胜胜": 0.95,
           "胜平": 1.3,
           "胜负": 1.3,
-          "平胜": 1.2,
-          "平平": 0.95,
-          "平负": 1.2,
+          "平胜": 0.95,
+          "平平": 1.1,
+          "平负": 0.95,
           "负胜": 1.3,
           "负平": 1.3,
           "负负": 0.95
         },
         "topSelectionBefore": "胜胜",
         "topSelectionAfter": "胜胜",
-        "topProbabilityBefore": 0.2780572194278057,
-        "topProbabilityAfter": 0.24546485155415135
+        "topProbabilityBefore": 0.29954,
+        "topProbabilityAfter": 0.27805661425474604
       },
       "actual": "平负",
       "predicted": "胜胜",
       "hit": false,
       "top3Hit": false,
-      "actualProbability": 0.1035803558983413,
-      "logLoss": 2.267407582016804,
-      "brier": 0.9384613181570696,
+      "actualProbability": 0.0928890711092889,
+      "logLoss": 2.376349281532708,
+      "brier": 0.9745040994205612,
       "topSelections": [
         {
           "selection": "胜胜",
-          "probability": 0.24546485155415135
-        },
-        {
-          "selection": "平胜",
-          "probability": 0.16075082469915905
+          "probability": 0.2780572194278057
         },
         {
           "selection": "平平",
-          "probability": 0.13127770292245508
+          "probability": 0.14870851291487086
         },
         {
           "selection": "负负",
-          "probability": 0.12809970728987594
+          "probability": 0.14510854891451083
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.14415855841441585
         },
         {
           "selection": "平负",
-          "probability": 0.1035803558983413
+          "probability": 0.0928890711092889
         }
       ],
       "probabilities": {
-        "胜胜": 0.245465,
-        "胜平": 0.078557,
-        "胜负": 0.028183,
-        "平胜": 0.160751,
-        "平平": 0.131278,
-        "平负": 0.10358,
-        "负胜": 0.046363,
-        "负平": 0.077723,
-        "负负": 0.1281
+        "胜胜": 0.278057,
+        "胜平": 0.065029,
+        "胜负": 0.02333,
+        "平胜": 0.144159,
+        "平平": 0.148709,
+        "平负": 0.092889,
+        "负胜": 0.03838,
+        "负平": 0.064339,
+        "负负": 0.145109
       },
       "outcomeAssistance": {
         "actual": "away",
@@ -8457,12 +8151,12 @@
         "halfFullSignal": {
           "predicted": "home",
           "hit": false,
-          "actualProbability": 0.2598629373228639,
-          "logLoss": 1.3476009511093099,
+          "actualProbability": 0.2613273867261327,
+          "logLoss": 1.3419813024332272,
           "probabilities": {
-            "home": 0.452579,
-            "draw": 0.287558,
-            "away": 0.259863
+            "home": 0.460595,
+            "draw": 0.278077,
+            "away": 0.261327
           }
         },
         "assisted": {
@@ -8494,63 +8188,63 @@
       "historyGeneratedAt": "2026-07-05T16:05:51+08:00",
       "halfFullCalibration": {
         "applied": true,
-        "policy": "current_tournament_half_full_late_swing_v3",
-        "sourceKnockoutPolicy": "current_tournament_evidence_v1",
+        "policy": "knockout_half_full_late_swing_v1",
+        "sourceKnockoutPolicy": "knockout_tension_close_game_v2",
         "weights": {
           "胜胜": 0.95,
           "胜平": 1.3,
           "胜负": 1.3,
-          "平胜": 1.2,
-          "平平": 0.95,
-          "平负": 1.2,
+          "平胜": 0.95,
+          "平平": 1.1,
+          "平负": 0.95,
           "负胜": 1.3,
           "负平": 1.3,
           "负负": 0.95
         },
         "topSelectionBefore": "负负",
         "topSelectionAfter": "负负",
-        "topProbabilityBefore": 0.2598825988259883,
-        "topProbabilityAfter": 0.23259939618709438
+        "topProbabilityBefore": 0.27923,
+        "topProbabilityAfter": 0.259878490174535
       },
       "actual": "负负",
       "predicted": "负负",
       "hit": true,
       "top3Hit": true,
-      "actualProbability": 0.23259939618709438,
-      "logLoss": 1.4584376348291694,
-      "brier": 0.7010200189356951,
+      "actualProbability": 0.2598825988259883,
+      "logLoss": 1.3475252929198063,
+      "brier": 0.6606688331105952,
       "topSelections": [
         {
           "selection": "负负",
-          "probability": 0.23259939618709438
+          "probability": 0.2598825988259883
         },
         {
           "selection": "平平",
-          "probability": 0.2177956636454038
+          "probability": 0.24334243342433426
         },
         {
           "selection": "平负",
-          "probability": 0.19367612206837714
-        },
-        {
-          "selection": "平胜",
-          "probability": 0.09789513402545548
+          "probability": 0.17131171311713117
         },
         {
           "selection": "胜胜",
-          "probability": 0.09371818829748595
+          "probability": 0.1047110471104711
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.0865908659086591
         }
       ],
       "probabilities": {
-        "胜胜": 0.093718,
-        "胜平": 0.062966,
-        "胜负": 0.024667,
-        "平胜": 0.097895,
-        "平平": 0.217796,
-        "平负": 0.193676,
-        "负胜": 0.012934,
-        "负平": 0.063749,
-        "负负": 0.232599
+        "胜胜": 0.104711,
+        "胜平": 0.051411,
+        "胜负": 0.02014,
+        "平胜": 0.086591,
+        "平平": 0.243342,
+        "平负": 0.171312,
+        "负胜": 0.01056,
+        "负平": 0.052051,
+        "负负": 0.259883
       },
       "outcomeAssistance": {
         "actual": "away",
@@ -8568,12 +8262,12 @@
         "halfFullSignal": {
           "predicted": "away",
           "hit": true,
-          "actualProbability": 0.4509424389839475,
-          "logLoss": 0.7964155773721728,
+          "actualProbability": 0.4513345133451335,
+          "logLoss": 0.7955464996796713,
           "probabilities": {
-            "home": 0.204547,
-            "draw": 0.344511,
-            "away": 0.450942
+            "home": 0.201862,
+            "draw": 0.346803,
+            "away": 0.451335
           }
         },
         "assisted": {
@@ -8605,63 +8299,63 @@
       "historyGeneratedAt": "2026-07-06T17:04:23+08:00",
       "halfFullCalibration": {
         "applied": true,
-        "policy": "current_tournament_half_full_late_swing_v3",
-        "sourceKnockoutPolicy": "current_tournament_evidence_v1",
+        "policy": "knockout_half_full_late_swing_v1",
+        "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "weights": {
           "胜胜": 0.95,
           "胜平": 1.3,
           "胜负": 1.3,
-          "平胜": 1.2,
-          "平平": 0.95,
-          "平负": 1.2,
+          "平胜": 0.95,
+          "平平": 1.1,
+          "平负": 0.95,
           "负胜": 1.3,
           "负平": 1.3,
           "负负": 0.95
         },
         "topSelectionBefore": "负负",
         "topSelectionAfter": "负负",
-        "topProbabilityBefore": 0.33653336533365336,
-        "topProbabilityAfter": 0.2989904856227552
+        "topProbabilityBefore": 0.36009,
+        "topProbabilityAfter": 0.33652708218357386
       },
       "actual": "平负",
       "predicted": "负负",
       "hit": false,
       "top3Hit": true,
-      "actualProbability": 0.19677604436270693,
-      "logLoss": 1.6256890275724238,
-      "brier": 0.7790859425169449,
+      "actualProbability": 0.1753417534175342,
+      "logLoss": 1.741018332771697,
+      "brier": 0.8397577898718216,
       "topSelections": [
         {
           "selection": "负负",
-          "probability": 0.2989904856227552
+          "probability": 0.33653336533365336
         },
         {
           "selection": "平负",
-          "probability": 0.19677604436270693
+          "probability": 0.1753417534175342
         },
         {
           "selection": "平平",
-          "probability": 0.1372390583726473
+          "probability": 0.15447154471544716
         },
         {
           "selection": "胜胜",
-          "probability": 0.08686387477888086
+          "probability": 0.0977709777097771
         },
         {
           "selection": "平胜",
-          "probability": 0.07975860313024742
+          "probability": 0.07107071070710708
         }
       ],
       "probabilities": {
-        "胜胜": 0.086864,
-        "胜平": 0.068947,
-        "胜负": 0.043051,
-        "平胜": 0.079759,
-        "平平": 0.137239,
-        "平负": 0.196776,
-        "负胜": 0.019003,
-        "负平": 0.069372,
-        "负负": 0.29899
+        "胜胜": 0.097771,
+        "胜平": 0.056711,
+        "胜负": 0.03541,
+        "平胜": 0.071071,
+        "平平": 0.154472,
+        "平负": 0.175342,
+        "负胜": 0.01563,
+        "负平": 0.057061,
+        "负负": 0.336533
       },
       "outcomeAssistance": {
         "actual": "away",
@@ -8679,12 +8373,12 @@
         "halfFullSignal": {
           "predicted": "away",
           "hit": true,
-          "actualProbability": 0.5388171347635528,
-          "logLoss": 0.6183790332375,
+          "actualProbability": 0.5472854728547286,
+          "logLoss": 0.602784724479394,
           "probabilities": {
-            "home": 0.185625,
-            "draw": 0.275558,
-            "away": 0.538817
+            "home": 0.184472,
+            "draw": 0.268243,
+            "away": 0.547285
           }
         },
         "assisted": {
@@ -8716,63 +8410,63 @@
       "historyGeneratedAt": "2026-07-06T17:04:23+08:00",
       "halfFullCalibration": {
         "applied": true,
-        "policy": "current_tournament_half_full_late_swing_v3",
-        "sourceKnockoutPolicy": "current_tournament_evidence_v1",
+        "policy": "knockout_half_full_late_swing_v1",
+        "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "weights": {
           "胜胜": 0.95,
           "胜平": 1.3,
           "胜负": 1.3,
-          "平胜": 1.2,
-          "平平": 0.95,
-          "平负": 1.2,
+          "平胜": 0.95,
+          "平平": 1.1,
+          "平负": 0.95,
           "负胜": 1.3,
           "负平": 1.3,
           "负负": 0.95
         },
         "topSelectionBefore": "负负",
         "topSelectionAfter": "负负",
-        "topProbabilityBefore": 0.3104568954310457,
-        "topProbabilityAfter": 0.27472647233612096
+        "topProbabilityBefore": 0.33342,
+        "topProbabilityAfter": 0.310456360038382
       },
       "actual": "负负",
       "predicted": "负负",
       "hit": true,
       "top3Hit": true,
-      "actualProbability": 0.27472647233612096,
-      "logLoss": 1.2919793223546707,
-      "brier": 0.607837789231884,
+      "actualProbability": 0.3104568954310457,
+      "logLoss": 1.16971021033384,
+      "brier": 0.5528297165503859,
       "topSelections": [
         {
           "selection": "负负",
-          "probability": 0.27472647233612096
+          "probability": 0.3104568954310457
         },
         {
           "selection": "平负",
-          "probability": 0.17582524036715022
+          "probability": 0.15729842701572982
         },
         {
           "selection": "平平",
-          "probability": 0.13045215664430507
+          "probability": 0.14741852581474185
         },
         {
           "selection": "胜胜",
-          "probability": 0.10650672618171589
+          "probability": 0.12035879641203587
         },
         {
           "selection": "平胜",
-          "probability": 0.09314378435978785
+          "probability": 0.08332916670833292
         }
       ],
       "probabilities": {
-        "胜胜": 0.106507,
-        "胜平": 0.072728,
-        "胜负": 0.042709,
-        "平胜": 0.093144,
-        "平平": 0.130452,
-        "平负": 0.175825,
-        "负胜": 0.02595,
-        "负平": 0.077959,
-        "负负": 0.274726
+        "胜胜": 0.120359,
+        "胜平": 0.060059,
+        "胜负": 0.03527,
+        "平胜": 0.083329,
+        "平平": 0.147419,
+        "平负": 0.157298,
+        "负胜": 0.02143,
+        "负平": 0.064379,
+        "负负": 0.310457
       },
       "outcomeAssistance": {
         "actual": "away",
@@ -8790,12 +8484,12 @@
         "halfFullSignal": {
           "predicted": "away",
           "hit": true,
-          "actualProbability": 0.49326077763267473,
-          "logLoss": 0.7067172840744869,
+          "actualProbability": 0.5030249697503025,
+          "logLoss": 0.687115468463803,
           "probabilities": {
-            "home": 0.2256,
-            "draw": 0.281139,
-            "away": 0.493261
+            "home": 0.225118,
+            "draw": 0.271857,
+            "away": 0.503025
           }
         },
         "assisted": {
@@ -8827,8 +8521,8 @@
       "historyGeneratedAt": "2026-07-07T17:08:41+08:00",
       "halfFullCalibration": {
         "applied": true,
-        "policy": "current_tournament_half_full_late_swing_v3",
-        "sourceKnockoutPolicy": "current_tournament_evidence_v1",
+        "policy": "knockout_half_full_late_swing_v2",
+        "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "weights": {
           "胜胜": 0.95,
           "胜平": 1.3,
@@ -8842,48 +8536,48 @@
         },
         "topSelectionBefore": "胜胜",
         "topSelectionAfter": "胜胜",
-        "topProbabilityBefore": 0.49042,
-        "topProbabilityAfter": 0.44701635849272936
+        "topProbabilityBefore": 0.53079,
+        "topProbabilityAfter": 0.49042230740913817
       },
       "actual": "负胜",
       "predicted": "胜胜",
       "hit": false,
       "top3Hit": false,
-      "actualProbability": 0.01097634281498098,
-      "logLoss": 4.512012975343041,
-      "brier": 1.317500614024659,
+      "actualProbability": 0.0088,
+      "logLoss": 4.733003557497976,
+      "brier": 1.3359547464,
       "topSelections": [
         {
           "selection": "胜胜",
-          "probability": 0.44701635849272936
+          "probability": 0.49042
         },
         {
           "selection": "平胜",
-          "probability": 0.34824174627473575
+          "probability": 0.30246
         },
         {
           "selection": "平平",
-          "probability": 0.13129202780737476
+          "probability": 0.14404
         },
         {
           "selection": "平负",
-          "probability": 0.017995829181624415
+          "probability": 0.01563
         },
         {
           "selection": "胜平",
-          "probability": 0.017399997985111895
+          "probability": 0.01395
         }
       ],
       "probabilities": {
-        "胜胜": 0.447016,
-        "胜平": 0.0174,
-        "胜负": 0.000524,
-        "平胜": 0.348242,
-        "平平": 0.131292,
-        "平负": 0.017996,
-        "负胜": 0.010976,
-        "负平": 0.016427,
-        "负负": 0.010127
+        "胜胜": 0.49042,
+        "胜平": 0.01395,
+        "胜负": 0.00042,
+        "平胜": 0.30246,
+        "平平": 0.14404,
+        "平负": 0.01563,
+        "负胜": 0.0088,
+        "负平": 0.01317,
+        "负负": 0.01111
       },
       "outcomeAssistance": {
         "actual": "home",
@@ -8901,12 +8595,12 @@
         "halfFullSignal": {
           "predicted": "home",
           "hit": true,
-          "actualProbability": 0.8062344475824461,
-          "logLoss": 0.21538070087842764,
+          "actualProbability": 0.8016800000000001,
+          "logLoss": 0.22104575323206355,
           "probabilities": {
-            "home": 0.806234,
-            "draw": 0.165119,
-            "away": 0.028646
+            "home": 0.80168,
+            "draw": 0.17116,
+            "away": 0.02716
           }
         },
         "assisted": {
@@ -8938,8 +8632,8 @@
       "historyGeneratedAt": "2026-07-07T17:08:41+08:00",
       "halfFullCalibration": {
         "applied": true,
-        "policy": "current_tournament_half_full_late_swing_v3",
-        "sourceKnockoutPolicy": "current_tournament_evidence_v1",
+        "policy": "knockout_half_full_late_swing_v2",
+        "sourceKnockoutPolicy": "knockout_tension_close_game_v2",
         "weights": {
           "胜胜": 0.95,
           "胜平": 1.3,
@@ -8952,49 +8646,49 @@
           "负负": 0.95
         },
         "topSelectionBefore": "负负",
-        "topSelectionAfter": "平负",
-        "topProbabilityBefore": 0.23567235672356723,
-        "topProbabilityAfter": 0.20715203386540718
+        "topSelectionAfter": "负负",
+        "topProbabilityBefore": 0.26374,
+        "topProbabilityAfter": 0.23567240845757995
       },
       "actual": "平平",
-      "predicted": "平负",
+      "predicted": "负负",
       "hit": false,
       "top3Hit": true,
-      "actualProbability": 0.14335215771815182,
-      "logLoss": 1.942451034668713,
-      "brier": 0.8626478622687346,
+      "actualProbability": 0.16326163261632617,
+      "logLoss": 1.8124012569089267,
+      "brier": 0.8311933047829763,
       "topSelections": [
         {
-          "selection": "平负",
-          "probability": 0.20715203386540718
+          "selection": "负负",
+          "probability": 0.23567235672356723
         },
         {
-          "selection": "负负",
-          "probability": 0.20693251873965968
+          "selection": "平负",
+          "probability": 0.18677186771867718
         },
         {
           "selection": "平平",
-          "probability": 0.14335215771815182
-        },
-        {
-          "selection": "平胜",
-          "probability": 0.1339162422707569
+          "probability": 0.16326163261632617
         },
         {
           "selection": "胜胜",
-          "probability": 0.11961818232233139
+          "probability": 0.13623136231362312
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.12074120741207413
         }
       ],
       "probabilities": {
-        "胜胜": 0.119618,
-        "胜平": 0.068272,
-        "胜负": 0.030532,
-        "平胜": 0.133916,
-        "平平": 0.143352,
-        "平负": 0.207152,
-        "负胜": 0.020991,
-        "负平": 0.069234,
-        "负负": 0.206933
+        "胜胜": 0.136231,
+        "胜平": 0.056821,
+        "胜负": 0.02541,
+        "平胜": 0.120741,
+        "平平": 0.163262,
+        "平负": 0.186772,
+        "负胜": 0.01747,
+        "负平": 0.057621,
+        "负负": 0.235672
       },
       "outcomeAssistance": {
         "actual": "draw",
@@ -9012,12 +8706,12 @@
         "halfFullSignal": {
           "predicted": "away",
           "hit": false,
-          "actualProbability": 0.28085828103481747,
-          "logLoss": 1.2699050748239404,
+          "actualProbability": 0.2777027770277703,
+          "logLoss": 1.2812038846193827,
           "probabilities": {
-            "home": 0.274526,
-            "draw": 0.280858,
-            "away": 0.444616
+            "home": 0.274443,
+            "draw": 0.277703,
+            "away": 0.447854
           }
         },
         "assisted": {
@@ -9049,8 +8743,8 @@
       "historyGeneratedAt": "2026-07-08T20:05:00+08:00",
       "halfFullCalibration": {
         "applied": true,
-        "policy": "current_tournament_half_full_late_swing_v3",
-        "sourceKnockoutPolicy": "current_tournament_evidence_v1",
+        "policy": "knockout_half_full_late_swing_v2",
+        "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "weights": {
           "胜胜": 0.95,
           "胜平": 1.3,
@@ -9064,48 +8758,48 @@
         },
         "topSelectionBefore": "胜胜",
         "topSelectionAfter": "胜胜",
-        "topProbabilityBefore": 0.38024,
-        "topProbabilityAfter": 0.3386646378364645
+        "topProbabilityBefore": 0.42003,
+        "topProbabilityAfter": 0.38024152665121674
       },
       "actual": "平胜",
       "predicted": "胜胜",
       "hit": false,
       "top3Hit": true,
-      "actualProbability": 0.28894517236384504,
-      "logLoss": 1.241518323871869,
-      "brier": 0.6487629598085054,
+      "actualProbability": 0.25683,
+      "logLoss": 1.359340891559633,
+      "brier": 0.7276133606,
       "topSelections": [
         {
           "selection": "胜胜",
-          "probability": 0.3386646378364645
+          "probability": 0.38024
         },
         {
           "selection": "平胜",
-          "probability": 0.28894517236384504
+          "probability": 0.25683
         },
         {
           "selection": "平平",
-          "probability": 0.12949308777362606
+          "probability": 0.14539
         },
         {
           "selection": "平负",
-          "probability": 0.06314874634887911
+          "probability": 0.05613
         },
         {
-          "selection": "负平",
-          "probability": 0.048154716116121474
+          "selection": "负负",
+          "probability": 0.05174
         }
       ],
       "probabilities": {
-        "胜胜": 0.338665,
-        "胜平": 0.048106,
-        "胜负": 0.007349,
-        "平胜": 0.288945,
-        "平平": 0.129493,
-        "平负": 0.063149,
-        "负胜": 0.030056,
-        "负平": 0.048155,
-        "负负": 0.046083
+        "胜胜": 0.38024,
+        "胜平": 0.03947,
+        "胜负": 0.00603,
+        "平胜": 0.25683,
+        "平平": 0.14539,
+        "平负": 0.05613,
+        "负胜": 0.02466,
+        "负平": 0.03951,
+        "负负": 0.05174
       },
       "outcomeAssistance": {
         "actual": "home",
@@ -9123,12 +8817,12 @@
         "halfFullSignal": {
           "predicted": "home",
           "hit": true,
-          "actualProbability": 0.6576653733342898,
-          "logLoss": 0.41905902817651425,
+          "actualProbability": 0.66173,
+          "logLoss": 0.41289766122548927,
           "probabilities": {
-            "home": 0.657665,
-            "draw": 0.225754,
-            "away": 0.116581
+            "home": 0.66173,
+            "draw": 0.22437,
+            "away": 0.1139
           }
         },
         "assisted": {
@@ -9160,8 +8854,8 @@
       "historyGeneratedAt": "2026-07-09T16:33:01+08:00",
       "halfFullCalibration": {
         "applied": true,
-        "policy": "current_tournament_half_full_late_swing_v3",
-        "sourceKnockoutPolicy": "current_tournament_evidence_v1",
+        "policy": "knockout_half_full_late_swing_v2",
+        "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
         "weights": {
           "胜胜": 0.95,
           "胜平": 1.3,
@@ -9175,48 +8869,48 @@
         },
         "topSelectionBefore": "胜胜",
         "topSelectionAfter": "胜胜",
-        "topProbabilityBefore": 0.37703,
-        "topProbabilityAfter": 0.33549925369883904
+        "topProbabilityBefore": 0.41684,
+        "topProbabilityAfter": 0.3770289209301617
       },
       "actual": "平胜",
       "predicted": "胜胜",
       "hit": false,
       "top3Hit": true,
-      "actualProbability": 0.2896369749489157,
-      "logLoss": 1.2391269506918772,
-      "brier": 0.6456797454988946,
+      "actualProbability": 0.25768,
+      "logLoss": 1.3560367739591936,
+      "brier": 0.7238854813999999,
       "topSelections": [
         {
           "selection": "胜胜",
-          "probability": 0.33549925369883904
+          "probability": 0.37703
         },
         {
           "selection": "平胜",
-          "probability": 0.2896369749489157
+          "probability": 0.25768
         },
         {
           "selection": "平平",
-          "probability": 0.1282982319664181
+          "probability": 0.14418
         },
         {
           "selection": "平负",
-          "probability": 0.06424887258646393
+          "probability": 0.05716
         },
         {
-          "selection": "胜平",
-          "probability": 0.04841520477969949
+          "selection": "负负",
+          "probability": 0.05284
         }
       ],
       "probabilities": {
-        "胜胜": 0.335499,
-        "胜平": 0.048415,
-        "胜负": 0.007379,
-        "平胜": 0.289637,
-        "平平": 0.128298,
-        "平负": 0.064249,
-        "负胜": 0.031197,
-        "负平": 0.048306,
-        "负负": 0.04702
+        "胜胜": 0.37703,
+        "胜平": 0.03976,
+        "胜负": 0.00606,
+        "平胜": 0.25768,
+        "平平": 0.14418,
+        "平负": 0.05716,
+        "负胜": 0.02562,
+        "负平": 0.03967,
+        "负负": 0.05284
       },
       "outcomeAssistance": {
         "actual": "home",
@@ -9234,12 +8928,12 @@
         "halfFullSignal": {
           "predicted": "home",
           "hit": true,
-          "actualProbability": 0.6563333500374907,
-          "logLoss": 0.42108646356039925,
+          "actualProbability": 0.66033,
+          "logLoss": 0.41501556892001484,
           "probabilities": {
-            "home": 0.656333,
-            "draw": 0.225019,
-            "away": 0.118648
+            "home": 0.66033,
+            "draw": 0.22361,
+            "away": 0.11606
           }
         },
         "assisted": {
@@ -9286,48 +8980,48 @@
         },
         "topSelectionBefore": "胜胜",
         "topSelectionAfter": "胜胜",
-        "topProbabilityBefore": 0.39917,
-        "topProbabilityAfter": 0.354570449338029
+        "topProbabilityBefore": 0.44186,
+        "topProbabilityAfter": 0.3991721139527232
       },
       "actual": "平胜",
       "predicted": "胜胜",
       "hit": false,
       "top3Hit": true,
-      "actualProbability": 0.2629351876655862,
-      "logLoss": 1.335847711906012,
-      "brier": 0.6945585380970154,
+      "actualProbability": 0.23434,
+      "logLoss": 1.4509822267421275,
+      "brier": 0.7713806874,
       "topSelections": [
         {
           "selection": "胜胜",
-          "probability": 0.354570449338029
+          "probability": 0.39917
         },
         {
           "selection": "平胜",
-          "probability": 0.2629351876655862
+          "probability": 0.23434
         },
         {
           "selection": "平平",
-          "probability": 0.10404298101301035
+          "probability": 0.11713
+        },
+        {
+          "selection": "负负",
+          "probability": 0.05865
         },
         {
           "selection": "平负",
-          "probability": 0.0655037819233461
-        },
-        {
-          "selection": "负平",
-          "probability": 0.05545231373110032
+          "probability": 0.05838
         }
       ],
       "probabilities": {
-        "胜胜": 0.35457,
-        "胜平": 0.054054,
-        "胜负": 0.011025,
-        "平胜": 0.262935,
-        "平平": 0.104043,
-        "平负": 0.065504,
-        "负胜": 0.040319,
-        "负平": 0.055452,
-        "负负": 0.052097
+        "胜胜": 0.39917,
+        "胜平": 0.04447,
+        "胜负": 0.00907,
+        "平胜": 0.23434,
+        "平平": 0.11713,
+        "平负": 0.05838,
+        "负胜": 0.03317,
+        "负平": 0.04562,
+        "负负": 0.05865
       },
       "outcomeAssistance": {
         "actual": "home",
@@ -9345,12 +9039,12 @@
         "halfFullSignal": {
           "predicted": "home",
           "hit": true,
-          "actualProbability": 0.6578246472285296,
-          "logLoss": 0.4188168767462054,
+          "actualProbability": 0.66668,
+          "logLoss": 0.40544510830816166,
           "probabilities": {
-            "home": 0.657825,
-            "draw": 0.21355,
-            "away": 0.128626
+            "home": 0.66668,
+            "draw": 0.20722,
+            "away": 0.1261
           }
         },
         "assisted": {
@@ -9397,48 +9091,48 @@
         },
         "topSelectionBefore": "负负",
         "topSelectionAfter": "负负",
-        "topProbabilityBefore": 0.30314,
-        "topProbabilityAfter": 0.26524134011887746
+        "topProbabilityBefore": 0.34018,
+        "topProbabilityAfter": 0.30313513189015434
       },
       "actual": "平平",
       "predicted": "负负",
       "hit": false,
       "top3Hit": false,
-      "actualProbability": 0.09135662836251236,
-      "logLoss": 2.3929844387191856,
-      "brier": 0.9742527031530785,
+      "actualProbability": 0.10441,
+      "logLoss": 2.259429822680118,
+      "brier": 0.9621382660000001,
       "topSelections": [
         {
           "selection": "负负",
-          "probability": 0.26524134011887746
+          "probability": 0.30314
         },
         {
           "selection": "平负",
-          "probability": 0.20159531821399146
+          "probability": 0.1824
         },
         {
           "selection": "胜胜",
-          "probability": 0.10912746565819885
-        },
-        {
-          "selection": "平胜",
-          "probability": 0.10749539829765795
+          "probability": 0.12472
         },
         {
           "selection": "平平",
-          "probability": 0.09135662836251236
+          "probability": 0.10441
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.09726
         }
       ],
       "probabilities": {
-        "胜胜": 0.109127,
-        "胜平": 0.074343,
-        "胜负": 0.050037,
-        "平胜": 0.107495,
-        "平平": 0.091357,
-        "平负": 0.201595,
-        "负胜": 0.027479,
-        "负平": 0.073325,
-        "负负": 0.265241
+        "胜胜": 0.12472,
+        "胜平": 0.06209,
+        "胜负": 0.04179,
+        "平胜": 0.09726,
+        "平平": 0.10441,
+        "平负": 0.1824,
+        "负胜": 0.02295,
+        "负平": 0.06124,
+        "负负": 0.30314
       },
       "outcomeAssistance": {
         "actual": "draw",
@@ -9456,12 +9150,12 @@
         "halfFullSignal": {
           "predicted": "away",
           "hit": false,
-          "actualProbability": 0.239024646335516,
-          "logLoss": 1.431188609624666,
+          "actualProbability": 0.22774,
+          "logLoss": 1.4795506515996781,
           "probabilities": {
-            "home": 0.244102,
-            "draw": 0.239025,
-            "away": 0.516874
+            "home": 0.24493,
+            "draw": 0.22774,
+            "away": 0.52733
           }
         },
         "assisted": {
@@ -9508,48 +9202,48 @@
         },
         "topSelectionBefore": "胜胜",
         "topSelectionAfter": "胜胜",
-        "topProbabilityBefore": 0.38106762135242706,
-        "topProbabilityAfter": 0.33841712656696016
+        "topProbabilityBefore": 0.42198,
+        "topProbabilityAfter": 0.3810605182060315
       },
       "actual": "胜平",
       "predicted": "胜胜",
       "hit": false,
       "top3Hit": false,
-      "actualProbability": 0.05366705727225178,
-      "logLoss": 2.924955924327331,
-      "brier": 1.1090997491672694,
+      "actualProbability": 0.04416088321766435,
+      "logLoss": 3.1199158768132946,
+      "brier": 1.1447279918617834,
       "topSelections": [
         {
           "selection": "胜胜",
-          "probability": 0.33841712656696016
+          "probability": 0.38106762135242706
         },
         {
           "selection": "平胜",
-          "probability": 0.2718240938051699
+          "probability": 0.24231484629692593
         },
         {
           "selection": "平平",
-          "probability": 0.11590515716226832
+          "probability": 0.13051261025220504
         },
         {
           "selection": "平负",
-          "probability": 0.06904697690441255
+          "probability": 0.06155123102462049
         },
         {
-          "selection": "胜平",
-          "probability": 0.05366705727225178
+          "selection": "负负",
+          "probability": 0.05952119042380848
         }
       ],
       "probabilities": {
-        "胜胜": 0.338417,
-        "胜平": 0.053667,
-        "胜负": 0.009832,
-        "平胜": 0.271824,
-        "平平": 0.115905,
-        "平负": 0.069047,
-        "负胜": 0.035997,
-        "负平": 0.052452,
-        "负负": 0.052859
+        "胜胜": 0.381068,
+        "胜平": 0.044161,
+        "胜负": 0.00809,
+        "平胜": 0.242315,
+        "平平": 0.130513,
+        "平负": 0.061551,
+        "负胜": 0.029621,
+        "负平": 0.043161,
+        "负负": 0.059521
       },
       "outcomeAssistance": {
         "actual": "draw",
@@ -9567,12 +9261,12 @@
         "halfFullSignal": {
           "predicted": "home",
           "hit": false,
-          "actualProbability": 0.22202398508375892,
-          "logLoss": 1.5049698620280243,
+          "actualProbability": 0.21783435668713372,
+          "logLoss": 1.5240203367218694,
           "probabilities": {
-            "home": 0.646238,
-            "draw": 0.222024,
-            "away": 0.131738
+            "home": 0.653003,
+            "draw": 0.217834,
+            "away": 0.129163
           }
         },
         "assisted": {
@@ -9599,102 +9293,129 @@
       "awayTeam": "西班牙",
       "kickoff": "2026-07-15T03:00:00+08:00",
       "stage": "knockout",
-      "historyPath": "public/data/history/2026-07-15.json",
-      "historySection": "matches",
-      "historyGeneratedAt": "2026-07-13T16:37:28+08:00",
+      "historyPath": "public/data/history/2026-07-13.json",
+      "historySection": "parlayMatches",
+      "historyGeneratedAt": "2026-07-12T17:51:27+08:00",
       "halfFullCalibration": {
         "applied": true,
-        "policy": "current_tournament_half_full_late_swing_v3",
-        "sourceKnockoutPolicy": "current_tournament_evidence_v1",
-        "weights": {
-          "胜胜": 0.95,
-          "胜平": 1.3,
-          "胜负": 1.3,
-          "平胜": 1.2,
-          "平平": 0.95,
-          "平负": 1.2,
-          "负胜": 1.3,
-          "负平": 1.3,
-          "负负": 0.95
+        "policy": "opponent_adjusted_half_split_v1",
+        "blend": 0.25,
+        "baselineCalibration": {
+          "applied": true,
+          "policy": "current_tournament_half_full_late_swing_v3",
+          "sourceKnockoutPolicy": "current_tournament_evidence_v1",
+          "weights": {
+            "胜胜": 0.95,
+            "胜平": 1.3,
+            "胜负": 1.3,
+            "平胜": 1.2,
+            "平平": 0.95,
+            "平负": 1.2,
+            "负胜": 1.3,
+            "负平": 1.3,
+            "负负": 0.95
+          },
+          "topSelectionBefore": "负负",
+          "topSelectionAfter": "负负",
+          "topProbabilityBefore": 0.2372,
+          "topProbabilityAfter": 0.21133493924378405
+        },
+        "candidateCalibration": {
+          "applied": true,
+          "policy": "current_tournament_half_full_late_swing_v3",
+          "sourceKnockoutPolicy": "current_tournament_evidence_v1",
+          "weights": {
+            "胜胜": 0.95,
+            "胜平": 1.3,
+            "胜负": 1.3,
+            "平胜": 1.2,
+            "平平": 0.95,
+            "平负": 1.2,
+            "负胜": 1.3,
+            "负平": 1.3,
+            "负负": 0.95
+          },
+          "topSelectionBefore": "负负",
+          "topSelectionAfter": "负负",
+          "topProbabilityBefore": 0.2244818729046624,
+          "topProbabilityAfter": 0.19929341921224308
         },
         "topSelectionBefore": "负负",
-        "topSelectionAfter": "负负",
-        "topProbabilityBefore": 0.21459,
-        "topProbabilityAfter": 0.18793818871396423
+        "topSelectionAfter": "负负"
       },
       "actual": "负负",
       "predicted": "负负",
       "hit": true,
       "top3Hit": true,
-      "actualProbability": 0.18793818871396423,
-      "logLoss": 1.6716421536496722,
-      "brier": 0.7657641368115727,
+      "actualProbability": 0.2083220832208322,
+      "logLoss": 1.5686699199119323,
+      "brier": 0.7323693881145253,
       "topSelections": [
         {
           "selection": "负负",
-          "probability": 0.18793818871396423
+          "probability": 0.2083220832208322
         },
         {
           "selection": "平负",
-          "probability": 0.18193802830405237
-        },
-        {
-          "selection": "平胜",
-          "probability": 0.15129420376299524
+          "probability": 0.16693166931669315
         },
         {
           "selection": "胜胜",
-          "probability": 0.1434124535249156
+          "probability": 0.16385163851638515
         },
         {
           "selection": "平平",
-          "probability": 0.13196573128020936
+          "probability": 0.15029150291502916
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.14067140671406714
         }
       ],
       "probabilities": {
-        "胜胜": 0.143412,
-        "胜平": 0.073154,
-        "胜负": 0.031316,
-        "平胜": 0.151294,
-        "平平": 0.131966,
-        "平负": 0.181938,
-        "负胜": 0.025875,
-        "负平": 0.073106,
-        "负负": 0.187938
+        "胜胜": 0.163852,
+        "胜平": 0.060961,
+        "胜负": 0.02653,
+        "平胜": 0.140671,
+        "平平": 0.150292,
+        "平负": 0.166932,
+        "负胜": 0.02241,
+        "负平": 0.060031,
+        "负负": 0.208322
       },
       "outcomeAssistance": {
         "actual": "away",
         "base": {
           "predicted": "away",
           "hit": true,
-          "actualProbability": 0.40876,
-          "logLoss": 0.8946270922381288,
+          "actualProbability": 0.40466,
+          "logLoss": 0.9047080706310885,
           "probabilities": {
-            "home": 0.32297,
-            "draw": 0.26827,
-            "away": 0.40876
+            "home": 0.32834,
+            "draw": 0.267,
+            "away": 0.40466
           }
         },
         "halfFullSignal": {
           "predicted": "away",
           "hit": true,
-          "actualProbability": 0.401192103775994,
-          "logLoss": 0.9133149046035087,
+          "actualProbability": 0.40178401784017836,
+          "logLoss": 0.9118406037981335,
           "probabilities": {
-            "home": 0.320582,
-            "draw": 0.278226,
-            "away": 0.401192
+            "home": 0.326933,
+            "draw": 0.271283,
+            "away": 0.401784
           }
         },
         "assisted": {
           "predicted": "away",
           "hit": true,
-          "actualProbability": 0.40876,
-          "logLoss": 0.8946270922381288,
+          "actualProbability": 0.40466,
+          "logLoss": 0.9047080706310885,
           "probabilities": {
-            "home": 0.32297,
-            "draw": 0.26827,
-            "away": 0.40876
+            "home": 0.32834,
+            "draw": 0.267,
+            "away": 0.40466
           }
         },
         "assistWeight": 0.0

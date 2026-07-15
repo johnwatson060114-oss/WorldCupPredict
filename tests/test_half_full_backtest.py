@@ -107,6 +107,29 @@ def test_evaluate_row_classifies_post_group_date_without_legacy_context_as_knock
     assert evaluate_row("m2", forecast, settlement)["stage"] == "knockout"
 
 
+def test_evaluate_row_does_not_recalibrate_archived_final_quotes():
+    forecast = {
+        "historyPath": "history.json",
+        "historyGeneratedAt": "2026-07-13T16:00:00+08:00",
+        "match": {
+            "id": "m3", "kickoff": "2026-07-15T03:00:00+08:00",
+            "outcomeProbabilities": {"home": 0.3, "draw": 0.3, "away": 0.4},
+            "halfFullCalibration": {"policy": "opponent_adjusted_half_split_v1"},
+            "quotes": [
+                {"market": "\u534a\u5168\u573a", "selection": "\u8d1f\u8d1f", "modelProbability": 0.5},
+                {"market": "\u534a\u5168\u573a", "selection": "\u5e73\u8d1f", "modelProbability": 0.3},
+                {"market": "\u534a\u5168\u573a", "selection": "\u5e73\u5e73", "modelProbability": 0.2},
+            ],
+        },
+    }
+    settlement = {"homeScore": 0, "awayScore": 2, "halfTimeHomeScore": 0, "halfTimeAwayScore": 1}
+
+    row = evaluate_row("m3", forecast, settlement)
+
+    assert row["actualProbability"] == 0.5
+    assert row["halfFullCalibration"]["policy"] == "opponent_adjusted_half_split_v1"
+
+
 def test_summarize_reports_model_and_in_sample_baseline_accuracy():
     rows = [
         {"actual": "\u5e73\u80dc", "predicted": "\u5e73\u80dc", "hit": True, "top3Hit": True, "logLoss": 1.0, "brier": 0.5, "actualProbability": 0.3},
