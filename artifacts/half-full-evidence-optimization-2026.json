@@ -1,61 +1,111 @@
 {
-  "schemaVersion": 1,
-  "generatedAt": "2026-07-12T17:47:52+08:00",
-  "objective": "opponent-adjusted first/second-half temporal residual model",
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-15T14:32:33+08:00",
+  "objective": "opponent-strength-adjusted halftime-score temporal residual model",
   "leakagePolicy": "only matches with kickoff strictly before target kickoff",
+  "grid": {
+    "halfLifeMatches": [
+      1.5,
+      2.0,
+      3.0
+    ],
+    "shrinkage": [
+      3.0,
+      5.0,
+      8.0
+    ],
+    "maxFirstHalfXgShift": [
+      0.03,
+      0.05,
+      0.08
+    ],
+    "halfScoreResidualScale": [
+      0.15,
+      0.3,
+      0.45
+    ],
+    "blend": [
+      0.25,
+      0.5,
+      0.75,
+      1.0
+    ]
+  },
   "baseline": {
     "all": {
-      "matches": 88,
-      "top1Hits": 31,
-      "top3Hits": 62,
-      "averageLogLoss": 1.7970415414906489,
-      "averageBrier": 0.7629017561879295
+      "matches": 89,
+      "top1Hits": 32,
+      "top3Hits": 63,
+      "averageLogLoss": 1.7943625375420273,
+      "averageBrier": 0.762522457752448
     },
     "knockout": {
-      "matches": 38,
-      "top1Hits": 11,
-      "top3Hits": 24,
-      "averageLogLoss": 1.947721539413088,
-      "averageBrier": 0.8048322182125126
+      "matches": 39,
+      "top1Hits": 12,
+      "top3Hits": 25,
+      "averageLogLoss": 1.9377443253271973,
+      "averageBrier": 0.8028914996796293
+    },
+    "lateKnockoutHoldout": {
+      "matches": 19,
+      "top1Hits": 6,
+      "top3Hits": 13,
+      "averageLogLoss": 1.963637568284384,
+      "averageBrier": 0.8235675317035506
     }
   },
   "selected": {
     "settings": {
       "halfLifeMatches": 1.5,
-      "shrinkage": 5.0,
-      "maxFirstHalfXgShift": 0.05,
+      "shrinkage": 3.0,
+      "maxFirstHalfXgShift": 0.03,
+      "halfScoreResidualScale": 0.45,
       "blend": 0.25
     },
     "baseline": {
       "all": {
-        "matches": 88,
-        "top1Hits": 31,
-        "top3Hits": 62,
-        "averageLogLoss": 1.7970415414906489,
-        "averageBrier": 0.7629017561879295
+        "matches": 89,
+        "top1Hits": 32,
+        "top3Hits": 63,
+        "averageLogLoss": 1.7943625375420273,
+        "averageBrier": 0.762522457752448
       },
       "knockout": {
-        "matches": 38,
-        "top1Hits": 11,
-        "top3Hits": 24,
-        "averageLogLoss": 1.947721539413088,
-        "averageBrier": 0.8048322182125126
+        "matches": 39,
+        "top1Hits": 12,
+        "top3Hits": 25,
+        "averageLogLoss": 1.9377443253271973,
+        "averageBrier": 0.8028914996796293
+      },
+      "lateKnockoutHoldout": {
+        "matches": 19,
+        "top1Hits": 6,
+        "top3Hits": 13,
+        "averageLogLoss": 1.963637568284384,
+        "averageBrier": 0.8235675317035506
       }
     },
     "candidate": {
       "all": {
-        "matches": 88,
-        "top1Hits": 31,
-        "top3Hits": 62,
-        "averageLogLoss": 1.796052490823791,
-        "averageBrier": 0.7628139697491535
+        "matches": 89,
+        "top1Hits": 32,
+        "top3Hits": 63,
+        "averageLogLoss": 1.7936133421958416,
+        "averageBrier": 0.7625074086106011
       },
       "knockout": {
-        "matches": 38,
-        "top1Hits": 11,
-        "top3Hits": 24,
-        "averageLogLoss": 1.9423074603194004,
-        "averageBrier": 0.8042371088022401
+        "matches": 39,
+        "top1Hits": 12,
+        "top3Hits": 25,
+        "averageLogLoss": 1.9341077183905593,
+        "averageBrier": 0.802583078900276
+      },
+      "lateKnockoutHoldout": {
+        "matches": 19,
+        "top1Hits": 6,
+        "top3Hits": 13,
+        "averageLogLoss": 1.9585713149781026,
+        "averageBrier": 0.8235552999749711
       }
     },
     "matches": [
@@ -82,7 +132,11 @@
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
             "home": 0.0,
             "away": 0.0
@@ -121,7 +175,11 @@
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
             "home": 0.0,
             "away": 0.0
@@ -160,7 +218,11 @@
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
             "home": 0.0,
             "away": 0.0
@@ -199,7 +261,11 @@
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
             "home": 0.0,
             "away": 0.0
@@ -238,7 +304,11 @@
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
             "home": 0.0,
             "away": 0.0
@@ -277,7 +347,11 @@
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
             "home": 0.0,
             "away": 0.0
@@ -316,7 +390,11 @@
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
             "home": 0.0,
             "away": 0.0
@@ -355,7 +433,11 @@
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
             "home": 0.0,
             "away": 0.0
@@ -394,7 +476,11 @@
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
             "home": 0.0,
             "away": 0.0
@@ -433,7 +519,11 @@
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
             "home": 0.0,
             "away": 0.0
@@ -472,7 +562,11 @@
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
             "home": 0.0,
             "away": 0.0
@@ -511,7 +605,11 @@
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
             "home": 0.0,
             "away": 0.0
@@ -550,7 +648,11 @@
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
             "home": 0.0,
             "away": 0.0
@@ -589,7 +691,11 @@
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
             "home": 0.0,
             "away": 0.0
@@ -628,7 +734,11 @@
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
             "home": 0.0,
             "away": 0.0
@@ -667,7 +777,11 @@
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
             "home": 0.0,
             "away": 0.0
@@ -706,7 +820,11 @@
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
             "home": 0.0,
             "away": 0.0
@@ -745,7 +863,11 @@
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
             "home": 0.0,
             "away": 0.0
@@ -784,7 +906,11 @@
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
             "home": 0.0,
             "away": 0.0
@@ -823,7 +949,11 @@
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
             "home": 0.0,
             "away": 0.0
@@ -862,7 +992,11 @@
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
             "home": 0.0,
             "away": 0.0
@@ -901,7 +1035,11 @@
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
             "home": 0.0,
             "away": 0.0
@@ -940,7 +1078,11 @@
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
             "home": 0.0,
             "away": 0.0
@@ -979,7 +1121,11 @@
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
             "home": 0.0,
             "away": 0.0
@@ -1012,24 +1158,28 @@
         "candidate": {
           "top1": true,
           "top3": true,
-          "logLoss": 0.6112562903177803,
-          "brier": 0.30942522002663875,
+          "logLoss": 0.6045878924144414,
+          "brier": 0.3048994540195211,
           "predicted": "胜胜"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": -0.05,
-            "away": 0.05
+            "home": -0.03,
+            "away": 0.03
           },
           "firstHalfExpectedGoals": {
-            "home": 0.9445,
-            "away": 0.122
+            "home": 0.9645,
+            "away": 0.102
           },
           "secondHalfExpectedGoals": {
-            "home": 1.2655,
-            "away": 0.05
+            "home": 1.2455,
+            "away": 0.058
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -1051,24 +1201,28 @@
         "candidate": {
           "top1": false,
           "top3": true,
-          "logLoss": 2.075455821364938,
-          "brier": 0.9283340858179268,
+          "logLoss": 2.0747865330293744,
+          "brier": 0.9283790370828197,
           "predicted": "胜胜"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": -0.0111,
-            "away": 0.05
+            "home": -0.0076,
+            "away": 0.03
           },
           "firstHalfExpectedGoals": {
-            "home": 0.8124,
-            "away": 0.527
+            "home": 0.8159,
+            "away": 0.507
           },
           "secondHalfExpectedGoals": {
-            "home": 1.0177,
-            "away": 0.533
+            "home": 1.0141,
+            "away": 0.553
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -1090,24 +1244,28 @@
         "candidate": {
           "top1": false,
           "top3": false,
-          "logLoss": 3.6975458742495015,
-          "brier": 1.2191365091433801,
+          "logLoss": 3.662222765998575,
+          "brier": 1.2183626827375682,
           "predicted": "胜胜"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": -0.05,
-            "away": 0.05
+            "home": -0.03,
+            "away": 0.03
           },
           "firstHalfExpectedGoals": {
-            "home": 0.6565,
-            "away": 0.1985
+            "home": 0.6765,
+            "away": 0.1785
           },
           "secondHalfExpectedGoals": {
-            "home": 0.9135,
-            "away": 0.1315
+            "home": 0.8935,
+            "away": 0.1515
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -1129,24 +1287,28 @@
         "candidate": {
           "top1": false,
           "top3": false,
-          "logLoss": 3.5244819715143856,
-          "brier": 1.128144923022186,
+          "logLoss": 3.510321606695806,
+          "brier": 1.1268981667303866,
           "predicted": "负负"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": -0.0111,
-            "away": 0.05
+            "home": -0.0076,
+            "away": 0.03
           },
           "firstHalfExpectedGoals": {
-            "home": 0.3894,
-            "away": 0.806
+            "home": 0.393,
+            "away": 0.786
           },
           "secondHalfExpectedGoals": {
-            "home": 0.5007,
-            "away": 0.874
+            "home": 0.497,
+            "away": 0.894
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -1168,24 +1330,28 @@
         "candidate": {
           "top1": true,
           "top3": true,
-          "logLoss": 0.8142349155649847,
-          "brier": 0.396867513342895,
+          "logLoss": 0.8120604416799826,
+          "brier": 0.395358123271858,
           "predicted": "胜胜"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": -0.0302,
-            "away": 0.0057
+            "home": -0.0205,
+            "away": 0.0038
           },
           "firstHalfExpectedGoals": {
-            "home": 0.9103,
-            "away": 0.2533
+            "home": 0.9201,
+            "away": 0.2514
           },
           "secondHalfExpectedGoals": {
-            "home": 1.1797,
-            "away": 0.2968
+            "home": 1.1699,
+            "away": 0.2987
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -1207,24 +1373,28 @@
         "candidate": {
           "top1": true,
           "top3": true,
-          "logLoss": 0.4817999773583081,
-          "brier": 0.22235825597079478,
+          "logLoss": 0.4809065540790584,
+          "brier": 0.22186204729893783,
           "predicted": "胜胜"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": 0.0171,
-            "away": 0.0417
+            "home": 0.0115,
+            "away": 0.0282
           },
           "firstHalfExpectedGoals": {
-            "home": 1.2231,
-            "away": 0.1227
+            "home": 1.2175,
+            "away": 0.1091
           },
           "secondHalfExpectedGoals": {
-            "home": 1.4569,
-            "away": 0.0573
+            "home": 1.4625,
+            "away": 0.0708
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -1246,24 +1416,28 @@
         "candidate": {
           "top1": true,
           "top3": true,
-          "logLoss": 1.245984804775102,
-          "brier": 0.5924180439144635,
+          "logLoss": 1.2461786672556254,
+          "brier": 0.5924857459934398,
           "predicted": "胜胜"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": 0.0171,
-            "away": 0.0417
+            "home": 0.0115,
+            "away": 0.0282
           },
           "firstHalfExpectedGoals": {
-            "home": 0.8316,
-            "away": 0.5772
+            "home": 0.826,
+            "away": 0.5636
           },
           "secondHalfExpectedGoals": {
-            "home": 0.9785,
-            "away": 0.6128
+            "home": 0.984,
+            "away": 0.6263
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -1285,24 +1459,28 @@
         "candidate": {
           "top1": false,
           "top3": false,
-          "logLoss": 3.6987873279470382,
-          "brier": 1.100985304328439,
+          "logLoss": 3.689074817663877,
+          "brier": 1.100484292726895,
           "predicted": "负负"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": -0.0311,
-            "away": 0.0188
+            "home": -0.021,
+            "away": 0.0127
           },
           "firstHalfExpectedGoals": {
-            "home": 0.4909,
-            "away": 0.6174
+            "home": 0.501,
+            "away": 0.6112
           },
           "secondHalfExpectedGoals": {
-            "home": 0.6691,
-            "away": 0.7127
+            "home": 0.659,
+            "away": 0.7188
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -1324,24 +1502,28 @@
         "candidate": {
           "top1": false,
           "top3": true,
-          "logLoss": 1.6743854907044158,
-          "brier": 0.7885016018511063,
+          "logLoss": 1.682160075839846,
+          "brier": 0.7918072796694228,
           "predicted": "胜胜"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": -0.05,
-            "away": 0.05
+            "home": -0.03,
+            "away": 0.03
           },
           "firstHalfExpectedGoals": {
-            "home": 0.7555,
-            "away": 0.599
+            "home": 0.7755,
+            "away": 0.579
           },
           "secondHalfExpectedGoals": {
-            "home": 1.0345,
-            "away": 0.621
+            "home": 1.0145,
+            "away": 0.641
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -1363,24 +1545,28 @@
         "candidate": {
           "top1": true,
           "top3": true,
-          "logLoss": 1.0117773081026733,
-          "brier": 0.47921000613743653,
+          "logLoss": 1.0174195923885017,
+          "brier": 0.4825719054960692,
           "predicted": "胜胜"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": 0.05,
-            "away": -0.05
+            "home": 0.03,
+            "away": -0.03
           },
           "firstHalfExpectedGoals": {
-            "home": 0.9995,
-            "away": 0.4225
+            "home": 0.9795,
+            "away": 0.4425
           },
           "secondHalfExpectedGoals": {
-            "home": 1.1105,
-            "away": 0.6275
+            "home": 1.1305,
+            "away": 0.6075
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -1402,24 +1588,28 @@
         "candidate": {
           "top1": false,
           "top3": true,
-          "logLoss": 1.2573494897830322,
-          "brier": 0.822744157517873,
+          "logLoss": 1.2501233721487952,
+          "brier": 0.8174146537545086,
           "predicted": "胜胜"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": 0.05,
-            "away": -0.0454
+            "home": 0.03,
+            "away": -0.03
           },
           "firstHalfExpectedGoals": {
-            "home": 1.031,
-            "away": 0.05
+            "home": 1.011,
+            "away": 0.0555
           },
           "secondHalfExpectedGoals": {
-            "home": 1.149,
-            "away": 0.14
+            "home": 1.169,
+            "away": 0.1345
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -1441,24 +1631,28 @@
         "candidate": {
           "top1": true,
           "top3": true,
-          "logLoss": 0.8888294001658077,
-          "brier": 0.44323000861921363,
+          "logLoss": 0.8949635526107728,
+          "brier": 0.4473854039117295,
           "predicted": "负负"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": -0.0454,
-            "away": 0.05
+            "home": -0.03,
+            "away": 0.03
           },
           "firstHalfExpectedGoals": {
-            "home": 0.1616,
-            "away": 0.842
+            "home": 0.177,
+            "away": 0.822
           },
           "secondHalfExpectedGoals": {
-            "home": 0.2984,
-            "away": 0.918
+            "home": 0.283,
+            "away": 0.938
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -1480,24 +1674,28 @@
         "candidate": {
           "top1": false,
           "top3": true,
-          "logLoss": 1.370628392310295,
-          "brier": 0.7260135692706439,
+          "logLoss": 1.3772723836517058,
+          "brier": 0.7297708210829549,
           "predicted": "负负"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": -0.019,
-            "away": -0.05
+            "home": -0.0129,
+            "away": -0.03
           },
           "firstHalfExpectedGoals": {
-            "home": 0.2419,
-            "away": 0.724
+            "home": 0.2482,
+            "away": 0.744
           },
           "secondHalfExpectedGoals": {
-            "home": 0.338,
-            "away": 0.996
+            "home": 0.3318,
+            "away": 0.976
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -1519,24 +1717,28 @@
         "candidate": {
           "top1": false,
           "top3": false,
-          "logLoss": 3.006006149093469,
-          "brier": 1.165007348374063,
+          "logLoss": 3.0237476102660934,
+          "brier": 1.1664779833560095,
           "predicted": "负负"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": -0.05,
-            "away": -0.019
+            "home": -0.03,
+            "away": -0.0129
           },
           "firstHalfExpectedGoals": {
-            "home": 0.184,
-            "away": 0.8225
+            "home": 0.204,
+            "away": 0.8286
           },
           "secondHalfExpectedGoals": {
-            "home": 0.336,
-            "away": 1.0476
+            "home": 0.316,
+            "away": 1.0413
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -1558,24 +1760,28 @@
         "candidate": {
           "top1": false,
           "top3": false,
-          "logLoss": 2.2514852288066156,
-          "brier": 0.9574485415700762,
+          "logLoss": 2.2549043516334293,
+          "brier": 0.9584110026822379,
           "predicted": "负负"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": -0.0277,
-            "away": -0.05
+            "home": -0.0186,
+            "away": -0.03
           },
           "firstHalfExpectedGoals": {
-            "home": 0.4224,
-            "away": 0.661
+            "home": 0.4314,
+            "away": 0.681
           },
           "secondHalfExpectedGoals": {
-            "home": 0.5776,
-            "away": 0.919
+            "home": 0.5686,
+            "away": 0.899
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -1597,24 +1803,28 @@
         "candidate": {
           "top1": true,
           "top3": true,
-          "logLoss": 0.7579877736809332,
-          "brier": 0.3618164687231908,
+          "logLoss": 0.7585435367937113,
+          "brier": 0.3620503521364931,
           "predicted": "负负"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": -0.05,
-            "away": -0.0277
+            "home": -0.03,
+            "away": -0.0186
           },
           "firstHalfExpectedGoals": {
-            "home": 0.2155,
-            "away": 0.9939
+            "home": 0.2355,
+            "away": 1.0029
           },
           "secondHalfExpectedGoals": {
-            "home": 0.3745,
-            "away": 1.2761
+            "home": 0.3545,
+            "away": 1.2671
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -1636,24 +1846,28 @@
         "candidate": {
           "top1": true,
           "top3": true,
-          "logLoss": 0.4768665445053317,
-          "brier": 0.20321570693138938,
+          "logLoss": 0.481182677919891,
+          "brier": 0.20623850898179172,
           "predicted": "负负"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": -0.05,
-            "away": 0.05
+            "home": -0.03,
+            "away": 0.03
           },
           "firstHalfExpectedGoals": {
-            "home": 0.139,
-            "away": 1.4045
+            "home": 0.159,
+            "away": 1.3845
           },
           "secondHalfExpectedGoals": {
-            "home": 0.281,
-            "away": 1.6055
+            "home": 0.261,
+            "away": 1.6255
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -1675,24 +1889,28 @@
         "candidate": {
           "top1": false,
           "top3": false,
-          "logLoss": 2.595077351709951,
-          "brier": 1.091239671996924,
+          "logLoss": 2.594993339594321,
+          "brier": 1.090229166624848,
           "predicted": "胜胜"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": 0.05,
-            "away": -0.05
+            "home": 0.03,
+            "away": -0.03
           },
           "firstHalfExpectedGoals": {
-            "home": 1.2965,
-            "away": 0.535
+            "home": 1.2765,
+            "away": 0.555
           },
           "secondHalfExpectedGoals": {
-            "home": 1.4735,
-            "away": 0.765
+            "home": 1.4935,
+            "away": 0.745
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -1714,24 +1932,28 @@
         "candidate": {
           "top1": false,
           "top3": true,
-          "logLoss": 1.803406608408498,
-          "brier": 0.8207356262426898,
+          "logLoss": 1.794882732891113,
+          "brier": 0.8177820435293949,
           "predicted": "负负"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": -0.05,
-            "away": 0.05
+            "home": -0.03,
+            "away": 0.03
           },
           "firstHalfExpectedGoals": {
-            "home": 0.571,
-            "away": 0.779
+            "home": 0.591,
+            "away": 0.759
           },
           "secondHalfExpectedGoals": {
-            "home": 0.809,
-            "away": 0.841
+            "home": 0.789,
+            "away": 0.861
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -1753,24 +1975,28 @@
         "candidate": {
           "top1": false,
           "top3": true,
-          "logLoss": 1.8099117178291693,
-          "brier": 0.8218891302496435,
+          "logLoss": 1.8091245099589812,
+          "brier": 0.8216548839418268,
           "predicted": "胜胜"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": 0.05,
-            "away": -0.05
+            "home": 0.03,
+            "away": -0.03
           },
           "firstHalfExpectedGoals": {
-            "home": 0.5945,
-            "away": 0.49
+            "home": 0.5745,
+            "away": 0.51
           },
           "secondHalfExpectedGoals": {
-            "home": 0.6155,
-            "away": 0.71
+            "home": 0.6355,
+            "away": 0.69
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -1792,24 +2018,28 @@
         "candidate": {
           "top1": true,
           "top3": true,
-          "logLoss": 1.111776184879715,
-          "brier": 0.5259743423293795,
+          "logLoss": 1.106317275980703,
+          "brier": 0.5229621025469263,
           "predicted": "负负"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": 0.0431,
-            "away": -0.05
+            "home": 0.0278,
+            "away": -0.03
           },
           "firstHalfExpectedGoals": {
-            "home": 0.6371,
-            "away": 0.949
+            "home": 0.6218,
+            "away": 0.969
           },
           "secondHalfExpectedGoals": {
-            "home": 0.6829,
-            "away": 1.271
+            "home": 0.6982,
+            "away": 1.251
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -1831,24 +2061,28 @@
         "candidate": {
           "top1": true,
           "top3": true,
-          "logLoss": 0.9061358484510734,
-          "brier": 0.43763449298067464,
+          "logLoss": 0.9043732742021208,
+          "brier": 0.4364924589388297,
           "predicted": "胜胜"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": -0.0207,
-            "away": 0.0062
+            "home": -0.0134,
+            "away": 0.004
           },
           "firstHalfExpectedGoals": {
-            "home": 0.9017,
-            "away": 0.3302
+            "home": 0.9091,
+            "away": 0.328
           },
           "secondHalfExpectedGoals": {
-            "home": 1.1482,
-            "away": 0.3898
+            "home": 1.1409,
+            "away": 0.392
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -1870,24 +2104,28 @@
         "candidate": {
           "top1": true,
           "top3": true,
-          "logLoss": 0.7338295319783587,
-          "brier": 0.3646070643991596,
+          "logLoss": 0.7360642326509538,
+          "brier": 0.3664040358279515,
           "predicted": "负负"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": 0.0432,
-            "away": 0.05
+            "home": 0.0278,
+            "away": 0.03
           },
           "firstHalfExpectedGoals": {
-            "home": 0.1962,
-            "away": 0.959
+            "home": 0.1809,
+            "away": 0.939
           },
           "secondHalfExpectedGoals": {
-            "home": 0.1439,
-            "away": 1.061
+            "home": 0.1592,
+            "away": 1.081
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -1909,24 +2147,28 @@
         "candidate": {
           "top1": false,
           "top3": true,
-          "logLoss": 1.7789199469996968,
-          "brier": 0.8184784840537428,
+          "logLoss": 1.779261250617351,
+          "brier": 0.8183570103029416,
           "predicted": "胜胜"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": 0.05,
-            "away": 0.05
+            "home": 0.03,
+            "away": 0.03
           },
           "firstHalfExpectedGoals": {
-            "home": 0.6395,
-            "away": 0.509
+            "home": 0.6195,
+            "away": 0.489
           },
           "secondHalfExpectedGoals": {
-            "home": 0.6705,
-            "away": 0.511
+            "home": 0.6905,
+            "away": 0.531
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -1948,24 +2190,28 @@
         "candidate": {
           "top1": true,
           "top3": true,
-          "logLoss": 0.7061927623172608,
-          "brier": 0.330518933188109,
+          "logLoss": 0.7007739739761655,
+          "brier": 0.32682866748182643,
           "predicted": "负负"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": 0.05,
-            "away": -0.05
+            "home": 0.03,
+            "away": -0.03
           },
           "firstHalfExpectedGoals": {
-            "home": 0.338,
-            "away": 1.0885
+            "home": 0.318,
+            "away": 1.1085
           },
           "secondHalfExpectedGoals": {
-            "home": 0.302,
-            "away": 1.4415
+            "home": 0.322,
+            "away": 1.4215
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -1987,24 +2233,28 @@
         "candidate": {
           "top1": false,
           "top3": true,
-          "logLoss": 1.6714842093547662,
-          "brier": 0.7774180723626392,
+          "logLoss": 1.6718006380736001,
+          "brier": 0.7775853380298222,
           "predicted": "负负"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": -0.05,
-            "away": -0.023
+            "home": -0.03,
+            "away": -0.0148
           },
           "firstHalfExpectedGoals": {
-            "home": 0.4045,
-            "away": 0.481
+            "home": 0.4245,
+            "away": 0.4892
           },
           "secondHalfExpectedGoals": {
-            "home": 0.6055,
-            "away": 0.639
+            "home": 0.5855,
+            "away": 0.6308
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -2026,24 +2276,28 @@
         "candidate": {
           "top1": false,
           "top3": true,
-          "logLoss": 1.3512696664150274,
-          "brier": 0.7208249509148064,
+          "logLoss": 1.3455311781698733,
+          "brier": 0.7175928707469078,
           "predicted": "负负"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": 0.05,
-            "away": 0.05
+            "home": 0.03,
+            "away": 0.03
           },
           "firstHalfExpectedGoals": {
-            "home": 0.248,
-            "away": 0.7205
+            "home": 0.228,
+            "away": 0.7005
           },
           "secondHalfExpectedGoals": {
-            "home": 0.192,
-            "away": 0.7695
+            "home": 0.212,
+            "away": 0.7895
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -2065,24 +2319,28 @@
         "candidate": {
           "top1": false,
           "top3": false,
-          "logLoss": 2.124208030553381,
-          "brier": 0.9335285599155657,
+          "logLoss": 2.136970733602464,
+          "brier": 0.9363840061409229,
           "predicted": "平平"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": 0.05,
-            "away": 0.05
+            "home": 0.03,
+            "away": 0.03
           },
           "firstHalfExpectedGoals": {
-            "home": 0.3605,
-            "away": 0.5045
+            "home": 0.3405,
+            "away": 0.4845
           },
           "secondHalfExpectedGoals": {
-            "home": 0.3295,
-            "away": 0.5055
+            "home": 0.3495,
+            "away": 0.5255
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -2104,24 +2362,28 @@
         "candidate": {
           "top1": false,
           "top3": false,
-          "logLoss": 2.260151238545095,
-          "brier": 0.9609970069560452,
+          "logLoss": 2.259572397453969,
+          "brier": 0.96104163490901,
           "predicted": "负负"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": 0.05,
-            "away": -0.0112
+            "home": 0.03,
+            "away": -0.0075
           },
           "firstHalfExpectedGoals": {
-            "home": 0.6665,
-            "away": 0.9159
+            "home": 0.6465,
+            "away": 0.9195
           },
           "secondHalfExpectedGoals": {
-            "home": 0.7035,
-            "away": 1.1442
+            "home": 0.7235,
+            "away": 1.1405
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -2143,24 +2405,28 @@
         "candidate": {
           "top1": false,
           "top3": false,
-          "logLoss": 3.3970362459576915,
-          "brier": 1.2121472624431635,
+          "logLoss": 3.384928584961025,
+          "brier": 1.2105021446606063,
           "predicted": "胜胜"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": 0.05,
-            "away": -0.0112
+            "home": 0.03,
+            "away": -0.0075
           },
           "firstHalfExpectedGoals": {
-            "home": 1.0805,
-            "away": 0.3084
+            "home": 1.0605,
+            "away": 0.312
           },
           "secondHalfExpectedGoals": {
-            "home": 1.2095,
-            "away": 0.4016
+            "home": 1.2295,
+            "away": 0.398
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -2182,24 +2448,28 @@
         "candidate": {
           "top1": true,
           "top3": true,
-          "logLoss": 0.6529299337582904,
-          "brier": 0.3011652754143088,
+          "logLoss": 0.6516898790149158,
+          "brier": 0.30023911514417007,
           "predicted": "负负"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": -0.0078,
-            "away": -0.0295
+            "home": -0.0051,
+            "away": -0.0189
           },
           "firstHalfExpectedGoals": {
-            "home": 0.2576,
-            "away": 1.145
+            "home": 0.2605,
+            "away": 1.1555
           },
           "secondHalfExpectedGoals": {
-            "home": 0.3323,
-            "away": 1.4649
+            "home": 0.3295,
+            "away": 1.4545
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -2221,24 +2491,28 @@
         "candidate": {
           "top1": false,
           "top3": false,
-          "logLoss": 2.0096539624830467,
-          "brier": 0.8842555109756004,
+          "logLoss": 2.009782579938877,
+          "brier": 0.8843254442035446,
           "predicted": "负负"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": -0.0263,
-            "away": -0.0071
+            "home": -0.0174,
+            "away": -0.0046
           },
           "firstHalfExpectedGoals": {
-            "home": 0.5452,
-            "away": 0.7039
+            "home": 0.5541,
+            "away": 0.7065
           },
           "secondHalfExpectedGoals": {
-            "home": 0.7248,
-            "away": 0.8761
+            "home": 0.7159,
+            "away": 0.8736
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -2260,24 +2534,28 @@
         "candidate": {
           "top1": false,
           "top3": true,
-          "logLoss": 1.5089065697394843,
-          "brier": 0.7554930921160373,
+          "logLoss": 1.507210084399836,
+          "brier": 0.7545480765292808,
           "predicted": "负负"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": -0.05,
-            "away": -0.0012
+            "home": -0.03,
+            "away": -0.0008
           },
           "firstHalfExpectedGoals": {
-            "home": 0.3145,
-            "away": 0.7638
+            "home": 0.3345,
+            "away": 0.7642
           },
           "secondHalfExpectedGoals": {
-            "home": 0.4955,
-            "away": 0.9362
+            "home": 0.4755,
+            "away": 0.9357
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -2299,24 +2577,28 @@
         "candidate": {
           "top1": false,
           "top3": false,
-          "logLoss": 3.6594027145876256,
-          "brier": 1.1209755280370033,
+          "logLoss": 3.6346729309366164,
+          "brier": 1.1193386149342865,
           "predicted": "胜胜"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": 0.05,
-            "away": -0.05
+            "home": 0.03,
+            "away": -0.03
           },
           "firstHalfExpectedGoals": {
-            "home": 0.725,
-            "away": 0.3595
+            "home": 0.705,
+            "away": 0.3795
           },
           "secondHalfExpectedGoals": {
-            "home": 0.775,
-            "away": 0.5505
+            "home": 0.795,
+            "away": 0.5305
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -2338,24 +2620,28 @@
         "candidate": {
           "top1": false,
           "top3": false,
-          "logLoss": 2.9294779338310857,
-          "brier": 1.091418352479125,
+          "logLoss": 2.9483406019168155,
+          "brier": 1.0941368480728209,
           "predicted": "胜胜"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": -0.05,
-            "away": 0.05
+            "home": -0.03,
+            "away": 0.03
           },
           "firstHalfExpectedGoals": {
-            "home": 0.787,
-            "away": 0.455
+            "home": 0.807,
+            "away": 0.435
           },
           "secondHalfExpectedGoals": {
-            "home": 1.073,
-            "away": 0.445
+            "home": 1.053,
+            "away": 0.465
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -2377,24 +2663,28 @@
         "candidate": {
           "top1": false,
           "top3": true,
-          "logLoss": 1.9198177800437737,
-          "brier": 0.8758997551004258,
+          "logLoss": 1.9200147972050499,
+          "brier": 0.8756933460588523,
           "predicted": "胜胜"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": 0.05,
-            "away": 0.05
+            "home": 0.03,
+            "away": 0.03
           },
           "firstHalfExpectedGoals": {
-            "home": 0.761,
-            "away": 0.5
+            "home": 0.741,
+            "away": 0.48
           },
           "secondHalfExpectedGoals": {
-            "home": 0.819,
-            "away": 0.5
+            "home": 0.839,
+            "away": 0.52
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -2416,24 +2706,28 @@
         "candidate": {
           "top1": true,
           "top3": true,
-          "logLoss": 0.9663850288433018,
-          "brier": 0.46215198651782025,
+          "logLoss": 0.9647710640213122,
+          "brier": 0.46120217073164954,
           "predicted": "负负"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": 0.05,
-            "away": 0.0021
+            "home": 0.03,
+            "away": 0.0003
           },
           "firstHalfExpectedGoals": {
-            "home": 0.4505,
-            "away": 0.9425
+            "home": 0.4305,
+            "away": 0.9408
           },
           "secondHalfExpectedGoals": {
-            "home": 0.4395,
-            "away": 1.1474
+            "home": 0.4595,
+            "away": 1.1492
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -2455,24 +2749,28 @@
         "candidate": {
           "top1": true,
           "top3": true,
-          "logLoss": 0.6000330619738113,
-          "brier": 0.26868670436307407,
+          "logLoss": 0.6047220080925206,
+          "brier": 0.2719878275951109,
           "predicted": "胜胜"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": 0.05,
-            "away": -0.05
+            "home": 0.03,
+            "away": -0.03
           },
           "firstHalfExpectedGoals": {
-            "home": 1.2785,
-            "away": 0.211
+            "home": 1.2585,
+            "away": 0.231
           },
           "secondHalfExpectedGoals": {
-            "home": 1.4515,
-            "away": 0.369
+            "home": 1.4715,
+            "away": 0.349
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -2494,24 +2792,28 @@
         "candidate": {
           "top1": false,
           "top3": true,
-          "logLoss": 1.8411045492809779,
-          "brier": 0.8483607881028761,
+          "logLoss": 1.829859513259129,
+          "brier": 0.8446841521281766,
           "predicted": "平平"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": -0.05,
-            "away": -0.0425
+            "home": -0.03,
+            "away": -0.0274
           },
           "firstHalfExpectedGoals": {
-            "home": 0.328,
-            "away": 0.3265
+            "home": 0.348,
+            "away": 0.3416
           },
           "secondHalfExpectedGoals": {
-            "home": 0.512,
-            "away": 0.4935
+            "home": 0.492,
+            "away": 0.4784
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -2533,24 +2835,28 @@
         "candidate": {
           "top1": false,
           "top3": false,
-          "logLoss": 4.12281758281268,
-          "brier": 1.2830799031325135,
+          "logLoss": 4.1594746952491715,
+          "brier": 1.2847034124082124,
           "predicted": "胜胜"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": 0.0104,
-            "away": 0.05
+            "home": 0.0067,
+            "away": 0.03
           },
           "firstHalfExpectedGoals": {
-            "home": 0.8295,
-            "away": 0.1715
+            "home": 0.8258,
+            "away": 0.1515
           },
           "secondHalfExpectedGoals": {
-            "home": 0.9906,
-            "away": 0.0985
+            "home": 0.9942,
+            "away": 0.1185
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -2572,24 +2878,28 @@
         "candidate": {
           "top1": false,
           "top3": false,
-          "logLoss": 2.8144604002968028,
-          "brier": 1.0285327868843905,
+          "logLoss": 2.8113963985299373,
+          "brier": 1.028344238003098,
           "predicted": "胜胜"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": -0.05,
-            "away": -0.0497
+            "home": -0.03,
+            "away": -0.03
           },
           "firstHalfExpectedGoals": {
-            "home": 0.5755,
-            "away": 0.5128
+            "home": 0.5955,
+            "away": 0.5325
           },
           "secondHalfExpectedGoals": {
-            "home": 0.8145,
-            "away": 0.7372
+            "home": 0.7945,
+            "away": 0.7175
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -2611,24 +2921,28 @@
         "candidate": {
           "top1": true,
           "top3": true,
-          "logLoss": 1.0529014947290236,
-          "brier": 0.5012362450844203,
+          "logLoss": 1.0552286358238783,
+          "brier": 0.5025779086966079,
           "predicted": "胜胜"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": 0.05,
-            "away": 0.05
+            "home": 0.03,
+            "away": 0.03
           },
           "firstHalfExpectedGoals": {
-            "home": 0.9635,
-            "away": 0.518
+            "home": 0.9435,
+            "away": 0.498
           },
           "secondHalfExpectedGoals": {
-            "home": 1.0665,
-            "away": 0.522
+            "home": 1.0865,
+            "away": 0.542
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -2650,23 +2964,27 @@
         "candidate": {
           "top1": true,
           "top3": true,
-          "logLoss": 0.6940407944906944,
-          "brier": 0.3250794004366968,
+          "logLoss": 0.6971931051306165,
+          "brier": 0.32736051573101016,
           "predicted": "胜胜"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": 0.05,
-            "away": -0.0002
+            "home": 0.03,
+            "away": -0.0001
           },
           "firstHalfExpectedGoals": {
-            "home": 1.13,
+            "home": 1.11,
             "away": 0.2519
           },
           "secondHalfExpectedGoals": {
-            "home": 1.27,
+            "home": 1.29,
             "away": 0.3081
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
@@ -2689,23 +3007,27 @@
         "candidate": {
           "top1": true,
           "top3": true,
-          "logLoss": 1.111392975300715,
-          "brier": 0.5295070854980446,
+          "logLoss": 1.1157409285993816,
+          "brier": 0.5319364883586812,
           "predicted": "胜胜"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": 0.05,
-            "away": -0.0002
+            "home": 0.03,
+            "away": -0.0001
           },
           "firstHalfExpectedGoals": {
-            "home": 0.9185,
+            "home": 0.8985,
             "away": 0.4814
           },
           "secondHalfExpectedGoals": {
-            "home": 1.0115,
+            "home": 1.0315,
             "away": 0.5887
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
@@ -2728,24 +3050,28 @@
         "candidate": {
           "top1": false,
           "top3": true,
-          "logLoss": 1.6295448494799285,
-          "brier": 0.7776702252869377,
+          "logLoss": 1.6339773992331756,
+          "brier": 0.7796567203583118,
           "predicted": "胜胜"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": -0.0243,
-            "away": 0.05
+            "home": -0.0156,
+            "away": 0.03
           },
           "firstHalfExpectedGoals": {
-            "home": 0.7542,
-            "away": 0.5405
+            "home": 0.7629,
+            "away": 0.5205
           },
           "secondHalfExpectedGoals": {
-            "home": 0.9758,
-            "away": 0.5495
+            "home": 0.9671,
+            "away": 0.5695
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -2767,24 +3093,28 @@
         "candidate": {
           "top1": false,
           "top3": true,
-          "logLoss": 1.5418847576188461,
-          "brier": 0.7646567849858662,
+          "logLoss": 1.5462685171092978,
+          "brier": 0.7669338421750553,
           "predicted": "胜胜"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": -0.0243,
-            "away": 0.05
+            "home": -0.0156,
+            "away": 0.03
           },
           "firstHalfExpectedGoals": {
-            "home": 0.8172,
-            "away": 0.482
+            "home": 0.8258,
+            "away": 0.462
           },
           "secondHalfExpectedGoals": {
-            "home": 1.0528,
-            "away": 0.478
+            "home": 1.0442,
+            "away": 0.498
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -2806,24 +3136,28 @@
         "candidate": {
           "top1": true,
           "top3": true,
-          "logLoss": 1.5711839792405966,
-          "brier": 0.7362178080155447,
+          "logLoss": 1.5651373228614784,
+          "brier": 0.7338246943913126,
           "predicted": "胜胜"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": -0.05,
-            "away": -0.05
+            "home": -0.03,
+            "away": -0.03
           },
           "firstHalfExpectedGoals": {
-            "home": 0.5215,
-            "away": 0.436
+            "home": 0.5415,
+            "away": 0.456
           },
           "secondHalfExpectedGoals": {
-            "home": 0.7485,
-            "away": 0.644
+            "home": 0.7285,
+            "away": 0.624
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -2845,24 +3179,28 @@
         "candidate": {
           "top1": true,
           "top3": true,
-          "logLoss": 1.0807966304060075,
-          "brier": 0.5085669141262367,
+          "logLoss": 1.078072376241212,
+          "brier": 0.5070563151275084,
           "predicted": "胜胜"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": -0.05,
-            "away": -0.0313
+            "home": -0.03,
+            "away": -0.0202
           },
           "firstHalfExpectedGoals": {
-            "home": 1.0165,
-            "away": 0.6077
+            "home": 1.0365,
+            "away": 0.6188
           },
           "secondHalfExpectedGoals": {
-            "home": 1.3535,
-            "away": 0.8123
+            "home": 1.3335,
+            "away": 0.8012
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -2884,24 +3222,28 @@
         "candidate": {
           "top1": false,
           "top3": false,
-          "logLoss": 2.79970955113539,
-          "brier": 1.0289047970488128,
+          "logLoss": 2.815124317892301,
+          "brier": 1.0308146189660903,
           "predicted": "胜胜"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": -0.0333,
-            "away": 0.05
+            "home": -0.0221,
+            "away": 0.03
           },
           "firstHalfExpectedGoals": {
-            "home": 0.5427,
-            "away": 0.5585
+            "home": 0.554,
+            "away": 0.5385
           },
           "secondHalfExpectedGoals": {
-            "home": 0.7373,
-            "away": 0.5715
+            "home": 0.726,
+            "away": 0.5915
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -2923,23 +3265,27 @@
         "candidate": {
           "top1": false,
           "top3": false,
-          "logLoss": 4.361354717455942,
-          "brier": 1.343108032482853,
+          "logLoss": 4.368737059321965,
+          "brier": 1.3424430383062917,
           "predicted": "胜胜"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": 0.05,
-            "away": -0.0402
+            "home": 0.03,
+            "away": -0.0252
           },
           "firstHalfExpectedGoals": {
-            "home": 0.9185,
+            "home": 0.8985,
             "away": 0.05
           },
           "secondHalfExpectedGoals": {
-            "home": 1.0115,
+            "home": 1.0315,
             "away": 0.1
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
@@ -2962,23 +3308,27 @@
         "candidate": {
           "top1": true,
           "top3": true,
-          "logLoss": 0.6613257708891153,
-          "brier": 0.3420493361440419,
+          "logLoss": 0.6610654112630779,
+          "brier": 0.3418380153038826,
           "predicted": "胜胜"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": -0.0037,
-            "away": -0.05
+            "home": -0.0024,
+            "away": -0.03
           },
           "firstHalfExpectedGoals": {
-            "home": 0.8918,
+            "home": 0.8931,
             "away": 0.05
           },
           "secondHalfExpectedGoals": {
-            "home": 1.0981,
+            "home": 1.0968,
             "away": 0.1
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
@@ -3001,24 +3351,28 @@
         "candidate": {
           "top1": false,
           "top3": true,
-          "logLoss": 1.4913968542751816,
-          "brier": 0.7367057134860693,
+          "logLoss": 1.4976123021129306,
+          "brier": 0.7397421888374055,
           "predicted": "负负"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": -0.0003,
-            "away": -0.0428
+            "home": -0.0002,
+            "away": -0.0269
           },
           "firstHalfExpectedGoals": {
-            "home": 0.3282,
-            "away": 0.6098
+            "home": 0.3283,
+            "away": 0.6256
           },
           "secondHalfExpectedGoals": {
-            "home": 0.4018,
-            "away": 0.8402
+            "home": 0.4017,
+            "away": 0.8244
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -3040,24 +3394,28 @@
         "candidate": {
           "top1": false,
           "top3": true,
-          "logLoss": 1.2814216306373902,
-          "brier": 0.7612309553662048,
+          "logLoss": 1.288652974858538,
+          "brier": 0.7663818649468234,
           "predicted": "负负"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": 0.0232,
-            "away": -0.05
+            "home": 0.0147,
+            "away": -0.03
           },
           "firstHalfExpectedGoals": {
-            "home": 0.1988,
-            "away": 0.886
+            "home": 0.1902,
+            "away": 0.906
           },
           "secondHalfExpectedGoals": {
-            "home": 0.1913,
-            "away": 1.194
+            "home": 0.1998,
+            "away": 1.174
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -3079,24 +3437,28 @@
         "candidate": {
           "top1": false,
           "top3": false,
-          "logLoss": 2.209974194978386,
-          "brier": 0.9408959941672537,
+          "logLoss": 2.2029849827750008,
+          "brier": 0.9390833906412067,
           "predicted": "胜胜"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": 0.05,
-            "away": 0.05
+            "home": 0.03,
+            "away": 0.03
           },
           "firstHalfExpectedGoals": {
-            "home": 0.815,
-            "away": 0.599
+            "home": 0.795,
+            "away": 0.579
           },
           "secondHalfExpectedGoals": {
-            "home": 0.885,
-            "away": 0.621
+            "home": 0.905,
+            "away": 0.641
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -3118,24 +3480,28 @@
         "candidate": {
           "top1": true,
           "top3": true,
-          "logLoss": 1.40805578645524,
-          "brier": 0.6870854207155848,
+          "logLoss": 1.3981674948912293,
+          "brier": 0.6825557551543096,
           "predicted": "负负"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": 0.05,
-            "away": -0.05
+            "home": 0.03,
+            "away": -0.03
           },
           "firstHalfExpectedGoals": {
-            "home": 0.3605,
-            "away": 0.4855
+            "home": 0.3405,
+            "away": 0.5055
           },
           "secondHalfExpectedGoals": {
-            "home": 0.3295,
-            "away": 0.7045
+            "home": 0.3495,
+            "away": 0.6845
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -3157,24 +3523,28 @@
         "candidate": {
           "top1": false,
           "top3": true,
-          "logLoss": 1.5347680915087325,
-          "brier": 0.7592755794692748,
+          "logLoss": 1.5375657368485045,
+          "brier": 0.7605454115863493,
           "predicted": "负负"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": -0.05,
-            "away": -0.035
+            "home": -0.03,
+            "away": -0.0218
           },
           "firstHalfExpectedGoals": {
-            "home": 0.355,
-            "away": 0.7525
+            "home": 0.375,
+            "away": 0.7656
           },
           "secondHalfExpectedGoals": {
-            "home": 0.545,
-            "away": 0.9975
+            "home": 0.525,
+            "away": 0.9844
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -3196,24 +3566,28 @@
         "candidate": {
           "top1": true,
           "top3": true,
-          "logLoss": 1.22526433886072,
-          "brier": 0.5859191243263413,
+          "logLoss": 1.2182463661597347,
+          "brier": 0.5822854867756292,
           "predicted": "负负"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": 0.05,
-            "away": -0.05
+            "home": 0.03,
+            "away": -0.03
           },
           "firstHalfExpectedGoals": {
-            "home": 0.536,
-            "away": 0.751
+            "home": 0.516,
+            "away": 0.771
           },
           "secondHalfExpectedGoals": {
-            "home": 0.544,
-            "away": 1.029
+            "home": 0.564,
+            "away": 1.009
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -3235,24 +3609,28 @@
         "candidate": {
           "top1": false,
           "top3": false,
-          "logLoss": 4.6537800781383805,
-          "brier": 1.3379667736235925,
+          "logLoss": 4.676157912449163,
+          "brier": 1.3382194414202395,
           "predicted": "胜胜"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": 0.0305,
-            "away": 0.023
+            "home": 0.0189,
+            "away": 0.0142
           },
           "firstHalfExpectedGoals": {
-            "home": 0.8675,
-            "away": 0.0905
+            "home": 0.856,
+            "away": 0.0817
           },
           "secondHalfExpectedGoals": {
-            "home": 0.9925,
-            "away": 0.0595
+            "home": 1.004,
+            "away": 0.0683
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -3274,24 +3652,28 @@
         "candidate": {
           "top1": false,
           "top3": true,
-          "logLoss": 1.777925734622368,
-          "brier": 0.8203621557697145,
+          "logLoss": 1.77861927608437,
+          "brier": 0.8207218363387475,
           "predicted": "负负"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": -0.05,
-            "away": -0.05
+            "home": -0.03,
+            "away": -0.03
           },
           "firstHalfExpectedGoals": {
-            "home": 0.391,
-            "away": 0.553
+            "home": 0.411,
+            "away": 0.573
           },
           "secondHalfExpectedGoals": {
-            "home": 0.589,
-            "away": 0.787
+            "home": 0.569,
+            "away": 0.767
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -3313,24 +3695,28 @@
         "candidate": {
           "top1": false,
           "top3": true,
-          "logLoss": 1.3614576009825745,
-          "brier": 0.7276327629978799,
+          "logLoss": 1.3655761412303433,
+          "brier": 0.7298069480115201,
           "predicted": "胜胜"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": -0.0407,
-            "away": -0.0461
+            "home": -0.025,
+            "away": -0.0285
           },
           "firstHalfExpectedGoals": {
-            "home": 0.7334,
-            "away": 0.2014
+            "home": 0.749,
+            "away": 0.219
           },
           "secondHalfExpectedGoals": {
-            "home": 0.9866,
-            "away": 0.3486
+            "home": 0.971,
+            "away": 0.3311
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -3352,24 +3738,28 @@
         "candidate": {
           "top1": false,
           "top3": true,
-          "logLoss": 1.3614576009825745,
-          "brier": 0.7276327629978799,
+          "logLoss": 1.3655761412303433,
+          "brier": 0.7298069480115201,
           "predicted": "胜胜"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": -0.0407,
-            "away": -0.0461
+            "home": -0.025,
+            "away": -0.0285
           },
           "firstHalfExpectedGoals": {
-            "home": 0.7334,
-            "away": 0.2014
+            "home": 0.749,
+            "away": 0.219
           },
           "secondHalfExpectedGoals": {
-            "home": 0.9866,
-            "away": 0.3486
+            "home": 0.971,
+            "away": 0.3311
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -3391,24 +3781,28 @@
         "candidate": {
           "top1": false,
           "top3": true,
-          "logLoss": 1.4390222908695218,
-          "brier": 0.7684858143738278,
+          "logLoss": 1.4370528757911571,
+          "brier": 0.7672640065946357,
           "predicted": "胜胜"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": 0.0079,
-            "away": -0.0261
+            "home": 0.0049,
+            "away": -0.0159
           },
           "firstHalfExpectedGoals": {
-            "home": 0.9123,
-            "away": 0.2979
+            "home": 0.9094,
+            "away": 0.3081
           },
           "secondHalfExpectedGoals": {
-            "home": 1.0976,
-            "away": 0.422
+            "home": 1.1005,
+            "away": 0.4119
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -3430,24 +3824,28 @@
         "candidate": {
           "top1": false,
           "top3": false,
-          "logLoss": 2.2021229859545635,
-          "brier": 0.9511403483849719,
+          "logLoss": 2.202128975529924,
+          "brier": 0.9508600365561849,
           "predicted": "负负"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": 0.05,
-            "away": 0.05
+            "home": 0.03,
+            "away": 0.03
           },
           "firstHalfExpectedGoals": {
-            "home": 0.626,
-            "away": 0.941
+            "home": 0.606,
+            "away": 0.921
           },
           "secondHalfExpectedGoals": {
-            "home": 0.654,
-            "away": 1.039
+            "home": 0.674,
+            "away": 1.059
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
@@ -3469,29 +3867,79 @@
         "candidate": {
           "top1": false,
           "top3": false,
-          "logLoss": 3.199246084003246,
-          "brier": 1.1521626363443156,
+          "logLoss": 3.189570970192378,
+          "brier": 1.1520051954949546,
           "predicted": "胜胜"
         },
         "halfFullEvidence": {
           "policy": "opponent_adjusted_half_split_v1",
-          "maxFirstHalfXgShift": 0.05,
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
           "firstHalfXgShift": {
-            "home": -0.05,
-            "away": 0.01
+            "home": -0.03,
+            "away": 0.0061
           },
           "firstHalfExpectedGoals": {
-            "home": 0.778,
-            "away": 0.3025
+            "home": 0.798,
+            "away": 0.2987
           },
           "secondHalfExpectedGoals": {
-            "home": 1.062,
-            "away": 0.3475
+            "home": 1.042,
+            "away": 0.3513
+          },
+          "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
+        }
+      },
+      {
+        "matchId": "2040507",
+        "homeTeam": "法国",
+        "awayTeam": "西班牙",
+        "kickoff": "2026-07-15T03:00:00+08:00",
+        "stage": "knockout",
+        "actual": "负负",
+        "baseline": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 1.5586101900633407,
+          "brier": 0.7291441954300613,
+          "predicted": "负负"
+        },
+        "candidate": {
+          "top1": true,
+          "top3": true,
+          "logLoss": 1.5668063468502997,
+          "brier": 0.7322955070598396,
+          "predicted": "负负"
+        },
+        "halfFullEvidence": {
+          "policy": "opponent_adjusted_half_split_v1",
+          "maxFirstHalfXgShift": 0.03,
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.0,
+          "firstHalfXgShift": {
+            "home": -0.03,
+            "away": -0.03
+          },
+          "firstHalfExpectedGoals": {
+            "home": 0.501,
+            "away": 0.573
+          },
+          "secondHalfExpectedGoals": {
+            "home": 0.679,
+            "away": 0.767
           },
           "opponentAdjustmentBasis": "pre_match_expected_goals_residual"
         }
       }
-    ]
+    ],
+    "properScoreIndexVsBaseline": 0.9988695703424562
   },
-  "candidatesEvaluated": 144
+  "selectionReason": "proper_scores_improved_and_late_holdout_hit_gates_passed",
+  "candidatesEvaluated": 324,
+  "historicalSafetyGate": "not_available_for_half_time_scores"
 }

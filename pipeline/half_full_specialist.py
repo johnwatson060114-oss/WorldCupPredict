@@ -120,7 +120,7 @@ def apply_opponent_adjusted_half_split(
         probabilities=probabilities,
         metadata={
             "applied": bounded_blend > 0,
-            "policy": "opponent_adjusted_half_split_v1",
+            "policy": "opponent_adjusted_half_split_v2",
             "blend": bounded_blend,
             "baselineCalibration": baseline_calibration.metadata,
             "candidateCalibration": candidate_calibration.metadata,

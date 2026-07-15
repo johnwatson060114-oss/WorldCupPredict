@@ -17,7 +17,7 @@ def test_opponent_adjusted_split_is_bounded_blend_of_independently_calibrated_mo
     result = apply_opponent_adjusted_half_split(
         baseline, candidate, {"tournament_evidence": {"policy": "current_tournament_evidence_v1"}}, 0.25
     )
-    assert result.metadata["policy"] == "opponent_adjusted_half_split_v1"
+    assert result.metadata["policy"] == "opponent_adjusted_half_split_v2"
     assert result.metadata["blend"] == 0.25
     assert abs(sum(result.probabilities.values()) - 1.0) < 1e-12
 

@@ -24,6 +24,12 @@ DEFAULT_POLICY: dict[str, Any] = {
         "maxSideXgShift": 0.20,
         "maxTotalXgShift": 0.25,
     },
+    "outcomeCalibration": {
+        "selectedTemperature": 1.0,
+        "selectedDrawMultiplier": 1.0,
+        "maxProbabilityShift": 0.0,
+        "selectionReason": "validation_gate_fallback",
+    },
     "scoreCalibration": {
         "candidateIntensities": [0.0, 0.10, 0.15, 0.20, 0.25],
         "selectedIntensity": 0.0,

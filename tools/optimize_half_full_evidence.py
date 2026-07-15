@@ -25,6 +25,7 @@ from tools.backtest_half_full import (
 HISTORY = ROOT / "public" / "data" / "history"
 SETTLEMENTS = ROOT / "public" / "data" / "settlements.json"
 OUTPUT = ROOT / "artifacts" / "half-full-evidence-optimization-2026.json"
+POLICY = ROOT / "pipeline" / "data" / "final-sprint-policy.json"
 
 
 def metrics(rows: list[dict[str, Any]]) -> dict[str, Any]:
@@ -50,10 +51,20 @@ def score(probabilities: dict[str, float], actual: str) -> dict[str, Any]:
     }
 
 
-def evaluate(half_life: float, shrinkage: float, cap: float, blend: float) -> dict[str, Any]:
-    settlements = load_settlements(SETTLEMENTS)
-    forecasts = archived_forecasts(HISTORY, settlements)
-    ordered = sorted(forecasts.values(), key=lambda row: row["match"].get("kickoff") or "")
+def evaluate(
+    half_life: float,
+    shrinkage: float,
+    cap: float,
+    blend: float,
+    half_score_scale: float,
+    *,
+    settlements: dict[str, dict[str, Any]] | None = None,
+    ordered: list[dict[str, Any]] | None = None,
+) -> dict[str, Any]:
+    settlements = settlements or load_settlements(SETTLEMENTS)
+    if ordered is None:
+        forecasts = archived_forecasts(HISTORY, settlements)
+        ordered = sorted(forecasts.values(), key=lambda row: row["match"].get("kickoff") or "")
     evidence: list[EvidenceMatch] = []
     baseline_rows: list[dict[str, Any]] = []
     candidate_rows: list[dict[str, Any]] = []
@@ -78,7 +89,12 @@ def evaluate(half_life: float, shrinkage: float, cap: float, blend: float) -> di
         }
         apply_current_tournament_evidence([seed], kickoff.date().isoformat(), evidence, settings={
             "halfLifeMatches": half_life, "shrinkage": shrinkage, "maxSideXgShift": 0.0,
-            "halfFullEvidence": {"maxFirstHalfXgShift": cap},
+            "halfFullEvidence": {
+                "halfLifeMatches": half_life,
+                "shrinkage": shrinkage,
+                "maxFirstHalfXgShift": cap,
+                "halfScoreResidualScale": half_score_scale,
+            },
         })
         split = seed["tournament_evidence"]["halfFullEvidence"]
         first, second = split["firstHalfExpectedGoals"], split["secondHalfExpectedGoals"]
@@ -101,28 +117,126 @@ def evaluate(half_life: float, shrinkage: float, cap: float, blend: float) -> di
         ))
     base_ko = [row for row in baseline_rows if row["stage"] == "knockout"]
     cand_ko = [row for row in candidate_rows if row["stage"] == "knockout"]
-    return {"settings": {"halfLifeMatches": half_life, "shrinkage": shrinkage, "maxFirstHalfXgShift": cap, "blend": blend},
-            "baseline": {"all": metrics(baseline_rows), "knockout": metrics(base_ko)},
-            "candidate": {"all": metrics(candidate_rows), "knockout": metrics(cand_ko)}, "matches": match_rows}
+    late_start = (len(base_ko) + 1) // 2
+    return {
+        "settings": {
+            "halfLifeMatches": half_life,
+            "shrinkage": shrinkage,
+            "maxFirstHalfXgShift": cap,
+            "halfScoreResidualScale": half_score_scale,
+            "blend": blend,
+        },
+        "baseline": {
+            "all": metrics(baseline_rows),
+            "knockout": metrics(base_ko),
+            "lateKnockoutHoldout": metrics(base_ko[late_start:]),
+        },
+        "candidate": {
+            "all": metrics(candidate_rows),
+            "knockout": metrics(cand_ko),
+            "lateKnockoutHoldout": metrics(cand_ko[late_start:]),
+        },
+        "matches": match_rows,
+    }
 
 
 def main() -> None:
-    candidates = [evaluate(half_life, shrinkage, cap, blend) for half_life in (1.5, 2.0, 3.0)
-                  for shrinkage in (3.0, 5.0, 8.0) for cap in (0.05, 0.10, 0.15, 0.20)
-                  for blend in (0.25, 0.50, 0.75, 1.0)]
+    settlements = load_settlements(SETTLEMENTS)
+    forecasts = archived_forecasts(HISTORY, settlements)
+    ordered = sorted(forecasts.values(), key=lambda row: row["match"].get("kickoff") or "")
+    candidates = [
+        evaluate(
+            half_life,
+            shrinkage,
+            cap,
+            blend,
+            half_score_scale,
+            settlements=settlements,
+            ordered=ordered,
+        )
+        for half_life in (1.5, 2.0, 3.0)
+        for shrinkage in (3.0, 5.0, 8.0)
+        for cap in (0.03, 0.05, 0.08)
+        for half_score_scale in (0.15, 0.30, 0.45)
+        for blend in (0.25, 0.50, 0.75, 1.0)
+    ]
     baseline = candidates[0]["baseline"]
-    eligible = [row for row in candidates
-                if row["candidate"]["knockout"]["top3Hits"] >= baseline["knockout"]["top3Hits"]
-                and row["candidate"]["knockout"]["averageLogLoss"] < baseline["knockout"]["averageLogLoss"]
-                and row["candidate"]["all"]["averageLogLoss"] <= baseline["all"]["averageLogLoss"] * 1.02]
-    selected = min(eligible, key=lambda row: (row["candidate"]["knockout"]["averageLogLoss"],
-                                               -row["candidate"]["knockout"]["top1Hits"])) if eligible else None
-    payload = {"schemaVersion": 1, "generatedAt": datetime.now().astimezone().isoformat(timespec="seconds"),
-               "objective": "opponent-adjusted first/second-half temporal residual model",
-               "leakagePolicy": "only matches with kickoff strictly before target kickoff",
-               "baseline": baseline, "selected": selected, "candidatesEvaluated": len(candidates)}
+    for row in candidates:
+        knockout = row["candidate"]["knockout"]
+        row["properScoreIndexVsBaseline"] = 0.5 * (
+            knockout["averageLogLoss"] / baseline["knockout"]["averageLogLoss"]
+        ) + 0.5 * (
+            knockout["averageBrier"] / baseline["knockout"]["averageBrier"]
+        )
+    eligible = [
+        row for row in candidates
+        if row["candidate"]["knockout"]["top1Hits"] >= baseline["knockout"]["top1Hits"]
+        and row["candidate"]["knockout"]["top3Hits"] >= baseline["knockout"]["top3Hits"]
+        and row["candidate"]["knockout"]["averageLogLoss"] < baseline["knockout"]["averageLogLoss"] - 1e-6
+        and row["candidate"]["knockout"]["averageBrier"] < baseline["knockout"]["averageBrier"] - 1e-6
+        and row["candidate"]["lateKnockoutHoldout"]["top1Hits"] >= baseline["lateKnockoutHoldout"]["top1Hits"]
+        and row["candidate"]["lateKnockoutHoldout"]["top3Hits"] >= baseline["lateKnockoutHoldout"]["top3Hits"]
+        and row["candidate"]["lateKnockoutHoldout"]["averageLogLoss"] < baseline["lateKnockoutHoldout"]["averageLogLoss"] - 1e-6
+        and row["candidate"]["lateKnockoutHoldout"]["averageBrier"] < baseline["lateKnockoutHoldout"]["averageBrier"] - 1e-6
+        and row["candidate"]["all"]["averageLogLoss"] <= baseline["all"]["averageLogLoss"] * 1.02
+    ]
+    selected = min(
+        eligible,
+        key=lambda row: (row["properScoreIndexVsBaseline"], -row["candidate"]["knockout"]["top1Hits"]),
+    ) if eligible else None
+    selection_reason = (
+        "proper_scores_improved_and_late_holdout_hit_gates_passed"
+        if selected else "validation_gate_fallback_to_baseline_half_full"
+    )
+    payload = {
+        "schemaVersion": 2,
+        "generatedAt": datetime.now().astimezone().isoformat(timespec="seconds"),
+        "objective": "opponent-strength-adjusted halftime-score temporal residual model",
+        "leakagePolicy": "only matches with kickoff strictly before target kickoff",
+        "grid": {
+            "halfLifeMatches": [1.5, 2.0, 3.0],
+            "shrinkage": [3.0, 5.0, 8.0],
+            "maxFirstHalfXgShift": [0.03, 0.05, 0.08],
+            "halfScoreResidualScale": [0.15, 0.30, 0.45],
+            "blend": [0.25, 0.50, 0.75, 1.0],
+        },
+        "baseline": baseline,
+        "selected": selected,
+        "selectionReason": selection_reason,
+        "candidatesEvaluated": len(candidates),
+        "historicalSafetyGate": "not_available_for_half_time_scores",
+    }
     OUTPUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(json.dumps({"baseline": baseline, "selected": selected and {k: selected[k] for k in ("settings", "candidate")}}, ensure_ascii=False, indent=2))
+    policy = json.loads(POLICY.read_text(encoding="utf-8"))
+    selected_settings = selected["settings"] if selected else {
+        "halfLifeMatches": 1.5,
+        "shrinkage": 5.0,
+        "maxFirstHalfXgShift": 0.0,
+        "halfScoreResidualScale": 0.0,
+        "blend": 0.0,
+    }
+    policy["halfFullEvidence"] = {
+        "policy": "opponent_adjusted_half_split_v2",
+        **selected_settings,
+        "selectionReason": selection_reason,
+        "validation": {
+            "objective": payload["objective"],
+            "leakagePolicy": payload["leakagePolicy"],
+            "baseline": baseline,
+            "selected": ({
+                "settings": selected["settings"],
+                "candidate": selected["candidate"],
+                "properScoreIndexVsBaseline": selected["properScoreIndexVsBaseline"],
+            } if selected else None),
+            "candidatesEvaluated": len(candidates),
+        },
+    }
+    POLICY.write_text(json.dumps(policy, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(json.dumps({
+        "baseline": baseline,
+        "selected": selected and {key: selected[key] for key in ("settings", "candidate", "properScoreIndexVsBaseline")},
+        "selectionReason": selection_reason,
+    }, ensure_ascii=False, indent=2))
 
 
 if __name__ == "__main__":

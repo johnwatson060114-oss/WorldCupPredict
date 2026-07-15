@@ -235,6 +235,22 @@ export interface MatchForecast {
     outcomePreserved?: boolean
     maxCellDelta?: number
   }
+  outcomeCalibration?: {
+    applied: boolean
+    policy: string
+    reason?: string | null
+    temperature?: number
+    drawMultiplier?: number
+    maxProbabilityShift?: number
+    actualMaxProbabilityShift?: number
+    preCalibration?: { home: number; draw: number; away: number }
+    postCalibration?: { home: number; draw: number; away: number }
+    topSelectionBefore?: 'home' | 'draw' | 'away'
+    topSelectionAfter?: 'home' | 'draw' | 'away'
+    topSelectionChanged?: boolean
+    scoreMatrixChanged?: boolean
+    validation?: Record<string, unknown> | null
+  }
   marketCalibration?: MarketCalibration | null
   outcomeProbabilities: { home: number; draw: number; away: number }
   halfFullSignal?: {

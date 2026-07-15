@@ -114,7 +114,7 @@ def test_evaluate_row_does_not_recalibrate_archived_final_quotes():
         "match": {
             "id": "m3", "kickoff": "2026-07-15T03:00:00+08:00",
             "outcomeProbabilities": {"home": 0.3, "draw": 0.3, "away": 0.4},
-            "halfFullCalibration": {"policy": "opponent_adjusted_half_split_v1"},
+            "halfFullCalibration": {"policy": "opponent_adjusted_half_split_v2"},
             "quotes": [
                 {"market": "\u534a\u5168\u573a", "selection": "\u8d1f\u8d1f", "modelProbability": 0.5},
                 {"market": "\u534a\u5168\u573a", "selection": "\u5e73\u8d1f", "modelProbability": 0.3},
@@ -127,7 +127,7 @@ def test_evaluate_row_does_not_recalibrate_archived_final_quotes():
     row = evaluate_row("m3", forecast, settlement)
 
     assert row["actualProbability"] == 0.5
-    assert row["halfFullCalibration"]["policy"] == "opponent_adjusted_half_split_v1"
+    assert row["halfFullCalibration"]["policy"] == "opponent_adjusted_half_split_v2"
 
 
 def test_summarize_reports_model_and_in_sample_baseline_accuracy():

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-14T15:14:05+08:00",
+  "generatedAt": "2026-07-15T14:38:04+08:00",
   "finalDate": "2026-07-19",
   "days": [
     {
@@ -3155,11 +3155,40 @@
           "status": "no-bet"
         }
       ],
-      "review": null
+      "review": {
+        "snapshotLabel": "升级前基线快照",
+        "matches": [
+          {
+            "matchId": "法国 vs 西班牙",
+            "label": "法国 vs 西班牙",
+            "predictedScore": "1-1",
+            "actualScore": "0-2",
+            "predictedOutcome": "away",
+            "predictedOutcomeSource": "outcomeDecision",
+            "actualOutcome": "away",
+            "outcomeCorrect": true,
+            "exactScore": false,
+            "goalAbsoluteError": 2,
+            "actualOutcomeProbability": 0.40542,
+            "logLoss": 0.90283,
+            "brier": 0.53194,
+            "diagnosis": "赛果方向正确，但比分尺度仍有偏差。"
+          }
+        ],
+        "summary": {
+          "matchCount": 1,
+          "outcomeAccuracy": 1.0,
+          "exactScoreAccuracy": 0.0,
+          "meanGoalAbsoluteError": 2.0,
+          "logLoss": 0.90283,
+          "brier": 0.53194,
+          "strategyDiagnosis": "策略结果已按真实派彩结算，继续观察多日样本后再调整资金规则。"
+        }
+      }
     },
     {
       "targetDate": "2026-07-16",
-      "generatedAt": "2026-07-13T16:01:09+08:00",
+      "generatedAt": "2026-07-15T14:37:39+08:00",
       "coverage": 0.78,
       "strategies": [
         {

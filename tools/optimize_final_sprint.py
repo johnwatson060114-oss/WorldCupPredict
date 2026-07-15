@@ -15,6 +15,7 @@ sys.path.insert(0, str(ROOT))
 from pipeline.current_tournament_evidence import EvidenceMatch, apply_current_tournament_evidence, load_evidence_matches
 from pipeline.market_guard import apply_bounded_market_anchor
 from pipeline.model import outcome_probabilities, score_matrix
+from pipeline.outcome_calibration import calibrate_outcome_probabilities
 from pipeline.score_calibration import apply_score_matrix_calibration
 from tools.backtest_score_matrix import (
     archived_forecasts,
@@ -68,6 +69,47 @@ def _evaluate(rows: list[dict[str, Any]]) -> dict[str, float | int]:
         "totalAdjacentHits": sum(row["totalAdjacentHit"] for row in rows),
         "scoreTop3Hits": sum(row["scoreTop3Hit"] for row in rows),
     }
+
+
+def _outcome_metrics(
+    rows: list[tuple[dict[str, float], str]],
+    settings: dict[str, float],
+) -> dict[str, float | int]:
+    if not rows:
+        return {"matches": 0, "hits": 0, "accuracy": 0.0, "logLoss": math.inf, "brier": math.inf}
+    evaluated = []
+    for probabilities, actual in rows:
+        calibrated = calibrate_outcome_probabilities(
+            probabilities,
+            temperature=settings["selectedTemperature"],
+            draw_multiplier=settings["selectedDrawMultiplier"],
+            max_probability_shift=settings["maxProbabilityShift"],
+        )
+        evaluated.append((calibrated, actual))
+    matches = len(evaluated)
+    hits = sum(max(probabilities, key=probabilities.get) == actual for probabilities, actual in evaluated)
+    return {
+        "matches": matches,
+        "hits": hits,
+        "accuracy": hits / matches,
+        "logLoss": sum(-math.log(max(probabilities[actual], 1e-12)) for probabilities, actual in evaluated) / matches,
+        "brier": sum(
+            sum((probabilities[outcome] - float(outcome == actual)) ** 2 for outcome in ("home", "draw", "away"))
+            for probabilities, actual in evaluated
+        ) / matches,
+    }
+
+
+def _historical_outcome_rows() -> dict[str, list[tuple[dict[str, float], str]]]:
+    payload = json.loads((ROOT / "artifacts" / "model-comparison-2018-2022.json").read_text(encoding="utf-8"))
+    rows: dict[str, list[tuple[dict[str, float], str]]] = {"2018": [], "2022": []}
+    for row in payload["matches"]:
+        if row["stage"] != "knockout":
+            continue
+        year = str(row["year"])
+        probabilities = row["models"]["current_production"]["probabilities"]
+        rows.setdefault(year, []).append((probabilities, str(row["actual"])))
+    return rows
 
 
 def _evaluate_xg(home_xg: float, away_xg: float, settlement: dict[str, Any]) -> dict[str, Any]:
@@ -298,6 +340,131 @@ def select_market_anchor(samples: list[dict[str, Any]], evidence_settings: dict[
     }
 
 
+def select_outcome_calibration(samples: list[dict[str, Any]]) -> tuple[dict[str, float], dict[str, Any]]:
+    baseline_settings = {
+        "selectedTemperature": 1.0,
+        "selectedDrawMultiplier": 1.0,
+        "maxProbabilityShift": 0.0,
+    }
+    current_rows = [
+        (
+            {key: float(sample["match"]["outcomeProbabilities"][key]) for key in ("home", "draw", "away")},
+            _actual_outcome(int(sample["settlement"]["homeScore"]), int(sample["settlement"]["awayScore"])),
+        )
+        for sample in samples
+        if all(key in (sample["match"].get("outcomeProbabilities") or {}) for key in ("home", "draw", "away"))
+    ]
+    late_holdout_rows = current_rows[(len(current_rows) + 1) // 2:]
+    historical_by_year = _historical_outcome_rows()
+    historical_rows = historical_by_year.get("2018", []) + historical_by_year.get("2022", [])
+
+    baseline = {
+        "current2026": _outcome_metrics(current_rows, baseline_settings),
+        "current2026LateHoldout": _outcome_metrics(late_holdout_rows, baseline_settings),
+        "historical2018And2022": _outcome_metrics(historical_rows, baseline_settings),
+        "historical2018": _outcome_metrics(historical_by_year.get("2018", []), baseline_settings),
+        "historical2022": _outcome_metrics(historical_by_year.get("2022", []), baseline_settings),
+    }
+    baseline_weighted_log_loss = (
+        0.70 * float(baseline["current2026"]["logLoss"])
+        + 0.30 * float(baseline["historical2018And2022"]["logLoss"])
+    )
+    baseline_weighted_brier = (
+        0.70 * float(baseline["current2026"]["brier"])
+        + 0.30 * float(baseline["historical2018And2022"]["brier"])
+    )
+
+    candidates: list[tuple[dict[str, float], dict[str, Any]]] = []
+    for temperature, draw_multiplier, max_shift in itertools.product(
+        (0.70, 0.80, 0.90, 1.00),
+        (1.00, 1.10, 1.20, 1.30),
+        (0.04, 0.06, 0.08, 0.10, 0.12),
+    ):
+        settings = {
+            "selectedTemperature": temperature,
+            "selectedDrawMultiplier": draw_multiplier,
+            "maxProbabilityShift": max_shift,
+        }
+        metrics = {
+            "current2026": _outcome_metrics(current_rows, settings),
+            "current2026LateHoldout": _outcome_metrics(late_holdout_rows, settings),
+            "historical2018And2022": _outcome_metrics(historical_rows, settings),
+            "historical2018": _outcome_metrics(historical_by_year.get("2018", []), settings),
+            "historical2022": _outcome_metrics(historical_by_year.get("2022", []), settings),
+        }
+        weighted_log_loss = (
+            0.70 * float(metrics["current2026"]["logLoss"])
+            + 0.30 * float(metrics["historical2018And2022"]["logLoss"])
+        )
+        weighted_brier = (
+            0.70 * float(metrics["current2026"]["brier"])
+            + 0.30 * float(metrics["historical2018And2022"]["brier"])
+        )
+        proper_score_index = 0.50 * (weighted_log_loss / baseline_weighted_log_loss) + 0.50 * (
+            weighted_brier / baseline_weighted_brier
+        )
+        metrics["weightedLogLoss"] = weighted_log_loss
+        metrics["weightedBrier"] = weighted_brier
+        metrics["properScoreIndexVsBaseline"] = proper_score_index
+        metrics["eligible"] = (
+            float(metrics["current2026"]["logLoss"]) < float(baseline["current2026"]["logLoss"]) - 1e-12
+            and float(metrics["current2026"]["brier"]) < float(baseline["current2026"]["brier"]) - 1e-12
+            and int(metrics["current2026"]["hits"]) >= int(baseline["current2026"]["hits"])
+            and float(metrics["current2026LateHoldout"]["logLoss"]) < float(baseline["current2026LateHoldout"]["logLoss"]) - 1e-12
+            and float(metrics["current2026LateHoldout"]["brier"]) < float(baseline["current2026LateHoldout"]["brier"]) - 1e-12
+            and int(metrics["current2026LateHoldout"]["hits"]) >= int(baseline["current2026LateHoldout"]["hits"])
+            and float(metrics["historical2018And2022"]["logLoss"]) <= float(baseline["historical2018And2022"]["logLoss"]) * 1.02
+            and float(metrics["historical2018And2022"]["brier"]) <= float(baseline["historical2018And2022"]["brier"]) * 1.02
+            and int(metrics["historical2018And2022"]["hits"]) >= int(baseline["historical2018And2022"]["hits"])
+            and float(metrics["historical2018"]["logLoss"]) <= float(baseline["historical2018"]["logLoss"]) * 1.02
+            and float(metrics["historical2018"]["brier"]) <= float(baseline["historical2018"]["brier"]) * 1.02
+            and float(metrics["historical2022"]["logLoss"]) <= float(baseline["historical2022"]["logLoss"]) * 1.02
+            and float(metrics["historical2022"]["brier"]) <= float(baseline["historical2022"]["brier"]) * 1.02
+            and proper_score_index < 1.0 - 1e-12
+        )
+        candidates.append((settings, metrics))
+
+    eligible = [candidate for candidate in candidates if candidate[1]["eligible"]]
+    if eligible:
+        selected_settings, selected_metrics = min(
+            eligible,
+            key=lambda candidate: float(candidate[1]["properScoreIndexVsBaseline"]),
+        )
+        selection_reason = "proper_scores_improved_and_temporal_historical_gates_passed"
+    else:
+        selected_settings = baseline_settings
+        selected_metrics = {
+            **baseline,
+            "weightedLogLoss": baseline_weighted_log_loss,
+            "weightedBrier": baseline_weighted_brier,
+            "properScoreIndexVsBaseline": 1.0,
+            "eligible": True,
+            "fallback": True,
+        }
+        selection_reason = "validation_gate_fallback"
+
+    return selected_settings, {
+        "grid": {
+            "temperature": [0.70, 0.80, 0.90, 1.00],
+            "drawMultiplier": [1.00, 1.10, 1.20, 1.30],
+            "maxProbabilityShift": [0.04, 0.06, 0.08, 0.10, 0.12],
+        },
+        "validationWeights": {"worldCup2026": 0.70, "worldCup2018And2022": 0.30},
+        "selectionObjective": "equal_weight_normalized_wdl_log_loss_and_brier",
+        "selected": selected_settings,
+        "selectedMetrics": selected_metrics,
+        "baseline": {
+            **baseline,
+            "weightedLogLoss": baseline_weighted_log_loss,
+            "weightedBrier": baseline_weighted_brier,
+            "properScoreIndexVsBaseline": 1.0,
+        },
+        "selectionReason": selection_reason,
+        "candidatesEvaluated": len(candidates),
+        "scoreMatrixMutation": "forbidden_by_independent_market_gate",
+    }
+
+
 def select_weighted_score_intensity(samples: list[dict[str, Any]]) -> dict[str, Any]:
     candidates: dict[str, Any] = {}
     for intensity in (0.0, 0.10, 0.15, 0.20, 0.25):
@@ -306,17 +473,21 @@ def select_weighted_score_intensity(samples: list[dict[str, Any]]) -> dict[str, 
             for sample in samples
         ])
         historical = _historical_metrics(score_intensity=intensity)
+        current_matrix_loss = 0.60 * current["totalGoalsLogLoss"] + 0.40 * current["scoreLogLoss"]
+        historical_matrix_loss = 0.60 * historical["totalGoalsLogLoss"] + 0.40 * historical["scoreLogLoss"]
         candidates[f"{intensity:.2f}"] = {
             "current2026": current,
             "historical2018And2022": historical,
-            "weightedLoss": 0.70 * (0.60 * current["totalGoalsLogLoss"] + 0.40 * current["scoreLogLoss"])
-            + 0.30 * (0.60 * historical["totalGoalsLogLoss"] + 0.40 * historical["scoreLogLoss"]),
+            "currentMatrixLoss": current_matrix_loss,
+            "historicalMatrixLoss": historical_matrix_loss,
+            "weightedLoss": 0.70 * current_matrix_loss + 0.30 * historical_matrix_loss,
         }
     baseline = candidates["0.00"]
     eligible = {
         key: values for key, values in candidates.items()
         if values["current2026"]["totalAdjacentHits"] >= baseline["current2026"]["totalAdjacentHits"]
         and values["current2026"]["scoreTop3Hits"] >= baseline["current2026"]["scoreTop3Hits"]
+        and values["currentMatrixLoss"] < baseline["currentMatrixLoss"] - 1e-12
         and values["historical2018And2022"]["totalGoalsLogLoss"] <= baseline["historical2018And2022"]["totalGoalsLogLoss"] * 1.02
         and values["historical2018And2022"]["scoreLogLoss"] <= baseline["historical2018And2022"]["scoreLogLoss"] * 1.02
         and values["weightedLoss"] < baseline["weightedLoss"] - 1e-12
@@ -328,7 +499,10 @@ def select_weighted_score_intensity(samples: list[dict[str, Any]]) -> dict[str, 
         "validationWeights": {"worldCup2026": 0.70, "worldCup2018And2022": 0.30},
         "candidates": candidates,
         "selectedIntensity": float(selected),
-        "selectionReason": "weighted_loss_improved_and_safety_gates_passed" if eligible else "validation_gate_fallback",
+        "selectionReason": (
+            "current_and_weighted_loss_improved_with_safety_gates"
+            if eligible else "current_tournament_loss_gate_fallback"
+        ),
     }
 
 
@@ -336,6 +510,7 @@ def main() -> None:
     samples, forecasts = _knockout_samples()
     evidence_settings, evidence_validation = select_tournament_evidence(samples)
     market_settings, market_validation = select_market_anchor(samples, evidence_settings)
+    outcome_settings, outcome_validation = select_outcome_calibration(samples)
     score_rows = build_rows(forecasts, load_settlements(SETTLEMENTS_PATH))
     score_selection_2026 = select_calibration_intensity([row for row in score_rows if row["stage"] == "knockout"])
     score_selection = select_weighted_score_intensity(samples)
@@ -345,6 +520,11 @@ def main() -> None:
     payload["generatedAt"] = datetime.now(BEIJING).isoformat(timespec="seconds")
     payload["tournamentEvidence"] = {**evidence_settings, "validation": evidence_validation}
     payload["marketAnchor"] = {**market_settings, "validation": market_validation}
+    payload["outcomeCalibration"] = {
+        **outcome_settings,
+        "selectionReason": outcome_validation["selectionReason"],
+        "validation": outcome_validation,
+    }
     payload["scoreCalibration"] = {
         "candidateIntensities": score_selection["candidateIntensities"],
         "selectedIntensity": score_selection["selectedIntensity"],
@@ -368,6 +548,7 @@ def main() -> None:
         "matches": len(samples),
         "tournamentEvidence": evidence_validation,
         "marketAnchor": market_validation,
+        "outcomeCalibration": outcome_validation,
         "scoreCalibration": score_selection,
     }, ensure_ascii=False, indent=2))
 

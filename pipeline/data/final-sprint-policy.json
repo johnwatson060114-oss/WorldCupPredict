@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-11T11:51:59+08:00",
+  "generatedAt": "2026-07-15T14:33:03+08:00",
   "policy": "world_cup_final_sprint_v1",
   "predictionTarget": "90_minutes",
   "validationWeight": {
@@ -9,9 +9,9 @@
   },
   "historicalDegradationLimit": 0.02,
   "tournamentEvidence": {
-    "halfLifeMatches": 2.0,
-    "shrinkage": 5.0,
-    "maxSideXgShift": 0.0,
+    "halfLifeMatches": 1.5,
+    "shrinkage": 3.0,
+    "maxSideXgShift": 0.1,
     "validation": {
       "grid": {
         "halfLifeMatches": [
@@ -31,19 +31,19 @@
         ]
       },
       "selected": {
-        "halfLifeMatches": 2.0,
-        "shrinkage": 5.0,
-        "maxSideXgShift": 0.0
+        "halfLifeMatches": 1.5,
+        "shrinkage": 3.0,
+        "maxSideXgShift": 0.1
       },
       "metrics": {
         "current2026": {
-          "matches": 35,
-          "wdlLogLoss": 0.7497445902593167,
-          "totalGoalsLogLoss": 1.7786288689196976,
-          "scoreLogLoss": 2.6827476633444864,
-          "combinedLoss": 1.934499530957537,
-          "totalAdjacentHits": 26,
-          "scoreTop3Hits": 14
+          "matches": 39,
+          "wdlLogLoss": 0.7790004617660987,
+          "totalGoalsLogLoss": 1.7222000379058495,
+          "scoreLogLoss": 2.6157598722737383,
+          "combinedLoss": 1.890984056425055,
+          "totalAdjacentHits": 31,
+          "scoreTop3Hits": 19
         },
         "historical2018And2022": {
           "matches": 32,
@@ -54,20 +54,19 @@
           "totalAdjacentHits": 21,
           "scoreTop3Hits": 10
         },
-        "weightedLoss": 2.005274521254159,
-        "eligible": true,
-        "fallback": true
+        "weightedLoss": 1.9748136890814214,
+        "eligible": true
       },
-      "selectionReason": "historical_top3_gate_fallback_to_diagnostic_only",
+      "selectionReason": "weighted_loss_improved_and_all_safety_gates_passed",
       "baseline": {
         "current2026": {
-          "matches": 35,
-          "wdlLogLoss": 0.7497445902593167,
-          "totalGoalsLogLoss": 1.7786288689196976,
-          "scoreLogLoss": 2.6827476633444864,
-          "combinedLoss": 1.934499530957537,
-          "totalAdjacentHits": 26,
-          "scoreTop3Hits": 14
+          "matches": 39,
+          "wdlLogLoss": 0.7825482395958533,
+          "totalGoalsLogLoss": 1.7373173511086024,
+          "scoreLogLoss": 2.6381783589684566,
+          "combinedLoss": 1.9067079319499944,
+          "totalAdjacentHits": 30,
+          "scoreTop3Hits": 17
         },
         "historical2018And2022": {
           "matches": 32,
@@ -83,24 +82,73 @@
     }
   },
   "halfFullEvidence": {
-    "policy": "opponent_adjusted_half_split_v1",
+    "policy": "opponent_adjusted_half_split_v2",
     "halfLifeMatches": 1.5,
-    "shrinkage": 5.0,
-    "maxFirstHalfXgShift": 0.05,
+    "shrinkage": 3.0,
+    "maxFirstHalfXgShift": 0.03,
+    "halfScoreResidualScale": 0.45,
     "blend": 0.25,
+    "selectionReason": "proper_scores_improved_and_late_holdout_hit_gates_passed",
     "validation": {
-      "selectionObjective": "2026 knockout 70% + 2018/2022 knockout 30%",
-      "wdlAssistWeight": 0.0,
-      "matches": 88,
-      "knockoutMatches": 38,
-      "knockoutLogLossBefore": 1.947721539413088,
-      "knockoutLogLossAfter": 1.9423074603194004,
-      "knockoutTop1HitsBefore": 11,
-      "knockoutTop1HitsAfter": 11,
-      "knockoutTop3HitsBefore": 24,
-      "knockoutTop3HitsAfter": 24,
-      "allLogLossBefore": 1.7970415414906489,
-      "allLogLossAfter": 1.796052490823791
+      "objective": "opponent-strength-adjusted halftime-score temporal residual model",
+      "leakagePolicy": "only matches with kickoff strictly before target kickoff",
+      "baseline": {
+        "all": {
+          "matches": 89,
+          "top1Hits": 32,
+          "top3Hits": 63,
+          "averageLogLoss": 1.7943625375420273,
+          "averageBrier": 0.762522457752448
+        },
+        "knockout": {
+          "matches": 39,
+          "top1Hits": 12,
+          "top3Hits": 25,
+          "averageLogLoss": 1.9377443253271973,
+          "averageBrier": 0.8028914996796293
+        },
+        "lateKnockoutHoldout": {
+          "matches": 19,
+          "top1Hits": 6,
+          "top3Hits": 13,
+          "averageLogLoss": 1.963637568284384,
+          "averageBrier": 0.8235675317035506
+        }
+      },
+      "selected": {
+        "settings": {
+          "halfLifeMatches": 1.5,
+          "shrinkage": 3.0,
+          "maxFirstHalfXgShift": 0.03,
+          "halfScoreResidualScale": 0.45,
+          "blend": 0.25
+        },
+        "candidate": {
+          "all": {
+            "matches": 89,
+            "top1Hits": 32,
+            "top3Hits": 63,
+            "averageLogLoss": 1.7936133421958416,
+            "averageBrier": 0.7625074086106011
+          },
+          "knockout": {
+            "matches": 39,
+            "top1Hits": 12,
+            "top3Hits": 25,
+            "averageLogLoss": 1.9341077183905593,
+            "averageBrier": 0.802583078900276
+          },
+          "lateKnockoutHoldout": {
+            "matches": 19,
+            "top1Hits": 6,
+            "top3Hits": 13,
+            "averageLogLoss": 1.9585713149781026,
+            "averageBrier": 0.8235552999749711
+          }
+        },
+        "properScoreIndexVsBaseline": 0.9988695703424562
+      },
+      "candidatesEvaluated": 324
     }
   },
   "marketAnchor": {
@@ -128,26 +176,26 @@
         "maxTotalXgShift": 0.25
       },
       "metrics": {
-        "matches": 35,
-        "wdlLogLoss": 0.7475403804364201,
-        "totalGoalsLogLoss": 1.7614076545577864,
-        "scoreLogLoss": 2.6676558410252915,
-        "combinedLoss": 1.921133474320515,
-        "totalAdjacentHits": 27,
-        "scoreTop3Hits": 16,
+        "matches": 39,
+        "wdlLogLoss": 0.7790004617660987,
+        "totalGoalsLogLoss": 1.7222000379058495,
+        "scoreLogLoss": 2.6157598722737383,
+        "combinedLoss": 1.890984056425055,
+        "totalAdjacentHits": 31,
+        "scoreTop3Hits": 19,
         "marketSamples": 0,
         "eligible": true,
         "fallback": true
       },
       "selectionReason": "total_goals_loss_gate_fallback_to_diagnostic_only",
       "baseline": {
-        "matches": 35,
-        "wdlLogLoss": 0.7475403804364201,
-        "totalGoalsLogLoss": 1.7614076545577864,
-        "scoreLogLoss": 2.6676558410252915,
-        "combinedLoss": 1.921133474320515,
-        "totalAdjacentHits": 27,
-        "scoreTop3Hits": 16
+        "matches": 39,
+        "wdlLogLoss": 0.7790004617660987,
+        "totalGoalsLogLoss": 1.7222000379058495,
+        "scoreLogLoss": 2.6157598722737383,
+        "combinedLoss": 1.890984056425055,
+        "totalAdjacentHits": 31,
+        "scoreTop3Hits": 19
       },
       "candidatesEvaluated": 9
     }
@@ -160,8 +208,8 @@
       0.2,
       0.25
     ],
-    "selectedIntensity": 0.25,
-    "selectionReason": "weighted_loss_improved_and_safety_gates_passed",
+    "selectedIntensity": 0.0,
+    "selectionReason": "current_tournament_loss_gate_fallback",
     "totalGoalsLossWeight": 0.6,
     "exactScoreLossWeight": 0.4,
     "validation": {
@@ -183,13 +231,13 @@
       "candidates": {
         "0.00": {
           "current2026": {
-            "matches": 35,
-            "wdlLogLoss": 0.7497445902593167,
-            "totalGoalsLogLoss": 1.7786288689196976,
-            "scoreLogLoss": 2.6827476633444864,
-            "combinedLoss": 1.934499530957537,
-            "totalAdjacentHits": 26,
-            "scoreTop3Hits": 14
+            "matches": 39,
+            "wdlLogLoss": 0.7825482395958533,
+            "totalGoalsLogLoss": 1.7373173511086024,
+            "scoreLogLoss": 2.6381783589684566,
+            "combinedLoss": 1.9067079319499944,
+            "totalAdjacentHits": 30,
+            "scoreTop3Hits": 17
           },
           "historical2018And2022": {
             "matches": 32,
@@ -200,17 +248,19 @@
             "totalAdjacentHits": 21,
             "scoreTop3Hits": 10
           },
-          "weightedLoss": 2.2085903738166706
+          "currentMatrixLoss": 2.097661754252544,
+          "historicalMatrixLoss": 2.3679896771131395,
+          "weightedLoss": 2.1787601311107223
         },
         "0.10": {
           "current2026": {
-            "matches": 35,
-            "wdlLogLoss": 0.7497445902593167,
-            "totalGoalsLogLoss": 1.7783173126389176,
-            "scoreLogLoss": 2.6828196286393258,
-            "combinedLoss": 1.9344036945631609,
-            "totalAdjacentHits": 26,
-            "scoreTop3Hits": 15
+            "matches": 39,
+            "wdlLogLoss": 0.7825482395958533,
+            "totalGoalsLogLoss": 1.7372569021161566,
+            "scoreLogLoss": 2.6383825859952954,
+            "combinedLoss": 1.9067654431637515,
+            "totalAdjacentHits": 30,
+            "scoreTop3Hits": 18
           },
           "historical2018And2022": {
             "matches": 32,
@@ -221,17 +271,19 @@
             "totalAdjacentHits": 21,
             "scoreTop3Hits": 10
           },
-          "weightedLoss": 2.2079534019908307
+          "currentMatrixLoss": 2.097707175667812,
+          "historicalMatrixLoss": 2.366235448878247,
+          "weightedLoss": 2.1782656576309423
         },
         "0.15": {
           "current2026": {
-            "matches": 35,
-            "wdlLogLoss": 0.7497445902593167,
-            "totalGoalsLogLoss": 1.7781917776663632,
-            "scoreLogLoss": 2.6828907189498317,
-            "combinedLoss": 1.9343819166983414,
-            "totalAdjacentHits": 26,
-            "scoreTop3Hits": 16
+            "matches": 39,
+            "wdlLogLoss": 0.7825482395958533,
+            "totalGoalsLogLoss": 1.7372547246768715,
+            "scoreLogLoss": 2.638517437598449,
+            "combinedLoss": 1.906818512829299,
+            "totalAdjacentHits": 30,
+            "scoreTop3Hits": 19
           },
           "historical2018And2022": {
             "matches": 32,
@@ -242,17 +294,19 @@
             "totalAdjacentHits": 21,
             "scoreTop3Hits": 10
           },
-          "weightedLoss": 2.2076665315549517
+          "currentMatrixLoss": 2.0977598098455026,
+          "historicalMatrixLoss": 2.365388612097088,
+          "weightedLoss": 2.1780484505209783
         },
         "0.20": {
           "current2026": {
-            "matches": 35,
-            "wdlLogLoss": 0.7497445902593167,
-            "totalGoalsLogLoss": 1.778086408744591,
-            "scoreLogLoss": 2.682985188599989,
-            "combinedLoss": 1.9343775569896953,
-            "totalAdjacentHits": 26,
-            "scoreTop3Hits": 16
+            "matches": 39,
+            "wdlLogLoss": 0.7825482395958533,
+            "totalGoalsLogLoss": 1.737271253149753,
+            "scoreLogLoss": 2.6386740914954223,
+            "combinedLoss": 1.9068877857772408,
+            "totalAdjacentHits": 30,
+            "scoreTop3Hits": 19
           },
           "historical2018And2022": {
             "matches": 32,
@@ -263,17 +317,19 @@
             "totalAdjacentHits": 21,
             "scoreTop3Hits": 10
           },
-          "weightedLoss": 2.207400695124206
+          "currentMatrixLoss": 2.097832388488021,
+          "historicalMatrixLoss": 2.36456183547827,
+          "weightedLoss": 2.1778512225850952
         },
         "0.25": {
           "current2026": {
-            "matches": 35,
-            "wdlLogLoss": 0.7497445902593167,
-            "totalGoalsLogLoss": 1.7780012180351057,
-            "scoreLogLoss": 2.6831030321395426,
-            "combinedLoss": 1.9343906181217227,
-            "totalAdjacentHits": 26,
-            "scoreTop3Hits": 16
+            "matches": 39,
+            "wdlLogLoss": 0.7825482395958533,
+            "totalGoalsLogLoss": 1.7373065017477165,
+            "scoreLogLoss": 2.638852542886733,
+            "combinedLoss": 1.9069732657729506,
+            "totalAdjacentHits": 30,
+            "scoreTop3Hits": 19
           },
           "historical2018And2022": {
             "matches": 32,
@@ -284,11 +340,13 @@
             "totalAdjacentHits": 21,
             "scoreTop3Hits": 10
           },
-          "weightedLoss": 2.2071558716886903
+          "currentMatrixLoss": 2.097924918203323,
+          "historicalMatrixLoss": 2.3637550370495797,
+          "weightedLoss": 2.1776739538572
         }
       },
-      "selectedIntensity": 0.25,
-      "selectionReason": "weighted_loss_improved_and_safety_gates_passed",
+      "selectedIntensity": 0.0,
+      "selectionReason": "current_tournament_loss_gate_fallback",
       "currentTournamentOnlyDiagnostic": {
         "candidateIntensities": [
           0.0,
@@ -303,93 +361,93 @@
         },
         "candidates": {
           "0.00": {
-            "matches": 35,
-            "totalExactHits": 9,
-            "totalExactAccuracy": 0.2571428571428571,
-            "totalAdjacentCoreHits": 26,
-            "totalAdjacentCoreAccuracy": 0.7428571428571429,
-            "averageTotalLogLoss": 1.7786288689196976,
-            "averageTotalRps": 0.11229057757031448,
-            "scoreTop1Hits": 4,
-            "scoreTop1Accuracy": 0.11428571428571428,
-            "scoreTop3Hits": 14,
-            "scoreTop3Accuracy": 0.4,
-            "scoreTop5Hits": 21,
-            "scoreTop5Accuracy": 0.6,
-            "averageScoreLogLoss": 2.6827476633444864,
-            "combinedLogLoss": 2.140276386689613
+            "matches": 39,
+            "totalExactHits": 12,
+            "totalExactAccuracy": 0.3076923076923077,
+            "totalAdjacentCoreHits": 30,
+            "totalAdjacentCoreAccuracy": 0.7692307692307693,
+            "averageTotalLogLoss": 1.7373173511086024,
+            "averageTotalRps": 0.1070938253577577,
+            "scoreTop1Hits": 5,
+            "scoreTop1Accuracy": 0.1282051282051282,
+            "scoreTop3Hits": 17,
+            "scoreTop3Accuracy": 0.4358974358974359,
+            "scoreTop5Hits": 24,
+            "scoreTop5Accuracy": 0.6153846153846154,
+            "averageScoreLogLoss": 2.6381783589684566,
+            "combinedLogLoss": 2.097661754252544
           },
           "0.10": {
-            "matches": 35,
-            "totalExactHits": 9,
-            "totalExactAccuracy": 0.2571428571428571,
-            "totalAdjacentCoreHits": 26,
-            "totalAdjacentCoreAccuracy": 0.7428571428571429,
-            "averageTotalLogLoss": 1.7783173126389176,
-            "averageTotalRps": 0.1123607593795304,
-            "scoreTop1Hits": 4,
-            "scoreTop1Accuracy": 0.11428571428571428,
-            "scoreTop3Hits": 15,
-            "scoreTop3Accuracy": 0.42857142857142855,
-            "scoreTop5Hits": 21,
-            "scoreTop5Accuracy": 0.6,
-            "averageScoreLogLoss": 2.6828196286393258,
-            "combinedLogLoss": 2.1401182390390807
+            "matches": 39,
+            "totalExactHits": 12,
+            "totalExactAccuracy": 0.3076923076923077,
+            "totalAdjacentCoreHits": 30,
+            "totalAdjacentCoreAccuracy": 0.7692307692307693,
+            "averageTotalLogLoss": 1.7372569021161566,
+            "averageTotalRps": 0.10720779593405502,
+            "scoreTop1Hits": 5,
+            "scoreTop1Accuracy": 0.1282051282051282,
+            "scoreTop3Hits": 18,
+            "scoreTop3Accuracy": 0.46153846153846156,
+            "scoreTop5Hits": 24,
+            "scoreTop5Accuracy": 0.6153846153846154,
+            "averageScoreLogLoss": 2.6383825859952954,
+            "combinedLogLoss": 2.097707175667812
           },
           "0.15": {
-            "matches": 35,
-            "totalExactHits": 9,
-            "totalExactAccuracy": 0.2571428571428571,
-            "totalAdjacentCoreHits": 26,
-            "totalAdjacentCoreAccuracy": 0.7428571428571429,
-            "averageTotalLogLoss": 1.7781917776663632,
-            "averageTotalRps": 0.11240093420944826,
-            "scoreTop1Hits": 4,
-            "scoreTop1Accuracy": 0.11428571428571428,
-            "scoreTop3Hits": 16,
-            "scoreTop3Accuracy": 0.45714285714285713,
-            "scoreTop5Hits": 21,
-            "scoreTop5Accuracy": 0.6,
-            "averageScoreLogLoss": 2.6828907189498317,
-            "combinedLogLoss": 2.1400713541797507
+            "matches": 39,
+            "totalExactHits": 12,
+            "totalExactAccuracy": 0.3076923076923077,
+            "totalAdjacentCoreHits": 30,
+            "totalAdjacentCoreAccuracy": 0.7692307692307693,
+            "averageTotalLogLoss": 1.7372547246768715,
+            "averageTotalRps": 0.10726983536977208,
+            "scoreTop1Hits": 5,
+            "scoreTop1Accuracy": 0.1282051282051282,
+            "scoreTop3Hits": 19,
+            "scoreTop3Accuracy": 0.48717948717948717,
+            "scoreTop5Hits": 24,
+            "scoreTop5Accuracy": 0.6153846153846154,
+            "averageScoreLogLoss": 2.638517437598449,
+            "combinedLogLoss": 2.0977598098455026
           },
           "0.20": {
-            "matches": 35,
-            "totalExactHits": 9,
-            "totalExactAccuracy": 0.2571428571428571,
-            "totalAdjacentCoreHits": 26,
-            "totalAdjacentCoreAccuracy": 0.7428571428571429,
-            "averageTotalLogLoss": 1.778086408744591,
-            "averageTotalRps": 0.11244449832290603,
-            "scoreTop1Hits": 4,
-            "scoreTop1Accuracy": 0.11428571428571428,
-            "scoreTop3Hits": 16,
-            "scoreTop3Accuracy": 0.45714285714285713,
-            "scoreTop5Hits": 21,
-            "scoreTop5Accuracy": 0.6,
-            "averageScoreLogLoss": 2.682985188599989,
-            "combinedLogLoss": 2.14004592068675
+            "matches": 39,
+            "totalExactHits": 12,
+            "totalExactAccuracy": 0.3076923076923077,
+            "totalAdjacentCoreHits": 30,
+            "totalAdjacentCoreAccuracy": 0.7692307692307693,
+            "averageTotalLogLoss": 1.737271253149753,
+            "averageTotalRps": 0.10733524423720141,
+            "scoreTop1Hits": 5,
+            "scoreTop1Accuracy": 0.1282051282051282,
+            "scoreTop3Hits": 19,
+            "scoreTop3Accuracy": 0.48717948717948717,
+            "scoreTop5Hits": 24,
+            "scoreTop5Accuracy": 0.6153846153846154,
+            "averageScoreLogLoss": 2.6386740914954223,
+            "combinedLogLoss": 2.097832388488021
           },
           "0.25": {
-            "matches": 35,
-            "totalExactHits": 9,
-            "totalExactAccuracy": 0.2571428571428571,
-            "totalAdjacentCoreHits": 26,
-            "totalAdjacentCoreAccuracy": 0.7428571428571429,
-            "averageTotalLogLoss": 1.7780012180351057,
-            "averageTotalRps": 0.11249145171990373,
-            "scoreTop1Hits": 4,
-            "scoreTop1Accuracy": 0.11428571428571428,
-            "scoreTop3Hits": 16,
-            "scoreTop3Accuracy": 0.45714285714285713,
-            "scoreTop5Hits": 21,
-            "scoreTop5Accuracy": 0.6,
-            "averageScoreLogLoss": 2.6831030321395426,
-            "combinedLogLoss": 2.1400419436768807
+            "matches": 39,
+            "totalExactHits": 12,
+            "totalExactAccuracy": 0.3076923076923077,
+            "totalAdjacentCoreHits": 30,
+            "totalAdjacentCoreAccuracy": 0.7692307692307693,
+            "averageTotalLogLoss": 1.7373065017477165,
+            "averageTotalRps": 0.107404022536343,
+            "scoreTop1Hits": 5,
+            "scoreTop1Accuracy": 0.1282051282051282,
+            "scoreTop3Hits": 19,
+            "scoreTop3Accuracy": 0.48717948717948717,
+            "scoreTop5Hits": 24,
+            "scoreTop5Accuracy": 0.6153846153846154,
+            "averageScoreLogLoss": 2.638852542886733,
+            "combinedLogLoss": 2.097924918203323
           }
         },
-        "selectedIntensity": 0.25,
-        "selectionReason": "combined_loss_improved_and_hit_guards_passed",
+        "selectedIntensity": 0.0,
+        "selectionReason": "validation_gate_fallback",
         "guards": {
           "totalGoalsAdjacentHitsNotWorse": true,
           "exactScoreTop3HitsNotWorse": true
@@ -398,13 +456,136 @@
     }
   },
   "validation": {
-    "worldCup2026KnockoutMatches": 35,
+    "worldCup2026KnockoutMatches": 39,
     "predictionTarget": "90_minutes",
     "leakagePolicy": "latest archived forecast strictly before kickoff; evidence strictly before target kickoff",
     "historicalSafetyGate": {
       "weight": 0.3,
       "maxDegradation": 0.02,
       "status": "passed_by_weighted_candidate_evaluation"
+    }
+  },
+  "outcomeCalibration": {
+    "selectedTemperature": 0.7,
+    "selectedDrawMultiplier": 1.3,
+    "maxProbabilityShift": 0.06,
+    "selectionReason": "proper_scores_improved_and_temporal_historical_gates_passed",
+    "validation": {
+      "grid": {
+        "temperature": [
+          0.7,
+          0.8,
+          0.9,
+          1.0
+        ],
+        "drawMultiplier": [
+          1.0,
+          1.1,
+          1.2,
+          1.3
+        ],
+        "maxProbabilityShift": [
+          0.04,
+          0.06,
+          0.08,
+          0.1,
+          0.12
+        ]
+      },
+      "validationWeights": {
+        "worldCup2026": 0.7,
+        "worldCup2018And2022": 0.3
+      },
+      "selectionObjective": "equal_weight_normalized_wdl_log_loss_and_brier",
+      "selected": {
+        "selectedTemperature": 0.7,
+        "selectedDrawMultiplier": 1.3,
+        "maxProbabilityShift": 0.06
+      },
+      "selectedMetrics": {
+        "current2026": {
+          "matches": 39,
+          "hits": 26,
+          "accuracy": 0.6666666666666666,
+          "logLoss": 0.7331917347955117,
+          "brier": 0.43092728070137126
+        },
+        "current2026LateHoldout": {
+          "matches": 19,
+          "hits": 13,
+          "accuracy": 0.6842105263157895,
+          "logLoss": 0.7766961476692497,
+          "brier": 0.4689648948603261
+        },
+        "historical2018And2022": {
+          "matches": 32,
+          "hits": 18,
+          "accuracy": 0.5625,
+          "logLoss": 0.966139869559596,
+          "brier": 0.5817360135745853
+        },
+        "historical2018": {
+          "matches": 16,
+          "hits": 8,
+          "accuracy": 0.5,
+          "logLoss": 1.0539950014779214,
+          "brier": 0.6406516798970201
+        },
+        "historical2022": {
+          "matches": 16,
+          "hits": 10,
+          "accuracy": 0.625,
+          "logLoss": 0.8782847376412705,
+          "brier": 0.5228203472521504
+        },
+        "weightedLogLoss": 0.8030761752247368,
+        "weightedBrier": 0.47616990056333547,
+        "properScoreIndexVsBaseline": 0.9616454475396163,
+        "eligible": true
+      },
+      "baseline": {
+        "current2026": {
+          "matches": 39,
+          "hits": 26,
+          "accuracy": 0.6666666666666666,
+          "logLoss": 0.7808850781670245,
+          "brier": 0.4516434753641026
+        },
+        "current2026LateHoldout": {
+          "matches": 19,
+          "hits": 13,
+          "accuracy": 0.6842105263157895,
+          "logLoss": 0.8103236848024927,
+          "brier": 0.48121277136842106
+        },
+        "historical2018And2022": {
+          "matches": 32,
+          "hits": 18,
+          "accuracy": 0.5625,
+          "logLoss": 0.979148681702254,
+          "brier": 0.5864412824616565
+        },
+        "historical2018": {
+          "matches": 16,
+          "hits": 8,
+          "accuracy": 0.5,
+          "logLoss": 1.0366027807993106,
+          "brier": 0.6291520443212847
+        },
+        "historical2022": {
+          "matches": 16,
+          "hits": 10,
+          "accuracy": 0.625,
+          "logLoss": 0.9216945826051974,
+          "brier": 0.5437305206020283
+        },
+        "weightedLogLoss": 0.8403641592275932,
+        "weightedBrier": 0.4920828174933688,
+        "properScoreIndexVsBaseline": 1.0
+      },
+      "selectionReason": "proper_scores_improved_and_temporal_historical_gates_passed",
+      "candidatesEvaluated": 80,
+      "scoreMatrixMutation": "forbidden_by_independent_market_gate"
     }
   }
 }

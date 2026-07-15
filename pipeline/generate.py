@@ -59,6 +59,7 @@ from .lineup import apply_lineup_impacts
 from .intelligence import apply_intelligence, load_daily_intelligence
 from .draw_risk import DrawRiskResult, apply_draw_risk_layer
 from .market_guard import apply_bounded_market_anchor, market_conflict_decision
+from .outcome_calibration import apply_outcome_probability_calibration
 from .portfolio import build_portfolios
 from .provenance import build_snapshot_manifest
 from .simulation import MatchSimulationInput, TournamentSimulation, simulate_tournament
@@ -792,7 +793,11 @@ def build_match(
                 "base_xg": [home_xg, away_xg],
             },
         )
-    outcomes = draw_risk_result.probabilities
+    outcome_calibration = apply_outcome_probability_calibration(
+        draw_risk_result.probabilities,
+        seed,
+    )
+    outcomes = outcome_calibration.probabilities
     half_split = ((seed.get("tournament_evidence") or {}).get("halfFullEvidence") or {})
     first_half_xg = half_split.get("firstHalfExpectedGoals") or {}
     second_half_xg = half_split.get("secondHalfExpectedGoals") or {}
@@ -1010,6 +1015,7 @@ def build_match(
         "finalFourContext": final_four_context,
         "finalFourModel": final_four_model,
         "scoreCalibration": score_calibration.metadata,
+        "outcomeCalibration": outcome_calibration.metadata,
         "marketCalibration": seed.get("market_calibration"),
         "drawRisk": draw_risk_result.metadata,
         "halfFullCalibration": half_full_calibration.metadata,
