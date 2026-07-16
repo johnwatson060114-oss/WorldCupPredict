@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "initialBankroll": 0,
   "baselineStake": 365,
-  "baselineProfit": -52.57,
-  "baselineRevision": 1,
+  "baselineProfit": 20.11,
+  "baselineRevision": 2,
   "bets": [],
   "modelSnapshots": []
 }

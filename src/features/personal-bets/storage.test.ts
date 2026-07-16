@@ -29,15 +29,15 @@ describe('personal ledger settlement', () => {
       schemaVersion: 1,
       initialBankroll: 0,
       baselineStake: 365,
-      baselineProfit: -52.57,
-      baselineRevision: 1,
+      baselineProfit: 20.11,
+      baselineRevision: 2,
       modelSnapshots: [],
       bets: [],
     }
     const merged = mergeInitialPersonalLedger(local, seeded)
     expect(merged.baselineStake).toBe(365)
-    expect(merged.baselineProfit).toBe(-52.57)
-    expect(merged.baselineRevision).toBe(1)
+    expect(merged.baselineProfit).toBe(20.11)
+    expect(merged.baselineRevision).toBe(2)
     expect(merged.bets).toEqual([])
   })
 
@@ -55,14 +55,14 @@ describe('personal ledger settlement', () => {
       schemaVersion: 1,
       initialBankroll: 0,
       baselineStake: 365,
-      baselineProfit: -52.57,
-      baselineRevision: 1,
+      baselineProfit: 20.11,
+      baselineRevision: 2,
       modelSnapshots: [],
       bets: [],
     }
     const merged = mergeInitialPersonalLedger(local, seeded)
     expect(merged.baselineStake).toBe(365)
-    expect(merged.baselineProfit).toBe(-52.57)
+    expect(merged.baselineProfit).toBe(20.11)
     const withNewTicket: PersonalBetLedger = {
       ...merged,
       bets: [{
@@ -72,7 +72,7 @@ describe('personal ledger settlement', () => {
     }
     const refreshed = mergeInitialPersonalLedger(withNewTicket, seeded)
     expect(refreshed.baselineStake).toBe(365)
-    expect(refreshed.baselineProfit).toBe(-52.57)
+    expect(refreshed.baselineProfit).toBe(20.11)
     expect(refreshed.bets).toHaveLength(2)
   })
 
