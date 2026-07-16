@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import json
+
 from tools.backtest_half_full import (
     actual_half_full,
     archived_forecasts,
@@ -210,3 +212,42 @@ def test_archived_forecasts_include_cross_day_parlay_matches(tmp_path):
 
     assert set(forecasts) == {"m1"}
     assert forecasts["m1"]["historySection"] == "parlayMatches"
+
+
+def test_half_full_archives_deduplicate_alias_ids_by_fixture(tmp_path):
+    history_dir = tmp_path / "history"
+    history_dir.mkdir()
+    quotes = [
+        {"market": "\u534a\u5168\u573a", "selection": "\u80dc\u80dc", "modelProbability": 0.5},
+        {"market": "\u534a\u5168\u573a", "selection": "\u5e73\u80dc", "modelProbability": 0.5},
+    ]
+    match = {
+        "homeTeam": "England",
+        "awayTeam": "Argentina",
+        "kickoff": "2026-07-16T03:00:00+08:00",
+        "quotes": quotes,
+    }
+    (history_dir / "early.json").write_text(json.dumps({
+        "generatedAt": "2026-07-14T12:00:00+08:00",
+        "matches": [{**match, "id": "2040508"}],
+    }), encoding="utf-8")
+    (history_dir / "late.json").write_text(json.dumps({
+        "generatedAt": "2026-07-15T12:00:00+08:00",
+        "matches": [{**match, "id": "England vs Argentina", "kickoff": "2026-07-15T19:00:00Z"}],
+    }), encoding="utf-8")
+    settlements = {
+        "2040508": {
+            "matchId": "2040508", "homeScore": 1, "awayScore": 2,
+            "halfTimeHomeScore": 0, "halfTimeAwayScore": 0,
+            "settlementScoreBasis": "90_minutes",
+        },
+        "England vs Argentina": {
+            "matchId": "England vs Argentina", "homeScore": 1, "awayScore": 2,
+            "halfTimeHomeScore": 0, "halfTimeAwayScore": 0,
+        },
+    }
+
+    forecasts = archived_forecasts(history_dir, settlements)
+
+    assert set(forecasts) == {"England vs Argentina"}
+    assert forecasts["England vs Argentina"]["settlementMatchId"] == "2040508"

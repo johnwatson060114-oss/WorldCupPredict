@@ -80,6 +80,50 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
+def _valid_pre_kickoff_archive(payload: dict[str, Any]) -> bool:
+    matches = payload.get("matches") or []
+    generated_text = payload.get("generatedAt")
+    if not matches or not generated_text:
+        return False
+    try:
+        generated_at = datetime.fromisoformat(str(generated_text).replace("Z", "+00:00"))
+    except ValueError:
+        return False
+    for match in matches:
+        kickoff_text = match.get("kickoff") or match.get("kickoffBeijing")
+        if not kickoff_text:
+            return False
+        try:
+            kickoff = datetime.fromisoformat(str(kickoff_text).replace("Z", "+00:00"))
+        except ValueError:
+            return False
+        if generated_at >= kickoff:
+            return False
+    return True
+
+
+def write_immutable_forecast_archive(path: Path, payload: dict[str, Any]) -> str:
+    """Write the first valid pre-kickoff snapshot and never overwrite it.
+
+    Daily output may refresh, but the date-stamped backtest source must remain
+    immutable once it contains a valid forecast generated strictly before every
+    primary match kickoff.
+    """
+
+    if path.exists():
+        try:
+            existing = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            existing = {}
+        if _valid_pre_kickoff_archive(existing):
+            return "preserved_existing_pre_kickoff_snapshot"
+    if not _valid_pre_kickoff_archive(payload):
+        return "rejected_non_pre_kickoff_snapshot"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    return "written"
+
+
 def load_demo() -> dict:
     return json.loads((ROOT / "pipeline" / "data" / "demo_matches.json").read_text(encoding="utf-8"))
 
@@ -1506,7 +1550,8 @@ def main() -> None:
     if args.archive:
         archive = args.output.parent / "history" / f"{target_date}.json"
         archive.parent.mkdir(parents=True, exist_ok=True)
-        archive.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+        archive_status = write_immutable_forecast_archive(archive, payload)
+        print(f"Archive {archive_status}: {archive}")
         history_dates = []
         for history_path in sorted(archive.parent.glob("*.json")):
             try:

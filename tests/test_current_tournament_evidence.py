@@ -1,8 +1,13 @@
 from __future__ import annotations
 
+import json
 from datetime import datetime
 
-from pipeline.current_tournament_evidence import EvidenceMatch, apply_current_tournament_evidence
+from pipeline.current_tournament_evidence import (
+    EvidenceMatch,
+    apply_current_tournament_evidence,
+    load_evidence_matches,
+)
 
 
 def _evidence(
@@ -104,6 +109,91 @@ def test_extra_time_is_fatigue_metadata_not_a_score_input():
     assert home["post90LoadSeverity"] == 0.6
     assert home["fatigueAttackDelta"] == -0.03
     assert home["fatigueDefenseRiskDelta"] == 0.018
+
+
+def test_canonical_full_time_cap_overrides_legacy_commentary_cap():
+    evidence = [_evidence("past", "2026-07-01T12:00:00+08:00", "A", "C", (3, 0))]
+    seed = {
+        "home_team": "A",
+        "away_team": "B",
+        "kickoff": "2026-07-10T12:00:00+08:00",
+        "base_xg": [1.2, 1.0],
+        "model_decomposition": {},
+    }
+
+    apply_current_tournament_evidence([seed], "2026-07-10", evidence, settings={
+        "halfLifeMatches": 2.0,
+        "shrinkage": 5.0,
+        "commentaryProcessScale": 1.0,
+        "commentaryMaxSideXgShift": 0.15,
+        "maxSideXgShift": 0.02,
+    })
+
+    payload = seed["tournament_evidence"]
+    assert payload["maxSideXgShift"] == 0.02
+    assert abs(payload["xgNet"]["home"]) <= 0.02
+
+
+def test_zero_canonical_cap_disables_full_time_shift():
+    evidence = [_evidence("past", "2026-07-01T12:00:00+08:00", "A", "C", (3, 0))]
+    seed = {
+        "home_team": "A",
+        "away_team": "B",
+        "kickoff": "2026-07-10T12:00:00+08:00",
+        "base_xg": [1.2, 1.0],
+        "model_decomposition": {},
+    }
+
+    apply_current_tournament_evidence([seed], "2026-07-10", evidence, settings={
+        "halfLifeMatches": 2.0,
+        "shrinkage": 5.0,
+        "commentaryProcessScale": 1.0,
+        "commentaryMaxSideXgShift": 0.15,
+        "maxSideXgShift": 0.0,
+    })
+
+    payload = seed["tournament_evidence"]
+    assert seed["base_xg"] == [1.2, 1.0]
+    assert payload["diagnosticOnly"] is True
+
+
+def test_evidence_loader_deduplicates_aliases_and_timezone_equivalent_kickoffs(tmp_path):
+    history = tmp_path / "history"
+    history.mkdir()
+    numeric = {
+        "id": "100",
+        "kickoff": "2026-07-03T03:00:00+08:00",
+        "homeTeam": "\u745e\u58eb",
+        "awayTeam": "\u963f\u5c14\u53ca\u5229",
+        "modelDecomposition": {"longTermExpectedGoals": {"home": 1.2, "away": 0.8}},
+    }
+    alias = {
+        **numeric,
+        "id": "\u745e\u58eb vs \u963f\u5c14\u53ca\u5229\u4e9a",
+        "kickoff": "2026-07-02T19:00:00Z",
+        "awayTeam": "\u963f\u5c14\u53ca\u5229\u4e9a",
+        "modelDecomposition": {"longTermExpectedGoals": {"home": 1.4, "away": 0.7}},
+    }
+    (history / "early.json").write_text(json.dumps({
+        "generatedAt": "2026-07-02T10:00:00Z", "matches": [numeric],
+    }), encoding="utf-8")
+    (history / "late.json").write_text(json.dumps({
+        "generatedAt": "2026-07-02T12:00:00Z", "matches": [alias],
+    }), encoding="utf-8")
+    settlements = tmp_path / "settlements.json"
+    settlements.write_text(json.dumps({"matches": [
+        {"matchId": "100", "homeScore": 1, "awayScore": 0},
+        {"matchId": alias["id"], "homeScore": 1, "awayScore": 0},
+    ]}), encoding="utf-8")
+    commentary = tmp_path / "commentary.json"
+    commentary.write_text(json.dumps({"matches": []}), encoding="utf-8")
+
+    rows = load_evidence_matches(history, settlements, commentary)
+
+    assert len(rows) == 1
+    assert rows[0].match_id == alias["id"]
+    assert rows[0].away_team == "\u963f\u5c14\u53ca\u5229\u4e9a"
+    assert rows[0].home_xg == 1.4
 
 
 def test_half_split_uses_only_prior_commentary_process_and_is_bounded():

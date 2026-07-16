@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-15T14:37:54+08:00",
+  "generatedAt": "2026-07-16T20:44:49+08:00",
   "scope": {
     "tournament": "FIFA World Cup 2026",
     "market": "半全场",
     "policy": "latest archived pre-kickoff forecast with half-time/full-time quotes, joined to local settlements by match id; settlements missing halftime scores are excluded",
-    "settlementCount": 105,
-    "forecastsWithHalfFullMarket": 93,
+    "settlementCount": 108,
+    "forecastsWithHalfFullMarket": 91,
     "supplementalReconstructedForecasts": 4,
     "excludedMissingHalftime": 0,
-    "evaluatedMatches": 93
+    "evaluatedMatches": 91
   },
   "metricDefinitions": {
     "accuracy": "top probability half-time/full-time selection equals the realized selection",
@@ -21,23 +21,23 @@
   },
   "metrics": {
     "allMatchedSettled": {
-      "matches": 93,
-      "hits": 34,
-      "accuracy": 0.3655913978494624,
-      "top3Hits": 68,
-      "top3Accuracy": 0.7311827956989247,
-      "averageLogLoss": 1.792370270006966,
-      "averageBrier": 0.7572739335256121,
-      "averageActualProbability": 0.24815772656677088,
+      "matches": 91,
+      "hits": 33,
+      "accuracy": 0.3626373626373626,
+      "top3Hits": 66,
+      "top3Accuracy": 0.7252747252747253,
+      "averageLogLoss": 1.8058682903027228,
+      "averageBrier": 0.7624340319158206,
+      "averageActualProbability": 0.24509315107943686,
       "inSampleMostCommonActual": "胜胜",
-      "inSampleMostCommonAccuracy": 0.25806451612903225,
+      "inSampleMostCommonAccuracy": 0.25274725274725274,
       "uniformNineWayLogLoss": 2.1972245773362196,
       "actualDistribution": {
         "平平": 15,
-        "平胜": 15,
-        "平负": 7,
+        "平胜": 13,
+        "平负": 8,
         "胜平": 5,
-        "胜胜": 24,
+        "胜胜": 23,
         "胜负": 2,
         "负平": 4,
         "负胜": 5,
@@ -45,24 +45,24 @@
       },
       "predictionDistribution": {
         "平平": 2,
-        "胜胜": 57,
-        "负负": 34
+        "胜胜": 54,
+        "负负": 35
       }
     },
     "latestCompleted": {
       "matches": 1,
-      "hits": 1,
-      "accuracy": 1.0,
+      "hits": 0,
+      "accuracy": 0.0,
       "top3Hits": 1,
       "top3Accuracy": 1.0,
-      "averageLogLoss": 1.5686699199119323,
-      "averageBrier": 0.7323693881145253,
-      "averageActualProbability": 0.2083220832208322,
-      "inSampleMostCommonActual": "负负",
+      "averageLogLoss": 1.6796558074275971,
+      "averageBrier": 0.7886968767835948,
+      "averageActualProbability": 0.1864381356186438,
+      "inSampleMostCommonActual": "平负",
       "inSampleMostCommonAccuracy": 1.0,
       "uniformNineWayLogLoss": 2.1972245773362196,
       "actualDistribution": {
-        "负负": 1
+        "平负": 1
       },
       "predictionDistribution": {
         "负负": 1
@@ -75,9 +75,9 @@
         "accuracy": 0.4074074074074074,
         "top3Hits": 42,
         "top3Accuracy": 0.7777777777777778,
-        "averageLogLoss": 1.6732143101144996,
-        "averageBrier": 0.7211203410813316,
-        "averageActualProbability": 0.27445855920601575,
+        "averageLogLoss": 1.6680062340377229,
+        "averageBrier": 0.7213543338183686,
+        "averageActualProbability": 0.27458726290971947,
         "inSampleMostCommonActual": "胜胜",
         "inSampleMostCommonAccuracy": 0.2777777777777778,
         "uniformNineWayLogLoss": 2.1972245773362196,
@@ -98,31 +98,31 @@
         }
       },
       "knockout": {
-        "matches": 39,
-        "hits": 12,
-        "accuracy": 0.3076923076923077,
-        "top3Hits": 26,
-        "top3Accuracy": 0.6666666666666666,
-        "averageLogLoss": 1.9573554452426885,
-        "averageBrier": 0.8073327538330773,
-        "averageActualProbability": 0.2117411890662779,
+        "matches": 37,
+        "hits": 11,
+        "accuracy": 0.2972972972972973,
+        "top3Hits": 24,
+        "top3Accuracy": 0.6486486486486487,
+        "averageLogLoss": 2.007072372419209,
+        "averageBrier": 0.8223881858958858,
+        "averageActualProbability": 0.20204769057037572,
         "inSampleMostCommonActual": "胜胜",
-        "inSampleMostCommonAccuracy": 0.23076923076923078,
+        "inSampleMostCommonAccuracy": 0.21621621621621623,
         "uniformNineWayLogLoss": 2.1972245773362196,
         "actualDistribution": {
           "平平": 5,
-          "平胜": 5,
-          "平负": 6,
+          "平胜": 3,
+          "平负": 7,
           "胜平": 2,
-          "胜胜": 9,
+          "胜胜": 8,
           "负平": 3,
           "负胜": 4,
           "负负": 5
         },
         "predictionDistribution": {
           "平平": 2,
-          "胜胜": 23,
-          "负负": 14
+          "胜胜": 20,
+          "负负": 15
         }
       }
     },
@@ -133,25 +133,25 @@
           "knockoutWeight": 0.0
         },
         "base": {
-          "matches": 93,
-          "hits": 58,
-          "accuracy": 0.6236559139784946,
-          "averageLogLoss": 0.832672175924279,
-          "averageActualProbability": 0.4984928965198729
+          "matches": 91,
+          "hits": 56,
+          "accuracy": 0.6153846153846154,
+          "averageLogLoss": 0.840730547461643,
+          "averageActualProbability": 0.4950847184214085
         },
         "halfFullSignal": {
-          "matches": 93,
-          "hits": 58,
-          "accuracy": 0.6236559139784946,
-          "averageLogLoss": 0.8337861090396512,
-          "averageActualProbability": 0.49885336600730135
+          "matches": 91,
+          "hits": 56,
+          "accuracy": 0.6153846153846154,
+          "averageLogLoss": 0.8430420340763461,
+          "averageActualProbability": 0.49474701418381023
         },
         "assisted": {
-          "matches": 93,
-          "hits": 58,
-          "accuracy": 0.6236559139784946,
-          "averageLogLoss": 0.8319130565997129,
-          "averageActualProbability": 0.4988670933745526
+          "matches": 91,
+          "hits": 56,
+          "accuracy": 0.6153846153846154,
+          "averageLogLoss": 0.8399547441958777,
+          "averageActualProbability": 0.4954671393827846
         }
       },
       "latestCompleted": {
@@ -163,22 +163,22 @@
           "matches": 1,
           "hits": 1,
           "accuracy": 1.0,
-          "averageLogLoss": 0.9047080706310885,
-          "averageActualProbability": 0.40466
+          "averageLogLoss": 0.7034399700453776,
+          "averageActualProbability": 0.49488
         },
         "halfFullSignal": {
           "matches": 1,
           "hits": 1,
           "accuracy": 1.0,
-          "averageLogLoss": 0.9118406037981335,
-          "averageActualProbability": 0.40178401784017836
+          "averageLogLoss": 0.7425785438436638,
+          "averageActualProbability": 0.4758852411475885
         },
         "assisted": {
           "matches": 1,
           "hits": 1,
           "accuracy": 1.0,
-          "averageLogLoss": 0.9047080706310885,
-          "averageActualProbability": 0.40466
+          "averageLogLoss": 0.7034399700453776,
+          "averageActualProbability": 0.49488
         }
       },
       "byStage": {
@@ -191,22 +191,22 @@
             "matches": 54,
             "hits": 32,
             "accuracy": 0.5925925925925926,
-            "averageLogLoss": 0.8700739687489626,
-            "averageActualProbability": 0.49452924771015144
+            "averageLogLoss": 0.8651664242998532,
+            "averageActualProbability": 0.49680758104348477
           },
           "halfFullSignal": {
             "matches": 54,
             "hits": 32,
             "accuracy": 0.5925925925925926,
-            "averageLogLoss": 0.8636819179185382,
-            "averageActualProbability": 0.4977514984032268
+            "averageLogLoss": 0.8587743734694288,
+            "averageActualProbability": 0.5000298317365601
           },
           "assisted": {
             "matches": 54,
             "hits": 32,
             "accuracy": 0.5925925925925926,
-            "averageLogLoss": 0.8687665965788767,
-            "averageActualProbability": 0.4951736978487665
+            "averageLogLoss": 0.8638590521297672,
+            "averageActualProbability": 0.4974520311820999
           }
         },
         "knockout": {
@@ -215,36 +215,38 @@
             "knockoutWeight": 0.0
           },
           "base": {
-            "matches": 39,
-            "hits": 26,
-            "accuracy": 0.6666666666666666,
-            "averageLogLoss": 0.7808850781670245,
-            "averageActualProbability": 0.5039810256410256
+            "matches": 37,
+            "hits": 24,
+            "accuracy": 0.6486486486486487,
+            "averageLogLoss": 0.8050673758599309,
+            "averageActualProbability": 0.4925702702702703
           },
           "halfFullSignal": {
-            "matches": 39,
-            "hits": 26,
-            "accuracy": 0.6666666666666666,
-            "averageLogLoss": 0.792391912130423,
-            "averageActualProbability": 0.5003790288437123
+            "matches": 37,
+            "hits": 24,
+            "accuracy": 0.6486486486486487,
+            "averageLogLoss": 0.8200813225296851,
+            "averageActualProbability": 0.4870369561338508
           },
           "assisted": {
-            "matches": 39,
-            "hits": 26,
-            "accuracy": 0.6666666666666666,
-            "averageLogLoss": 0.7808850781670245,
-            "averageActualProbability": 0.5039810256410256
+            "matches": 37,
+            "hits": 24,
+            "accuracy": 0.6486486486486487,
+            "averageLogLoss": 0.8050673758599309,
+            "averageActualProbability": 0.4925702702702703
           }
         }
       }
     }
   },
   "latestCompletedMatchIds": [
-    "2040507"
+    "2040508"
   ],
   "matches": [
     {
       "matchId": "2040170",
+      "forecastMatchId": "2040170",
+      "settlementMatchId": "2040170",
       "homeTeam": "德国",
       "awayTeam": "库拉索",
       "kickoff": "2026-06-15T01:00:00+08:00",
@@ -340,6 +342,8 @@
     },
     {
       "matchId": "2040171",
+      "forecastMatchId": "2040171",
+      "settlementMatchId": "2040171",
       "homeTeam": "荷兰",
       "awayTeam": "日本",
       "kickoff": "2026-06-15T04:00:00+08:00",
@@ -435,6 +439,8 @@
     },
     {
       "matchId": "2040172",
+      "forecastMatchId": "2040172",
+      "settlementMatchId": "2040172",
       "homeTeam": "科特迪瓦",
       "awayTeam": "厄瓜多尔",
       "kickoff": "2026-06-15T07:00:00+08:00",
@@ -530,6 +536,8 @@
     },
     {
       "matchId": "2040173",
+      "forecastMatchId": "2040173",
+      "settlementMatchId": "2040173",
       "homeTeam": "瑞典",
       "awayTeam": "突尼斯",
       "kickoff": "2026-06-15T10:00:00+08:00",
@@ -625,6 +633,8 @@
     },
     {
       "matchId": "西班牙 vs 佛得角",
+      "forecastMatchId": "西班牙 vs 佛得角",
+      "settlementMatchId": "西班牙 vs 佛得角",
       "homeTeam": "西班牙",
       "awayTeam": "佛得角",
       "kickoff": "2026-06-16T00:00:00+08:00",
@@ -720,6 +730,8 @@
     },
     {
       "matchId": "比利时 vs 埃及",
+      "forecastMatchId": "比利时 vs 埃及",
+      "settlementMatchId": "比利时 vs 埃及",
       "homeTeam": "比利时",
       "awayTeam": "埃及",
       "kickoff": "2026-06-16T03:00:00+08:00",
@@ -815,6 +827,8 @@
     },
     {
       "matchId": "沙特 vs 乌拉圭",
+      "forecastMatchId": "沙特 vs 乌拉圭",
+      "settlementMatchId": "沙特 vs 乌拉圭",
       "homeTeam": "沙特",
       "awayTeam": "乌拉圭",
       "kickoff": "2026-06-16T06:00:00+08:00",
@@ -910,6 +924,8 @@
     },
     {
       "matchId": "伊朗 vs 新西兰",
+      "forecastMatchId": "伊朗 vs 新西兰",
+      "settlementMatchId": "伊朗 vs 新西兰",
       "homeTeam": "伊朗",
       "awayTeam": "新西兰",
       "kickoff": "2026-06-16T09:00:00+08:00",
@@ -1005,6 +1021,8 @@
     },
     {
       "matchId": "2040178",
+      "forecastMatchId": "2040178",
+      "settlementMatchId": "2040178",
       "homeTeam": "法国",
       "awayTeam": "塞内加尔",
       "kickoff": "2026-06-17T03:00:00+08:00",
@@ -1100,6 +1118,8 @@
     },
     {
       "matchId": "2040179",
+      "forecastMatchId": "2040179",
+      "settlementMatchId": "2040179",
       "homeTeam": "伊拉克",
       "awayTeam": "挪威",
       "kickoff": "2026-06-17T06:00:00+08:00",
@@ -1195,6 +1215,8 @@
     },
     {
       "matchId": "2040180",
+      "forecastMatchId": "2040180",
+      "settlementMatchId": "2040180",
       "homeTeam": "阿根廷",
       "awayTeam": "阿尔及利亚",
       "kickoff": "2026-06-17T09:00:00+08:00",
@@ -1290,6 +1312,8 @@
     },
     {
       "matchId": "2040181",
+      "forecastMatchId": "2040181",
+      "settlementMatchId": "2040181",
       "homeTeam": "奥地利",
       "awayTeam": "约旦",
       "kickoff": "2026-06-17T12:00:00+08:00",
@@ -1385,6 +1409,8 @@
     },
     {
       "matchId": "2040182",
+      "forecastMatchId": "2040182",
+      "settlementMatchId": "2040182",
       "homeTeam": "葡萄牙",
       "awayTeam": "民主刚果",
       "kickoff": "2026-06-18T01:00:00+08:00",
@@ -1480,6 +1506,8 @@
     },
     {
       "matchId": "2040183",
+      "forecastMatchId": "2040183",
+      "settlementMatchId": "2040183",
       "homeTeam": "英格兰",
       "awayTeam": "克罗地亚",
       "kickoff": "2026-06-18T04:00:00+08:00",
@@ -1575,6 +1603,8 @@
     },
     {
       "matchId": "2040184",
+      "forecastMatchId": "2040184",
+      "settlementMatchId": "2040184",
       "homeTeam": "加纳",
       "awayTeam": "巴拿马",
       "kickoff": "2026-06-18T07:00:00+08:00",
@@ -1670,6 +1700,8 @@
     },
     {
       "matchId": "2040185",
+      "forecastMatchId": "2040185",
+      "settlementMatchId": "2040185",
       "homeTeam": "乌兹别克斯坦",
       "awayTeam": "哥伦比亚",
       "kickoff": "2026-06-18T10:00:00+08:00",
@@ -1765,6 +1797,8 @@
     },
     {
       "matchId": "2040235",
+      "forecastMatchId": "2040235",
+      "settlementMatchId": "2040235",
       "homeTeam": "捷克",
       "awayTeam": "南非",
       "kickoff": "2026-06-19T00:00:00+08:00",
@@ -1860,6 +1894,8 @@
     },
     {
       "matchId": "2040236",
+      "forecastMatchId": "2040236",
+      "settlementMatchId": "2040236",
       "homeTeam": "瑞士",
       "awayTeam": "波黑",
       "kickoff": "2026-06-19T03:00:00+08:00",
@@ -1955,6 +1991,8 @@
     },
     {
       "matchId": "2040237",
+      "forecastMatchId": "2040237",
+      "settlementMatchId": "2040237",
       "homeTeam": "加拿大",
       "awayTeam": "卡塔尔",
       "kickoff": "2026-06-19T06:00:00+08:00",
@@ -2050,6 +2088,8 @@
     },
     {
       "matchId": "2040238",
+      "forecastMatchId": "2040238",
+      "settlementMatchId": "2040238",
       "homeTeam": "墨西哥",
       "awayTeam": "韩国",
       "kickoff": "2026-06-19T09:00:00+08:00",
@@ -2145,6 +2185,8 @@
     },
     {
       "matchId": "2040239",
+      "forecastMatchId": "2040239",
+      "settlementMatchId": "2040239",
       "homeTeam": "美国",
       "awayTeam": "澳大利亚",
       "kickoff": "2026-06-20T03:00:00+08:00",
@@ -2240,6 +2282,8 @@
     },
     {
       "matchId": "2040240",
+      "forecastMatchId": "2040240",
+      "settlementMatchId": "2040240",
       "homeTeam": "苏格兰",
       "awayTeam": "摩洛哥",
       "kickoff": "2026-06-20T06:00:00+08:00",
@@ -2335,6 +2379,8 @@
     },
     {
       "matchId": "2040241",
+      "forecastMatchId": "2040241",
+      "settlementMatchId": "2040241",
       "homeTeam": "巴西",
       "awayTeam": "海地",
       "kickoff": "2026-06-20T08:30:00+08:00",
@@ -2430,6 +2476,8 @@
     },
     {
       "matchId": "2040242",
+      "forecastMatchId": "2040242",
+      "settlementMatchId": "2040242",
       "homeTeam": "土耳其",
       "awayTeam": "巴拉圭",
       "kickoff": "2026-06-20T11:00:00+08:00",
@@ -2525,6 +2573,8 @@
     },
     {
       "matchId": "2040243",
+      "forecastMatchId": "2040243",
+      "settlementMatchId": "2040243",
       "homeTeam": "荷兰",
       "awayTeam": "瑞典",
       "kickoff": "2026-06-21T01:00:00+08:00",
@@ -2620,6 +2670,8 @@
     },
     {
       "matchId": "2040244",
+      "forecastMatchId": "2040244",
+      "settlementMatchId": "2040244",
       "homeTeam": "德国",
       "awayTeam": "科特迪瓦",
       "kickoff": "2026-06-21T04:00:00+08:00",
@@ -2715,6 +2767,8 @@
     },
     {
       "matchId": "2040245",
+      "forecastMatchId": "2040245",
+      "settlementMatchId": "2040245",
       "homeTeam": "厄瓜多尔",
       "awayTeam": "库拉索",
       "kickoff": "2026-06-21T08:00:00+08:00",
@@ -2810,6 +2864,8 @@
     },
     {
       "matchId": "2040246",
+      "forecastMatchId": "2040246",
+      "settlementMatchId": "2040246",
       "homeTeam": "突尼斯",
       "awayTeam": "日本",
       "kickoff": "2026-06-21T12:00:00+08:00",
@@ -2905,6 +2961,8 @@
     },
     {
       "matchId": "西班牙 vs 沙特",
+      "forecastMatchId": "西班牙 vs 沙特",
+      "settlementMatchId": "西班牙 vs 沙特",
       "homeTeam": "西班牙",
       "awayTeam": "沙特",
       "kickoff": "2026-06-22T00:00:00+08:00",
@@ -3000,6 +3058,8 @@
     },
     {
       "matchId": "比利时 vs 伊朗",
+      "forecastMatchId": "比利时 vs 伊朗",
+      "settlementMatchId": "比利时 vs 伊朗",
       "homeTeam": "比利时",
       "awayTeam": "伊朗",
       "kickoff": "2026-06-22T03:00:00+08:00",
@@ -3095,6 +3155,8 @@
     },
     {
       "matchId": "乌拉圭 vs 佛得角",
+      "forecastMatchId": "乌拉圭 vs 佛得角",
+      "settlementMatchId": "乌拉圭 vs 佛得角",
       "homeTeam": "乌拉圭",
       "awayTeam": "佛得角",
       "kickoff": "2026-06-22T06:00:00+08:00",
@@ -3190,6 +3252,8 @@
     },
     {
       "matchId": "新西兰 vs 埃及",
+      "forecastMatchId": "新西兰 vs 埃及",
+      "settlementMatchId": "新西兰 vs 埃及",
       "homeTeam": "新西兰",
       "awayTeam": "埃及",
       "kickoff": "2026-06-22T09:00:00+08:00",
@@ -3285,6 +3349,8 @@
     },
     {
       "matchId": "2040251",
+      "forecastMatchId": "2040251",
+      "settlementMatchId": "2040251",
       "homeTeam": "阿根廷",
       "awayTeam": "奥地利",
       "kickoff": "2026-06-23T01:00:00+08:00",
@@ -3380,6 +3446,8 @@
     },
     {
       "matchId": "2040252",
+      "forecastMatchId": "2040252",
+      "settlementMatchId": "2040252",
       "homeTeam": "法国",
       "awayTeam": "伊拉克",
       "kickoff": "2026-06-23T05:00:00+08:00",
@@ -3475,6 +3543,8 @@
     },
     {
       "matchId": "2040253",
+      "forecastMatchId": "2040253",
+      "settlementMatchId": "2040253",
       "homeTeam": "挪威",
       "awayTeam": "塞内加尔",
       "kickoff": "2026-06-23T08:00:00+08:00",
@@ -3570,13 +3640,15 @@
     },
     {
       "matchId": "2040254",
+      "forecastMatchId": "2040254",
+      "settlementMatchId": "2040254",
       "homeTeam": "约旦",
-      "awayTeam": "阿尔及利",
+      "awayTeam": "阿尔及利亚",
       "kickoff": "2026-06-23T11:00:00+08:00",
       "stage": "group",
-      "historyPath": "public/data/history/2026-06-23.json",
-      "historySection": "matches",
-      "historyGeneratedAt": "2026-06-22T19:31:41+08:00",
+      "historyPath": "public/data/history/2026-06-22.json",
+      "historySection": "parlayMatches",
+      "historyGeneratedAt": "2026-06-21T16:59:27+08:00",
       "halfFullCalibration": {
         "applied": false,
         "reason": "archived_quotes_are_final_probabilities"
@@ -3585,75 +3657,75 @@
       "predicted": "负负",
       "hit": false,
       "top3Hit": false,
-      "actualProbability": 0.0214,
-      "logLoss": 3.844364356954331,
-      "brier": 1.1184494556,
+      "actualProbability": 0.02835,
+      "logLoss": 3.563128248808376,
+      "brier": 1.1310850634,
       "topSelections": [
         {
           "selection": "负负",
-          "probability": 0.23681
-        },
-        {
-          "selection": "胜胜",
-          "probability": 0.1849
-        },
-        {
-          "selection": "平平",
-          "probability": 0.16943
+          "probability": 0.32831
         },
         {
           "selection": "平负",
-          "probability": 0.14724
+          "probability": 0.17182
+        },
+        {
+          "selection": "平平",
+          "probability": 0.13984
+        },
+        {
+          "selection": "胜胜",
+          "probability": 0.13199
         },
         {
           "selection": "平胜",
-          "probability": 0.12136
+          "probability": 0.08881
         }
       ],
       "probabilities": {
-        "胜胜": 0.1849,
-        "胜平": 0.04998,
-        "胜负": 0.0214,
-        "平胜": 0.12136,
-        "平平": 0.16943,
-        "平负": 0.14724,
-        "负胜": 0.01801,
-        "负平": 0.05087,
-        "负负": 0.23681
+        "胜胜": 0.13199,
+        "胜平": 0.04748,
+        "胜负": 0.02835,
+        "平胜": 0.08881,
+        "平平": 0.13984,
+        "平负": 0.17182,
+        "负胜": 0.01521,
+        "负平": 0.04819,
+        "负负": 0.32831
       },
       "outcomeAssistance": {
         "actual": "away",
         "base": {
           "predicted": "away",
           "hit": true,
-          "actualProbability": 0.40545,
-          "logLoss": 0.9027577175915708,
+          "actualProbability": 0.52848,
+          "logLoss": 0.6377503173396576,
           "probabilities": {
-            "home": 0.32427,
-            "draw": 0.27028,
-            "away": 0.40545
+            "home": 0.23601,
+            "draw": 0.23551,
+            "away": 0.52848
           }
         },
         "halfFullSignal": {
           "predicted": "away",
           "hit": true,
-          "actualProbability": 0.40545,
-          "logLoss": 0.9027577175915708,
+          "actualProbability": 0.5284800000000001,
+          "logLoss": 0.6377503173396574,
           "probabilities": {
-            "home": 0.32427,
-            "draw": 0.27028,
-            "away": 0.40545
+            "home": 0.23601,
+            "draw": 0.23551,
+            "away": 0.52848
           }
         },
         "assisted": {
           "predicted": "away",
           "hit": true,
-          "actualProbability": 0.40545,
-          "logLoss": 0.9027577175915708,
+          "actualProbability": 0.5284800000000001,
+          "logLoss": 0.6377503173396574,
           "probabilities": {
-            "home": 0.32427,
-            "draw": 0.27028,
-            "away": 0.40545
+            "home": 0.23601,
+            "draw": 0.23551,
+            "away": 0.52848
           }
         },
         "assistWeight": 0.2
@@ -3665,6 +3737,8 @@
     },
     {
       "matchId": "瑞士 vs 加拿大",
+      "forecastMatchId": "瑞士 vs 加拿大",
+      "settlementMatchId": "瑞士 vs 加拿大",
       "homeTeam": "瑞士",
       "awayTeam": "加拿大",
       "kickoff": "2026-06-25T03:00:00+08:00",
@@ -3760,6 +3834,8 @@
     },
     {
       "matchId": "波黑 vs 卡塔尔",
+      "forecastMatchId": "波黑 vs 卡塔尔",
+      "settlementMatchId": "波黑 vs 卡塔尔",
       "homeTeam": "波黑",
       "awayTeam": "卡塔尔",
       "kickoff": "2026-06-25T03:00:00+08:00",
@@ -3855,6 +3931,8 @@
     },
     {
       "matchId": "摩洛哥 vs 海地",
+      "forecastMatchId": "摩洛哥 vs 海地",
+      "settlementMatchId": "摩洛哥 vs 海地",
       "homeTeam": "摩洛哥",
       "awayTeam": "海地",
       "kickoff": "2026-06-25T06:00:00+08:00",
@@ -3950,6 +4028,8 @@
     },
     {
       "matchId": "苏格兰 vs 巴西",
+      "forecastMatchId": "苏格兰 vs 巴西",
+      "settlementMatchId": "苏格兰 vs 巴西",
       "homeTeam": "苏格兰",
       "awayTeam": "巴西",
       "kickoff": "2026-06-25T06:00:00+08:00",
@@ -4045,6 +4125,8 @@
     },
     {
       "matchId": "捷克 vs 墨西哥",
+      "forecastMatchId": "捷克 vs 墨西哥",
+      "settlementMatchId": "捷克 vs 墨西哥",
       "homeTeam": "捷克",
       "awayTeam": "墨西哥",
       "kickoff": "2026-06-25T09:00:00+08:00",
@@ -4140,6 +4222,8 @@
     },
     {
       "matchId": "南非 vs 韩国",
+      "forecastMatchId": "南非 vs 韩国",
+      "settlementMatchId": "南非 vs 韩国",
       "homeTeam": "南非",
       "awayTeam": "韩国",
       "kickoff": "2026-06-25T09:00:00+08:00",
@@ -4235,6 +4319,8 @@
     },
     {
       "matchId": "厄瓜多尔 vs 德国",
+      "forecastMatchId": "厄瓜多尔 vs 德国",
+      "settlementMatchId": "厄瓜多尔 vs 德国",
       "homeTeam": "厄瓜多尔",
       "awayTeam": "德国",
       "kickoff": "2026-06-26T04:00:00+08:00",
@@ -4330,6 +4416,8 @@
     },
     {
       "matchId": "库拉索 vs 科特迪瓦",
+      "forecastMatchId": "库拉索 vs 科特迪瓦",
+      "settlementMatchId": "库拉索 vs 科特迪瓦",
       "homeTeam": "库拉索",
       "awayTeam": "科特迪瓦",
       "kickoff": "2026-06-26T04:00:00+08:00",
@@ -4425,6 +4513,8 @@
     },
     {
       "matchId": "突尼斯 vs 荷兰",
+      "forecastMatchId": "突尼斯 vs 荷兰",
+      "settlementMatchId": "突尼斯 vs 荷兰",
       "homeTeam": "突尼斯",
       "awayTeam": "荷兰",
       "kickoff": "2026-06-26T07:00:00+08:00",
@@ -4520,6 +4610,8 @@
     },
     {
       "matchId": "日本 vs 瑞典",
+      "forecastMatchId": "日本 vs 瑞典",
+      "settlementMatchId": "日本 vs 瑞典",
       "homeTeam": "日本",
       "awayTeam": "瑞典",
       "kickoff": "2026-06-26T07:00:00+08:00",
@@ -4615,6 +4707,8 @@
     },
     {
       "matchId": "土耳其 vs 美国",
+      "forecastMatchId": "土耳其 vs 美国",
+      "settlementMatchId": "土耳其 vs 美国",
       "homeTeam": "土耳其",
       "awayTeam": "美国",
       "kickoff": "2026-06-26T10:00:00+08:00",
@@ -4710,6 +4804,8 @@
     },
     {
       "matchId": "巴拉圭 vs 澳大利亚",
+      "forecastMatchId": "巴拉圭 vs 澳大利亚",
+      "settlementMatchId": "巴拉圭 vs 澳大利亚",
       "homeTeam": "巴拉圭",
       "awayTeam": "澳大利亚",
       "kickoff": "2026-06-26T10:00:00+08:00",
@@ -4805,6 +4901,8 @@
     },
     {
       "matchId": "挪威 vs 法国",
+      "forecastMatchId": "挪威 vs 法国",
+      "settlementMatchId": "挪威 vs 法国",
       "homeTeam": "挪威",
       "awayTeam": "法国",
       "kickoff": "2026-06-27T03:00:00+08:00",
@@ -4900,6 +4998,8 @@
     },
     {
       "matchId": "塞内加尔 vs 伊拉克",
+      "forecastMatchId": "塞内加尔 vs 伊拉克",
+      "settlementMatchId": "塞内加尔 vs 伊拉克",
       "homeTeam": "塞内加尔",
       "awayTeam": "伊拉克",
       "kickoff": "2026-06-27T03:00:00+08:00",
@@ -4995,6 +5095,8 @@
     },
     {
       "matchId": "乌拉圭 vs 西班牙",
+      "forecastMatchId": "乌拉圭 vs 西班牙",
+      "settlementMatchId": "乌拉圭 vs 西班牙",
       "homeTeam": "乌拉圭",
       "awayTeam": "西班牙",
       "kickoff": "2026-06-27T08:00:00+08:00",
@@ -5090,6 +5192,8 @@
     },
     {
       "matchId": "佛得角 vs 沙特",
+      "forecastMatchId": "佛得角 vs 沙特",
+      "settlementMatchId": "佛得角 vs 沙特",
       "homeTeam": "佛得角",
       "awayTeam": "沙特",
       "kickoff": "2026-06-27T08:00:00+08:00",
@@ -5185,6 +5289,8 @@
     },
     {
       "matchId": "新西兰 vs 比利时",
+      "forecastMatchId": "新西兰 vs 比利时",
+      "settlementMatchId": "新西兰 vs 比利时",
       "homeTeam": "新西兰",
       "awayTeam": "比利时",
       "kickoff": "2026-06-27T11:00:00+08:00",
@@ -5280,6 +5386,8 @@
     },
     {
       "matchId": "埃及 vs 伊朗",
+      "forecastMatchId": "埃及 vs 伊朗",
+      "settlementMatchId": "埃及 vs 伊朗",
       "homeTeam": "埃及",
       "awayTeam": "伊朗",
       "kickoff": "2026-06-27T11:00:00+08:00",
@@ -5375,6 +5483,8 @@
     },
     {
       "matchId": "巴拿马 vs 英格兰",
+      "forecastMatchId": "巴拿马 vs 英格兰",
+      "settlementMatchId": "巴拿马 vs 英格兰",
       "homeTeam": "巴拿马",
       "awayTeam": "英格兰",
       "kickoff": "2026-06-28T05:00:00+08:00",
@@ -5470,6 +5580,8 @@
     },
     {
       "matchId": "克罗地亚 vs 加纳",
+      "forecastMatchId": "克罗地亚 vs 加纳",
+      "settlementMatchId": "克罗地亚 vs 加纳",
       "homeTeam": "克罗地亚",
       "awayTeam": "加纳",
       "kickoff": "2026-06-28T05:00:00+08:00",
@@ -5565,6 +5677,8 @@
     },
     {
       "matchId": "哥伦比亚 vs 葡萄牙",
+      "forecastMatchId": "哥伦比亚 vs 葡萄牙",
+      "settlementMatchId": "哥伦比亚 vs 葡萄牙",
       "homeTeam": "哥伦比亚",
       "awayTeam": "葡萄牙",
       "kickoff": "2026-06-28T07:30:00+08:00",
@@ -5660,6 +5774,8 @@
     },
     {
       "matchId": "民主刚果 vs 乌兹别克斯坦",
+      "forecastMatchId": "民主刚果 vs 乌兹别克斯坦",
+      "settlementMatchId": "民主刚果 vs 乌兹别克斯坦",
       "homeTeam": "民主刚果",
       "awayTeam": "乌兹别克斯坦",
       "kickoff": "2026-06-28T07:30:00+08:00",
@@ -5755,6 +5871,8 @@
     },
     {
       "matchId": "约旦 vs 阿根廷",
+      "forecastMatchId": "约旦 vs 阿根廷",
+      "settlementMatchId": "约旦 vs 阿根廷",
       "homeTeam": "约旦",
       "awayTeam": "阿根廷",
       "kickoff": "2026-06-28T10:00:00+08:00",
@@ -5850,6 +5968,8 @@
     },
     {
       "matchId": "阿尔及利亚 vs 奥地利",
+      "forecastMatchId": "阿尔及利亚 vs 奥地利",
+      "settlementMatchId": "阿尔及利亚 vs 奥地利",
       "homeTeam": "阿尔及利亚",
       "awayTeam": "奥地利",
       "kickoff": "2026-06-28T10:00:00+08:00",
@@ -5945,6 +6065,8 @@
     },
     {
       "matchId": "南非 vs 加拿大",
+      "forecastMatchId": "南非 vs 加拿大",
+      "settlementMatchId": "南非 vs 加拿大",
       "homeTeam": "南非",
       "awayTeam": "加拿大",
       "kickoff": "2026-06-29T03:00:00+08:00",
@@ -6040,6 +6162,8 @@
     },
     {
       "matchId": "2040337",
+      "forecastMatchId": "2040337",
+      "settlementMatchId": "2040337",
       "homeTeam": "巴西",
       "awayTeam": "日本",
       "kickoff": "2026-06-30T01:00:00+08:00",
@@ -6135,6 +6259,8 @@
     },
     {
       "matchId": "2040344",
+      "forecastMatchId": "2040344",
+      "settlementMatchId": "2040344",
       "homeTeam": "德国",
       "awayTeam": "巴拉圭",
       "kickoff": "2026-06-30T04:30:00+08:00",
@@ -6230,6 +6356,8 @@
     },
     {
       "matchId": "2040338",
+      "forecastMatchId": "2040338",
+      "settlementMatchId": "2040338",
       "homeTeam": "荷兰",
       "awayTeam": "摩洛哥",
       "kickoff": "2026-06-30T09:00:00+08:00",
@@ -6325,6 +6453,8 @@
     },
     {
       "matchId": "2040345",
+      "forecastMatchId": "2040345",
+      "settlementMatchId": "2040345",
       "homeTeam": "科特迪瓦",
       "awayTeam": "挪威",
       "kickoff": "2026-07-01T01:00:00+08:00",
@@ -6420,6 +6550,8 @@
     },
     {
       "matchId": "2040346",
+      "forecastMatchId": "2040346",
+      "settlementMatchId": "2040346",
       "homeTeam": "法国",
       "awayTeam": "瑞典",
       "kickoff": "2026-07-01T05:00:00+08:00",
@@ -6515,6 +6647,8 @@
     },
     {
       "matchId": "2040351",
+      "forecastMatchId": "2040351",
+      "settlementMatchId": "2040351",
       "homeTeam": "墨西哥",
       "awayTeam": "厄瓜多尔",
       "kickoff": "2026-07-01T09:00:00+08:00",
@@ -6610,6 +6744,8 @@
     },
     {
       "matchId": "2040352",
+      "forecastMatchId": "2040352",
+      "settlementMatchId": "2040352",
       "homeTeam": "英格兰",
       "awayTeam": "刚果金",
       "kickoff": "2026-07-02T00:00:00+08:00",
@@ -6705,6 +6841,8 @@
     },
     {
       "matchId": "2040353",
+      "forecastMatchId": "2040353",
+      "settlementMatchId": "2040353",
       "homeTeam": "比利时",
       "awayTeam": "塞内加尔",
       "kickoff": "2026-07-02T04:00:00+08:00",
@@ -6800,6 +6938,8 @@
     },
     {
       "matchId": "2040339",
+      "forecastMatchId": "2040339",
+      "settlementMatchId": "2040339",
       "homeTeam": "美国",
       "awayTeam": "波黑",
       "kickoff": "2026-07-02T08:00:00+08:00",
@@ -6894,102 +7034,9 @@
       }
     },
     {
-      "matchId": "2040354",
-      "homeTeam": "西班牙",
-      "awayTeam": "奥地利",
-      "kickoff": "2026-07-03T03:00:00+08:00",
-      "stage": "knockout",
-      "historyPath": "public/data/history/2026-07-02.json",
-      "historySection": "parlayMatches",
-      "historyGeneratedAt": "2026-07-01T18:26:40+08:00",
-      "halfFullCalibration": {
-        "applied": false,
-        "reason": "archived_quotes_are_final_probabilities"
-      },
-      "actual": "胜胜",
-      "predicted": "胜胜",
-      "hit": true,
-      "top3Hit": true,
-      "actualProbability": 0.54554,
-      "logLoss": 0.6059791491745894,
-      "brier": 0.26574890519999994,
-      "topSelections": [
-        {
-          "selection": "胜胜",
-          "probability": 0.54554
-        },
-        {
-          "selection": "平胜",
-          "probability": 0.21521
-        },
-        {
-          "selection": "平平",
-          "probability": 0.09402
-        },
-        {
-          "selection": "负负",
-          "probability": 0.03455
-        },
-        {
-          "selection": "平负",
-          "probability": 0.02897
-        }
-      ],
-      "probabilities": {
-        "胜胜": 0.54554,
-        "胜平": 0.02634,
-        "胜负": 0.00411,
-        "平胜": 0.21521,
-        "平平": 0.09402,
-        "平负": 0.02897,
-        "负胜": 0.02452,
-        "负平": 0.02674,
-        "负负": 0.03455
-      },
-      "outcomeAssistance": {
-        "actual": "home",
-        "base": {
-          "predicted": "home",
-          "hit": true,
-          "actualProbability": 0.76027,
-          "logLoss": 0.2740816456348791,
-          "probabilities": {
-            "home": 0.76027,
-            "draw": 0.1721,
-            "away": 0.06763
-          }
-        },
-        "halfFullSignal": {
-          "predicted": "home",
-          "hit": true,
-          "actualProbability": 0.78527,
-          "logLoss": 0.24172767129205558,
-          "probabilities": {
-            "home": 0.78527,
-            "draw": 0.1471,
-            "away": 0.06763
-          }
-        },
-        "assisted": {
-          "predicted": "home",
-          "hit": true,
-          "actualProbability": 0.76027,
-          "logLoss": 0.2740816456348791,
-          "probabilities": {
-            "home": 0.76027,
-            "draw": 0.1721,
-            "away": 0.06763
-          }
-        },
-        "assistWeight": 0.0
-      },
-      "score": {
-        "halftime": "1:0",
-        "fulltime": "3:0"
-      }
-    },
-    {
       "matchId": "西班牙 vs 奥地利",
+      "forecastMatchId": "西班牙 vs 奥地利",
+      "settlementMatchId": "2040354",
       "homeTeam": "西班牙",
       "awayTeam": "奥地利",
       "kickoff": "2026-07-03T03:00:00+08:00",
@@ -7100,102 +7147,9 @@
       }
     },
     {
-      "matchId": "2040355",
-      "homeTeam": "葡萄牙",
-      "awayTeam": "克罗地亚",
-      "kickoff": "2026-07-03T07:00:00+08:00",
-      "stage": "knockout",
-      "historyPath": "public/data/history/2026-07-02.json",
-      "historySection": "parlayMatches",
-      "historyGeneratedAt": "2026-07-01T18:26:40+08:00",
-      "halfFullCalibration": {
-        "applied": false,
-        "reason": "archived_quotes_are_final_probabilities"
-      },
-      "actual": "平胜",
-      "predicted": "胜胜",
-      "hit": false,
-      "top3Hit": true,
-      "actualProbability": 0.1704,
-      "logLoss": 1.7696066645869217,
-      "brier": 0.8450128008,
-      "topSelections": [
-        {
-          "selection": "胜胜",
-          "probability": 0.32513
-        },
-        {
-          "selection": "平胜",
-          "probability": 0.1704
-        },
-        {
-          "selection": "平平",
-          "probability": 0.14069
-        },
-        {
-          "selection": "负负",
-          "probability": 0.13198
-        },
-        {
-          "selection": "平负",
-          "probability": 0.08935
-        }
-      ],
-      "probabilities": {
-        "胜胜": 0.32513,
-        "胜平": 0.04884,
-        "胜负": 0.01569,
-        "平胜": 0.1704,
-        "平平": 0.14069,
-        "平负": 0.08935,
-        "负胜": 0.02886,
-        "负平": 0.04906,
-        "负负": 0.13198
-      },
-      "outcomeAssistance": {
-        "actual": "home",
-        "base": {
-          "predicted": "home",
-          "hit": true,
-          "actualProbability": 0.51269,
-          "logLoss": 0.6680839049662762,
-          "probabilities": {
-            "home": 0.51269,
-            "draw": 0.25659,
-            "away": 0.23072
-          }
-        },
-        "halfFullSignal": {
-          "predicted": "home",
-          "hit": true,
-          "actualProbability": 0.52439,
-          "logLoss": 0.6455195966870779,
-          "probabilities": {
-            "home": 0.52439,
-            "draw": 0.23859,
-            "away": 0.23702
-          }
-        },
-        "assisted": {
-          "predicted": "home",
-          "hit": true,
-          "actualProbability": 0.51269,
-          "logLoss": 0.6680839049662762,
-          "probabilities": {
-            "home": 0.51269,
-            "draw": 0.25659,
-            "away": 0.23072
-          }
-        },
-        "assistWeight": 0.0
-      },
-      "score": {
-        "halftime": "0:0",
-        "fulltime": "2:1"
-      }
-    },
-    {
       "matchId": "葡萄牙 vs 克罗地亚",
+      "forecastMatchId": "葡萄牙 vs 克罗地亚",
+      "settlementMatchId": "2040355",
       "homeTeam": "葡萄牙",
       "awayTeam": "克罗地亚",
       "kickoff": "2026-07-03T07:00:00+08:00",
@@ -7307,6 +7261,8 @@
     },
     {
       "matchId": "2040356",
+      "forecastMatchId": "2040356",
+      "settlementMatchId": "2040356",
       "homeTeam": "瑞士",
       "awayTeam": "阿尔及利",
       "kickoff": "2026-07-03T11:00:00+08:00",
@@ -7402,6 +7358,8 @@
     },
     {
       "matchId": "瑞士 vs 阿尔及利亚",
+      "forecastMatchId": "瑞士 vs 阿尔及利亚",
+      "settlementMatchId": "瑞士 vs 阿尔及利亚",
       "homeTeam": "瑞士",
       "awayTeam": "阿尔及利亚",
       "kickoff": "2026-07-03T11:00:00+08:00",
@@ -7513,6 +7471,8 @@
     },
     {
       "matchId": "2040347",
+      "forecastMatchId": "2040347",
+      "settlementMatchId": "2040347",
       "homeTeam": "澳大利亚",
       "awayTeam": "埃及",
       "kickoff": "2026-07-04T02:00:00+08:00",
@@ -7624,6 +7584,8 @@
     },
     {
       "matchId": "2040348",
+      "forecastMatchId": "2040348",
+      "settlementMatchId": "2040348",
       "homeTeam": "阿根廷",
       "awayTeam": "佛得角",
       "kickoff": "2026-07-04T06:00:00+08:00",
@@ -7735,6 +7697,8 @@
     },
     {
       "matchId": "2040357",
+      "forecastMatchId": "2040357",
+      "settlementMatchId": "2040357",
       "homeTeam": "哥伦比亚",
       "awayTeam": "加纳",
       "kickoff": "2026-07-04T09:30:00+08:00",
@@ -7846,6 +7810,8 @@
     },
     {
       "matchId": "2040359",
+      "forecastMatchId": "2040359",
+      "settlementMatchId": "2040359",
       "homeTeam": "加拿大",
       "awayTeam": "摩洛哥",
       "kickoff": "2026-07-05T01:00:00+08:00",
@@ -7957,6 +7923,8 @@
     },
     {
       "matchId": "2040373",
+      "forecastMatchId": "2040373",
+      "settlementMatchId": "2040373",
       "homeTeam": "巴拉圭",
       "awayTeam": "法国",
       "kickoff": "2026-07-05T05:00:00+08:00",
@@ -8068,6 +8036,8 @@
     },
     {
       "matchId": "巴西 vs 挪威",
+      "forecastMatchId": "巴西 vs 挪威",
+      "settlementMatchId": "巴西 vs 挪威",
       "homeTeam": "巴西",
       "awayTeam": "挪威",
       "kickoff": "2026-07-06T04:00:00+08:00",
@@ -8179,6 +8149,8 @@
     },
     {
       "matchId": "墨西哥 vs 英格兰",
+      "forecastMatchId": "墨西哥 vs 英格兰",
+      "settlementMatchId": "墨西哥 vs 英格兰",
       "homeTeam": "墨西哥",
       "awayTeam": "英格兰",
       "kickoff": "2026-07-06T08:00:00+08:00",
@@ -8290,6 +8262,8 @@
     },
     {
       "matchId": "葡萄牙 vs 西班牙",
+      "forecastMatchId": "葡萄牙 vs 西班牙",
+      "settlementMatchId": "葡萄牙 vs 西班牙",
       "homeTeam": "葡萄牙",
       "awayTeam": "西班牙",
       "kickoff": "2026-07-07T03:00:00+08:00",
@@ -8401,6 +8375,8 @@
     },
     {
       "matchId": "美国 vs 比利时",
+      "forecastMatchId": "美国 vs 比利时",
+      "settlementMatchId": "美国 vs 比利时",
       "homeTeam": "美国",
       "awayTeam": "比利时",
       "kickoff": "2026-07-07T08:00:00+08:00",
@@ -8512,6 +8488,8 @@
     },
     {
       "matchId": "2040427",
+      "forecastMatchId": "2040427",
+      "settlementMatchId": "2040427",
       "homeTeam": "阿根廷",
       "awayTeam": "埃及",
       "kickoff": "2026-07-08T00:00:00+08:00",
@@ -8623,6 +8601,8 @@
     },
     {
       "matchId": "2040428",
+      "forecastMatchId": "2040428",
+      "settlementMatchId": "2040428",
       "homeTeam": "瑞士",
       "awayTeam": "哥伦比亚",
       "kickoff": "2026-07-08T04:00:00+08:00",
@@ -8733,118 +8713,9 @@
       }
     },
     {
-      "matchId": "2040451",
-      "homeTeam": "法国",
-      "awayTeam": "摩洛哥",
-      "kickoff": "2026-07-10T04:00:00+08:00",
-      "stage": "knockout",
-      "historyPath": "public/data/history/2026-07-09.json",
-      "historySection": "parlayMatches",
-      "historyGeneratedAt": "2026-07-08T20:05:00+08:00",
-      "halfFullCalibration": {
-        "applied": true,
-        "policy": "knockout_half_full_late_swing_v2",
-        "sourceKnockoutPolicy": "knockout_underdog_chase_favorite_tempo_v1",
-        "weights": {
-          "胜胜": 0.95,
-          "胜平": 1.3,
-          "胜负": 1.3,
-          "平胜": 1.2,
-          "平平": 0.95,
-          "平负": 1.2,
-          "负胜": 1.3,
-          "负平": 1.3,
-          "负负": 0.95
-        },
-        "topSelectionBefore": "胜胜",
-        "topSelectionAfter": "胜胜",
-        "topProbabilityBefore": 0.42003,
-        "topProbabilityAfter": 0.38024152665121674
-      },
-      "actual": "平胜",
-      "predicted": "胜胜",
-      "hit": false,
-      "top3Hit": true,
-      "actualProbability": 0.25683,
-      "logLoss": 1.359340891559633,
-      "brier": 0.7276133606,
-      "topSelections": [
-        {
-          "selection": "胜胜",
-          "probability": 0.38024
-        },
-        {
-          "selection": "平胜",
-          "probability": 0.25683
-        },
-        {
-          "selection": "平平",
-          "probability": 0.14539
-        },
-        {
-          "selection": "平负",
-          "probability": 0.05613
-        },
-        {
-          "selection": "负负",
-          "probability": 0.05174
-        }
-      ],
-      "probabilities": {
-        "胜胜": 0.38024,
-        "胜平": 0.03947,
-        "胜负": 0.00603,
-        "平胜": 0.25683,
-        "平平": 0.14539,
-        "平负": 0.05613,
-        "负胜": 0.02466,
-        "负平": 0.03951,
-        "负负": 0.05174
-      },
-      "outcomeAssistance": {
-        "actual": "home",
-        "base": {
-          "predicted": "home",
-          "hit": true,
-          "actualProbability": 0.65284,
-          "logLoss": 0.426423202699642,
-          "probabilities": {
-            "home": 0.65284,
-            "draw": 0.24235,
-            "away": 0.10481
-          }
-        },
-        "halfFullSignal": {
-          "predicted": "home",
-          "hit": true,
-          "actualProbability": 0.66173,
-          "logLoss": 0.41289766122548927,
-          "probabilities": {
-            "home": 0.66173,
-            "draw": 0.22437,
-            "away": 0.1139
-          }
-        },
-        "assisted": {
-          "predicted": "home",
-          "hit": true,
-          "actualProbability": 0.65284,
-          "logLoss": 0.426423202699642,
-          "probabilities": {
-            "home": 0.65284,
-            "draw": 0.24235,
-            "away": 0.10481
-          }
-        },
-        "assistWeight": 0.0
-      },
-      "score": {
-        "halftime": "0:0",
-        "fulltime": "2:0"
-      }
-    },
-    {
       "matchId": "法国 vs 摩洛哥",
+      "forecastMatchId": "法国 vs 摩洛哥",
+      "settlementMatchId": "2040451",
       "homeTeam": "法国",
       "awayTeam": "摩洛哥",
       "kickoff": "2026-07-10T04:00:00+08:00",
@@ -8956,6 +8827,8 @@
     },
     {
       "matchId": "2040466",
+      "forecastMatchId": "2040466",
+      "settlementMatchId": "2040466",
       "homeTeam": "西班牙",
       "awayTeam": "比利时",
       "kickoff": "2026-07-11T03:00:00+08:00",
@@ -9067,6 +8940,8 @@
     },
     {
       "matchId": "挪威 vs 英格兰",
+      "forecastMatchId": "挪威 vs 英格兰",
+      "settlementMatchId": "挪威 vs 英格兰",
       "homeTeam": "挪威",
       "awayTeam": "英格兰",
       "kickoff": "2026-07-12T05:00:00+08:00",
@@ -9178,6 +9053,8 @@
     },
     {
       "matchId": "阿根廷 vs 瑞士",
+      "forecastMatchId": "阿根廷 vs 瑞士",
+      "settlementMatchId": "阿根廷 vs 瑞士",
       "homeTeam": "阿根廷",
       "awayTeam": "瑞士",
       "kickoff": "2026-07-12T09:00:00+08:00",
@@ -9288,14 +9165,16 @@
       }
     },
     {
-      "matchId": "2040507",
+      "matchId": "法国 vs 西班牙",
+      "forecastMatchId": "法国 vs 西班牙",
+      "settlementMatchId": "2040507",
       "homeTeam": "法国",
       "awayTeam": "西班牙",
       "kickoff": "2026-07-15T03:00:00+08:00",
       "stage": "knockout",
-      "historyPath": "public/data/history/2026-07-13.json",
-      "historySection": "parlayMatches",
-      "historyGeneratedAt": "2026-07-12T17:51:27+08:00",
+      "historyPath": "public/data/history/2026-07-15.json",
+      "historySection": "matches",
+      "historyGeneratedAt": "2026-07-14T15:13:01+08:00",
       "halfFullCalibration": {
         "applied": true,
         "policy": "opponent_adjusted_half_split_v1",
@@ -9303,7 +9182,7 @@
         "baselineCalibration": {
           "applied": true,
           "policy": "current_tournament_half_full_late_swing_v3",
-          "sourceKnockoutPolicy": "current_tournament_evidence_v1",
+          "sourceKnockoutPolicy": "current_tournament_commentary_evidence_v2",
           "weights": {
             "胜胜": 0.95,
             "胜平": 1.3,
@@ -9317,13 +9196,13 @@
           },
           "topSelectionBefore": "负负",
           "topSelectionAfter": "负负",
-          "topProbabilityBefore": 0.2372,
-          "topProbabilityAfter": 0.21133493924378405
+          "topProbabilityBefore": 0.23807,
+          "topProbabilityAfter": 0.21212300266975048
         },
         "candidateCalibration": {
           "applied": true,
           "policy": "current_tournament_half_full_late_swing_v3",
-          "sourceKnockoutPolicy": "current_tournament_evidence_v1",
+          "sourceKnockoutPolicy": "current_tournament_commentary_evidence_v2",
           "weights": {
             "胜胜": 0.95,
             "胜平": 1.3,
@@ -9337,8 +9216,8 @@
           },
           "topSelectionBefore": "负负",
           "topSelectionAfter": "负负",
-          "topProbabilityBefore": 0.2244818729046624,
-          "topProbabilityAfter": 0.19929341921224308
+          "topProbabilityBefore": 0.23941728201987073,
+          "topProbabilityAfter": 0.21366624100613482
         },
         "topSelectionBefore": "负负",
         "topSelectionAfter": "负负"
@@ -9347,75 +9226,75 @@
       "predicted": "负负",
       "hit": true,
       "top3Hit": true,
-      "actualProbability": 0.2083220832208322,
-      "logLoss": 1.5686699199119323,
-      "brier": 0.7323693881145253,
+      "actualProbability": 0.21251212512125123,
+      "logLoss": 1.5487562328513673,
+      "brier": 0.7244330565886886,
       "topSelections": [
         {
           "selection": "负负",
-          "probability": 0.2083220832208322
-        },
-        {
-          "selection": "平负",
-          "probability": 0.16693166931669315
+          "probability": 0.21251212512125123
         },
         {
           "selection": "胜胜",
-          "probability": 0.16385163851638515
+          "probability": 0.16465164651646516
+        },
+        {
+          "selection": "平负",
+          "probability": 0.16351163511635117
         },
         {
           "selection": "平平",
-          "probability": 0.15029150291502916
+          "probability": 0.15119151191511915
         },
         {
           "selection": "平胜",
-          "probability": 0.14067140671406714
+          "probability": 0.13785137851378515
         }
       ],
       "probabilities": {
-        "胜胜": 0.163852,
-        "胜平": 0.060961,
-        "胜负": 0.02653,
-        "平胜": 0.140671,
-        "平平": 0.150292,
-        "平负": 0.166932,
-        "负胜": 0.02241,
-        "负平": 0.060031,
-        "负负": 0.208322
+        "胜胜": 0.164652,
+        "胜平": 0.060791,
+        "胜负": 0.02685,
+        "平胜": 0.137851,
+        "平平": 0.151192,
+        "平负": 0.163512,
+        "负胜": 0.02187,
+        "负平": 0.060771,
+        "负负": 0.212512
       },
       "outcomeAssistance": {
         "actual": "away",
         "base": {
           "predicted": "away",
           "hit": true,
-          "actualProbability": 0.40466,
-          "logLoss": 0.9047080706310885,
+          "actualProbability": 0.40542,
+          "logLoss": 0.9028317121899988,
           "probabilities": {
-            "home": 0.32834,
-            "draw": 0.267,
-            "away": 0.40466
+            "home": 0.326,
+            "draw": 0.26858,
+            "away": 0.40542
           }
         },
         "halfFullSignal": {
           "predicted": "away",
           "hit": true,
-          "actualProbability": 0.40178401784017836,
-          "logLoss": 0.9118406037981335,
+          "actualProbability": 0.40287402874028744,
+          "logLoss": 0.909131349670943,
           "probabilities": {
-            "home": 0.326933,
-            "draw": 0.271283,
-            "away": 0.401784
+            "home": 0.324373,
+            "draw": 0.272753,
+            "away": 0.402874
           }
         },
         "assisted": {
           "predicted": "away",
           "hit": true,
-          "actualProbability": 0.40466,
-          "logLoss": 0.9047080706310885,
+          "actualProbability": 0.40542,
+          "logLoss": 0.9028317121899988,
           "probabilities": {
-            "home": 0.32834,
-            "draw": 0.267,
-            "away": 0.40466
+            "home": 0.326,
+            "draw": 0.26858,
+            "away": 0.40542
           }
         },
         "assistWeight": 0.0
@@ -9423,6 +9302,146 @@
       "score": {
         "halftime": "0:1",
         "fulltime": "0:2"
+      }
+    },
+    {
+      "matchId": "2040508",
+      "forecastMatchId": "2040508",
+      "settlementMatchId": "2040508",
+      "homeTeam": "英格兰",
+      "awayTeam": "阿根廷",
+      "kickoff": "2026-07-16T03:00:00+08:00",
+      "stage": "knockout",
+      "historyPath": "public/data/history/2026-07-16.json",
+      "historySection": "matches",
+      "historyGeneratedAt": "2026-07-15T14:37:39+08:00",
+      "halfFullCalibration": {
+        "applied": true,
+        "policy": "opponent_adjusted_half_split_v2",
+        "blend": 0.25,
+        "baselineCalibration": {
+          "applied": true,
+          "policy": "current_tournament_half_full_late_swing_v3",
+          "sourceKnockoutPolicy": "current_tournament_commentary_evidence_v2",
+          "weights": {
+            "胜胜": 0.95,
+            "胜平": 1.3,
+            "胜负": 1.3,
+            "平胜": 1.2,
+            "平平": 0.95,
+            "平负": 1.2,
+            "负胜": 1.3,
+            "负平": 1.3,
+            "负负": 0.95
+          },
+          "topSelectionBefore": "负负",
+          "topSelectionAfter": "负负",
+          "topProbabilityBefore": 0.28924,
+          "topProbabilityAfter": 0.25821796544037773
+        },
+        "candidateCalibration": {
+          "applied": true,
+          "policy": "current_tournament_half_full_late_swing_v3",
+          "sourceKnockoutPolicy": "current_tournament_commentary_evidence_v2",
+          "weights": {
+            "胜胜": 0.95,
+            "胜平": 1.3,
+            "胜负": 1.3,
+            "平胜": 1.2,
+            "平平": 0.95,
+            "平负": 1.2,
+            "负胜": 1.3,
+            "负平": 1.3,
+            "负负": 0.95
+          },
+          "topSelectionBefore": "负负",
+          "topSelectionAfter": "负负",
+          "topProbabilityBefore": 0.2953628994674507,
+          "topProbabilityAfter": 0.2648505084723907
+        },
+        "topSelectionBefore": "负负",
+        "topSelectionAfter": "负负"
+      },
+      "actual": "平负",
+      "predicted": "负负",
+      "hit": false,
+      "top3Hit": true,
+      "actualProbability": 0.1864381356186438,
+      "logLoss": 1.6796558074275971,
+      "brier": 0.7886968767835948,
+      "topSelections": [
+        {
+          "selection": "负负",
+          "probability": 0.25987740122598774
+        },
+        {
+          "selection": "平负",
+          "probability": 0.1864381356186438
+        },
+        {
+          "selection": "平平",
+          "probability": 0.14747852521474783
+        },
+        {
+          "selection": "胜胜",
+          "probability": 0.13047869521304786
+        },
+        {
+          "selection": "平胜",
+          "probability": 0.11182888171118288
+        }
+      ],
+      "probabilities": {
+        "胜胜": 0.130479,
+        "胜平": 0.058849,
+        "胜负": 0.02957,
+        "平胜": 0.111829,
+        "平平": 0.147479,
+        "平负": 0.186438,
+        "负胜": 0.0176,
+        "负平": 0.057879,
+        "负负": 0.259877
+      },
+      "outcomeAssistance": {
+        "actual": "away",
+        "base": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.49488,
+          "logLoss": 0.7034399700453776,
+          "probabilities": {
+            "home": 0.20594,
+            "draw": 0.29918,
+            "away": 0.49488
+          }
+        },
+        "halfFullSignal": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.4758852411475885,
+          "logLoss": 0.7425785438436638,
+          "probabilities": {
+            "home": 0.259907,
+            "draw": 0.264207,
+            "away": 0.475885
+          }
+        },
+        "assisted": {
+          "predicted": "away",
+          "hit": true,
+          "actualProbability": 0.49488,
+          "logLoss": 0.7034399700453776,
+          "probabilities": {
+            "home": 0.20594,
+            "draw": 0.29918,
+            "away": 0.49488
+          }
+        },
+        "assistWeight": 0.0
+      },
+      "score": {
+        "halftime": "0:0",
+        "fulltime": "1:2"
       }
     }
   ]

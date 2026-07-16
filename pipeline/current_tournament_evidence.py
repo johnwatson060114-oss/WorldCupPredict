@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 import math
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -15,6 +15,15 @@ FORECAST_SECTIONS = ("matches", "parlayMatches", "parlayCandidateMatches")
 DEFAULT_HISTORY_DIR = ROOT / "public" / "data" / "history"
 DEFAULT_SETTLEMENTS_PATH = ROOT / "public" / "data" / "settlements.json"
 DEFAULT_COMMENTARY_EVIDENCE_PATH = ROOT / "pipeline" / "data" / "knockout-commentary-evidence.json"
+
+
+_TEAM_ALIASES = {
+    "\u963f\u5c14\u53ca\u5229": "\u963f\u5c14\u53ca\u5229\u4e9a",
+    "\u521a\u679c\u91d1": "\u6c11\u4e3b\u521a\u679c",
+    "\u521a\u679c\uff08\u91d1\uff09": "\u6c11\u4e3b\u521a\u679c",
+    "\u521a\u679c\u6c11\u4e3b\u5171\u548c\u56fd": "\u6c11\u4e3b\u521a\u679c",
+    "\u97e9\u56fd\u961f": "\u97e9\u56fd",
+}
 
 
 @dataclass(frozen=True)
@@ -54,6 +63,19 @@ def _parse_datetime(value: str | None) -> datetime | None:
     return datetime.fromisoformat(value.replace("Z", "+00:00"))
 
 
+def _canonical_team_name(value: str | None) -> str:
+    compact = "".join(str(value or "").casefold().split())
+    return _TEAM_ALIASES.get(compact, compact)
+
+
+def _fixture_identity(kickoff: datetime, home_team: str, away_team: str) -> tuple[str, str, str]:
+    return (
+        kickoff.astimezone(timezone.utc).isoformat(),
+        _canonical_team_name(home_team),
+        _canonical_team_name(away_team),
+    )
+
+
 def _forecast_xg(match: dict[str, Any]) -> tuple[float, float] | None:
     decomposition = match.get("modelDecomposition") or {}
     long_term = decomposition.get("longTermExpectedGoals") or match.get("expectedGoals") or {}
@@ -79,7 +101,7 @@ def load_evidence_matches(
         return []
     settlements_payload = json.loads(settlements_path.read_text(encoding="utf-8"))
     settlements = {str(row["matchId"]): row for row in settlements_payload.get("matches", [])}
-    forecasts: dict[str, tuple[datetime, dict[str, Any]]] = {}
+    forecasts: dict[tuple[str, str, str], tuple[datetime, str, dict[str, Any]]] = {}
     for path in sorted(history_dir.glob("*.json")):
         payload = json.loads(path.read_text(encoding="utf-8"))
         generated_at = _parse_datetime(payload.get("generatedAt"))
@@ -91,9 +113,20 @@ def load_evidence_matches(
                 kickoff = _parse_datetime(match.get("kickoff") or match.get("kickoffBeijing"))
                 if match_id not in settlements or kickoff is None or generated_at >= kickoff:
                     continue
-                previous = forecasts.get(match_id)
-                if previous is None or generated_at > previous[0]:
-                    forecasts[match_id] = (generated_at, match)
+                fixture_key = _fixture_identity(
+                    kickoff,
+                    str(match.get("homeTeam") or ""),
+                    str(match.get("awayTeam") or ""),
+                )
+                previous = forecasts.get(fixture_key)
+                prefer_numeric_tie = (
+                    previous is not None
+                    and generated_at == previous[0]
+                    and match_id.isdigit()
+                    and not previous[1].isdigit()
+                )
+                if previous is None or generated_at > previous[0] or prefer_numeric_tie:
+                    forecasts[fixture_key] = (generated_at, match_id, match)
 
     commentary_by_teams: dict[frozenset[str], dict[str, Any]] = {}
     commentary_rows: list[dict[str, Any]] = []
@@ -101,24 +134,26 @@ def load_evidence_matches(
         commentary_payload = json.loads(commentary_evidence_path.read_text(encoding="utf-8"))
         commentary_rows = list(commentary_payload.get("matches", []))
         commentary_by_teams = {
-            frozenset((str(row["homeTeam"]), str(row["awayTeam"]))): row
+            frozenset((_canonical_team_name(row["homeTeam"]), _canonical_team_name(row["awayTeam"]))): row
             for row in commentary_rows
         }
 
     result: list[EvidenceMatch] = []
-    for match_id, (_generated_at, match) in forecasts.items():
+    for _fixture_key, (_generated_at, match_id, match) in forecasts.items():
         settlement = settlements[match_id]
         kickoff = _parse_datetime(match.get("kickoff") or match.get("kickoffBeijing"))
         xg = _forecast_xg(match)
         if kickoff is None or xg is None:
             continue
         raw = str(settlement.get("rawSettlementScore") or "").upper()
-        home_team = str(match.get("homeTeam") or "")
-        away_team = str(match.get("awayTeam") or "")
+        raw_home_team = str(match.get("homeTeam") or "")
+        raw_away_team = str(match.get("awayTeam") or "")
+        home_team = _canonical_team_name(raw_home_team)
+        away_team = _canonical_team_name(raw_away_team)
         commentary = commentary_by_teams.get(frozenset((home_team, away_team))) or {}
         signals = commentary.get("signals") or {}
-        home_signal = signals.get(home_team) or {}
-        away_signal = signals.get(away_team) or {}
+        home_signal = signals.get(raw_home_team) or signals.get(home_team) or {}
+        away_signal = signals.get(raw_away_team) or signals.get(away_team) or {}
         result.append(EvidenceMatch(
             match_id=match_id,
             kickoff=kickoff,
@@ -164,14 +199,16 @@ def load_evidence_matches(
         if row.process_attack_residual_home is not None
     }
     for commentary in commentary_rows:
-        home_team = str(commentary["homeTeam"])
-        away_team = str(commentary["awayTeam"])
+        raw_home_team = str(commentary["homeTeam"])
+        raw_away_team = str(commentary["awayTeam"])
+        home_team = _canonical_team_name(raw_home_team)
+        away_team = _canonical_team_name(raw_away_team)
         key = frozenset((home_team, away_team))
         if key in existing_commentary_keys:
             continue
         signals = commentary.get("signals") or {}
-        home_signal = signals.get(home_team) or {}
-        away_signal = signals.get(away_team) or {}
+        home_signal = signals.get(raw_home_team) or signals.get(home_team) or {}
+        away_signal = signals.get(raw_away_team) or signals.get(away_team) or {}
         expected = commentary.get("preMatchExpectedGoals") or {"home": 1.0, "away": 1.0}
         score = commentary.get("regularTimeScore") or {"home": 0, "away": 0}
         kickoff = _parse_datetime(str(commentary.get("kickoff") or ""))
@@ -204,9 +241,9 @@ def load_evidence_matches(
             commentary_source_url=str(commentary.get("sourceUrl") or "") or None,
             pre_match_forecast_available=False,
         ))
-    unique: dict[tuple[str, frozenset[str]], EvidenceMatch] = {}
+    unique: dict[tuple[str, str, str], EvidenceMatch] = {}
     for row in sorted(result, key=lambda item: item.kickoff):
-        key = (row.kickoff.date().isoformat(), frozenset((row.home_team, row.away_team)))
+        key = _fixture_identity(row.kickoff, row.home_team, row.away_team)
         unique.setdefault(key, row)
     return sorted(unique.values(), key=lambda row: row.kickoff)
 
@@ -222,27 +259,36 @@ def _team_evidence(
     fatigue_defense_risk_per_load: float,
     half_score_scale: float = 0.0,
 ) -> dict[str, Any]:
-    rows = [row for row in evidence if row.kickoff < cutoff and team in {row.home_team, row.away_team}]
+    team_key = _canonical_team_name(team)
+    rows = [
+        row for row in evidence
+        if row.kickoff < cutoff
+        and team_key in {_canonical_team_name(row.home_team), _canonical_team_name(row.away_team)}
+    ]
     rows.sort(key=lambda row: row.kickoff, reverse=True)
+
+    def is_home(row: EvidenceMatch) -> bool:
+        return _canonical_team_name(row.home_team) == team_key
+
     outcome_attack = outcome_defense = outcome_weight_total = 0.0
     weighted_attack = weighted_defense = weight_total = 0.0
     first_attack = first_weight_total = 0.0
     first_score_attack = first_score_defense = first_score_weight_total = 0.0
     for index, row in enumerate(rows):
-        is_home = row.home_team == team
-        scored = row.home_goals if is_home else row.away_goals
-        conceded = row.away_goals if is_home else row.home_goals
-        expected_for = row.home_xg if is_home else row.away_xg
-        expected_against = row.away_xg if is_home else row.home_xg
+        row_is_home = is_home(row)
+        scored = row.home_goals if row_is_home else row.away_goals
+        conceded = row.away_goals if row_is_home else row.home_goals
+        expected_for = row.home_xg if row_is_home else row.away_xg
+        expected_against = row.away_xg if row_is_home else row.home_xg
         recency_weight = math.exp(-math.log(2) * index / max(half_life, 0.1))
         outcome_attack += (scored - expected_for) * recency_weight
         outcome_defense += (conceded - expected_against) * recency_weight
         outcome_weight_total += recency_weight
 
-        attack_residual = row.process_attack_residual_home if is_home else row.process_attack_residual_away
-        defense_residual = row.process_defense_residual_home if is_home else row.process_defense_residual_away
-        first_residual = row.first_half_process_residual_home if is_home else row.first_half_process_residual_away
-        credibility = row.commentary_credibility_home if is_home else row.commentary_credibility_away
+        attack_residual = row.process_attack_residual_home if row_is_home else row.process_attack_residual_away
+        defense_residual = row.process_defense_residual_home if row_is_home else row.process_defense_residual_away
+        first_residual = row.first_half_process_residual_home if row_is_home else row.first_half_process_residual_away
+        credibility = row.commentary_credibility_home if row_is_home else row.commentary_credibility_away
         if attack_residual is not None and defense_residual is not None and credibility > 0:
             weight = recency_weight * credibility
             weighted_attack += attack_residual * weight
@@ -253,8 +299,8 @@ def _team_evidence(
                 first_weight_total += weight
 
         if row.half_home_goals is not None and row.half_away_goals is not None:
-            first_scored = row.half_home_goals if is_home else row.half_away_goals
-            first_conceded = row.half_away_goals if is_home else row.half_home_goals
+            first_scored = row.half_home_goals if row_is_home else row.half_away_goals
+            first_conceded = row.half_away_goals if row_is_home else row.half_home_goals
             # Expected first-half goals carry the pre-match opponent-strength
             # adjustment, so the residual is comparable across unequal schedules.
             first_expected_for = expected_for * 0.45
@@ -301,7 +347,7 @@ def _team_evidence(
     forced_injury_substitutions = 0
     if rows:
         rest_days = (cutoff - rows[0].kickoff).total_seconds() / 86400
-        latest_is_home = rows[0].home_team == team
+        latest_is_home = is_home(rows[0])
         post90_load_severity = (
             rows[0].post90_load_home if latest_is_home else rows[0].post90_load_away
         )
@@ -326,7 +372,7 @@ def _team_evidence(
         "team": team,
         "matchesUsed": len(rows),
         "commentaryMatchesUsed": sum(
-            (row.process_attack_residual_home if row.home_team == team else row.process_attack_residual_away) is not None
+            (row.process_attack_residual_home if is_home(row) else row.process_attack_residual_away) is not None
             for row in rows
         ),
         "effectiveWeight": round(weight_total, 4),
@@ -336,7 +382,7 @@ def _team_evidence(
         "outcomeDefenseResidualDiagnostic": round(outcome_defense_diagnostic, 4),
         "scoreResidualsDirectlyAdjustStrength": False,
         "halfTimeCommentaryMatchesUsed": sum(
-            (row.first_half_process_residual_home if row.home_team == team else row.first_half_process_residual_away) is not None
+            (row.first_half_process_residual_home if is_home(row) else row.first_half_process_residual_away) is not None
             for row in rows
         ),
         "halfTimeMatchesUsed": sum(
@@ -387,8 +433,11 @@ def apply_current_tournament_evidence(
         commentary_selected.get("commentaryProcessScale", 0.0),
     ))
     cap = float(settings.get(
-        "commentaryMaxSideXgShift",
-        commentary_selected.get("commentaryMaxSideXgShift", 0.0),
+        "maxSideXgShift",
+        settings.get(
+            "commentaryMaxSideXgShift",
+            commentary_selected.get("commentaryMaxSideXgShift", 0.0),
+        ),
     ))
     fatigue_attack_per_load = float(settings.get(
         "fatigueAttackPerLoad",

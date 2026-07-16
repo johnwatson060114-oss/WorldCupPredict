@@ -5,7 +5,7 @@ import json
 import math
 import sys
 from collections import Counter, defaultdict
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 from zoneinfo import ZoneInfo
@@ -122,11 +122,20 @@ def load_settlements(path: Path) -> dict[str, dict[str, Any]]:
     return {str(item["matchId"]): item for item in payload.get("matches", [])}
 
 
+def _settlement_priority(match_id: str, settlement: dict[str, Any]) -> tuple[int, int, int, int]:
+    return (
+        int(str(settlement.get("settlementScoreBasis") or "").lower() == "90_minutes"),
+        int(settlement.get("halfTimeHomeScore") is not None and settlement.get("halfTimeAwayScore") is not None),
+        int(bool(settlement.get("settlementSourceUrl") or settlement.get("settlementSource"))),
+        int(match_id.isdigit()),
+    )
+
+
 def archived_forecasts(
     history_dir: Path,
     settlements: dict[str, dict[str, Any]],
 ) -> dict[str, dict[str, Any]]:
-    forecasts: dict[str, dict[str, Any]] = {}
+    forecasts_by_fixture: dict[tuple[str, str, str], dict[str, Any]] = {}
     for path in sorted(history_dir.glob("*.json")):
         payload = json.loads(path.read_text(encoding="utf-8"))
         generated_at = parse_datetime(payload.get("generatedAt"))
@@ -138,22 +147,47 @@ def archived_forecasts(
                 if not half_full_probabilities(match):
                     continue
 
-                kickoff = parse_datetime(match.get("kickoff"))
-                if generated_at and kickoff and generated_at > kickoff:
+                kickoff = parse_datetime(match.get("kickoff") or match.get("kickoffBeijing"))
+                if generated_at is None or kickoff is None or generated_at >= kickoff:
                     continue
 
-                previous = forecasts.get(match_id)
+                home_team = " ".join(str(match.get("homeTeam") or "").casefold().split())
+                away_team = " ".join(str(match.get("awayTeam") or "").casefold().split())
+                fixture_key = (
+                    kickoff.astimezone(timezone.utc).isoformat(),
+                    home_team,
+                    away_team,
+                )
+                previous = forecasts_by_fixture.get(fixture_key)
                 previous_generated = parse_datetime(previous["historyGeneratedAt"]) if previous else None
+                candidate_ids = set(previous.get("settlementCandidateIds", [])) if previous else set()
+                candidate_ids.add(match_id)
                 if previous is None or (
                     generated_at and previous_generated and generated_at > previous_generated
                 ):
-                    forecasts[match_id] = {
+                    forecasts_by_fixture[fixture_key] = {
+                        "matchId": match_id,
                         "historyPath": display_path(path),
                         "historySection": section,
                         "historyGeneratedAt": payload.get("generatedAt"),
                         "match": match,
+                        "settlementCandidateIds": sorted(candidate_ids),
                     }
-    return forecasts
+                else:
+                    previous["settlementCandidateIds"] = sorted(candidate_ids)
+
+    for forecast in forecasts_by_fixture.values():
+        candidate_ids = forecast.pop("settlementCandidateIds", [forecast["matchId"]])
+        forecast["settlementMatchId"] = max(
+            candidate_ids,
+            key=lambda candidate_id: _settlement_priority(candidate_id, settlements[candidate_id]),
+        )
+    return {
+        str(forecast["matchId"]): {
+            key: value for key, value in forecast.items() if key != "matchId"
+        }
+        for forecast in forecasts_by_fixture.values()
+    }
 
 
 def supplemental_score_matrix_forecasts(
@@ -320,6 +354,8 @@ def evaluate_row(
     actual_wdl = actual_outcome(settlement)
     return {
         "matchId": match_id,
+        "forecastMatchId": match_id,
+        "settlementMatchId": forecast.get("settlementMatchId", match_id),
         "homeTeam": match.get("homeTeam"),
         "awayTeam": match.get("awayTeam"),
         "kickoff": match.get("kickoff"),
@@ -456,9 +492,10 @@ def build_report(
         forecasts.items(),
         key=lambda item: item[1]["match"].get("kickoff") or "",
     ):
-        row = evaluate_row(match_id, forecast, settlements[match_id])
+        settlement_match_id = str(forecast.get("settlementMatchId") or match_id)
+        row = evaluate_row(match_id, forecast, settlements[settlement_match_id])
         if row is None:
-            if actual_half_full(settlements[match_id]) is None:
+            if actual_half_full(settlements[settlement_match_id]) is None:
                 missing_halftime += 1
             continue
         rows.append(row)

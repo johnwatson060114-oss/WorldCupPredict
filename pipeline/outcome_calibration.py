@@ -62,15 +62,16 @@ def calibrate_outcome_probabilities(
 def _validation_summary(validation: Any) -> dict[str, Any] | None:
     if not isinstance(validation, dict):
         return None
+    selected = validation.get("selectedMetrics") or {}
     return {
         "validationWeights": validation.get("validationWeights"),
         "selectionObjective": validation.get("selectionObjective"),
         "selectionReason": validation.get("selectionReason"),
-        "current2026": (validation.get("selectedMetrics") or {}).get("current2026"),
-        "current2026LateHoldout": (validation.get("selectedMetrics") or {}).get("current2026LateHoldout"),
-        "historical2018And2022": (validation.get("selectedMetrics") or {}).get("historical2018And2022"),
-        "historical2018": (validation.get("selectedMetrics") or {}).get("historical2018"),
-        "historical2022": (validation.get("selectedMetrics") or {}).get("historical2022"),
+        "current2026": selected.get("current2026"),
+        "current2026LateSegment": selected.get("current2026LateSegment") or selected.get("current2026LateHoldout"),
+        "historical2018And2022": selected.get("historical2018And2022"),
+        "historical2018": selected.get("historical2018"),
+        "historical2022": selected.get("historical2022"),
     }
 
 

@@ -5,6 +5,36 @@ import sys
 from pipeline import generate
 
 
+def test_forecast_archive_preserves_first_valid_pre_kickoff_snapshot(tmp_path):
+    archive = tmp_path / "history" / "2026-07-16.json"
+    original = {
+        "targetDate": "2026-07-16",
+        "generatedAt": "2026-07-15T14:00:00+08:00",
+        "matches": [{"id": "m1", "kickoff": "2026-07-16T03:00:00+08:00"}],
+    }
+    replacement = {
+        **original,
+        "generatedAt": "2026-07-15T15:00:00+08:00",
+        "matches": [{"id": "changed", "kickoff": "2026-07-16T03:00:00+08:00"}],
+    }
+
+    assert generate.write_immutable_forecast_archive(archive, original) == "written"
+    assert generate.write_immutable_forecast_archive(archive, replacement) == "preserved_existing_pre_kickoff_snapshot"
+    assert json.loads(archive.read_text(encoding="utf-8")) == original
+
+
+def test_forecast_archive_rejects_generation_at_or_after_kickoff(tmp_path):
+    archive = tmp_path / "history" / "2026-07-16.json"
+    leaked = {
+        "targetDate": "2026-07-16",
+        "generatedAt": "2026-07-16T03:00:00+08:00",
+        "matches": [{"id": "m1", "kickoff": "2026-07-16T03:00:00+08:00"}],
+    }
+
+    assert generate.write_immutable_forecast_archive(archive, leaked) == "rejected_non_pre_kickoff_snapshot"
+    assert not archive.exists()
+
+
 def test_parlay_cache_keeps_future_matches_when_refresh_is_empty(tmp_path):
     cached_match = {
         "id": "future-1",

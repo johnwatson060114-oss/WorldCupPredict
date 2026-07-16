@@ -3993,6 +3993,20 @@
       "halfTimeHomeScore": 0,
       "halfTimeAwayScore": 0,
       "settledAt": "2026-07-15T19:00:00Z"
+    },
+    {
+      "matchId": "2040508",
+      "fixtureId": 537388,
+      "matchLabel": "英格兰 vs 阿根廷",
+      "homeScore": 1,
+      "awayScore": 2,
+      "settlementScoreBasis": "90_minutes",
+      "halfTimeHomeScore": 0,
+      "halfTimeAwayScore": 0,
+      "rawSettlementScore": "FT 1-2",
+      "settledAt": "2026-07-15T21:00:00Z",
+      "settlementSource": "external_result_review",
+      "settlementSourceUrl": "https://apnews.com/article/afa13ed9fa933f8b75bd56eb16546031"
     }
   ]
 }

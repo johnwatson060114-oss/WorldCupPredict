@@ -72,7 +72,8 @@ def evaluate(
     for forecast in ordered:
         match = forecast["match"]
         match_id = settlement_key(match)
-        settlement = settlements[match_id]
+        settlement_match_id = str(forecast.get("settlementMatchId") or match_id)
+        settlement = settlements[settlement_match_id]
         actual = actual_half_full(settlement)
         kickoff = parse_datetime(match.get("kickoff"))
         xg = match.get("expectedGoals") or {}
@@ -129,12 +130,12 @@ def evaluate(
         "baseline": {
             "all": metrics(baseline_rows),
             "knockout": metrics(base_ko),
-            "lateKnockoutHoldout": metrics(base_ko[late_start:]),
+            "lateKnockoutSegment": metrics(base_ko[late_start:]),
         },
         "candidate": {
             "all": metrics(candidate_rows),
             "knockout": metrics(cand_ko),
-            "lateKnockoutHoldout": metrics(cand_ko[late_start:]),
+            "lateKnockoutSegment": metrics(cand_ko[late_start:]),
         },
         "matches": match_rows,
     }
@@ -174,10 +175,10 @@ def main() -> None:
         and row["candidate"]["knockout"]["top3Hits"] >= baseline["knockout"]["top3Hits"]
         and row["candidate"]["knockout"]["averageLogLoss"] < baseline["knockout"]["averageLogLoss"] - 1e-6
         and row["candidate"]["knockout"]["averageBrier"] < baseline["knockout"]["averageBrier"] - 1e-6
-        and row["candidate"]["lateKnockoutHoldout"]["top1Hits"] >= baseline["lateKnockoutHoldout"]["top1Hits"]
-        and row["candidate"]["lateKnockoutHoldout"]["top3Hits"] >= baseline["lateKnockoutHoldout"]["top3Hits"]
-        and row["candidate"]["lateKnockoutHoldout"]["averageLogLoss"] < baseline["lateKnockoutHoldout"]["averageLogLoss"] - 1e-6
-        and row["candidate"]["lateKnockoutHoldout"]["averageBrier"] < baseline["lateKnockoutHoldout"]["averageBrier"] - 1e-6
+        and row["candidate"]["lateKnockoutSegment"]["top1Hits"] >= baseline["lateKnockoutSegment"]["top1Hits"]
+        and row["candidate"]["lateKnockoutSegment"]["top3Hits"] >= baseline["lateKnockoutSegment"]["top3Hits"]
+        and row["candidate"]["lateKnockoutSegment"]["averageLogLoss"] < baseline["lateKnockoutSegment"]["averageLogLoss"] - 1e-6
+        and row["candidate"]["lateKnockoutSegment"]["averageBrier"] < baseline["lateKnockoutSegment"]["averageBrier"] - 1e-6
         and row["candidate"]["all"]["averageLogLoss"] <= baseline["all"]["averageLogLoss"] * 1.02
     ]
     selected = min(
@@ -185,7 +186,7 @@ def main() -> None:
         key=lambda row: (row["properScoreIndexVsBaseline"], -row["candidate"]["knockout"]["top1Hits"]),
     ) if eligible else None
     selection_reason = (
-        "proper_scores_improved_and_late_holdout_hit_gates_passed"
+        "proper_scores_improved_and_late_segment_hit_gates_passed"
         if selected else "validation_gate_fallback_to_baseline_half_full"
     )
     payload = {

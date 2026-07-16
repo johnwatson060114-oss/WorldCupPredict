@@ -31,6 +31,8 @@ BEIJING = ZoneInfo("Asia/Shanghai")
 POLICY_PATH = ROOT / "pipeline" / "data" / "final-sprint-policy.json"
 HISTORY_DIR = ROOT / "public" / "data" / "history"
 SETTLEMENTS_PATH = ROOT / "public" / "data" / "settlements.json"
+OUTCOME_KEYS = ("home", "draw", "away")
+EVIDENCE_CAPS = (0.0, 0.03, 0.05, 0.08, 0.10, 0.15, 0.20)
 
 
 def _long_term_xg(match: dict[str, Any]) -> tuple[float, float] | None:
@@ -51,6 +53,23 @@ def _market_odds(match: dict[str, Any], market_name: str) -> dict[str, float | N
 
 def _actual_outcome(home: int, away: int) -> str:
     return "home" if home > away else "away" if away > home else "draw"
+
+
+def _base_outcome_probabilities(match: dict[str, Any]) -> dict[str, float] | None:
+    """Return the uncalibrated W/D/L vector when the archive exposes it."""
+
+    calibration = match.get("outcomeCalibration") or {}
+    sources = (calibration.get("preCalibration"), match.get("outcomeProbabilities"))
+    for source in sources:
+        if not isinstance(source, dict):
+            continue
+        try:
+            values = {key: float(source[key]) for key in OUTCOME_KEYS}
+        except (KeyError, TypeError, ValueError):
+            continue
+        if all(math.isfinite(value) and value >= 0.0 for value in values.values()) and sum(values.values()) > 0:
+            return values
+    return None
 
 
 def _evaluate(rows: list[dict[str, Any]]) -> dict[str, float | int]:
@@ -212,10 +231,15 @@ def select_tournament_evidence(samples: list[dict[str, Any]]) -> tuple[dict[str,
     evidence = load_evidence_matches()
     candidates = [
         {"halfLifeMatches": half_life, "shrinkage": shrinkage, "maxSideXgShift": cap}
-        for half_life, shrinkage, cap in itertools.product((1.5, 2.0, 3.0), (3.0, 5.0, 8.0), (0.10, 0.15, 0.20))
+        for half_life, shrinkage, cap in itertools.product(
+            (1.5, 2.0, 3.0),
+            (3.0, 5.0, 8.0),
+            EVIDENCE_CAPS,
+        )
     ]
     current_baseline = _evaluate([_evaluate_xg(*score_xg(sample["match"]), sample["settlement"]) for sample in samples])
     historical_baseline = _historical_metrics()
+    baseline_weighted_loss = 0.70 * current_baseline["combinedLoss"] + 0.30 * historical_baseline["combinedLoss"]
     results: list[tuple[dict[str, float], dict[str, Any]]] = []
     for settings in candidates:
         evaluated = []
@@ -243,6 +267,7 @@ def select_tournament_evidence(samples: list[dict[str, Any]]) -> tuple[dict[str,
             and historical["scoreLogLoss"] <= historical_baseline["scoreLogLoss"] * 1.02
             and historical["totalAdjacentHits"] >= historical_baseline["totalAdjacentHits"]
             and historical["scoreTop3Hits"] >= historical_baseline["scoreTop3Hits"]
+            and weighted_loss < baseline_weighted_loss - 1e-12
         )
         results.append((settings, {"current2026": current, "historical2018And2022": historical, "weightedLoss": weighted_loss, "eligible": eligible}))
     eligible_results = [item for item in results if item[1]["eligible"]]
@@ -260,11 +285,16 @@ def select_tournament_evidence(samples: list[dict[str, Any]]) -> tuple[dict[str,
         }
         selection_reason = "historical_top3_gate_fallback_to_diagnostic_only"
     return selected_settings, {
-        "grid": {"halfLifeMatches": [1.5, 2.0, 3.0], "shrinkage": [3.0, 5.0, 8.0], "maxSideXgShift": [0.10, 0.15, 0.20]},
+        "grid": {
+            "halfLifeMatches": [1.5, 2.0, 3.0],
+            "shrinkage": [3.0, 5.0, 8.0],
+            "maxSideXgShift": list(EVIDENCE_CAPS),
+        },
         "selected": selected_settings,
         "metrics": selected_metrics,
         "selectionReason": selection_reason,
         "baseline": {"current2026": current_baseline, "historical2018And2022": historical_baseline},
+        "historicalCommentaryCoverage": "not_applicable_no_archived_commentary_process_coverage",
         "candidatesEvaluated": len(results),
     }
 
@@ -315,7 +345,9 @@ def select_market_anchor(samples: list[dict[str, Any]], evidence_settings: dict[
         metrics = _evaluate(evaluated)
         metrics["marketSamples"] = market_samples
         metrics["eligible"] = (
-            metrics["wdlLogLoss"] <= baseline_metrics["wdlLogLoss"] * 1.01
+            market_samples > 0
+            and metrics["combinedLoss"] < baseline_metrics["combinedLoss"] - 1e-12
+            and metrics["wdlLogLoss"] <= baseline_metrics["wdlLogLoss"] * 1.01
             and metrics["totalGoalsLogLoss"] <= baseline_metrics["totalGoalsLogLoss"]
             and metrics["scoreLogLoss"] <= baseline_metrics["scoreLogLoss"]
             and metrics["totalAdjacentHits"] >= baseline_metrics["totalAdjacentHits"]
@@ -346,21 +378,22 @@ def select_outcome_calibration(samples: list[dict[str, Any]]) -> tuple[dict[str,
         "selectedDrawMultiplier": 1.0,
         "maxProbabilityShift": 0.0,
     }
-    current_rows = [
-        (
-            {key: float(sample["match"]["outcomeProbabilities"][key]) for key in ("home", "draw", "away")},
+    current_rows = []
+    for sample in samples:
+        probabilities = _base_outcome_probabilities(sample["match"])
+        if probabilities is None:
+            continue
+        current_rows.append((
+            probabilities,
             _actual_outcome(int(sample["settlement"]["homeScore"]), int(sample["settlement"]["awayScore"])),
-        )
-        for sample in samples
-        if all(key in (sample["match"].get("outcomeProbabilities") or {}) for key in ("home", "draw", "away"))
-    ]
-    late_holdout_rows = current_rows[(len(current_rows) + 1) // 2:]
+        ))
+    late_segment_rows = current_rows[(len(current_rows) + 1) // 2:]
     historical_by_year = _historical_outcome_rows()
     historical_rows = historical_by_year.get("2018", []) + historical_by_year.get("2022", [])
 
     baseline = {
         "current2026": _outcome_metrics(current_rows, baseline_settings),
-        "current2026LateHoldout": _outcome_metrics(late_holdout_rows, baseline_settings),
+        "current2026LateSegment": _outcome_metrics(late_segment_rows, baseline_settings),
         "historical2018And2022": _outcome_metrics(historical_rows, baseline_settings),
         "historical2018": _outcome_metrics(historical_by_year.get("2018", []), baseline_settings),
         "historical2022": _outcome_metrics(historical_by_year.get("2022", []), baseline_settings),
@@ -387,7 +420,7 @@ def select_outcome_calibration(samples: list[dict[str, Any]]) -> tuple[dict[str,
         }
         metrics = {
             "current2026": _outcome_metrics(current_rows, settings),
-            "current2026LateHoldout": _outcome_metrics(late_holdout_rows, settings),
+            "current2026LateSegment": _outcome_metrics(late_segment_rows, settings),
             "historical2018And2022": _outcome_metrics(historical_rows, settings),
             "historical2018": _outcome_metrics(historical_by_year.get("2018", []), settings),
             "historical2022": _outcome_metrics(historical_by_year.get("2022", []), settings),
@@ -410,9 +443,9 @@ def select_outcome_calibration(samples: list[dict[str, Any]]) -> tuple[dict[str,
             float(metrics["current2026"]["logLoss"]) < float(baseline["current2026"]["logLoss"]) - 1e-12
             and float(metrics["current2026"]["brier"]) < float(baseline["current2026"]["brier"]) - 1e-12
             and int(metrics["current2026"]["hits"]) >= int(baseline["current2026"]["hits"])
-            and float(metrics["current2026LateHoldout"]["logLoss"]) < float(baseline["current2026LateHoldout"]["logLoss"]) - 1e-12
-            and float(metrics["current2026LateHoldout"]["brier"]) < float(baseline["current2026LateHoldout"]["brier"]) - 1e-12
-            and int(metrics["current2026LateHoldout"]["hits"]) >= int(baseline["current2026LateHoldout"]["hits"])
+            and float(metrics["current2026LateSegment"]["logLoss"]) < float(baseline["current2026LateSegment"]["logLoss"]) - 1e-12
+            and float(metrics["current2026LateSegment"]["brier"]) < float(baseline["current2026LateSegment"]["brier"]) - 1e-12
+            and int(metrics["current2026LateSegment"]["hits"]) >= int(baseline["current2026LateSegment"]["hits"])
             and float(metrics["historical2018And2022"]["logLoss"]) <= float(baseline["historical2018And2022"]["logLoss"]) * 1.02
             and float(metrics["historical2018And2022"]["brier"]) <= float(baseline["historical2018And2022"]["brier"]) * 1.02
             and int(metrics["historical2018And2022"]["hits"]) >= int(baseline["historical2018And2022"]["hits"])
@@ -430,7 +463,7 @@ def select_outcome_calibration(samples: list[dict[str, Any]]) -> tuple[dict[str,
             eligible,
             key=lambda candidate: float(candidate[1]["properScoreIndexVsBaseline"]),
         )
-        selection_reason = "proper_scores_improved_and_temporal_historical_gates_passed"
+        selection_reason = "proper_scores_improved_and_late_segment_historical_gates_passed"
     else:
         selected_settings = baseline_settings
         selected_metrics = {
@@ -540,7 +573,8 @@ def main() -> None:
         "historicalSafetyGate": {
             "weight": 0.30,
             "maxDegradation": 0.02,
-            "status": "passed_by_weighted_candidate_evaluation",
+            "generalLayersStatus": "passed_by_weighted_candidate_evaluation",
+            "tournamentEvidenceStatus": "not_applicable_no_archived_commentary_process_coverage",
         },
     }
     POLICY_PATH.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
