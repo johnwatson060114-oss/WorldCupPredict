@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-15T15:19:15+08:00",
+  "generatedAt": "2026-07-16T15:26:58+08:00",
   "matches": [
     {
       "matchId": "537327",
@@ -3983,6 +3983,16 @@
       "settledAt": "2026-07-14T21:00:00Z",
       "settlementSource": "external_result_review",
       "settlementSourceUrl": "https://apnews.com/article/87fb7740fa552edf4bfd28d0e8727c23"
+    },
+    {
+      "matchId": "英格兰 vs 阿根廷",
+      "fixtureId": 537388,
+      "matchLabel": "英格兰 vs 阿根廷",
+      "homeScore": 1,
+      "awayScore": 2,
+      "halfTimeHomeScore": 0,
+      "halfTimeAwayScore": 0,
+      "settledAt": "2026-07-15T19:00:00Z"
     }
   ]
 }
