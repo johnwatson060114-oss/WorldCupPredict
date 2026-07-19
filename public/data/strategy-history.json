@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-18T15:03:31+08:00",
+  "generatedAt": "2026-07-19T15:30:21+08:00",
   "finalDate": "2026-07-19",
   "days": [
     {
@@ -3478,6 +3478,70 @@
       "targetDate": "2026-07-19",
       "generatedAt": "2026-07-16T20:46:09+08:00",
       "coverage": 0.76,
+      "strategies": [
+        {
+          "key": "conservative",
+          "name": "稳健",
+          "stake": 0,
+          "payout": 0,
+          "profit": 0,
+          "roi": null,
+          "status": "no-bet"
+        },
+        {
+          "key": "balanced",
+          "name": "均衡",
+          "stake": 0,
+          "payout": 0,
+          "profit": 0,
+          "roi": null,
+          "status": "no-bet"
+        },
+        {
+          "key": "aggressive",
+          "name": "激进",
+          "stake": 0,
+          "payout": 0,
+          "profit": 0,
+          "roi": null,
+          "status": "no-bet"
+        }
+      ],
+      "review": {
+        "snapshotLabel": "升级前基线快照",
+        "matches": [
+          {
+            "matchId": "2040540",
+            "label": "法国 vs 英格兰",
+            "predictedScore": "1-1",
+            "actualScore": "4-6",
+            "predictedOutcome": "home",
+            "predictedOutcomeSource": "outcomeDecision",
+            "actualOutcome": "away",
+            "outcomeCorrect": false,
+            "exactScore": false,
+            "goalAbsoluteError": 8,
+            "actualOutcomeProbability": 0.24523,
+            "logLoss": 1.40556,
+            "brier": 0.86917,
+            "diagnosis": "赛果方向判断错误，需要继续积累同类对阵样本。"
+          }
+        ],
+        "summary": {
+          "matchCount": 1,
+          "outcomeAccuracy": 0.0,
+          "exactScoreAccuracy": 0.0,
+          "meanGoalAbsoluteError": 8.0,
+          "logLoss": 1.40556,
+          "brier": 0.86917,
+          "strategyDiagnosis": "策略结果已按真实派彩结算，继续观察多日样本后再调整资金规则。"
+        }
+      }
+    },
+    {
+      "targetDate": "2026-07-20",
+      "generatedAt": "2026-07-19T15:30:16+08:00",
+      "coverage": 0.78,
       "strategies": [
         {
           "key": "conservative",
