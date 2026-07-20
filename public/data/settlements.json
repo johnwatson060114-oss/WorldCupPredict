@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-19T15:30:16+08:00",
+  "generatedAt": "2026-07-20T16:10:25+08:00",
   "matches": [
     {
       "matchId": "537327",
@@ -4145,6 +4145,16 @@
       "closingOddsSource": "zgzcw.com",
       "closingOddsIssue": "2026-07-18",
       "closingOddsCheckedAt": "2026-07-19T15:28:58+08:00"
+    },
+    {
+      "matchId": "西班牙 vs 阿根廷",
+      "fixtureId": 537390,
+      "matchLabel": "西班牙 vs 阿根廷",
+      "homeScore": 0,
+      "awayScore": 0,
+      "halfTimeHomeScore": 0,
+      "halfTimeAwayScore": 0,
+      "settledAt": "2026-07-19T19:00:00Z"
     }
   ]
 }
