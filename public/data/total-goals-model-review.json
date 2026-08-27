@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-26T13:40:14+08:00",
+  "generatedAt": "2026-08-28T00:19:20+08:00",
   "timezone": "Asia/Shanghai",
   "scheduledReviewStartDate": "2026-06-17",
   "productionPolicy": "current model remains primary; optimized model runs as shadow until adoption gates pass",
@@ -12,8 +12,8 @@
     "exact_accuracy": 0.25,
     "core_hits": 49,
     "core_accuracy": 0.4537037037037037,
-    "average_log_loss": 1.913764371856881,
-    "average_rps": 0.13648269762582463,
+    "average_log_loss": 1.913764184188471,
+    "average_rps": 0.13648266849562377,
     "calibration_error": 0.03217592592592593,
     "predicted_bucket_counts": {
       "0": 0,
@@ -25,7 +25,7 @@
       "6": 0,
       "7+": 0
     },
-    "average_bucketed_expected_total": 2.6244141975968094
+    "average_bucketed_expected_total": 2.624413888426077
   },
   "shadowModel": {
     "role": "shadow",
@@ -35,8 +35,8 @@
     "exact_accuracy": 0.2222222222222222,
     "core_hits": 52,
     "core_accuracy": 0.48148148148148145,
-    "average_log_loss": 1.9166975159042663,
-    "average_rps": 0.13686994886027976,
+    "average_log_loss": 1.9166972495389087,
+    "average_rps": 0.13686990768208074,
     "calibration_error": 0.032638888888888884,
     "predicted_bucket_counts": {
       "0": 0,
@@ -48,7 +48,7 @@
       "6": 0,
       "7+": 0
     },
-    "average_bucketed_expected_total": 2.5941579019560645
+    "average_bucketed_expected_total": 2.5941574520200836
   },
   "tailShadowModel": {
     "role": "shadow_only",
@@ -59,8 +59,8 @@
     "exact_accuracy": 0.2037037037037037,
     "core_hits": 48,
     "core_accuracy": 0.4444444444444444,
-    "average_log_loss": 1.9255295420154046,
-    "average_rps": 0.13799230382378208,
+    "average_log_loss": 1.9255292052924484,
+    "average_rps": 0.13799225198937148,
     "calibration_error": 0.03564814814814815,
     "predicted_bucket_counts": {
       "0": 0,
@@ -72,7 +72,7 @@
       "6": 0,
       "7+": 0
     },
-    "average_bucketed_expected_total": 2.5357015345918246
+    "average_bucketed_expected_total": 2.5357009193441518
   },
   "strengthAllocationPolicy": {
     "eloAllocationWeight": 1.0,
@@ -208,8 +208,8 @@
       "second_round_forward_sample": true
     },
     "deltas": {
-      "log_loss_improvement": -0.0029331440473852055,
-      "rps_improvement": -0.0003872512344551271,
+      "log_loss_improvement": -0.0029330653504378024,
+      "rps_improvement": -0.0003872391864569724,
       "calibration_delta": 0.0004629629629629567
     },
     "thresholds": {
@@ -222,9 +222,9 @@
   "dataRefresh": {
     "status": "ok",
     "url": "https://raw.githubusercontent.com/martj42/international_results/master/results.csv",
-    "bytes": 3727835,
+    "bytes": 3729861,
     "path": "artifacts/total-goals-backtest/international_results.csv",
-    "refreshedAt": "2026-08-26T13:39:12+08:00"
+    "refreshedAt": "2026-08-28T00:18:34+08:00"
   },
   "manualResultRows": 36,
   "comparisonPath": "artifacts/total-goals-backtest/model_comparison_2026.csv"
