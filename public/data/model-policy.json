@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-30T19:17:21+08:00",
+  "generatedAt": "2026-10-31T18:50:25+08:00",
   "status": "selected_on_chronological_validation",
   "validationSet": "FIFA World Cup 2018 and 2022",
   "eloAllocationWeight": 1.0,
@@ -12,34 +12,34 @@
   "validationMatches": 128,
   "candidates": {
     "0.0": {
-      "log_loss": 1.058171619974526,
-      "rps": 0.23055912366232928,
-      "brier": 0.6365450115084318,
+      "log_loss": 1.0581716199781934,
+      "rps": 0.23055912366261108,
+      "brier": 0.6365450115086104,
       "calibration_error": 0.059635416666666684
     },
     "0.25": {
-      "log_loss": 1.0300445876334345,
-      "rps": 0.22090437492110138,
-      "brier": 0.6167547084007121,
+      "log_loss": 1.030051794430098,
+      "rps": 0.22090699614750473,
+      "brier": 0.6167604863120127,
       "calibration_error": 0.05885416666666665
     },
     "0.5": {
-      "log_loss": 1.010052222476448,
-      "rps": 0.2136590539116431,
-      "brier": 0.6014793297540884,
+      "log_loss": 1.01006618375326,
+      "rps": 0.2136641219744106,
+      "brier": 0.6014911468103399,
       "calibration_error": 0.06770833333333331
     },
     "0.75": {
-      "log_loss": 0.9983181589398259,
-      "rps": 0.20879969996416395,
-      "brier": 0.5907538454600448,
+      "log_loss": 0.9983386384510473,
+      "rps": 0.20880701198303786,
+      "brier": 0.5907718346071099,
       "calibration_error": 0.07526041666666668
     },
     "1.0": {
-      "log_loss": 0.9956749127308014,
-      "rps": 0.20620299781439455,
-      "brier": 0.5844530333704829,
-      "calibration_error": 0.06875
+      "log_loss": 0.9957018465314701,
+      "rps": 0.20621236921111027,
+      "brier": 0.5844772639298226,
+      "calibration_error": 0.06848958333333335
     }
   },
   "selectionRule": "lowest chronological validation log loss; tie-break by RPS",
